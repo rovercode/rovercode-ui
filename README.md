@@ -1,7 +1,7 @@
 rovercode User Interface
 ========================
 
-This repository contains the react application frontend for the rovercode web application.
+This repository contains the [react](https://reactjs.org/) application frontend for the rovercode web application.
 
 Requirements
 ============
