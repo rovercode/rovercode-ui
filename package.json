@@ -1,9 +1,9 @@
 {
-  "name": "rovercode-web-frontend",
+  "name": "rovercode-ui",
   "version": "0.0.1",
   "description": "rovercode web application frontend",
   "main": "/src/index.js",
-  "repository": "https://github.com/rovercode/rovercode-web",
+  "repository": "https://github.com/rovercode/rovercode-ui",
   "author": "Clifton Barnes",
   "license": "GPL-3.0",
   "private": false,
