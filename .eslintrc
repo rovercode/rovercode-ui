@@ -1,0 +1,38 @@
+{
+    "plugins": [
+        "react"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true,
+            "experimentalObjectRestSpread": true,
+            "experimentalDecorators": true
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
+    "parser": "babel-eslint",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": 0,
+        "no-shadow": ["error", { "allow": ["Component"] }],
+        "linebreak-style": 0,
+        "no-plusplus": ["error", {"allowForLoopAfterthoughts": true}],
+        "import/no-named-default": 0,
+        "no-param-reassign": "off"
+    },
+    "settings": {
+        "import/resolver": "webpack"
+    }
+}
