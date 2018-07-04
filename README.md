@@ -24,7 +24,7 @@ yarn install
 Running
 =======
 
-**NOTE**: The application running the development webserver requires the rovercode api to be running at http://localhost:8000
+**NOTE**: The application running the development webserver requires the [rovercode api](https://github.com/rovercode/rovercode-web) to be running at http://localhost:8000
 
 To run the development web server, run:
 ```sh
