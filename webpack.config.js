@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -54,6 +55,20 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: 'app.css',
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './src/assets/images/favicon.png',
+      persistentCache: false,
+      icons: {
+        android: false,
+        appleIcon: false,
+        appleStartup: false,
+        coast: false,
+        favicons: true,
+        firefox: false,
+        windows: false,
+        yandex: false,
+      },
     }),
   ],
   devServer: {
