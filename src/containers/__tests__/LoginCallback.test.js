@@ -1,11 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import {
-  MemoryRouter, Route, Switch,
-} from 'react-router';
+import { shallow } from 'enzyme';
+import { Redirect } from 'react-router';
 import { Loader } from 'semantic-ui-react';
-import { CookiesProvider } from 'react-cookie';
-import toJson from 'enzyme-to-json';
+import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -13,43 +10,78 @@ import LoginCallback from '../LoginCallback';
 
 const mock = new MockAdapter(axios);
 
-const initialEntry = {
-  pathname: '/login/google/callback',
+const location = {
   search: '?state=1234&code=5678',
-  key: '123456',
+};
+const match = {
+  params: {
+    service: 'google',
+  },
 };
 
 test('LoginCallback renders on the page with no errors', () => {
-  const wrapper = mount(
-    <CookiesProvider>
-      <MemoryRouter initialEntries={[initialEntry]}>
-        <Switch>
-          <Route path="/login/:service/callback" component={LoginCallback} />
-        </Switch>
-      </MemoryRouter>
-    </CookiesProvider>,
-  );
+  const cookiesValues = { };
+  const cookies = new Cookies(cookiesValues);
+  const wrapper = shallow(<LoginCallback location={location} match={match} />, {
+    context: { cookies },
+  });
 
-  expect(toJson(wrapper)).toMatchSnapshot();
+  expect(wrapper).toMatchSnapshot();
 });
 
 test('LoginCallback displays loader while loading', () => {
-  mock.reset();
-  mock.onPost('/api/auth/social/google/login/').timeout();
-  const wrapper = mount(
-    <CookiesProvider>
-      <MemoryRouter initialEntries={[initialEntry]}>
-        <Switch>
-          <Route path="/login/:service/callback" component={LoginCallback} />
-        </Switch>
-      </MemoryRouter>
-    </CookiesProvider>,
-  );
-
-  wrapper.setState({
-    loading: true,
+  const cookiesValues = { };
+  const cookies = new Cookies(cookiesValues);
+  const cookiesWrapper = shallow(<LoginCallback location={location} match={match} />, {
+    context: { cookies },
   });
-  wrapper.update();
+
+  const wrapper = cookiesWrapper.dive();
 
   expect(wrapper.find(Loader).exists()).toBe(true);
+  expect(wrapper.find(Redirect).exists()).toBe(false);
+});
+
+test('LoginCallback redirects to login after failure', async () => {
+  mock.reset();
+  mock.onPost('/jwt/auth/social/google/login/').timeout();
+  const cookiesValues = { };
+  const cookies = new Cookies(cookiesValues);
+  const cookiesWrapper = shallow(<LoginCallback location={location} match={match} />, {
+    context: { cookies },
+  });
+
+  const wrapper = cookiesWrapper.dive();
+
+  await wrapper.instance().componentDidMount();
+  wrapper.update();
+
+  const redirect = wrapper.find(Redirect);
+  expect(redirect.exists()).toBe(true);
+  expect(redirect.prop('to')).toBe('/login');
+  expect(wrapper.find(Loader).exists()).toBe(false);
+  expect(cookies.get('auth_jwt')).toBeUndefined();
+});
+
+test('LoginCallback redirects to root after success', async () => {
+  mock.reset();
+  mock.onPost('/jwt/auth/social/google/login/').reply(200, {
+    token: '1234',
+  });
+  const cookiesValues = { };
+  const cookies = new Cookies(cookiesValues);
+  const cookiesWrapper = shallow(<LoginCallback location={location} match={match} />, {
+    context: { cookies },
+  });
+
+  const wrapper = cookiesWrapper.dive();
+
+  await wrapper.instance().componentDidMount();
+  wrapper.update();
+
+  const redirect = wrapper.find(Redirect);
+  expect(redirect.exists()).toBe(true);
+  expect(redirect.prop('to')).toBe('/');
+  expect(wrapper.find(Loader).exists()).toBe(false);
+  expect(cookies.get('auth_jwt')).toBe('1234');
 });

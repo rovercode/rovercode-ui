@@ -22,6 +22,14 @@
       "src/**/*.js",
       "!src/index.js"
     ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    },
     "moduleNameMapper": {
       ".+\\.(png|jpg)$": "<rootDir>/src/assets/images/__mocks__/imageMock.js"
     }
