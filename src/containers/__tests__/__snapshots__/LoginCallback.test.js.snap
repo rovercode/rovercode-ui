@@ -1,198 +1,102 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginCallback renders on the page with no errors 1`] = `
-<CookiesProvider>
-  <MemoryRouter
-    initialEntries={
-      Array [
-        Object {
-          "key": "123456",
-          "pathname": "/login/google/callback",
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <withCookies(Component)
+    location={
+      Object {
+        "search": "?state=1234&code=5678",
+      }
+    }
+    match={
+      Object {
+        "params": Object {
+          "service": "google",
+        },
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "allCookies": Object {},
+      "cookies": Cookies {
+        "HAS_DOCUMENT_COOKIE": true,
+        "changeListeners": Array [
+          [Function],
+        ],
+        "cookies": Object {},
+        "hooks": undefined,
+      },
+      "location": Object {
+        "search": "?state=1234&code=5678",
+      },
+      "match": Object {
+        "params": Object {
+          "service": "google",
+        },
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "allCookies": Object {},
+        "cookies": Cookies {
+          "HAS_DOCUMENT_COOKIE": true,
+          "changeListeners": Array [
+            [Function],
+          ],
+          "cookies": Object {},
+          "hooks": undefined,
+        },
+        "location": Object {
           "search": "?state=1234&code=5678",
         },
-      ]
-    }
-  >
-    <Router
-      history={
-        Object {
-          "action": "POP",
-          "block": [Function],
-          "canGo": [Function],
-          "createHref": [Function],
-          "entries": Array [
-            Object {
-              "hash": "",
-              "key": "123456",
-              "pathname": "/login/google/callback",
-              "search": "?state=1234&code=5678",
-            },
-          ],
-          "go": [Function],
-          "goBack": [Function],
-          "goForward": [Function],
-          "index": 0,
-          "length": 1,
-          "listen": [Function],
-          "location": Object {
-            "hash": "",
-            "key": "123456",
-            "pathname": "/login/google/callback",
-            "search": "?state=1234&code=5678",
+        "match": Object {
+          "params": Object {
+            "service": "google",
           },
-          "push": [Function],
-          "replace": [Function],
-        }
-      }
-    >
-      <Switch>
-        <Route
-          component={[Function]}
-          computedMatch={
-            Object {
-              "isExact": true,
-              "params": Object {
-                "service": "google",
-              },
-              "path": "/login/:service/callback",
-              "url": "/login/google/callback",
-            }
-          }
-          location={
-            Object {
-              "hash": "",
-              "key": "123456",
-              "pathname": "/login/google/callback",
-              "search": "?state=1234&code=5678",
-            }
-          }
-          path="/login/:service/callback"
-        >
-          <withCookies(Component)
-            history={
-              Object {
-                "action": "POP",
-                "block": [Function],
-                "canGo": [Function],
-                "createHref": [Function],
-                "entries": Array [
-                  Object {
-                    "hash": "",
-                    "key": "123456",
-                    "pathname": "/login/google/callback",
-                    "search": "?state=1234&code=5678",
-                  },
-                ],
-                "go": [Function],
-                "goBack": [Function],
-                "goForward": [Function],
-                "index": 0,
-                "length": 1,
-                "listen": [Function],
-                "location": Object {
-                  "hash": "",
-                  "key": "123456",
-                  "pathname": "/login/google/callback",
-                  "search": "?state=1234&code=5678",
-                },
-                "push": [Function],
-                "replace": [Function],
-              }
-            }
-            location={
-              Object {
-                "hash": "",
-                "key": "123456",
-                "pathname": "/login/google/callback",
-                "search": "?state=1234&code=5678",
-              }
-            }
-            match={
-              Object {
-                "isExact": true,
-                "params": Object {
-                  "service": "google",
-                },
-                "path": "/login/:service/callback",
-                "url": "/login/google/callback",
-              }
-            }
-          >
-            <LoginCallback
-              allCookies={Object {}}
-              cookies={
-                Cookies {
-                  "HAS_DOCUMENT_COOKIE": true,
-                  "changeListeners": Array [
-                    [Function],
-                  ],
-                  "cookies": Object {},
-                  "hooks": undefined,
-                }
-              }
-              history={
-                Object {
-                  "action": "POP",
-                  "block": [Function],
-                  "canGo": [Function],
-                  "createHref": [Function],
-                  "entries": Array [
-                    Object {
-                      "hash": "",
-                      "key": "123456",
-                      "pathname": "/login/google/callback",
-                      "search": "?state=1234&code=5678",
-                    },
-                  ],
-                  "go": [Function],
-                  "goBack": [Function],
-                  "goForward": [Function],
-                  "index": 0,
-                  "length": 1,
-                  "listen": [Function],
-                  "location": Object {
-                    "hash": "",
-                    "key": "123456",
-                    "pathname": "/login/google/callback",
-                    "search": "?state=1234&code=5678",
-                  },
-                  "push": [Function],
-                  "replace": [Function],
-                }
-              }
-              location={
-                Object {
-                  "hash": "",
-                  "key": "123456",
-                  "pathname": "/login/google/callback",
-                  "search": "?state=1234&code=5678",
-                }
-              }
-              match={
-                Object {
-                  "isExact": true,
-                  "params": Object {
-                    "service": "google",
-                  },
-                  "path": "/login/:service/callback",
-                  "url": "/login/google/callback",
-                }
-              }
-            >
-              <Loader
-                content="Logging in..."
-              >
-                <div
-                  className="ui text loader"
-                >
-                  Logging in...
-                </div>
-              </Loader>
-            </LoginCallback>
-          </withCookies(Component)>
-        </Route>
-      </Switch>
-    </Router>
-  </MemoryRouter>
-</CookiesProvider>
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+    "context": Object {
+      "cookies": Cookies {
+        "HAS_DOCUMENT_COOKIE": true,
+        "changeListeners": Array [
+          [Function],
+        ],
+        "cookies": Object {},
+        "hooks": undefined,
+      },
+    },
+  },
+}
 `;
