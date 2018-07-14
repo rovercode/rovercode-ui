@@ -128,15 +128,13 @@ class SignUp extends Component {
         });
       })
       .catch((error) => {
-        const state = {};
-
-        state.usernameError = error.response.data.username;
-        state.emailError = error.response.data.email;
-        state.password1Error = error.response.data.password1;
-        state.password2Error = error.response.data.password2;
-        state.nonFieldError = error.response.data.non_field_errors;
-
-        this.setState(state);
+        this.setState({
+          usernameError: error.response.data.username,
+          emailError: error.response.data.email,
+          password1Error: error.response.data.password1,
+          password2Error: error.response.data.password2,
+          nonFieldError: error.response.data.non_field_errors,
+        });
       });
   }
 
