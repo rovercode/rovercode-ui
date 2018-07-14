@@ -137,6 +137,15 @@ class Login extends Component {
           </Grid.Row>
           <Grid.Row>
             <p>
+              Don&apos;t have any of those accounts?
+              {' '}
+              <a href="/signup">
+                Create a rovercode account.
+              </a>
+            </p>
+          </Grid.Row>
+          <Grid.Row>
+            <p>
               Already have a rovercode account? Sign in here:
             </p>
           </Grid.Row>
