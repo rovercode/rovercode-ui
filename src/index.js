@@ -8,6 +8,7 @@ import { CookiesProvider } from 'react-cookie';
 import App from './containers/App';
 import Login from './containers/Login';
 import LoginCallback from './containers/LoginCallback';
+import SignUp from './containers/SignUp';
 
 render(
   <BrowserRouter>
@@ -15,6 +16,7 @@ render(
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/login/:service/callback" component={LoginCallback} />
+        <Route exact path="/signup" component={SignUp} />
         <Route path="/" component={App} />
       </Switch>
     </CookiesProvider>
