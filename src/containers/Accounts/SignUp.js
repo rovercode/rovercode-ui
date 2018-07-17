@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 import axios from 'axios';
 
-import logoImage from '../assets/images/rovercode_logo.png';
+import logoImage from '../../assets/images/rovercode_logo.png';
 
 class SignUp extends Component {
   constructor(props) {

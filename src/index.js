@@ -6,9 +6,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 
 import App from './containers/App';
-import Login from './containers/Login';
+import Login from './containers/Accounts/Login';
 import LoginCallback from './containers/LoginCallback';
-import SignUp from './containers/SignUp';
+import SignUp from './containers/Accounts/SignUp';
 
 render(
   <BrowserRouter>

@@ -15,7 +15,7 @@ import queryString from 'query-string';
 import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
-import logoImage from '../assets/images/rovercode_logo.png';
+import logoImage from '../../assets/images/rovercode_logo.png';
 
 class Login extends Component {
   constructor(props) {
