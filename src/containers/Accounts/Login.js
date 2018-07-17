@@ -5,7 +5,6 @@ import {
   Form,
   Grid,
   Icon,
-  Image,
   Message,
   Segment,
 } from 'semantic-ui-react';
@@ -14,8 +13,6 @@ import URL from 'url-parse';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
-
-import logoImage from '../../assets/images/rovercode_logo.png';
 
 class Login extends Component {
   constructor(props) {
@@ -94,9 +91,6 @@ class Login extends Component {
         }
         <Grid centered columns={16}>
           <Grid.Row>
-            <Image src={logoImage} />
-          </Grid.Row>
-          <Grid.Row>
             <p>
               You can sign up / sign in with one of your existing third-party accounts.
             </p>
@@ -139,7 +133,7 @@ class Login extends Component {
             <p>
               Don&apos;t have any of those accounts?
               {' '}
-              <a href="/signup">
+              <a href="/accounts/signup">
                 Create a rovercode account.
               </a>
             </p>

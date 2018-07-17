@@ -6,18 +6,16 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 
 import App from './containers/App';
-import Login from './containers/Accounts/Login';
 import LoginCallback from './containers/LoginCallback';
-import SignUp from './containers/Accounts/SignUp';
+import Accounts from './containers/Accounts/Base';
 
 render(
   <BrowserRouter>
     <CookiesProvider>
       <Switch>
-        <Route exact path="/login" component={Login} />
+        <Route path="/accounts" component={Accounts} />
         <Route exact path="/login/:service/callback" component={LoginCallback} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route path="/" component={App} />
+        <Route exact path="/" component={App} />
       </Switch>
     </CookiesProvider>
   </BrowserRouter>,
