@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login renders on the page with no errors 1`] = `
+exports[`SignUp renders on the page with no errors 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Login
+  Symbol(enzyme.__unrendered__): <SignUp
     allCookies={Object {}}
     cookies={
       Cookies {
@@ -14,11 +14,6 @@ ShallowWrapper {
         ],
         "cookies": Object {},
         "hooks": undefined,
-      }
-    }
-    location={
-      Object {
-        "pathname": "/login",
       }
     }
   />,
@@ -41,69 +36,21 @@ ShallowWrapper {
           columns={16}
         >
           <GridRow>
-            <Image
-              as="img"
-              src={Object {}}
-              ui={true}
-            />
+            <Header
+              size="huge"
+            >
+              Sign Up
+            </Header>
           </GridRow>
           <GridRow>
             <p>
-              You can sign up / sign in with one of your existing third-party accounts.
-            </p>
-          </GridRow>
-          <GridRow>
-            <GridColumn
-              width={8}
-            >
-              <Button
-                as="button"
-                color="red"
-                floated="right"
-                id="google"
-                onClick={[Function]}
-                role="button"
-              >
-                <Icon
-                  as="i"
-                  name="google"
-                />
-                Sign in with Google
-              </Button>
-            </GridColumn>
-            <GridColumn
-              width={8}
-            >
-              <Button
-                as="button"
-                color="black"
-                floated="left"
-                id="github"
-                onClick={[Function]}
-                role="button"
-              >
-                <Icon
-                  as="i"
-                  name="github"
-                />
-                Sign in with GitHub
-              </Button>
-            </GridColumn>
-          </GridRow>
-          <GridRow>
-            <p>
-              Don't have any of those accounts?
+              Already have an account? Then please
                
               <a
-                href="/signup"
+                href="/accounts/login"
               >
-                Create a rovercode account.
+                sign in.
               </a>
-            </p>
-          </GridRow>
-          <GridRow>
-            <p>
-              Already have a rovercode account? Sign in here:
             </p>
           </GridRow>
           <GridRow>
@@ -122,6 +69,7 @@ ShallowWrapper {
                   <FormInput
                     as={[Function]}
                     control={[Function]}
+                    error={null}
                     icon="user"
                     iconPosition="left"
                     onChange={[Function]}
@@ -131,6 +79,28 @@ ShallowWrapper {
                   <FormInput
                     as={[Function]}
                     control={[Function]}
+                    error={null}
+                    icon="mail"
+                    iconPosition="left"
+                    onChange={[Function]}
+                    placeholder="Email"
+                    required={true}
+                  />
+                  <FormInput
+                    as={[Function]}
+                    control={[Function]}
+                    error={null}
+                    icon="lock"
+                    iconPosition="left"
+                    onChange={[Function]}
+                    placeholder="Password"
+                    required={true}
+                    type="password"
+                  />
+                  <FormInput
+                    as={[Function]}
+                    control={[Function]}
+                    error={null}
                     icon="lock"
                     iconPosition="left"
                     onChange={[Function]}
@@ -144,7 +114,7 @@ ShallowWrapper {
                     primary={true}
                     type="submit"
                   >
-                    Sign In
+                    Sign Up
                   </FormButton>
                 </Form>
               </Segment>
@@ -164,70 +134,21 @@ ShallowWrapper {
           "centered": true,
           "children": Array [
             <GridRow>
-              <Image
-                as="img"
-                src={Object {}}
-                ui={true}
-              />
+              <Header
+                size="huge"
+              >
+                Sign Up
+              </Header>
             </GridRow>,
             <GridRow>
               <p>
-                You can sign up / sign in with one of your existing third-party accounts.
-              </p>
-            </GridRow>,
-            null,
-            <GridRow>
-              <GridColumn
-                width={8}
-              >
-                <Button
-                  as="button"
-                  color="red"
-                  floated="right"
-                  id="google"
-                  onClick={[Function]}
-                  role="button"
-                >
-                  <Icon
-                    as="i"
-                    name="google"
-                  />
-                  Sign in with Google
-                </Button>
-              </GridColumn>
-              <GridColumn
-                width={8}
-              >
-                <Button
-                  as="button"
-                  color="black"
-                  floated="left"
-                  id="github"
-                  onClick={[Function]}
-                  role="button"
-                >
-                  <Icon
-                    as="i"
-                    name="github"
-                  />
-                  Sign in with GitHub
-                </Button>
-              </GridColumn>
-            </GridRow>,
-            <GridRow>
-              <p>
-                Don't have any of those accounts?
+                Already have an account? Then please
                  
                 <a
-                  href="/signup"
+                  href="/accounts/login"
                 >
-                  Create a rovercode account.
+                  sign in.
                 </a>
-              </p>
-            </GridRow>,
-            <GridRow>
-              <p>
-                Already have a rovercode account? Sign in here:
               </p>
             </GridRow>,
             null,
@@ -247,6 +168,7 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
                       icon="user"
                       iconPosition="left"
                       onChange={[Function]}
@@ -256,6 +178,28 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
+                      icon="mail"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Email"
+                      required={true}
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
+                      icon="lock"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Password"
+                      required={true}
+                      type="password"
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
                       icon="lock"
                       iconPosition="left"
                       onChange={[Function]}
@@ -269,7 +213,7 @@ ShallowWrapper {
                       primary={true}
                       type="submit"
                     >
-                      Sign In
+                      Sign Up
                     </FormButton>
                   </Form>
                 </Segment>
@@ -285,11 +229,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": <Image
-                as="img"
-                src={Object {}}
-                ui={true}
-              />,
+              "children": <Header
+                size="huge"
+              >
+                Sign Up
+              </Header>,
             },
             "ref": null,
             "rendered": Object {
@@ -297,12 +241,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "as": "img",
-                "src": Object {},
-                "ui": true,
+                "children": "Sign Up",
+                "size": "huge",
               },
               "ref": null,
-              "rendered": null,
+              "rendered": "Sign Up",
               "type": [Function],
             },
             "type": [Function],
@@ -313,207 +256,12 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": <p>
-                You can sign up / sign in with one of your existing third-party accounts.
-              </p>,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "You can sign up / sign in with one of your existing third-party accounts.",
-              },
-              "ref": null,
-              "rendered": "You can sign up / sign in with one of your existing third-party accounts.",
-              "type": "p",
-            },
-            "type": [Function],
-          },
-          null,
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": Array [
-                <GridColumn
-                  width={8}
-                >
-                  <Button
-                    as="button"
-                    color="red"
-                    floated="right"
-                    id="google"
-                    onClick={[Function]}
-                    role="button"
-                  >
-                    <Icon
-                      as="i"
-                      name="google"
-                    />
-                    Sign in with Google
-                  </Button>
-                </GridColumn>,
-                <GridColumn
-                  width={8}
-                >
-                  <Button
-                    as="button"
-                    color="black"
-                    floated="left"
-                    id="github"
-                    onClick={[Function]}
-                    role="button"
-                  >
-                    <Icon
-                      as="i"
-                      name="github"
-                    />
-                    Sign in with GitHub
-                  </Button>
-                </GridColumn>,
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": <Button
-                    as="button"
-                    color="red"
-                    floated="right"
-                    id="google"
-                    onClick={[Function]}
-                    role="button"
-                  >
-                    <Icon
-                      as="i"
-                      name="google"
-                    />
-                    Sign in with Google
-                  </Button>,
-                  "width": 8,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "as": "button",
-                    "children": Array [
-                      <Icon
-                        as="i"
-                        name="google"
-                      />,
-                      "Sign in with Google",
-                    ],
-                    "color": "red",
-                    "floated": "right",
-                    "id": "google",
-                    "onClick": [Function],
-                    "role": "button",
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "as": "i",
-                        "name": "google",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                    "Sign in with Google",
-                  ],
-                  "type": [Function],
-                },
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": <Button
-                    as="button"
-                    color="black"
-                    floated="left"
-                    id="github"
-                    onClick={[Function]}
-                    role="button"
-                  >
-                    <Icon
-                      as="i"
-                      name="github"
-                    />
-                    Sign in with GitHub
-                  </Button>,
-                  "width": 8,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "as": "button",
-                    "children": Array [
-                      <Icon
-                        as="i"
-                        name="github"
-                      />,
-                      "Sign in with GitHub",
-                    ],
-                    "color": "black",
-                    "floated": "left",
-                    "id": "github",
-                    "onClick": [Function],
-                    "role": "button",
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "class",
-                      "props": Object {
-                        "as": "i",
-                        "name": "github",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                    "Sign in with GitHub",
-                  ],
-                  "type": [Function],
-                },
-                "type": [Function],
-              },
-            ],
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <p>
-                Don't have any of those accounts?
+                Already have an account? Then please
                  
                 <a
-                  href="/signup"
+                  href="/accounts/login"
                 >
-                  Create a rovercode account.
+                  sign in.
                 </a>
               </p>,
             },
@@ -524,55 +272,32 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  "Don't have any of those accounts?",
+                  "Already have an account? Then please",
                   " ",
                   <a
-                    href="/signup"
+                    href="/accounts/login"
                   >
-                    Create a rovercode account.
+                    sign in.
                   </a>,
                 ],
               },
               "ref": null,
               "rendered": Array [
-                "Don't have any of those accounts?",
+                "Already have an account? Then please",
                 " ",
                 Object {
                   "instance": null,
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "Create a rovercode account.",
-                    "href": "/signup",
+                    "children": "sign in.",
+                    "href": "/accounts/login",
                   },
                   "ref": null,
-                  "rendered": "Create a rovercode account.",
+                  "rendered": "sign in.",
                   "type": "a",
                 },
               ],
-              "type": "p",
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <p>
-                Already have a rovercode account? Sign in here:
-              </p>,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Already have a rovercode account? Sign in here:",
-              },
-              "ref": null,
-              "rendered": "Already have a rovercode account? Sign in here:",
               "type": "p",
             },
             "type": [Function],
@@ -598,6 +323,7 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
                       icon="user"
                       iconPosition="left"
                       onChange={[Function]}
@@ -607,6 +333,28 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
+                      icon="mail"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Email"
+                      required={true}
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
+                      icon="lock"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Password"
+                      required={true}
+                      type="password"
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
                       icon="lock"
                       iconPosition="left"
                       onChange={[Function]}
@@ -620,7 +368,7 @@ ShallowWrapper {
                       primary={true}
                       type="submit"
                     >
-                      Sign In
+                      Sign Up
                     </FormButton>
                   </Form>
                 </Segment>
@@ -644,6 +392,7 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
                       icon="user"
                       iconPosition="left"
                       onChange={[Function]}
@@ -653,6 +402,28 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
+                      icon="mail"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Email"
+                      required={true}
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
+                      icon="lock"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Password"
+                      required={true}
+                      type="password"
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
                       icon="lock"
                       iconPosition="left"
                       onChange={[Function]}
@@ -666,7 +437,7 @@ ShallowWrapper {
                       primary={true}
                       type="submit"
                     >
-                      Sign In
+                      Sign Up
                     </FormButton>
                   </Form>
                 </Segment>,
@@ -686,6 +457,7 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
                       icon="user"
                       iconPosition="left"
                       onChange={[Function]}
@@ -695,6 +467,28 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
+                      icon="mail"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Email"
+                      required={true}
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
+                      icon="lock"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Password"
+                      required={true}
+                      type="password"
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
                       icon="lock"
                       iconPosition="left"
                       onChange={[Function]}
@@ -708,7 +502,7 @@ ShallowWrapper {
                       primary={true}
                       type="submit"
                     >
-                      Sign In
+                      Sign Up
                     </FormButton>
                   </Form>,
                   "raised": true,
@@ -725,6 +519,7 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
                         icon="user"
                         iconPosition="left"
                         onChange={[Function]}
@@ -734,6 +529,28 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
+                        icon="mail"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Email"
+                        required={true}
+                      />,
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
+                        icon="lock"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        required={true}
+                        type="password"
+                      />,
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
                         icon="lock"
                         iconPosition="left"
                         onChange={[Function]}
@@ -747,7 +564,7 @@ ShallowWrapper {
                         primary={true}
                         type="submit"
                       >
-                        Sign In
+                        Sign Up
                       </FormButton>,
                     ],
                     "floated": "left",
@@ -762,6 +579,7 @@ ShallowWrapper {
                       "props": Object {
                         "as": [Function],
                         "control": [Function],
+                        "error": null,
                         "icon": "user",
                         "iconPosition": "left",
                         "onChange": [Function],
@@ -779,6 +597,25 @@ ShallowWrapper {
                       "props": Object {
                         "as": [Function],
                         "control": [Function],
+                        "error": null,
+                        "icon": "mail",
+                        "iconPosition": "left",
+                        "onChange": [Function],
+                        "placeholder": "Email",
+                        "required": true,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "as": [Function],
+                        "control": [Function],
+                        "error": null,
                         "icon": "lock",
                         "iconPosition": "left",
                         "onChange": [Function],
@@ -796,13 +633,32 @@ ShallowWrapper {
                       "nodeType": "function",
                       "props": Object {
                         "as": [Function],
-                        "children": "Sign In",
+                        "control": [Function],
+                        "error": null,
+                        "icon": "lock",
+                        "iconPosition": "left",
+                        "onChange": [Function],
+                        "placeholder": "Password",
+                        "required": true,
+                        "type": "password",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "as": [Function],
+                        "children": "Sign Up",
                         "control": [Function],
                         "primary": true,
                         "type": "submit",
                       },
                       "ref": null,
-                      "rendered": "Sign In",
+                      "rendered": "Sign Up",
                       "type": [Function],
                     },
                   ],
@@ -833,69 +689,21 @@ ShallowWrapper {
             columns={16}
           >
             <GridRow>
-              <Image
-                as="img"
-                src={Object {}}
-                ui={true}
-              />
+              <Header
+                size="huge"
+              >
+                Sign Up
+              </Header>
             </GridRow>
             <GridRow>
               <p>
-                You can sign up / sign in with one of your existing third-party accounts.
-              </p>
-            </GridRow>
-            <GridRow>
-              <GridColumn
-                width={8}
-              >
-                <Button
-                  as="button"
-                  color="red"
-                  floated="right"
-                  id="google"
-                  onClick={[Function]}
-                  role="button"
-                >
-                  <Icon
-                    as="i"
-                    name="google"
-                  />
-                  Sign in with Google
-                </Button>
-              </GridColumn>
-              <GridColumn
-                width={8}
-              >
-                <Button
-                  as="button"
-                  color="black"
-                  floated="left"
-                  id="github"
-                  onClick={[Function]}
-                  role="button"
-                >
-                  <Icon
-                    as="i"
-                    name="github"
-                  />
-                  Sign in with GitHub
-                </Button>
-              </GridColumn>
-            </GridRow>
-            <GridRow>
-              <p>
-                Don't have any of those accounts?
+                Already have an account? Then please
                  
                 <a
-                  href="/signup"
+                  href="/accounts/login"
                 >
-                  Create a rovercode account.
+                  sign in.
                 </a>
-              </p>
-            </GridRow>
-            <GridRow>
-              <p>
-                Already have a rovercode account? Sign in here:
               </p>
             </GridRow>
             <GridRow>
@@ -914,6 +722,7 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
                       icon="user"
                       iconPosition="left"
                       onChange={[Function]}
@@ -923,6 +732,28 @@ ShallowWrapper {
                     <FormInput
                       as={[Function]}
                       control={[Function]}
+                      error={null}
+                      icon="mail"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Email"
+                      required={true}
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
+                      icon="lock"
+                      iconPosition="left"
+                      onChange={[Function]}
+                      placeholder="Password"
+                      required={true}
+                      type="password"
+                    />
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      error={null}
                       icon="lock"
                       iconPosition="left"
                       onChange={[Function]}
@@ -936,7 +767,7 @@ ShallowWrapper {
                       primary={true}
                       type="submit"
                     >
-                      Sign In
+                      Sign Up
                     </FormButton>
                   </Form>
                 </Segment>
@@ -956,70 +787,21 @@ ShallowWrapper {
             "centered": true,
             "children": Array [
               <GridRow>
-                <Image
-                  as="img"
-                  src={Object {}}
-                  ui={true}
-                />
+                <Header
+                  size="huge"
+                >
+                  Sign Up
+                </Header>
               </GridRow>,
               <GridRow>
                 <p>
-                  You can sign up / sign in with one of your existing third-party accounts.
-                </p>
-              </GridRow>,
-              null,
-              <GridRow>
-                <GridColumn
-                  width={8}
-                >
-                  <Button
-                    as="button"
-                    color="red"
-                    floated="right"
-                    id="google"
-                    onClick={[Function]}
-                    role="button"
-                  >
-                    <Icon
-                      as="i"
-                      name="google"
-                    />
-                    Sign in with Google
-                  </Button>
-                </GridColumn>
-                <GridColumn
-                  width={8}
-                >
-                  <Button
-                    as="button"
-                    color="black"
-                    floated="left"
-                    id="github"
-                    onClick={[Function]}
-                    role="button"
-                  >
-                    <Icon
-                      as="i"
-                      name="github"
-                    />
-                    Sign in with GitHub
-                  </Button>
-                </GridColumn>
-              </GridRow>,
-              <GridRow>
-                <p>
-                  Don't have any of those accounts?
+                  Already have an account? Then please
                    
                   <a
-                    href="/signup"
+                    href="/accounts/login"
                   >
-                    Create a rovercode account.
+                    sign in.
                   </a>
-                </p>
-              </GridRow>,
-              <GridRow>
-                <p>
-                  Already have a rovercode account? Sign in here:
                 </p>
               </GridRow>,
               null,
@@ -1039,6 +821,7 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
                         icon="user"
                         iconPosition="left"
                         onChange={[Function]}
@@ -1048,6 +831,28 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
+                        icon="mail"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Email"
+                        required={true}
+                      />
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
+                        icon="lock"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        required={true}
+                        type="password"
+                      />
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
                         icon="lock"
                         iconPosition="left"
                         onChange={[Function]}
@@ -1061,7 +866,7 @@ ShallowWrapper {
                         primary={true}
                         type="submit"
                       >
-                        Sign In
+                        Sign Up
                       </FormButton>
                     </Form>
                   </Segment>
@@ -1077,11 +882,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": <Image
-                  as="img"
-                  src={Object {}}
-                  ui={true}
-                />,
+                "children": <Header
+                  size="huge"
+                >
+                  Sign Up
+                </Header>,
               },
               "ref": null,
               "rendered": Object {
@@ -1089,12 +894,11 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "as": "img",
-                  "src": Object {},
-                  "ui": true,
+                  "children": "Sign Up",
+                  "size": "huge",
                 },
                 "ref": null,
-                "rendered": null,
+                "rendered": "Sign Up",
                 "type": [Function],
               },
               "type": [Function],
@@ -1105,207 +909,12 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": <p>
-                  You can sign up / sign in with one of your existing third-party accounts.
-                </p>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "You can sign up / sign in with one of your existing third-party accounts.",
-                },
-                "ref": null,
-                "rendered": "You can sign up / sign in with one of your existing third-party accounts.",
-                "type": "p",
-              },
-              "type": [Function],
-            },
-            null,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": Array [
-                  <GridColumn
-                    width={8}
-                  >
-                    <Button
-                      as="button"
-                      color="red"
-                      floated="right"
-                      id="google"
-                      onClick={[Function]}
-                      role="button"
-                    >
-                      <Icon
-                        as="i"
-                        name="google"
-                      />
-                      Sign in with Google
-                    </Button>
-                  </GridColumn>,
-                  <GridColumn
-                    width={8}
-                  >
-                    <Button
-                      as="button"
-                      color="black"
-                      floated="left"
-                      id="github"
-                      onClick={[Function]}
-                      role="button"
-                    >
-                      <Icon
-                        as="i"
-                        name="github"
-                      />
-                      Sign in with GitHub
-                    </Button>
-                  </GridColumn>,
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": <Button
-                      as="button"
-                      color="red"
-                      floated="right"
-                      id="google"
-                      onClick={[Function]}
-                      role="button"
-                    >
-                      <Icon
-                        as="i"
-                        name="google"
-                      />
-                      Sign in with Google
-                    </Button>,
-                    "width": 8,
-                  },
-                  "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "as": "button",
-                      "children": Array [
-                        <Icon
-                          as="i"
-                          name="google"
-                        />,
-                        "Sign in with Google",
-                      ],
-                      "color": "red",
-                      "floated": "right",
-                      "id": "google",
-                      "onClick": [Function],
-                      "role": "button",
-                    },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "as": "i",
-                          "name": "google",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": [Function],
-                      },
-                      "Sign in with Google",
-                    ],
-                    "type": [Function],
-                  },
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": <Button
-                      as="button"
-                      color="black"
-                      floated="left"
-                      id="github"
-                      onClick={[Function]}
-                      role="button"
-                    >
-                      <Icon
-                        as="i"
-                        name="github"
-                      />
-                      Sign in with GitHub
-                    </Button>,
-                    "width": 8,
-                  },
-                  "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "as": "button",
-                      "children": Array [
-                        <Icon
-                          as="i"
-                          name="github"
-                        />,
-                        "Sign in with GitHub",
-                      ],
-                      "color": "black",
-                      "floated": "left",
-                      "id": "github",
-                      "onClick": [Function],
-                      "role": "button",
-                    },
-                    "ref": null,
-                    "rendered": Array [
-                      Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "class",
-                        "props": Object {
-                          "as": "i",
-                          "name": "github",
-                        },
-                        "ref": null,
-                        "rendered": null,
-                        "type": [Function],
-                      },
-                      "Sign in with GitHub",
-                    ],
-                    "type": [Function],
-                  },
-                  "type": [Function],
-                },
-              ],
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <p>
-                  Don't have any of those accounts?
+                  Already have an account? Then please
                    
                   <a
-                    href="/signup"
+                    href="/accounts/login"
                   >
-                    Create a rovercode account.
+                    sign in.
                   </a>
                 </p>,
               },
@@ -1316,55 +925,32 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": Array [
-                    "Don't have any of those accounts?",
+                    "Already have an account? Then please",
                     " ",
                     <a
-                      href="/signup"
+                      href="/accounts/login"
                     >
-                      Create a rovercode account.
+                      sign in.
                     </a>,
                   ],
                 },
                 "ref": null,
                 "rendered": Array [
-                  "Don't have any of those accounts?",
+                  "Already have an account? Then please",
                   " ",
                   Object {
                     "instance": null,
                     "key": undefined,
                     "nodeType": "host",
                     "props": Object {
-                      "children": "Create a rovercode account.",
-                      "href": "/signup",
+                      "children": "sign in.",
+                      "href": "/accounts/login",
                     },
                     "ref": null,
-                    "rendered": "Create a rovercode account.",
+                    "rendered": "sign in.",
                     "type": "a",
                   },
                 ],
-                "type": "p",
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <p>
-                  Already have a rovercode account? Sign in here:
-                </p>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Already have a rovercode account? Sign in here:",
-                },
-                "ref": null,
-                "rendered": "Already have a rovercode account? Sign in here:",
                 "type": "p",
               },
               "type": [Function],
@@ -1390,6 +976,7 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
                         icon="user"
                         iconPosition="left"
                         onChange={[Function]}
@@ -1399,6 +986,28 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
+                        icon="mail"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Email"
+                        required={true}
+                      />
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
+                        icon="lock"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        required={true}
+                        type="password"
+                      />
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
                         icon="lock"
                         iconPosition="left"
                         onChange={[Function]}
@@ -1412,7 +1021,7 @@ ShallowWrapper {
                         primary={true}
                         type="submit"
                       >
-                        Sign In
+                        Sign Up
                       </FormButton>
                     </Form>
                   </Segment>
@@ -1436,6 +1045,7 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
                         icon="user"
                         iconPosition="left"
                         onChange={[Function]}
@@ -1445,6 +1055,28 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
+                        icon="mail"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Email"
+                        required={true}
+                      />
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
+                        icon="lock"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        required={true}
+                        type="password"
+                      />
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
                         icon="lock"
                         iconPosition="left"
                         onChange={[Function]}
@@ -1458,7 +1090,7 @@ ShallowWrapper {
                         primary={true}
                         type="submit"
                       >
-                        Sign In
+                        Sign Up
                       </FormButton>
                     </Form>
                   </Segment>,
@@ -1478,6 +1110,7 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
                         icon="user"
                         iconPosition="left"
                         onChange={[Function]}
@@ -1487,6 +1120,28 @@ ShallowWrapper {
                       <FormInput
                         as={[Function]}
                         control={[Function]}
+                        error={null}
+                        icon="mail"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Email"
+                        required={true}
+                      />
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
+                        icon="lock"
+                        iconPosition="left"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        required={true}
+                        type="password"
+                      />
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        error={null}
                         icon="lock"
                         iconPosition="left"
                         onChange={[Function]}
@@ -1500,7 +1155,7 @@ ShallowWrapper {
                         primary={true}
                         type="submit"
                       >
-                        Sign In
+                        Sign Up
                       </FormButton>
                     </Form>,
                     "raised": true,
@@ -1517,6 +1172,7 @@ ShallowWrapper {
                         <FormInput
                           as={[Function]}
                           control={[Function]}
+                          error={null}
                           icon="user"
                           iconPosition="left"
                           onChange={[Function]}
@@ -1526,6 +1182,28 @@ ShallowWrapper {
                         <FormInput
                           as={[Function]}
                           control={[Function]}
+                          error={null}
+                          icon="mail"
+                          iconPosition="left"
+                          onChange={[Function]}
+                          placeholder="Email"
+                          required={true}
+                        />,
+                        <FormInput
+                          as={[Function]}
+                          control={[Function]}
+                          error={null}
+                          icon="lock"
+                          iconPosition="left"
+                          onChange={[Function]}
+                          placeholder="Password"
+                          required={true}
+                          type="password"
+                        />,
+                        <FormInput
+                          as={[Function]}
+                          control={[Function]}
+                          error={null}
                           icon="lock"
                           iconPosition="left"
                           onChange={[Function]}
@@ -1539,7 +1217,7 @@ ShallowWrapper {
                           primary={true}
                           type="submit"
                         >
-                          Sign In
+                          Sign Up
                         </FormButton>,
                       ],
                       "floated": "left",
@@ -1554,6 +1232,7 @@ ShallowWrapper {
                         "props": Object {
                           "as": [Function],
                           "control": [Function],
+                          "error": null,
                           "icon": "user",
                           "iconPosition": "left",
                           "onChange": [Function],
@@ -1571,6 +1250,25 @@ ShallowWrapper {
                         "props": Object {
                           "as": [Function],
                           "control": [Function],
+                          "error": null,
+                          "icon": "mail",
+                          "iconPosition": "left",
+                          "onChange": [Function],
+                          "placeholder": "Email",
+                          "required": true,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "as": [Function],
+                          "control": [Function],
+                          "error": null,
                           "icon": "lock",
                           "iconPosition": "left",
                           "onChange": [Function],
@@ -1588,13 +1286,32 @@ ShallowWrapper {
                         "nodeType": "function",
                         "props": Object {
                           "as": [Function],
-                          "children": "Sign In",
+                          "control": [Function],
+                          "error": null,
+                          "icon": "lock",
+                          "iconPosition": "left",
+                          "onChange": [Function],
+                          "placeholder": "Password",
+                          "required": true,
+                          "type": "password",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "as": [Function],
+                          "children": "Sign Up",
                           "control": [Function],
                           "primary": true,
                           "type": "submit",
                         },
                         "ref": null,
-                        "rendered": "Sign In",
+                        "rendered": "Sign Up",
                         "type": [Function],
                       },
                     ],
