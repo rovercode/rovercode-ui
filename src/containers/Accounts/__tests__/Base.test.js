@@ -14,7 +14,8 @@ test('Base renders on the page with no errors', () => {
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Image).exists()).toBe(true);
-  expect(wrapper.find(Route).length).toBe(2);
+  expect(wrapper.find(Route).length).toBe(3);
   expect(wrapper.find(Route).at(0).prop('path')).toBe('/accounts/login');
-  expect(wrapper.find(Route).at(1).prop('path')).toBe('/accounts/signup');
+  expect(wrapper.find(Route).at(1).prop('path')).toBe('/accounts/reset');
+  expect(wrapper.find(Route).at(2).prop('path')).toBe('/accounts/signup');
 });

@@ -45,6 +45,11 @@ ShallowWrapper {
               <Route
                 component={[Function]}
                 exact={true}
+                path="/accounts/reset"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
                 path="/accounts/signup"
               />
             </Switch>
@@ -99,6 +104,11 @@ ShallowWrapper {
               <Route
                 component={[Function]}
                 exact={true}
+                path="/accounts/reset"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
                 path="/accounts/signup"
               />
             </Switch>
@@ -115,6 +125,11 @@ ShallowWrapper {
                 component={[Function]}
                 exact={true}
                 path="/accounts/login"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
+                path="/accounts/reset"
               />
               <Route
                 component={[Function]}
@@ -139,6 +154,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/accounts/reset"
+                />,
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/accounts/signup"
                 />,
               ],
@@ -153,6 +173,19 @@ ShallowWrapper {
                   "component": [Function],
                   "exact": true,
                   "path": "/accounts/login",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "exact": true,
+                  "path": "/accounts/reset",
                 },
                 "ref": null,
                 "rendered": null,
@@ -205,6 +238,11 @@ ShallowWrapper {
                   component={[Function]}
                   exact={true}
                   path="/accounts/login"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/accounts/reset"
                 />
                 <Route
                   component={[Function]}
@@ -263,6 +301,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/accounts/reset"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/accounts/signup"
                 />
               </Switch>
@@ -279,6 +322,11 @@ ShallowWrapper {
                   component={[Function]}
                   exact={true}
                   path="/accounts/login"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/accounts/reset"
                 />
                 <Route
                   component={[Function]}
@@ -303,6 +351,11 @@ ShallowWrapper {
                   <Route
                     component={[Function]}
                     exact={true}
+                    path="/accounts/reset"
+                  />,
+                  <Route
+                    component={[Function]}
+                    exact={true}
                     path="/accounts/signup"
                   />,
                 ],
@@ -317,6 +370,19 @@ ShallowWrapper {
                     "component": [Function],
                     "exact": true,
                     "path": "/accounts/login",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
+                    "exact": true,
+                    "path": "/accounts/reset",
                   },
                   "ref": null,
                   "rendered": null,

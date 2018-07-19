@@ -167,6 +167,13 @@ Sign In
               </Segment>
             </Grid.Column>
           </Grid.Row>
+          <Grid.Row>
+            <p>
+              <a href="/accounts/reset">
+                Forgot Password?
+              </a>
+            </p>
+          </Grid.Row>
         </Grid>
       </Fragment>
     );
