@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import Login from './Login';
 import PasswordReset from './PasswordReset';
+import PasswordResetCallback from './PasswordResetCallback';
 import SignUp from './SignUp';
 
 import logoImage from '../../assets/images/rovercode_logo.png';
@@ -19,6 +20,7 @@ const Base = ({ match }) => (
         <Switch>
           <Route exact path={`${match.path}/login`} component={Login} />
           <Route exact path={`${match.path}/reset`} component={PasswordReset} />
+          <Route exact path={`${match.path}/reset/callback/:uid/:token`} component={PasswordResetCallback} />
           <Route exact path={`${match.path}/signup`} component={SignUp} />
         </Switch>
       </Grid.Column>
