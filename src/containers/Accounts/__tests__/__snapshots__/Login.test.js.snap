@@ -143,6 +143,15 @@ ShallowWrapper {
               </Segment>
             </GridColumn>
           </GridRow>
+          <GridRow>
+            <p>
+              <a
+                href="/accounts/reset"
+              >
+                Forgot Password?
+              </a>
+            </p>
+          </GridRow>
         </Grid>,
       ],
     },
@@ -260,6 +269,15 @@ ShallowWrapper {
                   </Form>
                 </Segment>
               </GridColumn>
+            </GridRow>,
+            <GridRow>
+              <p>
+                <a
+                  href="/accounts/reset"
+                >
+                  Forgot Password?
+                </a>
+              </p>
             </GridRow>,
           ],
           "columns": 16,
@@ -773,6 +791,48 @@ ShallowWrapper {
             },
             "type": [Function],
           },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <p>
+                <a
+                  href="/accounts/reset"
+                >
+                  Forgot Password?
+                </a>
+              </p>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <a
+                  href="/accounts/reset"
+                >
+                  Forgot Password?
+                </a>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Forgot Password?",
+                  "href": "/accounts/reset",
+                },
+                "ref": null,
+                "rendered": "Forgot Password?",
+                "type": "a",
+              },
+              "type": "p",
+            },
+            "type": [Function],
+          },
         ],
         "type": [Function],
       },
@@ -894,6 +954,15 @@ ShallowWrapper {
                 </Segment>
               </GridColumn>
             </GridRow>
+            <GridRow>
+              <p>
+                <a
+                  href="/accounts/reset"
+                >
+                  Forgot Password?
+                </a>
+              </p>
+            </GridRow>
           </Grid>,
         ],
       },
@@ -1011,6 +1080,15 @@ ShallowWrapper {
                     </Form>
                   </Segment>
                 </GridColumn>
+              </GridRow>,
+              <GridRow>
+                <p>
+                  <a
+                    href="/accounts/reset"
+                  >
+                    Forgot Password?
+                  </a>
+                </p>
               </GridRow>,
             ],
             "columns": 16,
@@ -1521,6 +1599,48 @@ ShallowWrapper {
                   "type": [Function],
                 },
                 "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <p>
+                  <a
+                    href="/accounts/reset"
+                  >
+                    Forgot Password?
+                  </a>
+                </p>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <a
+                    href="/accounts/reset"
+                  >
+                    Forgot Password?
+                  </a>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Forgot Password?",
+                    "href": "/accounts/reset",
+                  },
+                  "ref": null,
+                  "rendered": "Forgot Password?",
+                  "type": "a",
+                },
+                "type": "p",
               },
               "type": [Function],
             },
