@@ -3,12 +3,13 @@ import { Route, Switch } from 'react-router-dom';
 import { Grid, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
+import logoImage from '@/assets/images/rovercode_logo.png';
+
 import Login from './Login';
 import PasswordReset from './PasswordReset';
 import PasswordResetCallback from './PasswordResetCallback';
 import SignUp from './SignUp';
 
-import logoImage from '../../assets/images/rovercode_logo.png';
 
 const Base = ({ match }) => (
   <Grid centered columns={16}>
