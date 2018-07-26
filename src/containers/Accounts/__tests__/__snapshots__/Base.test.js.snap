@@ -57,6 +57,9 @@ ShallowWrapper {
                 exact={true}
                 path="/accounts/signup"
               />
+              <Route
+                component={[Function]}
+              />
             </Switch>
           </GridColumn>
         </GridRow>,
@@ -121,6 +124,9 @@ ShallowWrapper {
                 exact={true}
                 path="/accounts/signup"
               />
+              <Route
+                component={[Function]}
+              />
             </Switch>
           </GridColumn>,
         },
@@ -151,6 +157,9 @@ ShallowWrapper {
                 exact={true}
                 path="/accounts/signup"
               />
+              <Route
+                component={[Function]}
+              />
             </Switch>,
             "width": 16,
           },
@@ -180,6 +189,9 @@ ShallowWrapper {
                   component={[Function]}
                   exact={true}
                   path="/accounts/signup"
+                />,
+                <Route
+                  component={[Function]}
                 />,
               ],
             },
@@ -237,6 +249,17 @@ ShallowWrapper {
                 "rendered": null,
                 "type": [Function],
               },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
             ],
             "type": [Function],
           },
@@ -286,6 +309,9 @@ ShallowWrapper {
                   component={[Function]}
                   exact={true}
                   path="/accounts/signup"
+                />
+                <Route
+                  component={[Function]}
                 />
               </Switch>
             </GridColumn>
@@ -351,6 +377,9 @@ ShallowWrapper {
                   exact={true}
                   path="/accounts/signup"
                 />
+                <Route
+                  component={[Function]}
+                />
               </Switch>
             </GridColumn>,
           },
@@ -381,6 +410,9 @@ ShallowWrapper {
                   exact={true}
                   path="/accounts/signup"
                 />
+                <Route
+                  component={[Function]}
+                />
               </Switch>,
               "width": 16,
             },
@@ -410,6 +442,9 @@ ShallowWrapper {
                     component={[Function]}
                     exact={true}
                     path="/accounts/signup"
+                  />,
+                  <Route
+                    component={[Function]}
                   />,
                 ],
               },
@@ -462,6 +497,17 @@ ShallowWrapper {
                     "component": [Function],
                     "exact": true,
                     "path": "/accounts/signup",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
                   },
                   "ref": null,
                   "rendered": null,

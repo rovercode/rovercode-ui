@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Grid, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
+import NotFound from '@/containers/Global/NotFound';
 import logoImage from '@/assets/images/rovercode_logo.png';
 
 import Login from './Login';
@@ -23,6 +24,7 @@ const Base = ({ match }) => (
           <Route exact path={`${match.path}/reset`} component={PasswordReset} />
           <Route exact path={`${match.path}/reset/callback/:uid/:token`} component={PasswordResetCallback} />
           <Route exact path={`${match.path}/signup`} component={SignUp} />
+          <Route component={NotFound} />
         </Switch>
       </Grid.Column>
     </Grid.Row>
