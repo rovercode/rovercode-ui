@@ -5,6 +5,8 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 
+import NotFound from '@/containers/Global/NotFound';
+
 import App from './containers/App';
 import LoginCallback from './containers/LoginCallback';
 import Accounts from './containers/Accounts/Base';
@@ -16,6 +18,7 @@ render(
         <Route path="/accounts" component={Accounts} />
         <Route exact path="/login/:service/callback" component={LoginCallback} />
         <Route exact path="/" component={App} />
+        <Route component={NotFound} />
       </Switch>
     </CookiesProvider>
   </BrowserRouter>,

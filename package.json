@@ -31,7 +31,8 @@
       }
     },
     "moduleNameMapper": {
-      ".+\\.(png|jpg)$": "<rootDir>/src/assets/images/__mocks__/imageMock.js"
+      ".+\\.(png|jpg)$": "<rootDir>/src/assets/images/__mocks__/imageMock.js",
+      "@/(.*)$": "<rootDir>/src/$1"
     }
   },
   "devDependencies": {
