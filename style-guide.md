@@ -7,10 +7,10 @@
 Lato should be used for header and body text. This is Semantic UI's default.
 
 ### Font sizing
-Default [Semantic UI](https://semantic-ui.com/usage/theming.html) font sizes should be used.
+Default [Semantic UI](http://react.semantic-ui.com/theming) font sizes should be used.
 
 ### Line spacing
-Default [Semantic UI](https://semantic-ui.com/usage/theming.html) line spacing should be used.
+Default [Semantic UI](http://react.semantic-ui.com/theming) line spacing should be used.
 
 ## Name
 `rovercode` and `rover` should be all lowercase. If an allcaps font style is being used, `ROVERCODE` and `ROVER` are ok.
@@ -34,7 +34,7 @@ Raisin Black text color should be used over Isabelline (white). Over all other c
 
 # Buttons
 
-[Semantic UI](https://semantic-ui.com/usage/theming.html) default theme buttons should be used.
+[Semantic UI](http://react.semantic-ui.com/theming) default theme buttons should be used.
 
 # Logo
 
