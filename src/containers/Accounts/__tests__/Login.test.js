@@ -48,7 +48,7 @@ test('Login redirects to social api on button click', async () => {
   await wrapper.instance().redirectToSocial(element);
 
   expect(window.location.assign).toBeCalledWith(
-    'https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Flogin%2Fgoogle%2Fcallback%2F',
+    'https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Faccounts%2Flogin%2Fcallback%2Fgoogle',
   );
 });
 
