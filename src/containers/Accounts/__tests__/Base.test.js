@@ -14,10 +14,11 @@ test('Base renders on the page with no errors', () => {
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Image).exists()).toBe(true);
-  expect(wrapper.find(Route).length).toBe(5);
+  expect(wrapper.find(Route).length).toBe(6);
   expect(wrapper.find(Route).at(0).prop('path')).toBe('/accounts/login');
-  expect(wrapper.find(Route).at(1).prop('path')).toBe('/accounts/reset');
-  expect(wrapper.find(Route).at(2).prop('path')).toBe('/accounts/reset/callback/:uid/:token');
-  expect(wrapper.find(Route).at(3).prop('path')).toBe('/accounts/signup');
-  expect(wrapper.find(Route).at(4).prop('path')).toBeUndefined();
+  expect(wrapper.find(Route).at(1).prop('path')).toBe('/accounts/login/callback/:service');
+  expect(wrapper.find(Route).at(2).prop('path')).toBe('/accounts/reset');
+  expect(wrapper.find(Route).at(3).prop('path')).toBe('/accounts/reset/callback/:uid/:token');
+  expect(wrapper.find(Route).at(4).prop('path')).toBe('/accounts/signup');
+  expect(wrapper.find(Route).at(5).prop('path')).toBeUndefined();
 });
