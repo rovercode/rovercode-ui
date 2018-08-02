@@ -50,7 +50,7 @@ class LoginCallback extends Component {
       return <Redirect to="/" />;
     }
 
-    return <Redirect to="/login" />;
+    return <Redirect to="/accounts/login" />;
   }
 
   render() {
