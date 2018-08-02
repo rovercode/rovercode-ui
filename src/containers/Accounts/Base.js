@@ -7,6 +7,7 @@ import NotFound from '@/containers/Global/NotFound';
 import logoImage from '@/assets/images/rovercode_logo.png';
 
 import Login from './Login';
+import LoginCallback from './LoginCallback';
 import PasswordReset from './PasswordReset';
 import PasswordResetCallback from './PasswordResetCallback';
 import SignUp from './SignUp';
@@ -21,6 +22,7 @@ const Base = ({ match }) => (
       <Grid.Column width={16}>
         <Switch>
           <Route exact path={`${match.path}/login`} component={Login} />
+          <Route exact path={`${match.path}/login/callback/:service`} component={LoginCallback} />
           <Route exact path={`${match.path}/reset`} component={PasswordReset} />
           <Route exact path={`${match.path}/reset/callback/:uid/:token`} component={PasswordResetCallback} />
           <Route exact path={`${match.path}/signup`} component={SignUp} />

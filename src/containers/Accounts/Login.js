@@ -67,7 +67,7 @@ class Login extends Component {
         const url = URL(response.data.url);
         const parsed = queryString.parse(url.query);
         const redirectUrl = URL(parsed.redirect_uri);
-        redirectUrl.set('pathname', `/login/${service}/callback/`);
+        redirectUrl.set('pathname', `/accounts/login/callback/${service}`);
         parsed.redirect_uri = redirectUrl.toString();
         url.query = queryString.stringify(parsed);
         window.location.assign(url.toString());

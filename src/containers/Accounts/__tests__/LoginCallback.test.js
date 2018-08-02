@@ -58,7 +58,7 @@ test('LoginCallback redirects to login after failure', async () => {
 
   const redirect = wrapper.find(Redirect);
   expect(redirect.exists()).toBe(true);
-  expect(redirect.prop('to')).toBe('/login');
+  expect(redirect.prop('to')).toBe('/accounts/login');
   expect(wrapper.find(Loader).exists()).toBe(false);
   expect(cookies.get('auth_jwt')).toBeUndefined();
 });
