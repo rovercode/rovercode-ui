@@ -45,6 +45,11 @@ ShallowWrapper {
               <Route
                 component={[Function]}
                 exact={true}
+                path="/accounts/login/callback/:service"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
                 path="/accounts/reset"
               />
               <Route
@@ -112,6 +117,11 @@ ShallowWrapper {
               <Route
                 component={[Function]}
                 exact={true}
+                path="/accounts/login/callback/:service"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
                 path="/accounts/reset"
               />
               <Route
@@ -141,6 +151,11 @@ ShallowWrapper {
                 component={[Function]}
                 exact={true}
                 path="/accounts/login"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
+                path="/accounts/login/callback/:service"
               />
               <Route
                 component={[Function]}
@@ -178,6 +193,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/accounts/login/callback/:service"
+                />,
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/accounts/reset"
                 />,
                 <Route
@@ -205,6 +225,19 @@ ShallowWrapper {
                   "component": [Function],
                   "exact": true,
                   "path": "/accounts/login",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "exact": true,
+                  "path": "/accounts/login/callback/:service",
                 },
                 "ref": null,
                 "rendered": null,
@@ -298,6 +331,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/accounts/login/callback/:service"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/accounts/reset"
                 />
                 <Route
@@ -365,6 +403,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/accounts/login/callback/:service"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/accounts/reset"
                 />
                 <Route
@@ -394,6 +437,11 @@ ShallowWrapper {
                   component={[Function]}
                   exact={true}
                   path="/accounts/login"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/accounts/login/callback/:service"
                 />
                 <Route
                   component={[Function]}
@@ -431,6 +479,11 @@ ShallowWrapper {
                   <Route
                     component={[Function]}
                     exact={true}
+                    path="/accounts/login/callback/:service"
+                  />,
+                  <Route
+                    component={[Function]}
+                    exact={true}
                     path="/accounts/reset"
                   />,
                   <Route
@@ -458,6 +511,19 @@ ShallowWrapper {
                     "component": [Function],
                     "exact": true,
                     "path": "/accounts/login",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
+                    "exact": true,
+                    "path": "/accounts/login/callback/:service",
                   },
                   "ref": null,
                   "rendered": null,

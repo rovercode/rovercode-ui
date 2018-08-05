@@ -13,7 +13,6 @@ import rootReducer from './reducers/index';
 import NotFound from '@/containers/Global/NotFound';
 
 import RoverList from './containers/RoverList';
-import LoginCallback from './containers/LoginCallback';
 import Accounts from './containers/Accounts/Base';
 
 const reduxLogger = createLogger();
@@ -35,7 +34,6 @@ render(
       <CookiesProvider>
         <Switch>
           <Route path="/accounts" component={Accounts} />
-          <Route exact path="/login/:service/callback" component={LoginCallback} />
           <Route exact path="/" component={RoverList} />
           <Route component={NotFound} />
         </Switch>
