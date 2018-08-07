@@ -1,31 +1,14 @@
 // actions https://redux.js.org/basics/actions
 // async actions https://redux.js.org/advanced/asyncactions
 
-const FETCH = 'FETCH';
+import axios from 'axios';
 
-const ROVERS = 'ROVERS';
-
-const REQUEST = 'REQUEST';
-const SUCCESS = 'SUCCESS';
-const FAILURE = 'FAILURE';
-
-const FETCH_ROVERS = `${FETCH}_${ROVERS}`;
-
-// actions
-export const FETCH_ROVERS_REQUEST = `${FETCH_ROVERS}_${REQUEST}`;
-export const FETCH_ROVERS_SUCCESS = `${FETCH_ROVERS}_${SUCCESS}`;
-export const FETCH_ROVERS_FAILURE = `${FETCH_ROVERS}_${FAILURE}`;
+export const FETCH_ROVERS = 'FETCH_ROVERS';
+export const FETCH_ROVERS_FULFILLED = `${FETCH_ROVERS}_FULFILLED`;
+export const FETCH_ROVERS_REJECTED = `${FETCH_ROVERS}_REJECTED`;
 
 // action creators
-export const fetchRoversRequest = () => ({
-  type: FETCH_ROVERS_REQUEST,
-});
-
-export const fetchRoversSuccess = rovers => ({
-  type: FETCH_ROVERS_SUCCESS,
-  payload: rovers,
-});
-
-export const fetchRoversFailure = () => ({
-  type: FETCH_ROVERS_FAILURE,
+export const fetchRovers = xhrOptions => ({
+  type: FETCH_ROVERS,
+  payload: axios.get('/api/v1/rovers/', xhrOptions),
 });

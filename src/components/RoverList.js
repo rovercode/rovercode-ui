@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Header, Loader } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-class App extends Component {
+class RoverList extends Component {
   componentDidMount() {
     const { fetchRovers } = this.props;
     fetchRovers();
@@ -13,12 +13,12 @@ class App extends Component {
     return (
       <Fragment>
         {
-            rovers !== null ? (
+          rovers === null
+            ? (<Loader active />)
+            : (
               <Header>
                 {`Welcome to rovercode, you have ${rovers.length} rover(s)!`}
               </Header>
-            ) : (
-              <Loader active />
             )
         }
       </Fragment>
@@ -26,23 +26,24 @@ class App extends Component {
   }
 }
 
-App.defaultProps = {
+RoverList.defaultProps = {
   rovers: null,
 };
 
-App.propTypes = {
+RoverList.propTypes = {
   fetchRovers: PropTypes.func.isRequired,
-  rovers: PropTypes.arrayOf((
-    propValue,
-    key,
-    componentName,
-    location,
-    propFullName,
-  ) => (
-    !/rover/.test(propValue[key])
-    && new Error(`Invalid prop ${propFullName} supplied
-    to ${componentName}. Validation failed.`)
-  )),
+  rovers: PropTypes.array, // eslint-disable-line react/forbid-prop-types
+  // PropTypes.arrayOf((
+  //   propValue,
+  //   key,
+  //   componentName,
+  //   location,
+  //   propFullName,
+  // ) => (
+  //   !/rover/.test(propValue[key])
+  //   && new Error(`Invalid prop ${propFullName} supplied
+  //   to ${componentName}. Validation failed.`)
+  // )),
 };
 
-export default App;
+export default RoverList;

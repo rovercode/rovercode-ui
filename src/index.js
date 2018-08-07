@@ -8,25 +8,23 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider as ReduxProvider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from './reducers/index';
 
-import NotFound from '@/containers/Global/NotFound';
-
+import NotFound from './containers/Global/NotFound';
 import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 
-const reduxLogger = createLogger();
-
-const store = createStore(
-  rootReducer,
-  applyMiddleware(
-    thunk,
-    reduxLogger,
-  ),
+const reduxMiddleware = applyMiddleware(
+  thunk,
+  createLogger(),
+  promiseMiddleware(),
 );
 
-// uncomment in debug
-window.store = store;
+const store = createStore(rootReducer, reduxMiddleware);
+
+// sets a reference to store @ window.store
+Object.assign(window, { store });
 
 render(
   <ReduxProvider store={store}>
