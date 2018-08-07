@@ -8,11 +8,13 @@ import {
 describe('The rover reducer', () => {
   test('should handle FETCH_ROVERS', () => {
     expect(
-      reducer({}, {
+      reducer(undefined, {
         type: FETCH_ROVERS,
       }),
     ).toEqual({
       isFetching: true,
+      error: null,
+      rovers: null,
     });
 
     const rovers = [];
