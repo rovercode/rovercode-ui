@@ -10,5 +10,8 @@ export const FETCH_ROVERS_REJECTED = `${FETCH_ROVERS}_REJECTED`;
 // action creators
 export const fetchRovers = xhrOptions => ({
   type: FETCH_ROVERS,
-  payload: axios.get('/api/v1/rovers/', xhrOptions),
+  payload: axios.get('/api/v1/rovers/', xhrOptions)
+    .then(response => (
+      response.data
+    )),
 });
