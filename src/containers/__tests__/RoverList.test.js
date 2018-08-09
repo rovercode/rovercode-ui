@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
@@ -24,7 +26,15 @@ describe('The RoverListContainer', () => {
     wrapper = shallow(<RoverList store={store} />, { context });
   });
   test('dispatches an action to fetch rovers', () => {
+    const rovers = [{
+      id: 1,
+      name: 'Mars',
+    }];
+    const mockAxios = new MockAdapter(axios);
+
+    mockAxios.onGet('/api/v1/rovers/').reply(200, rovers);
     wrapper.dive().props().fetchRovers();
+
     expect(store.dispatch).toHaveBeenCalledWith(
       fetchRovers({
         headers: {
@@ -32,5 +42,7 @@ describe('The RoverListContainer', () => {
         },
       }),
     );
+
+    mockAxios.restore();
   });
 });
