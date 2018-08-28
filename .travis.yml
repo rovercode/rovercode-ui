@@ -30,4 +30,4 @@ deploy:
   region: us-east-2
   on:
     repo: rovercode/rovercode-ui
-    branch: travis-deploy
+    branch: development
