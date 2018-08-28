@@ -4,7 +4,6 @@ import {
   Form,
   Grid,
   Header,
-  Image,
   List,
   Message,
   Segment,
@@ -12,8 +11,6 @@ import {
 import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 import axios from 'axios';
-
-import logoImage from '../assets/images/rovercode_logo.png';
 
 class SignUp extends Component {
   constructor(props) {
@@ -156,9 +153,6 @@ class SignUp extends Component {
         }
         <Grid centered columns={16}>
           <Grid.Row>
-            <Image src={logoImage} />
-          </Grid.Row>
-          <Grid.Row>
             <Header size="huge">
               Sign Up
             </Header>
@@ -167,7 +161,7 @@ class SignUp extends Component {
             <p>
               Already have an account? Then please
               {' '}
-              <a href="/login">
+              <a href="/accounts/login">
                 sign in.
               </a>
             </p>
