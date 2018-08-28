@@ -1,11 +1,17 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   output: {
     filename: 'app.js',
     publicPath: '/',
+  },
+  resolve: {
+    alias: {
+      '@': path.join(__dirname, 'src'),
+    },
   },
   module: {
     rules: [
@@ -71,7 +77,9 @@ module.exports = {
       },
     }),
   ],
+  devtool: 'source-map',
   devServer: {
+    hot: true,
     historyApiFallback: true,
     contentBase: './',
     proxy: {
