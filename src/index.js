@@ -14,6 +14,7 @@ import rootReducer from './reducers/index';
 import NotFound from './containers/Global/NotFound';
 import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
+import MissionControl from './containers/MissionControl';
 
 const reduxMiddleware = applyMiddleware(
   thunk,
@@ -33,6 +34,7 @@ render(
         <Switch>
           <Route path="/accounts" component={Accounts} />
           <Route exact path="/" component={RoverList} />
+          <Route exact path="/mission-control" component={MissionControl} />
           <Route component={NotFound} />
         </Switch>
       </CookiesProvider>
