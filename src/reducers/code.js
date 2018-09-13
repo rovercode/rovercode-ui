@@ -1,8 +1,9 @@
-import { UPDATE_JSCODE } from '../actions/code';
+import { CHANGE_EXECUTION_STATE, UPDATE_JSCODE } from '../actions/code';
 
 export default function code(
   state = {
     jsCode: null,
+    execution: null,
   },
   action,
 ) {
@@ -11,6 +12,11 @@ export default function code(
       return {
         ...state,
         jsCode: action.payload,
+      };
+    case CHANGE_EXECUTION_STATE:
+      return {
+        ...state,
+        execution: action.payload,
       };
     default:
       return state;
