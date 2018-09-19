@@ -223,13 +223,14 @@ class Workspace extends Component {
   }
 
   stepCode = () => {
+    const { changeExecutionState } = this.props;
     const { interpreter, workspace } = this.state;
 
     const ok = interpreter.step();
     if (!ok) {
       // Program complete, no more code to execute.
       workspace.highlightBlock(null);
-      this.goToStopState();
+      changeExecutionState(EXECUTION_STOP);
       return false;
     }
 
@@ -245,7 +246,9 @@ class Workspace extends Component {
   }
 
   resetCode = () => {
-    this.goToStopState();
+    const { changeExecutionState } = this.props;
+
+    changeExecutionState(EXECUTION_STOP);
     this.updateCode();
   }
 

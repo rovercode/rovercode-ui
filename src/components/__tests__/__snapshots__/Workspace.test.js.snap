@@ -5,7 +5,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
   store={
     Object {
       "clearActions": [Function],
-      "dispatch": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "payload": "test-code",
+              "type": "UPDATE_JSCODE",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
       "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
@@ -24,7 +39,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
     store={
       Object {
         "clearActions": [Function],
-        "dispatch": [Function],
+        "dispatch": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "payload": "test-code",
+                "type": "UPDATE_JSCODE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        },
         "getActions": [Function],
         "getState": [Function],
         "replaceReducer": [Function],
@@ -43,7 +73,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         "parentSub": undefined,
         "store": Object {
           "clearActions": [Function],
-          "dispatch": [Function],
+          "dispatch": [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "payload": "test-code",
+                  "type": "UPDATE_JSCODE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
           "getActions": [Function],
           "getState": [Function],
           "replaceReducer": [Function],

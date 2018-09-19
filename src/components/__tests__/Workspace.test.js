@@ -3,6 +3,7 @@ import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import {
+  changeExecutionState,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
@@ -25,9 +26,8 @@ describe('The Workspace component', () => {
         jsCode: '',
         execution: null,
       },
-      updateJsCode: jest.fn(),
-      changeExecutionState: jest.fn(),
     });
+    store.dispatch = jest.fn();
     playground = {
       addChangeListener: jest.fn((cb) => { cb(); }),
       highlightBlock: jest.fn(),
@@ -250,12 +250,10 @@ describe('The Workspace component', () => {
         step: jest.fn(() => false),
       },
     });
-    workspace.instance().goToStopState = jest.fn();
-    workspace.update();
     const result = workspace.instance().stepCode();
 
     expect(result).toBe(false);
-    expect(workspace.instance().goToStopState).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STOP));
   });
 
   test('stops stepping when highlighted', () => {
@@ -299,12 +297,11 @@ describe('The Workspace component', () => {
 
     const workspace = wrapper.dive();
     workspace.instance().updateCode = jest.fn();
-    workspace.instance().goToStopState = jest.fn();
     workspace.update();
     workspace.instance().resetCode();
 
     expect(workspace.instance().updateCode).toHaveBeenCalled();
-    expect(workspace.instance().goToStopState).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STOP));
   });
 
   test('updates and runs code when going to running state', () => {
