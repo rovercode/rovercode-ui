@@ -1,5 +1,9 @@
 import reducer from '../code';
-import { UPDATE_JSCODE } from '../../actions/code';
+import {
+  CHANGE_EXECUTION_STATE,
+  EXECUTION_RUN,
+  UPDATE_JSCODE,
+} from '../../actions/code';
 
 describe('The code reducer', () => {
   test('should handle UPDATE_JSCODE', () => {
@@ -10,6 +14,17 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       jsCode: 'testcode',
+    });
+  });
+
+  test('should handle CHANGE_EXECUTION_STATE', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_EXECUTION_STATE,
+        payload: EXECUTION_RUN,
+      }),
+    ).toEqual({
+      execution: EXECUTION_RUN,
     });
   });
 

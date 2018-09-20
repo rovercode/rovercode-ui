@@ -1,7 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
+import Interpreter from 'js-interpreter';
+
+import {
+  updateJsCode as actionUpdateJsCode,
+  changeExecutionState as actionChangeExecutionState,
+  EXECUTION_RUN,
+  EXECUTION_STEP,
+  EXECUTION_STOP,
+  EXECUTION_RESET,
+} from '@/actions/code';
+import BlocklyApi from '@/utils/blockly-api';
+
+const mapStateToProps = ({ code }) => ({ code });
+const mapDispatchToProps = dispatch => ({
+  updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
+  changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
+});
+
+// TODO: rover API
+const sendMotorCommand = (command, pin, speed) => console.log(`Motor command: ${command}, ${pin}, ${speed}`); // eslint-disable-line no-console
+const leftMotor = { FORWARD: 'XIO-P0', BACKWARD: 'XIO-P1' };
+const rightMotor = { FORWARD: 'XIO-P6', BACKWARD: 'XIO-P7' };
+const motorPins = { LEFT: leftMotor, RIGHT: rightMotor };
 
 const toolbox = `
     <xml id="toolbox" style="display: none">
@@ -89,12 +113,26 @@ class Workspace extends Component {
   constructor(props) {
     super(props);
 
+    this.sensorStateCache = [];
+    this.sensorStateCache.SENSORS_leftIr = false;
+    this.sensorStateCache.SENSORS_rightIr = false;
+    this.sleeping = false;
+    this.runningEnabled = false;
+    this.highlightPause = false;
+
+    this.api = new BlocklyApi(this.highlightBlock, this.beginSleep, this.sensorStateCache);
+
     this.state = {
       workspace: null,
+      interpreter: null,
     };
   }
 
   componentDidMount() {
+    Blockly.HSV_SATURATION = 0.85;
+    Blockly.HSV_VALUE = 0.9;
+    Blockly.Flyout.prototype.CORNER_RADIUS = 0;
+    Blockly.BlockSvg.START_HAT = true;
     const workspace = Blockly.inject(this.editorDiv, {
       toolbox,
       zoom: {
@@ -115,6 +153,33 @@ class Workspace extends Component {
     });
   }
 
+  componentWillUpdate(nextProps) {
+    const { code: currentCode } = this.props;
+    const { code: nextCode } = nextProps;
+
+    // Ignore if execution state has not changed unless stepping
+    if (nextCode.execution === currentCode.execution && nextCode.execution !== EXECUTION_STEP) {
+      return;
+    }
+
+    switch (nextCode.execution) {
+      case EXECUTION_RUN:
+        this.goToRunningState();
+        break;
+      case EXECUTION_STEP:
+        this.stepCode();
+        break;
+      case EXECUTION_STOP:
+        this.goToStopState();
+        break;
+      case EXECUTION_RESET:
+        this.resetCode();
+        break;
+      default:
+        break;
+    }
+  }
+
   updateJsCode = () => {
     const { updateJsCode } = this.props;
     const { workspace } = this.state;
@@ -122,7 +187,97 @@ class Workspace extends Component {
     const code = Blockly.JavaScript.workspaceToCode(workspace);
     Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.JavaScript.addReservedWords('highlightBlock');
+    if (workspace) {
+      workspace.highlightBlock(null);
+    }
+
     updateJsCode(code);
+
+    this.setState({
+      interpreter: new Interpreter(code, this.api.initApi),
+    });
+  }
+
+  updateCode = () => {
+    this.updateJsCode();
+  }
+
+  beginSleep = (sleepTimeInMs) => {
+    this.sleeping = true;
+
+    setTimeout(this.endSleep, sleepTimeInMs);
+  }
+
+  endSleep = () => {
+    this.sleeping = false;
+
+    if (this.runningEnabled) {
+      this.runCode();
+    }
+  }
+
+  runCode = () => {
+    if (this.stepCode() && this.runningEnabled && !this.sleeping) {
+      setTimeout(this.runCode, 10);
+    }
+  }
+
+  stepCode = () => {
+    const { changeExecutionState } = this.props;
+    const { interpreter, workspace } = this.state;
+
+    const ok = interpreter.step();
+    if (!ok) {
+      // Program complete, no more code to execute.
+      workspace.highlightBlock(null);
+      changeExecutionState(EXECUTION_STOP);
+      return false;
+    }
+
+    if (this.highlightPause) {
+      // A block has been highlighted.  Pause execution here.
+      this.highlightPause = false;
+    } else {
+      // Keep executing until a highlight statement is reached.
+      this.stepCode();
+    }
+
+    return true;
+  }
+
+  resetCode = () => {
+    const { changeExecutionState } = this.props;
+
+    changeExecutionState(EXECUTION_STOP);
+    this.updateCode();
+  }
+
+  goToRunningState = () => {
+    this.updateCode();
+    this.runningEnabled = true;
+    this.runCode();
+  }
+
+  goToStopState = () => {
+    const { changeExecutionState } = this.props;
+
+    sendMotorCommand('START_MOTOR', motorPins.LEFT.FORWARD, 0);
+    sendMotorCommand('START_MOTOR', motorPins.LEFT.BACKWARD, 0);
+    sendMotorCommand('START_MOTOR', motorPins.RIGHT.FORWARD, 0);
+    sendMotorCommand('START_MOTOR', motorPins.RIGHT.BACKWARD, 0);
+    this.runningEnabled = false;
+    changeExecutionState(EXECUTION_STOP);
+  }
+
+  highlightBlock = (id) => {
+    const { workspace } = this.state;
+
+    if (workspace.getBlockById(id).getCommentText().indexOf('PASS') > -1) {
+      this.highlightPause = false;
+    } else {
+      this.highlightPause = true;
+      workspace.highlightBlock(id);
+    }
   }
 
   render() {
@@ -133,7 +288,11 @@ class Workspace extends Component {
 }
 
 Workspace.propTypes = {
+  code: PropTypes.shape({
+    jsCode: PropTypes.string,
+  }).isRequired,
   updateJsCode: PropTypes.func.isRequired,
+  changeExecutionState: PropTypes.func.isRequired,
 };
 
-export default hot(module)(Workspace);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Workspace));
