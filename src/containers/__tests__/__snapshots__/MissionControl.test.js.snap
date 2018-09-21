@@ -54,19 +54,20 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
   >
     <Grid
       columns={16}
+      divided={true}
     >
       <div
-        className="ui sixteen column grid"
+        className="ui divided sixteen column grid"
       >
         <GridRow>
           <div
             className="row"
           >
             <GridColumn
-              width={8}
+              width={6}
             >
               <div
-                className="eight wide column"
+                className="six wide column"
               >
                 <Component>
                   <div />
@@ -74,10 +75,10 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
               </div>
             </GridColumn>
             <GridColumn
-              width={8}
+              width={6}
             >
               <div
-                className="eight wide column"
+                className="six wide column"
               >
                 <GridRow>
                   <div
@@ -153,6 +154,17 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     </Button>
                   </div>
                 </GridRow>
+              </div>
+            </GridColumn>
+            <GridColumn
+              width={4}
+            >
+              <div
+                className="four wide column"
+              >
+                <Component>
+                  <div />
+                </Component>
               </div>
             </GridColumn>
           </div>

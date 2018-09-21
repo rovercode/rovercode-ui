@@ -11,6 +11,7 @@ import {
   EXECUTION_STOP,
   EXECUTION_RESET,
 } from '@/actions/code';
+import Console from '@/components/Console';
 import Workspace from '@/components/Workspace';
 
 const mapStateToProps = ({ code }) => ({ code });
@@ -19,12 +20,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const MissionControl = ({ code, changeExecutionState }) => (
-  <Grid columns={16}>
+  <Grid columns={16} divided>
     <Grid.Row>
-      <Grid.Column width={8}>
+      <Grid.Column width={6}>
         <Workspace />
       </Grid.Column>
-      <Grid.Column width={8}>
+      <Grid.Column width={6}>
         <Grid.Row>
           <Header>
             Javascript
@@ -47,6 +48,9 @@ const MissionControl = ({ code, changeExecutionState }) => (
             Reset
           </Button>
         </Grid.Row>
+      </Grid.Column>
+      <Grid.Column width={4}>
+        <Console />
       </Grid.Column>
     </Grid.Row>
   </Grid>

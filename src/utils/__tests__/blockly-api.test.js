@@ -4,11 +4,13 @@ describe('Blockly API', () => {
   let highlightBlock = null;
   let beginSleep = null;
   let interpreter = null;
+  let writeToConsole = null;
   let api = null;
 
   beforeEach(() => {
     highlightBlock = jest.fn();
     beginSleep = jest.fn();
+    writeToConsole = jest.fn();
     interpreter = {
       createPrimitive: jest.fn(),
       createNativeFunction: jest.fn(),
@@ -18,7 +20,7 @@ describe('Blockly API', () => {
     sensorStateCache.SENSORS_leftIr = false;
     sensorStateCache.SENSORS_rightIr = false;
 
-    api = new BlocklyApi(highlightBlock, beginSleep, sensorStateCache);
+    api = new BlocklyApi(highlightBlock, beginSleep, sensorStateCache, writeToConsole);
     api.initApi(interpreter);
   });
 
@@ -27,8 +29,8 @@ describe('Blockly API', () => {
 
     alertHandler('test string');
 
-    expect(interpreter.createPrimitive).toHaveBeenCalledTimes(1);
-    // TODO: Add assertion when writeToConsole can be mocked
+    expect(writeToConsole).toHaveBeenCalled();
+    expect(writeToConsole).toHaveBeenCalledWith('test string');
   });
 
   test('handles alert with blank string', () => {
@@ -36,8 +38,8 @@ describe('Blockly API', () => {
 
     alertHandler('');
 
-    expect(interpreter.createPrimitive).toHaveBeenCalledTimes(1);
-    // TODO: Add assertion when writeToConsole can be mocked
+    expect(writeToConsole).toHaveBeenCalled();
+    expect(writeToConsole).toHaveBeenCalledWith('');
   });
 
   test('handles highlightBlock', () => {
@@ -92,5 +94,7 @@ describe('Blockly API', () => {
 
     expect(beginSleep).toHaveBeenCalled();
     expect(beginSleep).toHaveBeenCalledWith(100);
+    expect(writeToConsole).toHaveBeenCalled();
+    expect(writeToConsole).toHaveBeenCalledWith('Sleeping for 100ms.');
   });
 });

@@ -14,6 +14,7 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 
+jest.mock('@/components/Console', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
 
 const cookiesValues = { auth_jwt: '1234' };
