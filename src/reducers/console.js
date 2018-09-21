@@ -8,8 +8,10 @@ export default function console(
 ) {
   switch (action.type) {
     case APPEND:
-      state.messages.push(action.payload);
-      return state;
+      return {
+        ...state,
+        messages: state.messages.concat([action.payload]),
+      };
     case CLEAR:
       return {
         ...state,
