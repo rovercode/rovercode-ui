@@ -18,7 +18,11 @@ describe('The Control component', () => {
   let store;
 
   beforeEach(() => {
-    store = mockStore();
+    store = mockStore({
+      code: {
+        execution: EXECUTION_STOP,
+      },
+    });
     store.dispatch = jest.fn();
   });
 
@@ -51,19 +55,25 @@ describe('The Control component', () => {
     expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RUN));
   });
 
-  test('changes to stop state on button press', () => {
+  test('changes to reset state on button press', () => {
     const wrapper = shallow(<Control store={store} />);
 
     wrapper.dive().find(Button).at(2).simulate('click');
 
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STOP));
+    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RESET));
   });
 
-  test('changes to reset state on button press', () => {
-    const wrapper = shallow(<Control store={store} />);
+  test('changes to stop state on button press', () => {
+    const runStore = mockStore({
+      code: {
+        execution: EXECUTION_RUN,
+      },
+    });
+    runStore.dispatch = jest.fn();
+    const wrapper = shallow(<Control store={runStore} />).dive();
 
-    wrapper.dive().find(Button).at(3).simulate('click');
+    wrapper.find(Button).at(0).simulate('click');
 
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RESET));
+    expect(runStore.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STOP));
   });
 });
