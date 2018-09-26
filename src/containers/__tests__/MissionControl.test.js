@@ -1,20 +1,14 @@
 import React from 'react';
-import { Button, Header } from 'semantic-ui-react';
-import { mount, shallow } from 'enzyme';
+import { Header } from 'semantic-ui-react';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import PropTypes from 'prop-types';
 import MissionControl from '../MissionControl';
-import {
-  changeExecutionState,
-  EXECUTION_RUN,
-  EXECUTION_STEP,
-  EXECUTION_STOP,
-  EXECUTION_RESET,
-} from '@/actions/code';
 
 jest.mock('@/components/Console', () => () => <div />);
+jest.mock('@/components/Control', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
 
 const cookiesValues = { auth_jwt: '1234' };
@@ -44,50 +38,5 @@ describe('The MissionControl container', () => {
     expect(wrapper.find(Header).length).toBe(1);
     expect(wrapper.find('pre').length).toBe(1);
     expect(wrapper.find('pre').first().text()).toBe('testcode');
-  });
-
-  test('dispatches an action to change execution state', () => {
-    const context = { cookies };
-    wrapper = shallow(<MissionControl store={store} />, { context });
-
-    wrapper.props().changeExecutionState(EXECUTION_RUN);
-
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RUN));
-  });
-
-  test('changes to step state on button press', () => {
-    const context = { cookies };
-    wrapper = shallow(<MissionControl store={store} />, { context });
-
-    wrapper.dive().find(Button).at(0).simulate('click');
-
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STEP));
-  });
-
-  test('changes to run state on button press', () => {
-    const context = { cookies };
-    wrapper = shallow(<MissionControl store={store} />, { context });
-
-    wrapper.dive().find(Button).at(1).simulate('click');
-
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RUN));
-  });
-
-  test('changes to stop state on button press', () => {
-    const context = { cookies };
-    wrapper = shallow(<MissionControl store={store} />, { context });
-
-    wrapper.dive().find(Button).at(2).simulate('click');
-
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STOP));
-  });
-
-  test('changes to reset state on button press', () => {
-    const context = { cookies };
-    wrapper = shallow(<MissionControl store={store} />, { context });
-
-    wrapper.dive().find(Button).at(3).simulate('click');
-
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RESET));
   });
 });

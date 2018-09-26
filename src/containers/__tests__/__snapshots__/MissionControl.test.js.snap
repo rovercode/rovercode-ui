@@ -14,12 +14,12 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
   }
 >
   <MissionControl
-    changeExecutionState={[Function]}
     code={
       Object {
         "jsCode": "testcode",
       }
     }
+    dispatch={[MockFunction]}
     store={
       Object {
         "clearActions": [Function],
@@ -69,9 +69,15 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
               <div
                 className="six wide column"
               >
-                <Component>
-                  <div />
-                </Component>
+                <GridRow>
+                  <div
+                    className="row"
+                  >
+                    <Component>
+                      <div />
+                    </Component>
+                  </div>
+                </GridRow>
               </div>
             </GridColumn>
             <GridColumn
@@ -100,58 +106,9 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                   <div
                     className="row"
                   >
-                    <Button
-                      as="button"
-                      onClick={[Function]}
-                      role="button"
-                    >
-                      <button
-                        className="ui button"
-                        onClick={[Function]}
-                        role="button"
-                      >
-                        Step
-                      </button>
-                    </Button>
-                    <Button
-                      as="button"
-                      onClick={[Function]}
-                      role="button"
-                    >
-                      <button
-                        className="ui button"
-                        onClick={[Function]}
-                        role="button"
-                      >
-                        Run
-                      </button>
-                    </Button>
-                    <Button
-                      as="button"
-                      onClick={[Function]}
-                      role="button"
-                    >
-                      <button
-                        className="ui button"
-                        onClick={[Function]}
-                        role="button"
-                      >
-                        Stop
-                      </button>
-                    </Button>
-                    <Button
-                      as="button"
-                      onClick={[Function]}
-                      role="button"
-                    >
-                      <button
-                        className="ui button"
-                        onClick={[Function]}
-                        role="button"
-                      >
-                        Reset
-                      </button>
-                    </Button>
+                    <Component>
+                      <div />
+                    </Component>
                   </div>
                 </GridRow>
               </div>
