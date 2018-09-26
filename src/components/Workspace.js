@@ -13,12 +13,14 @@ import {
   EXECUTION_STOP,
   EXECUTION_RESET,
 } from '@/actions/code';
+import { append } from '@/actions/console';
 import BlocklyApi from '@/utils/blockly-api';
 
 const mapStateToProps = ({ code }) => ({ code });
 const mapDispatchToProps = dispatch => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
+  writeToConsole: message => dispatch(append(message)),
 });
 
 // TODO: rover API
@@ -112,6 +114,7 @@ const toolbox = `
 class Workspace extends Component {
   constructor(props) {
     super(props);
+    const { writeToConsole } = this.props;
 
     this.sensorStateCache = [];
     this.sensorStateCache.SENSORS_leftIr = false;
@@ -120,7 +123,8 @@ class Workspace extends Component {
     this.runningEnabled = false;
     this.highlightPause = false;
 
-    this.api = new BlocklyApi(this.highlightBlock, this.beginSleep, this.sensorStateCache);
+    this.api = new BlocklyApi(this.highlightBlock, this.beginSleep,
+      this.sensorStateCache, writeToConsole);
 
     this.state = {
       workspace: null,
@@ -129,6 +133,8 @@ class Workspace extends Component {
   }
 
   componentDidMount() {
+    const { writeToConsole } = this.props;
+
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
     Blockly.Flyout.prototype.CORNER_RADIUS = 0;
@@ -151,6 +157,8 @@ class Workspace extends Component {
     this.setState({
       workspace,
     });
+
+    writeToConsole('rovercode console started');
   }
 
   componentWillUpdate(nextProps) {
@@ -293,6 +301,7 @@ Workspace.propTypes = {
   }).isRequired,
   updateJsCode: PropTypes.func.isRequired,
   changeExecutionState: PropTypes.func.isRequired,
+  writeToConsole: PropTypes.func.isRequired,
 };
 
 export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Workspace));

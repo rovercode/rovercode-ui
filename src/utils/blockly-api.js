@@ -1,5 +1,3 @@
-// TODO: Write to actual mission control console
-const writeToConsole = message => console.log(message); // eslint-disable-line no-console
 // TODO: rover API
 const sendMotorCommand = (command, pin, speed) => console.log(`Motor command: ${command}, ${pin}, ${speed}`); // eslint-disable-line no-console
 const leftMotor = { FORWARD: 'XIO-P0', BACKWARD: 'XIO-P1' };
@@ -7,17 +5,18 @@ const rightMotor = { FORWARD: 'XIO-P6', BACKWARD: 'XIO-P7' };
 const motorPins = { LEFT: leftMotor, RIGHT: rightMotor };
 
 class BlocklyApi {
-  constructor(highlightBlock, beginSleep, sensorStateCache) {
+  constructor(highlightBlock, beginSleep, sensorStateCache, writeToConsole) {
     this.highlightBlock = highlightBlock;
     this.beginSleep = beginSleep;
     this.sensorStateCache = sensorStateCache;
+    this.writeToConsole = writeToConsole;
   }
 
   initApi = (interpreter, scope) => {
     // Add an API function for the alert() block.
     let wrapper = (text) => {
       text = text ? text.toString() : '';
-      return interpreter.createPrimitive(writeToConsole(text));
+      return interpreter.createPrimitive(this.writeToConsole(text));
     };
 
     interpreter.setProperty(scope, 'alert',
@@ -62,7 +61,7 @@ class BlocklyApi {
     /* TODO: Make the highlighting stay on continue block while sleeping */
     wrapper = (lengthInMs) => {
       this.beginSleep(lengthInMs);
-      writeToConsole(`Sleeping for ${lengthInMs}ms.`);
+      this.writeToConsole(`Sleeping for ${lengthInMs}ms.`);
       return false;
     };
     interpreter.setProperty(scope, 'sleep',

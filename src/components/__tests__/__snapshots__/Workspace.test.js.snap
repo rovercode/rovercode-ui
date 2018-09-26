@@ -13,8 +13,18 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               "type": "UPDATE_JSCODE",
             },
           ],
+          Array [
+            Object {
+              "payload": "rovercode console started",
+              "type": "APPEND",
+            },
+          ],
         ],
         "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
           Object {
             "isThrow": false,
             "value": undefined,
@@ -47,8 +57,18 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 "type": "UPDATE_JSCODE",
               },
             ],
+            Array [
+              Object {
+                "payload": "rovercode console started",
+                "type": "APPEND",
+              },
+            ],
           ],
           "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
             Object {
               "isThrow": false,
               "value": undefined,
@@ -81,8 +101,18 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                   "type": "UPDATE_JSCODE",
                 },
               ],
+              Array [
+                Object {
+                  "payload": "rovercode console started",
+                  "type": "APPEND",
+                },
+              ],
             ],
             "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
               Object {
                 "isThrow": false,
                 "value": undefined,
@@ -98,6 +128,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
       }
     }
     updateJsCode={[Function]}
+    writeToConsole={[Function]}
   >
     <div
       style={
