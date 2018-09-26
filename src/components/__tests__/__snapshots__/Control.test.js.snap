@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Control component renders on the page with no errors 1`] = `
+<Connect(Control)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Control
+    changeExecutionState={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <Button
+      as="button"
+      onClick={[Function]}
+      role="button"
+    >
+      <button
+        className="ui button"
+        onClick={[Function]}
+        role="button"
+      >
+        Step
+      </button>
+    </Button>
+    <Button
+      as="button"
+      onClick={[Function]}
+      role="button"
+    >
+      <button
+        className="ui button"
+        onClick={[Function]}
+        role="button"
+      >
+        Run
+      </button>
+    </Button>
+    <Button
+      as="button"
+      onClick={[Function]}
+      role="button"
+    >
+      <button
+        className="ui button"
+        onClick={[Function]}
+        role="button"
+      >
+        Stop
+      </button>
+    </Button>
+    <Button
+      as="button"
+      onClick={[Function]}
+      role="button"
+    >
+      <button
+        className="ui button"
+        onClick={[Function]}
+        role="button"
+      >
+        Reset
+      </button>
+    </Button>
+  </Control>
+</Connect(Control)>
+`;
