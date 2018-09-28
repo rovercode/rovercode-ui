@@ -32,6 +32,7 @@
     },
     "moduleNameMapper": {
       ".+\\.(png|jpg)$": "<rootDir>/src/assets/images/__mocks__/imageMock.js",
+      ".+\\.(css|less)$": "<rootDir>/src/css/__mocks__/styleMock.js",
       "@/(.*)$": "<rootDir>/src/$1"
     }
   },
