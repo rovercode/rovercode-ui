@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import Console from '@/components/Console';
 import Control from '@/components/Control';
+import Indicator from '@/components/Indicator';
 import Workspace from '@/components/Workspace';
 
 const mapStateToProps = ({ code }) => ({ code });
@@ -32,7 +33,12 @@ const MissionControl = ({ code }) => (
         </Grid.Row>
       </Grid.Column>
       <Grid.Column width={4}>
-        <Console />
+        <Grid.Row>
+          <Console />
+        </Grid.Row>
+        <Grid.Row>
+          <Indicator />
+        </Grid.Row>
       </Grid.Column>
     </Grid.Row>
   </Grid>
