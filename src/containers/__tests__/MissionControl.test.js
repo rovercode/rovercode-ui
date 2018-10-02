@@ -1,5 +1,4 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
@@ -7,6 +6,7 @@ import configureStore from 'redux-mock-store';
 import PropTypes from 'prop-types';
 import MissionControl from '../MissionControl';
 
+jest.mock('@/components/CodeViewer', () => () => <div />);
 jest.mock('@/components/Console', () => () => <div />);
 jest.mock('@/components/Control', () => () => <div />);
 jest.mock('@/components/Indicator', () => () => <div />);
@@ -36,8 +36,5 @@ describe('The MissionControl container', () => {
     });
 
     expect(toJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.find(Header).length).toBe(1);
-    expect(wrapper.find('pre').length).toBe(1);
-    expect(wrapper.find('pre').first().text()).toBe('testcode');
   });
 });

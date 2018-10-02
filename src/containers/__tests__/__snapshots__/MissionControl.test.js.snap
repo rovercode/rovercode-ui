@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The MissionControl container renders on the page with no errors 1`] = `
-<Connect(MissionControl)
+<MissionControl
   store={
     Object {
       "clearActions": [Function],
@@ -13,136 +13,90 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
     }
   }
 >
-  <MissionControl
-    code={
-      Object {
-        "jsCode": "testcode",
-      }
-    }
-    dispatch={[MockFunction]}
-    store={
-      Object {
-        "clearActions": [Function],
-        "dispatch": [MockFunction],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
-    storeSubscription={
-      Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [MockFunction],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": [Function],
-      }
-    }
+  <Grid
+    columns={16}
+    divided={true}
   >
-    <Grid
-      columns={16}
-      divided={true}
+    <div
+      className="ui divided sixteen column grid"
     >
-      <div
-        className="ui divided sixteen column grid"
-      >
-        <GridRow>
-          <div
-            className="row"
+      <GridRow>
+        <div
+          className="row"
+        >
+          <GridColumn
+            width={6}
           >
-            <GridColumn
-              width={6}
+            <div
+              className="six wide column"
             >
-              <div
-                className="six wide column"
-              >
-                <GridRow>
-                  <div
-                    className="row"
-                  >
-                    <Component>
-                      <div />
-                    </Component>
-                  </div>
-                </GridRow>
-              </div>
-            </GridColumn>
-            <GridColumn
-              width={6}
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Component>
+                    <div />
+                  </Component>
+                </div>
+              </GridRow>
+            </div>
+          </GridColumn>
+          <GridColumn
+            width={6}
+          >
+            <div
+              className="six wide column"
             >
-              <div
-                className="six wide column"
-              >
-                <GridRow>
-                  <div
-                    className="row"
-                  >
-                    <Header>
-                      <div
-                        className="ui header"
-                      >
-                        Javascript
-                      </div>
-                    </Header>
-                    <pre>
-                      testcode
-                    </pre>
-                  </div>
-                </GridRow>
-                <GridRow>
-                  <div
-                    className="row"
-                  >
-                    <Component>
-                      <div />
-                    </Component>
-                  </div>
-                </GridRow>
-              </div>
-            </GridColumn>
-            <GridColumn
-              width={4}
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Component>
+                    <div />
+                  </Component>
+                </div>
+              </GridRow>
+              <hr />
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Component>
+                    <div />
+                  </Component>
+                </div>
+              </GridRow>
+            </div>
+          </GridColumn>
+          <GridColumn
+            width={4}
+          >
+            <div
+              className="four wide column"
             >
-              <div
-                className="four wide column"
-              >
-                <GridRow>
-                  <div
-                    className="row"
-                  >
-                    <Component>
-                      <div />
-                    </Component>
-                  </div>
-                </GridRow>
-                <GridRow>
-                  <div
-                    className="row"
-                  >
-                    <Component>
-                      <div />
-                    </Component>
-                  </div>
-                </GridRow>
-              </div>
-            </GridColumn>
-          </div>
-        </GridRow>
-      </div>
-    </Grid>
-  </MissionControl>
-</Connect(MissionControl)>
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Component>
+                    <div />
+                  </Component>
+                </div>
+              </GridRow>
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Component>
+                    <div />
+                  </Component>
+                </div>
+              </GridRow>
+            </div>
+          </GridColumn>
+        </div>
+      </GridRow>
+    </div>
+  </Grid>
+</MissionControl>
 `;
