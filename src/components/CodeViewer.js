@@ -25,6 +25,7 @@ class CodeViewer extends Component {
     return (
       <Modal
         basic
+        closeIcon
         dimmer="blurring"
         trigger={(
           <Button>
