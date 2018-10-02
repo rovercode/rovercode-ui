@@ -14,7 +14,11 @@ describe('The CodeViewer component', () => {
         jsCode: 'test code',
       },
     });
-    const wrapper = mount(<CodeViewer store={store} />);
+    const wrapper = mount(
+      <CodeViewer store={store}>
+        Show Me The Code!
+      </CodeViewer>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -24,7 +28,11 @@ describe('The CodeViewer component', () => {
         jsCode: null,
       },
     });
-    const wrapper = mount(<CodeViewer store={store} />);
+    const wrapper = mount(
+      <CodeViewer store={store}>
+        Show Me The Code!
+      </CodeViewer>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

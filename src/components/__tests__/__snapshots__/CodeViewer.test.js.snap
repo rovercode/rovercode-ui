@@ -55,6 +55,7 @@ exports[`The CodeViewer component handles blank code with no errors 1`] = `
     <Modal
       basic={true}
       centered={true}
+      closeIcon={true}
       closeOnDimmerClick={true}
       closeOnDocumentClick={false}
       dimmer="blurring"
@@ -175,6 +176,7 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
     <Modal
       basic={true}
       centered={true}
+      closeIcon={true}
       closeOnDimmerClick={true}
       closeOnDocumentClick={false}
       dimmer="blurring"

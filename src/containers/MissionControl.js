@@ -18,7 +18,9 @@ const MissionControl = () => (
       </Grid.Column>
       <Grid.Column width={6}>
         <Grid.Row>
-          <CodeViewer />
+          <CodeViewer>
+            Show Me The Code!
+          </CodeViewer>
         </Grid.Row>
         <hr />
         <Grid.Row>

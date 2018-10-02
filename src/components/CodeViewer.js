@@ -22,6 +22,8 @@ class CodeViewer extends Component {
   }
 
   render() {
+    const { children } = this.props;
+
     return (
       <Modal
         basic
@@ -29,7 +31,7 @@ class CodeViewer extends Component {
         dimmer="blurring"
         trigger={(
           <Button>
-            Show Me The Code!
+            { children }
           </Button>
         )}
       >
@@ -61,6 +63,7 @@ CodeViewer.propTypes = {
   code: PropTypes.shape({
     jsCode: PropTypes.string,
   }).isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default hot(module)(connect(mapStateToProps)(CodeViewer));
