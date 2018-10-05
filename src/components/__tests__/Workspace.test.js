@@ -31,6 +31,7 @@ describe('The Workspace component', () => {
     playground = {
       addChangeListener: jest.fn((cb) => { cb(); }),
       highlightBlock: jest.fn(),
+      clear: jest.fn(),
     };
     Blockly.svgResize.mockReset();
     Blockly.inject.mockReset();
@@ -352,5 +353,20 @@ describe('The Workspace component', () => {
 
     expect(workspace.instance().highlightPause).toBe(false);
     expect(playground.highlightBlock).not.toHaveBeenCalled();
+  });
+
+  test('initializes workspace when program already loaded', () => {
+    const localStore = mockStore({
+      code: {
+        xmlCode: '<xml></xml>',
+      },
+    });
+    const wrapper = shallow(<Workspace store={localStore} />);
+
+    wrapper.dive();
+
+    expect(playground.clear).toHaveBeenCalled();
+    expect(Blockly.Xml.domToWorkspace).toHaveBeenCalled();
+    expect(Blockly.Xml.domToWorkspace).toHaveBeenCalledWith(playground, 'test-dom');
   });
 });

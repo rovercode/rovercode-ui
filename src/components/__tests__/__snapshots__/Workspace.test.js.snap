@@ -15,12 +15,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           ],
           Array [
             Object {
+              "payload": "test-dom-text",
+              "type": "UPDATE_XMLCODE",
+            },
+          ],
+          Array [
+            Object {
               "payload": "rovercode console started",
               "type": "APPEND",
             },
           ],
         ],
         "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
           Object {
             "isThrow": false,
             "value": undefined,
@@ -59,12 +69,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             ],
             Array [
               Object {
+                "payload": "test-dom-text",
+                "type": "UPDATE_XMLCODE",
+              },
+            ],
+            Array [
+              Object {
                 "payload": "rovercode console started",
                 "type": "APPEND",
               },
             ],
           ],
           "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
             Object {
               "isThrow": false,
               "value": undefined,
@@ -103,12 +123,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               ],
               Array [
                 Object {
+                  "payload": "test-dom-text",
+                  "type": "UPDATE_XMLCODE",
+                },
+              ],
+              Array [
+                Object {
                   "payload": "rovercode console started",
                   "type": "APPEND",
                 },
               ],
             ],
             "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
               Object {
                 "isThrow": false,
                 "value": undefined,
@@ -128,6 +158,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
       }
     }
     updateJsCode={[Function]}
+    updateXmlCode={[Function]}
     writeToConsole={[Function]}
   >
     <div

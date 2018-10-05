@@ -135,7 +135,7 @@ class Workspace extends Component {
   }
 
   componentDidMount() {
-    const { writeToConsole } = this.props;
+    const { code, writeToConsole } = this.props;
 
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
@@ -158,7 +158,7 @@ class Workspace extends Component {
 
     this.setState({
       workspace,
-    });
+    }, () => this.loadDesign(code.xmlCode));
 
     writeToConsole('rovercode console started');
   }
@@ -301,6 +301,21 @@ class Workspace extends Component {
     }
   }
 
+  loadDesign = (xmlCode) => {
+    if (!xmlCode) {
+      return;
+    }
+
+    const { workspace } = this.state;
+
+    workspace.clear();
+
+    const xmlDom = Blockly.Xml.textToDom(xmlCode);
+    Blockly.Xml.domToWorkspace(workspace, xmlDom);
+
+    this.updateCode();
+  }
+
   render() {
     return (
       <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ height: '480px', width: '600px' }} />
@@ -313,6 +328,7 @@ Workspace.propTypes = {
     jsCode: PropTypes.string,
   }).isRequired,
   updateJsCode: PropTypes.func.isRequired,
+  updateXmlCode: PropTypes.func.isRequired,
   changeExecutionState: PropTypes.func.isRequired,
   writeToConsole: PropTypes.func.isRequired,
 };
