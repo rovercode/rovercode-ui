@@ -5,6 +5,7 @@ export const UPDATE_JSCODE = 'UPDATE_JSCODE';
 export const UPDATE_XMLCODE = 'UPDATE_XMLCODE';
 export const CHANGE_EXECUTION_STATE = 'CHANGE_EXECUTION_STATE';
 export const CHANGE_NAME = 'CHANGE_NAME';
+export const CHANGE_ID = 'CHANGE_ID';
 
 // Execution States
 export const EXECUTION_RUN = 1;
@@ -31,4 +32,9 @@ export const changeExecutionState = state => ({
 export const changeName = name => ({
   type: CHANGE_NAME,
   payload: name,
+});
+
+export const changeId = id => ({
+  type: CHANGE_ID,
+  payload: id,
 });

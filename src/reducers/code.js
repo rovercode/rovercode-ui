@@ -3,6 +3,7 @@ import {
   UPDATE_JSCODE,
   UPDATE_XMLCODE,
   CHANGE_NAME,
+  CHANGE_ID,
 } from '../actions/code';
 
 export default function code(
@@ -11,6 +12,7 @@ export default function code(
     xmlCode: null,
     execution: null,
     name: null,
+    id: null,
   },
   action,
 ) {
@@ -34,6 +36,11 @@ export default function code(
       return {
         ...state,
         name: action.payload,
+      };
+    case CHANGE_ID:
+      return {
+        ...state,
+        id: action.payload,
       };
     default:
       return state;

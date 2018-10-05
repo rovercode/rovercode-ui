@@ -5,6 +5,7 @@ import {
   UPDATE_JSCODE,
   UPDATE_XMLCODE,
   CHANGE_NAME,
+  CHANGE_ID,
 } from '../../actions/code';
 
 describe('The code reducer', () => {
@@ -49,6 +50,17 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       name: 'test name',
+    });
+  });
+
+  test('should handle CHANGE_ID', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_ID,
+        payload: 123,
+      }),
+    ).toEqual({
+      id: 123,
     });
   });
 

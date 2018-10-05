@@ -3,6 +3,7 @@ import {
   updateXmlCode,
   changeExecutionState,
   changeName,
+  changeId,
   EXECUTION_RUN,
 } from '../code';
 
@@ -38,5 +39,13 @@ describe('Code actions', () => {
 
     expect(type).toEqual('CHANGE_NAME');
     expect(payload).toEqual('test name');
+  });
+
+  test('changeId', () => {
+    const action = changeId(123);
+    const { type, payload } = action;
+
+    expect(type).toEqual('CHANGE_ID');
+    expect(payload).toEqual(123);
   });
 });
