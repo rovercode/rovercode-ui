@@ -2,7 +2,9 @@
 // async actions https://redux.js.org/advanced/asyncactions
 
 export const UPDATE_JSCODE = 'UPDATE_JSCODE';
+export const UPDATE_XMLCODE = 'UPDATE_XMLCODE';
 export const CHANGE_EXECUTION_STATE = 'CHANGE_EXECUTION_STATE';
+export const CHANGE_NAME = 'CHANGE_NAME';
 
 // Execution States
 export const EXECUTION_RUN = 1;
@@ -16,7 +18,17 @@ export const updateJsCode = jsCode => ({
   payload: jsCode,
 });
 
+export const updateXmlCode = xmlCode => ({
+  type: UPDATE_XMLCODE,
+  payload: xmlCode,
+});
+
 export const changeExecutionState = state => ({
   type: CHANGE_EXECUTION_STATE,
   payload: state,
+});
+
+export const changeName = name => ({
+  type: CHANGE_NAME,
+  payload: name,
 });
