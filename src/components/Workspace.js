@@ -14,7 +14,7 @@ import {
   EXECUTION_STOP,
   EXECUTION_RESET,
 } from '@/actions/code';
-import { append } from '@/actions/console';
+import { append, clear } from '@/actions/console';
 import BlocklyApi from '@/utils/blockly-api';
 
 const mapStateToProps = ({ code }) => ({ code });
@@ -22,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
   writeToConsole: message => dispatch(append(message)),
+  clearConsole: () => dispatch(clear()),
   updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
 });
 
@@ -135,7 +136,7 @@ class Workspace extends Component {
   }
 
   componentDidMount() {
-    const { code, writeToConsole } = this.props;
+    const { code, clearConsole, writeToConsole } = this.props;
 
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
@@ -160,6 +161,7 @@ class Workspace extends Component {
       workspace,
     }, () => this.loadDesign(code.xmlCode));
 
+    clearConsole();
     writeToConsole('rovercode console started');
   }
 
@@ -331,6 +333,7 @@ Workspace.propTypes = {
   updateXmlCode: PropTypes.func.isRequired,
   changeExecutionState: PropTypes.func.isRequired,
   writeToConsole: PropTypes.func.isRequired,
+  clearConsole: PropTypes.func.isRequired,
 };
 
 export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Workspace));
