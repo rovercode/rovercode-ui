@@ -7,6 +7,7 @@ import Interpreter from 'js-interpreter';
 
 import {
   updateJsCode as actionUpdateJsCode,
+  updateXmlCode as actionUpdateXmlCode,
   changeExecutionState as actionChangeExecutionState,
   EXECUTION_RUN,
   EXECUTION_STEP,
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
   writeToConsole: message => dispatch(append(message)),
+  updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
 });
 
 // TODO: rover API
@@ -152,7 +154,7 @@ class Workspace extends Component {
       trashcan: true,
     });
 
-    workspace.addChangeListener(this.updateJsCode);
+    workspace.addChangeListener(this.updateCode);
 
     this.setState({
       workspace,
@@ -188,6 +190,16 @@ class Workspace extends Component {
     }
   }
 
+  updateXmlCode = () => {
+    const { updateXmlCode } = this.props;
+    const { workspace } = this.state;
+
+    const xml = Blockly.Xml.workspaceToDom(workspace);
+    const xmlCode = Blockly.Xml.domToText(xml);
+
+    updateXmlCode(xmlCode);
+  }
+
   updateJsCode = () => {
     const { updateJsCode } = this.props;
     const { workspace } = this.state;
@@ -208,6 +220,7 @@ class Workspace extends Component {
 
   updateCode = () => {
     this.updateJsCode();
+    this.updateXmlCode();
   }
 
   beginSleep = (sleepTimeInMs) => {
