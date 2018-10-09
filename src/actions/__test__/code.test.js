@@ -1,9 +1,12 @@
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 import {
   updateJsCode,
   updateXmlCode,
   changeExecutionState,
   changeName,
   changeId,
+  fetchProgram,
   EXECUTION_RUN,
 } from '../code';
 
@@ -47,5 +50,25 @@ describe('Code actions', () => {
 
     expect(type).toEqual('CHANGE_ID');
     expect(payload).toEqual(123);
+  });
+
+  test('fetch program', async () => {
+    const mock = new MockAdapter(axios);
+    const program = {
+      id: 1,
+      name: 'mybd',
+      content: '<xml></xml>',
+      user: 1,
+    };
+
+    mock.onGet('/api/v1/block-diagrams/1/').reply(200, program);
+
+    const action = fetchProgram(1);
+    const { type } = action;
+    const payload = await action.payload;
+
+    expect(type).toEqual('FETCH_PROGRAM');
+    expect(payload).toEqual(program);
+    mock.restore();
   });
 });

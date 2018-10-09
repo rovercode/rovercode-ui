@@ -6,6 +6,9 @@ import {
   UPDATE_XMLCODE,
   CHANGE_NAME,
   CHANGE_ID,
+  FETCH_PROGRAM,
+  FETCH_PROGRAM_FULFILLED,
+  FETCH_PROGRAM_REJECTED,
 } from '../../actions/code';
 
 describe('The code reducer', () => {
@@ -61,6 +64,54 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       id: 123,
+    });
+  });
+
+  test('should handle FETCH_PROGRAM', () => {
+    expect(
+      reducer({}, {
+        type: FETCH_PROGRAM,
+      }),
+    ).toEqual({
+      isFetching: true,
+    });
+  });
+
+  test('should handle FETCH_PROGRAM_FULFILLED', () => {
+    const name = 'mybd';
+    const id = 1;
+    const xmlCode = '<xml></xml>';
+
+    expect(
+      reducer({}, {
+        type: FETCH_PROGRAM_FULFILLED,
+        payload: {
+          name,
+          id,
+          content: xmlCode,
+        },
+      }),
+    ).toEqual({
+      isFetching: false,
+      name,
+      id,
+      xmlCode,
+    });
+  });
+
+  test('should handle FETCH_PROGRAM_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: FETCH_PROGRAM_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isFetching: false,
+      error: { detail },
     });
   });
 

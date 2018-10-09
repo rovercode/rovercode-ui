@@ -4,6 +4,9 @@ import {
   UPDATE_XMLCODE,
   CHANGE_NAME,
   CHANGE_ID,
+  FETCH_PROGRAM,
+  FETCH_PROGRAM_FULFILLED,
+  FETCH_PROGRAM_REJECTED,
 } from '../actions/code';
 
 export default function code(
@@ -13,6 +16,8 @@ export default function code(
     execution: null,
     name: null,
     id: null,
+    isFetching: false,
+    error: null,
   },
   action,
 ) {
@@ -41,6 +46,25 @@ export default function code(
       return {
         ...state,
         id: action.payload,
+      };
+    case FETCH_PROGRAM:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case FETCH_PROGRAM_FULFILLED:
+      return {
+        ...state,
+        isFetching: false,
+        xmlCode: action.payload.content,
+        id: action.payload.id,
+        name: action.payload.name,
+      };
+    case FETCH_PROGRAM_REJECTED:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload,
       };
     default:
       return state;
