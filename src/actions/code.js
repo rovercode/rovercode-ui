@@ -6,6 +6,9 @@ import axios from 'axios';
 export const FETCH_PROGRAM = 'FETCH_PROGRAM';
 export const FETCH_PROGRAM_FULFILLED = `${FETCH_PROGRAM}_FULFILLED`;
 export const FETCH_PROGRAM_REJECTED = `${FETCH_PROGRAM}_REJECTED`;
+export const SAVE_PROGRAM = 'SAVE_PROGRAM';
+export const SAVE_PROGRAM_FULFILLED = `${SAVE_PROGRAM}_FULFILLED`;
+export const SAVE_PROGRAM_REJECTED = `${SAVE_PROGRAM}_REJECTED`;
 
 export const UPDATE_JSCODE = 'UPDATE_JSCODE';
 export const UPDATE_XMLCODE = 'UPDATE_XMLCODE';
@@ -48,6 +51,17 @@ export const changeId = id => ({
 export const fetchProgram = (id, xhroptions) => ({
   type: FETCH_PROGRAM,
   payload: axios.get(`/api/v1/block-diagrams/${id}/`, xhroptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const saveProgram = (id, content, name, xhroptions) => ({
+  type: SAVE_PROGRAM,
+  payload: axios.put(`/api/v1/block-diagrams/${id}/`, {
+    content,
+    name,
+  }, xhroptions)
     .then(({ data }) => (
       data
     )),

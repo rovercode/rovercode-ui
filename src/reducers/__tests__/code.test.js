@@ -9,6 +9,9 @@ import {
   FETCH_PROGRAM,
   FETCH_PROGRAM_FULFILLED,
   FETCH_PROGRAM_REJECTED,
+  SAVE_PROGRAM,
+  SAVE_PROGRAM_FULFILLED,
+  SAVE_PROGRAM_REJECTED,
 } from '../../actions/code';
 
 describe('The code reducer', () => {
@@ -111,6 +114,54 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       isFetching: false,
+      error: { detail },
+    });
+  });
+
+  test('should handle SAVE_PROGRAM', () => {
+    expect(
+      reducer({}, {
+        type: SAVE_PROGRAM,
+      }),
+    ).toEqual({
+      isSaving: true,
+    });
+  });
+
+  test('should handle SAVE_PROGRAM_FULFILLED', () => {
+    const name = 'mybd';
+    const id = 1;
+    const xmlCode = '<xml></xml>';
+
+    expect(
+      reducer({}, {
+        type: SAVE_PROGRAM_FULFILLED,
+        payload: {
+          name,
+          id,
+          content: xmlCode,
+        },
+      }),
+    ).toEqual({
+      isSaving: false,
+      name,
+      id,
+      xmlCode,
+    });
+  });
+
+  test('should handle SAVE_PROGRAM_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: SAVE_PROGRAM_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isSaving: false,
       error: { detail },
     });
   });

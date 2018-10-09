@@ -7,6 +7,9 @@ import {
   FETCH_PROGRAM,
   FETCH_PROGRAM_FULFILLED,
   FETCH_PROGRAM_REJECTED,
+  SAVE_PROGRAM,
+  SAVE_PROGRAM_FULFILLED,
+  SAVE_PROGRAM_REJECTED,
 } from '../actions/code';
 
 export default function code(
@@ -17,6 +20,7 @@ export default function code(
     name: null,
     id: null,
     isFetching: false,
+    isSaving: false,
     error: null,
   },
   action,
@@ -64,6 +68,25 @@ export default function code(
       return {
         ...state,
         isFetching: false,
+        error: action.payload,
+      };
+    case SAVE_PROGRAM:
+      return {
+        ...state,
+        isSaving: true,
+      };
+    case SAVE_PROGRAM_FULFILLED:
+      return {
+        ...state,
+        isSaving: false,
+        xmlCode: action.payload.content,
+        id: action.payload.id,
+        name: action.payload.name,
+      };
+    case SAVE_PROGRAM_REJECTED:
+      return {
+        ...state,
+        isSaving: false,
         error: action.payload,
       };
     default:
