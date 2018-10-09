@@ -27,12 +27,6 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           ],
           Array [
             Object {
-              "payload": Promise {},
-              "type": "FETCH_PROGRAM",
-            },
-          ],
-          Array [
-            Object {
               "type": "CLEAR",
             },
           ],
@@ -40,6 +34,12 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             Object {
               "payload": "rovercode console started",
               "type": "APPEND",
+            },
+          ],
+          Array [
+            Object {
+              "payload": Promise {},
+              "type": "CREATE_PROGRAM",
             },
           ],
         ],
@@ -114,12 +114,6 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             ],
             Array [
               Object {
-                "payload": Promise {},
-                "type": "FETCH_PROGRAM",
-              },
-            ],
-            Array [
-              Object {
                 "type": "CLEAR",
               },
             ],
@@ -127,6 +121,12 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               Object {
                 "payload": "rovercode console started",
                 "type": "APPEND",
+              },
+            ],
+            Array [
+              Object {
+                "payload": Promise {},
+                "type": "CREATE_PROGRAM",
               },
             ],
           ],
@@ -184,7 +184,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           "hooks": undefined,
         }
       }
-      fetchProgram={[Function]}
+      createProgram={[Function]}
       saveProgram={[Function]}
       store={
         Object {
@@ -211,12 +211,6 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               ],
               Array [
                 Object {
-                  "payload": Promise {},
-                  "type": "FETCH_PROGRAM",
-                },
-              ],
-              Array [
-                Object {
                   "type": "CLEAR",
                 },
               ],
@@ -224,6 +218,12 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 Object {
                   "payload": "rovercode console started",
                   "type": "APPEND",
+                },
+              ],
+              Array [
+                Object {
+                  "payload": Promise {},
+                  "type": "CREATE_PROGRAM",
                 },
               ],
             ],
@@ -294,12 +294,6 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 ],
                 Array [
                   Object {
-                    "payload": Promise {},
-                    "type": "FETCH_PROGRAM",
-                  },
-                ],
-                Array [
-                  Object {
                     "type": "CLEAR",
                   },
                 ],
@@ -307,6 +301,12 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                   Object {
                     "payload": "rovercode console started",
                     "type": "APPEND",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": Promise {},
+                    "type": "CREATE_PROGRAM",
                   },
                 ],
               ],

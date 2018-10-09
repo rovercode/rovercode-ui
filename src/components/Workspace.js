@@ -11,6 +11,7 @@ import {
   updateXmlCode as actionUpdateXmlCode,
   changeExecutionState as actionChangeExecutionState,
   saveProgram as actionSaveProgram,
+  createProgram as actionCreateProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
@@ -33,6 +34,14 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
       },
     });
     return dispatch(saveProgramAction);
+  },
+  createProgram: (name) => {
+    const createProgramAction = actionCreateProgram(name, {
+      headers: {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      },
+    });
+    return dispatch(createProgramAction);
   },
 });
 
@@ -322,7 +331,12 @@ class Workspace extends Component {
   }
 
   loadDesign = (xmlCode) => {
+    const { createProgram } = this.props;
+
     if (!xmlCode) {
+      // No program already loaded, create a new one
+      const number = (Math.floor(Math.random() * 1000));
+      createProgram(`Unnamed_Design_${number}`);
       return;
     }
 
@@ -353,6 +367,7 @@ Workspace.propTypes = {
   writeToConsole: PropTypes.func.isRequired,
   clearConsole: PropTypes.func.isRequired,
   saveProgram: PropTypes.func.isRequired,
+  createProgram: PropTypes.func.isRequired,
 };
 
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));
