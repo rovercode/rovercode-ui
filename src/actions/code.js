@@ -9,6 +9,9 @@ export const FETCH_PROGRAM_REJECTED = `${FETCH_PROGRAM}_REJECTED`;
 export const SAVE_PROGRAM = 'SAVE_PROGRAM';
 export const SAVE_PROGRAM_FULFILLED = `${SAVE_PROGRAM}_FULFILLED`;
 export const SAVE_PROGRAM_REJECTED = `${SAVE_PROGRAM}_REJECTED`;
+export const CREATE_PROGRAM = 'CREATE_PROGRAM';
+export const CREATE_PROGRAM_FULFILLED = `${CREATE_PROGRAM}_FULFILLED`;
+export const CREATE_PROGRAM_REJECTED = `${CREATE_PROGRAM}_REJECTED`;
 
 export const UPDATE_JSCODE = 'UPDATE_JSCODE';
 export const UPDATE_XMLCODE = 'UPDATE_XMLCODE';
@@ -61,6 +64,17 @@ export const saveProgram = (id, content, name, xhroptions) => ({
   payload: axios.put(`/api/v1/block-diagrams/${id}/`, {
     content,
     name,
+  }, xhroptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const createProgram = (name, xhroptions) => ({
+  type: CREATE_PROGRAM,
+  payload: axios.post('/api/v1/block-diagrams/', {
+    name,
+    content: '<xml></xml>',
   }, xhroptions)
     .then(({ data }) => (
       data

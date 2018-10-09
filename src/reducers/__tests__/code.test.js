@@ -12,6 +12,9 @@ import {
   SAVE_PROGRAM,
   SAVE_PROGRAM_FULFILLED,
   SAVE_PROGRAM_REJECTED,
+  CREATE_PROGRAM,
+  CREATE_PROGRAM_FULFILLED,
+  CREATE_PROGRAM_REJECTED,
 } from '../../actions/code';
 
 describe('The code reducer', () => {
@@ -162,6 +165,54 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       isSaving: false,
+      error: { detail },
+    });
+  });
+
+  test('should handle CREATE_PROGRAM', () => {
+    expect(
+      reducer({}, {
+        type: CREATE_PROGRAM,
+      }),
+    ).toEqual({
+      isCreating: true,
+    });
+  });
+
+  test('should handle CREATE_PROGRAM_FULFILLED', () => {
+    const id = 1;
+    const name = 'mybd';
+    const xmlCode = '<xml></xml>';
+
+    expect(
+      reducer({}, {
+        type: CREATE_PROGRAM_FULFILLED,
+        payload: {
+          name,
+          id,
+          content: xmlCode,
+        },
+      }),
+    ).toEqual({
+      isCreating: false,
+      name,
+      id,
+      xmlCode,
+    });
+  });
+
+  test('should handle CREATE_PROGRAM_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: CREATE_PROGRAM_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isCreating: false,
       error: { detail },
     });
   });

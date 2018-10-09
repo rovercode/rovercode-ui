@@ -8,6 +8,7 @@ import {
   changeId,
   fetchProgram,
   saveProgram,
+  createProgram,
   EXECUTION_RUN,
 } from '../code';
 
@@ -92,6 +93,26 @@ describe('Code actions', () => {
     const payload = await action.payload;
 
     expect(type).toEqual('SAVE_PROGRAM');
+    expect(payload).toEqual(program);
+    mock.restore();
+  });
+
+  test('create program', async () => {
+    const mock = new MockAdapter(axios);
+    const program = {
+      name: 'mybd',
+    };
+
+    mock.onPost('/api/v1/block-diagrams/', {
+      name: program.name,
+      content: '<xml></xml>',
+    }).reply(200, program);
+
+    const action = createProgram(program.name);
+    const { type } = action;
+    const payload = await action.payload;
+
+    expect(type).toEqual('CREATE_PROGRAM');
     expect(payload).toEqual(program);
     mock.restore();
   });

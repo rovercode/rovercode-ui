@@ -10,6 +10,9 @@ import {
   SAVE_PROGRAM,
   SAVE_PROGRAM_FULFILLED,
   SAVE_PROGRAM_REJECTED,
+  CREATE_PROGRAM,
+  CREATE_PROGRAM_FULFILLED,
+  CREATE_PROGRAM_REJECTED,
 } from '../actions/code';
 
 export default function code(
@@ -21,6 +24,7 @@ export default function code(
     id: null,
     isFetching: false,
     isSaving: false,
+    isCreating: false,
     error: null,
   },
   action,
@@ -87,6 +91,25 @@ export default function code(
       return {
         ...state,
         isSaving: false,
+        error: action.payload,
+      };
+    case CREATE_PROGRAM:
+      return {
+        ...state,
+        isCreating: true,
+      };
+    case CREATE_PROGRAM_FULFILLED:
+      return {
+        ...state,
+        isCreating: false,
+        xmlCode: action.payload.content,
+        id: action.payload.id,
+        name: action.payload.name,
+      };
+    case CREATE_PROGRAM_REJECTED:
+      return {
+        ...state,
+        isCreating: false,
         error: action.payload,
       };
     default:
