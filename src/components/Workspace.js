@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
+import { withCookies } from 'react-cookie';
 import Interpreter from 'js-interpreter';
 
 import {
   updateJsCode as actionUpdateJsCode,
   updateXmlCode as actionUpdateXmlCode,
   changeExecutionState as actionChangeExecutionState,
+  saveProgram as actionSaveProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
@@ -18,12 +20,20 @@ import { append, clear } from '@/actions/console';
 import BlocklyApi from '@/utils/blockly-api';
 
 const mapStateToProps = ({ code }) => ({ code });
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, { cookies }) => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
   writeToConsole: message => dispatch(append(message)),
   clearConsole: () => dispatch(clear()),
   updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
+  saveProgram: (id, content, name) => {
+    const saveProgramAction = actionSaveProgram(id, content, name, {
+      headers: {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      },
+    });
+    return dispatch(saveProgramAction);
+  },
 });
 
 // TODO: rover API
@@ -200,6 +210,8 @@ class Workspace extends Component {
     const xmlCode = Blockly.Xml.domToText(xml);
 
     updateXmlCode(xmlCode);
+
+    return xmlCode;
   }
 
   updateJsCode = () => {
@@ -218,11 +230,17 @@ class Workspace extends Component {
     this.setState({
       interpreter: new Interpreter(code, this.api.initApi),
     });
+
+    return code;
   }
 
   updateCode = () => {
+    const { code, saveProgram } = this.props;
+
     this.updateJsCode();
-    this.updateXmlCode();
+    const xmlCode = this.updateXmlCode();
+
+    saveProgram(code.id, xmlCode, code.name);
   }
 
   beginSleep = (sleepTimeInMs) => {
@@ -334,6 +352,7 @@ Workspace.propTypes = {
   changeExecutionState: PropTypes.func.isRequired,
   writeToConsole: PropTypes.func.isRequired,
   clearConsole: PropTypes.func.isRequired,
+  saveProgram: PropTypes.func.isRequired,
 };
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Workspace));
+export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));

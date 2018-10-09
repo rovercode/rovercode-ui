@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Workspace component renders on the page with no errors 1`] = `
-<Connect(Workspace)
+<withCookies(Component)
   store={
     Object {
       "clearActions": [Function],
@@ -17,6 +17,18 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             Object {
               "payload": "test-dom-text",
               "type": "UPDATE_XMLCODE",
+            },
+          ],
+          Array [
+            Object {
+              "payload": Promise {},
+              "type": "SAVE_PROGRAM",
+            },
+          ],
+          Array [
+            Object {
+              "payload": Promise {},
+              "type": "FETCH_PROGRAM",
             },
           ],
           Array [
@@ -48,6 +60,14 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             "isThrow": false,
             "value": undefined,
           },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
         ],
       },
       "getActions": [Function],
@@ -57,13 +77,16 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
     }
   }
 >
-  <Workspace
-    changeExecutionState={[Function]}
-    clearConsole={[Function]}
-    code={
-      Object {
-        "execution": null,
-        "jsCode": "",
+  <Connect(Workspace)
+    allCookies={Object {}}
+    cookies={
+      Cookies {
+        "HAS_DOCUMENT_COOKIE": true,
+        "changeListeners": Array [
+          [Function],
+        ],
+        "cookies": Object {},
+        "hooks": undefined,
       }
     }
     store={
@@ -81,6 +104,18 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               Object {
                 "payload": "test-dom-text",
                 "type": "UPDATE_XMLCODE",
+              },
+            ],
+            Array [
+              Object {
+                "payload": Promise {},
+                "type": "SAVE_PROGRAM",
+              },
+            ],
+            Array [
+              Object {
+                "payload": Promise {},
+                "type": "FETCH_PROGRAM",
               },
             ],
             Array [
@@ -112,6 +147,14 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               "isThrow": false,
               "value": undefined,
             },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
           ],
         },
         "getActions": [Function],
@@ -120,17 +163,31 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         "subscribe": [Function],
       }
     }
-    storeSubscription={
-      Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
+  >
+    <Workspace
+      allCookies={Object {}}
+      changeExecutionState={[Function]}
+      clearConsole={[Function]}
+      code={
+        Object {
+          "execution": null,
+          "jsCode": "",
+        }
+      }
+      cookies={
+        Cookies {
+          "HAS_DOCUMENT_COOKIE": true,
+          "changeListeners": Array [
+            [Function],
+          ],
+          "cookies": Object {},
+          "hooks": undefined,
+        }
+      }
+      fetchProgram={[Function]}
+      saveProgram={[Function]}
+      store={
+        Object {
           "clearActions": [Function],
           "dispatch": [MockFunction] {
             "calls": Array [
@@ -144,6 +201,18 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 Object {
                   "payload": "test-dom-text",
                   "type": "UPDATE_XMLCODE",
+                },
+              ],
+              Array [
+                Object {
+                  "payload": Promise {},
+                  "type": "SAVE_PROGRAM",
+                },
+              ],
+              Array [
+                Object {
+                  "payload": Promise {},
+                  "type": "FETCH_PROGRAM",
                 },
               ],
               Array [
@@ -175,28 +244,120 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 "isThrow": false,
                 "value": undefined,
               },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
             ],
           },
           "getActions": [Function],
           "getState": [Function],
           "replaceReducer": [Function],
           "subscribe": [Function],
-        },
-        "unsubscribe": [Function],
-      }
-    }
-    updateJsCode={[Function]}
-    updateXmlCode={[Function]}
-    writeToConsole={[Function]}
-  >
-    <div
-      style={
-        Object {
-          "height": "480px",
-          "width": "600px",
         }
       }
-    />
-  </Workspace>
-</Connect(Workspace)>
+      storeSubscription={
+        Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "payload": "test-code",
+                    "type": "UPDATE_JSCODE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": "test-dom-text",
+                    "type": "UPDATE_XMLCODE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": Promise {},
+                    "type": "SAVE_PROGRAM",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": Promise {},
+                    "type": "FETCH_PROGRAM",
+                  },
+                ],
+                Array [
+                  Object {
+                    "type": "CLEAR",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": "rovercode console started",
+                    "type": "APPEND",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            },
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        }
+      }
+      updateJsCode={[Function]}
+      updateXmlCode={[Function]}
+      writeToConsole={[Function]}
+    >
+      <div
+        style={
+          Object {
+            "height": "480px",
+            "width": "600px",
+          }
+        }
+      />
+    </Workspace>
+  </Connect(Workspace)>
+</withCookies(Component)>
 `;
