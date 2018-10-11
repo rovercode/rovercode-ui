@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router';
 import { Header, Loader } from 'semantic-ui-react';
 import { shallow, mount } from 'enzyme';
 import RoverList from '../RoverList';
@@ -17,7 +18,11 @@ describe('The RoverList component', () => {
 
   test('fetches rovers on mount', async () => {
     fetchRovers = jest.fn();
-    await mount(<RoverList fetchRovers={fetchRovers} />);
+    await mount(
+      <MemoryRouter>
+        <RoverList fetchRovers={fetchRovers} />
+      </MemoryRouter>,
+    );
     expect(fetchRovers.mock.calls.length).toBe(1);
   });
 

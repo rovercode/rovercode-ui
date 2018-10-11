@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
@@ -30,11 +31,16 @@ describe('The MissionControl container', () => {
 
   test('renders on the page with no errors', () => {
     const context = { cookies };
-    wrapper = mount(<MissionControl store={store} />, {
-      context,
-      childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
-    });
+    wrapper = mount(
+      <MemoryRouter>
+        <MissionControl store={store} />
+      </MemoryRouter>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    );
+    const mcWrapper = wrapper.find(MissionControl);
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(toJson(mcWrapper)).toMatchSnapshot();
   });
 });

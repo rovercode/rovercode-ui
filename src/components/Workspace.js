@@ -3,24 +3,46 @@ import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
+import { withCookies } from 'react-cookie';
 import Interpreter from 'js-interpreter';
 
 import {
   updateJsCode as actionUpdateJsCode,
+  updateXmlCode as actionUpdateXmlCode,
   changeExecutionState as actionChangeExecutionState,
+  saveProgram as actionSaveProgram,
+  createProgram as actionCreateProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
   EXECUTION_RESET,
 } from '@/actions/code';
-import { append } from '@/actions/console';
+import { append, clear } from '@/actions/console';
 import BlocklyApi from '@/utils/blockly-api';
 
 const mapStateToProps = ({ code }) => ({ code });
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, { cookies }) => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
   writeToConsole: message => dispatch(append(message)),
+  clearConsole: () => dispatch(clear()),
+  updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
+  saveProgram: (id, content, name) => {
+    const saveProgramAction = actionSaveProgram(id, content, name, {
+      headers: {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      },
+    });
+    return dispatch(saveProgramAction);
+  },
+  createProgram: (name) => {
+    const createProgramAction = actionCreateProgram(name, {
+      headers: {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      },
+    });
+    return dispatch(createProgramAction);
+  },
 });
 
 // TODO: rover API
@@ -133,7 +155,7 @@ class Workspace extends Component {
   }
 
   componentDidMount() {
-    const { writeToConsole } = this.props;
+    const { code, clearConsole, writeToConsole } = this.props;
 
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
@@ -152,12 +174,13 @@ class Workspace extends Component {
       trashcan: true,
     });
 
-    workspace.addChangeListener(this.updateJsCode);
+    workspace.addChangeListener(this.updateCode);
 
     this.setState({
       workspace,
-    });
+    }, () => this.loadDesign(code.xmlCode));
 
+    clearConsole();
     writeToConsole('rovercode console started');
   }
 
@@ -188,6 +211,18 @@ class Workspace extends Component {
     }
   }
 
+  updateXmlCode = () => {
+    const { updateXmlCode } = this.props;
+    const { workspace } = this.state;
+
+    const xml = Blockly.Xml.workspaceToDom(workspace);
+    const xmlCode = Blockly.Xml.domToText(xml);
+
+    updateXmlCode(xmlCode);
+
+    return xmlCode;
+  }
+
   updateJsCode = () => {
     const { updateJsCode } = this.props;
     const { workspace } = this.state;
@@ -204,10 +239,17 @@ class Workspace extends Component {
     this.setState({
       interpreter: new Interpreter(code, this.api.initApi),
     });
+
+    return code;
   }
 
   updateCode = () => {
+    const { code, saveProgram } = this.props;
+
     this.updateJsCode();
+    const xmlCode = this.updateXmlCode();
+
+    saveProgram(code.id, xmlCode, code.name);
   }
 
   beginSleep = (sleepTimeInMs) => {
@@ -288,6 +330,26 @@ class Workspace extends Component {
     }
   }
 
+  loadDesign = (xmlCode) => {
+    const { createProgram } = this.props;
+
+    if (!xmlCode) {
+      // No program already loaded, create a new one
+      const number = (Math.floor(Math.random() * 1000));
+      createProgram(`Unnamed_Design_${number}`);
+      return;
+    }
+
+    const { workspace } = this.state;
+
+    workspace.clear();
+
+    const xmlDom = Blockly.Xml.textToDom(xmlCode);
+    Blockly.Xml.domToWorkspace(workspace, xmlDom);
+
+    this.updateCode();
+  }
+
   render() {
     return (
       <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ height: '480px', width: '600px' }} />
@@ -300,8 +362,12 @@ Workspace.propTypes = {
     jsCode: PropTypes.string,
   }).isRequired,
   updateJsCode: PropTypes.func.isRequired,
+  updateXmlCode: PropTypes.func.isRequired,
   changeExecutionState: PropTypes.func.isRequired,
   writeToConsole: PropTypes.func.isRequired,
+  clearConsole: PropTypes.func.isRequired,
+  saveProgram: PropTypes.func.isRequired,
+  createProgram: PropTypes.func.isRequired,
 };
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Workspace));
+export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));

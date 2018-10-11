@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { Header, Loader } from 'semantic-ui-react';
+import { Button, Header, Loader } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class RoverList extends Component {
@@ -21,6 +22,11 @@ class RoverList extends Component {
               </Header>
             )
         }
+        <Link to="/mission-control">
+          <Button>
+            Mission Control
+          </Button>
+        </Link>
       </Fragment>
     );
   }
