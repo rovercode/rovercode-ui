@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
-import { Link } from 'react-router-dom';
-
 import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
 import Indicator from '@/components/Indicator';
 import Workspace from '@/components/Workspace';
+import ChatApp from '../components/ChatApp'
 
 const MissionControl = () => (
   <Grid columns={16} divided>
@@ -27,14 +26,6 @@ const MissionControl = () => (
         <Grid.Row>
           <Control />
         </Grid.Row>
-        <hr />
-        <Grid.Row>
-          <Link to="/">
-            <Button>
-              Home
-            </Button>
-          </Link>
-        </Grid.Row>
       </Grid.Column>
       <Grid.Column width={4}>
         <Grid.Row>
@@ -44,8 +35,14 @@ const MissionControl = () => (
           <Indicator />
         </Grid.Row>
       </Grid.Column>
+      <Grid.Column width={6}>
+        <ChatApp></ChatApp>
+      </Grid.Column>
     </Grid.Row>
   </Grid>
 );
+
+
+
 
 export default hot(module)(MissionControl);
