@@ -16,6 +16,7 @@ export default class ChatWidget extends React.Component {
     }
   }
 
+  
   componentDidMount() {
     //destructure props into clientID and sessionID
     let {clientId, sessionId} = this.props;

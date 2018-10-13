@@ -2,9 +2,18 @@ import React from 'react'
 import { Button, Card, Select } from 'semantic-ui-react'
 import ChatWidget from './ChatWidget'
 import ChatForm from './ChatForm'
+import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
+import { hot } from 'react-hot-loader';
+import {setSessionId, setClientId, toggleForms} from '../actions/chatapp'
 
+// const mapStateToProps = ({ chatapp }) => ({ chatapp });
+// const mapDispatchToProps = dispatch => ({
+//   toggleforms: () => dispatch(toggleForms()),
+  
+// });
 
-export default class ChatApp extends React.Component {
+class ChatApp extends React.Component {
 
   constructor(props){
       super(props)
@@ -24,6 +33,10 @@ export default class ChatApp extends React.Component {
   }
 
   toggleForms () {
+    // const { toggleforms} = this.props;
+    // toggleforms();
+
+    //OLD CODE
     this.setState({
       formHidden: !this.state.formHidden,
       chatHidden: !this.state.chatHidden
@@ -51,7 +64,7 @@ export default class ChatApp extends React.Component {
   
   render(){
     return(
-      <div style={{marginTop:20, marginLeft:40}} >
+      <div style={{marginTop:20, marginLeft:40, minWidth:300}} >
         <Card>
           <Card.Content>
             {this.state.chatHidden && !this.state.formHidden ? 
@@ -70,3 +83,10 @@ export default class ChatApp extends React.Component {
     );
   }
 }
+
+// ChatApp.propTypes={
+  
+// }
+
+//export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(ChatApp));
+export default ChatApp;
