@@ -35,7 +35,9 @@ class ChatWidget extends React.Component {
     //handle message
     this.socket.onmessage = m =>{
       //TODO: implement check here from if m.data.clientID == this.state.clientID
-      this.processIncoming(m);
+      if (!m.data.sender == this.props.clientId){
+        this.processIncoming(m);
+      }
     }
     addResponseMessage("Finding someone to assist you with your code :)");   
   }
@@ -57,7 +59,7 @@ class ChatWidget extends React.Component {
     // Now send the message throught the backend API
     let msg = JSON.stringify({
         message: newMessage,
-        user: this.props.clientId
+        sender: this.props.clientId
     })
     this.socket.send(msg)    
   }
