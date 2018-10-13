@@ -7,13 +7,13 @@ export const toggleForms = () =>({
     type: TOGGLE_FORMS,
 });
 
-export const setClientID = (clientid) =>({
+export const setClientID = id =>({
     type: SET_CLIENT_ID,
-    clientID: clientId,
+    payload: id,
 })
 
-export const setSessionID = (sessionid) =>({
+export const setSessionID = id =>({
     type: SET_SESSION_ID,
-    sessionID: sessionId,
+    payload: id,
 })
 

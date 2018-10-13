@@ -10,14 +10,16 @@ export default function chatapp (
 ) {
     switch(action.type){
         case SET_CLIENT_ID:
+        console.log("Here is action")
+        console.log(action)
             return{
                 ...state,
-                clientId: action.clientId
+                clientId: action.payload
             };
         case SET_SESSION_ID:
             return {
                 ...state,
-                sessionId: action.sessionId
+                sessionId: action.payload
             };
         case TOGGLE_FORMS:
             return{

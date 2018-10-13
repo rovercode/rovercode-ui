@@ -1,5 +1,16 @@
 import React from 'react'
 import { Button, Card, Select } from 'semantic-ui-react'
+import {selectChange as actionSelectChange} from '../actions/chatform'
+import { hot } from 'react-hot-loader';
+import {connect} from 'react-redux'
+
+
+
+const mapStateToProps = ({ chatform }) => ({ chatform });
+const mapDispatchToProps = dispatch => ({
+  selectchange: () => dispatch(actionSelectChange()),
+});
+
 
 const helpOptions = [
     {
@@ -19,25 +30,22 @@ const helpOptions = [
     }
   ];
 
-
-export default class ChatAForm extends React.Component {
+class ChatForm extends React.Component {
 
     constructor(props){
-        super(props)
-        this.state = {
-            selectvalue: "select"
-        }
+        super(props);
     }
 
     selectChange = () =>{
-        this.setState({selectValue:event.target.value})
+        const {selectchange} = this.props;
+        selectchange();
     }
 
     render(){
         return(
             <div><Card.Header>Need help?</Card.Header>
               <label>Select the issue you are having</label>
-              <Select placeholder='Example: Logic Issues'options={helpOptions} onChange={this.selectChange} value={this.state.selectValue}/>
+              <Select placeholder='Example: Logic Issues'options={helpOptions} onChange={this.selectChange} value={this.props.chatform.selectValue}/>
               <br />
               <br />
               <Button className="ui primary button" onClick={this.props.toggleForms}>Submit</Button>
@@ -46,3 +54,5 @@ export default class ChatAForm extends React.Component {
     }
 
 }
+
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(ChatForm));
