@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'semantic-ui-react';
+import { Confirm, Input } from 'semantic-ui-react';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
@@ -33,6 +33,7 @@ describe('The Console component', () => {
   test('displays name', () => {
     const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
 
+    expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(wrapper.find(Input).length).toBe(1);
     expect(wrapper.find(Input).props().defaultValue).toBe('test name');
   });
@@ -43,15 +44,41 @@ describe('The Console component', () => {
     wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
     wrapper.update();
 
+    expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(wrapper.find(Input).props().defaultValue).toBe('new name');
   });
 
-  test('handles save', () => {
+  test('handles save cancel', () => {
     const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
 
+    // User opens save confirmation modal
     wrapper.find(Input).props().action.onClick();
     wrapper.update();
 
+    expect(wrapper.find(Confirm).prop('open')).toBe(true);
+
+    // User clicks 'cancel'
+    wrapper.find(Confirm).prop('onCancel')();
+    wrapper.update();
+
+    expect(wrapper.find(Confirm).prop('open')).toBe(false);
+    expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
+  test('handles save confirm', () => {
+    const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
+
+    // User opens save confirmation modal
+    wrapper.find(Input).props().action.onClick();
+    wrapper.update();
+
+    expect(wrapper.find(Confirm).prop('open')).toBe(true);
+
+    // User clicks 'OK'
+    wrapper.find(Confirm).prop('onConfirm')();
+    wrapper.update();
+
+    expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(store.dispatch).toHaveBeenCalled();
     expect(store.dispatch).toHaveBeenCalledWith(changeName('test name'));
   });

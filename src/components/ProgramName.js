@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Input } from 'semantic-ui-react';
+import React, { Component, Fragment } from 'react';
+import { Confirm, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
@@ -24,6 +24,7 @@ class Console extends Component {
     super(props);
 
     this.state = {
+      confirmOpen: false,
       editingName: null,
       previousPropName: null, // eslint-disable-line react/no-unused-state
     };
@@ -43,30 +44,43 @@ class Console extends Component {
     return null;
   }
 
+  closeConfirm = () => this.setState({ confirmOpen: false })
+
+  openConfirm = () => this.setState({ confirmOpen: true })
+
   handleChange = (e) => {
     this.setState({
       editingName: e.target.value,
     });
   }
 
-  handleClick = () => {
+  handleSave = () => {
     const { changeName, code } = this.props;
     const { editingName } = this.state;
 
     changeName(code.id, editingName);
+    this.closeConfirm();
   }
 
   render() {
-    const { editingName } = this.state;
+    const { confirmOpen, editingName } = this.state;
 
     return (
-      <Input
-        type="text"
-        label="Name:"
-        defaultValue={editingName}
-        onChange={this.handleChange}
-        action={{ content: 'Save', onClick: this.handleClick }}
-      />
+      <Fragment>
+        <Input
+          type="text"
+          label="Name:"
+          defaultValue={editingName}
+          onChange={this.handleChange}
+          action={{ content: 'Save', onClick: this.openConfirm }}
+        />
+        <Confirm
+          content="Are you sure that you want to change the name of this program?"
+          open={confirmOpen}
+          onCancel={this.closeConfirm}
+          onConfirm={this.handleSave}
+        />
+      </Fragment>
     );
   }
 }
