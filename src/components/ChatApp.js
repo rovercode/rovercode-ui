@@ -47,10 +47,6 @@ class ChatApp extends React.Component {
 
   }
 
-  registerChatSession(){
- 
-  }
-
   idGenerator() {
     let S4 = function() {
         return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
@@ -69,6 +65,7 @@ class ChatApp extends React.Component {
               : 
               <div>
                 <ChatWidget clientId={this.props.chatapp.clientId} sessionId={this.props.chatapp.sessionId}></ChatWidget>
+
                 <br />
                 <br />
                 <Button className="ui negative button" onClick={this.toggleForms.bind(this)}>Cancel chat</Button> 
@@ -82,3 +79,4 @@ class ChatApp extends React.Component {
 }
 
 export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(ChatApp));
+

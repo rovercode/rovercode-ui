@@ -15,12 +15,15 @@ class ChatWidget extends React.Component {
 
   constructor(props){
     super(props);  
+
   }
 
   componentDidMount() {
     //destructure props into clientID and sessionID
     let {clientId, sessionId} = this.props;
+
     toggleInputDisabled();
+
     //manually toggle widget -
     toggleWidget();
     //Shouldnt need this drop messages thing but safe for now
@@ -29,12 +32,14 @@ class ChatWidget extends React.Component {
     //create WS connection
     this.socket = new WebSocket(`ws://localhost:8000/ws/support/${sessionId}/`);
 
+
     //handle message
     this.socket.onmessage = m =>{
       //TODO: implement check here from if m.data.clientID == this.state.clientID
       if (!m.data.sender == this.props.clientId){
         this.processIncoming(m);
       }
+
     }
     addResponseMessage("Finding someone to assist you with your code :)");   
   }
@@ -77,3 +82,4 @@ class ChatWidget extends React.Component {
   } 
 }
 export default hot(module)(connect(mapStateToProps)(ChatWidget));
+

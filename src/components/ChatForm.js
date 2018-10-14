@@ -60,6 +60,7 @@ class ChatForm extends React.Component {
         super(props);
     }
 
+    //action creators
     categorySelectChange = (event, data) =>{
       const payload = data.value;
       const {categoryselectchange} = this.props;
@@ -109,23 +110,18 @@ class ChatForm extends React.Component {
 
     postData = (data) => {
       const { cookies } = this.props;
-
-
       var headers = {
         'Content-Type': 'application/json',
         'Authorization': `JWT ${cookies.get('auth_jwt')}`
       }
-
       return axios.post('/api/v1/support-requests/', data, {headers:headers})
-        .then((response) => {
+        .then(() => {
           this.props.toggleForms();
         })
         .catch(() => {
             alert("Error: unable to reach server with help request. Please try again later. ")
         });
-      }
-
-
+    }
 
     render(){
         return(
@@ -149,7 +145,6 @@ class ChatForm extends React.Component {
             </div>
         )
     }
-
 }
 
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(ChatForm)));
