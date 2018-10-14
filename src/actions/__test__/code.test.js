@@ -38,12 +38,28 @@ describe('Code actions', () => {
     expect(payload).toEqual(EXECUTION_RUN);
   });
 
-  test('changeName', () => {
-    const action = changeName('test name');
-    const { type, payload } = action;
+  test('changeName', async () => {
+    const mock = new MockAdapter(axios);
+    const program = {
+      id: 1,
+      name: 'test name',
+      content: '<xml></xml>',
+      user: 1,
+    };
+    const name = {
+      name: 'test name',
+    };
+
+    mock.onPatch('/api/v1/block-diagrams/1/', name).reply(200, program);
+
+    const action = changeName(1, 'test name');
+    const { type } = action;
+    const payload = await action.payload;
 
     expect(type).toEqual('CHANGE_NAME');
-    expect(payload).toEqual('test name');
+    expect(payload).toEqual(program);
+
+    mock.restore();
   });
 
   test('changeId', () => {
