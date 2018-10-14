@@ -61,7 +61,7 @@ class ChatApp extends React.Component {
   
   render(){
     return(
-      <div style={{marginTop:20, marginLeft:40, minWidth:300}} >
+      <div style={{marginTop:20, marginLeft:40, minWidth:400}} >
         <Card>
           <Card.Content>
             {this.props.chatapp.chatHidden && !this.props.chatapp.formHidden ? 

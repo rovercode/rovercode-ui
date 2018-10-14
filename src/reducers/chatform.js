@@ -1,15 +1,33 @@
-import { SELECT_CHANGE } from '../actions/chatform';
+import { CATEGORY_SELECT_CHANGE, BODY_INPUT_CHANGE, EXPERIENCE_SELECT_CHANGE, SUBJECT_INPUT_CHANGE } from '../actions/chatform';
 
 export default function chatapp(
     state ={
-        selectValue: null
+        subjectValue: "",
+        bodyValue: "",
+        experienceValue: "",
+        categoryValue:"",
     }, action,
 ) {
     switch(action.type){
-        case SELECT_CHANGE:
+        case CATEGORY_SELECT_CHANGE:
             return{
                 ...state,
-                selectValue: action.selectVal
+                categoryValue: action.payload
+            };
+        case SUBJECT_INPUT_CHANGE:
+            return{
+                ...state,
+                subjectValue: action.payload
+            };
+        case BODY_INPUT_CHANGE:
+            return{
+                ...state,
+                bodyValue: action.payload
+            };
+        case EXPERIENCE_SELECT_CHANGE:
+            return{
+                ...state,
+                experienceValue: action.payload
             };
         default:
             return state;

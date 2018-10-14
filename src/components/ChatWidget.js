@@ -8,11 +8,8 @@ import {dropMessages} from 'react-chat-widget'
 import {connect} from 'react-redux'
 import { hot } from 'react-hot-loader';
 
-
 let firstresp=false;
 const mapStateToProps = ({ chatapp }) => ({ chatapp });
-
-
 
 class ChatWidget extends React.Component {
 
@@ -30,7 +27,7 @@ class ChatWidget extends React.Component {
     dropMessages();
 
     //create WS connection
-    this.socket = new WebSocket(`ws://localhost:8000/ws/realtime/${sessionId}/`);
+    this.socket = new WebSocket(`ws://localhost:8000/ws/support/${sessionId}/`);
 
     //handle message
     this.socket.onmessage = m =>{
