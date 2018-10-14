@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Console component renders on the page with no errors 1`] = `
+<withCookies(Component)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Console)
+    allCookies={Object {}}
+    cookies={
+      Cookies {
+        "HAS_DOCUMENT_COOKIE": true,
+        "changeListeners": Array [
+          [Function],
+        ],
+        "cookies": Object {},
+        "hooks": undefined,
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <Console
+      allCookies={Object {}}
+      changeName={[Function]}
+      code={
+        Object {
+          "name": "test name",
+        }
+      }
+      cookies={
+        Cookies {
+          "HAS_DOCUMENT_COOKIE": true,
+          "changeListeners": Array [
+            [Function],
+          ],
+          "cookies": Object {},
+          "hooks": undefined,
+        }
+      }
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [MockFunction],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+      storeSubscription={
+        Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [MockFunction],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        }
+      }
+    >
+      <Input
+        action={
+          Object {
+            "content": "Save",
+            "onClick": [Function],
+          }
+        }
+        defaultValue="test name"
+        label="Name:"
+        onChange={[Function]}
+        type="text"
+      >
+        <div
+          className="ui action labeled input"
+        >
+          <Label
+            className="label"
+            content="Name:"
+          >
+            <div
+              className="ui label label"
+              onClick={[Function]}
+            >
+              Name:
+            </div>
+          </Label>
+          <input
+            defaultValue="test name"
+            onChange={[Function]}
+            type="text"
+          />
+          <Button
+            as="button"
+            content="Save"
+            onClick={[Function]}
+            role="button"
+          >
+            <button
+              className="ui button"
+              onClick={[Function]}
+              role="button"
+            >
+              Save
+            </button>
+          </Button>
+        </div>
+      </Input>
+    </Console>
+  </Connect(Console)>
+</withCookies(Component)>
+`;
