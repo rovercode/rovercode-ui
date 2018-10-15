@@ -10,8 +10,6 @@ export default function chatapp (
 ) {
     switch(action.type){
         case SET_CLIENT_ID:
-        console.log("Here is action")
-        console.log(action)
             return{
                 ...state,
                 clientId: action.payload
