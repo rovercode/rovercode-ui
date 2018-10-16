@@ -13,6 +13,7 @@ import rootReducer from './reducers/index';
 
 import NotFound from './containers/Global/NotFound';
 import RoverList from './containers/RoverList';
+import ProgramList from './containers/ProgramList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 
@@ -39,6 +40,7 @@ render(
           <Route path="/accounts" component={Accounts} />
           <Route exact path="/" component={RoverList} />
           <Route exact path="/mission-control" component={MissionControl} />
+          <Route exact path="/programs" component={ProgramList} />
           <Route component={NotFound} />
         </Switch>
       </CookiesProvider>
