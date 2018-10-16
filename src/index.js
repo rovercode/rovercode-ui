@@ -16,9 +16,8 @@ import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable-next-line no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-/* eslint-enable */
 const reduxMiddleware = composeEnhancers(
   applyMiddleware(
     thunk,
