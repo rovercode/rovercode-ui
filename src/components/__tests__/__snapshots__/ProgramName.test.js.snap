@@ -87,19 +87,13 @@ exports[`The Console component renders on the page with no errors 1`] = `
       }
     >
       <Input
-        action={
-          Object {
-            "content": "Save",
-            "onClick": [Function],
-          }
-        }
         defaultValue="test name"
         label="Name:"
         onChange={[Function]}
         type="text"
       >
         <div
-          className="ui action labeled input"
+          className="ui labeled input"
         >
           <Label
             className="label"
@@ -117,20 +111,6 @@ exports[`The Console component renders on the page with no errors 1`] = `
             onChange={[Function]}
             type="text"
           />
-          <Button
-            as="button"
-            content="Save"
-            onClick={[Function]}
-            role="button"
-          >
-            <button
-              className="ui button"
-              onClick={[Function]}
-              role="button"
-            >
-              Save
-            </button>
-          </Button>
         </div>
       </Input>
       <Confirm

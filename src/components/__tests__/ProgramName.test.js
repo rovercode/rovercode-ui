@@ -46,10 +46,14 @@ describe('The Console component', () => {
 
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(wrapper.find(Input).props().defaultValue).toBe('new name');
+    expect(wrapper.find(Input).props().action).toBeDefined();
   });
 
   test('handles save cancel', () => {
     const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
+
+    wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
+    wrapper.update();
 
     // User opens save confirmation modal
     wrapper.find(Input).props().action.onClick();
@@ -67,6 +71,9 @@ describe('The Console component', () => {
 
   test('handles save confirm', () => {
     const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
+
+    wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
+    wrapper.update();
 
     // User opens save confirmation modal
     wrapper.find(Input).props().action.onClick();

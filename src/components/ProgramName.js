@@ -63,7 +63,18 @@ class Console extends Component {
   }
 
   render() {
-    const { confirmOpen, editingName } = this.state;
+    const { confirmOpen, editingName, previousPropName } = this.state;
+    let actionProp = {};
+
+    // Only show `Save` when the name has changed
+    if (editingName !== previousPropName) {
+      actionProp = {
+        action: {
+          content: 'Save',
+          onClick: this.openConfirm,
+        },
+      };
+    }
 
     return (
       <Fragment>
@@ -72,7 +83,7 @@ class Console extends Component {
           label="Name:"
           defaultValue={editingName}
           onChange={this.handleChange}
-          action={{ content: 'Save', onClick: this.openConfirm }}
+          {...actionProp}
         />
         <Confirm
           content="Are you sure that you want to change the name of this program?"
