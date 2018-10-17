@@ -2,6 +2,8 @@ import reducer from '../chatapp'
 import { TOGGLE_FORMS, SET_SESSION_ID, SET_CLIENT_ID} from '../../actions/chatapp'
 
 describe('The chatform reducer', () => {
+
+    //TODO: Figure out why chatHidden and formHidden both equal to true?
     // test('should handle TOGGLE_FORM', () => {
     //     expect(
     //     reducer({}, {
