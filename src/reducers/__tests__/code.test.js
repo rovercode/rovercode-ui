@@ -5,6 +5,8 @@ import {
   UPDATE_JSCODE,
   UPDATE_XMLCODE,
   CHANGE_NAME,
+  CHANGE_NAME_FULFILLED,
+  CHANGE_NAME_REJECTED,
   CHANGE_ID,
   FETCH_PROGRAM,
   FETCH_PROGRAM_FULFILLED,
@@ -55,10 +57,41 @@ describe('The code reducer', () => {
     expect(
       reducer({}, {
         type: CHANGE_NAME,
-        payload: 'test name',
       }),
     ).toEqual({
-      name: 'test name',
+      isChangingName: true,
+    });
+  });
+
+  test('should handle CHANGE_NAME_FULFILLED', () => {
+    const name = 'mybd';
+
+    expect(
+      reducer({}, {
+        type: CHANGE_NAME_FULFILLED,
+        payload: {
+          name,
+        },
+      }),
+    ).toEqual({
+      isChangingName: false,
+      name,
+    });
+  });
+
+  test('should handle CHANGE_NAME_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: CHANGE_NAME_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isChangingName: false,
+      error: { detail },
     });
   });
 
