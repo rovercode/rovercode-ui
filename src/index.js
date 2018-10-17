@@ -16,10 +16,14 @@ import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 
-const reduxMiddleware = applyMiddleware(
-  thunk,
-  createLogger(),
-  promiseMiddleware(),
+/* eslint-disable-next-line no-underscore-dangle */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const reduxMiddleware = composeEnhancers(
+  applyMiddleware(
+    thunk,
+    createLogger(),
+    promiseMiddleware(),
+  ),
 );
 
 const store = createStore(rootReducer, reduxMiddleware);
