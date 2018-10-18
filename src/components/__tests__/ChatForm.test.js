@@ -17,7 +17,7 @@ describe('The ChatForm component', () => {
 
   beforeEach(() => {
     store = mockStore({
-      code: {
+      chatform: {
         toggleForms: () => {},
         bodyValue: 'foobar',
         experienceValue: 'foobar',
