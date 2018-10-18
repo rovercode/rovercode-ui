@@ -14,7 +14,7 @@ export default function chatapp(
     case SET_CLIENT_ID:
       return {
         ...state,
-        clientId: action.payload
+        clientId: action.payload,
       };
     case SET_SESSION_ID:
       return {
