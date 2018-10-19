@@ -3,6 +3,8 @@ import {
   UPDATE_JSCODE,
   UPDATE_XMLCODE,
   CHANGE_NAME,
+  CHANGE_NAME_FULFILLED,
+  CHANGE_NAME_REJECTED,
   CHANGE_ID,
   FETCH_PROGRAM,
   FETCH_PROGRAM_FULFILLED,
@@ -25,6 +27,7 @@ export default function code(
     isFetching: false,
     isSaving: false,
     isCreating: false,
+    isChangingName: false,
     error: null,
   },
   action,
@@ -48,7 +51,19 @@ export default function code(
     case CHANGE_NAME:
       return {
         ...state,
-        name: action.payload,
+        isChangingName: true,
+      };
+    case CHANGE_NAME_FULFILLED:
+      return {
+        ...state,
+        isChangingName: false,
+        name: action.payload.name,
+      };
+    case CHANGE_NAME_REJECTED:
+      return {
+        ...state,
+        isChangingName: false,
+        error: action.payload,
       };
     case CHANGE_ID:
       return {

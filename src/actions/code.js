@@ -17,6 +17,8 @@ export const UPDATE_JSCODE = 'UPDATE_JSCODE';
 export const UPDATE_XMLCODE = 'UPDATE_XMLCODE';
 export const CHANGE_EXECUTION_STATE = 'CHANGE_EXECUTION_STATE';
 export const CHANGE_NAME = 'CHANGE_NAME';
+export const CHANGE_NAME_FULFILLED = `${CHANGE_NAME}_FULFILLED`;
+export const CHANGE_NAME_REJECTED = `${CHANGE_NAME}_REJECTED`;
 export const CHANGE_ID = 'CHANGE_ID';
 
 // Execution States
@@ -41,9 +43,14 @@ export const changeExecutionState = state => ({
   payload: state,
 });
 
-export const changeName = name => ({
+export const changeName = (id, name, xhroptions) => ({
   type: CHANGE_NAME,
-  payload: name,
+  payload: axios.patch(`/api/v1/block-diagrams/${id}/`, {
+    name,
+  }, xhroptions)
+    .then(({ data }) => (
+      data
+    )),
 });
 
 export const changeId = id => ({
