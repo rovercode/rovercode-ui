@@ -11,6 +11,7 @@ jest.mock('@/components/CodeViewer', () => () => <div />);
 jest.mock('@/components/Console', () => () => <div />);
 jest.mock('@/components/Control', () => () => <div />);
 jest.mock('@/components/Indicator', () => () => <div />);
+jest.mock('@/components/ProgramName', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
 
 const cookiesValues = { auth_jwt: '1234' };
