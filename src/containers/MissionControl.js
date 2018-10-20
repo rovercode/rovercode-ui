@@ -39,6 +39,11 @@ const MissionControl = () => (
               Home
             </Button>
           </Link>
+          <Link to="/programs">
+            <Button>
+              Programs
+            </Button>
+          </Link>
         </Grid.Row>
       </Grid.Column>
       <Grid.Column width={4}>

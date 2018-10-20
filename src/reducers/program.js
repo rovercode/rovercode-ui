@@ -1,5 +1,5 @@
 import {
-  FETCH_PROGRAMS,
+  FETCH_PROGRAMS_PENDING,
   FETCH_PROGRAMS_FULFILLED,
   FETCH_PROGRAMS_REJECTED,
 } from '../actions/program';
@@ -13,7 +13,7 @@ export default function programs(
   action,
 ) {
   switch (action.type) {
-    case FETCH_PROGRAMS:
+    case FETCH_PROGRAMS_PENDING:
       return {
         ...state,
         isFetching: true,

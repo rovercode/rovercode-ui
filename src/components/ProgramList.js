@@ -30,9 +30,11 @@ class ProgramList extends Component {
         }
 
         {programs && programs.map(program => (
-          <Button key={program.id} onClick={() => this.launchProgram(program.id)}>
-            {program.name}
-          </Button>
+          <Link key={program.id} to="/mission-control">
+            <Button onClick={() => this.launchProgram(program.id)}>
+              {program.name}
+            </Button>
+          </Link>
         ))}
 
         <Link to="/">

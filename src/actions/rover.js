@@ -4,6 +4,7 @@
 import axios from 'axios';
 
 export const FETCH_ROVERS = 'FETCH_ROVERS';
+export const FETCH_ROVERS_PENDING = `${FETCH_ROVERS}_PENDING`;
 export const FETCH_ROVERS_FULFILLED = `${FETCH_ROVERS}_FULFILLED`;
 export const FETCH_ROVERS_REJECTED = `${FETCH_ROVERS}_REJECTED`;
 

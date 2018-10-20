@@ -1,5 +1,5 @@
 import {
-  FETCH_ROVERS,
+  FETCH_ROVERS_PENDING,
   FETCH_ROVERS_FULFILLED,
   FETCH_ROVERS_REJECTED,
 } from '../actions/rover';
@@ -13,7 +13,7 @@ export default function rovers(
   action,
 ) {
   switch (action.type) {
-    case FETCH_ROVERS:
+    case FETCH_ROVERS_PENDING:
       return {
         ...state,
         isFetching: true,
