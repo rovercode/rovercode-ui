@@ -113,8 +113,9 @@ class ChatForm extends React.Component {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       };
       return axios.post('/api/v1/support-requests/', data, { headers })
-        .then(() => {
+        .then(({ response }) => {
           toggleForms();
+          console.log(`!!!!!! - ${response}`);
         })
         .catch(() => {
           alert('Error: unable to reach server with help request. Please try again later.');
@@ -170,7 +171,7 @@ ChatForm.propTypes = {
   experienceSelectChange: PropTypes.func.isRequired,
   toggleForms: PropTypes.func.isRequired,
   bodyValue: PropTypes.string.isRequired,
-  experienceValue: PropTypes.string.isRequired,
+  experienceValue: PropTypes.number.isRequired,
   subjectValue: PropTypes.string.isRequired,
   categoryValue: PropTypes.string.isRequired,
   cookies: PropTypes.instanceOf(Cookies).isRequired,

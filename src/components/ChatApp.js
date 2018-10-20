@@ -15,16 +15,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class ChatApp extends React.Component {
-  static idGenerator() {
-    const S4 = function() {
-      return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-    };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-  }
-
-  componentDidMount() {
-
-  }
+   constructor(props){
+     super(props);
+   }
 
   setSessionId = (id) => {
     const { setSessionId } = this.props;
@@ -34,14 +27,6 @@ class ChatApp extends React.Component {
   setClientId = (id) => {
     const { setClientId } = this.props;
     setClientId(id);
-  };
-
-  generateNewIds = () => {
-    const clientId = this.idGenerator();
-    const sessionId = this.idGenerator();
-    console.log(`${clientId}\n${sessionId}`);
-    this.setSessionId(sessionId);
-    this.setClientId(clientId);
   };
 
   toggleForms = () => {
@@ -59,7 +44,7 @@ class ChatApp extends React.Component {
         <Card>
           <Card.Content>
             {chatapp.chatHidden && !chatapp.formHidden
-              ? <ChatForm toggleForms={this.toggleForms} />
+              ? <ChatForm toggleForms={this.toggleForms} setSessionId={this.setSessiontId} setClientId={this.setClientId} />
               : (
                 <div>
                   <ChatWidget clientId={chatapp.clientId} sessionId={chatapp.sessionId} />
@@ -83,8 +68,6 @@ ChatApp.propTypes = {
   setClientId: PropTypes.func.isRequired,
   toggleForms: PropTypes.func.isRequired,
   chatapp: PropTypes.shape({
-    clientId: PropTypes.string,
-    sessionId: PropTypes.string,
     formHidden: PropTypes.bool,
     chatHidden: PropTypes.bool,
   }).isRequired,

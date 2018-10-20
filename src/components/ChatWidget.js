@@ -1,7 +1,6 @@
 import 'react-chat-widget/lib/styles.css';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
-import PropTypes from 'prop-types';
 import React from 'react';
 import '@/css/chat.css';
 import {
@@ -34,7 +33,7 @@ class ChatWidget extends React.Component {
     dropMessages();
 
     // create WS connection
-    this.socket = new WebSocket(`ws://localhost:8000/ws/support/${sessionId}/`);
+    this.socket = new WebSocket('ws://localhost:8000/ws/support/123/');
 
     // handle message
     this.socket.onmessage = (m) => {
@@ -79,8 +78,8 @@ class ChatWidget extends React.Component {
 }
 
 ChatWidget.propTypes = {
-  clientId: PropTypes.string.isRequired,
-  sessionId: PropTypes.string.isRequired,
+  // clientId: PropTypes.string.isRequired,
+  // sessionId: PropTypes.string.isRequired,
 };
 
 export default hot(module)(connect(mapStateToProps)(ChatWidget));
