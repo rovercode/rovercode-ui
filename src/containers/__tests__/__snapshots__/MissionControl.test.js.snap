@@ -76,6 +76,35 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                   </Component>
                 </div>
               </GridRow>
+              <hr />
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Link
+                    replace={false}
+                    to="/"
+                  >
+                    <a
+                      href="/"
+                      onClick={[Function]}
+                    >
+                      <Button
+                        as="button"
+                        role="button"
+                      >
+                        <button
+                          className="ui button"
+                          onClick={[Function]}
+                          role="button"
+                        >
+                          Home
+                        </button>
+                      </Button>
+                    </a>
+                  </Link>
+                </div>
+              </GridRow>
             </div>
           </GridColumn>
           <GridColumn
