@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import MissionControl from '../MissionControl';
 
 jest.mock('@/components/CodeViewer', () => () => <div />);
+jest.mock('@/components/ChatApp', () => () => <div />);
 jest.mock('@/components/Console', () => () => <div />);
 jest.mock('@/components/Control', () => () => <div />);
 jest.mock('@/components/Indicator', () => () => <div />);

@@ -1,0 +1,557 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ChatForm component renders on the page with no errors 1`] = `
+<withCookies(Component)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ChatForm)
+    allCookies={Object {}}
+    cookies={
+      Cookies {
+        "HAS_DOCUMENT_COOKIE": true,
+        "changeListeners": Array [
+          [Function],
+        ],
+        "cookies": Object {},
+        "hooks": undefined,
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <ChatForm
+      allCookies={Object {}}
+      bodyInputChange={[Function]}
+      bodyValue="foobar"
+      categorySelectChange={[Function]}
+      categoryValue="foobar"
+      cookies={
+        Cookies {
+          "HAS_DOCUMENT_COOKIE": true,
+          "changeListeners": Array [
+            [Function],
+          ],
+          "cookies": Object {},
+          "hooks": undefined,
+        }
+      }
+      experienceSelectChange={[Function]}
+      experienceValue="foobar"
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [MockFunction],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+      storeSubscription={
+        Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [MockFunction],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        }
+      }
+      subjectInputChange={[Function]}
+      subjectValue="foobar"
+      toggleForms={[Function]}
+    >
+      <div>
+        <CardHeader>
+          <div
+            className="header"
+          >
+            <b>
+              Need help?
+            </b>
+          </div>
+        </CardHeader>
+        <br />
+        <label
+          htmlFor="category"
+        >
+          Select the issue you are having
+          <Dropdown
+            additionLabel="Add "
+            additionPosition="top"
+            closeOnBlur={true}
+            deburr={false}
+            fluid={true}
+            icon="dropdown"
+            id="category"
+            minCharacters={1}
+            noResultsMessage="No results found."
+            onChange={[Function]}
+            openOnFocus={true}
+            options={
+              Array [
+                Object {
+                  "text": "My code isn't doing what I think it should",
+                  "value": "DEBUG",
+                },
+                Object {
+                  "text": "I don't know what to do next",
+                  "value": "WHAT_NEXT",
+                },
+                Object {
+                  "text": "I'm looking for fun ideas",
+                  "value": "FUN_IDEAS",
+                },
+              ]
+            }
+            placeholder="Example: Logic Issues"
+            renderLabel={[Function]}
+            searchInput="text"
+            selectOnBlur={true}
+            selectOnNavigation={true}
+            selection={true}
+            value="foobar"
+            wrapSelection={true}
+          >
+            <div
+              aria-expanded={false}
+              className="ui fluid selection dropdown"
+              id="category"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              role="listbox"
+              tabIndex={0}
+            >
+              <div
+                aria-live="polite"
+                className="text"
+                role="alert"
+              />
+              <Icon
+                as="i"
+                name="dropdown"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="dropdown icon"
+                  onClick={[Function]}
+                />
+              </Icon>
+              <DropdownMenu>
+                <div
+                  className="menu transition"
+                >
+                  <DropdownItem
+                    active={false}
+                    key="DEBUG"
+                    onClick={[Function]}
+                    selected={true}
+                    style={
+                      Object {
+                        "pointerEvents": "all",
+                      }
+                    }
+                    text="My code isn't doing what I think it should"
+                    value="DEBUG"
+                  >
+                    <div
+                      aria-checked={false}
+                      aria-selected={true}
+                      className="selected item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        My code isn't doing what I think it should
+                      </span>
+                    </div>
+                  </DropdownItem>
+                  <DropdownItem
+                    active={false}
+                    key="WHAT_NEXT"
+                    onClick={[Function]}
+                    selected={false}
+                    style={
+                      Object {
+                        "pointerEvents": "all",
+                      }
+                    }
+                    text="I don't know what to do next"
+                    value="WHAT_NEXT"
+                  >
+                    <div
+                      aria-checked={false}
+                      aria-selected={false}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        I don't know what to do next
+                      </span>
+                    </div>
+                  </DropdownItem>
+                  <DropdownItem
+                    active={false}
+                    key="FUN_IDEAS"
+                    onClick={[Function]}
+                    selected={false}
+                    style={
+                      Object {
+                        "pointerEvents": "all",
+                      }
+                    }
+                    text="I'm looking for fun ideas"
+                    value="FUN_IDEAS"
+                  >
+                    <div
+                      aria-checked={false}
+                      aria-selected={false}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        I'm looking for fun ideas
+                      </span>
+                    </div>
+                  </DropdownItem>
+                </div>
+              </DropdownMenu>
+            </div>
+          </Dropdown>
+        </label>
+        <br />
+        <label
+          htmlFor="experience-level"
+        >
+          Select your experience level
+          <Dropdown
+            additionLabel="Add "
+            additionPosition="top"
+            closeOnBlur={true}
+            deburr={false}
+            fluid={true}
+            icon="dropdown"
+            id="experience-level"
+            minCharacters={1}
+            noResultsMessage="No results found."
+            onChange={[Function]}
+            openOnFocus={true}
+            options={
+              Array [
+                Object {
+                  "text": "This is my first time on Rovercode",
+                  "value": 0,
+                },
+                Object {
+                  "text": "I'm pretty new to Rovercode",
+                  "value": 1,
+                },
+                Object {
+                  "text": "I've used Rovercode for a while",
+                  "value": 2,
+                },
+                Object {
+                  "text": "I'm a Rovercode expert",
+                  "value": 3,
+                },
+              ]
+            }
+            placeholder="Example: Beginner"
+            renderLabel={[Function]}
+            searchInput="text"
+            selectOnBlur={true}
+            selectOnNavigation={true}
+            selection={true}
+            value="foobar"
+            wrapSelection={true}
+          >
+            <div
+              aria-expanded={false}
+              className="ui fluid selection dropdown"
+              id="experience-level"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              role="listbox"
+              tabIndex={0}
+            >
+              <div
+                aria-live="polite"
+                className="text"
+                role="alert"
+              />
+              <Icon
+                as="i"
+                name="dropdown"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="dropdown icon"
+                  onClick={[Function]}
+                />
+              </Icon>
+              <DropdownMenu>
+                <div
+                  className="menu transition"
+                >
+                  <DropdownItem
+                    active={false}
+                    key="0"
+                    onClick={[Function]}
+                    selected={true}
+                    style={
+                      Object {
+                        "pointerEvents": "all",
+                      }
+                    }
+                    text="This is my first time on Rovercode"
+                    value={0}
+                  >
+                    <div
+                      aria-checked={false}
+                      aria-selected={true}
+                      className="selected item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        This is my first time on Rovercode
+                      </span>
+                    </div>
+                  </DropdownItem>
+                  <DropdownItem
+                    active={false}
+                    key="1"
+                    onClick={[Function]}
+                    selected={false}
+                    style={
+                      Object {
+                        "pointerEvents": "all",
+                      }
+                    }
+                    text="I'm pretty new to Rovercode"
+                    value={1}
+                  >
+                    <div
+                      aria-checked={false}
+                      aria-selected={false}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        I'm pretty new to Rovercode
+                      </span>
+                    </div>
+                  </DropdownItem>
+                  <DropdownItem
+                    active={false}
+                    key="2"
+                    onClick={[Function]}
+                    selected={false}
+                    style={
+                      Object {
+                        "pointerEvents": "all",
+                      }
+                    }
+                    text="I've used Rovercode for a while"
+                    value={2}
+                  >
+                    <div
+                      aria-checked={false}
+                      aria-selected={false}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        I've used Rovercode for a while
+                      </span>
+                    </div>
+                  </DropdownItem>
+                  <DropdownItem
+                    active={false}
+                    key="3"
+                    onClick={[Function]}
+                    selected={false}
+                    style={
+                      Object {
+                        "pointerEvents": "all",
+                      }
+                    }
+                    text="I'm a Rovercode expert"
+                    value={3}
+                  >
+                    <div
+                      aria-checked={false}
+                      aria-selected={false}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        I'm a Rovercode expert
+                      </span>
+                    </div>
+                  </DropdownItem>
+                </div>
+              </DropdownMenu>
+            </div>
+          </Dropdown>
+        </label>
+        <br />
+        <label
+          htmlFor="subject"
+        >
+          Subject
+          <Input
+            fluid={true}
+            id="subject"
+            onChange={[Function]}
+            placeholder="Describe your issue"
+            type="text"
+          >
+            <div
+              className="ui fluid input"
+            >
+              <input
+                id="subject"
+                onChange={[Function]}
+                placeholder="Describe your issue"
+                type="text"
+              />
+            </div>
+          </Input>
+        </label>
+        <br />
+        <br />
+        <label
+          htmlFor="body"
+        >
+          More information
+          <Input
+            fluid={true}
+            id="body"
+            onChange={[Function]}
+            placeholder="Provide any additional details"
+            type="text"
+          >
+            <div
+              className="ui fluid input"
+            >
+              <input
+                id="body"
+                onChange={[Function]}
+                placeholder="Provide any additional details"
+                type="text"
+              />
+            </div>
+          </Input>
+        </label>
+        <br />
+        <br />
+        <Button
+          as="button"
+          className="ui primary button"
+          onClick={[Function]}
+          role="button"
+        >
+          <button
+            className="ui button ui primary button"
+            onClick={[Function]}
+            role="button"
+          >
+            Submit
+          </button>
+        </Button>
+      </div>
+    </ChatForm>
+  </Connect(ChatForm)>
+</withCookies(Component)>
+`;
