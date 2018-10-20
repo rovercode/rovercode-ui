@@ -5,6 +5,7 @@ import rover from './rover';
 import sensor from './sensor';
 import chatapp from './chatapp';
 import chatform from './chatform'
+import supporthome from './supporthome'
 
 export default combineReducers({
   code,
@@ -12,5 +13,6 @@ export default combineReducers({
   rover,
   sensor,
   chatapp,
-  chatform
+  chatform, 
+  supporthome
 });

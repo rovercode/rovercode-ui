@@ -10,11 +10,11 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from './reducers/index';
-
 import NotFound from './containers/Global/NotFound';
 import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
+import SupportHome from './components/SupportHome'
 
 /* eslint-disable-next-line no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -39,6 +39,7 @@ render(
           <Route path="/accounts" component={Accounts} />
           <Route exact path="/" component={RoverList} />
           <Route exact path="/mission-control" component={MissionControl} />
+          <Route exact path ="/support" component={SupportHome} />
           <Route component={NotFound} />
         </Switch>
       </CookiesProvider>

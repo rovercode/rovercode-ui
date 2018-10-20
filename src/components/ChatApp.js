@@ -1,13 +1,17 @@
-import React from 'react'
-import { Button, Card} from 'semantic-ui-react'
-import ChatWidget from './ChatWidget'
-import ChatForm from './ChatForm'
-import {connect} from 'react-redux'
+import React from 'react';
 import { hot } from 'react-hot-loader';
-import {setSessionID as actionSetSessionId, setClientID as actionSetClientId, toggleForms as actionToggle} from '../actions/chatapp'
+import { connect } from 'react-redux';
+import { Button, Card } from 'semantic-ui-react';
+import { withCookies } from 'react-cookie';
+import ChatWidget from './ChatWidget';
+import ChatForm from './ChatForm';
+
+
+import { setSessionID as actionSetSessionId, setClientID as actionSetClientId, toggleForms as actionToggle} from '../actions/chatapp'
+
 
 const mapStateToProps = ({ chatapp }) => ({ chatapp });
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, { cookies }) => ({
   toggleforms: () => dispatch(actionToggle()),
   setsessionid: id => dispatch(actionSetSessionId(id)),
   setclientid: id => dispatch(actionSetClientId(id))
@@ -15,47 +19,56 @@ const mapDispatchToProps = dispatch => ({
 
 class ChatApp extends React.Component {
 
-  constructor(props){
-      super(props)
+  // constructor(props) {
+  //     super(props)
+  // }
+
+  componentDidMount() {
   }
 
-  setSessionId=(id)=>{
-    const {setsessionid} = this.props;
+  setSessionId = (id) => {
+    const { setsessionid } = this.props;
     setsessionid(id);
   }
-  setClientId = (id)=>{
-    const {setclientid} = this.props;
-    setclientid(id);
+
+  setClientId = ()=> {
+    const { setclientid } = this.props;
+    const { cookies } = this.props;
+    const clientid = cookies.get('auth_jwt');
+    const decodedjwt = decodedjwt(clientid)   
+    setclientid(clientid);
   }
 
-  componentDidMount(){
+  decodeJWT = (jwt) => {
+    const jwtdecoded = atob(jwt);
+    return jwtdecoded;
   }
 
   generateNewIds = () =>{
-    const clientid=this.idGenerator(), sessionid = this.idGenerator();
-    console.log(`${clientid}\n${sessionid}`)
+    const sessionid = this.idGenerator();
+    console.log(`!!!!!!!!!!!!!!!!!!\n${sessionid}`)
     this.setSessionId(sessionid);
-    this.setClientId(clientid);
+    this.setClientId();
   }
 
   toggleForms = ()=> {
     const { toggleforms} = this.props;
     toggleforms();
-    if (!this.props.chatapp.formHidden && this.props.chatapp.chatHidden){
+    if ( this.props.chatapp.formHidden && !this.props.chatapp.chatHidden){
       this.generateNewIds();
     }
 
   }
 
-  idGenerator() {
-    let S4 = function() {
+  idGenerator = () => {
+    const S4 = function() {
         return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
     };
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
   } 
 
   
-  render(){
+  render() {
     return(
       <div style={{marginTop:20, marginLeft:40, minWidth:400}} >
         <Card>
@@ -65,7 +78,6 @@ class ChatApp extends React.Component {
               : 
               <div>
                 <ChatWidget clientId={this.props.chatapp.clientId} sessionId={this.props.chatapp.sessionId}></ChatWidget>
-
                 <br />
                 <br />
                 <Button className="ui negative button" onClick={this.toggleForms.bind(this)}>Cancel chat</Button> 
@@ -78,5 +90,5 @@ class ChatApp extends React.Component {
   }
 }
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(ChatApp));
+export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(ChatApp)));
 

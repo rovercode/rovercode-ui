@@ -1,16 +1,18 @@
-import React from 'react'
-import { Button, Card, Dropdown, Input } from 'semantic-ui-react'
-import {categorySelectChange as actionCategorySelectChange, 
+import React from 'react';
+import axios from 'axios';
+import { hot } from 'react-hot-loader';
+import { connect } from 'react-redux';
+import { withCookies } from 'react-cookie';
+import { Button, Card, Dropdown, Input } from 'semantic-ui-react';
+import { categorySelectChange as actionCategorySelectChange, 
   bodyInputChange as actionBodyInputChange, 
   subjectInputChange as actionSubjectInputChange, 
   experienceSelectChange as actionExperienceSelectChange,
   WHAT_NEXT, FUN_IDEAS, DEBUG, 
-  EXPERT, PRETTY_NEW, FIRST_TIME,FOR_A_WHILE} 
-  from '../actions/chatform'
-import { hot } from 'react-hot-loader';
-import {connect} from 'react-redux'
-import { withCookies, Cookies } from 'react-cookie';
-import axios from 'axios'
+  EXPERT, PRETTY_NEW, FIRST_TIME,FOR_A_WHILE } 
+  from '../actions/chatform';
+
+
 
 const mapStateToProps = ({ chatform }) => ({ chatform });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
