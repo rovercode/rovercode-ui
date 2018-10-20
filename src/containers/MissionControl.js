@@ -7,6 +7,7 @@ import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
 import Indicator from '@/components/Indicator';
+import ProgramName from '@/components/ProgramName';
 import Workspace from '@/components/Workspace';
 
 const MissionControl = () => (
@@ -18,6 +19,10 @@ const MissionControl = () => (
         </Grid.Row>
       </Grid.Column>
       <Grid.Column width={6}>
+        <Grid.Row>
+          <ProgramName />
+        </Grid.Row>
+        <hr />
         <Grid.Row>
           <CodeViewer>
             Show Me The Code!
