@@ -81,7 +81,7 @@ class Console extends Component {
         <Input
           type="text"
           label="Name:"
-          defaultValue={editingName}
+          value={editingName}
           onChange={this.handleChange}
           {...actionProp}
         />

@@ -6,7 +6,7 @@ import {
   CHANGE_NAME_FULFILLED,
   CHANGE_NAME_REJECTED,
   CHANGE_ID,
-  FETCH_PROGRAM,
+  FETCH_PROGRAM_PENDING,
   FETCH_PROGRAM_FULFILLED,
   FETCH_PROGRAM_REJECTED,
   SAVE_PROGRAM,
@@ -70,7 +70,7 @@ export default function code(
         ...state,
         id: action.payload,
       };
-    case FETCH_PROGRAM:
+    case FETCH_PROGRAM_PENDING:
       return {
         ...state,
         isFetching: true,
@@ -128,6 +128,9 @@ export default function code(
         error: action.payload,
       };
     default:
-      return state;
+      return {
+        ...state,
+        hitDefault: true,
+      };
   }
 }

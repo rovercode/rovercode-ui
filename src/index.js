@@ -10,8 +10,10 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from './reducers/index';
+
 import NotFound from './containers/Global/NotFound';
 import RoverList from './containers/RoverList';
+import ProgramList from './containers/ProgramList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 import SupportHome from './components/SupportHome'
@@ -40,6 +42,7 @@ render(
           <Route exact path="/" component={RoverList} />
           <Route exact path="/mission-control" component={MissionControl} />
           <Route exact path ="/support" component={SupportHome} />
+	  <Route exact path="/programs" component={ProgramList} />
           <Route component={NotFound} />
         </Switch>
       </CookiesProvider>

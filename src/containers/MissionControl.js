@@ -1,6 +1,8 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
+import { Link } from 'react-router-dom';
+
 import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
@@ -31,6 +33,19 @@ const MissionControl = () => (
         <Grid.Row>
           <Control />
         </Grid.Row>
+        <hr />
+        <Grid.Row>
+          <Link to="/">
+            <Button>
+              Home
+            </Button>
+          </Link>
+          <Link to="/programs">
+            <Button>
+              Programs
+            </Button>
+          </Link>
+        </Grid.Row>
       </Grid.Column>
       <Grid.Column width={4}>
         <Grid.Row>
@@ -48,4 +63,5 @@ const MissionControl = () => (
     </Grid.Row>
   </Grid>
 );
+
 export default hot(module)(MissionControl);

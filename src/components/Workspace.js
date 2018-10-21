@@ -144,6 +144,7 @@ class Workspace extends Component {
     this.sleeping = false;
     this.runningEnabled = false;
     this.highlightPause = false;
+    // this.previousCodeIsFetching = false;
 
     this.api = new BlocklyApi(this.highlightBlock, this.beginSleep,
       this.sensorStateCache, writeToConsole);
@@ -178,7 +179,7 @@ class Workspace extends Component {
 
     this.setState({
       workspace,
-    }, () => this.loadDesign(code.xmlCode));
+    }, () => this.loadDesign(code.xmlCode, code.isFetching));
 
     clearConsole();
     writeToConsole('rovercode console started');
@@ -187,6 +188,10 @@ class Workspace extends Component {
   componentWillUpdate(nextProps) {
     const { code: currentCode } = this.props;
     const { code: nextCode } = nextProps;
+
+    if (currentCode.isFetching && !nextCode.isFetching) {
+      this.loadDesign(nextCode.xmlCode, nextCode.isFetching);
+    }
 
     // Ignore if execution state has not changed unless stepping
     if (nextCode.execution === currentCode.execution && nextCode.execution !== EXECUTION_STEP) {
@@ -306,7 +311,7 @@ class Workspace extends Component {
     this.updateCode();
     this.runningEnabled = true;
     this.runCode();
-  }
+  };
 
   goToStopState = () => {
     const { changeExecutionState } = this.props;
@@ -330,11 +335,15 @@ class Workspace extends Component {
     }
   }
 
-  loadDesign = (xmlCode) => {
+  loadDesign = (xmlCode, isFetching) => {
     const { createProgram } = this.props;
 
+    if (isFetching) {
+      return;
+    }
+
     if (!xmlCode) {
-      // No program already loaded, create a new one
+      // No program loading or loaded, create a new one
       const number = (Math.floor(Math.random() * 1000));
       createProgram(`Unnamed_Design_${number}`);
       return;
@@ -346,8 +355,6 @@ class Workspace extends Component {
 
     const xmlDom = Blockly.Xml.textToDom(xmlCode);
     Blockly.Xml.domToWorkspace(workspace, xmlDom);
-
-    this.updateCode();
   }
 
   render() {

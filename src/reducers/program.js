@@ -1,31 +1,31 @@
 import {
-  FETCH_ROVERS_PENDING,
-  FETCH_ROVERS_FULFILLED,
-  FETCH_ROVERS_REJECTED,
-} from '../actions/rover';
+  FETCH_PROGRAMS_PENDING,
+  FETCH_PROGRAMS_FULFILLED,
+  FETCH_PROGRAMS_REJECTED,
+} from '../actions/program';
 
-export default function rovers(
+export default function programs(
   state = {
     isFetching: false,
-    rovers: null,
+    programs: null,
     error: null,
   },
   action,
 ) {
   switch (action.type) {
-    case FETCH_ROVERS_PENDING:
+    case FETCH_PROGRAMS_PENDING:
       return {
         ...state,
         isFetching: true,
       };
-    case FETCH_ROVERS_FULFILLED:
+    case FETCH_PROGRAMS_FULFILLED:
       return {
         ...state,
         isFetching: false,
-        rovers: action.payload,
+        programs: action.payload,
         error: null,
       };
-    case FETCH_ROVERS_REJECTED:
+    case FETCH_PROGRAMS_REJECTED:
       return {
         ...state,
         isFetching: false,

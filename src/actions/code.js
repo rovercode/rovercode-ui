@@ -4,6 +4,7 @@
 import axios from 'axios';
 
 export const FETCH_PROGRAM = 'FETCH_PROGRAM';
+export const FETCH_PROGRAM_PENDING = `${FETCH_PROGRAM}_PENDING`;
 export const FETCH_PROGRAM_FULFILLED = `${FETCH_PROGRAM}_FULFILLED`;
 export const FETCH_PROGRAM_REJECTED = `${FETCH_PROGRAM}_REJECTED`;
 export const SAVE_PROGRAM = 'SAVE_PROGRAM';
