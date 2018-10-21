@@ -16,7 +16,7 @@ import {
   EXPERT, PRETTY_NEW, FIRST_TIME, FOR_A_WHILE,
 } from '../actions/chatform';
 
-const mapStateToProps = ({ chatform }) => ({ ...chatform });
+const mapStateToProps = ({ chatform, code }) => ({ chatform, code });
 const mapDispatchToProps = dispatch => ({
   categorySelectChange: state => dispatch(actionCategorySelectChange(state)),
   bodyInputChange: state => dispatch(actionBodyInputChange(state)),
@@ -88,7 +88,7 @@ class ChatForm extends React.Component {
       experienceSelectChange(payload);
     };
 
-    validateForm = (experienceValue, categoryValue, subjectValue, bodyValue) => {
+    validateForm = (experienceValue, categoryValue, subjectValue, bodyValue, program) => {
       if (experienceValue !== ''
           && subjectValue !== ''
           && bodyValue !== '') {
@@ -99,6 +99,7 @@ class ChatForm extends React.Component {
             experience_level: experienceValue,
             category: categoryValue,
             in_progress: false,
+            program,
           },
         );
       } else {
@@ -107,14 +108,14 @@ class ChatForm extends React.Component {
     };
 
     postData = (data) => {
-      const { cookies, toggleForms } = this.props;
+      const { chatform, cookies } = this.props;
       const headers = {
         'Content-Type': 'application/json',
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       };
       return axios.post('/api/v1/support-requests/', data, { headers })
         .then(({ response }) => {
-          toggleForms();
+          chatform.toggleForms();
           console.log(`!!!!!! - ${response}`);
         })
         .catch(() => {
@@ -123,9 +124,11 @@ class ChatForm extends React.Component {
     };
 
     render() {
+      const { chatform, code } = this.props;
       const {
         experienceValue, categoryValue, subjectValue, bodyValue,
-      } = this.props;
+      } = chatform;
+      const { id: program } = code;
       return (
         <div>
           <Card.Header>
@@ -156,7 +159,7 @@ class ChatForm extends React.Component {
           </label>
           <br />
           <br />
-          <Button className="ui primary button" onClick={() => this.validateForm(experienceValue, categoryValue, subjectValue, bodyValue)}>
+          <Button className="ui primary button" onClick={() => this.validateForm(experienceValue, categoryValue, subjectValue, bodyValue, program)}>
             Submit
           </Button>
         </div>
@@ -165,16 +168,21 @@ class ChatForm extends React.Component {
 }
 
 ChatForm.propTypes = {
-  bodyInputChange: PropTypes.func.isRequired,
-  categorySelectChange: PropTypes.func.isRequired,
-  subjectInputChange: PropTypes.func.isRequired,
-  experienceSelectChange: PropTypes.func.isRequired,
-  toggleForms: PropTypes.func.isRequired,
-  bodyValue: PropTypes.string.isRequired,
-  experienceValue: PropTypes.number.isRequired,
-  subjectValue: PropTypes.string.isRequired,
-  categoryValue: PropTypes.string.isRequired,
   cookies: PropTypes.instanceOf(Cookies).isRequired,
+  chatform: PropTypes.shape({
+    bodyInputChange: PropTypes.func.isRequired,
+    categorySelectChange: PropTypes.func.isRequired,
+    subjectInputChange: PropTypes.func.isRequired,
+    experienceSelectChange: PropTypes.func.isRequired,
+    toggleForms: PropTypes.func.isRequired,
+    bodyValue: PropTypes.string.isRequired,
+    experienceValue: PropTypes.number.isRequired,
+    subjectValue: PropTypes.string.isRequired,
+    categoryValue: PropTypes.string.isRequired,
+  }).isRequired,
+  code: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(ChatForm)));
