@@ -113,18 +113,29 @@ class SupportHome extends React.Component {
             <ReactTable
               columns={columns}
               data={json}
-              getTdProps={(state, rowInfo) => ({
-                onClick: (e) => {
-                  console.log('It was in this row:', rowInfo);
-                  this.rowClicked(rowInfo.original);
-                  this.setIsSupportProvider();
-                  this.setSessionId(rowInfo.original.id);
-                },
-                style: {
-                  // background: rowInfo.original.id === this.props.supporthome.rowInfo.id ? '#00afec' : 'white',
-                  // color: rowInfo.original.id === this.props.supporthome.rowInfo.id ? 'white' : 'black',
-                },
-              })}
+              getTdProps={(state, rowInfo) => {
+                if (typeof rowInfo !== 'undefined') {
+                  return {
+                    onClick: (e) => {
+                      console.log('It was in this row:', rowInfo);
+                      this.rowClicked(rowInfo.original);
+                      this.setIsSupportProvider();
+                      this.setSessionId(rowInfo.original.id);
+                    },
+                    style: {
+                      background: rowInfo.original.id === this.props.supporthome.rowInfo.id ? '#00afec' : 'white',
+                      color: rowInfo.original.id === this.props.supporthome.rowInfo.id ? 'white' : 'black',
+                    },
+                  };
+                }
+
+                return {
+                  style: {
+                    background: 'white',
+                    color: 'black',
+                  },
+                };
+              }}
             />
             <br />
             <br />
