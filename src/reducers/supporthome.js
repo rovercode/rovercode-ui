@@ -9,7 +9,7 @@ export default function supporthome(
   state = {
     json: null,
     isFetching: false,
-    rowInfo: null,
+    rowInfo: {},
   },
   action,
 ) {

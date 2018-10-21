@@ -1,5 +1,5 @@
 import {
-  SET_CLIENT_ID, SET_SESSION_ID, TOGGLE_FORMS, AWAITING_SUPPORT,
+  SET_CLIENT_ID, SET_SESSION_ID, TOGGLE_FORMS, SET_IS_SUPPORT_PROVIDER,
 } from '../actions/chatapp';
 
 export default function chatapp(
@@ -28,10 +28,10 @@ export default function chatapp(
         chatHidden: !state.chatHidden,
         formHidden: !state.formHidden,
       };
-    case AWAITING_SUPPORT:
+    case SET_IS_SUPPORT_PROVIDER:
       return {
         ...state,
-        awaitingSupport: !state.awaitingSupport,
+        supportProvider: true,
       };
     default:
       return state;

@@ -1,21 +1,29 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { withCookies, Cookies } from 'react-cookie';
-import { Header } from 'semantic-ui-react';
+import { Header, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {
   fetchSupportRequests as actionfetchSupportRequests,
-  // rowClicked as actionRowClicked,
+  rowClicked as actionRowClicked,
 } from '../actions/supporthome';
-
+import {
+  setSessionID as actionSetSessionId,
+  setClientID as actionSetClientId,
+  setIsSupportProvider as actionSetIsSupportProvider,
+} from '../actions/chatapp';
 
 const mapStateToProps = ({ supporthome, chatapp }) => ({ supporthome, chatapp });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchsupportrequests: headers => dispatch(actionfetchSupportRequests(headers)),
-  // rowClicked: rowobject => dispatch(actionRowClicked())
+  rowClicked: rowobject => dispatch(actionRowClicked(rowobject)),
+  setSessionId: id => dispatch(actionSetSessionId(id)),
+  setIsSupportProvider: () => dispatch(actionSetIsSupportProvider()),
+  setClientId: id => dispatch(actionSetClientId(id)),
 });
 
 const columns = [{
@@ -50,13 +58,40 @@ class SupportHome extends React.Component {
   componentDidMount() {
     const { cookies } = this.props;
     const { fetchsupportrequests } = this.props;
+    const jwt = cookies.get('auth_jwt');
     const headers = {
       headers: {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
     };
     fetchsupportrequests(headers);
+    this.setClientId('bryce');
   }
+
+  setClientId = (id) => {
+    const { setClientId } = this.props;
+    setClientId(id);
+  };
+
+  onButtonClick= () => {
+    window.location = '/mission-control';
+  }
+
+  setIsSupportProvider = () => {
+    const { setIsSupportProvider } = this.props;
+    setIsSupportProvider();
+  }
+
+  setSessionId = (id) => {
+    const { setSessionId } = this.props;
+    setSessionId(id);
+  }
+
+  rowClicked = (rowinfo) => {
+    const { rowClicked } = this.props;
+    rowClicked(rowinfo);
+  }
+
 
   render() {
     const { json } = this.props.supporthome;
@@ -74,15 +109,34 @@ class SupportHome extends React.Component {
             No data
           </h1>
         ) : (
-          <ReactTable
-            columns={columns}
-            data={json}
-            getTdProps={(state, rowInfo) => ({
-              onClick: (e) => {
-                console.log('It was in this row:', rowInfo);
-              },
-            })}
-          />
+          <div>
+            <ReactTable
+              columns={columns}
+              data={json}
+              getTdProps={(state, rowInfo) => ({
+                onClick: (e) => {
+                  console.log('It was in this row:', rowInfo);
+                  this.rowClicked(rowInfo.original);
+                  this.setIsSupportProvider();
+                  this.setSessionId(rowInfo.original.id);
+                },
+                style: {
+                  // background: rowInfo.original.id === this.props.supporthome.rowInfo.id ? '#00afec' : 'white',
+                  // color: rowInfo.original.id === this.props.supporthome.rowInfo.id ? 'white' : 'black',
+                },
+              })}
+            />
+            <br />
+            <br />
+            <Link to="/mission-control">
+              <Button positive>
+                Provide Support
+              </Button>
+            </Link>
+            {/* <Button positive onClick={this.onButtonClick}>
+              Provide Support
+            </Button> */}
+          </div>
         )
             }
       </div>
@@ -93,6 +147,9 @@ class SupportHome extends React.Component {
 SupportHome.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   fetchsupportrequests: PropTypes.func.isRequired,
+  rowClicked: PropTypes.func.isRequired,
+  setSessionId: PropTypes.func.isRequired,
+  setIsSupportProvider: PropTypes.func.isRequired,
   json: PropTypes.string.isRequired,
 
 };

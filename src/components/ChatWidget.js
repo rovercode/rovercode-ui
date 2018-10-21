@@ -14,7 +14,6 @@ const mapStateToProps = ({ chatapp }) => ({ chatapp });
 class ChatWidget extends React.Component {
   static processIncoming(incomingmessage) {
     if (firstresp === false) {
-      toggleInputDisabled();
       firstresp = true;
     }
     const message = JSON.parse(incomingmessage.data);
@@ -25,7 +24,6 @@ class ChatWidget extends React.Component {
     // destructure props into clientID and sessionID
     const { clientId, sessionId } = this.props;
 
-    toggleInputDisabled();
 
     // manually toggle widget -
     toggleWidget();
@@ -37,8 +35,9 @@ class ChatWidget extends React.Component {
 
     // handle message
     this.socket.onmessage = (m) => {
+      const message = JSON.parse(m.data);
       // TODO: implement check here from if m.data.clientID == this.state.clientID
-      if (!m.data.sender === clientId) {
+      if (message.sender !== clientId) {
         ChatWidget.processIncoming(m);
       }
     };

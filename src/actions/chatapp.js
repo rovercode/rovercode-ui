@@ -1,7 +1,7 @@
 export const TOGGLE_FORMS = 'TOGGLE_FORMS';
 export const SET_SESSION_ID = 'SET_SESSION_ID';
 export const SET_CLIENT_ID = 'SET_CLIENT_ID';
-export const AWAITING_SUPPORT = 'AWAITING_SUPPORT';
+export const SET_IS_SUPPORT_PROVIDER = 'SET_IS_SUPPORT_PROVIDER';
 
 
 export const toggleForms = () => ({
@@ -18,6 +18,6 @@ export const setSessionID = id => ({
   payload: id,
 });
 
-export const toggleAwaitingSupport = () => ({
-  type: AWAITING_SUPPORT,
+export const setIsSupportProvider = () => ({
+  type: SET_IS_SUPPORT_PROVIDER,
 });
