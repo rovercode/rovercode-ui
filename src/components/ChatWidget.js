@@ -33,7 +33,7 @@ class ChatWidget extends React.Component {
     dropMessages();
 
     // create WS connection
-    this.socket = new WebSocket('ws://localhost:8000/ws/support/123/');
+    this.socket = new WebSocket(`ws://localhost:8000/ws/support/${sessionId}/`);
 
     // handle message
     this.socket.onmessage = (m) => {

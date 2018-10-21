@@ -12,7 +12,7 @@ import {
 } from '../actions/supporthome';
 
 
-const mapStateToProps = ({ supporthome }) => ({ supporthome });
+const mapStateToProps = ({ supporthome, chatapp }) => ({ supporthome, chatapp });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchsupportrequests: headers => dispatch(actionfetchSupportRequests(headers)),
   // rowClicked: rowobject => dispatch(actionRowClicked())

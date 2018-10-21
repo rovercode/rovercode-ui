@@ -8,7 +8,7 @@ export default function chatapp(
     sessionId: null,
     chatHidden: true,
     formHidden: false,
-    awaitingSupport: false,
+    supportProvider: false,
   }, action,
 ) {
   switch (action.type) {
