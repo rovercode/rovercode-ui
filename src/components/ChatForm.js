@@ -63,28 +63,24 @@ class ChatForm extends React.Component {
     categorySelectChange = (event, data) => {
       const payload = data.value;
       const { categorySelectChange } = this.props;
-      console.log(payload);
       categorySelectChange(payload);
     };
 
     subjectInputChange = (event, data) => {
       const payload = data.value;
       const { subjectInputChange } = this.props;
-      console.log(payload);
       subjectInputChange(payload);
     };
 
     bodyInputChange = (event, data) => {
       const payload = data.value;
       const { bodyInputChange } = this.props;
-      console.log(payload);
       bodyInputChange(payload);
     };
 
     experienceSelectChange = (event, data) => {
       const payload = data.value;
       const { experienceSelectChange } = this.props;
-      console.log(payload);
       experienceSelectChange(payload);
     };
 
@@ -108,18 +104,20 @@ class ChatForm extends React.Component {
     };
 
     postData = (data) => {
-      const { chatform, cookies } = this.props;
+      const { cookies, toggleForms } = this.props;
       const headers = {
         'Content-Type': 'application/json',
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       };
-      return axios.post('/api/v1/support-requests/', data, { headers })
-        .then(({ response }) => {
-          chatform.toggleForms();
-          console.log(`!!!!!! - ${response}`);
+      axios.post('/api/v1/support-requests/', data, { headers })
+        .then((response) => {
+          const { id } = response.data;
+          const { setSessionId } = this.props;
+          setSessionId(id);
+          toggleForms();
         })
-        .catch(() => {
-          alert('Error: unable to reach server with help request. Please try again later.');
+        .catch((error) => {
+          console.log(error);
         });
     };
 
@@ -169,12 +167,13 @@ class ChatForm extends React.Component {
 
 ChatForm.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
+  bodyInputChange: PropTypes.func.isRequired,
+  categorySelectChange: PropTypes.func.isRequired,
+  subjectInputChange: PropTypes.func.isRequired,
+  experienceSelectChange: PropTypes.func.isRequired,
+  toggleForms: PropTypes.func.isRequired,
+  setSessionId: PropTypes.func.isRequired,
   chatform: PropTypes.shape({
-    bodyInputChange: PropTypes.func.isRequired,
-    categorySelectChange: PropTypes.func.isRequired,
-    subjectInputChange: PropTypes.func.isRequired,
-    experienceSelectChange: PropTypes.func.isRequired,
-    toggleForms: PropTypes.func.isRequired,
     bodyValue: PropTypes.string.isRequired,
     experienceValue: PropTypes.number.isRequired,
     subjectValue: PropTypes.string.isRequired,

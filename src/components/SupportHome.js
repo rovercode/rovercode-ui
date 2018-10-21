@@ -3,15 +3,16 @@ import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import { withCookies } from 'react-cookie';
+import { withCookies, Cookies } from 'react-cookie';
 import { Header } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import {
   fetchSupportRequests as actionfetchSupportRequests,
   // rowClicked as actionRowClicked,
 } from '../actions/supporthome';
 
 
-const mapStateToProps = ({ supporthome }) => ({ supporthome });
+const mapStateToProps = ({ supporthome, chatapp }) => ({ supporthome, chatapp });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchsupportrequests: headers => dispatch(actionfetchSupportRequests(headers)),
   // rowClicked: rowobject => dispatch(actionRowClicked())
@@ -46,10 +47,6 @@ const columns = [{
 
 
 class SupportHome extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { cookies } = this.props;
     const { fetchsupportrequests } = this.props;
@@ -92,4 +89,11 @@ class SupportHome extends React.Component {
     );
   }
 }
+
+SupportHome.propTypes = {
+  cookies: PropTypes.instanceOf(Cookies).isRequired,
+  fetchsupportrequests: PropTypes.func.isRequired,
+  json: PropTypes.string.isRequired,
+
+};
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(SupportHome)));
