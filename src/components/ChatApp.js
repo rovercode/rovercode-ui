@@ -5,20 +5,22 @@ import { hot } from 'react-hot-loader';
 import { Button, Card } from 'semantic-ui-react';
 import ChatWidget from './ChatWidget';
 import ChatForm from './ChatForm';
-import { setSessionID as actionSetSessionId, setClientID as actionSetClientId, toggleForms as actionToggle } from '../actions/chatapp';
+import {
+  setSessionID as actionSetSessionId,
+  setClientID as actionSetClientId,
+  toggleForms as actionToggle,
+  toggleAwaitingSupport as actionToggleAwaitingSupport,
+} from '../actions/chatapp';
 
 const mapStateToProps = ({ chatapp }) => ({ chatapp });
 const mapDispatchToProps = dispatch => ({
   toggleForms: () => dispatch(actionToggle()),
   setSessionId: id => dispatch(actionSetSessionId(id)),
   setClientId: id => dispatch(actionSetClientId(id)),
+  toggleAwaitingSupport: () => dispatch(actionToggleAwaitingSupport()),
 });
 
 class ChatApp extends React.Component {
-   constructor(props){
-     super(props);
-   }
-
   setSessionId = (id) => {
     const { setSessionId } = this.props;
     setSessionId(id);
@@ -30,12 +32,15 @@ class ChatApp extends React.Component {
   };
 
   toggleForms = () => {
-    const { toggleForms, chatapp } = this.props;
+    const { toggleForms } = this.props;
     toggleForms();
-    if (!chatapp.formHidden && chatapp.chatHidden) {
-      this.generateNewIds();
-    }
   };
+
+  toggleAwaitingSupport = () => {
+    const { toggleAwaitingSupport } = this.props;
+    toggleAwaitingSupport();
+  }
+
 
   render() {
     const { chatapp } = this.props;
@@ -44,7 +49,7 @@ class ChatApp extends React.Component {
         <Card>
           <Card.Content>
             {chatapp.chatHidden && !chatapp.formHidden
-              ? <ChatForm toggleForms={this.toggleForms} setSessionId={this.setSessiontId} setClientId={this.setClientId} />
+              ? <ChatForm toggleForms={this.toggleForms} setSessionId={this.setSessionId} setClientId={this.setClientId} />
               : (
                 <div>
                   <ChatWidget clientId={chatapp.clientId} sessionId={chatapp.sessionId} />
@@ -67,6 +72,7 @@ ChatApp.propTypes = {
   setSessionId: PropTypes.func.isRequired,
   setClientId: PropTypes.func.isRequired,
   toggleForms: PropTypes.func.isRequired,
+  toggleAwaitingSupport: PropTypes.func.isRequired,
   chatapp: PropTypes.shape({
     formHidden: PropTypes.bool,
     chatHidden: PropTypes.bool,

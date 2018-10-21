@@ -63,28 +63,24 @@ class ChatForm extends React.Component {
     categorySelectChange = (event, data) => {
       const payload = data.value;
       const { categorySelectChange } = this.props;
-      console.log(payload);
       categorySelectChange(payload);
     };
 
     subjectInputChange = (event, data) => {
       const payload = data.value;
       const { subjectInputChange } = this.props;
-      console.log(payload);
       subjectInputChange(payload);
     };
 
     bodyInputChange = (event, data) => {
       const payload = data.value;
       const { bodyInputChange } = this.props;
-      console.log(payload);
       bodyInputChange(payload);
     };
 
     experienceSelectChange = (event, data) => {
       const payload = data.value;
       const { experienceSelectChange } = this.props;
-      console.log(payload);
       experienceSelectChange(payload);
     };
 
@@ -112,13 +108,15 @@ class ChatForm extends React.Component {
         'Content-Type': 'application/json',
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       };
-      return axios.post('/api/v1/support-requests/', data, { headers })
-        .then(({ response }) => {
+      axios.post('/api/v1/support-requests/', data, { headers })
+        .then((response) => {
+          const { id } = response.data;
+          const { setSessionId } = this.props;
+          setSessionId(id);
           toggleForms();
-          console.log(`!!!!!! - ${response}`);
         })
-        .catch(() => {
-          alert('Error: unable to reach server with help request. Please try again later.');
+        .catch((error) => {
+          console.log(error);
         });
     };
 
@@ -174,6 +172,7 @@ ChatForm.propTypes = {
   experienceValue: PropTypes.number.isRequired,
   subjectValue: PropTypes.string.isRequired,
   categoryValue: PropTypes.string.isRequired,
+  setSessionId: PropTypes.func.isRequired,
   cookies: PropTypes.instanceOf(Cookies).isRequired,
 };
 
