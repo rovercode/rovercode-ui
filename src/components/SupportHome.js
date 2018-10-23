@@ -6,6 +6,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { withCookies, Cookies } from 'react-cookie';
 import { Header, Button } from 'semantic-ui-react';
+import { fetchProgram as actionfetchProgram } from '@/actions/code';
 import PropTypes from 'prop-types';
 import {
   fetchSupportRequests as actionfetchSupportRequests,
@@ -20,6 +21,7 @@ import {
 const mapStateToProps = ({ supporthome, chatapp }) => ({ supporthome, chatapp });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchsupportrequests: headers => dispatch(actionfetchSupportRequests(headers)),
+  fetchprogram: (programId, headers) => dispatch(actionfetchProgram(programId, headers)),
   rowClicked: rowobject => dispatch(actionRowClicked(rowobject)),
   setSessionId: id => dispatch(actionSetSessionId(id)),
   setIsSupportProvider: () => dispatch(actionSetIsSupportProvider()),
@@ -41,6 +43,9 @@ const columns = [{
 }, {
   Header: 'Category',
   accessor: 'category', // String-based value accessors!
+}, {
+  Header: 'Program ID',
+  accessor: 'program', // String-based value accessors!
 }, {
   Header: 'Creation Time',
   accessor: 'creation_time', // String-based value accessors!
@@ -121,6 +126,12 @@ class SupportHome extends React.Component {
                       this.rowClicked(rowInfo.original);
                       this.setIsSupportProvider();
                       this.setSessionId(rowInfo.original.id);
+                      const headers = {
+                        headers: {
+                          Authorization: `JWT ${this.props.cookies.get('auth_jwt')}`,
+                        },
+                      };
+                      this.props.fetchprogram(rowInfo.original.program, headers);
                     },
                     style: {
                       background: rowInfo.original.id === this.props.supporthome.rowInfo.id ? '#00afec' : 'white',
@@ -158,6 +169,7 @@ class SupportHome extends React.Component {
 SupportHome.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   fetchsupportrequests: PropTypes.func.isRequired,
+  fetchprogram: PropTypes.func.isRequired,
   rowClicked: PropTypes.func.isRequired,
   setSessionId: PropTypes.func.isRequired,
   setIsSupportProvider: PropTypes.func.isRequired,
