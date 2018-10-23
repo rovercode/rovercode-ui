@@ -35,7 +35,7 @@ class ChatWidget extends React.Component {
   componentDidMount() {
     // destructure props into clientID and sessionID
     const { chatapp, code, fetchProgram } = this.props;
-    const { clientId, sessionId } = chatapp;
+    const { clientId, sessionId, supportProvider } = chatapp;
     const { id: programId } = code;
 
 
@@ -54,10 +54,28 @@ class ChatWidget extends React.Component {
       if (message.sender !== clientId) {
         ChatWidget.processIncoming(m);
       }
-      fetchProgram(programId);
+      if (supportProvider) {
+        fetchProgram(programId);
+      }
     };
 
     addResponseMessage('Finding someone to assist you with your code :)');
+  }
+
+  componentWillUpdate(nextProps) {
+    const { code: currentCode, chatapp: currentChatapp } = this.props;
+    const { code: nextCode } = nextProps;
+    console.log('In the componentWillUpdate');
+    if (currentCode.isSaving && !nextCode.isSaving) {
+      console.log('xml has changed');
+      if (!currentChatapp.supportProvider) {
+        const msg = JSON.stringify({
+          message: '[Updating program...]',
+          sender: currentChatapp.clientId,
+        });
+        this.socket.send(msg);
+      }
+    }
   }
 
   componentWillUnmount() {

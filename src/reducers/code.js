@@ -9,7 +9,7 @@ import {
   FETCH_PROGRAM_PENDING,
   FETCH_PROGRAM_FULFILLED,
   FETCH_PROGRAM_REJECTED,
-  SAVE_PROGRAM,
+  SAVE_PROGRAM_PENDING,
   SAVE_PROGRAM_FULFILLED,
   SAVE_PROGRAM_REJECTED,
   CREATE_PROGRAM,
@@ -89,7 +89,7 @@ export default function code(
         isFetching: false,
         error: action.payload,
       };
-    case SAVE_PROGRAM:
+    case SAVE_PROGRAM_PENDING:
       return {
         ...state,
         isSaving: true,

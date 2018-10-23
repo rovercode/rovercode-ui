@@ -20,7 +20,7 @@ import {
 import { append, clear } from '@/actions/console';
 import BlocklyApi from '@/utils/blockly-api';
 
-const mapStateToProps = ({ code }) => ({ code });
+const mapStateToProps = ({ code, chatapp }) => ({ code, chatapp });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
@@ -249,12 +249,14 @@ class Workspace extends Component {
   }
 
   updateCode = () => {
-    const { code, saveProgram } = this.props;
+    const { code, chatapp, saveProgram } = this.props;
 
     this.updateJsCode();
     const xmlCode = this.updateXmlCode();
 
-    saveProgram(code.id, xmlCode, code.name);
+    if (!chatapp.supportProvider) {
+      saveProgram(code.id, xmlCode, code.name);
+    }
   }
 
   beginSleep = (sleepTimeInMs) => {
