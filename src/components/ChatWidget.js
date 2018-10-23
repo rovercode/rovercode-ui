@@ -2,14 +2,26 @@ import 'react-chat-widget/lib/styles.css';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import React from 'react';
+import { withCookies } from 'react-cookie';
 import '@/css/chat.css';
 import {
   Widget, addResponseMessage, toggleInputDisabled,
   toggleWidget, dropMessages,
 } from 'react-chat-widget';
+import { fetchProgram as actionFetchProgram } from '../actions/code';
 
 let firstresp = false;
-const mapStateToProps = ({ chatapp }) => ({ chatapp });
+const mapStateToProps = ({ chatapp, code }) => ({ chatapp, code });
+const mapDispatchToProps = (dispatch, { cookies }) => ({
+  fetchProgram: (id) => {
+    const fetchProgramAction = actionFetchProgram(id, {
+      headers: {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      },
+    });
+    return dispatch(fetchProgramAction);
+  },
+});
 
 class ChatWidget extends React.Component {
   static processIncoming(incomingmessage) {
@@ -22,7 +34,9 @@ class ChatWidget extends React.Component {
 
   componentDidMount() {
     // destructure props into clientID and sessionID
-    const { clientId, sessionId } = this.props;
+    const { chatapp, code, fetchProgram } = this.props;
+    const { clientId, sessionId } = chatapp;
+    const { id: programId } = code;
 
 
     // manually toggle widget -
@@ -40,6 +54,7 @@ class ChatWidget extends React.Component {
       if (message.sender !== clientId) {
         ChatWidget.processIncoming(m);
       }
+      fetchProgram(programId);
     };
 
     addResponseMessage('Finding someone to assist you with your code :)');
@@ -52,7 +67,8 @@ class ChatWidget extends React.Component {
 
   handleNewUserMessage = (newMessage) => {
     // Now send the message through the backend API
-    const { clientId } = this.props;
+    const { chatapp } = this.props;
+    const { clientId } = chatapp;
     const msg = JSON.stringify({
       message: newMessage,
       sender: clientId,
@@ -81,4 +97,4 @@ ChatWidget.propTypes = {
   // sessionId: PropTypes.string.isRequired,
 };
 
-export default hot(module)(connect(mapStateToProps)(ChatWidget));
+export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(ChatWidget)));
