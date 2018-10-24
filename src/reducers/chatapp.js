@@ -9,6 +9,7 @@ export default function chatapp(
     chatHidden: true,
     formHidden: false,
     supportProvider: false,
+
   }, action,
 ) {
   switch (action.type) {

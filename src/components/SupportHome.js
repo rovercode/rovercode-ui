@@ -11,11 +11,13 @@ import PropTypes from 'prop-types';
 import {
   fetchSupportRequests as actionfetchSupportRequests,
   rowClicked as actionRowClicked,
+  toggleInProgressState as actionToggleInProgressState,
 } from '../actions/supporthome';
 import {
   setSessionID as actionSetSessionId,
   setClientID as actionSetClientId,
   setIsSupportProvider as actionSetIsSupportProvider,
+
 } from '../actions/chatapp';
 
 const mapStateToProps = ({ supporthome, chatapp }) => ({ supporthome, chatapp });
@@ -79,7 +81,7 @@ class SupportHome extends React.Component {
   };
 
   onButtonClick= () => {
-    window.location = '/mission-control';
+
   }
 
   setIsSupportProvider = () => {
@@ -95,6 +97,11 @@ class SupportHome extends React.Component {
   rowClicked = (rowinfo) => {
     const { rowClicked } = this.props;
     rowClicked(rowinfo);
+  }
+
+  toggleInProgressState = () => {
+    const toggleInProgressState = this.props;
+    toggleInProgressState();
   }
 
 
@@ -151,13 +158,10 @@ class SupportHome extends React.Component {
             <br />
             <br />
             <Link to="/mission-control">
-              <Button positive>
+              <Button positive onClick={this.onButtonClick}>
                 Provide Support
               </Button>
             </Link>
-            {/* <Button positive onClick={this.onButtonClick}>
-              Provide Support
-            </Button> */}
           </div>
         )
             }

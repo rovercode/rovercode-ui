@@ -3,13 +3,16 @@ import {
   FETCH_SUPPORT_REQUESTS_FULFILLED,
   FETCH_SUPPORT_REQUESTS_REJECTED,
   ROW_CLICKED,
+  TOGGLE_IN_PROGRESS_STATE,
 } from '../actions/supporthome';
 
 export default function supporthome(
   state = {
     json: null,
     isFetching: false,
-    rowInfo: {},
+    rowInfo: {
+      id: null,
+    },
   },
   action,
 ) {
@@ -35,6 +38,13 @@ export default function supporthome(
       return {
         ...state,
         rowInfo: action.payload,
+      };
+    case TOGGLE_IN_PROGRESS_STATE:
+      return {
+        ...state,
+        rowInfo: {
+          in_progress: false,
+        },
       };
     default:
       return state;

@@ -1,3 +1,7 @@
 .rcw-widget-container {
     position:relative
 }
+.rcw-full-screen .rcw-messages-container {
+    max-height: 160px;
+    overflow: auto;
+}

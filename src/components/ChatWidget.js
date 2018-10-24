@@ -9,10 +9,12 @@ import {
   toggleWidget, dropMessages,
 } from 'react-chat-widget';
 import { fetchProgram as actionFetchProgram } from '../actions/code';
+import { setChattingWith as actionSetChattingWith } from '../actions/chatwidget';
 
 let firstresp = false;
-const mapStateToProps = ({ chatapp, code }) => ({ chatapp, code });
+const mapStateToProps = ({ chatapp, code, chatwidget }) => ({ chatapp, code, chatwidget });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
+  setChattingWith: id => dispatch(actionSetChattingWith(id)),
   fetchProgram: (id) => {
     const fetchProgramAction = actionFetchProgram(id, {
       headers: {
@@ -53,6 +55,7 @@ class ChatWidget extends React.Component {
       // TODO: implement check here from if m.data.clientID == this.state.clientID
       if (message.sender !== clientId) {
         ChatWidget.processIncoming(m);
+        // this.setChattingWith(message.sender);
       }
       if (supportProvider) {
         fetchProgram(programId);
@@ -83,6 +86,11 @@ class ChatWidget extends React.Component {
     toggleWidget();
   }
 
+  setChattingWith = (id) => {
+    const { setChattingWith } = this.props;
+    setChattingWith(id);
+  }
+
   handleNewUserMessage = (newMessage) => {
     // Now send the message through the backend API
     const { chatapp } = this.props;
@@ -94,16 +102,22 @@ class ChatWidget extends React.Component {
     this.socket.send(msg);
   };
 
+
   render() {
+    let chattingwithstring = '';
+    if (this.props.chatwidget.chattingWith !== '') {
+      chattingwithstring = `You are now chatting with: ${this.props.chatwidget.chattingWith}`;
+    }
+
     return (
       <div className="App">
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           autofocus={false}
-          title="Need help with your code?"
+          title="RoverCode Support"
           showCloseButton={false}
           fullScreenMode
-          subtitle="Ask your question and we will find someone to help you"
+          subtitle={chattingwithstring}
         />
       </div>
     );
