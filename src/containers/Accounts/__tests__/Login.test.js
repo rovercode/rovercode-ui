@@ -5,8 +5,16 @@ import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import configureStore from 'redux-mock-store';
+import jwtDecode from 'jwt-decode';
+
+import { updateUser } from '@/actions/user';
 
 import Login from '../Login';
+
+const mockStore = configureStore();
+const store = mockStore();
+store.dispatch = jest.fn();
 
 const mock = new MockAdapter(axios);
 
@@ -17,11 +25,11 @@ const location = {
 };
 
 test('Login renders on the page with no errors', () => {
-  const cookiesWrapper = shallow(<Login location={location} />, {
+  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Message).exists()).toBe(false);
@@ -39,11 +47,11 @@ test('Login redirects to social api on button click', async () => {
     },
   };
 
-  const cookiesWrapper = shallow(<Login location={location} />, {
+  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   await wrapper.instance().redirectToSocial(element);
 
@@ -63,11 +71,11 @@ test('Login shows error message on api error', async () => {
     },
   };
 
-  const cookiesWrapper = shallow(<Login location={location} />, {
+  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   await wrapper.instance().redirectToSocial(element);
   wrapper.update();
@@ -78,6 +86,7 @@ test('Login shows error message on api error', async () => {
 });
 
 test('Login redirects to root after basic login success', async () => {
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
   const username = 'admin';
   const password = 'password';
 
@@ -86,14 +95,14 @@ test('Login redirects to root after basic login success', async () => {
     username,
     password,
   }).reply(200, {
-    token: '1234',
+    token,
   });
 
-  const cookiesWrapper = shallow(<Login location={location} />, {
+  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   wrapper.find(Form.Input).first().simulate('change', {
     target: {
@@ -109,8 +118,9 @@ test('Login redirects to root after basic login success', async () => {
   await wrapper.instance().basicLogin();
   wrapper.update();
 
-  expect(cookies.get('auth_jwt')).toBe('1234');
+  expect(cookies.get('auth_jwt')).toBe(token);
   expect(wrapper.find(Redirect).exists()).toBe(true);
+  expect(store.dispatch).toHaveBeenCalledWith(updateUser(jwtDecode(token)));
 
   cookies.remove('auth_jwt');
 });
@@ -125,11 +135,11 @@ test('Login shows error message after basic login failure', async () => {
     password,
   }).reply(400);
 
-  const cookiesWrapper = shallow(<Login location={location} />, {
+  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   wrapper.find(Form.Input).first().simulate('change', {
     target: {

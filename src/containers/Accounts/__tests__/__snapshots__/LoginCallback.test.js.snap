@@ -17,6 +17,16 @@ ShallowWrapper {
         },
       }
     }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -47,6 +57,14 @@ ShallowWrapper {
           "service": "google",
         },
       },
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
     },
     "ref": null,
     "rendered": null,
@@ -74,6 +92,14 @@ ShallowWrapper {
           "params": Object {
             "service": "google",
           },
+        },
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [MockFunction],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
         },
       },
       "ref": null,
