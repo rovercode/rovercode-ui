@@ -51,7 +51,7 @@ class ChatApp extends React.Component {
             {chatapp.supportProvider
               ? (
                 <div>
-                  <ChatWidget clientId={chatapp.clientId} sessionId={chatapp.sessionId} />
+                  <ChatWidget setInProgress clientId={chatapp.clientId} sessionId={chatapp.sessionId} />
                   <br />
                   <br />
                   <Button className="ui negative button" onClick={this.toggleForms}>
@@ -62,7 +62,7 @@ class ChatApp extends React.Component {
                 ? <ChatForm toggleForms={this.toggleForms} setSessionId={this.setSessionId} setClientId={this.setClientId} />
                 : (
                   <div>
-                    <ChatWidget clientId={chatapp.clientId} sessionId={chatapp.sessionId} chatHeader="Finding someone to help you. Stand by!" />
+                    <ChatWidget clientId={chatapp.clientId} setInProgress={false} sessionId={chatapp.sessionId} chatHeader="Finding someone to help you. Stand by!" />
                     <br />
                     <br />
                     <Button className="ui negative button" onClick={this.toggleForms}>

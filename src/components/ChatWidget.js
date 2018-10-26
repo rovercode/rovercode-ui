@@ -2,8 +2,11 @@ import 'react-chat-widget/lib/styles.css';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import React from 'react';
-import { withCookies } from 'react-cookie';
+import { withCookies, Cookies } from 'react-cookie';
 import '@/css/chat.css';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+
 import {
   Widget, addResponseMessage, toggleInputDisabled,
   toggleWidget, dropMessages,
@@ -53,14 +56,23 @@ class ChatWidget extends React.Component {
     this.socket.onmessage = (m) => {
       const message = JSON.parse(m.data);
       // TODO: implement check here from if m.data.clientID == this.state.clientID
-      if (message.sender !== clientId) {
+      if (message.sender !== clientId && message.message !== 'Toggle in_progress') {
         ChatWidget.processIncoming(m);
         // this.setChattingWith(message.sender);
+      }
+      if (message.message === 'Toggle in_progress') {
+        this.toggleInProgressState();
       }
       if (supportProvider) {
         fetchProgram(programId);
       }
     };
+
+    // If user is support_provider, send message to support requestor to toggle in_progress
+    const { setInProgress } = this.props;
+    if (setInProgress) {
+      this.sendMessageToUpdateInProgress();
+    }
 
     addResponseMessage('Finding someone to assist you with your code :)');
   }
@@ -102,6 +114,40 @@ class ChatWidget extends React.Component {
     this.socket.send(msg);
   };
 
+  sendMessageToUpdateInProgress = () => {
+    // this method sends a message to support requestor to initiate a PATCH request
+    // to server to toggle support request to : in_progress: true
+    const { chatapp } = this.props;
+    const { clientId } = chatapp;
+    const msg = JSON.stringify({
+      message: 'Toggle in_progress',
+      sender: clientId,
+    });
+    this.socket.onopen = () => this.socket.send(msg);
+  }
+
+
+  toggleInProgressState = () => {
+    const { cookies } = this.props;
+    const { chatapp } = this.props;
+    const { sessionId } = chatapp;
+    const newobj = {};
+    newobj.in_progress = true;
+    const headers = {
+      Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      'Content-Type': 'application/json',
+    };
+
+    console.log(newobj);
+
+    axios.patch(`/api/v1/support-requests/${sessionId}/`, newobj, { headers })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   render() {
     let chattingwithstring = '';
@@ -125,6 +171,8 @@ class ChatWidget extends React.Component {
 }
 
 ChatWidget.propTypes = {
+  setInProgress: PropTypes.bool.isRequired,
+  cookies: PropTypes.instanceOf(Cookies).isRequired,
   // clientId: PropTypes.string.isRequired,
   // sessionId: PropTypes.string.isRequired,
 };

@@ -12,6 +12,7 @@ export default function supporthome(
     isFetching: false,
     rowInfo: {
       id: null,
+      in_progress: false,
     },
   },
   action,

@@ -8,10 +8,11 @@ import { withCookies, Cookies } from 'react-cookie';
 import { Header, Button } from 'semantic-ui-react';
 import { fetchProgram as actionfetchProgram } from '@/actions/code';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import {
   fetchSupportRequests as actionfetchSupportRequests,
   rowClicked as actionRowClicked,
-  toggleInProgressState as actionToggleInProgressState,
+  // toggleInProgressState as actionToggleInProgressState,
 } from '../actions/supporthome';
 import {
   setSessionID as actionSetSessionId,
@@ -65,7 +66,7 @@ class SupportHome extends React.Component {
   componentDidMount() {
     const { cookies } = this.props;
     const { fetchsupportrequests } = this.props;
-    //const jwt = cookies.get('auth_jwt');
+    // const jwt = cookies.get('auth_jwt');
     const headers = {
       headers: {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
@@ -81,7 +82,7 @@ class SupportHome extends React.Component {
   };
 
   onButtonClick= () => {
-
+    this.toggleInProgressState(rowInfo);
   }
 
   setIsSupportProvider = () => {
@@ -99,9 +100,25 @@ class SupportHome extends React.Component {
     rowClicked(rowinfo);
   }
 
-  toggleInProgressState = () => {
-    const toggleInProgressState = this.props;
-    toggleInProgressState();
+  toggleInProgressState = (data) => {
+    const { cookies } = this.props;
+    const { in_progress } = data.original;
+    const newobj = {};
+    newobj.in_progress = !in_progress;
+    const headers = {
+      headers: {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      },
+    };
+    console.log(in_progress);
+
+    axios.patch(`/api/v1/support-requests/${data.original.id}/`, JSON.stringify(newobj), { headers })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
 
