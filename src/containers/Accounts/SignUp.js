@@ -8,9 +8,17 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
+import jwtDecode from 'jwt-decode';
 import axios from 'axios';
+
+import { updateUser as actionUpdateUser } from '@/actions/user';
+
+const mapDispatchToProps = dispatch => ({
+  updateUser: data => dispatch(actionUpdateUser(data)),
+});
 
 class SignUp extends Component {
   constructor(props) {
@@ -104,7 +112,7 @@ class SignUp extends Component {
   }
 
   signUp = () => {
-    const { cookies } = this.props;
+    const { cookies, updateUser } = this.props;
     const {
       username,
       email,
@@ -119,6 +127,7 @@ class SignUp extends Component {
       password2,
     })
       .then((response) => {
+        updateUser(jwtDecode(response.data.token));
         cookies.set('auth_jwt', response.data.token, { path: '/' });
         this.setState({
           success: true,
@@ -190,6 +199,7 @@ class SignUp extends Component {
 
 SignUp.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
+  updateUser: PropTypes.func.isRequired,
 };
 
-export default withCookies(SignUp);
+export default withCookies(connect(null, mapDispatchToProps)(SignUp));

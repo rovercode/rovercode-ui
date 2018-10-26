@@ -1,10 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router';
 import { Loader } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
+import jwtDecode from 'jwt-decode';
+
+import { updateUser as actionUpdateUser } from '@/actions/user';
+
+const mapDispatchToProps = dispatch => ({
+  updateUser: data => dispatch(actionUpdateUser(data)),
+});
 
 class LoginCallback extends Component {
   constructor(props) {
@@ -17,7 +25,9 @@ class LoginCallback extends Component {
   }
 
   componentDidMount() {
-    const { cookies, location, match } = this.props;
+    const {
+      cookies, location, match, updateUser,
+    } = this.props;
     const queryParams = queryString.parse(location.search);
 
     return axios.post(`/jwt/auth/social/${match.params.service}/login/`, {
@@ -25,6 +35,7 @@ class LoginCallback extends Component {
       state: queryParams.state,
     })
       .then((response) => {
+        updateUser(jwtDecode(response.data.token));
         cookies.set('auth_jwt', response.data.token, { path: '/' });
         this.setState({
           loading: false,
@@ -72,6 +83,7 @@ LoginCallback.propTypes = {
       service: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  updateUser: PropTypes.func.isRequired,
 };
 
-export default withCookies(LoginCallback);
+export default withCookies(connect(null, mapDispatchToProps)(LoginCallback));
