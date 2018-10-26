@@ -8,6 +8,7 @@ import chatapp from './chatapp';
 import chatform from './chatform';
 import supporthome from './supporthome';
 import chatwidget from './chatwidget';
+import user from './user';
 
 export default combineReducers({
   code,
@@ -19,4 +20,5 @@ export default combineReducers({
   chatform,
   supporthome,
   chatwidget,
+  user,
 });

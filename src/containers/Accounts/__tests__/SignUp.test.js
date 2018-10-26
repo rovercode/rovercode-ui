@@ -5,8 +5,16 @@ import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import configureStore from 'redux-mock-store';
+import jwtDecode from 'jwt-decode';
+
+import { updateUser } from '@/actions/user';
 
 import SignUp from '../SignUp';
+
+const mockStore = configureStore();
+const store = mockStore();
+store.dispatch = jest.fn();
 
 const mock = new MockAdapter(axios);
 
@@ -14,11 +22,11 @@ const cookiesValues = { };
 const cookies = new Cookies(cookiesValues);
 
 test('SignUp renders on the page with no errors', () => {
-  const cookiesWrapper = shallow(<SignUp />, {
+  const cookiesWrapper = shallow(<SignUp store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Message).exists()).toBe(false);
@@ -35,11 +43,11 @@ test('SignUp displays form errors', async () => {
       'This password is entirely numeric.',
     ],
   });
-  const cookiesWrapper = shallow(<SignUp />, {
+  const cookiesWrapper = shallow(<SignUp store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
   await wrapper.instance().signUp();
   wrapper.update();
 
@@ -57,6 +65,7 @@ test('SignUp displays form errors', async () => {
 });
 
 test('SignUp redirects to root after success', async () => {
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
   const username = 'admin';
   const email = 'admin@example.com';
   const password1 = 'password123';
@@ -69,13 +78,13 @@ test('SignUp redirects to root after success', async () => {
     password1,
     password2,
   }).reply(200, {
-    token: '1234',
+    token,
   });
-  const cookiesWrapper = shallow(<SignUp />, {
+  const cookiesWrapper = shallow(<SignUp store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   wrapper.find(Form.Input).at(0).simulate('change', {
     target: {
@@ -101,9 +110,10 @@ test('SignUp redirects to root after success', async () => {
   await wrapper.instance().signUp();
   wrapper.update();
 
-  expect(cookies.get('auth_jwt')).toBe('1234');
+  expect(cookies.get('auth_jwt')).toBe(token);
   expect(wrapper.find(Redirect).exists()).toBe(true);
   expect(wrapper.find(Redirect).prop('to')).toBe('/');
+  expect(store.dispatch).toHaveBeenCalledWith(updateUser(jwtDecode(token)));
 
   cookies.remove('auth_jwt');
 });

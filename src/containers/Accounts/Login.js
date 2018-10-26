@@ -8,11 +8,19 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import URL from 'url-parse';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
+import jwtDecode from 'jwt-decode';
+
+import { updateUser as actionUpdateUser } from '@/actions/user';
+
+const mapDispatchToProps = dispatch => ({
+  updateUser: data => dispatch(actionUpdateUser(data)),
+});
 
 class Login extends Component {
   constructor(props) {
@@ -28,7 +36,7 @@ class Login extends Component {
   }
 
   basicLogin = () => {
-    const { cookies } = this.props;
+    const { cookies, updateUser } = this.props;
     const { username, password } = this.state;
 
     return axios.post('/api/api-token-auth/', {
@@ -36,6 +44,7 @@ class Login extends Component {
       password,
     })
       .then((response) => {
+        updateUser(jwtDecode(response.data.token));
         cookies.set('auth_jwt', response.data.token, { path: '/' });
         this.setState({
           basicSuccess: true,
@@ -182,6 +191,7 @@ Sign In
 
 Login.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
+  updateUser: PropTypes.func.isRequired,
 };
 
-export default withCookies(Login);
+export default withCookies(connect(null, mapDispatchToProps)(Login));

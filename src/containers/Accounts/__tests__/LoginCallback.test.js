@@ -5,8 +5,16 @@ import { Loader } from 'semantic-ui-react';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import configureStore from 'redux-mock-store';
+import jwtDecode from 'jwt-decode';
+
+import { updateUser } from '@/actions/user';
 
 import LoginCallback from '../LoginCallback';
+
+const mockStore = configureStore();
+const store = mockStore();
+store.dispatch = jest.fn();
 
 const mock = new MockAdapter(axios);
 
@@ -22,7 +30,7 @@ const match = {
 test('LoginCallback renders on the page with no errors', () => {
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
-  const wrapper = shallow(<LoginCallback location={location} match={match} />, {
+  const wrapper = shallow(<LoginCallback location={location} match={match} store={store} />, {
     context: { cookies },
   });
 
@@ -32,11 +40,13 @@ test('LoginCallback renders on the page with no errors', () => {
 test('LoginCallback displays loader while loading', () => {
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
-  const cookiesWrapper = shallow(<LoginCallback location={location} match={match} />, {
-    context: { cookies },
-  });
+  const cookiesWrapper = shallow(
+    <LoginCallback location={location} match={match} store={store} />, {
+      context: { cookies },
+    },
+  );
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   expect(wrapper.find(Loader).exists()).toBe(true);
   expect(wrapper.find(Redirect).exists()).toBe(false);
@@ -47,11 +57,13 @@ test('LoginCallback redirects to login after failure', async () => {
   mock.onPost('/jwt/auth/social/google/login/').timeout();
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
-  const cookiesWrapper = shallow(<LoginCallback location={location} match={match} />, {
-    context: { cookies },
-  });
+  const cookiesWrapper = shallow(
+    <LoginCallback location={location} match={match} store={store} />, {
+      context: { cookies },
+    },
+  );
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   await wrapper.instance().componentDidMount();
   wrapper.update();
@@ -64,17 +76,20 @@ test('LoginCallback redirects to login after failure', async () => {
 });
 
 test('LoginCallback redirects to root after success', async () => {
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
   mock.reset();
   mock.onPost('/jwt/auth/social/google/login/').reply(200, {
-    token: '1234',
+    token,
   });
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
-  const cookiesWrapper = shallow(<LoginCallback location={location} match={match} />, {
-    context: { cookies },
-  });
+  const cookiesWrapper = shallow(
+    <LoginCallback location={location} match={match} store={store} />, {
+      context: { cookies },
+    },
+  );
 
-  const wrapper = cookiesWrapper.dive();
+  const wrapper = cookiesWrapper.dive().dive();
 
   await wrapper.instance().componentDidMount();
   wrapper.update();
@@ -83,5 +98,6 @@ test('LoginCallback redirects to root after success', async () => {
   expect(redirect.exists()).toBe(true);
   expect(redirect.prop('to')).toBe('/');
   expect(wrapper.find(Loader).exists()).toBe(false);
-  expect(cookies.get('auth_jwt')).toBe('1234');
+  expect(cookies.get('auth_jwt')).toBe(token);
+  expect(store.dispatch).toHaveBeenCalledWith(updateUser(jwtDecode(token)));
 });
