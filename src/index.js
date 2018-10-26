@@ -10,11 +10,14 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from './reducers/index';
+import AuthApi from './utils/auth-api';
+
 
 import NotFound from './containers/Global/NotFound';
 import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
+import ProtectedRoute from './components/ProtectedRoute';
 
 /* eslint-disable-next-line no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -26,7 +29,11 @@ const reduxMiddleware = composeEnhancers(
   ),
 );
 
-const store = createStore(rootReducer, reduxMiddleware);
+const authApi = new AuthApi();
+const preloadedState = {
+  user: authApi.userData(),
+};
+const store = createStore(rootReducer, preloadedState, reduxMiddleware);
 
 // sets a reference to store @ window.store
 Object.assign(window, { store });
@@ -37,8 +44,8 @@ render(
       <CookiesProvider>
         <Switch>
           <Route path="/accounts" component={Accounts} />
-          <Route exact path="/" component={RoverList} />
-          <Route exact path="/mission-control" component={MissionControl} />
+          <ProtectedRoute exact path="/" component={RoverList} />
+          <ProtectedRoute exact path="/mission-control" component={MissionControl} />
           <Route component={NotFound} />
         </Switch>
       </CookiesProvider>
