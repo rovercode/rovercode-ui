@@ -65,12 +65,12 @@ class SupportHome extends React.Component {
   componentDidMount() {
     const { cookies } = this.props;
     const { fetchsupportrequests } = this.props;
-    // const jwt = cookies.get('auth_jwt');
-    const headers = JSON.stringify({
+    //const jwt = cookies.get('auth_jwt');
+    const headers = {
       headers: {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
-    });
+    };
     fetchsupportrequests(headers);
     this.setClientId('bryce');
   }
