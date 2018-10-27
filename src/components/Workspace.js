@@ -19,6 +19,7 @@ import {
 } from '@/actions/code';
 import { append, clear } from '@/actions/console';
 import BlocklyApi from '@/utils/blockly-api';
+import RoverApi from "@/utils/rover-api";
 
 const mapStateToProps = ({ code }) => ({ code });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -147,6 +148,7 @@ class Workspace extends Component {
 
     this.api = new BlocklyApi(this.highlightBlock, this.beginSleep,
       this.sensorStateCache, writeToConsole);
+    this.rover = new RoverApi('maWaUTHAqtXPfWt8hoyV7rggOg7xUS3s2GucltIw');
 
     this.state = {
       workspace: null,
