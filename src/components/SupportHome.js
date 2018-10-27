@@ -23,7 +23,7 @@ import {
 
 const mapStateToProps = ({ supporthome, chatapp }) => ({ supporthome, chatapp });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  fetchsupportrequests: headers => dispatch(actionfetchSupportRequests(headers)),
+  fetchsupportrequests: (headers, excludeInProgress) => dispatch(actionfetchSupportRequests(headers, excludeInProgress)),
   fetchprogram: (programId, headers) => dispatch(actionfetchProgram(programId, headers)),
   rowClicked: rowobject => dispatch(actionRowClicked(rowobject)),
   setSessionId: id => dispatch(actionSetSessionId(id)),
@@ -72,7 +72,7 @@ class SupportHome extends React.Component {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
     };
-    fetchsupportrequests(headers);
+    fetchsupportrequests(headers, true);
     this.setClientId('bryce');
   }
 

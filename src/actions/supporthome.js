@@ -7,9 +7,9 @@ export const ROW_CLICKED = 'ROW CLICKED';
 export const TOGGLE_IN_PROGRESS_STATE = 'TOGGLE_IN_PROGRESS_STATE';
 
 
-export const fetchSupportRequests = headers => ({
+export const fetchSupportRequests = (headers, excludeInProgress = false) => ({
   type: FETCH_SUPPORT_REQUESTS,
-  payload: axios.get('/api/v1/support-requests/', { headers })
+  payload: axios.get(`/api/v1/support-requests/${excludeInProgress ? '?in_progress=false' : ''}`, { headers })
     .then(({ data }) => (
       data
     )),
