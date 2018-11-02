@@ -6,6 +6,7 @@ import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
 import Interpreter from 'js-interpreter';
 
+import { updateValidAuth } from '@/actions/auth';
 import {
   updateJsCode as actionUpdateJsCode,
   updateXmlCode as actionUpdateXmlCode,
@@ -33,7 +34,12 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
     });
-    return dispatch(saveProgramAction);
+    return dispatch(saveProgramAction).catch((error) => {
+      if (error.response.status === 401) {
+        // Authentication is no longer valid
+        dispatch(updateValidAuth(false));
+      }
+    });
   },
   createProgram: (name) => {
     const createProgramAction = actionCreateProgram(name, {
@@ -41,7 +47,12 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
     });
-    return dispatch(createProgramAction);
+    return dispatch(createProgramAction).catch((error) => {
+      if (error.response.status === 401) {
+        // Authentication is no longer valid
+        dispatch(updateValidAuth(false));
+      }
+    });
   },
 });
 

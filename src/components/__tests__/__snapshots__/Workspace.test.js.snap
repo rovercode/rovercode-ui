@@ -46,27 +46,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         "results": Array [
           Object {
             "isThrow": false,
-            "value": undefined,
+            "value": Promise {},
           },
           Object {
             "isThrow": false,
-            "value": undefined,
+            "value": Promise {},
           },
           Object {
             "isThrow": false,
-            "value": undefined,
+            "value": Promise {},
           },
           Object {
             "isThrow": false,
-            "value": undefined,
+            "value": Promise {},
           },
           Object {
             "isThrow": false,
-            "value": undefined,
+            "value": Promise {},
           },
           Object {
             "isThrow": false,
-            "value": undefined,
+            "value": Promise {},
           },
         ],
       },
@@ -133,27 +133,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           "results": Array [
             Object {
               "isThrow": false,
-              "value": undefined,
+              "value": Promise {},
             },
             Object {
               "isThrow": false,
-              "value": undefined,
+              "value": Promise {},
             },
             Object {
               "isThrow": false,
-              "value": undefined,
+              "value": Promise {},
             },
             Object {
               "isThrow": false,
-              "value": undefined,
+              "value": Promise {},
             },
             Object {
               "isThrow": false,
-              "value": undefined,
+              "value": Promise {},
             },
             Object {
               "isThrow": false,
-              "value": undefined,
+              "value": Promise {},
             },
           ],
         },
@@ -230,27 +230,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             "results": Array [
               Object {
                 "isThrow": false,
-                "value": undefined,
+                "value": Promise {},
               },
               Object {
                 "isThrow": false,
-                "value": undefined,
+                "value": Promise {},
               },
               Object {
                 "isThrow": false,
-                "value": undefined,
+                "value": Promise {},
               },
               Object {
                 "isThrow": false,
-                "value": undefined,
+                "value": Promise {},
               },
               Object {
                 "isThrow": false,
-                "value": undefined,
+                "value": Promise {},
               },
               Object {
                 "isThrow": false,
-                "value": undefined,
+                "value": Promise {},
               },
             ],
           },
@@ -313,27 +313,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               "results": Array [
                 Object {
                   "isThrow": false,
-                  "value": undefined,
+                  "value": Promise {},
                 },
                 Object {
                   "isThrow": false,
-                  "value": undefined,
+                  "value": Promise {},
                 },
                 Object {
                   "isThrow": false,
-                  "value": undefined,
+                  "value": Promise {},
                 },
                 Object {
                   "isThrow": false,
-                  "value": undefined,
+                  "value": Promise {},
                 },
                 Object {
                   "isThrow": false,
-                  "value": undefined,
+                  "value": Promise {},
                 },
                 Object {
                   "isThrow": false,
-                  "value": undefined,
+                  "value": Promise {},
                 },
               ],
             },

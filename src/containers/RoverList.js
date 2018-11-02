@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
 import { fetchRovers } from '../actions/rover';
+import { updateValidAuth } from '../actions/auth';
 import RoverList from '../components/RoverList';
 
 const mapStateToProps = ({ rover }) => ({ ...rover });
@@ -13,7 +14,12 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
     });
-    return dispatch(fetchRoversAction);
+    return dispatch(fetchRoversAction).catch((error) => {
+      if (error.response.status === 401) {
+        // Authentication is no longer valid
+        dispatch(updateValidAuth(false));
+      }
+    });
   },
 });
 

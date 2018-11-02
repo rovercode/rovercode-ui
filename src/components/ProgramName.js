@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 
+import { updateValidAuth } from '@/actions/auth';
 import { changeName as actionChangeName } from '@/actions/code';
 
 const mapStateToProps = ({ code }) => ({ code });
@@ -15,7 +16,12 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
     });
-    return dispatch(changeNameAction);
+    return dispatch(changeNameAction).catch((error) => {
+      if (error.response.status === 401) {
+        // Authentication is no longer valid
+        dispatch(updateValidAuth(false));
+      }
+    });
   },
 });
 

@@ -6,6 +6,7 @@ import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import RoverList from '../RoverList';
 import { fetchRovers } from '../../actions/rover';
+import { updateValidAuth } from '../../actions/auth';
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -21,7 +22,7 @@ describe('The RoverListContainer', () => {
         rovers: [],
       },
     });
-    store.dispatch = jest.fn();
+    store.dispatch = jest.fn(() => Promise.resolve());
     const context = { cookies };
     wrapper = shallow(<RoverList store={store} />, { context });
   });
@@ -44,5 +45,46 @@ describe('The RoverListContainer', () => {
     );
 
     mockAxios.restore();
+  });
+
+  test('handles authentication error', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 401,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    wrapper.dive().props().fetchRovers().then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        fetchRovers({
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
+  test('handles other error', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    wrapper.dive().props().fetchRovers().then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        fetchRovers({
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
   });
 });
