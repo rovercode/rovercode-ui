@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ auth, user }) => ({ auth, user });
 
 class ProtectedRoute extends Component {
   isAuthenticated = () => {
-    const { user } = this.props;
+    const { auth, user } = this.props;
+
+    if (!auth.isValidAuth) {
+      return false;
+    }
 
     if (user.exp) {
       if (moment().isAfter(moment.unix(user.exp))) {
@@ -39,6 +43,9 @@ class ProtectedRoute extends Component {
 }
 
 ProtectedRoute.propTypes = {
+  auth: PropTypes.shape({
+    isValidAuth: PropTypes.bool,
+  }).isRequired,
   user: PropTypes.shape({
     exp: PropTypes.number,
   }).isRequired,

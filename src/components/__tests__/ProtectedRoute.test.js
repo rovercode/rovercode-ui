@@ -20,6 +20,9 @@ describe('The ProtectedRoute component', () => {
         email: 'testuser@example.com',
         exp: 1540341529,
       },
+      auth: {
+        isValidAuth: true,
+      },
     });
   });
 
@@ -64,6 +67,35 @@ describe('The ProtectedRoute component', () => {
   test('renders redirect when not able to determine authentication status', () => {
     store = mockStore({
       user: {},
+      auth: {
+        isValidAuth: true,
+      },
+    });
+    const wrapper = mount(
+      <MemoryRouter initialEntries={['/']} initialIndex={0}>
+        <Switch>
+          <Route exact path="/accounts/login" />
+          <ProtectedRoute exact path="/" component={TestComponent} store={store} />
+        </Switch>
+      </MemoryRouter>,
+    );
+
+    expect(wrapper.find(TestComponent).exists()).toBe(false);
+    expect(wrapper.find(Route).exists()).toBe(true);
+    expect(wrapper.find(Route).prop('path')).toBe('/accounts/login');
+  });
+
+  test('renders redirect when invalid auth', () => {
+    store = mockStore({
+      user: {
+        id: 1,
+        username: 'testuser',
+        email: 'testuser@example.com',
+        exp: 1540341529,
+      },
+      auth: {
+        isValidAuth: false,
+      },
     });
     const wrapper = mount(
       <MemoryRouter initialEntries={['/']} initialIndex={0}>
