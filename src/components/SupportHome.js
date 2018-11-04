@@ -12,7 +12,6 @@ import axios from 'axios';
 import {
   fetchSupportRequests as actionfetchSupportRequests,
   rowClicked as actionRowClicked,
-  // toggleInProgressState as actionToggleInProgressState,
 } from '../actions/supporthome';
 import {
   setSessionID as actionSetSessionId,
@@ -100,26 +99,6 @@ class SupportHome extends React.Component {
     rowClicked(rowinfo);
   }
 
-  toggleInProgressState = (data) => {
-    const { cookies } = this.props;
-    const { in_progress } = data.original;
-    const newobj = {};
-    newobj.in_progress = !in_progress;
-    const headers = {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    };
-    console.log(in_progress);
-
-    axios.patch(`/api/v1/support-requests/${data.original.id}/`, JSON.stringify(newobj), { headers })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
 
 
   render() {

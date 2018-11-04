@@ -12,12 +12,10 @@ import {
   toggleWidget, dropMessages,
 } from 'react-chat-widget';
 import { fetchProgram as actionFetchProgram } from '../actions/code';
-import { setChattingWith as actionSetChattingWith } from '../actions/chatwidget';
 
 let firstresp = false;
 const mapStateToProps = ({ chatapp, code, chatwidget }) => ({ chatapp, code, chatwidget });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  setChattingWith: id => dispatch(actionSetChattingWith(id)),
   fetchProgram: (id) => {
     const fetchProgramAction = actionFetchProgram(id, {
       headers: {
@@ -55,10 +53,8 @@ class ChatWidget extends React.Component {
     // handle message
     this.socket.onmessage = (m) => {
       const message = JSON.parse(m.data);
-      // TODO: implement check here from if m.data.clientID == this.state.clientID
       if (message.sender !== clientId && message.message !== 'Toggle in_progress') {
         ChatWidget.processIncoming(m);
-        // this.setChattingWith(message.sender);
       }
       if (message.message === 'Toggle in_progress') {
         this.toggleInProgressState();
@@ -98,10 +94,6 @@ class ChatWidget extends React.Component {
     toggleWidget();
   }
 
-  setChattingWith = (id) => {
-    const { setChattingWith } = this.props;
-    setChattingWith(id);
-  }
 
   handleNewUserMessage = (newMessage) => {
     // Now send the message through the backend API
