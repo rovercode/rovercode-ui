@@ -7,7 +7,9 @@ import '@/css/chat.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
-
+import {
+  toggleInProgressState as actionToggleInProgressState
+} from '../actions/chatwidget';
 import {
   Widget, addResponseMessage, toggleInputDisabled,
   toggleWidget, dropMessages,
@@ -27,6 +29,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     });
     return dispatch(fetchProgramAction);
   },
+  toggleInProgressState: () =>dispatch(actionToggleInProgressState()),
 });
 
 class ChatWidget extends React.Component {
@@ -56,7 +59,10 @@ class ChatWidget extends React.Component {
     // handle message
     this.socket.onmessage = function(m) {
       const message = JSON.parse(m.data);
-      if (message.sender !== clientId && message.message !== 'Toggle in_progress' && message.message !=='CONCLUDE_CHAT') {
+      if (message.sender !== clientId 
+        && message.message !== 'Toggle in_progress' 
+        && message.message !=='CONCLUDE_CHAT'
+        && message.message !== 'SP_DISCONNECTED') {
         //if none of above message conditions are met, we process the message and display it
         ChatWidget.processIncoming(m);
       }
@@ -70,12 +76,17 @@ class ChatWidget extends React.Component {
         this.toggleInProgressState();
       }
 
+      //notify support requestor support provider has disconnected
+      if(message.message === 'SP_DISCONNECTED' && message.sender !== clientId ){
+        this.toggleInProgressState();
+        addResponseMessage("The support provider has disconnected. Finding you another support provider")
+      }
+
       //Whether chat is successfully concluded or support requestor requests help from someone else, we process these messages on end of suport provider
       if (message.message === 'CONCLUDE_CHAT' && message.sender !== clientId ){
         addResponseMessage("The support session has ended. Thanks for your help!");
         this. sleep(5000).then(() => {
-          dropMessages();
-          this.props.toggleSupportProvider();
+          this.handleCancelChatForSP();
         })
       }
     }.bind(this);
@@ -137,11 +148,14 @@ class ChatWidget extends React.Component {
 
 
   toggleInProgressState = () => {
+    const { toggleInProgressState } = this.props;
+    toggleInProgressState();
+    
     const { cookies } = this.props;
     const { chatapp } = this.props;
     const { sessionId } = chatapp;
     const newobj = {};
-    newobj.in_progress = true;
+    newobj.in_progress = this.props.chatwidget.in_progress;
     const headers = {
       Authorization: `JWT ${cookies.get('auth_jwt')}`,
       'Content-Type': 'application/json',
@@ -160,6 +174,18 @@ class ChatWidget extends React.Component {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
   
+  handleCancelChatForSP = (sendmessage) =>{
+    const { chatapp } = this.props
+    if (sendmessage){
+      const msg = JSON.stringify({
+        message: 'SP_DISCONNECTED',
+        sender: chatapp.clientId,
+      });
+      this.socket.send(msg);
+    }
+    dropMessages();
+    this.props.toggleOffSupportProvider();
+  }
 
   handleConcludeChat = () => {
     const { sessionId } = this.props.chatapp;
@@ -227,7 +253,7 @@ class ChatWidget extends React.Component {
           <div>
           <br />
           <br />
-          <Button className="ui negative button" onClick={this.props.toggleForms}>
+          <Button className="ui negative button" onClick={this.handleCancelChatForSP}>
           Cancel chat
           </Button>
           </div>
@@ -240,7 +266,7 @@ class ChatWidget extends React.Component {
           </Button>
           <br />
           <br />
-          <Button className="ui negative button" onClick={this.handleCancelChat}>
+          <Button className="ui negative button" onClick={() => this.handleCancelChat(true)}>
             Find help from someone else
           </Button>
           <br />

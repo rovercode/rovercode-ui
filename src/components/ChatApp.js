@@ -45,9 +45,9 @@ class ChatApp extends React.Component {
     toggleAwaitingSupport();
   }
 
-  togglSupportProvider = () => {
-    const { toggleSupportProvider } = this.props;
-    toggleSupportProvider();
+  toggleOffSupportProvider = () => {
+    const { toggleOffSupportProvider } = this.props;
+    toggleOffSupportProvider();
   }
 
 
@@ -64,7 +64,7 @@ class ChatApp extends React.Component {
                   {chatapp.chatHidden && !chatapp.formHidden ? 
                     <ChatForm key="1" supportProvider toggleForms={this.toggleForms} setSessionId={this.setSessionId} setClientId={this.setClientId} />
                   : 
-                    <ChatWidget key="1" setInProgress supportProvider  toggleSupportProvider = {this.togglSupportProvider} clientId={chatapp.clientId}  sessionId={chatapp.sessionId} />}  
+                    <ChatWidget key="1" setInProgress supportProvider  toggleOffSupportProvider = {this.toggleOffSupportProvider} clientId={chatapp.clientId}  sessionId={chatapp.sessionId} />}  
                 </div>
               ) : chatapp.chatHidden && !chatapp.formHidden
                 ? <ChatForm key="2" toggleForms={this.toggleForms} setSessionId={this.setSessionId} setClientId={this.setClientId} />

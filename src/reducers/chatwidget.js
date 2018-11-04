@@ -1,19 +1,19 @@
 
 
 import {
-  SET_CHATTING_WITH,
+  TOGGLE_IN_PROGRESS_STATE,
 } from '../actions/chatwidget';
 
 export default function chatwidget(
   state = {
-    chattingWith: '',
+    in_progress: false,
   }, action,
 ) {
   switch (action.type) {
-    case SET_CHATTING_WITH:
+    case TOGGLE_IN_PROGRESS_STATE:
       return {
         ...state,
-        chattingWith: action.payload,
+        in_progress: !state.in_progress,
       };
     default:
       return state;
