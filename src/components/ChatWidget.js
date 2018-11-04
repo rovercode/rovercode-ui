@@ -6,12 +6,15 @@ import { withCookies, Cookies } from 'react-cookie';
 import '@/css/chat.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Button } from 'semantic-ui-react';
 
 import {
   Widget, addResponseMessage, toggleInputDisabled,
   toggleWidget, dropMessages,
 } from 'react-chat-widget';
 import { fetchProgram as actionFetchProgram } from '../actions/code';
+import { SSL_OP_EPHEMERAL_RSA } from 'constants';
+import { join } from 'upath';
 
 let firstresp = false;
 const mapStateToProps = ({ chatapp, code, chatwidget }) => ({ chatapp, code, chatwidget });
@@ -35,7 +38,7 @@ class ChatWidget extends React.Component {
     addResponseMessage(message.message);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     // destructure props into clientID and sessionID
     const { chatapp, code, fetchProgram } = this.props;
     const { clientId, sessionId, supportProvider } = chatapp;
@@ -51,26 +54,40 @@ class ChatWidget extends React.Component {
     this.socket = new WebSocket(`ws://localhost:8000/ws/support/${sessionId}/`);
 
     // handle message
-    this.socket.onmessage = (m) => {
+    this.socket.onmessage = function(m) {
       const message = JSON.parse(m.data);
-      if (message.sender !== clientId && message.message !== 'Toggle in_progress') {
+      if (message.sender !== clientId && message.message !== 'Toggle in_progress' && message.message !=='CONCLUDE_CHAT') {
+        //if none of above message conditions are met, we process the message and display it
         ChatWidget.processIncoming(m);
       }
-      if (message.message === 'Toggle in_progress') {
-        this.toggleInProgressState();
-      }
+      //fetch program
       if (supportProvider) {
         fetchProgram(programId);
       }
-    };
+      
+      //support requestor receives this message and then toggles their support request entry in_progress
+      if (message.message === 'Toggle in_progress') {
+        this.toggleInProgressState();
+      }
+
+      //Whether chat is successfully concluded or support requestor requests help from someone else, we process these messages on end of suport provider
+      if (message.message === 'CONCLUDE_CHAT' && message.sender !== clientId ){
+        addResponseMessage("The support session has ended. Thanks for your help!");
+        this. sleep(5000).then(() => {
+          dropMessages();
+          this.props.toggleSupportProvider();
+        })
+      }
+    }.bind(this);
 
     // If user is support_provider, send message to support requestor to toggle in_progress
-    const { setInProgress } = this.props;
-    if (setInProgress) {
+    if (supportProvider) {
       this.sendMessageToUpdateInProgress();
+      addResponseMessage('You are now in a support session. Feel free to start chatting!');
+    } else{
+      addResponseMessage('Finding someone to assist you with your code :)');
     }
-
-    addResponseMessage('Finding someone to assist you with your code :)');
+    
   }
 
   componentWillUpdate(nextProps) {
@@ -130,8 +147,6 @@ class ChatWidget extends React.Component {
       'Content-Type': 'application/json',
     };
 
-    console.log(newobj);
-
     axios.patch(`/api/v1/support-requests/${sessionId}/`, newobj, { headers })
       .then((response) => {
         console.log(response);
@@ -141,12 +156,63 @@ class ChatWidget extends React.Component {
       });
   }
 
+  sleep = (time) => {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+  
+
+  handleConcludeChat = () => {
+    const { sessionId } = this.props.chatapp;
+    const { cookies } = this.props;
+    const { chatapp } = this.props
+    const headers = {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+        'Content-Type': 'application/json',
+    };
+    axios.delete(`/api/v1/support-requests/${sessionId}/`, { headers })
+      .then(function() { 
+        addResponseMessage("This concludes your chat session!");
+        this. sleep(5000).then(() => {
+          dropMessages();
+          this.props.toggleForms();
+        })
+
+      }.bind(this)).catch(function(error) {
+        console.log(error);
+      });
+    const msg = JSON.stringify({
+      message: 'CONCLUDE_CHAT',
+      sender: chatapp.clientId,
+    });
+    this.socket.send(msg);
+  }
+
+  handleCancelChat = () => {
+    const { sessionId } = this.props.chatapp;
+    const { chatapp } = this.props;
+    const { cookies } = this.props;
+    const newobj = {};
+    newobj.in_progress = false;
+    const headers = {
+      Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      'Content-Type': 'application/json',
+    };
+    axios.patch(`/api/v1/support-requests/${sessionId}/`, JSON.stringify(newobj), { headers })
+      .then(function() {
+        addResponseMessage("Finding you help from someone else!")
+      }.bind(this)).catch(function(error) {
+        console.log(error);
+      }.bind(this));
+    const msg = JSON.stringify({
+      message: 'CONCLUDE_CHAT',
+      sender: chatapp.clientId,
+    });
+    this.socket.send(msg);
+  }
+
   render() {
     let chattingwithstring = '';
-    if (this.props.chatwidget.chattingWith !== '') {
-      chattingwithstring = `You are now chatting with: ${this.props.chatwidget.chattingWith}`;
-    }
-
+  
     return (
       <div className="App">
         <Widget
@@ -157,6 +223,34 @@ class ChatWidget extends React.Component {
           fullScreenMode
           subtitle={chattingwithstring}
         />
+        {this.props.supportProvider ? (
+          <div>
+          <br />
+          <br />
+          <Button className="ui negative button" onClick={this.props.toggleForms}>
+          Cancel chat
+          </Button>
+          </div>
+         ) : (
+           <div>
+          <br />
+          <br />
+          <Button positive onClick={this.handleConcludeChat}>
+            My problem is fixed!
+          </Button>
+          <br />
+          <br />
+          <Button className="ui negative button" onClick={this.handleCancelChat}>
+            Find help from someone else
+          </Button>
+          <br />
+          <br />
+          <Button className="ui negative button" >
+            Report Abuse
+          </Button>
+          </div>
+         )
+        }
       </div>
     );
   }

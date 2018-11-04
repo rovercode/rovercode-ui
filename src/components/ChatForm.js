@@ -60,6 +60,12 @@ const experience = [
 
 class ChatForm extends React.Component {
     // action creators
+
+    componentDidMount = () =>{
+      if (this.props.supportProvider){
+        this.props.toggleForms();
+      }
+    }
     categorySelectChange = (event, data) => {
       const payload = data.value;
       const { categorySelectChange } = this.props;

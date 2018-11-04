@@ -8,7 +8,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import { Header, Button } from 'semantic-ui-react';
 import { fetchProgram as actionfetchProgram } from '@/actions/code';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import {
   fetchSupportRequests as actionfetchSupportRequests,
   rowClicked as actionRowClicked,
@@ -120,12 +119,15 @@ class SupportHome extends React.Component {
           <div>
             <ReactTable
               columns={columns}
+              defaultSorted={[{
+                id   : 'id',
+                desc : true,
+              }]}
               data={json}
               getTdProps={(state, rowInfo) => {
                 if (typeof rowInfo !== 'undefined') {
                   return {
                     onClick: (e) => {
-                      console.log('It was in this row:', rowInfo);
                       this.rowClicked(rowInfo.original);
                       this.setIsSupportProvider();
                       this.setSessionId(rowInfo.original.id);
@@ -153,11 +155,17 @@ class SupportHome extends React.Component {
             />
             <br />
             <br />
-            <Link to="/mission-control">
+            {this.props.supporthome.rowInfo.id !== null ? 
+              <Link to="/mission-control">
               <Button positive onClick={this.onButtonClick}>
                 Provide Support
               </Button>
-            </Link>
+            </Link> :
+            <Button positive disabled>
+              Provide Support
+            </Button>
+            }
+            
           </div>
         )
             }
