@@ -16,10 +16,12 @@ import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 
+import { updateValidAuth as actionUpdateValidAuth } from '@/actions/auth';
 import { updateUser as actionUpdateUser } from '@/actions/user';
 
 const mapDispatchToProps = dispatch => ({
   updateUser: data => dispatch(actionUpdateUser(data)),
+  updateValidAuth: isValidAuth => dispatch(actionUpdateValidAuth(isValidAuth)),
 });
 
 class Login extends Component {
@@ -36,7 +38,7 @@ class Login extends Component {
   }
 
   basicLogin = () => {
-    const { cookies, updateUser } = this.props;
+    const { cookies, updateUser, updateValidAuth } = this.props;
     const { username, password } = this.state;
 
     return axios.post('/api/api-token-auth/', {
@@ -46,6 +48,7 @@ class Login extends Component {
       .then((response) => {
         updateUser(jwtDecode(response.data.token));
         cookies.set('auth_jwt', response.data.token, { path: '/' });
+        updateValidAuth(true);
         this.setState({
           basicSuccess: true,
         });
@@ -192,6 +195,7 @@ Sign In
 Login.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   updateUser: PropTypes.func.isRequired,
+  updateValidAuth: PropTypes.func.isRequired,
 };
 
 export default withCookies(connect(null, mapDispatchToProps)(Login));

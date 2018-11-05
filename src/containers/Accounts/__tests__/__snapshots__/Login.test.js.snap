@@ -32,6 +32,7 @@ ShallowWrapper {
       }
     }
     updateUser={[Function]}
+    updateValidAuth={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
