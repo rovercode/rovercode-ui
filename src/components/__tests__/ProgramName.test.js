@@ -5,6 +5,7 @@ import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
 
+import { updateValidAuth } from '@/actions/auth';
 import { changeName } from '@/actions/code';
 import ProgramName from '../ProgramName';
 
@@ -22,7 +23,7 @@ describe('The Console component', () => {
         name: 'test name',
       },
     });
-    store.dispatch = jest.fn();
+    store.dispatch = jest.fn(() => Promise.resolve());
   });
 
   test('renders on the page with no errors', () => {
@@ -88,5 +89,48 @@ describe('The Console component', () => {
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(store.dispatch).toHaveBeenCalled();
     expect(store.dispatch).toHaveBeenCalledWith(changeName('test name'));
+  });
+
+  test('handles authentication error', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 401,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    const wrapper = shallow(<ProgramName store={store} />, { context });
+    wrapper.dive().props().changeName(1, 'testname').then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        changeName(1, 'testname', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
+  test('handles other error', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    const wrapper = shallow(<ProgramName store={store} />, { context });
+    wrapper.dive().props().changeName(1, 'testname').then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        changeName(1, 'testname', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
   });
 });

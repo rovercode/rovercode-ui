@@ -8,6 +8,7 @@ import MockAdapter from 'axios-mock-adapter';
 import configureStore from 'redux-mock-store';
 import jwtDecode from 'jwt-decode';
 
+import { updateValidAuth } from '@/actions/auth';
 import { updateUser } from '@/actions/user';
 
 import Login from '../Login';
@@ -121,6 +122,7 @@ test('Login redirects to root after basic login success', async () => {
   expect(cookies.get('auth_jwt')).toBe(token);
   expect(wrapper.find(Redirect).exists()).toBe(true);
   expect(store.dispatch).toHaveBeenCalledWith(updateUser(jwtDecode(token)));
+  expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
 
   cookies.remove('auth_jwt');
 });

@@ -3,8 +3,11 @@ import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
+import { updateValidAuth } from '@/actions/auth';
 import {
   changeExecutionState,
+  createProgram,
+  saveProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
@@ -32,7 +35,7 @@ describe('The Workspace component', () => {
         execution: null,
       },
     });
-    store.dispatch = jest.fn();
+    store.dispatch = jest.fn(() => Promise.resolve());
     playground = {
       addChangeListener: jest.fn((cb) => { cb(); }),
       highlightBlock: jest.fn(),
@@ -366,6 +369,7 @@ describe('The Workspace component', () => {
         xmlCode: '<xml></xml>',
       },
     });
+    localStore.dispatch = jest.fn(() => Promise.resolve());
     const wrapper = shallow(<Workspace store={localStore} />, { context });
 
     wrapper.dive().dive();
@@ -373,5 +377,91 @@ describe('The Workspace component', () => {
     expect(playground.clear).toHaveBeenCalled();
     expect(Blockly.Xml.domToWorkspace).toHaveBeenCalled();
     expect(Blockly.Xml.domToWorkspace).toHaveBeenCalledWith(playground, 'test-dom');
+  });
+
+  test('handles authentication error when saving', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 401,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    const wrapper = shallow(<Workspace store={store} />, { context });
+    wrapper.dive().props().saveProgram(1, '<xml></xml>', 'test').then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        saveProgram(1, '<xml></xml>', 'test', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
+  test('handles other error when saving', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    const wrapper = shallow(<Workspace store={store} />, { context });
+    wrapper.dive().props().saveProgram(1, '<xml></xml>', 'test').then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        saveProgram(1, '<xml></xml>', 'test', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
+  });
+
+  test('handles authentication error when creating', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 401,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    const wrapper = shallow(<Workspace store={store} />, { context });
+    wrapper.dive().props().createProgram('test').then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        createProgram('test', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
+  test('handles other error when saving', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    const wrapper = shallow(<Workspace store={store} />, { context });
+    wrapper.dive().props().createProgram('test').then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        createProgram('test', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
   });
 });

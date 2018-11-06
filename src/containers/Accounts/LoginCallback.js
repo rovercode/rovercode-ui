@@ -8,10 +8,12 @@ import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 
+import { updateValidAuth as actionUpdateValidAuth } from '@/actions/auth';
 import { updateUser as actionUpdateUser } from '@/actions/user';
 
 const mapDispatchToProps = dispatch => ({
   updateUser: data => dispatch(actionUpdateUser(data)),
+  updateValidAuth: isValidAuth => dispatch(actionUpdateValidAuth(isValidAuth)),
 });
 
 class LoginCallback extends Component {
@@ -26,7 +28,7 @@ class LoginCallback extends Component {
 
   componentDidMount() {
     const {
-      cookies, location, match, updateUser,
+      cookies, location, match, updateUser, updateValidAuth,
     } = this.props;
     const queryParams = queryString.parse(location.search);
 
@@ -37,6 +39,7 @@ class LoginCallback extends Component {
       .then((response) => {
         updateUser(jwtDecode(response.data.token));
         cookies.set('auth_jwt', response.data.token, { path: '/' });
+        updateValidAuth(true);
         this.setState({
           loading: false,
           loginSuccess: true,
@@ -84,6 +87,7 @@ LoginCallback.propTypes = {
     }).isRequired,
   }).isRequired,
   updateUser: PropTypes.func.isRequired,
+  updateValidAuth: PropTypes.func.isRequired,
 };
 
 export default withCookies(connect(null, mapDispatchToProps)(LoginCallback));
