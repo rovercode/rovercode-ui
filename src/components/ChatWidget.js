@@ -59,9 +59,10 @@ class ChatWidget extends React.Component {
     // handle message
     this.socket.onmessage = function(m) {
       const message = JSON.parse(m.data);
-      if (message.sender !== clientId 
-        && message.message !== 'Toggle in_progress' 
-        && message.message !=='CONCLUDE_CHAT'
+      if (message.sender !== clientId
+        && message.message !== 'REPORT_ABUSE'
+        && message.message !== 'Toggle in_progress'
+        && message.message !== 'CONCLUDE_CHAT'
         && message.message !== 'SP_DISCONNECTED') {
         //if none of above message conditions are met, we process the message and display it
         ChatWidget.processIncoming(m);
@@ -70,7 +71,12 @@ class ChatWidget extends React.Component {
       if (supportProvider) {
         fetchProgram(programId);
       }
-      
+
+      if (message.message === 'REPORT_ABUSE') {
+        addResponseMessage('This conversation has been reported to administrators. '
+          + 'It will be reviewed, and action will be taken according to the policy at TODO: policy link');
+      }
+
       //support requestor receives this message and then toggles their support request entry in_progress
       if (message.message === 'Toggle in_progress') {
         this.toggleInProgressState();
@@ -98,8 +104,7 @@ class ChatWidget extends React.Component {
     } else{
       addResponseMessage('Finding someone to assist you with your code :)');
     }
-    
-  }
+  };
 
   componentWillUpdate(nextProps) {
     const { code: currentCode, chatapp: currentChatapp } = this.props;
@@ -190,7 +195,7 @@ class ChatWidget extends React.Component {
   handleConcludeChat = () => {
     const { sessionId } = this.props.chatapp;
     const { cookies } = this.props;
-    const { chatapp } = this.props
+    const { chatapp } = this.props;
     const headers = {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
         'Content-Type': 'application/json',
@@ -211,7 +216,7 @@ class ChatWidget extends React.Component {
       sender: chatapp.clientId,
     });
     this.socket.send(msg);
-  }
+  };
 
   handleCancelChat = () => {
     const { sessionId } = this.props.chatapp;
@@ -234,6 +239,22 @@ class ChatWidget extends React.Component {
       sender: chatapp.clientId,
     });
     this.socket.send(msg);
+  };
+
+  handleReportAbuse() {
+    console.log('Reporting abuse');
+    const { chatapp } = this.props;
+    const reportMsg = JSON.stringify({
+      message: 'REPORT_ABUSE',
+      sender: chatapp.clientId,
+      transcript: 'TODO',
+    });
+    this.socket.send(reportMsg);
+    const cancelMsg = JSON.stringify({
+      message: 'CONCLUDE_CHAT',
+      sender: chatapp.clientId,
+    });
+    this.socket.send(cancelMsg);
   }
 
   render() {
@@ -244,7 +265,7 @@ class ChatWidget extends React.Component {
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           autofocus={false}
-          title="RoverCode Support"
+          title="Support"
           showCloseButton={false}
           fullScreenMode
           subtitle={chattingwithstring}
@@ -257,25 +278,25 @@ class ChatWidget extends React.Component {
           Cancel chat
           </Button>
           </div>
-         ) : (
-           <div>
-          <br />
-          <br />
-          <Button positive onClick={this.handleConcludeChat}>
-            My problem is fixed!
-          </Button>
-          <br />
-          <br />
-          <Button className="ui negative button" onClick={() => this.handleCancelChat(true)}>
-            Find help from someone else
-          </Button>
-          <br />
-          <br />
-          <Button className="ui negative button" >
-            Report Abuse
-          </Button>
+        ) : (
+          <div>
+            <br />
+            <br />
+            <Button positive onClick={this.handleConcludeChat}>
+              My problem is fixed!
+            </Button>
+            <br />
+            <br />
+            <Button className="ui negative button" onClick={() => this.handleCancelChat(true)}>
+              Find help from someone else
+            </Button>
+            <br />
+            <br />
+            <Button className="ui negative button" onClick={() => this.handleReportAbuse()}>
+              Report abuse
+            </Button>
           </div>
-         )
+        )
         }
       </div>
     );
