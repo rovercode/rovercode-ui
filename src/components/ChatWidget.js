@@ -8,7 +8,8 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import {
-  toggleInProgressState as actionToggleInProgressState
+  toggleInProgressState as actionToggleInProgressState,
+  addToChatLog as actionAddToChatLog,
 } from '../actions/chatwidget';
 import {
   Widget, addResponseMessage, toggleInputDisabled,
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     return dispatch(fetchProgramAction);
   },
   toggleInProgressState: () =>dispatch(actionToggleInProgressState()),
+  addToChatLog: message =>dispatch(actionAddToChatLog(message)),
 });
 
 class ChatWidget extends React.Component {
@@ -58,7 +60,9 @@ class ChatWidget extends React.Component {
 
     // handle message
     this.socket.onmessage = function(m) {
+
       const message = JSON.parse(m.data);
+      this.addToChatLog(message);
       if (message.sender !== clientId
         && message.message !== 'REPORT_ABUSE'
         && message.message !== 'Toggle in_progress'
@@ -247,7 +251,7 @@ class ChatWidget extends React.Component {
     const reportMsg = JSON.stringify({
       message: 'REPORT_ABUSE',
       sender: chatapp.clientId,
-      transcript: 'TODO',
+      transcript: this.props.chatwidget.chat_log,
     });
     this.socket.send(reportMsg);
     const cancelMsg = JSON.stringify({
@@ -255,6 +259,11 @@ class ChatWidget extends React.Component {
       sender: chatapp.clientId,
     });
     this.socket.send(cancelMsg);
+  }
+
+  addToChatLog = message => {
+    const { addToChatLog } = this.props;
+    addToChatLog(message);
   }
 
   render() {
