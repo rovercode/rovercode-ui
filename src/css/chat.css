@@ -2,6 +2,15 @@
     position:relative
 }
 .rcw-full-screen .rcw-messages-container {
-    max-height: 160px;
+    max-height: 220px;
     overflow: auto;
+}
+
+.rcw-conversation-container .rcw-header { 
+  background-color: #8732a2;
+}
+
+.rcw-client { 
+  background-color: #e1a1f1;
+  color: white;
 }

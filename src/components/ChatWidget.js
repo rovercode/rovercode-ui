@@ -6,21 +6,29 @@ import { withCookies, Cookies } from 'react-cookie';
 import '@/css/chat.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
+import {
+  Widget, addResponseMessage,
+  toggleWidget, dropMessages,
+} from 'react-chat-widget';
 import {
   toggleInProgressState as actionToggleInProgressState,
   addToChatLog as actionAddToChatLog,
+  setChattingWith as actionSetChattingWith,
 } from '../actions/chatwidget';
-
-import {
-  Widget, addResponseMessage, toggleInputDisabled,
-  toggleWidget, dropMessages,
-} from 'react-chat-widget';
 import { fetchProgram as actionFetchProgram } from '../actions/code';
 
 let firstresp = false;
-const mapStateToProps = ({
-  chatapp, code, chatwidget, user }) => ({ chatapp, code, chatwidget, user });
+const mapStateToProps = (
+  {
+    chatapp, code, chatwidget, user,
+  },
+) => (
+    {
+      chatapp, code, chatwidget, user,
+    }
+  );
+
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchProgram: (id) => {
     const fetchProgramAction = actionFetchProgram(id, {
@@ -32,6 +40,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   },
   toggleInProgressState: () => dispatch(actionToggleInProgressState()),
   addToChatLog: message => dispatch(actionAddToChatLog(message)),
+  setChattingWith: userid => dispatch(actionSetChattingWith(userid)),
 });
 
 class ChatWidget extends React.Component {
@@ -42,8 +51,6 @@ class ChatWidget extends React.Component {
     const message = JSON.parse(incomingmessage.data);
     addResponseMessage(message.message);
   }
-
-
 
   componentDidMount = () => {
     // destructure props into clientID and sessionID
@@ -84,8 +91,9 @@ class ChatWidget extends React.Component {
       }
 
       //support requestor receives this message and then toggles their support request entry in_progress
-      if (message.message === 'Toggle in_progress') {
+      if (message.message === 'Toggle in_progress' && message.sender !== user.user_id) {
         this.toggleInProgressState();
+        this.setChattingWith(message.sender)
       }
 
       //notify support requestor support provider has disconnected
@@ -119,6 +127,9 @@ class ChatWidget extends React.Component {
     if (nextProps.chatwidget.in_progress !== chatwidget.in_progress && chatapp.supportProvider === false) {
       this.patchInProgressState(nextProps.chatwidget.in_progress);
     }
+    if (nextProps.chatwidget.chatting_with !== chatwidget.chatting_with) {
+      addResponseMessage(`You are now chatting with ${nextProps.chatwidget.chatting_with}`);
+    }
   }
 
   componentWillUpdate(nextProps) {
@@ -142,6 +153,10 @@ class ChatWidget extends React.Component {
     toggleWidget();
   }
 
+  setChattingWith = userid => {
+    const { setChattingWith } = this.props;
+    setChattingWith(userid);
+  }
 
   handleNewUserMessage = (newMessage) => {
     // Now send the message through the backend API
@@ -288,7 +303,7 @@ class ChatWidget extends React.Component {
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           autofocus={false}
-          title="Support"
+          title="Rover Support"
           showCloseButton={false}
           fullScreenMode
           subtitle={chattingwithstring}
@@ -299,25 +314,25 @@ class ChatWidget extends React.Component {
             <br />
             <Button className="ui negative button" onClick={this.handleCancelChatForSP}>
               Cancel chat
-                        </Button>
+            </Button>
           </div>
         ) : (
             <div>
               <br />
               <br />
-              <Button positive onClick={this.handleConcludeChat}>
-                My problem is fixed!
-                            </Button>
+              <Button positive style={{ width: '100%' }} onClick={this.handleConcludeChat}>
+                <p>My problem is fixed! <Icon name='check' /></p>
+              </Button>
               <br />
               <br />
-              <Button className="ui negative button" onClick={() => this.handleCancelChat(true)}>
-                Find help from someone else
-                            </Button>
+              <Button className="ui primary button" style={{ width: '100%' }} onClick={() => this.handleCancelChat(true)}>
+                <p>Find help from someone else <Icon name='hand paper outline' /></p>
+              </Button>
               <br />
               <br />
-              <Button className="ui negative button" onClick={() => this.handleReportAbuse()}>
-                Report abuse
-                            </Button>
+              <Button style={{ width: '100%' }} className="ui negative button" onClick={() => this.handleReportAbuse()}>
+                <p>Report Abuse  <Icon name='exclamation' /></p>
+              </Button>
             </div>
           )
         }
