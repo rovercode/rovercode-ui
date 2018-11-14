@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   setSessionId: id => dispatch(actionSetSessionId(id)),
   toggleAwaitingSupport: () => dispatch(actionToggleAwaitingSupport()),
   deleteSupportRequest: id => dispatch(actionDeleteSupportRequest(id)),
-  toggleOffSupportProvider: () =>dispatch(actionToggleOffSupportProvider()),
+  toggleOffSupportProvider: () => dispatch(actionToggleOffSupportProvider()),
 });
 
 class ChatApp extends React.Component {
@@ -55,16 +55,16 @@ class ChatApp extends React.Component {
             {chatapp.supportProvider
               ? (
                 <div>
-                  {chatapp.chatHidden && !chatapp.formHidden ? 
-                    <ChatForm key="1" supportProvider toggleForms={this.toggleForms} setSessionId={this.setSessionId}  />
-                  : 
-                    <ChatWidget key="1" setInProgress supportProvider  toggleOffSupportProvider = {this.toggleOffSupportProvider} clientId={user.user_id}  sessionId={chatapp.sessionId} />}  
+                  {chatapp.chatHidden && !chatapp.formHidden ?
+                    <ChatForm key="1" supportProvider toggleForms={this.toggleForms} setSessionId={this.setSessionId} />
+                    :
+                    <ChatWidget key="1" setInProgress supportProvider toggleOffSupportProvider={this.toggleOffSupportProvider} clientId={user.user_id} sessionId={chatapp.sessionId} />}
                 </div>
               ) : chatapp.chatHidden && !chatapp.formHidden
                 ? <ChatForm key="2" toggleForms={this.toggleForms} setSessionId={this.setSessionId} />
                 : (
                   <div>
-                    <ChatWidget key="2" clientId={user.user_id} toggleForms={this.toggleForms} setInProgress={false} sessionId={chatapp.sessionId} chatHeader="Finding someone to help you. Stand by!" />
+                    <ChatWidget supportProvider={false} key="2" clientId={user.user_id} toggleForms={this.toggleForms} setInProgress={false} sessionId={chatapp.sessionId} chatHeader="Finding someone to help you. Stand by!" />
                   </div>
                 )}
           </Card.Content>

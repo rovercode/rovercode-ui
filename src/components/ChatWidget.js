@@ -115,7 +115,8 @@ class ChatWidget extends React.Component {
 
   componentWillReceiveProps = (nextProps) => {
     const { chatwidget } = this.props;
-    if (nextProps.chatwidget.in_progress !== chatwidget.in_progress) {
+    const { chatapp } = this.props;
+    if (nextProps.chatwidget.in_progress !== chatwidget.in_progress && chatapp.supportProvider === false) {
       this.patchInProgressState(nextProps.chatwidget.in_progress);
     }
   }
