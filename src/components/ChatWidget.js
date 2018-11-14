@@ -11,16 +11,16 @@ import {
   toggleInProgressState as actionToggleInProgressState,
   addToChatLog as actionAddToChatLog,
 } from '../actions/chatwidget';
+
 import {
   Widget, addResponseMessage, toggleInputDisabled,
   toggleWidget, dropMessages,
 } from 'react-chat-widget';
 import { fetchProgram as actionFetchProgram } from '../actions/code';
-import { SSL_OP_EPHEMERAL_RSA } from 'constants';
-import { join } from 'upath';
 
 let firstresp = false;
-const mapStateToProps = ({ chatapp, code, chatwidget }) => ({ chatapp, code, chatwidget });
+const mapStateToProps = ({
+  chatapp, code, chatwidget, user }) => ({ chatapp, code, chatwidget, user });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchProgram: (id) => {
     const fetchProgramAction = actionFetchProgram(id, {
@@ -30,8 +30,8 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     });
     return dispatch(fetchProgramAction);
   },
-  toggleInProgressState: () =>dispatch(actionToggleInProgressState()),
-  addToChatLog: message =>dispatch(actionAddToChatLog(message)),
+  toggleInProgressState: () => dispatch(actionToggleInProgressState()),
+  addToChatLog: message => dispatch(actionAddToChatLog(message)),
 });
 
 class ChatWidget extends React.Component {
@@ -43,10 +43,12 @@ class ChatWidget extends React.Component {
     addResponseMessage(message.message);
   }
 
+
+
   componentDidMount = () => {
     // destructure props into clientID and sessionID
-    const { chatapp, code, fetchProgram } = this.props;
-    const { clientId, sessionId, supportProvider } = chatapp;
+    const { chatapp, code, fetchProgram, user } = this.props;
+    const { sessionId, supportProvider } = chatapp;
     const { id: programId } = code;
 
 
@@ -59,11 +61,11 @@ class ChatWidget extends React.Component {
     this.socket = new WebSocket(`ws://localhost:8000/ws/support/${sessionId}/`);
 
     // handle message
-    this.socket.onmessage = function(m) {
+    this.socket.onmessage = function (m) {
 
       const message = JSON.parse(m.data);
       this.addToChatLog(message);
-      if (message.sender !== clientId
+      if (message.sender !== user.user_id
         && message.message !== 'REPORT_ABUSE'
         && message.message !== 'Toggle in_progress'
         && message.message !== 'CONCLUDE_CHAT'
@@ -87,15 +89,16 @@ class ChatWidget extends React.Component {
       }
 
       //notify support requestor support provider has disconnected
-      if(message.message === 'SP_DISCONNECTED' && message.sender !== clientId ){
+      if (message.message === 'SP_DISCONNECTED' && message.sender !== user.user_id) {
         this.toggleInProgressState();
+        // this.patchInProgressState();
         addResponseMessage("The support provider has disconnected. Finding you another support provider")
       }
 
       //Whether chat is successfully concluded or support requestor requests help from someone else, we process these messages on end of suport provider
-      if (message.message === 'CONCLUDE_CHAT' && message.sender !== clientId ){
+      if (message.message === 'CONCLUDE_CHAT' && message.sender !== user.user_id) {
         addResponseMessage("The support session has ended. Thanks for your help!");
-        this. sleep(5000).then(() => {
+        this.sleep(5000).then(() => {
           this.handleCancelChatForSP();
         })
       }
@@ -105,10 +108,17 @@ class ChatWidget extends React.Component {
     if (supportProvider) {
       this.sendMessageToUpdateInProgress();
       addResponseMessage('You are now in a support session. Feel free to start chatting!');
-    } else{
+    } else {
       addResponseMessage('Finding someone to assist you with your code :)');
     }
   };
+
+  componentWillReceiveProps = (nextProps) => {
+    const { chatwidget } = this.props;
+    if (nextProps.chatwidget.in_progress !== chatwidget.in_progress) {
+      this.patchInProgressState(nextProps.chatwidget.in_progress);
+    }
+  }
 
   componentWillUpdate(nextProps) {
     const { code: currentCode, chatapp: currentChatapp } = this.props;
@@ -134,11 +144,10 @@ class ChatWidget extends React.Component {
 
   handleNewUserMessage = (newMessage) => {
     // Now send the message through the backend API
-    const { chatapp } = this.props;
-    const { clientId } = chatapp;
+    const { user } = this.props;
     const msg = JSON.stringify({
       message: newMessage,
-      sender: clientId,
+      sender: user.user_id,
     });
     this.socket.send(msg);
   };
@@ -146,11 +155,10 @@ class ChatWidget extends React.Component {
   sendMessageToUpdateInProgress = () => {
     // this method sends a message to support requestor to initiate a PATCH request
     // to server to toggle support request to : in_progress: true
-    const { chatapp } = this.props;
-    const { clientId } = chatapp;
+    const { user } = this.props;
     const msg = JSON.stringify({
       message: 'Toggle in_progress',
-      sender: clientId,
+      sender: user.user_id,
     });
     this.socket.onopen = () => this.socket.send(msg);
   }
@@ -159,12 +167,14 @@ class ChatWidget extends React.Component {
   toggleInProgressState = () => {
     const { toggleInProgressState } = this.props;
     toggleInProgressState();
-    
+  }
+
+  patchInProgressState = (in_progress_state) => {
     const { cookies } = this.props;
     const { chatapp } = this.props;
     const { sessionId } = chatapp;
     const newobj = {};
-    newobj.in_progress = this.props.chatwidget.in_progress;
+    newobj.in_progress = in_progress_state;
     const headers = {
       Authorization: `JWT ${cookies.get('auth_jwt')}`,
       'Content-Type': 'application/json',
@@ -182,13 +192,13 @@ class ChatWidget extends React.Component {
   sleep = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
-  
-  handleCancelChatForSP = (sendmessage) =>{
-    const { chatapp } = this.props
-    if (sendmessage){
+
+  handleCancelChatForSP = (sendmessage) => {
+    const { user } = this.props
+    if (sendmessage) {
       const msg = JSON.stringify({
         message: 'SP_DISCONNECTED',
-        sender: chatapp.clientId,
+        sender: user.user_id,
       });
       this.socket.send(msg);
     }
@@ -199,32 +209,33 @@ class ChatWidget extends React.Component {
   handleConcludeChat = () => {
     const { sessionId } = this.props.chatapp;
     const { cookies } = this.props;
-    const { chatapp } = this.props;
+    const { user } = this.props;
     const headers = {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-        'Content-Type': 'application/json',
+      Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      'Content-Type': 'application/json',
     };
     axios.delete(`/api/v1/support-requests/${sessionId}/`, { headers })
-      .then(function() { 
+      .then(function () {
         addResponseMessage("This concludes your chat session!");
-        this. sleep(5000).then(() => {
+        this.sleep(5000).then(() => {
           dropMessages();
           this.props.toggleForms();
         })
 
-      }.bind(this)).catch(function(error) {
+      }.bind(this)).catch(function (error) {
         console.log(error);
       });
     const msg = JSON.stringify({
       message: 'CONCLUDE_CHAT',
-      sender: chatapp.clientId,
+      sender: user.user_id,
     });
     this.socket.send(msg);
   };
 
   handleCancelChat = () => {
     const { sessionId } = this.props.chatapp;
-    const { chatapp } = this.props;
+
+    const { user } = this.props;
     const { cookies } = this.props;
     const newobj = {};
     newobj.in_progress = false;
@@ -233,32 +244,34 @@ class ChatWidget extends React.Component {
       'Content-Type': 'application/json',
     };
     axios.patch(`/api/v1/support-requests/${sessionId}/`, JSON.stringify(newobj), { headers })
-      .then(function() {
+      .then(function () {
         addResponseMessage("Finding you help from someone else!")
-      }.bind(this)).catch(function(error) {
+      }.bind(this)).catch(function (error) {
         console.log(error);
       }.bind(this));
     const msg = JSON.stringify({
       message: 'CONCLUDE_CHAT',
-      sender: chatapp.clientId,
+      sender: user.user_id,
     });
     this.socket.send(msg);
   };
 
-  handleReportAbuse() {
+  handleReportAbuse = () => {
     console.log('Reporting abuse');
-    const { chatapp } = this.props;
+    const { user } = this.props;
     const reportMsg = JSON.stringify({
       message: 'REPORT_ABUSE',
-      sender: chatapp.clientId,
+      sender: user.user_id,
       transcript: this.props.chatwidget.chat_log,
     });
     this.socket.send(reportMsg);
     const cancelMsg = JSON.stringify({
       message: 'CONCLUDE_CHAT',
-      sender: chatapp.clientId,
+      sender: user.user_id,
     });
     this.socket.send(cancelMsg);
+    this.toggleInProgressState();
+    //this.patchInProgressState();
   }
 
   addToChatLog = message => {
@@ -268,7 +281,7 @@ class ChatWidget extends React.Component {
 
   render() {
     let chattingwithstring = '';
-  
+
     return (
       <div className="App">
         <Widget
@@ -281,31 +294,31 @@ class ChatWidget extends React.Component {
         />
         {this.props.supportProvider ? (
           <div>
-          <br />
-          <br />
-          <Button className="ui negative button" onClick={this.handleCancelChatForSP}>
-          Cancel chat
-          </Button>
+            <br />
+            <br />
+            <Button className="ui negative button" onClick={this.handleCancelChatForSP}>
+              Cancel chat
+                        </Button>
           </div>
         ) : (
-          <div>
-            <br />
-            <br />
-            <Button positive onClick={this.handleConcludeChat}>
-              My problem is fixed!
-            </Button>
-            <br />
-            <br />
-            <Button className="ui negative button" onClick={() => this.handleCancelChat(true)}>
-              Find help from someone else
-            </Button>
-            <br />
-            <br />
-            <Button className="ui negative button" onClick={() => this.handleReportAbuse()}>
-              Report abuse
-            </Button>
-          </div>
-        )
+            <div>
+              <br />
+              <br />
+              <Button positive onClick={this.handleConcludeChat}>
+                My problem is fixed!
+                            </Button>
+              <br />
+              <br />
+              <Button className="ui negative button" onClick={() => this.handleCancelChat(true)}>
+                Find help from someone else
+                            </Button>
+              <br />
+              <br />
+              <Button className="ui negative button" onClick={() => this.handleReportAbuse()}>
+                Report abuse
+                            </Button>
+            </div>
+          )
         }
       </div>
     );
@@ -315,7 +328,6 @@ class ChatWidget extends React.Component {
 ChatWidget.propTypes = {
   setInProgress: PropTypes.bool.isRequired,
   cookies: PropTypes.instanceOf(Cookies).isRequired,
-  // clientId: PropTypes.string.isRequired,
   // sessionId: PropTypes.string.isRequired,
 };
 

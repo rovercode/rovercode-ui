@@ -8,17 +8,15 @@ import { withCookies, Cookies } from 'react-cookie';
 import ChatForm from './ChatForm';
 import {
   setSessionID as actionSetSessionId,
-  setClientID as actionSetClientId,
   toggleForms as actionToggle,
   toggleOffSupportProvider as actionToggleOffSupportProvider,
   toggleAwaitingSupport as actionToggleAwaitingSupport,
 } from '../actions/chatapp';
 
-const mapStateToProps = ({ chatapp }) => ({ chatapp });
+const mapStateToProps = ({ chatapp, user }) => ({ chatapp, user });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   toggleForms: () => dispatch(actionToggle()),
   setSessionId: id => dispatch(actionSetSessionId(id)),
-  setClientId: id => dispatch(actionSetClientId(id)),
   toggleAwaitingSupport: () => dispatch(actionToggleAwaitingSupport()),
   deleteSupportRequest: id => dispatch(actionDeleteSupportRequest(id)),
   toggleOffSupportProvider: () =>dispatch(actionToggleOffSupportProvider()),
@@ -28,11 +26,6 @@ class ChatApp extends React.Component {
   setSessionId = (id) => {
     const { setSessionId } = this.props;
     setSessionId(id);
-  };
-
-  setClientId = (id) => {
-    const { setClientId } = this.props;
-    setClientId(id);
   };
 
   toggleForms = () => {
@@ -54,6 +47,7 @@ class ChatApp extends React.Component {
 
   render() {
     const { chatapp } = this.props;
+    const { user } = this.props;
     return (
       <div style={{ marginTop: 20, marginLeft: 40, minWidth: 400 }}>
         <Card>
@@ -62,15 +56,15 @@ class ChatApp extends React.Component {
               ? (
                 <div>
                   {chatapp.chatHidden && !chatapp.formHidden ? 
-                    <ChatForm key="1" supportProvider toggleForms={this.toggleForms} setSessionId={this.setSessionId} setClientId={this.setClientId} />
+                    <ChatForm key="1" supportProvider toggleForms={this.toggleForms} setSessionId={this.setSessionId}  />
                   : 
-                    <ChatWidget key="1" setInProgress supportProvider  toggleOffSupportProvider = {this.toggleOffSupportProvider} clientId={chatapp.clientId}  sessionId={chatapp.sessionId} />}  
+                    <ChatWidget key="1" setInProgress supportProvider  toggleOffSupportProvider = {this.toggleOffSupportProvider} clientId={user.user_id}  sessionId={chatapp.sessionId} />}  
                 </div>
               ) : chatapp.chatHidden && !chatapp.formHidden
-                ? <ChatForm key="2" toggleForms={this.toggleForms} setSessionId={this.setSessionId} setClientId={this.setClientId} />
+                ? <ChatForm key="2" toggleForms={this.toggleForms} setSessionId={this.setSessionId} />
                 : (
                   <div>
-                    <ChatWidget key="2" clientId={chatapp.clientId} toggleForms={this.toggleForms} setInProgress={false} sessionId={chatapp.sessionId} chatHeader="Finding someone to help you. Stand by!" />
+                    <ChatWidget key="2" clientId={user.user_id} toggleForms={this.toggleForms} setInProgress={false} sessionId={chatapp.sessionId} chatHeader="Finding someone to help you. Stand by!" />
                   </div>
                 )}
           </Card.Content>
@@ -82,7 +76,6 @@ class ChatApp extends React.Component {
 
 ChatApp.propTypes = {
   setSessionId: PropTypes.func.isRequired,
-  setClientId: PropTypes.func.isRequired,
   toggleForms: PropTypes.func.isRequired,
   toggleAwaitingSupport: PropTypes.func.isRequired,
   chatapp: PropTypes.shape({

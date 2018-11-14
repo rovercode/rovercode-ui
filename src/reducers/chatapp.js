@@ -4,7 +4,6 @@ import {
 
 export default function chatapp(
   state = {
-    clientId: null,
     sessionId: null,
     chatHidden: true,
     formHidden: false,
@@ -13,11 +12,6 @@ export default function chatapp(
   }, action,
 ) {
   switch (action.type) {
-    case SET_CLIENT_ID:
-      return {
-        ...state,
-        clientId: action.payload,
-      };
     case SET_SESSION_ID:
       return {
         ...state,
