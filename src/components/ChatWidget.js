@@ -220,6 +220,7 @@ class ChatWidget extends React.Component {
     }
     dropMessages();
     this.props.toggleOffSupportProvider();
+    window.location = '/support'
   }
 
   handleConcludeChat = () => {
