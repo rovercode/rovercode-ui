@@ -87,7 +87,7 @@ class ChatWidget extends React.Component {
 
       if (message.message === 'REPORT_ABUSE') {
         addResponseMessage('This conversation has been reported to administrators. '
-          + 'It will be reviewed, and action will be taken according to the policy at TODO: policy link');
+          + 'It will be reviewed, and action will be taken according to the policy at http://bit.ly/rovercode-coc');
       }
 
       //support requestor receives this message and then toggles their support request entry in_progress
