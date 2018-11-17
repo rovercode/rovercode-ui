@@ -153,9 +153,9 @@ class ChatWidget extends React.Component {
     toggleWidget();
   }
 
-  setChattingWith = userid => {
+  setChattingWith = username => {
     const { setChattingWith } = this.props;
-    setChattingWith(userid);
+    setChattingWith(username);
   }
 
   handleNewUserMessage = (newMessage) => {
@@ -247,11 +247,11 @@ class ChatWidget extends React.Component {
       sender: user.username,
     });
     this.socket.send(msg);
+    this.setChattingWith("");
   };
 
   handleCancelChat = () => {
     const { sessionId } = this.props.chatapp;
-
     const { user } = this.props;
     const { cookies } = this.props;
     const newobj = {};
