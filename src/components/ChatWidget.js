@@ -72,7 +72,7 @@ class ChatWidget extends React.Component {
 
       const message = JSON.parse(m.data);
       this.addToChatLog(message);
-      if (message.sender !== user.user_id
+      if (message.sender !== user.username
         && message.message !== 'REPORT_ABUSE'
         && message.message !== 'Toggle in_progress'
         && message.message !== 'CONCLUDE_CHAT'
@@ -91,20 +91,20 @@ class ChatWidget extends React.Component {
       }
 
       //support requestor receives this message and then toggles their support request entry in_progress
-      if (message.message === 'Toggle in_progress' && message.sender !== user.user_id) {
+      if (message.message === 'Toggle in_progress' && message.sender !== user.username) {
         this.toggleInProgressState();
         this.setChattingWith(message.sender)
       }
 
       //notify support requestor support provider has disconnected
-      if (message.message === 'SP_DISCONNECTED' && message.sender !== user.user_id) {
+      if (message.message === 'SP_DISCONNECTED' && message.sender !== user.username) {
         this.toggleInProgressState();
         // this.patchInProgressState();
         addResponseMessage("The support provider has disconnected. Finding you another support provider")
       }
 
       //Whether chat is successfully concluded or support requestor requests help from someone else, we process these messages on end of suport provider
-      if (message.message === 'CONCLUDE_CHAT' && message.sender !== user.user_id) {
+      if (message.message === 'CONCLUDE_CHAT' && message.sender !== user.username) {
         addResponseMessage("The support session has ended. Thanks for your help!");
         this.sleep(5000).then(() => {
           this.handleCancelChatForSP();
@@ -141,7 +141,7 @@ class ChatWidget extends React.Component {
       if (!currentChatapp.supportProvider) {
         const msg = JSON.stringify({
           message: '[Updating program...]',
-          sender: currentChatapp.clientId,
+          sender: currentChatapp.username,
         });
         this.socket.send(msg);
       }
@@ -163,7 +163,7 @@ class ChatWidget extends React.Component {
     const { user } = this.props;
     const msg = JSON.stringify({
       message: newMessage,
-      sender: user.user_id,
+      sender: user.username,
     });
     this.socket.send(msg);
   };
@@ -174,7 +174,7 @@ class ChatWidget extends React.Component {
     const { user } = this.props;
     const msg = JSON.stringify({
       message: 'Toggle in_progress',
-      sender: user.user_id,
+      sender: user.username,
     });
     this.socket.onopen = () => this.socket.send(msg);
   }
@@ -214,7 +214,7 @@ class ChatWidget extends React.Component {
     if (sendmessage) {
       const msg = JSON.stringify({
         message: 'SP_DISCONNECTED',
-        sender: user.user_id,
+        sender: user.username,
       });
       this.socket.send(msg);
     }
@@ -243,7 +243,7 @@ class ChatWidget extends React.Component {
       });
     const msg = JSON.stringify({
       message: 'CONCLUDE_CHAT',
-      sender: user.user_id,
+      sender: user.username,
     });
     this.socket.send(msg);
   };
@@ -267,7 +267,7 @@ class ChatWidget extends React.Component {
       }.bind(this));
     const msg = JSON.stringify({
       message: 'CONCLUDE_CHAT',
-      sender: user.user_id,
+      sender: user.username,
     });
     this.socket.send(msg);
   };
@@ -277,13 +277,13 @@ class ChatWidget extends React.Component {
     const { user } = this.props;
     const reportMsg = JSON.stringify({
       message: 'REPORT_ABUSE',
-      sender: user.user_id,
+      sender: user.username,
       transcript: this.props.chatwidget.chat_log,
     });
     this.socket.send(reportMsg);
     const cancelMsg = JSON.stringify({
       message: 'CONCLUDE_CHAT',
-      sender: user.user_id,
+      sender: user.username,
     });
     this.socket.send(cancelMsg);
     this.toggleInProgressState();

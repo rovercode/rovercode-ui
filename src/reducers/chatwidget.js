@@ -9,7 +9,7 @@ export default function chatwidget(
   state = {
     in_progress: false,
     chat_log: [],
-    chatting_with: null,
+    chatting_with: "",
   }, action,
 ) {
   switch (action.type) {

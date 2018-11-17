@@ -11,7 +11,7 @@ export const addToChatLog = message => ({
   payload: message,
 });
 
-export const setChattingWith = userid => ({
+export const setChattingWith = username => ({
   type: SET_CHATTING_WITH,
-  payload: userid,
+  payload: username,
 });
