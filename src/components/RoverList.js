@@ -32,6 +32,11 @@ class RoverList extends Component {
             Programs
           </Button>
         </Link>
+        <Link to="/support">
+          <Button color="purple">
+            Support
+          </Button>
+        </Link>
       </Fragment>
     );
   }
