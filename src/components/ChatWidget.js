@@ -271,6 +271,7 @@ class ChatWidget extends React.Component {
       sender: user.username,
     });
     this.socket.send(msg);
+    this.setChattingWith("");
   };
 
   handleReportAbuse = () => {
