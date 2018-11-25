@@ -1,7 +1,7 @@
 
 
 import {
-  TOGGLE_IN_PROGRESS_STATE, ADD_TO_CHAT_LOG,
+  TOGGLE_IN_PROGRESS_STATE, ADD_TO_CHAT_LOG, CLOSE_TIPS,
   SET_CHATTING_WITH,
 } from '../actions/chatwidget';
 
@@ -10,6 +10,7 @@ export default function chatwidget(
     in_progress: false,
     chat_log: [],
     chatting_with: "",
+    show_tips: true
   }, action,
 ) {
   switch (action.type) {
@@ -28,6 +29,11 @@ export default function chatwidget(
       return {
         ...state,
         chatting_with: action.payload,
+      };
+    case CLOSE_TIPS:
+      return {
+        ...state,
+        show_tips: false,
       };
     default:
       return state;

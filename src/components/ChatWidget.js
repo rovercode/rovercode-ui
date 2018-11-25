@@ -15,6 +15,7 @@ import {
   toggleInProgressState as actionToggleInProgressState,
   addToChatLog as actionAddToChatLog,
   setChattingWith as actionSetChattingWith,
+  closeTips as actionCloseTips,
 } from '../actions/chatwidget';
 import { fetchProgram as actionFetchProgram } from '../actions/code';
 
@@ -39,6 +40,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     return dispatch(fetchProgramAction);
   },
   toggleInProgressState: () => dispatch(actionToggleInProgressState()),
+  closeTips: () => dispatch(actionCloseTips()),
   addToChatLog: message => dispatch(actionAddToChatLog(message)),
   setChattingWith: userid => dispatch(actionSetChattingWith(userid)),
 });
@@ -311,6 +313,12 @@ class ChatWidget extends React.Component {
     addToChatLog(message);
   }
 
+  closeTips = () =>{
+    const { closeTips } = this.props;
+    closeTips();
+  }
+
+
   getTip = () =>{
     if (this.props.supportProvider){
       let item = sptips[Math.floor(Math.random()*sptips.length)];
@@ -327,11 +335,11 @@ class ChatWidget extends React.Component {
 
     return (
       <div className="App" >
-        <Card
-            header={<div>Helpful tips! <Icon link name='close' style={{textAlign: 'right', marginLeft:120}}></Icon></div>}
+        {this.props.chatwidget.show_tips ? <Card
+            header={<div>Helpful tips! <Icon link name='close' onClick={this.closeTips} style={{textAlign: 'right', marginLeft:120}}></Icon></div>}
             color='purple'
             meta='Do we need this?'
-            description={this.getTip}/>
+            description={this.getTip}/> : null}
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           autofocus={false}
