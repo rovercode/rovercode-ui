@@ -6,7 +6,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import '@/css/chat.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon, Card } from 'semantic-ui-react';
 import {
   Widget, addResponseMessage,
   toggleWidget, dropMessages,
@@ -42,6 +42,20 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   addToChatLog: message => dispatch(actionAddToChatLog(message)),
   setChattingWith: userid => dispatch(actionSetChattingWith(userid)),
 });
+
+const sptips = [
+  "Hey heres a SP tip! 1", 
+  "Hey heres a SP tip! 2",
+  "Hey heres a SP tip! 3",
+  "Hey heres a SP tip! 4",
+]
+
+const srtips = [
+  "Hey heres a SR tip! 1", 
+  "Hey heres a SR tip! 2",
+  "Hey heres a SR tip! 3",
+  "Hey heres a SR tip! 4",
+]
 
 class ChatWidget extends React.Component {
   static processIncoming(incomingmessage) {
@@ -297,11 +311,27 @@ class ChatWidget extends React.Component {
     addToChatLog(message);
   }
 
+  getTip = () =>{
+    if (this.props.supportProvider){
+      let item = sptips[Math.floor(Math.random()*sptips.length)];
+      return(<p>{item}</p>);
+    } else{
+      let item = srtips[Math.floor(Math.random()*sptips.length)];
+      return(<p>{item}</p>);
+    }
+
+  }
+
   render() {
     let chattingwithstring = '';
 
     return (
-      <div className="App">
+      <div className="App" >
+        <Card
+            header={<div>Helpful tips! <Icon link name='close' style={{textAlign: 'right', marginLeft:120}}></Icon></div>}
+            color='purple'
+            meta='Do we need this?'
+            description={this.getTip}/>
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           autofocus={false}
@@ -311,6 +341,7 @@ class ChatWidget extends React.Component {
           subtitle={chattingwithstring}
         />
         {this.props.supportProvider ? (
+        
           <div>
             <br />
             <br />
