@@ -46,17 +46,22 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
 });
 
 const sptips = [
-  "Hey heres a SP tip! 1", 
-  "Hey heres a SP tip! 2",
-  "Hey heres a SP tip! 3",
-  "Hey heres a SP tip! 4",
+  "Try to avoid saying \"you just need to...\". Something might be easy for you but a challenge for a first-timer!",
+  "Try asking \"What do you want the Rover to do?\" and \"What do you see the Rover doing?\"",
+  "Do your best to read what the other person wrote carefully.",
+  "Try to be encouraging! Believe they can do it!",
+  "Try to be patient after asking a question! If you can, give them some time to think",
+  "Think about using the phrases \"Now you might want to...\" and \"What I would do is\"",
+  "You're both in this together! Can you use the word \"we\" sometimes?",
+  "Sometimes, try to help them think fro the Rover's perspective. Like, \"the Rover didn't know you wanted it to...\"",
 ]
 
 const srtips = [
-  "Hey heres a SR tip! 1", 
-  "Hey heres a SR tip! 2",
-  "Hey heres a SR tip! 3",
-  "Hey heres a SR tip! 4",
+  "It's ok if your helper is wrong sometimes!",
+  "It's ok if your helper doesn't know something!",
+  "You might want to describe to your helper what you think your Rover should be doing, step by step.",
+  "Be sure to say thank you afterwards!",
+  "It's ok to take your time and read what your helper wrote carefully.",
 ]
 
 class ChatWidget extends React.Component {
@@ -132,6 +137,7 @@ class ChatWidget extends React.Component {
     if (supportProvider) {
       this.sendMessageToUpdateInProgress();
       addResponseMessage('You are now in a support session. Feel free to start chatting!');
+      addResponseMessage('Remember, never ask for or give your real name, where you live, or any other information about the real you.');
     } else {
       addResponseMessage('Finding someone to assist you with your code :)');
     }
@@ -145,6 +151,7 @@ class ChatWidget extends React.Component {
     }
     if (nextProps.chatwidget.chatting_with !== chatwidget.chatting_with) {
       addResponseMessage(`You are now chatting with ${nextProps.chatwidget.chatting_with}`);
+      addResponseMessage('Remember, never ask for or give your real name, where you live, or any other information about the real you.');
     }
   }
 
@@ -336,9 +343,8 @@ class ChatWidget extends React.Component {
     return (
       <div className="App" >
         {this.props.chatwidget.show_tips ? <Card
-            header={<div>Helpful tips! <Icon color='red' link name='close' onClick={this.closeTips} style={{textAlign: 'right', marginLeft:120}}></Icon></div>}
+            header={<div><Icon color='red' link name='close' onClick={this.closeTips} style={{textAlign: 'right', marginLeft:200}}></Icon></div>}
             color='purple'
-            meta='Do we need this?'
             description={this.getTip}/> : null}
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}

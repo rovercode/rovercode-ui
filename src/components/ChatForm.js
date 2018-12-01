@@ -142,24 +142,24 @@ class ChatForm extends React.Component {
           </Card.Header>
           <br />
           <label htmlFor="category">
-            Select the issue you are having
-            <Dropdown id="category" placeholder="Example: Logic Issues" fluid selection options={helpCategories} onChange={this.categorySelectChange} value={categoryValue} />
+            What do you need?
+            <Dropdown id="category" placeholder="" fluid selection options={helpCategories} onChange={this.categorySelectChange} value={categoryValue} />
           </label>
           <br />
           <label htmlFor="experience-level">
-            Select your experience level
-            <Dropdown id="experience-level" placeholder="Example: Beginner" fluid selection options={experience} onChange={this.experienceSelectChange} value={experienceValue} />
+            How long have you been using Rovercode?
+            <Dropdown id="experience-level" placeholder="" fluid selection options={experience} onChange={this.experienceSelectChange} value={experienceValue} />
           </label>
           <br />
           <label htmlFor="subject">
-            Subject
-            <Input fluid id="subject" placeholder="Describe your issue" onChange={this.subjectInputChange} />
+            Give a short description of your problem.
+            <Input fluid id="subject" placeholder="..." onChange={this.subjectInputChange} />
           </label>
           <br />
           <br />
           <label htmlFor="body">
-            More information
-            <Input fluid id="body" placeholder="Provide any additional details" onChange={this.bodyInputChange} />
+            Any other details?
+            <Input fluid id="body" placeholder="..." onChange={this.bodyInputChange} />
           </label>
           <br />
           <br />
