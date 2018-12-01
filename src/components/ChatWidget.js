@@ -336,7 +336,7 @@ class ChatWidget extends React.Component {
     return (
       <div className="App" >
         {this.props.chatwidget.show_tips ? <Card
-            header={<div>Helpful tips! <Icon link name='close' onClick={this.closeTips} style={{textAlign: 'right', marginLeft:120}}></Icon></div>}
+            header={<div>Helpful tips! <Icon color='red' link name='close' onClick={this.closeTips} style={{textAlign: 'right', marginLeft:120}}></Icon></div>}
             color='purple'
             meta='Do we need this?'
             description={this.getTip}/> : null}

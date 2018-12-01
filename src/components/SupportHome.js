@@ -30,9 +30,6 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
 });
 
 const columns = [{
-    Header: 'Support Request ID',
-    accessor: 'id', // String-based value accessors!
-}, {
     Header: 'Subject',
     accessor: 'subject', // String-based value accessors!
 }, {
@@ -44,20 +41,10 @@ const columns = [{
 }, {
     Header: 'Category',
     accessor: 'category', // String-based value accessors!
-}, {
-    Header: 'Program ID',
-    accessor: 'program', // String-based value accessors!
-}, {
+},  {
     Header: 'Creation Time',
     accessor: 'creation_time', // String-based value accessors!
-}, {
-    Header: 'In Progress?',
-    accessor: 'in_progress', // String-based value accessors!
-}, {
-    Header: 'Owner ID',
-    accessor: 'owner', // String-based value accessors!
-},
-];
+},];
 
 
 class SupportHome extends React.Component {
