@@ -331,7 +331,7 @@ class ChatWidget extends React.Component {
       let item = sptips[Math.floor(Math.random()*sptips.length)];
       return(<p>{item}</p>);
     } else{
-      let item = srtips[Math.floor(Math.random()*sptips.length)];
+      let item = srtips[Math.floor(Math.random()*srtips.length)];
       return(<p>{item}</p>);
     }
 
