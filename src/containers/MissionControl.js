@@ -11,7 +11,7 @@ import ProgramName from '@/components/ProgramName';
 import Workspace from '@/components/Workspace';
 
 const MissionControl = () => (
-  <Grid columns={16} divided>
+  <Grid columns={16} divided style={{height: '100vh'}}>
     <Grid.Row>
       <Grid.Column width={6}>
         <Workspace />
