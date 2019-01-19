@@ -30,4 +30,16 @@ deploy:
     region: us-east-2
     on:
       repo: rovercode/rovercode-ui
-      branch: development
+      branch: beta
+  - provider: s3
+    access_key_id: AKIAIIORSR4VN3YQY2YQ
+    secret_access_key:
+      secure: GOlPerevnIbdWJe7jFSbgaQqHK03IT+ZV3IgZoeR74JmGpm2T/jZolPqhngysCyqkkA5Cq5FZCNaj6XXk0OjFcGtxcHikSNO8jpKq+KwIL3l6qEXYePZgaSW9i0OYqI0Up928AX7s3eUAA7sy43FbIe3PDSOz2EF8u56mQL3rzP5rjG8utF9vnvhIAmAQXB9N2Aelo7R7KkrTlq3gItORgWYd0cZqjBxc/ohigEWBianjWUEsFLUAmLpbPevvbtsw4GNFrKZEPIYUNv5wSHS2ayhSJNEvBrQoc3vkSblotDBE0aRsCRZVtAOGB1hz8gNASp341wtDzdEkZXl8O2Xk2GYnXDxelFq+jNE9ttsC3wwF6gDWi7ihJYPqQltMB77ZCbnuedYdX8hEvTkAowMihJoRdsc/P8nvQAvzTSH/g1KX0JSTpOJ6WROiC13rnkJpbxAT5NY7MU3wOWQfKumxWeffhYJs4a/UvVrzRNFrjoRmxD3FERTHHTWuwsj3CwplchcQkGdDxMNdIy8rHrUC4KINAdJZRY1MlucWqnEM4grIz/fpiQPTwR0SkhVAsllWsyHZatDsEp0vAG+stLcmIQ/wZEidrVi8EEGFB0yw7FVhSmPVZBODNdf+WEF+VFWZbbWCHLGq7a6CgvhH3bEUF3L8acI4y/+S9EYgYtAOlQ=
+    bucket: alpha-rovercode-ui
+    local_dir: dist
+    acl: public_read
+    skip_cleanup: true
+    region: us-east-2
+    on:
+      repo: rovercode/rovercode-ui
+      branch: alpha
