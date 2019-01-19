@@ -1,0 +1,1075 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The TopNav component should render on the page with no errors 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TopNav
+    userName="Dale Gribble"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <section>
+          <Button
+            as="button"
+            role="button"
+            style={
+              Object {
+                "background": "#0E6EB8",
+                "color": "white",
+              }
+            }
+          >
+            <Link
+              replace={false}
+              to="/programs/create"
+            >
+              Create New Program
+            </Link>
+          </Button>
+          <Button
+            as="button"
+            role="button"
+            style={
+              Object {
+                "background": "#B413EC",
+                "color": "white",
+              }
+            }
+          >
+            <Link
+              replace={false}
+              to="/explore"
+            >
+              Explore
+            </Link>
+          </Button>
+          <Button
+            as="button"
+            role="button"
+            style={
+              Object {
+                "background": "#008080",
+                "color": "white",
+              }
+            }
+          >
+            <Link
+              replace={false}
+              to="/programs"
+            >
+              My Programs
+            </Link>
+          </Button>
+        </section>,
+        <section>
+          <Dropdown
+            additionLabel="Add "
+            additionPosition="top"
+            className="top-nav__dropdown"
+            closeOnBlur={true}
+            deburr={false}
+            direction="left"
+            icon="dropdown"
+            minCharacters={1}
+            noResultsMessage="No results found."
+            openOnFocus={true}
+            renderLabel={[Function]}
+            searchInput="text"
+            selectOnBlur={true}
+            selectOnNavigation={true}
+            text="Dale Gribble"
+            wrapSelection={true}
+          >
+            <DropdownMenu>
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/rovers"
+                >
+                  Rovers
+                </Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/accounts/settings"
+                >
+                  Settings
+                </Link>
+              </DropdownItem>
+              <DropdownDivider />
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/signout"
+                >
+                  Signout
+                </Link>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </section>,
+      ],
+      "className": "top-nav",
+      "style": Object {
+        "display": "flex",
+        "justifyContent": "space-between",
+        "padding": "50px",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Button
+              as="button"
+              role="button"
+              style={
+                Object {
+                  "background": "#0E6EB8",
+                  "color": "white",
+                }
+              }
+            >
+              <Link
+                replace={false}
+                to="/programs/create"
+              >
+                Create New Program
+              </Link>
+            </Button>,
+            <Button
+              as="button"
+              role="button"
+              style={
+                Object {
+                  "background": "#B413EC",
+                  "color": "white",
+                }
+              }
+            >
+              <Link
+                replace={false}
+                to="/explore"
+              >
+                Explore
+              </Link>
+            </Button>,
+            <Button
+              as="button"
+              role="button"
+              style={
+                Object {
+                  "background": "#008080",
+                  "color": "white",
+                }
+              }
+            >
+              <Link
+                replace={false}
+                to="/programs"
+              >
+                My Programs
+              </Link>
+            </Button>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "as": "button",
+              "children": <Link
+                replace={false}
+                to="/programs/create"
+              >
+                Create New Program
+              </Link>,
+              "role": "button",
+              "style": Object {
+                "background": "#0E6EB8",
+                "color": "white",
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Create New Program",
+                "replace": false,
+                "to": "/programs/create",
+              },
+              "ref": null,
+              "rendered": "Create New Program",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "as": "button",
+              "children": <Link
+                replace={false}
+                to="/explore"
+              >
+                Explore
+              </Link>,
+              "role": "button",
+              "style": Object {
+                "background": "#B413EC",
+                "color": "white",
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Explore",
+                "replace": false,
+                "to": "/explore",
+              },
+              "ref": null,
+              "rendered": "Explore",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "as": "button",
+              "children": <Link
+                replace={false}
+                to="/programs"
+              >
+                My Programs
+              </Link>,
+              "role": "button",
+              "style": Object {
+                "background": "#008080",
+                "color": "white",
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "My Programs",
+                "replace": false,
+                "to": "/programs",
+              },
+              "ref": null,
+              "rendered": "My Programs",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "section",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Dropdown
+            additionLabel="Add "
+            additionPosition="top"
+            className="top-nav__dropdown"
+            closeOnBlur={true}
+            deburr={false}
+            direction="left"
+            icon="dropdown"
+            minCharacters={1}
+            noResultsMessage="No results found."
+            openOnFocus={true}
+            renderLabel={[Function]}
+            searchInput="text"
+            selectOnBlur={true}
+            selectOnNavigation={true}
+            text="Dale Gribble"
+            wrapSelection={true}
+          >
+            <DropdownMenu>
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/rovers"
+                >
+                  Rovers
+                </Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/accounts/settings"
+                >
+                  Settings
+                </Link>
+              </DropdownItem>
+              <DropdownDivider />
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/signout"
+                >
+                  Signout
+                </Link>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "additionLabel": "Add ",
+            "additionPosition": "top",
+            "children": <DropdownMenu>
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/rovers"
+                >
+                  Rovers
+                </Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/accounts/settings"
+                >
+                  Settings
+                </Link>
+              </DropdownItem>
+              <DropdownDivider />
+              <DropdownItem>
+                <Link
+                  replace={false}
+                  to="/signout"
+                >
+                  Signout
+                </Link>
+              </DropdownItem>
+            </DropdownMenu>,
+            "className": "top-nav__dropdown",
+            "closeOnBlur": true,
+            "deburr": false,
+            "direction": "left",
+            "icon": "dropdown",
+            "minCharacters": 1,
+            "noResultsMessage": "No results found.",
+            "openOnFocus": true,
+            "renderLabel": [Function],
+            "searchInput": "text",
+            "selectOnBlur": true,
+            "selectOnNavigation": true,
+            "text": "Dale Gribble",
+            "wrapSelection": true,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/rovers"
+                  >
+                    Rovers
+                  </Link>
+                </DropdownItem>,
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/accounts/settings"
+                  >
+                    Settings
+                  </Link>
+                </DropdownItem>,
+                <DropdownDivider />,
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/signout"
+                  >
+                    Signout
+                  </Link>
+                </DropdownItem>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <Link
+                    replace={false}
+                    to="/rovers"
+                  >
+                    Rovers
+                  </Link>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Rovers",
+                    "replace": false,
+                    "to": "/rovers",
+                  },
+                  "ref": null,
+                  "rendered": "Rovers",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <Link
+                    replace={false}
+                    to="/accounts/settings"
+                  >
+                    Settings
+                  </Link>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Settings",
+                    "replace": false,
+                    "to": "/accounts/settings",
+                  },
+                  "ref": null,
+                  "rendered": "Settings",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <Link
+                    replace={false}
+                    to="/signout"
+                  >
+                    Signout
+                  </Link>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Signout",
+                    "replace": false,
+                    "to": "/signout",
+                  },
+                  "ref": null,
+                  "rendered": "Signout",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": "section",
+      },
+    ],
+    "type": "nav",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <section>
+            <Button
+              as="button"
+              role="button"
+              style={
+                Object {
+                  "background": "#0E6EB8",
+                  "color": "white",
+                }
+              }
+            >
+              <Link
+                replace={false}
+                to="/programs/create"
+              >
+                Create New Program
+              </Link>
+            </Button>
+            <Button
+              as="button"
+              role="button"
+              style={
+                Object {
+                  "background": "#B413EC",
+                  "color": "white",
+                }
+              }
+            >
+              <Link
+                replace={false}
+                to="/explore"
+              >
+                Explore
+              </Link>
+            </Button>
+            <Button
+              as="button"
+              role="button"
+              style={
+                Object {
+                  "background": "#008080",
+                  "color": "white",
+                }
+              }
+            >
+              <Link
+                replace={false}
+                to="/programs"
+              >
+                My Programs
+              </Link>
+            </Button>
+          </section>,
+          <section>
+            <Dropdown
+              additionLabel="Add "
+              additionPosition="top"
+              className="top-nav__dropdown"
+              closeOnBlur={true}
+              deburr={false}
+              direction="left"
+              icon="dropdown"
+              minCharacters={1}
+              noResultsMessage="No results found."
+              openOnFocus={true}
+              renderLabel={[Function]}
+              searchInput="text"
+              selectOnBlur={true}
+              selectOnNavigation={true}
+              text="Dale Gribble"
+              wrapSelection={true}
+            >
+              <DropdownMenu>
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/rovers"
+                  >
+                    Rovers
+                  </Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/accounts/settings"
+                  >
+                    Settings
+                  </Link>
+                </DropdownItem>
+                <DropdownDivider />
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/signout"
+                  >
+                    Signout
+                  </Link>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </section>,
+        ],
+        "className": "top-nav",
+        "style": Object {
+          "display": "flex",
+          "justifyContent": "space-between",
+          "padding": "50px",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Button
+                as="button"
+                role="button"
+                style={
+                  Object {
+                    "background": "#0E6EB8",
+                    "color": "white",
+                  }
+                }
+              >
+                <Link
+                  replace={false}
+                  to="/programs/create"
+                >
+                  Create New Program
+                </Link>
+              </Button>,
+              <Button
+                as="button"
+                role="button"
+                style={
+                  Object {
+                    "background": "#B413EC",
+                    "color": "white",
+                  }
+                }
+              >
+                <Link
+                  replace={false}
+                  to="/explore"
+                >
+                  Explore
+                </Link>
+              </Button>,
+              <Button
+                as="button"
+                role="button"
+                style={
+                  Object {
+                    "background": "#008080",
+                    "color": "white",
+                  }
+                }
+              >
+                <Link
+                  replace={false}
+                  to="/programs"
+                >
+                  My Programs
+                </Link>
+              </Button>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "as": "button",
+                "children": <Link
+                  replace={false}
+                  to="/programs/create"
+                >
+                  Create New Program
+                </Link>,
+                "role": "button",
+                "style": Object {
+                  "background": "#0E6EB8",
+                  "color": "white",
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Create New Program",
+                  "replace": false,
+                  "to": "/programs/create",
+                },
+                "ref": null,
+                "rendered": "Create New Program",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "as": "button",
+                "children": <Link
+                  replace={false}
+                  to="/explore"
+                >
+                  Explore
+                </Link>,
+                "role": "button",
+                "style": Object {
+                  "background": "#B413EC",
+                  "color": "white",
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Explore",
+                  "replace": false,
+                  "to": "/explore",
+                },
+                "ref": null,
+                "rendered": "Explore",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "as": "button",
+                "children": <Link
+                  replace={false}
+                  to="/programs"
+                >
+                  My Programs
+                </Link>,
+                "role": "button",
+                "style": Object {
+                  "background": "#008080",
+                  "color": "white",
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "My Programs",
+                  "replace": false,
+                  "to": "/programs",
+                },
+                "ref": null,
+                "rendered": "My Programs",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "section",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Dropdown
+              additionLabel="Add "
+              additionPosition="top"
+              className="top-nav__dropdown"
+              closeOnBlur={true}
+              deburr={false}
+              direction="left"
+              icon="dropdown"
+              minCharacters={1}
+              noResultsMessage="No results found."
+              openOnFocus={true}
+              renderLabel={[Function]}
+              searchInput="text"
+              selectOnBlur={true}
+              selectOnNavigation={true}
+              text="Dale Gribble"
+              wrapSelection={true}
+            >
+              <DropdownMenu>
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/rovers"
+                  >
+                    Rovers
+                  </Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/accounts/settings"
+                  >
+                    Settings
+                  </Link>
+                </DropdownItem>
+                <DropdownDivider />
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/signout"
+                  >
+                    Signout
+                  </Link>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "additionLabel": "Add ",
+              "additionPosition": "top",
+              "children": <DropdownMenu>
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/rovers"
+                  >
+                    Rovers
+                  </Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/accounts/settings"
+                  >
+                    Settings
+                  </Link>
+                </DropdownItem>
+                <DropdownDivider />
+                <DropdownItem>
+                  <Link
+                    replace={false}
+                    to="/signout"
+                  >
+                    Signout
+                  </Link>
+                </DropdownItem>
+              </DropdownMenu>,
+              "className": "top-nav__dropdown",
+              "closeOnBlur": true,
+              "deburr": false,
+              "direction": "left",
+              "icon": "dropdown",
+              "minCharacters": 1,
+              "noResultsMessage": "No results found.",
+              "openOnFocus": true,
+              "renderLabel": [Function],
+              "searchInput": "text",
+              "selectOnBlur": true,
+              "selectOnNavigation": true,
+              "text": "Dale Gribble",
+              "wrapSelection": true,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <DropdownItem>
+                    <Link
+                      replace={false}
+                      to="/rovers"
+                    >
+                      Rovers
+                    </Link>
+                  </DropdownItem>,
+                  <DropdownItem>
+                    <Link
+                      replace={false}
+                      to="/accounts/settings"
+                    >
+                      Settings
+                    </Link>
+                  </DropdownItem>,
+                  <DropdownDivider />,
+                  <DropdownItem>
+                    <Link
+                      replace={false}
+                      to="/signout"
+                    >
+                      Signout
+                    </Link>
+                  </DropdownItem>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Link
+                      replace={false}
+                      to="/rovers"
+                    >
+                      Rovers
+                    </Link>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Rovers",
+                      "replace": false,
+                      "to": "/rovers",
+                    },
+                    "ref": null,
+                    "rendered": "Rovers",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Link
+                      replace={false}
+                      to="/accounts/settings"
+                    >
+                      Settings
+                    </Link>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Settings",
+                      "replace": false,
+                      "to": "/accounts/settings",
+                    },
+                    "ref": null,
+                    "rendered": "Settings",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Link
+                      replace={false}
+                      to="/signout"
+                    >
+                      Signout
+                    </Link>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Signout",
+                      "replace": false,
+                      "to": "/signout",
+                    },
+                    "ref": null,
+                    "rendered": "Signout",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": "section",
+        },
+      ],
+      "type": "nav",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
