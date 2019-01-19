@@ -14,9 +14,7 @@ const MissionControl = () => (
   <Grid columns={16} divided>
     <Grid.Row>
       <Grid.Column width={6}>
-        <Grid.Row>
-          <Workspace />
-        </Grid.Row>
+        <Workspace />
       </Grid.Column>
       <Grid.Column width={6}>
         <Grid.Row>

@@ -350,10 +350,10 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
       writeToConsole={[Function]}
     >
       <div
+        id="blocklyDiv"
         style={
           Object {
-            "height": "480px",
-            "width": "600px",
+            "position": "absolute",
           }
         }
       />
