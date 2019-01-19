@@ -35,10 +35,10 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
           className="row"
         >
           <GridColumn
-            width={6}
+            width={10}
           >
             <div
-              className="six wide column"
+              className="ten wide column"
             >
               <Component>
                 <div />
@@ -46,10 +46,10 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
             </div>
           </GridColumn>
           <GridColumn
-            width={6}
+            width={3}
           >
             <div
-              className="six wide column"
+              className="three wide column"
             >
               <GridRow>
                 <div
@@ -112,10 +112,10 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
             </div>
           </GridColumn>
           <GridColumn
-            width={4}
+            width={3}
           >
             <div
-              className="four wide column"
+              className="three wide column"
             >
               <GridRow>
                 <div
