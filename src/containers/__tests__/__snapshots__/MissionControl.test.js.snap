@@ -16,9 +16,19 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
   <Grid
     columns={16}
     divided={true}
+    style={
+      Object {
+        "height": "100vh",
+      }
+    }
   >
     <div
       className="ui divided sixteen column grid"
+      style={
+        Object {
+          "height": "100vh",
+        }
+      }
     >
       <GridRow>
         <div
