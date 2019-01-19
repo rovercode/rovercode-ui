@@ -240,7 +240,7 @@ class Workspace extends Component {
     do {
       x += element.offsetLeft;
       y += element.offsetTop;
-      element = element.offsetParent;
+      element = element.parentNode;
     } while (element);
     // Position blocklyDiv over blocklyArea.
     if (this.editorDiv) {
