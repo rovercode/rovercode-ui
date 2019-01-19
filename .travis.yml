@@ -30,7 +30,7 @@ deploy:
     region: us-east-2
     on:
       repo: rovercode/rovercode-ui
-      branch: development
+      branch: beta
   - provider: s3
     access_key_id: AKIAIIORSR4VN3YQY2YQ
     secret_access_key:
