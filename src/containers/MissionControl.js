@@ -11,14 +11,12 @@ import ProgramName from '@/components/ProgramName';
 import Workspace from '@/components/Workspace';
 
 const MissionControl = () => (
-  <Grid columns={16} divided>
+  <Grid columns={16} divided style={{ height: '100vh' }}>
     <Grid.Row>
-      <Grid.Column width={6}>
-        <Grid.Row>
-          <Workspace />
-        </Grid.Row>
+      <Grid.Column width={10}>
+        <Workspace />
       </Grid.Column>
-      <Grid.Column width={6}>
+      <Grid.Column width={3}>
         <Grid.Row>
           <ProgramName />
         </Grid.Row>
@@ -41,7 +39,7 @@ const MissionControl = () => (
           </Link>
         </Grid.Row>
       </Grid.Column>
-      <Grid.Column width={4}>
+      <Grid.Column width={3}>
         <Grid.Row>
           <Console />
         </Grid.Row>

@@ -189,9 +189,10 @@ class Workspace extends Component {
 
     this.setState({
       workspace,
-    }, () => this.loadDesign(code.xmlCode));
+    }, () => this.onWorkspaceAvailable(code.xmlCode));
 
     clearConsole();
+    window.addEventListener('resize', this.onResize, false);
     writeToConsole('rovercode console started');
   }
 
@@ -220,6 +221,35 @@ class Workspace extends Component {
       default:
         break;
     }
+  }
+
+  onWorkspaceAvailable = (code) => {
+    this.loadDesign(code);
+    this.onResize();
+  }
+
+  onResize = () => {
+    // https://developers.google.com/blockly/guides/configure/web/resizable
+    const { workspace } = this.state;
+
+    // Compute the absolute coordinates and dimensions of blocklyArea.
+    const blocklyArea = document.getElementById('blocklyDiv').parentNode;
+    let element = blocklyArea;
+    let x = 0;
+    let y = 0;
+    do {
+      x += element.offsetLeft;
+      y += element.offsetTop;
+      element = element.parentNode;
+    } while (element);
+    // Position blocklyDiv over blocklyArea.
+    if (this.editorDiv) {
+      this.editorDiv.style.left = `${x}px`;
+      this.editorDiv.style.top = `${y}px`;
+      this.editorDiv.style.width = `${blocklyArea.offsetWidth}px`;
+      this.editorDiv.style.height = `${blocklyArea.offsetHeight}px`;
+    }
+    Blockly.svgResize(workspace);
   }
 
   updateXmlCode = () => {
@@ -363,7 +393,7 @@ class Workspace extends Component {
 
   render() {
     return (
-      <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ height: '480px', width: '600px' }} />
+      <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv" />
     );
   }
 }

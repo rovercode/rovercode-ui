@@ -51,6 +51,8 @@ describe('The Workspace component', () => {
     Blockly.Xml.workspaceToDom.mockImplementation(() => 'test-xml');
     Blockly.Xml.domToText.mockImplementation(() => 'test-dom-text');
     Blockly.Xml.textToDom.mockImplementation(() => 'test-dom');
+
+    document.body.innerHTML = '<div><div id="blocklyDiv"></div></div>';
   });
 
   test('renders on the page with no errors', () => {
