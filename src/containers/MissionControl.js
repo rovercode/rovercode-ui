@@ -14,7 +14,9 @@ const MissionControl = () => (
   <Grid columns={16} divided style={{ height: '100vh' }}>
     <Grid.Row>
       <Grid.Column width={10}>
-        <Workspace />
+        <Workspace>
+          <Control />
+        </Workspace>
       </Grid.Column>
       <Grid.Column width={3}>
         <Grid.Row>
@@ -25,10 +27,6 @@ const MissionControl = () => (
           <CodeViewer>
             Show Me The Code!
           </CodeViewer>
-        </Grid.Row>
-        <hr />
-        <Grid.Row>
-          <Control />
         </Grid.Row>
         <hr />
         <Grid.Row>
