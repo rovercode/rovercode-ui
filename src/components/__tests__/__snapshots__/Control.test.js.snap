@@ -55,51 +55,16 @@ exports[`The Control component renders on the page with no errors 1`] = `
     <Button
       animated="vertical"
       as="button"
+      color="green"
       onClick={[Function]}
+      onMouseDown={[Function]}
       role="button"
+      size="huge"
     >
       <button
-        className="ui vertical animated button"
+        className="ui green huge vertical animated button"
         onClick={[Function]}
-        role="button"
-      >
-        <ButtonContent
-          hidden={true}
-        >
-          <div
-            className="hidden content"
-          >
-            Step
-          </div>
-        </ButtonContent>
-        <ButtonContent
-          visible={true}
-        >
-          <div
-            className="visible content"
-          >
-            <Icon
-              as="i"
-              name="step forward"
-            >
-              <i
-                aria-hidden="true"
-                className="step forward icon"
-              />
-            </Icon>
-          </div>
-        </ButtonContent>
-      </button>
-    </Button>
-    <Button
-      animated="vertical"
-      as="button"
-      onClick={[Function]}
-      role="button"
-    >
-      <button
-        className="ui vertical animated button"
-        onClick={[Function]}
+        onMouseDown={[Function]}
         role="button"
       >
         <ButtonContent
@@ -133,13 +98,78 @@ exports[`The Control component renders on the page with no errors 1`] = `
     <Button
       animated="vertical"
       as="button"
+      color="yellow"
       onClick={[Function]}
+      onMouseDown={[Function]}
       role="button"
+      style={
+        Object {
+          "verticalAlign": "bottom",
+        }
+      }
     >
       <button
-        className="ui vertical animated button"
+        className="ui yellow vertical animated button"
         onClick={[Function]}
+        onMouseDown={[Function]}
         role="button"
+        style={
+          Object {
+            "verticalAlign": "bottom",
+          }
+        }
+      >
+        <ButtonContent
+          hidden={true}
+        >
+          <div
+            className="hidden content"
+          >
+            Step
+          </div>
+        </ButtonContent>
+        <ButtonContent
+          visible={true}
+        >
+          <div
+            className="visible content"
+          >
+            <Icon
+              as="i"
+              name="step forward"
+            >
+              <i
+                aria-hidden="true"
+                className="step forward icon"
+              />
+            </Icon>
+          </div>
+        </ButtonContent>
+      </button>
+    </Button>
+    <Button
+      animated="vertical"
+      as="button"
+      color="blue"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "verticalAlign": "bottom",
+        }
+      }
+    >
+      <button
+        className="ui blue vertical animated button"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        role="button"
+        style={
+          Object {
+            "verticalAlign": "bottom",
+          }
+        }
       >
         <ButtonContent
           hidden={true}

@@ -21,7 +21,7 @@ const Control = ({ code, changeExecutionState }) => (
   <Fragment>
     {
       code.execution === EXECUTION_RUN ? (
-        <Button onClick={() => changeExecutionState(EXECUTION_STOP)} animated="vertical">
+        <Button color="red" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STOP)} animated="vertical">
           <Button.Content hidden>
             Stop
           </Button.Content>
@@ -31,15 +31,7 @@ const Control = ({ code, changeExecutionState }) => (
         </Button>
       ) : (
         <Fragment>
-          <Button onClick={() => changeExecutionState(EXECUTION_STEP)} animated="vertical">
-            <Button.Content hidden>
-              Step
-            </Button.Content>
-            <Button.Content visible>
-              <Icon name="step forward" />
-            </Button.Content>
-          </Button>
-          <Button onClick={() => changeExecutionState(EXECUTION_RUN)} animated="vertical">
+          <Button color="green" size="huge" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RUN)} animated="vertical">
             <Button.Content hidden>
               Run
             </Button.Content>
@@ -47,7 +39,15 @@ const Control = ({ code, changeExecutionState }) => (
               <Icon name="play" />
             </Button.Content>
           </Button>
-          <Button onClick={() => changeExecutionState(EXECUTION_RESET)} animated="vertical">
+          <Button color="yellow" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STEP)} animated="vertical" style={{ verticalAlign: 'bottom' }}>
+            <Button.Content hidden>
+              Step
+            </Button.Content>
+            <Button.Content visible>
+              <Icon name="step forward" />
+            </Button.Content>
+          </Button>
+          <Button color="blue" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RESET)} animated="vertical" style={{ verticalAlign: 'bottom' }}>
             <Button.Content hidden>
               Reset
             </Button.Content>
