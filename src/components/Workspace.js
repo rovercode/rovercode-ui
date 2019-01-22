@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -392,8 +392,15 @@ class Workspace extends Component {
   }
 
   render() {
+    const { children } = this.props;
+
     return (
-      <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv" />
+      <Fragment>
+        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv" />
+        <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
+          { children }
+        </div>
+      </Fragment>
     );
   }
 }
@@ -409,6 +416,7 @@ Workspace.propTypes = {
   clearConsole: PropTypes.func.isRequired,
   saveProgram: PropTypes.func.isRequired,
   createProgram: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));
