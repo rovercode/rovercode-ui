@@ -53,42 +53,120 @@ exports[`The Control component renders on the page with no errors 1`] = `
     }
   >
     <Button
+      animated="vertical"
       as="button"
       onClick={[Function]}
       role="button"
     >
       <button
-        className="ui button"
+        className="ui vertical animated button"
         onClick={[Function]}
         role="button"
       >
-        Step
+        <ButtonContent
+          hidden={true}
+        >
+          <div
+            className="hidden content"
+          >
+            Step
+          </div>
+        </ButtonContent>
+        <ButtonContent
+          visible={true}
+        >
+          <div
+            className="visible content"
+          >
+            <Icon
+              as="i"
+              name="step forward"
+            >
+              <i
+                aria-hidden="true"
+                className="step forward icon"
+              />
+            </Icon>
+          </div>
+        </ButtonContent>
       </button>
     </Button>
     <Button
+      animated="vertical"
       as="button"
       onClick={[Function]}
       role="button"
     >
       <button
-        className="ui button"
+        className="ui vertical animated button"
         onClick={[Function]}
         role="button"
       >
-        Run
+        <ButtonContent
+          hidden={true}
+        >
+          <div
+            className="hidden content"
+          >
+            Run
+          </div>
+        </ButtonContent>
+        <ButtonContent
+          visible={true}
+        >
+          <div
+            className="visible content"
+          >
+            <Icon
+              as="i"
+              name="play"
+            >
+              <i
+                aria-hidden="true"
+                className="play icon"
+              />
+            </Icon>
+          </div>
+        </ButtonContent>
       </button>
     </Button>
     <Button
+      animated="vertical"
       as="button"
       onClick={[Function]}
       role="button"
     >
       <button
-        className="ui button"
+        className="ui vertical animated button"
         onClick={[Function]}
         role="button"
       >
-        Reset
+        <ButtonContent
+          hidden={true}
+        >
+          <div
+            className="hidden content"
+          >
+            Reset
+          </div>
+        </ButtonContent>
+        <ButtonContent
+          visible={true}
+        >
+          <div
+            className="visible content"
+          >
+            <Icon
+              as="i"
+              name="repeat"
+            >
+              <i
+                aria-hidden="true"
+                className="repeat icon"
+              />
+            </Icon>
+          </div>
+        </ButtonContent>
       </button>
     </Button>
   </Control>
