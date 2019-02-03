@@ -44,7 +44,7 @@ class Console extends Component {
           }
           <div ref={this.bottomRef} />
         </div>
-        <Button onClick={this.handleClear} style={{ marginTop: '10px' }}>
+        <Button primary onClick={this.handleClear} style={{ marginTop: '10px' }}>
           Clear
         </Button>
       </Fragment>
