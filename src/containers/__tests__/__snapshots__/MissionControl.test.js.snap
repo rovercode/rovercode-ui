@@ -14,121 +14,163 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
   }
 >
   <Grid
-    columns={16}
-    divided={true}
+    style={
+      Object {
+        "height": "100vh",
+      }
+    }
   >
     <div
-      className="ui divided sixteen column grid"
+      className="ui grid"
+      style={
+        Object {
+          "height": "100vh",
+        }
+      }
     >
       <GridRow>
         <div
           className="row"
         >
           <GridColumn
-            width={6}
+            width={13}
           >
             <div
-              className="six wide column"
+              className="thirteen wide column"
             >
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Component>
-                    <div />
-                  </Component>
-                </div>
-              </GridRow>
+              <Component>
+                <div />
+              </Component>
             </div>
           </GridColumn>
           <GridColumn
-            width={6}
+            width={3}
           >
             <div
-              className="six wide column"
+              className="three wide column"
             >
               <GridRow>
                 <div
                   className="row"
                 >
-                  <Component>
-                    <div />
-                  </Component>
-                </div>
-              </GridRow>
-              <hr />
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Component>
-                    <div />
-                  </Component>
-                </div>
-              </GridRow>
-              <hr />
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Component>
-                    <div />
-                  </Component>
-                </div>
-              </GridRow>
-              <hr />
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Link
-                    replace={false}
-                    to="/"
+                  <Segment
+                    basic={true}
+                    compact={true}
                   >
-                    <a
-                      href="/"
-                      onClick={[Function]}
+                    <div
+                      className="ui basic compact segment"
                     >
-                      <Button
-                        as="button"
-                        role="button"
-                      >
-                        <button
-                          className="ui button"
-                          onClick={[Function]}
-                          role="button"
-                        >
-                          Home
-                        </button>
-                      </Button>
-                    </a>
-                  </Link>
+                      <Component>
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
                 </div>
               </GridRow>
-            </div>
-          </GridColumn>
-          <GridColumn
-            width={4}
-          >
-            <div
-              className="four wide column"
-            >
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
               <GridRow>
                 <div
                   className="row"
                 >
-                  <Component>
-                    <div />
-                  </Component>
+                  <Header
+                    as="h2"
+                    textAlign="center"
+                  >
+                    <h2
+                      className="ui center aligned header"
+                    >
+                      Sensors
+                    </h2>
+                  </Header>
+                  <Segment
+                    raised={true}
+                    style={
+                      Object {
+                        "margin": "10px",
+                      }
+                    }
+                  >
+                    <div
+                      className="ui raised segment"
+                      style={
+                        Object {
+                          "margin": "10px",
+                        }
+                      }
+                    >
+                      <Component>
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
                 </div>
               </GridRow>
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
               <GridRow>
                 <div
                   className="row"
                 >
-                  <Component>
-                    <div />
-                  </Component>
+                  <Header
+                    as="h2"
+                    textAlign="center"
+                  >
+                    <h2
+                      className="ui center aligned header"
+                    >
+                      Debug Console
+                    </h2>
+                  </Header>
+                  <Segment
+                    style={
+                      Object {
+                        "margin": "10px",
+                      }
+                    }
+                  >
+                    <div
+                      className="ui segment"
+                      style={
+                        Object {
+                          "margin": "10px",
+                        }
+                      }
+                    >
+                      <Component>
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
+                </div>
+              </GridRow>
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Segment
+                    basic={true}
+                    compact={true}
+                  >
+                    <div
+                      className="ui basic compact segment"
+                    >
+                      <Component>
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
                 </div>
               </GridRow>
             </div>

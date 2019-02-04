@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -189,9 +189,10 @@ class Workspace extends Component {
 
     this.setState({
       workspace,
-    }, () => this.loadDesign(code.xmlCode));
+    }, () => this.onWorkspaceAvailable(code.xmlCode));
 
     clearConsole();
+    window.addEventListener('resize', this.onResize, false);
     writeToConsole('rovercode console started');
   }
 
@@ -220,6 +221,35 @@ class Workspace extends Component {
       default:
         break;
     }
+  }
+
+  onWorkspaceAvailable = (code) => {
+    this.loadDesign(code);
+    this.onResize();
+  }
+
+  onResize = () => {
+    // https://developers.google.com/blockly/guides/configure/web/resizable
+    const { workspace } = this.state;
+
+    // Compute the absolute coordinates and dimensions of blocklyArea.
+    const blocklyArea = document.getElementById('blocklyDiv').parentNode;
+    let element = blocklyArea;
+    let x = 0;
+    let y = 0;
+    do {
+      x += element.offsetLeft;
+      y += element.offsetTop;
+      element = element.parentNode;
+    } while (element);
+    // Position blocklyDiv over blocklyArea.
+    if (this.editorDiv) {
+      this.editorDiv.style.left = `${x}px`;
+      this.editorDiv.style.top = `${y}px`;
+      this.editorDiv.style.width = `${blocklyArea.offsetWidth}px`;
+      this.editorDiv.style.height = `${blocklyArea.offsetHeight}px`;
+    }
+    Blockly.svgResize(workspace);
   }
 
   updateXmlCode = () => {
@@ -362,8 +392,15 @@ class Workspace extends Component {
   }
 
   render() {
+    const { children } = this.props;
+
     return (
-      <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ height: '480px', width: '600px' }} />
+      <Fragment>
+        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv" />
+        <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
+          { children }
+        </div>
+      </Fragment>
     );
   }
 }
@@ -379,6 +416,7 @@ Workspace.propTypes = {
   clearConsole: PropTypes.func.isRequired,
   saveProgram: PropTypes.func.isRequired,
   createProgram: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));

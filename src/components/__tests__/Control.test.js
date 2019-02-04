@@ -39,31 +39,41 @@ describe('The Control component', () => {
     expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RUN));
   });
 
-  test('changes to step state on button press', () => {
+  test('changes to run state on button press', () => {
+    const mockPreventDefault = jest.fn();
     const wrapper = shallow(<Control store={store} />);
 
     wrapper.dive().find(Button).at(0).simulate('click');
+    wrapper.dive().find(Button).at(0).simulate('mousedown', { preventDefault: mockPreventDefault });
 
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STEP));
+    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RUN));
+    expect(mockPreventDefault).toHaveBeenCalled();
   });
 
-  test('changes to run state on button press', () => {
+  test('changes to step state on button press', () => {
+    const mockPreventDefault = jest.fn();
     const wrapper = shallow(<Control store={store} />);
 
     wrapper.dive().find(Button).at(1).simulate('click');
+    wrapper.dive().find(Button).at(1).simulate('mousedown', { preventDefault: mockPreventDefault });
 
-    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RUN));
+    expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STEP));
+    expect(mockPreventDefault).toHaveBeenCalled();
   });
 
   test('changes to reset state on button press', () => {
+    const mockPreventDefault = jest.fn();
     const wrapper = shallow(<Control store={store} />);
 
     wrapper.dive().find(Button).at(2).simulate('click');
+    wrapper.dive().find(Button).at(2).simulate('mousedown', { preventDefault: mockPreventDefault });
 
     expect(store.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_RESET));
+    expect(mockPreventDefault).toHaveBeenCalled();
   });
 
   test('changes to stop state on button press', () => {
+    const mockPreventDefault = jest.fn();
     const runStore = mockStore({
       code: {
         execution: EXECUTION_RUN,
@@ -73,7 +83,9 @@ describe('The Control component', () => {
     const wrapper = shallow(<Control store={runStore} />).dive();
 
     wrapper.find(Button).at(0).simulate('click');
+    wrapper.find(Button).at(0).simulate('mousedown', { preventDefault: mockPreventDefault });
 
     expect(runStore.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STOP));
+    expect(mockPreventDefault).toHaveBeenCalled();
   });
 });

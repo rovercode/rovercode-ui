@@ -63,6 +63,7 @@ exports[`The CodeViewer component handles blank code with no errors 1`] = `
       trigger={
         <Button
           as="button"
+          primary={true}
           role="button"
         >
           Show Me The Code!
@@ -84,6 +85,7 @@ exports[`The CodeViewer component handles blank code with no errors 1`] = `
         trigger={
           <Button
             as="button"
+            primary={true}
             role="button"
           >
             Show Me The Code!
@@ -100,10 +102,11 @@ exports[`The CodeViewer component handles blank code with no errors 1`] = `
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            primary={true}
             role="button"
           >
             <button
-              className="ui button"
+              className="ui primary button"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -184,6 +187,7 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
       trigger={
         <Button
           as="button"
+          primary={true}
           role="button"
         >
           Show Me The Code!
@@ -205,6 +209,7 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
         trigger={
           <Button
             as="button"
+            primary={true}
             role="button"
           >
             Show Me The Code!
@@ -221,10 +226,11 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            primary={true}
             role="button"
           >
             <button
-              className="ui button"
+              className="ui primary button"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}

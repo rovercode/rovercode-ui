@@ -57,7 +57,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
-      title: 'rovercode web',
+      title: 'Rovercode',
     }),
     new ExtractTextPlugin({
       filename: 'app.css',

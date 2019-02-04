@@ -30,7 +30,7 @@ class CodeViewer extends Component {
         closeIcon
         dimmer="blurring"
         trigger={(
-          <Button>
+          <Button primary>
             { children }
           </Button>
         )}
