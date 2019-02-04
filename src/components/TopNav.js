@@ -1,53 +1,44 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button, Dropdown } from 'semantic-ui-react';
+import { Dropdown, Image, Menu } from 'semantic-ui-react';
+
+import logoImage from '@/assets/images/rovercode_logo_magenta.png';
 
 class TopNav extends PureComponent {
   render() {
     const { userName } = this.props;
     return (
-      <nav className="top-nav" style={{ display: 'flex', justifyContent: 'space-between', padding: '50px' }}>
-        <section>
-          <Button style={{ color: 'white', background: '#0E6EB8' }}>
-            <Link to="/programs/create">
-              Create New Program
-            </Link>
-          </Button>
-          <Button style={{ color: 'white', background: '#B413EC' }}>
-            <Link to="/explore">
-              Explore
-            </Link>
-          </Button>
-          <Button style={{ color: 'white', background: '#008080' }}>
-            <Link to="/programs">
-              My Programs
-            </Link>
-          </Button>
-        </section>
-        <section>
-          <Dropdown className="top-nav__dropdown" text={userName} direction="left">
+      <Menu inverted color="black">
+        <Menu.Item as={Link} to="/">
+          <Image src={logoImage} size="mini" />
+        </Menu.Item>
+        <Menu.Item as={Link} to="/programs/create">
+          Create New Program
+        </Menu.Item>
+        <Menu.Item as={Link} to="/explore">
+          Explore
+        </Menu.Item>
+        <Menu.Item as={Link} to="/programs">
+          My Programs
+        </Menu.Item>
+        <Menu.Menu position="right">
+          <Dropdown item text={userName}>
             <Dropdown.Menu>
-              <Dropdown.Item>
-                <Link to="/rovers">
-                  Rovers
-                </Link>
+              <Dropdown.Item as={Link} to="/rovers">
+                Rovers
               </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to="/accounts/settings">
-                  Settings
-                </Link>
+              <Dropdown.Item as={Link} to="/accounts/settings">
+                Settings
               </Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item>
-                <Link to="/signout">
-                  Signout
-                </Link>
+              <Dropdown.Item as={Link} to="/signout">
+                Signout
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </section>
-      </nav>
+        </Menu.Menu>
+      </Menu>
     );
   }
 }

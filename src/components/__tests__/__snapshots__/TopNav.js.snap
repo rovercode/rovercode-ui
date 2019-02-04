@@ -17,71 +17,48 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
       "children": Array [
-        <section>
-          <Button
-            as="button"
-            role="button"
-            style={
-              Object {
-                "background": "#0E6EB8",
-                "color": "white",
-              }
-            }
-          >
-            <Link
-              replace={false}
-              to="/programs/create"
-            >
-              Create New Program
-            </Link>
-          </Button>
-          <Button
-            as="button"
-            role="button"
-            style={
-              Object {
-                "background": "#B413EC",
-                "color": "white",
-              }
-            }
-          >
-            <Link
-              replace={false}
-              to="/explore"
-            >
-              Explore
-            </Link>
-          </Button>
-          <Button
-            as="button"
-            role="button"
-            style={
-              Object {
-                "background": "#008080",
-                "color": "white",
-              }
-            }
-          >
-            <Link
-              replace={false}
-              to="/programs"
-            >
-              My Programs
-            </Link>
-          </Button>
-        </section>,
-        <section>
+        <MenuItem
+          as={[Function]}
+          to="/"
+        >
+          <Image
+            as="img"
+            size="mini"
+            src={Object {}}
+            ui={true}
+          />
+        </MenuItem>,
+        <MenuItem
+          as={[Function]}
+          to="/programs/create"
+        >
+          Create New Program
+        </MenuItem>,
+        <MenuItem
+          as={[Function]}
+          to="/explore"
+        >
+          Explore
+        </MenuItem>,
+        <MenuItem
+          as={[Function]}
+          to="/programs"
+        >
+          My Programs
+        </MenuItem>,
+        <MenuMenu
+          position="right"
+        >
           <Dropdown
             additionLabel="Add "
             additionPosition="top"
-            className="top-nav__dropdown"
             closeOnBlur={true}
             deburr={false}
-            direction="left"
             icon="dropdown"
+            item={true}
             minCharacters={1}
             noResultsMessage="No results found."
             openOnFocus={true}
@@ -93,223 +70,116 @@ ShallowWrapper {
             wrapSelection={true}
           >
             <DropdownMenu>
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/rovers"
-                >
-                  Rovers
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/rovers"
+              >
+                Rovers
               </DropdownItem>
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/accounts/settings"
-                >
-                  Settings
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/accounts/settings"
+              >
+                Settings
               </DropdownItem>
               <DropdownDivider />
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/signout"
-                >
-                  Signout
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/signout"
+              >
+                Signout
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-        </section>,
+        </MenuMenu>,
       ],
-      "className": "top-nav",
-      "style": Object {
-        "display": "flex",
-        "justifyContent": "space-between",
-        "padding": "50px",
-      },
+      "color": "black",
+      "inverted": true,
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": Array [
-            <Button
-              as="button"
-              role="button"
-              style={
-                Object {
-                  "background": "#0E6EB8",
-                  "color": "white",
-                }
-              }
-            >
-              <Link
-                replace={false}
-                to="/programs/create"
-              >
-                Create New Program
-              </Link>
-            </Button>,
-            <Button
-              as="button"
-              role="button"
-              style={
-                Object {
-                  "background": "#B413EC",
-                  "color": "white",
-                }
-              }
-            >
-              <Link
-                replace={false}
-                to="/explore"
-              >
-                Explore
-              </Link>
-            </Button>,
-            <Button
-              as="button"
-              role="button"
-              style={
-                Object {
-                  "background": "#008080",
-                  "color": "white",
-                }
-              }
-            >
-              <Link
-                replace={false}
-                to="/programs"
-              >
-                My Programs
-              </Link>
-            </Button>,
-          ],
+          "as": [Function],
+          "children": <Image
+            as="img"
+            size="mini"
+            src={Object {}}
+            ui={true}
+          />,
+          "to": "/",
         },
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "as": "button",
-              "children": <Link
-                replace={false}
-                to="/programs/create"
-              >
-                Create New Program
-              </Link>,
-              "role": "button",
-              "style": Object {
-                "background": "#0E6EB8",
-                "color": "white",
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": "Create New Program",
-                "replace": false,
-                "to": "/programs/create",
-              },
-              "ref": null,
-              "rendered": "Create New Program",
-              "type": [Function],
-            },
-            "type": [Function],
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "as": "img",
+            "size": "mini",
+            "src": Object {},
+            "ui": true,
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "as": "button",
-              "children": <Link
-                replace={false}
-                to="/explore"
-              >
-                Explore
-              </Link>,
-              "role": "button",
-              "style": Object {
-                "background": "#B413EC",
-                "color": "white",
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": "Explore",
-                "replace": false,
-                "to": "/explore",
-              },
-              "ref": null,
-              "rendered": "Explore",
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "as": "button",
-              "children": <Link
-                replace={false}
-                to="/programs"
-              >
-                My Programs
-              </Link>,
-              "role": "button",
-              "style": Object {
-                "background": "#008080",
-                "color": "white",
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": "My Programs",
-                "replace": false,
-                "to": "/programs",
-              },
-              "ref": null,
-              "rendered": "My Programs",
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-        ],
-        "type": "section",
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
+        "props": Object {
+          "as": [Function],
+          "children": "Create New Program",
+          "to": "/programs/create",
+        },
+        "ref": null,
+        "rendered": "Create New Program",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "as": [Function],
+          "children": "Explore",
+          "to": "/explore",
+        },
+        "ref": null,
+        "rendered": "Explore",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "as": [Function],
+          "children": "My Programs",
+          "to": "/programs",
+        },
+        "ref": null,
+        "rendered": "My Programs",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
         "props": Object {
           "children": <Dropdown
             additionLabel="Add "
             additionPosition="top"
-            className="top-nav__dropdown"
             closeOnBlur={true}
             deburr={false}
-            direction="left"
             icon="dropdown"
+            item={true}
             minCharacters={1}
             noResultsMessage="No results found."
             openOnFocus={true}
@@ -321,33 +191,28 @@ ShallowWrapper {
             wrapSelection={true}
           >
             <DropdownMenu>
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/rovers"
-                >
-                  Rovers
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/rovers"
+              >
+                Rovers
               </DropdownItem>
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/accounts/settings"
-                >
-                  Settings
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/accounts/settings"
+              >
+                Settings
               </DropdownItem>
               <DropdownDivider />
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/signout"
-                >
-                  Signout
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/signout"
+              >
+                Signout
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>,
+          "position": "right",
         },
         "ref": null,
         "rendered": Object {
@@ -358,37 +223,30 @@ ShallowWrapper {
             "additionLabel": "Add ",
             "additionPosition": "top",
             "children": <DropdownMenu>
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/rovers"
-                >
-                  Rovers
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/rovers"
+              >
+                Rovers
               </DropdownItem>
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/accounts/settings"
-                >
-                  Settings
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/accounts/settings"
+              >
+                Settings
               </DropdownItem>
               <DropdownDivider />
-              <DropdownItem>
-                <Link
-                  replace={false}
-                  to="/signout"
-                >
-                  Signout
-                </Link>
+              <DropdownItem
+                as={[Function]}
+                to="/signout"
+              >
+                Signout
               </DropdownItem>
             </DropdownMenu>,
-            "className": "top-nav__dropdown",
             "closeOnBlur": true,
             "deburr": false,
-            "direction": "left",
             "icon": "dropdown",
+            "item": true,
             "minCharacters": 1,
             "noResultsMessage": "No results found.",
             "openOnFocus": true,
@@ -406,30 +264,24 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": Array [
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/rovers"
-                  >
-                    Rovers
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/rovers"
+                >
+                  Rovers
                 </DropdownItem>,
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/accounts/settings"
-                  >
-                    Settings
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/accounts/settings"
+                >
+                  Settings
                 </DropdownItem>,
                 <DropdownDivider />,
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/signout"
-                  >
-                    Signout
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/signout"
+                >
+                  Signout
                 </DropdownItem>,
               ],
             },
@@ -440,27 +292,12 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": <Link
-                    replace={false}
-                    to="/rovers"
-                  >
-                    Rovers
-                  </Link>,
+                  "as": [Function],
+                  "children": "Rovers",
+                  "to": "/rovers",
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": "Rovers",
-                    "replace": false,
-                    "to": "/rovers",
-                  },
-                  "ref": null,
-                  "rendered": "Rovers",
-                  "type": [Function],
-                },
+                "rendered": "Rovers",
                 "type": [Function],
               },
               Object {
@@ -468,27 +305,12 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": <Link
-                    replace={false}
-                    to="/accounts/settings"
-                  >
-                    Settings
-                  </Link>,
+                  "as": [Function],
+                  "children": "Settings",
+                  "to": "/accounts/settings",
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": "Settings",
-                    "replace": false,
-                    "to": "/accounts/settings",
-                  },
-                  "ref": null,
-                  "rendered": "Settings",
-                  "type": [Function],
-                },
+                "rendered": "Settings",
                 "type": [Function],
               },
               Object {
@@ -505,27 +327,12 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": <Link
-                    replace={false}
-                    to="/signout"
-                  >
-                    Signout
-                  </Link>,
+                  "as": [Function],
+                  "children": "Signout",
+                  "to": "/signout",
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": "Signout",
-                    "replace": false,
-                    "to": "/signout",
-                  },
-                  "ref": null,
-                  "rendered": "Signout",
-                  "type": [Function],
-                },
+                "rendered": "Signout",
                 "type": [Function],
               },
             ],
@@ -533,80 +340,57 @@ ShallowWrapper {
           },
           "type": [Function],
         },
-        "type": "section",
+        "type": [Function],
       },
     ],
-    "type": "nav",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
         "children": Array [
-          <section>
-            <Button
-              as="button"
-              role="button"
-              style={
-                Object {
-                  "background": "#0E6EB8",
-                  "color": "white",
-                }
-              }
-            >
-              <Link
-                replace={false}
-                to="/programs/create"
-              >
-                Create New Program
-              </Link>
-            </Button>
-            <Button
-              as="button"
-              role="button"
-              style={
-                Object {
-                  "background": "#B413EC",
-                  "color": "white",
-                }
-              }
-            >
-              <Link
-                replace={false}
-                to="/explore"
-              >
-                Explore
-              </Link>
-            </Button>
-            <Button
-              as="button"
-              role="button"
-              style={
-                Object {
-                  "background": "#008080",
-                  "color": "white",
-                }
-              }
-            >
-              <Link
-                replace={false}
-                to="/programs"
-              >
-                My Programs
-              </Link>
-            </Button>
-          </section>,
-          <section>
+          <MenuItem
+            as={[Function]}
+            to="/"
+          >
+            <Image
+              as="img"
+              size="mini"
+              src={Object {}}
+              ui={true}
+            />
+          </MenuItem>,
+          <MenuItem
+            as={[Function]}
+            to="/programs/create"
+          >
+            Create New Program
+          </MenuItem>,
+          <MenuItem
+            as={[Function]}
+            to="/explore"
+          >
+            Explore
+          </MenuItem>,
+          <MenuItem
+            as={[Function]}
+            to="/programs"
+          >
+            My Programs
+          </MenuItem>,
+          <MenuMenu
+            position="right"
+          >
             <Dropdown
               additionLabel="Add "
               additionPosition="top"
-              className="top-nav__dropdown"
               closeOnBlur={true}
               deburr={false}
-              direction="left"
               icon="dropdown"
+              item={true}
               minCharacters={1}
               noResultsMessage="No results found."
               openOnFocus={true}
@@ -618,223 +402,116 @@ ShallowWrapper {
               wrapSelection={true}
             >
               <DropdownMenu>
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/rovers"
-                  >
-                    Rovers
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/rovers"
+                >
+                  Rovers
                 </DropdownItem>
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/accounts/settings"
-                  >
-                    Settings
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/accounts/settings"
+                >
+                  Settings
                 </DropdownItem>
                 <DropdownDivider />
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/signout"
-                  >
-                    Signout
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/signout"
+                >
+                  Signout
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
-          </section>,
+          </MenuMenu>,
         ],
-        "className": "top-nav",
-        "style": Object {
-          "display": "flex",
-          "justifyContent": "space-between",
-          "padding": "50px",
-        },
+        "color": "black",
+        "inverted": true,
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
-            "children": Array [
-              <Button
-                as="button"
-                role="button"
-                style={
-                  Object {
-                    "background": "#0E6EB8",
-                    "color": "white",
-                  }
-                }
-              >
-                <Link
-                  replace={false}
-                  to="/programs/create"
-                >
-                  Create New Program
-                </Link>
-              </Button>,
-              <Button
-                as="button"
-                role="button"
-                style={
-                  Object {
-                    "background": "#B413EC",
-                    "color": "white",
-                  }
-                }
-              >
-                <Link
-                  replace={false}
-                  to="/explore"
-                >
-                  Explore
-                </Link>
-              </Button>,
-              <Button
-                as="button"
-                role="button"
-                style={
-                  Object {
-                    "background": "#008080",
-                    "color": "white",
-                  }
-                }
-              >
-                <Link
-                  replace={false}
-                  to="/programs"
-                >
-                  My Programs
-                </Link>
-              </Button>,
-            ],
+            "as": [Function],
+            "children": <Image
+              as="img"
+              size="mini"
+              src={Object {}}
+              ui={true}
+            />,
+            "to": "/",
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "as": "button",
-                "children": <Link
-                  replace={false}
-                  to="/programs/create"
-                >
-                  Create New Program
-                </Link>,
-                "role": "button",
-                "style": Object {
-                  "background": "#0E6EB8",
-                  "color": "white",
-                },
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "Create New Program",
-                  "replace": false,
-                  "to": "/programs/create",
-                },
-                "ref": null,
-                "rendered": "Create New Program",
-                "type": [Function],
-              },
-              "type": [Function],
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "as": "img",
+              "size": "mini",
+              "src": Object {},
+              "ui": true,
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "as": "button",
-                "children": <Link
-                  replace={false}
-                  to="/explore"
-                >
-                  Explore
-                </Link>,
-                "role": "button",
-                "style": Object {
-                  "background": "#B413EC",
-                  "color": "white",
-                },
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "Explore",
-                  "replace": false,
-                  "to": "/explore",
-                },
-                "ref": null,
-                "rendered": "Explore",
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "as": "button",
-                "children": <Link
-                  replace={false}
-                  to="/programs"
-                >
-                  My Programs
-                </Link>,
-                "role": "button",
-                "style": Object {
-                  "background": "#008080",
-                  "color": "white",
-                },
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "My Programs",
-                  "replace": false,
-                  "to": "/programs",
-                },
-                "ref": null,
-                "rendered": "My Programs",
-                "type": [Function],
-              },
-              "type": [Function],
-            },
-          ],
-          "type": "section",
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
+          "props": Object {
+            "as": [Function],
+            "children": "Create New Program",
+            "to": "/programs/create",
+          },
+          "ref": null,
+          "rendered": "Create New Program",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "as": [Function],
+            "children": "Explore",
+            "to": "/explore",
+          },
+          "ref": null,
+          "rendered": "Explore",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "as": [Function],
+            "children": "My Programs",
+            "to": "/programs",
+          },
+          "ref": null,
+          "rendered": "My Programs",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
           "props": Object {
             "children": <Dropdown
               additionLabel="Add "
               additionPosition="top"
-              className="top-nav__dropdown"
               closeOnBlur={true}
               deburr={false}
-              direction="left"
               icon="dropdown"
+              item={true}
               minCharacters={1}
               noResultsMessage="No results found."
               openOnFocus={true}
@@ -846,33 +523,28 @@ ShallowWrapper {
               wrapSelection={true}
             >
               <DropdownMenu>
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/rovers"
-                  >
-                    Rovers
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/rovers"
+                >
+                  Rovers
                 </DropdownItem>
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/accounts/settings"
-                  >
-                    Settings
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/accounts/settings"
+                >
+                  Settings
                 </DropdownItem>
                 <DropdownDivider />
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/signout"
-                  >
-                    Signout
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/signout"
+                >
+                  Signout
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>,
+            "position": "right",
           },
           "ref": null,
           "rendered": Object {
@@ -883,37 +555,30 @@ ShallowWrapper {
               "additionLabel": "Add ",
               "additionPosition": "top",
               "children": <DropdownMenu>
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/rovers"
-                  >
-                    Rovers
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/rovers"
+                >
+                  Rovers
                 </DropdownItem>
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/accounts/settings"
-                  >
-                    Settings
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/accounts/settings"
+                >
+                  Settings
                 </DropdownItem>
                 <DropdownDivider />
-                <DropdownItem>
-                  <Link
-                    replace={false}
-                    to="/signout"
-                  >
-                    Signout
-                  </Link>
+                <DropdownItem
+                  as={[Function]}
+                  to="/signout"
+                >
+                  Signout
                 </DropdownItem>
               </DropdownMenu>,
-              "className": "top-nav__dropdown",
               "closeOnBlur": true,
               "deburr": false,
-              "direction": "left",
               "icon": "dropdown",
+              "item": true,
               "minCharacters": 1,
               "noResultsMessage": "No results found.",
               "openOnFocus": true,
@@ -931,30 +596,24 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": Array [
-                  <DropdownItem>
-                    <Link
-                      replace={false}
-                      to="/rovers"
-                    >
-                      Rovers
-                    </Link>
+                  <DropdownItem
+                    as={[Function]}
+                    to="/rovers"
+                  >
+                    Rovers
                   </DropdownItem>,
-                  <DropdownItem>
-                    <Link
-                      replace={false}
-                      to="/accounts/settings"
-                    >
-                      Settings
-                    </Link>
+                  <DropdownItem
+                    as={[Function]}
+                    to="/accounts/settings"
+                  >
+                    Settings
                   </DropdownItem>,
                   <DropdownDivider />,
-                  <DropdownItem>
-                    <Link
-                      replace={false}
-                      to="/signout"
-                    >
-                      Signout
-                    </Link>
+                  <DropdownItem
+                    as={[Function]}
+                    to="/signout"
+                  >
+                    Signout
                   </DropdownItem>,
                 ],
               },
@@ -965,27 +624,12 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <Link
-                      replace={false}
-                      to="/rovers"
-                    >
-                      Rovers
-                    </Link>,
+                    "as": [Function],
+                    "children": "Rovers",
+                    "to": "/rovers",
                   },
                   "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "children": "Rovers",
-                      "replace": false,
-                      "to": "/rovers",
-                    },
-                    "ref": null,
-                    "rendered": "Rovers",
-                    "type": [Function],
-                  },
+                  "rendered": "Rovers",
                   "type": [Function],
                 },
                 Object {
@@ -993,27 +637,12 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <Link
-                      replace={false}
-                      to="/accounts/settings"
-                    >
-                      Settings
-                    </Link>,
+                    "as": [Function],
+                    "children": "Settings",
+                    "to": "/accounts/settings",
                   },
                   "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "children": "Settings",
-                      "replace": false,
-                      "to": "/accounts/settings",
-                    },
-                    "ref": null,
-                    "rendered": "Settings",
-                    "type": [Function],
-                  },
+                  "rendered": "Settings",
                   "type": [Function],
                 },
                 Object {
@@ -1030,27 +659,12 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <Link
-                      replace={false}
-                      to="/signout"
-                    >
-                      Signout
-                    </Link>,
+                    "as": [Function],
+                    "children": "Signout",
+                    "to": "/signout",
                   },
                   "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "children": "Signout",
-                      "replace": false,
-                      "to": "/signout",
-                    },
-                    "ref": null,
-                    "rendered": "Signout",
-                    "type": [Function],
-                  },
+                  "rendered": "Signout",
                   "type": [Function],
                 },
               ],
@@ -1058,10 +672,10 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          "type": "section",
+          "type": [Function],
         },
       ],
-      "type": "nav",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
