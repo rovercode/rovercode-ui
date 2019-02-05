@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import TopNav from './TopNav';
 
 const mapStateToProps = ({ auth, user }) => ({ auth, user });
 
@@ -25,19 +26,21 @@ class ProtectedRoute extends Component {
   }
 
   render() {
-    const { component: Component, ...rest } = this.props;
-
+    const { component: Component, user, ...rest } = this.props;
     return (
-      <Route
-        {...rest}
-        render={props => (
-          this.isAuthenticated() ? (
-            <Component {...props} />
-          ) : (
-            <Redirect to="/accounts/login" />
-          )
-        )}
-      />
+      <Fragment>
+        <TopNav userName={user.username} />
+        <Route
+          {...rest}
+          render={props => (
+            this.isAuthenticated() ? (
+              <Component {...props} />
+            ) : (
+              <Redirect to="/accounts/login" />
+            )
+          )}
+        />
+      </Fragment>
     );
   }
 }
