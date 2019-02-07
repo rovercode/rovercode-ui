@@ -7,7 +7,7 @@ import { fetchPrograms } from '../actions/program';
 import { updateValidAuth } from '../actions/auth';
 import ProgramList from '../components/ProgramList';
 
-const mapStateToProps = ({ program }) => ({ ...program });
+const mapStateToProps = ({ program, user }) => ({ ...program, user });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchProgram: (id) => {
     const fetchProgramAction = fetchProgram(id, {
@@ -22,12 +22,20 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
       }
     });
   },
-  fetchPrograms: () => {
-    const fetchProgramsAction = fetchPrograms({
+  fetchPrograms: (userId) => {
+    const xhrOptions = {
       headers: {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
-    });
+    };
+
+    if (userId) {
+      xhrOptions.params = {
+        user: userId,
+      };
+    }
+
+    const fetchProgramsAction = fetchPrograms(xhrOptions);
     return dispatch(fetchProgramsAction).catch((error) => {
       if (error.response.status === 401) {
         // Authentication is no longer valid

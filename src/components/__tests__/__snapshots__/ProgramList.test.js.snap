@@ -9,17 +9,25 @@ ShallowWrapper {
     fetchPrograms={
       [MockFunction] {
         "calls": Array [
-          Array [],
+          Array [
+            1,
+          ],
         ],
         "results": Array [
           Object {
             "isThrow": false,
-            "value": undefined,
+            "value": Promise {},
           },
         ],
       }
     }
     programs={null}
+    user={
+      Object {
+        "user_id": 1,
+      }
+    }
+    userPrograms={null}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -35,12 +43,9 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Header
-          as="h1"
-          textAlign="center"
-        >
-          Programs
-        </Header>,
+        <Loader
+          active={true}
+        />,
         <Loader
           active={true}
         />,
@@ -54,12 +59,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "as": "h1",
-          "children": "Programs",
-          "textAlign": "center",
+          "active": true,
         },
         "ref": null,
-        "rendered": "Programs",
+        "rendered": null,
         "type": [Function],
       },
       Object {
@@ -84,12 +87,9 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Header
-            as="h1"
-            textAlign="center"
-          >
-            Programs
-          </Header>,
+          <Loader
+            active={true}
+          />,
           <Loader
             active={true}
           />,
@@ -103,12 +103,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "as": "h1",
-            "children": "Programs",
-            "textAlign": "center",
+            "active": true,
           },
           "ref": null,
-          "rendered": "Programs",
+          "rendered": null,
           "type": [Function],
         },
         Object {

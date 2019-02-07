@@ -22,6 +22,9 @@ describe('The ProgramListContainer', () => {
         isFetching: false,
         programs: [],
       },
+      user: {
+        user_id: 1,
+      },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
     const context = { cookies };
@@ -41,6 +44,40 @@ describe('The ProgramListContainer', () => {
 
     expect(store.dispatch).toHaveBeenCalledWith(
       fetchPrograms({
+        headers: {
+          Authorization: `JWT ${cookiesValues.auth_jwt}`,
+        },
+      }),
+    );
+
+    mockAxios.restore();
+  });
+
+  test('dispatches an action to fetch programs for a user', () => {
+    const programs = [{
+      id: 33,
+      name: 'Unnamed_Design_3',
+      content: '<xml><variables></variables></xml>',
+      user: 10,
+    }];
+    const mockAxios = new MockAdapter(axios);
+
+    mockAxios.onGet('/api/v1/block-diagrams/', {
+      params: {
+        user: 10,
+      },
+    }).reply(200, programs);
+    wrapper.dive().props().fetchPrograms({
+      params: {
+        user: 10,
+      },
+    });
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      fetchPrograms({
+        params: {
+          user: 10,
+        },
         headers: {
           Authorization: `JWT ${cookiesValues.auth_jwt}`,
         },

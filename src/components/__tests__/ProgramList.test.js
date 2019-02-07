@@ -13,24 +13,31 @@ let fetchPrograms;
 describe('The ProgramList component', () => {
   beforeEach(() => {
     fetchProgram = jest.fn(() => Promise.resolve({}));
-    fetchPrograms = jest.fn();
+    fetchPrograms = jest.fn(() => Promise.resolve({}));
   });
 
   test('renders on the page with no errors', () => {
     const wrapper = shallow(
-      <ProgramList fetchProgram={fetchProgram} fetchPrograms={fetchPrograms} />,
+      <ProgramList
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        user={{ user_id: 1 }}
+      />,
     );
     expect(wrapper).toMatchSnapshot();
   });
 
   test('fetches programs on mount', async () => {
-    fetchPrograms = jest.fn();
     await mount(
       <MemoryRouter>
-        <ProgramList fetchProgram={fetchProgram} fetchPrograms={fetchPrograms} />
+        <ProgramList
+          fetchProgram={fetchProgram}
+          fetchPrograms={fetchPrograms}
+          user={{ user_id: 1 }}
+        />
       </MemoryRouter>,
     );
-    expect(fetchPrograms.mock.calls.length).toBe(1);
+    expect(fetchPrograms.mock.calls.length).toBe(2);
   });
 
   test('shows the correct number of programs for the user', async () => {
@@ -48,14 +55,16 @@ describe('The ProgramList component', () => {
     const wrapper = shallow(
       <ProgramList
         programs={programs}
+        userPrograms={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        user={{ user_id: 1 }}
       />,
     );
 
     expect(wrapper.find(Header).exists()).toBe(true);
     expect(wrapper.find(Loader).exists()).toBe(false);
-    expect(wrapper.find(Card).length).toBe(2);
+    expect(wrapper.find(Card).length).toBe(4);
   });
 
   test('shows no programs on error', () => {
@@ -63,8 +72,10 @@ describe('The ProgramList component', () => {
     const wrapper = shallow(
       <ProgramList
         programs={programs}
+        userPrograms={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        user={{ user_id: 1 }}
       />,
     );
 
@@ -84,6 +95,7 @@ describe('The ProgramList component', () => {
         programs={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        user={{ user_id: 1 }}
       />,
     );
 
@@ -103,6 +115,7 @@ describe('The ProgramList component', () => {
         programs={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        user={{ user_id: 1 }}
       />,
     );
 
