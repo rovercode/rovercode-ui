@@ -14,7 +14,7 @@ import AuthApi from './utils/auth-api';
 
 
 import NotFound from './containers/Global/NotFound';
-import RoverList from './containers/RoverList';
+import ProgramList from './containers/ProgramList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -44,7 +44,7 @@ render(
       <CookiesProvider>
         <Switch>
           <Route path="/accounts" component={Accounts} />
-          <ProtectedRoute exact path="/" component={RoverList} />
+          <ProtectedRoute exact path="/" component={ProgramList} />
           <ProtectedRoute exact path="/mission-control" component={MissionControl} />
           <Route component={NotFound} />
         </Switch>
