@@ -3,6 +3,9 @@ import {
   FETCH_PROGRAMS,
   FETCH_PROGRAMS_FULFILLED,
   FETCH_PROGRAMS_REJECTED,
+  FETCH_USER_PROGRAMS,
+  FETCH_USER_PROGRAMS_FULFILLED,
+  FETCH_USER_PROGRAMS_REJECTED,
 } from '../../actions/program';
 
 describe('The program reducer', () => {
@@ -12,9 +15,12 @@ describe('The program reducer', () => {
         type: FETCH_PROGRAMS,
       }),
     ).toEqual({
-      isFetching: true,
-      error: null,
+      programsIsFetching: true,
+      programsError: null,
       programs: null,
+      userProgramsIsFetching: false,
+      userProgramsError: null,
+      userPrograms: null,
     });
 
     const programs = [];
@@ -25,19 +31,56 @@ describe('The program reducer', () => {
       }),
     ).toEqual({
       programs,
-      isFetching: false,
-      error: null,
+      programsIsFetching: false,
+      programsError: null,
     });
 
-    const error = 'woops';
+    const programsError = 'woops';
     expect(
       reducer({}, {
         type: FETCH_PROGRAMS_REJECTED,
-        payload: error,
+        payload: programsError,
       }),
     ).toEqual({
-      error,
-      isFetching: false,
+      programsError,
+      programsIsFetching: false,
+    });
+  });
+  test('should handle FETCH_USER_PROGRAMS', () => {
+    expect(
+      reducer(undefined, {
+        type: FETCH_USER_PROGRAMS,
+      }),
+    ).toEqual({
+      programsIsFetching: false,
+      programsError: null,
+      programs: null,
+      userProgramsIsFetching: true,
+      userProgramsError: null,
+      userPrograms: null,
+    });
+
+    const userPrograms = [];
+    expect(
+      reducer({}, {
+        type: FETCH_USER_PROGRAMS_FULFILLED,
+        payload: userPrograms,
+      }),
+    ).toEqual({
+      userPrograms,
+      userProgramsIsFetching: false,
+      userProgramsError: null,
+    });
+
+    const userProgramsError = 'woops';
+    expect(
+      reducer({}, {
+        type: FETCH_USER_PROGRAMS_REJECTED,
+        payload: userProgramsError,
+      }),
+    ).toEqual({
+      userProgramsError,
+      userProgramsIsFetching: false,
     });
   });
   test('should return unmodified state for an unhandled action type', () => {
