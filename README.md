@@ -6,6 +6,8 @@ This repository contains the [react](https://reactjs.org/) application frontend 
 Requirements
 ============
 
+[nodejs](https://nodejs.org) LTS version v8.x is required. Newer versions may have issues.
+
 [yarn](https://yarnpkg.com/) is required for installing dependencies. Instructions for installing `yarn` can be found [here](https://yarnpkg.com/lang/en/docs/install/).
 
 Dependencies
