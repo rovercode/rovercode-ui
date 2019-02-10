@@ -8,7 +8,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider as ReduxProvider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import promiseMiddleware from 'redux-promise-middleware';
+import promise from 'redux-promise-middleware';
 import rootReducer from './reducers/index';
 import AuthApi from './utils/auth-api';
 
@@ -25,7 +25,7 @@ const reduxMiddleware = composeEnhancers(
   applyMiddleware(
     thunk,
     createLogger(),
-    promiseMiddleware(),
+    promise,
   ),
 );
 

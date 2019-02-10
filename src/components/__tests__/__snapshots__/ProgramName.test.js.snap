@@ -133,10 +133,8 @@ exports[`The Console component renders on the page with no errors 1`] = `
           size="small"
         >
           <Portal
-            className="ui page modals dimmer transition visible active"
             closeOnDocumentClick={false}
             closeOnEscape={true}
-            closeOnRootNodeClick={true}
             eventPool="Modal"
             mountNode={<body />}
             onClose={[Function]}

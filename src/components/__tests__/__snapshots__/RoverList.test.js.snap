@@ -30,7 +30,6 @@ ShallowWrapper {
         >
           <Button
             as="button"
-            role="button"
           >
             Mission Control
           </Button>
@@ -57,7 +56,6 @@ ShallowWrapper {
         "props": Object {
           "children": <Button
             as="button"
-            role="button"
           >
             Mission Control
           </Button>,
@@ -72,7 +70,6 @@ ShallowWrapper {
           "props": Object {
             "as": "button",
             "children": "Mission Control",
-            "role": "button",
           },
           "ref": null,
           "rendered": "Mission Control",
@@ -99,7 +96,6 @@ ShallowWrapper {
           >
             <Button
               as="button"
-              role="button"
             >
               Mission Control
             </Button>
@@ -126,7 +122,6 @@ ShallowWrapper {
           "props": Object {
             "children": <Button
               as="button"
-              role="button"
             >
               Mission Control
             </Button>,
@@ -141,7 +136,6 @@ ShallowWrapper {
             "props": Object {
               "as": "button",
               "children": "Mission Control",
-              "role": "button",
             },
             "ref": null,
             "rendered": "Mission Control",
