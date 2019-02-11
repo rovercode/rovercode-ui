@@ -43,6 +43,22 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": Array [
+        <Button
+          as={[Function]}
+          primary={true}
+          style={
+            Object {
+              "marginLeft": "10px",
+            }
+          }
+          to="/mission-control"
+        >
+          <Icon
+            as="i"
+            name="plus"
+          />
+          New Program
+        </Button>,
         null,
         <Loader
           active={true}
@@ -54,6 +70,43 @@ ShallowWrapper {
     },
     "ref": null,
     "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "as": [Function],
+          "children": Array [
+            <Icon
+              as="i"
+              name="plus"
+            />,
+            "New Program",
+          ],
+          "primary": true,
+          "style": Object {
+            "marginLeft": "10px",
+          },
+          "to": "/mission-control",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "as": "i",
+              "name": "plus",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "New Program",
+        ],
+        "type": [Function],
+      },
       null,
       Object {
         "instance": null,
@@ -87,6 +140,22 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": Array [
+          <Button
+            as={[Function]}
+            primary={true}
+            style={
+              Object {
+                "marginLeft": "10px",
+              }
+            }
+            to="/mission-control"
+          >
+            <Icon
+              as="i"
+              name="plus"
+            />
+            New Program
+          </Button>,
           null,
           <Loader
             active={true}
@@ -98,6 +167,43 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "as": [Function],
+            "children": Array [
+              <Icon
+                as="i"
+                name="plus"
+              />,
+              "New Program",
+            ],
+            "primary": true,
+            "style": Object {
+              "marginLeft": "10px",
+            },
+            "to": "/mission-control",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "as": "i",
+                "name": "plus",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "New Program",
+          ],
+          "type": [Function],
+        },
         null,
         Object {
           "instance": null,

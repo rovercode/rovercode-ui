@@ -13,21 +13,15 @@ class TopNav extends PureComponent {
         <Menu.Item as={Link} to="/">
           <Image src={logoImage} size="mini" />
         </Menu.Item>
-        <Menu.Item as={Link} to="/programs/create">
-          Create New Program
-        </Menu.Item>
-        <Menu.Item as={Link} to="/explore">
-          Explore
-        </Menu.Item>
         <Menu.Item as={Link} to="/programs">
-          My Programs
+          Programs
+        </Menu.Item>
+        <Menu.Item as={Link} to="/rovers">
+          Rovers
         </Menu.Item>
         <Menu.Menu position="right">
           <Dropdown item text={userName}>
             <Dropdown.Menu>
-              <Dropdown.Item as={Link} to="/rovers">
-                Rovers
-              </Dropdown.Item>
               <Dropdown.Item as={Link} to="/accounts/settings">
                 Settings
               </Dropdown.Item>

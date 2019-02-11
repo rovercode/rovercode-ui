@@ -34,21 +34,15 @@ ShallowWrapper {
         </MenuItem>,
         <MenuItem
           as={[Function]}
-          to="/programs/create"
-        >
-          Create New Program
-        </MenuItem>,
-        <MenuItem
-          as={[Function]}
-          to="/explore"
-        >
-          Explore
-        </MenuItem>,
-        <MenuItem
-          as={[Function]}
           to="/programs"
         >
-          My Programs
+          Programs
+        </MenuItem>,
+        <MenuItem
+          as={[Function]}
+          to="/rovers"
+        >
+          Rovers
         </MenuItem>,
         <MenuMenu
           position="right"
@@ -71,12 +65,6 @@ ShallowWrapper {
             wrapSelection={true}
           >
             <DropdownMenu>
-              <DropdownItem
-                as={[Function]}
-                to="/rovers"
-              >
-                Rovers
-              </DropdownItem>
               <DropdownItem
                 as={[Function]}
                 to="/accounts/settings"
@@ -136,37 +124,24 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "as": [Function],
-          "children": "Create New Program",
-          "to": "/programs/create",
-        },
-        "ref": null,
-        "rendered": "Create New Program",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "as": [Function],
-          "children": "Explore",
-          "to": "/explore",
-        },
-        "ref": null,
-        "rendered": "Explore",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "as": [Function],
-          "children": "My Programs",
+          "children": "Programs",
           "to": "/programs",
         },
         "ref": null,
-        "rendered": "My Programs",
+        "rendered": "Programs",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "as": [Function],
+          "children": "Rovers",
+          "to": "/rovers",
+        },
+        "ref": null,
+        "rendered": "Rovers",
         "type": [Function],
       },
       Object {
@@ -194,12 +169,6 @@ ShallowWrapper {
             <DropdownMenu>
               <DropdownItem
                 as={[Function]}
-                to="/rovers"
-              >
-                Rovers
-              </DropdownItem>
-              <DropdownItem
-                as={[Function]}
                 to="/accounts/settings"
               >
                 Settings
@@ -224,12 +193,6 @@ ShallowWrapper {
             "additionLabel": "Add ",
             "additionPosition": "top",
             "children": <DropdownMenu>
-              <DropdownItem
-                as={[Function]}
-                to="/rovers"
-              >
-                Rovers
-              </DropdownItem>
               <DropdownItem
                 as={[Function]}
                 to="/accounts/settings"
@@ -267,12 +230,6 @@ ShallowWrapper {
               "children": Array [
                 <DropdownItem
                   as={[Function]}
-                  to="/rovers"
-                >
-                  Rovers
-                </DropdownItem>,
-                <DropdownItem
-                  as={[Function]}
                   to="/accounts/settings"
                 >
                   Settings
@@ -288,19 +245,6 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "as": [Function],
-                  "children": "Rovers",
-                  "to": "/rovers",
-                },
-                "ref": null,
-                "rendered": "Rovers",
-                "type": [Function],
-              },
               Object {
                 "instance": null,
                 "key": undefined,
@@ -366,21 +310,15 @@ ShallowWrapper {
           </MenuItem>,
           <MenuItem
             as={[Function]}
-            to="/programs/create"
-          >
-            Create New Program
-          </MenuItem>,
-          <MenuItem
-            as={[Function]}
-            to="/explore"
-          >
-            Explore
-          </MenuItem>,
-          <MenuItem
-            as={[Function]}
             to="/programs"
           >
-            My Programs
+            Programs
+          </MenuItem>,
+          <MenuItem
+            as={[Function]}
+            to="/rovers"
+          >
+            Rovers
           </MenuItem>,
           <MenuMenu
             position="right"
@@ -403,12 +341,6 @@ ShallowWrapper {
               wrapSelection={true}
             >
               <DropdownMenu>
-                <DropdownItem
-                  as={[Function]}
-                  to="/rovers"
-                >
-                  Rovers
-                </DropdownItem>
                 <DropdownItem
                   as={[Function]}
                   to="/accounts/settings"
@@ -468,37 +400,24 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "as": [Function],
-            "children": "Create New Program",
-            "to": "/programs/create",
-          },
-          "ref": null,
-          "rendered": "Create New Program",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "as": [Function],
-            "children": "Explore",
-            "to": "/explore",
-          },
-          "ref": null,
-          "rendered": "Explore",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "as": [Function],
-            "children": "My Programs",
+            "children": "Programs",
             "to": "/programs",
           },
           "ref": null,
-          "rendered": "My Programs",
+          "rendered": "Programs",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "as": [Function],
+            "children": "Rovers",
+            "to": "/rovers",
+          },
+          "ref": null,
+          "rendered": "Rovers",
           "type": [Function],
         },
         Object {
@@ -526,12 +445,6 @@ ShallowWrapper {
               <DropdownMenu>
                 <DropdownItem
                   as={[Function]}
-                  to="/rovers"
-                >
-                  Rovers
-                </DropdownItem>
-                <DropdownItem
-                  as={[Function]}
                   to="/accounts/settings"
                 >
                   Settings
@@ -556,12 +469,6 @@ ShallowWrapper {
               "additionLabel": "Add ",
               "additionPosition": "top",
               "children": <DropdownMenu>
-                <DropdownItem
-                  as={[Function]}
-                  to="/rovers"
-                >
-                  Rovers
-                </DropdownItem>
                 <DropdownItem
                   as={[Function]}
                   to="/accounts/settings"
@@ -599,12 +506,6 @@ ShallowWrapper {
                 "children": Array [
                   <DropdownItem
                     as={[Function]}
-                    to="/rovers"
-                  >
-                    Rovers
-                  </DropdownItem>,
-                  <DropdownItem
-                    as={[Function]}
                     to="/accounts/settings"
                   >
                     Settings
@@ -620,19 +521,6 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "as": [Function],
-                    "children": "Rovers",
-                    "to": "/rovers",
-                  },
-                  "ref": null,
-                  "rendered": "Rovers",
-                  "type": [Function],
-                },
                 Object {
                   "instance": null,
                   "key": undefined,
