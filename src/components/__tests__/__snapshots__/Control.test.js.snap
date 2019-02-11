@@ -58,14 +58,12 @@ exports[`The Control component renders on the page with no errors 1`] = `
       color="green"
       onClick={[Function]}
       onMouseDown={[Function]}
-      role="button"
       size="huge"
     >
       <button
         className="ui green huge vertical animated button"
         onClick={[Function]}
         onMouseDown={[Function]}
-        role="button"
       >
         <ButtonContent
           hidden={true}
@@ -89,6 +87,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
               <i
                 aria-hidden="true"
                 className="play icon"
+                onClick={[Function]}
               />
             </Icon>
           </div>
@@ -101,7 +100,6 @@ exports[`The Control component renders on the page with no errors 1`] = `
       color="yellow"
       onClick={[Function]}
       onMouseDown={[Function]}
-      role="button"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -112,7 +110,6 @@ exports[`The Control component renders on the page with no errors 1`] = `
         className="ui yellow vertical animated button"
         onClick={[Function]}
         onMouseDown={[Function]}
-        role="button"
         style={
           Object {
             "verticalAlign": "bottom",
@@ -141,6 +138,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
               <i
                 aria-hidden="true"
                 className="step forward icon"
+                onClick={[Function]}
               />
             </Icon>
           </div>
@@ -153,7 +151,6 @@ exports[`The Control component renders on the page with no errors 1`] = `
       color="blue"
       onClick={[Function]}
       onMouseDown={[Function]}
-      role="button"
       style={
         Object {
           "verticalAlign": "bottom",
@@ -164,7 +161,6 @@ exports[`The Control component renders on the page with no errors 1`] = `
         className="ui blue vertical animated button"
         onClick={[Function]}
         onMouseDown={[Function]}
-        role="button"
         style={
           Object {
             "verticalAlign": "bottom",
@@ -193,6 +189,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
               <i
                 aria-hidden="true"
                 className="repeat icon"
+                onClick={[Function]}
               />
             </Icon>
           </div>

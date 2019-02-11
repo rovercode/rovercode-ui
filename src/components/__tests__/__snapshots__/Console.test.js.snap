@@ -79,7 +79,6 @@ exports[`The Console component renders on the page with no errors 1`] = `
       as="button"
       onClick={[Function]}
       primary={true}
-      role="button"
       style={
         Object {
           "marginTop": "10px",
@@ -89,7 +88,6 @@ exports[`The Console component renders on the page with no errors 1`] = `
       <button
         className="ui primary button"
         onClick={[Function]}
-        role="button"
         style={
           Object {
             "marginTop": "10px",
