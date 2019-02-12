@@ -1,6 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { Header, Loader } from 'semantic-ui-react';
+import {
+  Button, Card, Header, Icon, Loader,
+} from 'semantic-ui-react';
 import { shallow, mount } from 'enzyme';
 import RoverList from '../RoverList';
 
@@ -31,10 +33,12 @@ describe('The RoverList component', () => {
       id: 1,
       name: 'Sparky',
       owner: 1,
+      connected: true,
     }, {
       id: 2,
       name: 'Marvin',
       owner: 1,
+      connected: false,
     }];
     const wrapper = shallow(
       <RoverList
@@ -47,6 +51,17 @@ describe('The RoverList component', () => {
 
     expect(wrapper.find(Header).exists()).toBe(true);
     expect(wrapper.find(Loader).exists()).toBe(false);
+
+    expect(wrapper.find(Card).length).toBe(2);
+    expect(wrapper.find(Card).first().find(Button).prop('to')).toBe('/rovers/1');
+    expect(wrapper.find(Card).first().find(Icon).prop('color')).toBe('green');
+    expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
+    expect(wrapper.find(Card.Meta).first().prop('children')).toBe('Connected');
+
+    expect(wrapper.find(Card).last().find(Button).prop('to')).toBe('/rovers/2');
+    expect(wrapper.find(Card).last().find(Icon).prop('color')).toBe('red');
+    expect(wrapper.find(Card.Header).last().prop('children')).toBe('Marvin');
+    expect(wrapper.find(Card.Meta).last().prop('children')).toBe('Not connected');
   });
 
   test('shows no rovers on error', async () => {

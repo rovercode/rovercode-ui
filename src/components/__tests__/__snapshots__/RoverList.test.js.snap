@@ -22,23 +22,66 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": Array [
+        <Button
+          as={[Function]}
+          primary={true}
+          style={
+            Object {
+              "marginLeft": "10px",
+            }
+          }
+          to="/rovers/add"
+        >
+          <Icon
+            as="i"
+            name="plus"
+          />
+          Register New Rover
+        </Button>,
         <Loader
           active={true}
         />,
-        <Link
-          replace={false}
-          to="/mission-control"
-        >
-          <Button
-            as="button"
-          >
-            Mission Control
-          </Button>
-        </Link>,
       ],
     },
     "ref": null,
     "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "as": [Function],
+          "children": Array [
+            <Icon
+              as="i"
+              name="plus"
+            />,
+            "Register New Rover",
+          ],
+          "primary": true,
+          "style": Object {
+            "marginLeft": "10px",
+          },
+          "to": "/rovers/add",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "as": "i",
+              "name": "plus",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "Register New Rover",
+        ],
+        "type": [Function],
+      },
       Object {
         "instance": null,
         "key": undefined,
@@ -48,34 +91,6 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": <Button
-            as="button"
-          >
-            Mission Control
-          </Button>,
-          "replace": false,
-          "to": "/mission-control",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "as": "button",
-            "children": "Mission Control",
-          },
-          "ref": null,
-          "rendered": "Mission Control",
-          "type": [Function],
-        },
         "type": [Function],
       },
     ],
@@ -88,23 +103,66 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": Array [
+          <Button
+            as={[Function]}
+            primary={true}
+            style={
+              Object {
+                "marginLeft": "10px",
+              }
+            }
+            to="/rovers/add"
+          >
+            <Icon
+              as="i"
+              name="plus"
+            />
+            Register New Rover
+          </Button>,
           <Loader
             active={true}
           />,
-          <Link
-            replace={false}
-            to="/mission-control"
-          >
-            <Button
-              as="button"
-            >
-              Mission Control
-            </Button>
-          </Link>,
         ],
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "as": [Function],
+            "children": Array [
+              <Icon
+                as="i"
+                name="plus"
+              />,
+              "Register New Rover",
+            ],
+            "primary": true,
+            "style": Object {
+              "marginLeft": "10px",
+            },
+            "to": "/rovers/add",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "as": "i",
+                "name": "plus",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "Register New Rover",
+          ],
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -114,34 +172,6 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": <Button
-              as="button"
-            >
-              Mission Control
-            </Button>,
-            "replace": false,
-            "to": "/mission-control",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "as": "button",
-              "children": "Mission Control",
-            },
-            "ref": null,
-            "rendered": "Mission Control",
-            "type": [Function],
-          },
           "type": [Function],
         },
       ],
