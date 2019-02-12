@@ -99,7 +99,7 @@ describe('The ProgramList component', () => {
       />,
     );
 
-    wrapper.find(Button).simulate('click', {
+    wrapper.find(Button).last().simulate('click', {
       target: {
         id: 33,
       },

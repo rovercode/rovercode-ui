@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import {
-  Button, Card, Header, Loader, Segment,
+  Button, Card, Header, Icon, Loader, Segment,
 } from 'semantic-ui-react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class ProgramList extends Component {
@@ -62,6 +62,10 @@ class ProgramList extends Component {
 
     return (
       <Fragment>
+        <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10px' }}>
+          <Icon name="plus" />
+          New Program
+        </Button>
         {
           programLoaded
             ? (<Redirect to="/mission-control" />)
