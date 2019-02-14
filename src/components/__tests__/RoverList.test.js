@@ -105,9 +105,13 @@ describe('The RoverList component', () => {
       />,
     );
 
-    await wrapper.instance().removeRover(null, {
-      id: 1,
+    wrapper.setState({
+      focusRover: {
+        id: 1,
+        name: 'Sparky',
+      },
     });
+    await wrapper.instance().removeRover();
 
     expect(fetchRovers).toHaveBeenCalledTimes(2);
     expect(removeRover).toHaveBeenCalledWith(1);
@@ -121,7 +125,12 @@ describe('The RoverList component', () => {
       />,
     );
 
-    wrapper.instance().showConfirm();
+    wrapper.instance().showConfirm({
+      target: {
+        id: 1,
+        name: 'Sparky',
+      },
+    });
 
     expect(wrapper.state('confirmOpen')).toBe(true);
   });
