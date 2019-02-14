@@ -9,6 +9,9 @@ export const FETCH_PROGRAMS_REJECTED = `${FETCH_PROGRAMS}_REJECTED`;
 export const FETCH_USER_PROGRAMS = 'FETCH_USER_PROGRAMS';
 export const FETCH_USER_PROGRAMS_FULFILLED = `${FETCH_USER_PROGRAMS}_FULFILLED`;
 export const FETCH_USER_PROGRAMS_REJECTED = `${FETCH_USER_PROGRAMS}_REJECTED`;
+export const REMOVE_PROGRAM = 'REMOVE_PROGRAM';
+export const REMOVE_PROGRAM_FULFILLED = `${REMOVE_PROGRAM}_FULFILLED`;
+export const REMOVE_PROGRAM_REJECTED = `${REMOVE_PROGRAM}_REJECTED`;
 
 // action creators
 export const fetchPrograms = (xhrOptions) => {
@@ -26,3 +29,11 @@ export const fetchPrograms = (xhrOptions) => {
       )),
   });
 };
+
+export const removeProgram = (id, xhrOptions) => ({
+  type: REMOVE_PROGRAM,
+  payload: axios.delete(`/api/v1/block-diagrams/${id}/`, xhrOptions)
+    .then(({ data }) => (
+      data
+    )),
+});

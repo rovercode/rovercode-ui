@@ -1,6 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { fetchPrograms } from '../program';
+import { fetchPrograms, removeProgram } from '../program';
 
 
 describe('Program actions', () => {
@@ -49,6 +49,19 @@ describe('Program actions', () => {
 
     expect(type).toEqual('FETCH_USER_PROGRAMS');
     expect(payload).toEqual(programs);
+    mock.restore();
+  });
+
+  test('remove program', async () => {
+    const mock = new MockAdapter(axios);
+
+    mock.onDelete('/api/v1/block-diagrams/1/').reply(204);
+
+    const action = removeProgram(1);
+    const { type } = action;
+    await action.payload;
+
+    expect(type).toEqual('REMOVE_PROGRAM');
     mock.restore();
   });
 });
