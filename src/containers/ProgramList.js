@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
 import { fetchProgram } from '../actions/code';
-import { fetchPrograms } from '../actions/program';
+import { fetchPrograms, removeProgram } from '../actions/program';
 import { updateValidAuth } from '../actions/auth';
 import ProgramList from '../components/ProgramList';
 
@@ -37,6 +37,19 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
 
     const fetchProgramsAction = fetchPrograms(xhrOptions);
     return dispatch(fetchProgramsAction).catch((error) => {
+      if (error.response.status === 401) {
+        // Authentication is no longer valid
+        dispatch(updateValidAuth(false));
+      }
+    });
+  },
+  removeProgram: (id) => {
+    const removeProgramAction = removeProgram(id, {
+      headers: {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      },
+    });
+    return dispatch(removeProgramAction).catch((error) => {
       if (error.response.status === 401) {
         // Authentication is no longer valid
         dispatch(updateValidAuth(false));

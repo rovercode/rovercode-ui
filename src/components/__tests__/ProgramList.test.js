@@ -9,11 +9,13 @@ import ProgramList from '../ProgramList';
 
 let fetchProgram;
 let fetchPrograms;
+let removeProgram;
 
 describe('The ProgramList component', () => {
   beforeEach(() => {
     fetchProgram = jest.fn(() => Promise.resolve({}));
     fetchPrograms = jest.fn(() => Promise.resolve({}));
+    removeProgram = jest.fn(() => Promise.resolve({}));
   });
 
   test('renders on the page with no errors', () => {
@@ -21,6 +23,7 @@ describe('The ProgramList component', () => {
       <ProgramList
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
     );
@@ -33,6 +36,7 @@ describe('The ProgramList component', () => {
         <ProgramList
           fetchProgram={fetchProgram}
           fetchPrograms={fetchPrograms}
+          removeProgram={removeProgram}
           user={{ user_id: 1 }}
         />
       </MemoryRouter>,
@@ -58,6 +62,7 @@ describe('The ProgramList component', () => {
         userPrograms={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
     );
@@ -75,6 +80,7 @@ describe('The ProgramList component', () => {
         userPrograms={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
     );
@@ -95,6 +101,7 @@ describe('The ProgramList component', () => {
         programs={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
     );
@@ -115,6 +122,7 @@ describe('The ProgramList component', () => {
         programs={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
     );
@@ -125,5 +133,71 @@ describe('The ProgramList component', () => {
 
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).at(0).prop('to')).toBe('/mission-control');
+  });
+
+  test('removes a program and reloads the program list', async () => {
+    const programs = [{
+      id: 33,
+      name: 'Unnamed_Design_3',
+      content: '<xml><variables></variables></xml>',
+      user: 10,
+    }];
+    const wrapper = shallow(
+      <ProgramList
+        programs={programs}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    wrapper.setState({
+      focusProgram: {
+        id: 33,
+        name: 'Unnamed_Design_3',
+      },
+    });
+    await wrapper.instance().removeProgram();
+
+    expect(fetchPrograms).toHaveBeenCalledTimes(4);
+    expect(removeProgram).toHaveBeenCalledWith(33);
+  });
+
+  test('shows confirm dialog', () => {
+    const wrapper = shallow(
+      <ProgramList
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    wrapper.instance().showConfirm({
+      target: {
+        id: 33,
+        name: 'Unnamed_Design_3',
+      },
+    });
+
+    expect(wrapper.state('confirmOpen')).toBe(true);
+  });
+
+  test('cancel dialog does not remove program', () => {
+    const wrapper = shallow(
+      <ProgramList
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    wrapper.instance().cancelRemove();
+
+    expect(fetchPrograms).toHaveBeenCalledTimes(1);
+    expect(removeProgram).not.toHaveBeenCalled();
+    expect(wrapper.state('confirmOpen')).toBe(false);
   });
 });

@@ -21,6 +21,7 @@ ShallowWrapper {
       }
     }
     programs={null}
+    removeProgram={[MockFunction]}
     user={
       Object {
         "user_id": 1,
@@ -65,6 +66,16 @@ ShallowWrapper {
         />,
         <Loader
           active={true}
+        />,
+        <Confirm
+          cancelButton="No"
+          confirmButton="Yes"
+          content="Are you sure you want to remove null?"
+          header="Remove Program"
+          onCancel={[Function]}
+          onConfirm={[Function]}
+          open={false}
+          size="small"
         />,
       ],
     },
@@ -130,6 +141,24 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "cancelButton": "No",
+          "confirmButton": "Yes",
+          "content": "Are you sure you want to remove null?",
+          "header": "Remove Program",
+          "onCancel": [Function],
+          "onConfirm": [Function],
+          "open": false,
+          "size": "small",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
     ],
     "type": Symbol(react.fragment),
   },
@@ -162,6 +191,16 @@ ShallowWrapper {
           />,
           <Loader
             active={true}
+          />,
+          <Confirm
+            cancelButton="No"
+            confirmButton="Yes"
+            content="Are you sure you want to remove null?"
+            header="Remove Program"
+            onCancel={[Function]}
+            onConfirm={[Function]}
+            open={false}
+            size="small"
           />,
         ],
       },
@@ -222,6 +261,24 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "active": true,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "cancelButton": "No",
+            "confirmButton": "Yes",
+            "content": "Are you sure you want to remove null?",
+            "header": "Remove Program",
+            "onCancel": [Function],
+            "onConfirm": [Function],
+            "open": false,
+            "size": "small",
           },
           "ref": null,
           "rendered": null,
