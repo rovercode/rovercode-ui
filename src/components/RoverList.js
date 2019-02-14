@@ -5,13 +5,19 @@ import {
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+const defaultState = {
+  confirmOpen: false,
+  focusRover: {
+    id: null,
+    name: null,
+  },
+};
+
 class RoverList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      confirmOpen: false,
-    };
+    this.state = defaultState;
   }
 
   componentDidMount() {
@@ -20,23 +26,28 @@ class RoverList extends Component {
     return fetchRovers();
   }
 
-  showConfirm = () => this.setState({ confirmOpen: true })
+  showConfirm = e => this.setState({
+    confirmOpen: true,
+    focusRover: {
+      id: e.target.id,
+      name: e.target.name,
+    },
+  })
 
-  cancelRemove = () => this.setState({ confirmOpen: false })
+  cancelRemove = () => this.setState(defaultState)
 
-  removeRover = (e, data) => {
+  removeRover = () => {
     const { fetchRovers, removeRover } = this.props;
+    const { focusRover } = this.state;
 
-    this.setState({
-      confirmOpen: false,
-    });
+    this.setState(defaultState);
 
-    return removeRover(data.id).then(() => fetchRovers());
+    return removeRover(focusRover.id).then(() => fetchRovers());
   }
 
   render() {
     const { rovers } = this.props;
-    const { confirmOpen } = this.state;
+    const { confirmOpen, focusRover } = this.state;
 
     return (
       <Fragment>
@@ -79,24 +90,29 @@ class RoverList extends Component {
                           <Button primary as={Link} to={`/rovers/${rover.id}`}>
                               Configure
                           </Button>
-                          <Button negative onClick={this.showConfirm} floated="right">
+                          <Button
+                            negative
+                            id={rover.id}
+                            name={rover.name}
+                            onClick={this.showConfirm}
+                            floated="right"
+                          >
                               Remove
                           </Button>
-                          <Confirm
-                            id={rover.id}
-                            header="Remove Rover"
-                            content={`Are you sure you want to remove ${rover.name}?`}
-                            open={confirmOpen}
-                            onConfirm={this.removeRover}
-                            onCancel={this.cancelRemove}
-                            cancelButton="No"
-                            confirmButton="Yes"
-                          />
                         </Card.Content>
                       </Card>
                     ))
                   }
                 </Card.Group>
+                <Confirm
+                  header="Remove Rover"
+                  content={`Are you sure you want to remove ${focusRover.name}?`}
+                  open={confirmOpen}
+                  onConfirm={this.removeRover}
+                  onCancel={this.cancelRemove}
+                  cancelButton="No"
+                  confirmButton="Yes"
+                />
               </Segment>
             )
         }
