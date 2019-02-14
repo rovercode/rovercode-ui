@@ -4,7 +4,20 @@ exports[`The RoverList component renders on the page with no errors 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <RoverList
-    fetchRovers={[Function]}
+    fetchRovers={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+        ],
+      }
+    }
+    removeRover={[MockFunction]}
     rovers={null}
   />,
   Symbol(enzyme.__renderer__): Object {
