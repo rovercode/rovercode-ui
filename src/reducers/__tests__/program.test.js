@@ -6,6 +6,9 @@ import {
   FETCH_USER_PROGRAMS,
   FETCH_USER_PROGRAMS_FULFILLED,
   FETCH_USER_PROGRAMS_REJECTED,
+  REMOVE_PROGRAM,
+  REMOVE_PROGRAM_FULFILLED,
+  REMOVE_PROGRAM_REJECTED,
 } from '../../actions/program';
 
 describe('The program reducer', () => {
@@ -21,6 +24,7 @@ describe('The program reducer', () => {
       userProgramsIsFetching: false,
       userProgramsError: null,
       userPrograms: null,
+      isRemoving: false,
     });
 
     const programs = [];
@@ -58,6 +62,7 @@ describe('The program reducer', () => {
       userProgramsIsFetching: true,
       userProgramsError: null,
       userPrograms: null,
+      isRemoving: false,
     });
 
     const userPrograms = [];
@@ -81,6 +86,43 @@ describe('The program reducer', () => {
     ).toEqual({
       userProgramsError,
       userProgramsIsFetching: false,
+    });
+  });
+  test('should handle REMOVE_PROGRAM', () => {
+    expect(
+      reducer(undefined, {
+        type: REMOVE_PROGRAM,
+      }),
+    ).toEqual({
+      programsIsFetching: false,
+      programsError: null,
+      programs: null,
+      userProgramsIsFetching: false,
+      userProgramsError: null,
+      userPrograms: null,
+      isRemoving: true,
+    });
+
+    expect(
+      reducer({}, {
+        type: REMOVE_PROGRAM_FULFILLED,
+        payload: null,
+      }),
+    ).toEqual({
+      isRemoving: false,
+      programs: null,
+      error: null,
+    });
+
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: REMOVE_PROGRAM_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      error,
+      isRemoving: false,
     });
   });
   test('should return unmodified state for an unhandled action type', () => {

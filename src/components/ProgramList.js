@@ -1,22 +1,50 @@
 import React, { Component, Fragment } from 'react';
 import {
-  Button, Card, Header, Icon, Loader, Segment,
+  Button, Card, Confirm, Header, Icon, Loader, Segment,
 } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+const defaultState = {
+  programLoaded: false,
+  confirmOpen: false,
+  focusProgram: {
+    id: null,
+    name: null,
+  },
+};
 
 class ProgramList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      programLoaded: false,
-    };
+    this.state = defaultState;
   }
 
   componentDidMount() {
     const { fetchPrograms, user } = this.props;
     return fetchPrograms(user.user_id).then(() => fetchPrograms());
+  }
+
+  showConfirm = e => this.setState({
+    confirmOpen: true,
+    focusProgram: {
+      id: e.target.id,
+      name: e.target.name,
+    },
+  })
+
+  cancelRemove = () => this.setState(defaultState)
+
+  removeProgram = () => {
+    const { fetchPrograms, removeProgram, user } = this.props;
+    const { focusProgram } = this.state;
+
+    this.setState(defaultState);
+
+    return removeProgram(focusProgram.id)
+      .then(() => fetchPrograms(user.user_id))
+      .then(() => fetchPrograms());
   }
 
   loadProgram = (e) => {
@@ -48,6 +76,19 @@ class ProgramList extends Component {
                 <Button primary id={program.id} onClick={this.loadProgram}>
                   { program.user === userId ? 'Keep Working' : 'View' }
                 </Button>
+                {
+                  program.user === userId ? (
+                    <Button
+                      negative
+                      id={program.id}
+                      name={program.name}
+                      onClick={this.showConfirm}
+                      floated="right"
+                    >
+                      Remove
+                    </Button>
+                  ) : (null)
+                }
               </Card.Content>
             </Card>
           ))
@@ -58,7 +99,7 @@ class ProgramList extends Component {
 
   render() {
     const { programs, userPrograms, user } = this.props;
-    const { programLoaded } = this.state;
+    const { confirmOpen, focusProgram, programLoaded } = this.state;
 
     return (
       <Fragment>
@@ -81,6 +122,15 @@ class ProgramList extends Component {
             ? (<Loader active />)
             : this.programSegment(programs, 'Find More', user.user_id)
         }
+        <Confirm
+          header="Remove Program"
+          content={`Are you sure you want to remove ${focusProgram.name}?`}
+          open={confirmOpen}
+          onConfirm={this.removeProgram}
+          onCancel={this.cancelRemove}
+          cancelButton="No"
+          confirmButton="Yes"
+        />
       </Fragment>
     );
   }
@@ -94,6 +144,7 @@ ProgramList.defaultProps = {
 ProgramList.propTypes = {
   fetchProgram: PropTypes.func.isRequired,
   fetchPrograms: PropTypes.func.isRequired,
+  removeProgram: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
   }).isRequired,

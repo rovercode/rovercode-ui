@@ -5,12 +5,16 @@ import {
   FETCH_USER_PROGRAMS,
   FETCH_USER_PROGRAMS_FULFILLED,
   FETCH_USER_PROGRAMS_REJECTED,
+  REMOVE_PROGRAM,
+  REMOVE_PROGRAM_FULFILLED,
+  REMOVE_PROGRAM_REJECTED,
 } from '../actions/program';
 
 export default function programs(
   state = {
     programsIsFetching: false,
     userProgramsIsFetching: false,
+    isRemoving: false,
     programs: null,
     userPrograms: null,
     programsError: null,
@@ -54,6 +58,24 @@ export default function programs(
         ...state,
         userProgramsIsFetching: false,
         userProgramsError: action.payload,
+      };
+    case REMOVE_PROGRAM:
+      return {
+        ...state,
+        isRemoving: true,
+      };
+    case REMOVE_PROGRAM_FULFILLED:
+      return {
+        ...state,
+        isRemoving: false,
+        programs: null,
+        error: null,
+      };
+    case REMOVE_PROGRAM_REJECTED:
+      return {
+        ...state,
+        isRemoving: false,
+        error: action.payload,
       };
     default:
       return state;
