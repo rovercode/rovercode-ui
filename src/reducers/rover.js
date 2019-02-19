@@ -1,4 +1,10 @@
 import {
+  EDIT_ROVER,
+  EDIT_ROVER_FULFILLED,
+  EDIT_ROVER_REJECTED,
+  FETCH_ROVER,
+  FETCH_ROVER_FULFILLED,
+  FETCH_ROVER_REJECTED,
   FETCH_ROVERS,
   FETCH_ROVERS_FULFILLED,
   FETCH_ROVERS_REJECTED,
@@ -10,8 +16,11 @@ import {
 export default function rovers(
   state = {
     isFetching: false,
+    isFetchingSingle: false,
+    isEditing: false,
     isRemoving: false,
     rovers: null,
+    rover: null,
     error: null,
   },
   action,
@@ -33,6 +42,42 @@ export default function rovers(
       return {
         ...state,
         isFetching: false,
+        error: action.payload,
+      };
+    case FETCH_ROVER:
+      return {
+        ...state,
+        isFetchingSingle: true,
+      };
+    case FETCH_ROVER_FULFILLED:
+      return {
+        ...state,
+        isFetchingSingle: false,
+        rover: action.payload,
+        error: null,
+      };
+    case FETCH_ROVER_REJECTED:
+      return {
+        ...state,
+        isFetchingSingle: false,
+        error: action.payload,
+      };
+    case EDIT_ROVER:
+      return {
+        ...state,
+        isEditing: true,
+      };
+    case EDIT_ROVER_FULFILLED:
+      return {
+        ...state,
+        isEditing: false,
+        rover: action.payload,
+        error: null,
+      };
+    case EDIT_ROVER_REJECTED:
+      return {
+        ...state,
+        isEditing: false,
         error: action.payload,
       };
     case REMOVE_ROVER:

@@ -6,6 +6,12 @@ import axios from 'axios';
 export const FETCH_ROVERS = 'FETCH_ROVERS';
 export const FETCH_ROVERS_FULFILLED = `${FETCH_ROVERS}_FULFILLED`;
 export const FETCH_ROVERS_REJECTED = `${FETCH_ROVERS}_REJECTED`;
+export const FETCH_ROVER = 'FETCH_ROVER';
+export const FETCH_ROVER_FULFILLED = `${FETCH_ROVER}_FULFILLED`;
+export const FETCH_ROVER_REJECTED = `${FETCH_ROVER}_REJECTED`;
+export const EDIT_ROVER = 'EDIT_ROVER';
+export const EDIT_ROVER_FULFILLED = `${EDIT_ROVER}_FULFILLED`;
+export const EDIT_ROVER_REJECTED = `${EDIT_ROVER}_REJECTED`;
 export const REMOVE_ROVER = 'REMOVE_ROVER';
 export const REMOVE_ROVER_FULFILLED = `${REMOVE_ROVER}_FULFILLED`;
 export const REMOVE_ROVER_REJECTED = `${REMOVE_ROVER}_REJECTED`;
@@ -14,6 +20,22 @@ export const REMOVE_ROVER_REJECTED = `${REMOVE_ROVER}_REJECTED`;
 export const fetchRovers = xhrOptions => ({
   type: FETCH_ROVERS,
   payload: axios.get('/api/v1/rovers/', xhrOptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const fetchRover = (id, xhrOptions) => ({
+  type: FETCH_ROVER,
+  payload: axios.get(`/api/v1/rovers/${id}/`, xhrOptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const editRover = (id, settings, xhrOptions) => ({
+  type: EDIT_ROVER,
+  payload: axios.put(`/api/v1/rovers/${id}/`, settings, xhrOptions)
     .then(({ data }) => (
       data
     )),

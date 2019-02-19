@@ -1,6 +1,8 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { fetchRovers, removeRover } from '../rover';
+import {
+  editRover, fetchRover, fetchRovers, removeRover,
+} from '../rover';
 
 
 describe('Rover actions', () => {
@@ -19,6 +21,47 @@ describe('Rover actions', () => {
 
     expect(type).toEqual('FETCH_ROVERS');
     expect(payload).toEqual(rovers);
+    mock.restore();
+  });
+
+  test('fetch rover', async () => {
+    const mock = new MockAdapter(axios);
+    const rover = {
+      id: 1,
+      name: 'Mars',
+    };
+
+    mock.onGet('/api/v1/rovers/1/').reply(200, rover);
+
+    const action = fetchRover(1);
+    const { type } = action;
+    const payload = await action.payload;
+
+    expect(type).toEqual('FETCH_ROVER');
+    expect(payload).toEqual(rover);
+    mock.restore();
+  });
+
+  test('edit rover', async () => {
+    const newSettings = {
+      name: 'Sparky',
+      config: {
+        left_eye_port: 1,
+        right_eye_port: 2,
+        left_motor_port: 3,
+        right_motor_port: 4,
+      },
+    };
+
+    const mock = new MockAdapter(axios);
+
+    mock.onPut('/api/v1/rovers/1/').reply(200, newSettings);
+
+    const action = editRover(1, newSettings);
+    const { type } = action;
+    await action.payload;
+
+    expect(type).toEqual('EDIT_ROVER');
     mock.restore();
   });
 
