@@ -15,6 +15,7 @@ import AuthApi from './utils/auth-api';
 
 import NotFound from './containers/Global/NotFound';
 import ProgramList from './containers/ProgramList';
+import RoverDetail from './containers/RoverDetail';
 import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
@@ -48,6 +49,7 @@ render(
           <ProtectedRoute exact path="/" component={ProgramList} />
           <ProtectedRoute exact path="/programs" component={ProgramList} />
           <ProtectedRoute exact path="/rovers" component={RoverList} />
+          <ProtectedRoute exact path="/rovers/:id(\d+)" component={RoverDetail} />
           <ProtectedRoute exact path="/mission-control" component={MissionControl} />
           <Route component={NotFound} />
         </Switch>
