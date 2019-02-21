@@ -1,7 +1,11 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import {
-  editRover, fetchRover, fetchRovers, removeRover,
+  createRover,
+  editRover,
+  fetchRover,
+  fetchRovers,
+  removeRover,
 } from '../rover';
 
 
@@ -75,6 +79,29 @@ describe('Rover actions', () => {
     await action.payload;
 
     expect(type).toEqual('REMOVE_ROVER');
+    mock.restore();
+  });
+
+  test('create rover', async () => {
+    const settings = {
+      name: 'Sparky',
+      config: {
+        left_eye_port: 1,
+        right_eye_port: 2,
+        left_motor_port: 3,
+        right_motor_port: 4,
+      },
+    };
+
+    const mock = new MockAdapter(axios);
+
+    mock.onPost('/api/v1/rovers/').reply(200, settings);
+
+    const action = createRover(settings);
+    const { type } = action;
+    await action.payload;
+
+    expect(type).toEqual('CREATE_ROVER');
     mock.restore();
   });
 });

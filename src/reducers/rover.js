@@ -1,4 +1,7 @@
 import {
+  CREATE_ROVER,
+  CREATE_ROVER_FULFILLED,
+  CREATE_ROVER_REJECTED,
   EDIT_ROVER,
   EDIT_ROVER_FULFILLED,
   EDIT_ROVER_REJECTED,
@@ -19,6 +22,7 @@ export default function rovers(
     isFetchingSingle: false,
     isEditing: false,
     isRemoving: false,
+    isCreating: false,
     rovers: null,
     rover: null,
     error: null,
@@ -96,6 +100,24 @@ export default function rovers(
       return {
         ...state,
         isRemoving: false,
+        error: action.payload,
+      };
+    case CREATE_ROVER:
+      return {
+        ...state,
+        isCreating: true,
+      };
+    case CREATE_ROVER_FULFILLED:
+      return {
+        ...state,
+        isCreating: false,
+        rover: action.payload,
+        error: null,
+      };
+    case CREATE_ROVER_REJECTED:
+      return {
+        ...state,
+        isCreating: false,
         error: action.payload,
       };
     default:
