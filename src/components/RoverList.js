@@ -1,12 +1,23 @@
 import React, { Component, Fragment } from 'react';
 import {
-  Button, Card, Confirm, Header, Icon, Label, Loader, Segment,
+  Button,
+  Card,
+  Confirm,
+  Form,
+  Header,
+  Icon,
+  Label,
+  Loader,
+  Modal,
+  Segment,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const defaultState = {
   confirmOpen: false,
+  newRoverOpen: false,
+  newRoverName: null,
   focusRover: {
     id: null,
     name: null,
@@ -45,16 +56,52 @@ class RoverList extends Component {
     return removeRover(focusRover.id).then(() => fetchRovers());
   }
 
+  modalButton = () => (
+    <Button primary style={{ marginLeft: '10px' }} onClick={this.handleNewRoverOpen}>
+      <Icon name="plus" />
+      Register New Rover
+    </Button>
+  )
+
+  handleNewRoverOpen = () => this.setState({ newRoverOpen: true })
+
+  handleNewRoverClose = () => this.setState({ newRoverOpen: false })
+
+  handleNameChange = e => this.setState({ newRoverName: e.target.value })
+
+  createRover = () => {
+    const { fetchRovers, createRover } = this.props;
+    const { newRoverName } = this.state;
+
+    this.setState(defaultState);
+
+    return createRover({ name: newRoverName }).then(() => fetchRovers());
+  }
+
   render() {
     const { rovers } = this.props;
-    const { confirmOpen, focusRover } = this.state;
+    const { confirmOpen, focusRover, newRoverOpen } = this.state;
 
     return (
       <Fragment>
-        <Button primary as={Link} to="/rovers/add" style={{ marginLeft: '10px' }}>
-          <Icon name="plus" />
-          Register New Rover
-        </Button>
+        <Modal trigger={this.modalButton()} open={newRoverOpen} onClose={this.handleNewRoverClose}>
+          <Modal.Header>
+            Enter the name of the rover
+          </Modal.Header>
+          <Modal.Content>
+            <Form id="nameForm" onSubmit={this.createRover}>
+              <Form.Input placeholder="Rover name" onChange={this.handleNameChange} required />
+            </Form>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button primary type="submit" form="nameForm">
+              Create
+            </Button>
+            <Button onClick={this.handleNewRoverClose}>
+              Cancel
+            </Button>
+          </Modal.Actions>
+        </Modal>
         {
           rovers === null
             ? (<Loader active />)
@@ -128,6 +175,7 @@ RoverList.defaultProps = {
 RoverList.propTypes = {
   fetchRovers: PropTypes.func.isRequired,
   removeRover: PropTypes.func.isRequired,
+  createRover: PropTypes.func.isRequired,
   rovers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import RoverList from '../RoverList';
-import { fetchRovers, removeRover } from '../../actions/rover';
+import { createRover, fetchRovers, removeRover } from '../../actions/rover';
 import { updateValidAuth } from '../../actions/auth';
 
 const cookiesValues = { auth_jwt: '1234' };
@@ -38,6 +38,27 @@ describe('The RoverListContainer', () => {
 
     expect(store.dispatch).toHaveBeenCalledWith(
       fetchRovers({
+        headers: {
+          Authorization: `JWT ${cookiesValues.auth_jwt}`,
+        },
+      }),
+    );
+
+    mockAxios.restore();
+  });
+
+  test('dispatches an action to create a rover', () => {
+    const rover = {
+      id: 1,
+      name: 'Mars',
+    };
+    const mockAxios = new MockAdapter(axios);
+
+    mockAxios.onPost('/api/v1/rovers/').reply(201, rover);
+    wrapper.dive().props().createRover(rover);
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      createRover(rover, {
         headers: {
           Authorization: `JWT ${cookiesValues.auth_jwt}`,
         },
@@ -85,6 +106,31 @@ describe('The RoverListContainer', () => {
     });
   });
 
+  test('handles authentication error creating a rover', (done) => {
+    const rover = {
+      id: 1,
+      name: 'Mars',
+    };
+    const error = new Error();
+    error.response = {
+      status: 401,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    wrapper.dive().props().createRover(rover).then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        createRover(rover, {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
   test('handles authentication error removing a rover', (done) => {
     const error = new Error();
     error.response = {
@@ -117,6 +163,30 @@ describe('The RoverListContainer', () => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchRovers({
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
+  });
+
+  test('handles other error creating a rover', (done) => {
+    const rover = {
+      id: 1,
+      name: 'Mars',
+    };
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    wrapper.dive().props().createRover(rover).then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        createRover(rover, {
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
