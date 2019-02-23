@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, Redirect } from 'react-router';
 import {
   Button,
   Card,
@@ -17,7 +17,11 @@ let removeRover;
 
 describe('The RoverList component', () => {
   beforeEach(() => {
-    createRover = jest.fn(() => Promise.resolve({}));
+    createRover = jest.fn(() => Promise.resolve({
+      value: {
+        id: 1,
+      },
+    }));
     fetchRovers = jest.fn(() => Promise.resolve({}));
     removeRover = jest.fn(() => Promise.resolve({}));
   });
@@ -104,7 +108,7 @@ describe('The RoverList component', () => {
     expect(wrapper.find(Loader).exists()).toBe(false);
   });
 
-  test('creates a rover and reloads the rover list', async () => {
+  test('creates a rover and goes to new rover detail', async () => {
     const rovers = [{
       id: 1,
       name: 'Sparky',
@@ -129,8 +133,11 @@ describe('The RoverList component', () => {
       newRoverName: 'Rovey',
     });
     await wrapper.instance().createRover();
+    wrapper.update();
 
-    expect(fetchRovers).toHaveBeenCalledTimes(2);
+    expect(wrapper.find(Redirect).exists()).toBe(true);
+    expect(wrapper.find(Redirect).prop('to')).toBe('/rovers/1');
+    expect(fetchRovers).toHaveBeenCalledTimes(1);
     expect(createRover).toHaveBeenCalledWith({
       name: 'Rovey',
     });

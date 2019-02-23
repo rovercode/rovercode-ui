@@ -11,13 +11,14 @@ import {
   Modal,
   Segment,
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const defaultState = {
   confirmOpen: false,
   newRoverOpen: false,
   newRoverName: null,
+  newRoverId: null,
   focusRover: {
     id: null,
     name: null,
@@ -70,20 +71,32 @@ class RoverList extends Component {
   handleNameChange = e => this.setState({ newRoverName: e.target.value })
 
   createRover = () => {
-    const { fetchRovers, createRover } = this.props;
+    const { createRover } = this.props;
     const { newRoverName } = this.state;
 
     this.setState(defaultState);
 
-    return createRover({ name: newRoverName }).then(() => fetchRovers());
+    return createRover({ name: newRoverName }).then(newRover => this.setState({
+      newRoverId: newRover.value.id,
+    }));
   }
 
   render() {
     const { rovers } = this.props;
-    const { confirmOpen, focusRover, newRoverOpen } = this.state;
+    const {
+      confirmOpen,
+      focusRover,
+      newRoverOpen,
+      newRoverId,
+    } = this.state;
 
     return (
       <Fragment>
+        {
+          newRoverId ? (
+            <Redirect to={`/rovers/${newRoverId}`} />
+          ) : (null)
+        }
         <Modal trigger={this.modalButton()} open={newRoverOpen} onClose={this.handleNewRoverClose}>
           <Modal.Header>
             Enter the name of the rover

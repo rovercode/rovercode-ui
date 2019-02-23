@@ -36,6 +36,7 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": Array [
+        null,
         <Modal
           centered={true}
           closeOnDimmerClick={true}
@@ -105,6 +106,7 @@ ShallowWrapper {
     },
     "ref": null,
     "rendered": Array [
+      null,
       Object {
         "instance": null,
         "key": undefined,
@@ -318,6 +320,7 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": Array [
+          null,
           <Modal
             centered={true}
             closeOnDimmerClick={true}
@@ -387,6 +390,7 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
+        null,
         Object {
           "instance": null,
           "key": undefined,
