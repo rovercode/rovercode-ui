@@ -1,5 +1,8 @@
 import reducer from '../rover';
 import {
+  CREATE_ROVER,
+  CREATE_ROVER_FULFILLED,
+  CREATE_ROVER_REJECTED,
   EDIT_ROVER,
   EDIT_ROVER_FULFILLED,
   EDIT_ROVER_REJECTED,
@@ -25,6 +28,7 @@ describe('The rover reducer', () => {
       isFetching: true,
       isFetchingSingle: false,
       isRemoving: false,
+      isCreating: false,
       error: null,
       rovers: null,
       rover: null,
@@ -64,6 +68,7 @@ describe('The rover reducer', () => {
       isFetching: false,
       isFetchingSingle: true,
       isRemoving: false,
+      isCreating: false,
       error: null,
       rovers: null,
       rover: null,
@@ -105,6 +110,7 @@ describe('The rover reducer', () => {
       isFetching: false,
       isFetchingSingle: false,
       isRemoving: false,
+      isCreating: false,
       error: null,
       rovers: null,
       rover: null,
@@ -145,6 +151,7 @@ describe('The rover reducer', () => {
       isFetching: false,
       isFetchingSingle: false,
       isRemoving: true,
+      isCreating: false,
       error: null,
       rovers: null,
       rover: null,
@@ -175,5 +182,53 @@ describe('The rover reducer', () => {
   test('should return unmodified state for an unhandled action type', () => {
     const state = { hello: 'world' };
     expect(reducer(state, { type: 'FAKE_ACTION' })).toEqual(state);
+  });
+
+  test('should handle CREATE_ROVER', () => {
+    expect(
+      reducer(undefined, {
+        type: CREATE_ROVER,
+      }),
+    ).toEqual({
+      isEditing: false,
+      isFetching: false,
+      isFetchingSingle: false,
+      isRemoving: false,
+      isCreating: true,
+      error: null,
+      rovers: null,
+      rover: null,
+    });
+
+    const rover = {
+      name: 'Sparky',
+      config: {
+        left_eye_port: 1,
+        right_eye_port: 2,
+        left_motor_port: 3,
+        right_motor_port: 4,
+      },
+    };
+    expect(
+      reducer({}, {
+        type: CREATE_ROVER_FULFILLED,
+        payload: rover,
+      }),
+    ).toEqual({
+      rover,
+      isCreating: false,
+      error: null,
+    });
+
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: CREATE_ROVER_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      error,
+      isCreating: false,
+    });
   });
 });

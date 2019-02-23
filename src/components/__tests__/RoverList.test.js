@@ -1,22 +1,39 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, Redirect } from 'react-router';
 import {
-  Button, Card, Header, Icon, Loader,
+  Button,
+  Card,
+  Form,
+  Header,
+  Icon,
+  Loader,
 } from 'semantic-ui-react';
 import { shallow, mount } from 'enzyme';
 import RoverList from '../RoverList';
 
+let createRover;
 let fetchRovers;
 let removeRover;
 
 describe('The RoverList component', () => {
   beforeEach(() => {
+    createRover = jest.fn(() => Promise.resolve({
+      value: {
+        id: 1,
+      },
+    }));
     fetchRovers = jest.fn(() => Promise.resolve({}));
     removeRover = jest.fn(() => Promise.resolve({}));
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = shallow(<RoverList fetchRovers={fetchRovers} removeRover={removeRover} />);
+    const wrapper = shallow(
+      <RoverList
+        createRover={createRover}
+        fetchRovers={fetchRovers}
+        removeRover={removeRover}
+      />,
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -24,7 +41,11 @@ describe('The RoverList component', () => {
     fetchRovers = jest.fn();
     await mount(
       <MemoryRouter>
-        <RoverList fetchRovers={fetchRovers} removeRover={removeRover} />
+        <RoverList
+          createRover={createRover}
+          fetchRovers={fetchRovers}
+          removeRover={removeRover}
+        />
       </MemoryRouter>,
     );
     expect(fetchRovers.mock.calls.length).toBe(1);
@@ -45,6 +66,7 @@ describe('The RoverList component', () => {
     const wrapper = shallow(
       <RoverList
         rovers={rovers}
+        createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
@@ -74,6 +96,7 @@ describe('The RoverList component', () => {
     const wrapper = shallow(
       <RoverList
         rovers={rovers}
+        createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
@@ -83,6 +106,41 @@ describe('The RoverList component', () => {
 
     expect(wrapper.find(Header).exists()).toBe(true);
     expect(wrapper.find(Loader).exists()).toBe(false);
+  });
+
+  test('creates a rover and goes to new rover detail', async () => {
+    const rovers = [{
+      id: 1,
+      name: 'Sparky',
+      owner: 1,
+      connected: true,
+    }, {
+      id: 2,
+      name: 'Marvin',
+      owner: 1,
+      connected: false,
+    }];
+    const wrapper = shallow(
+      <RoverList
+        rovers={rovers}
+        createRover={createRover}
+        fetchRovers={fetchRovers}
+        removeRover={removeRover}
+      />,
+    );
+
+    wrapper.setState({
+      newRoverName: 'Rovey',
+    });
+    await wrapper.instance().createRover();
+    wrapper.update();
+
+    expect(wrapper.find(Redirect).exists()).toBe(true);
+    expect(wrapper.find(Redirect).prop('to')).toBe('/rovers/1');
+    expect(fetchRovers).toHaveBeenCalledTimes(1);
+    expect(createRover).toHaveBeenCalledWith({
+      name: 'Rovey',
+    });
   });
 
   test('removes a rover and reloads the rover list', async () => {
@@ -100,6 +158,7 @@ describe('The RoverList component', () => {
     const wrapper = shallow(
       <RoverList
         rovers={rovers}
+        createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
@@ -120,6 +179,7 @@ describe('The RoverList component', () => {
   test('shows confirm dialog', () => {
     const wrapper = shallow(
       <RoverList
+        createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
@@ -138,6 +198,7 @@ describe('The RoverList component', () => {
   test('cancel dialog does not remove rover', () => {
     const wrapper = shallow(
       <RoverList
+        createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
@@ -148,5 +209,43 @@ describe('The RoverList component', () => {
     expect(fetchRovers).toHaveBeenCalledTimes(1);
     expect(removeRover).not.toHaveBeenCalled();
     expect(wrapper.state('confirmOpen')).toBe(false);
+  });
+
+  test('shows new rover dialog', () => {
+    const wrapper = shallow(
+      <RoverList
+        createRover={createRover}
+        fetchRovers={fetchRovers}
+        removeRover={removeRover}
+      />,
+    );
+
+    wrapper.instance().handleNewRoverOpen();
+
+    expect(wrapper.state('newRoverOpen')).toBe(true);
+
+    wrapper.find(Form.Input).simulate('change', {
+      target: {
+        value: 'Sparky',
+      },
+    });
+
+    expect(wrapper.state('newRoverName')).toBe('Sparky');
+  });
+
+  test('cancel dialog does not create rover', () => {
+    const wrapper = shallow(
+      <RoverList
+        createRover={createRover}
+        fetchRovers={fetchRovers}
+        removeRover={removeRover}
+      />,
+    );
+
+    wrapper.instance().handleNewRoverClose();
+
+    expect(fetchRovers).toHaveBeenCalledTimes(1);
+    expect(removeRover).not.toHaveBeenCalled();
+    expect(wrapper.state('newRoverOpen')).toBe(false);
   });
 });

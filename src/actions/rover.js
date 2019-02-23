@@ -15,6 +15,9 @@ export const EDIT_ROVER_REJECTED = `${EDIT_ROVER}_REJECTED`;
 export const REMOVE_ROVER = 'REMOVE_ROVER';
 export const REMOVE_ROVER_FULFILLED = `${REMOVE_ROVER}_FULFILLED`;
 export const REMOVE_ROVER_REJECTED = `${REMOVE_ROVER}_REJECTED`;
+export const CREATE_ROVER = 'CREATE_ROVER';
+export const CREATE_ROVER_FULFILLED = `${CREATE_ROVER}_FULFILLED`;
+export const CREATE_ROVER_REJECTED = `${CREATE_ROVER}_REJECTED`;
 
 // action creators
 export const fetchRovers = xhrOptions => ({
@@ -44,6 +47,14 @@ export const editRover = (id, settings, xhrOptions) => ({
 export const removeRover = (id, xhrOptions) => ({
   type: REMOVE_ROVER,
   payload: axios.delete(`/api/v1/rovers/${id}/`, xhrOptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const createRover = (settings, xhrOptions) => ({
+  type: CREATE_ROVER,
+  payload: axios.post('/api/v1/rovers/', settings, xhrOptions)
     .then(({ data }) => (
       data
     )),
