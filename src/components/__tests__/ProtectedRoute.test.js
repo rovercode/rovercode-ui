@@ -1,11 +1,16 @@
 import React from 'react';
 import { MemoryRouter, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import moment from 'moment';
 import MockDate from 'mockdate';
+import { Cookies } from 'react-cookie';
 
 import ProtectedRoute from '../ProtectedRoute';
+
+const cookiesValues = { };
+const cookies = new Cookies(cookiesValues);
 
 describe('The ProtectedRoute component', () => {
   const mockStore = configureStore();
@@ -35,7 +40,10 @@ describe('The ProtectedRoute component', () => {
           <Route exact path="/accounts/login" />
           <ProtectedRoute exact path="/" component={TestComponent} store={store} />
         </Switch>
-      </MemoryRouter>,
+      </MemoryRouter>, {
+        context: { cookies },
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
     );
 
     expect(wrapper.find(TestComponent).exists()).toBe(true);
@@ -54,7 +62,10 @@ describe('The ProtectedRoute component', () => {
           <Route exact path="/accounts/login" />
           <ProtectedRoute exact path="/" component={TestComponent} store={store} />
         </Switch>
-      </MemoryRouter>,
+      </MemoryRouter>, {
+        context: { cookies },
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
     );
 
     expect(wrapper.find(TestComponent).exists()).toBe(false);
@@ -77,7 +88,10 @@ describe('The ProtectedRoute component', () => {
           <Route exact path="/accounts/login" />
           <ProtectedRoute exact path="/" component={TestComponent} store={store} />
         </Switch>
-      </MemoryRouter>,
+      </MemoryRouter>, {
+        context: { cookies },
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
     );
 
     expect(wrapper.find(TestComponent).exists()).toBe(false);
@@ -103,7 +117,10 @@ describe('The ProtectedRoute component', () => {
           <Route exact path="/accounts/login" />
           <ProtectedRoute exact path="/" component={TestComponent} store={store} />
         </Switch>
-      </MemoryRouter>,
+      </MemoryRouter>, {
+        context: { cookies },
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
     );
 
     expect(wrapper.find(TestComponent).exists()).toBe(false);
