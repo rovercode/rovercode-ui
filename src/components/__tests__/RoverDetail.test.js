@@ -4,6 +4,7 @@ import {
   Accordion,
   Form,
   Header,
+  Loader,
   Message,
   TextArea,
 } from 'semantic-ui-react';
@@ -30,17 +31,35 @@ describe('The RoverDetail component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = shallow(<RoverDetail fetchRover={fetchRover} editRover={editRover} id={1} />);
+    const rover = {
+      id: 1,
+      name: 'Sparky',
+      config: {
+        left_eye_port: 1,
+        right_eye_port: 2,
+      },
+      client_id: '1234',
+      client_secret: '5678',
+    };
+    const wrapper = shallow(
+      <RoverDetail
+        rover={rover}
+        fetchRover={fetchRover}
+        editRover={editRover}
+        id={1}
+      />,
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
   test('fetches rover on mount', async () => {
-    await mount(
+    const wrapper = await mount(
       <MemoryRouter>
         <RoverDetail fetchRover={fetchRover} editRover={editRover} id={1} />
       </MemoryRouter>,
     );
     expect(fetchRover).toBeCalledWith(1);
+    expect(wrapper.find(Loader).exists()).toBe(true);
   });
 
   test('shows the correct information the rover', async () => {
@@ -51,6 +70,8 @@ describe('The RoverDetail component', () => {
         left_eye_port: 1,
         right_eye_port: 2,
       },
+      client_id: '1234',
+      client_secret: '5678',
     };
     const wrapper = shallow(
       <RoverDetail
@@ -64,6 +85,7 @@ describe('The RoverDetail component', () => {
     wrapper.update();
 
     expect(wrapper.find(Header).exists()).toBe(true);
+    expect(wrapper.find(Loader).exists()).toBe(false);
 
     expect(wrapper.find(Form.Input).prop('defaultValue')).toBe('Sparky');
     expect(wrapper.find(TextArea).prop('defaultValue')).toEqual(JSON.stringify({
@@ -80,6 +102,8 @@ describe('The RoverDetail component', () => {
         left_eye_port: 1,
         right_eye_port: 2,
       },
+      client_id: '1234',
+      client_secret: '5678',
     };
     const wrapper = shallow(
       <RoverDetail
@@ -130,6 +154,8 @@ describe('The RoverDetail component', () => {
         left_eye_port: 1,
         right_eye_port: 2,
       },
+      client_id: '1234',
+      client_secret: '5678',
     };
     const wrapper = shallow(
       <RoverDetail

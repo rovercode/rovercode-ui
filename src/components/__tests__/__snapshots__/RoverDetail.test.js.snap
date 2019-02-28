@@ -21,7 +21,18 @@ ShallowWrapper {
       }
     }
     id={1}
-    rover={null}
+    rover={
+      Object {
+        "client_id": "1234",
+        "client_secret": "5678",
+        "config": Object {
+          "left_eye_port": 1,
+          "right_eye_port": 2,
+        },
+        "id": 1,
+        "name": "Sparky",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -50,58 +61,74 @@ ShallowWrapper {
           <GridColumn
             width={4}
           >
-            <Segment
-              raised={true}
-            >
-              <Form
-                as="form"
-                loading={true}
-                onSubmit={[Function]}
+            <React.Fragment>
+              <Segment
+                raised={true}
               >
-                <FormInput
-                  as={[Function]}
-                  control={[Function]}
-                  defaultValue=""
-                  inline={true}
-                  label="Name:"
-                  onChange={[Function]}
-                  required={true}
-                />
-                <FormField
-                  error={false}
+                <Form
+                  as="form"
+                  loading={false}
+                  onSubmit={[Function]}
                 >
-                  <Accordion>
-                    <AccordionTitle
-                      active={false}
-                      onClick={[Function]}
-                    >
-                      <Icon
-                        as="i"
-                        name="dropdown"
-                      />
-                      Advanced
-                    </AccordionTitle>
-                    <AccordionContent
-                      active={false}
-                    >
-                      <TextArea
-                        as="textarea"
-                        defaultValue=""
-                        onChange={[Function]}
-                        rows={3}
-                      />
-                    </AccordionContent>
-                  </Accordion>
-                </FormField>
-                <FormButton
-                  as={[Function]}
-                  control={[Function]}
-                  primary={true}
-                >
-                  Save
-                </FormButton>
-              </Form>
-            </Segment>
+                  <FormInput
+                    as={[Function]}
+                    control={[Function]}
+                    defaultValue="Sparky"
+                    inline={true}
+                    label="Name:"
+                    onChange={[Function]}
+                    required={true}
+                  />
+                  <FormField
+                    error={false}
+                  >
+                    <Accordion>
+                      <AccordionTitle
+                        active={false}
+                        onClick={[Function]}
+                      >
+                        <Icon
+                          as="i"
+                          name="dropdown"
+                        />
+                        Advanced
+                      </AccordionTitle>
+                      <AccordionContent
+                        active={false}
+                      >
+                        <TextArea
+                          as="textarea"
+                          defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                          onChange={[Function]}
+                          rows={3}
+                        />
+                      </AccordionContent>
+                    </Accordion>
+                  </FormField>
+                  <FormButton
+                    as={[Function]}
+                    control={[Function]}
+                    primary={true}
+                  >
+                    Save
+                  </FormButton>
+                </Form>
+              </Segment>
+              <Credential
+                rover={
+                  Object {
+                    "client_id": "1234",
+                    "client_secret": "5678",
+                    "config": Object {
+                      "left_eye_port": 1,
+                      "right_eye_port": 2,
+                    },
+                    "id": 1,
+                    "name": "Sparky",
+                  }
+                }
+              />
+            </React.Fragment>
           </GridColumn>
         </GridRow>,
       ],
@@ -144,81 +171,19 @@ ShallowWrapper {
           "children": <GridColumn
             width={4}
           >
-            <Segment
-              raised={true}
-            >
-              <Form
-                as="form"
-                loading={true}
-                onSubmit={[Function]}
-              >
-                <FormInput
-                  as={[Function]}
-                  control={[Function]}
-                  defaultValue=""
-                  inline={true}
-                  label="Name:"
-                  onChange={[Function]}
-                  required={true}
-                />
-                <FormField
-                  error={false}
-                >
-                  <Accordion>
-                    <AccordionTitle
-                      active={false}
-                      onClick={[Function]}
-                    >
-                      <Icon
-                        as="i"
-                        name="dropdown"
-                      />
-                      Advanced
-                    </AccordionTitle>
-                    <AccordionContent
-                      active={false}
-                    >
-                      <TextArea
-                        as="textarea"
-                        defaultValue=""
-                        onChange={[Function]}
-                        rows={3}
-                      />
-                    </AccordionContent>
-                  </Accordion>
-                </FormField>
-                <FormButton
-                  as={[Function]}
-                  control={[Function]}
-                  primary={true}
-                >
-                  Save
-                </FormButton>
-              </Form>
-            </Segment>
-          </GridColumn>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "children": Array [
-              null,
-              null,
+            <React.Fragment>
               <Segment
                 raised={true}
               >
                 <Form
                   as="form"
-                  loading={true}
+                  loading={false}
                   onSubmit={[Function]}
                 >
                   <FormInput
                     as={[Function]}
                     control={[Function]}
-                    defaultValue=""
+                    defaultValue="Sparky"
                     inline={true}
                     label="Name:"
                     onChange={[Function]}
@@ -243,7 +208,7 @@ ShallowWrapper {
                       >
                         <TextArea
                           as="textarea"
-                          defaultValue=""
+                          defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
                           onChange={[Function]}
                           rows={3}
                         />
@@ -258,86 +223,51 @@ ShallowWrapper {
                     Save
                   </FormButton>
                 </Form>
-              </Segment>,
-            ],
-            "width": 4,
-          },
-          "ref": null,
-          "rendered": Array [
-            null,
-            null,
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <Form
-                  as="form"
-                  loading={true}
-                  onSubmit={[Function]}
+              </Segment>
+              <Credential
+                rover={
+                  Object {
+                    "client_id": "1234",
+                    "client_secret": "5678",
+                    "config": Object {
+                      "left_eye_port": 1,
+                      "right_eye_port": 2,
+                    },
+                    "id": 1,
+                    "name": "Sparky",
+                  }
+                }
+              />
+            </React.Fragment>
+          </GridColumn>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              null,
+              null,
+              <React.Fragment>
+                <Segment
+                  raised={true}
                 >
-                  <FormInput
-                    as={[Function]}
-                    control={[Function]}
-                    defaultValue=""
-                    inline={true}
-                    label="Name:"
-                    onChange={[Function]}
-                    required={true}
-                  />
-                  <FormField
-                    error={false}
+                  <Form
+                    as="form"
+                    loading={false}
+                    onSubmit={[Function]}
                   >
-                    <Accordion>
-                      <AccordionTitle
-                        active={false}
-                        onClick={[Function]}
-                      >
-                        <Icon
-                          as="i"
-                          name="dropdown"
-                        />
-                        Advanced
-                      </AccordionTitle>
-                      <AccordionContent
-                        active={false}
-                      >
-                        <TextArea
-                          as="textarea"
-                          defaultValue=""
-                          onChange={[Function]}
-                          rows={3}
-                        />
-                      </AccordionContent>
-                    </Accordion>
-                  </FormField>
-                  <FormButton
-                    as={[Function]}
-                    control={[Function]}
-                    primary={true}
-                  >
-                    Save
-                  </FormButton>
-                </Form>,
-                "raised": true,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": "0",
-                "nodeType": "class",
-                "props": Object {
-                  "as": "form",
-                  "children": Array [
                     <FormInput
                       as={[Function]}
                       control={[Function]}
-                      defaultValue=""
+                      defaultValue="Sparky"
                       inline={true}
                       label="Name:"
                       onChange={[Function]}
                       required={true}
-                    />,
+                    />
                     <FormField
                       error={false}
                     >
@@ -357,79 +287,71 @@ ShallowWrapper {
                         >
                           <TextArea
                             as="textarea"
-                            defaultValue=""
+                            defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
                             onChange={[Function]}
                             rows={3}
                           />
                         </AccordionContent>
                       </Accordion>
-                    </FormField>,
+                    </FormField>
                     <FormButton
                       as={[Function]}
                       control={[Function]}
                       primary={true}
                     >
                       Save
-                    </FormButton>,
-                  ],
-                  "loading": true,
-                  "onSubmit": [Function],
-                },
-                "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "function",
-                    "props": Object {
-                      "as": [Function],
-                      "control": [Function],
-                      "defaultValue": "",
-                      "inline": true,
-                      "label": "Name:",
-                      "onChange": [Function],
-                      "required": true,
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": [Function],
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "function",
-                    "props": Object {
-                      "children": <Accordion>
-                        <AccordionTitle
-                          active={false}
-                          onClick={[Function]}
-                        >
-                          <Icon
-                            as="i"
-                            name="dropdown"
-                          />
-                          Advanced
-                        </AccordionTitle>
-                        <AccordionContent
-                          active={false}
-                        >
-                          <TextArea
-                            as="textarea"
-                            defaultValue=""
-                            onChange={[Function]}
-                            rows={3}
-                          />
-                        </AccordionContent>
-                      </Accordion>,
-                      "error": false,
-                    },
-                    "ref": null,
-                    "rendered": Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "function",
-                      "props": Object {
-                        "children": Array [
+                    </FormButton>
+                  </Form>
+                </Segment>
+                <Credential
+                  rover={
+                    Object {
+                      "client_id": "1234",
+                      "client_secret": "5678",
+                      "config": Object {
+                        "left_eye_port": 1,
+                        "right_eye_port": 2,
+                      },
+                      "id": 1,
+                      "name": "Sparky",
+                    }
+                  }
+                />
+              </React.Fragment>,
+            ],
+            "width": 4,
+          },
+          "ref": null,
+          "rendered": Array [
+            null,
+            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <Segment
+                    raised={true}
+                  >
+                    <Form
+                      as="form"
+                      loading={false}
+                      onSubmit={[Function]}
+                    >
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        defaultValue="Sparky"
+                        inline={true}
+                        label="Name:"
+                        onChange={[Function]}
+                        required={true}
+                      />
+                      <FormField
+                        error={false}
+                      >
+                        <Accordion>
                           <AccordionTitle
                             active={false}
                             onClick={[Function]}
@@ -439,35 +361,231 @@ ShallowWrapper {
                               name="dropdown"
                             />
                             Advanced
-                          </AccordionTitle>,
+                          </AccordionTitle>
                           <AccordionContent
                             active={false}
                           >
                             <TextArea
                               as="textarea"
-                              defaultValue=""
+                              defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
                               onChange={[Function]}
                               rows={3}
                             />
-                          </AccordionContent>,
-                        ],
-                      },
-                      "ref": null,
-                      "rendered": Array [
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "class",
-                          "props": Object {
-                            "active": false,
-                            "children": Array [
+                          </AccordionContent>
+                        </Accordion>
+                      </FormField>
+                      <FormButton
+                        as={[Function]}
+                        control={[Function]}
+                        primary={true}
+                      >
+                        Save
+                      </FormButton>
+                    </Form>
+                  </Segment>,
+                  <Credential
+                    rover={
+                      Object {
+                        "client_id": "1234",
+                        "client_secret": "5678",
+                        "config": Object {
+                          "left_eye_port": 1,
+                          "right_eye_port": 2,
+                        },
+                        "id": 1,
+                        "name": "Sparky",
+                      }
+                    }
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": <Form
+                      as="form"
+                      loading={false}
+                      onSubmit={[Function]}
+                    >
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        defaultValue="Sparky"
+                        inline={true}
+                        label="Name:"
+                        onChange={[Function]}
+                        required={true}
+                      />
+                      <FormField
+                        error={false}
+                      >
+                        <Accordion>
+                          <AccordionTitle
+                            active={false}
+                            onClick={[Function]}
+                          >
+                            <Icon
+                              as="i"
+                              name="dropdown"
+                            />
+                            Advanced
+                          </AccordionTitle>
+                          <AccordionContent
+                            active={false}
+                          >
+                            <TextArea
+                              as="textarea"
+                              defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                              onChange={[Function]}
+                              rows={3}
+                            />
+                          </AccordionContent>
+                        </Accordion>
+                      </FormField>
+                      <FormButton
+                        as={[Function]}
+                        control={[Function]}
+                        primary={true}
+                      >
+                        Save
+                      </FormButton>
+                    </Form>,
+                    "raised": true,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": "1",
+                    "nodeType": "class",
+                    "props": Object {
+                      "as": "form",
+                      "children": Array [
+                        <FormInput
+                          as={[Function]}
+                          control={[Function]}
+                          defaultValue="Sparky"
+                          inline={true}
+                          label="Name:"
+                          onChange={[Function]}
+                          required={true}
+                        />,
+                        <FormField
+                          error={false}
+                        >
+                          <Accordion>
+                            <AccordionTitle
+                              active={false}
+                              onClick={[Function]}
+                            >
                               <Icon
                                 as="i"
                                 name="dropdown"
-                              />,
-                              "Advanced",
+                              />
+                              Advanced
+                            </AccordionTitle>
+                            <AccordionContent
+                              active={false}
+                            >
+                              <TextArea
+                                as="textarea"
+                                defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                onChange={[Function]}
+                                rows={3}
+                              />
+                            </AccordionContent>
+                          </Accordion>
+                        </FormField>,
+                        <FormButton
+                          as={[Function]}
+                          control={[Function]}
+                          primary={true}
+                        >
+                          Save
+                        </FormButton>,
+                      ],
+                      "loading": false,
+                      "onSubmit": [Function],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "as": [Function],
+                          "control": [Function],
+                          "defaultValue": "Sparky",
+                          "inline": true,
+                          "label": "Name:",
+                          "onChange": [Function],
+                          "required": true,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": <Accordion>
+                            <AccordionTitle
+                              active={false}
+                              onClick={[Function]}
+                            >
+                              <Icon
+                                as="i"
+                                name="dropdown"
+                              />
+                              Advanced
+                            </AccordionTitle>
+                            <AccordionContent
+                              active={false}
+                            >
+                              <TextArea
+                                as="textarea"
+                                defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                onChange={[Function]}
+                                rows={3}
+                              />
+                            </AccordionContent>
+                          </Accordion>,
+                          "error": false,
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "function",
+                          "props": Object {
+                            "children": Array [
+                              <AccordionTitle
+                                active={false}
+                                onClick={[Function]}
+                              >
+                                <Icon
+                                  as="i"
+                                  name="dropdown"
+                                />
+                                Advanced
+                              </AccordionTitle>,
+                              <AccordionContent
+                                active={false}
+                              >
+                                <TextArea
+                                  as="textarea"
+                                  defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                  onChange={[Function]}
+                                  rows={3}
+                                />
+                              </AccordionContent>,
                             ],
-                            "onClick": [Function],
                           },
                           "ref": null,
                           "rendered": Array [
@@ -476,70 +594,110 @@ ShallowWrapper {
                               "key": undefined,
                               "nodeType": "class",
                               "props": Object {
-                                "as": "i",
-                                "name": "dropdown",
+                                "active": false,
+                                "children": Array [
+                                  <Icon
+                                    as="i"
+                                    name="dropdown"
+                                  />,
+                                  "Advanced",
+                                ],
+                                "onClick": [Function],
                               },
                               "ref": null,
-                              "rendered": null,
+                              "rendered": Array [
+                                Object {
+                                  "instance": null,
+                                  "key": undefined,
+                                  "nodeType": "class",
+                                  "props": Object {
+                                    "as": "i",
+                                    "name": "dropdown",
+                                  },
+                                  "ref": null,
+                                  "rendered": null,
+                                  "type": [Function],
+                                },
+                                "Advanced",
+                              ],
                               "type": [Function],
                             },
-                            "Advanced",
+                            Object {
+                              "instance": null,
+                              "key": undefined,
+                              "nodeType": "function",
+                              "props": Object {
+                                "active": false,
+                                "children": <TextArea
+                                  as="textarea"
+                                  defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                  onChange={[Function]}
+                                  rows={3}
+                                />,
+                              },
+                              "ref": null,
+                              "rendered": Object {
+                                "instance": null,
+                                "key": undefined,
+                                "nodeType": "class",
+                                "props": Object {
+                                  "as": "textarea",
+                                  "defaultValue": "{\\"left_eye_port\\":1,\\"right_eye_port\\":2}",
+                                  "onChange": [Function],
+                                  "rows": 3,
+                                },
+                                "ref": null,
+                                "rendered": null,
+                                "type": [Function],
+                              },
+                              "type": [Function],
+                            },
                           ],
                           "type": [Function],
                         },
-                        Object {
-                          "instance": null,
-                          "key": undefined,
-                          "nodeType": "function",
-                          "props": Object {
-                            "active": false,
-                            "children": <TextArea
-                              as="textarea"
-                              defaultValue=""
-                              onChange={[Function]}
-                              rows={3}
-                            />,
-                          },
-                          "ref": null,
-                          "rendered": Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "class",
-                            "props": Object {
-                              "as": "textarea",
-                              "defaultValue": "",
-                              "onChange": [Function],
-                              "rows": 3,
-                            },
-                            "ref": null,
-                            "rendered": null,
-                            "type": [Function],
-                          },
-                          "type": [Function],
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "as": [Function],
+                          "children": "Save",
+                          "control": [Function],
+                          "primary": true,
                         },
-                      ],
-                      "type": [Function],
-                    },
+                        "ref": null,
+                        "rendered": "Save",
+                        "type": [Function],
+                      },
+                    ],
                     "type": [Function],
                   },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "function",
-                    "props": Object {
-                      "as": [Function],
-                      "children": "Save",
-                      "control": [Function],
-                      "primary": true,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "rover": Object {
+                      "client_id": "1234",
+                      "client_secret": "5678",
+                      "config": Object {
+                        "left_eye_port": 1,
+                        "right_eye_port": 2,
+                      },
+                      "id": 1,
+                      "name": "Sparky",
                     },
-                    "ref": null,
-                    "rendered": "Save",
-                    "type": [Function],
                   },
-                ],
-                "type": [Function],
-              },
-              "type": [Function],
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": Symbol(react.fragment),
             },
           ],
           "type": [Function],
@@ -568,58 +726,74 @@ ShallowWrapper {
             <GridColumn
               width={4}
             >
-              <Segment
-                raised={true}
-              >
-                <Form
-                  as="form"
-                  loading={true}
-                  onSubmit={[Function]}
+              <React.Fragment>
+                <Segment
+                  raised={true}
                 >
-                  <FormInput
-                    as={[Function]}
-                    control={[Function]}
-                    defaultValue=""
-                    inline={true}
-                    label="Name:"
-                    onChange={[Function]}
-                    required={true}
-                  />
-                  <FormField
-                    error={false}
+                  <Form
+                    as="form"
+                    loading={false}
+                    onSubmit={[Function]}
                   >
-                    <Accordion>
-                      <AccordionTitle
-                        active={false}
-                        onClick={[Function]}
-                      >
-                        <Icon
-                          as="i"
-                          name="dropdown"
-                        />
-                        Advanced
-                      </AccordionTitle>
-                      <AccordionContent
-                        active={false}
-                      >
-                        <TextArea
-                          as="textarea"
-                          defaultValue=""
-                          onChange={[Function]}
-                          rows={3}
-                        />
-                      </AccordionContent>
-                    </Accordion>
-                  </FormField>
-                  <FormButton
-                    as={[Function]}
-                    control={[Function]}
-                    primary={true}
-                  >
-                    Save
-                  </FormButton>
-                </Form>
-              </Segment>
+                    <FormInput
+                      as={[Function]}
+                      control={[Function]}
+                      defaultValue="Sparky"
+                      inline={true}
+                      label="Name:"
+                      onChange={[Function]}
+                      required={true}
+                    />
+                    <FormField
+                      error={false}
+                    >
+                      <Accordion>
+                        <AccordionTitle
+                          active={false}
+                          onClick={[Function]}
+                        >
+                          <Icon
+                            as="i"
+                            name="dropdown"
+                          />
+                          Advanced
+                        </AccordionTitle>
+                        <AccordionContent
+                          active={false}
+                        >
+                          <TextArea
+                            as="textarea"
+                            defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                            onChange={[Function]}
+                            rows={3}
+                          />
+                        </AccordionContent>
+                      </Accordion>
+                    </FormField>
+                    <FormButton
+                      as={[Function]}
+                      control={[Function]}
+                      primary={true}
+                    >
+                      Save
+                    </FormButton>
+                  </Form>
+                </Segment>
+                <Credential
+                  rover={
+                    Object {
+                      "client_id": "1234",
+                      "client_secret": "5678",
+                      "config": Object {
+                        "left_eye_port": 1,
+                        "right_eye_port": 2,
+                      },
+                      "id": 1,
+                      "name": "Sparky",
+                    }
+                  }
+                />
+              </React.Fragment>
             </GridColumn>
           </GridRow>,
         ],
@@ -662,81 +836,19 @@ ShallowWrapper {
             "children": <GridColumn
               width={4}
             >
-              <Segment
-                raised={true}
-              >
-                <Form
-                  as="form"
-                  loading={true}
-                  onSubmit={[Function]}
-                >
-                  <FormInput
-                    as={[Function]}
-                    control={[Function]}
-                    defaultValue=""
-                    inline={true}
-                    label="Name:"
-                    onChange={[Function]}
-                    required={true}
-                  />
-                  <FormField
-                    error={false}
-                  >
-                    <Accordion>
-                      <AccordionTitle
-                        active={false}
-                        onClick={[Function]}
-                      >
-                        <Icon
-                          as="i"
-                          name="dropdown"
-                        />
-                        Advanced
-                      </AccordionTitle>
-                      <AccordionContent
-                        active={false}
-                      >
-                        <TextArea
-                          as="textarea"
-                          defaultValue=""
-                          onChange={[Function]}
-                          rows={3}
-                        />
-                      </AccordionContent>
-                    </Accordion>
-                  </FormField>
-                  <FormButton
-                    as={[Function]}
-                    control={[Function]}
-                    primary={true}
-                  >
-                    Save
-                  </FormButton>
-                </Form>
-              </Segment>
-            </GridColumn>,
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": Array [
-                null,
-                null,
+              <React.Fragment>
                 <Segment
                   raised={true}
                 >
                   <Form
                     as="form"
-                    loading={true}
+                    loading={false}
                     onSubmit={[Function]}
                   >
                     <FormInput
                       as={[Function]}
                       control={[Function]}
-                      defaultValue=""
+                      defaultValue="Sparky"
                       inline={true}
                       label="Name:"
                       onChange={[Function]}
@@ -761,7 +873,7 @@ ShallowWrapper {
                         >
                           <TextArea
                             as="textarea"
-                            defaultValue=""
+                            defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
                             onChange={[Function]}
                             rows={3}
                           />
@@ -776,86 +888,51 @@ ShallowWrapper {
                       Save
                     </FormButton>
                   </Form>
-                </Segment>,
-              ],
-              "width": 4,
-            },
-            "ref": null,
-            "rendered": Array [
-              null,
-              null,
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": <Form
-                    as="form"
-                    loading={true}
-                    onSubmit={[Function]}
+                </Segment>
+                <Credential
+                  rover={
+                    Object {
+                      "client_id": "1234",
+                      "client_secret": "5678",
+                      "config": Object {
+                        "left_eye_port": 1,
+                        "right_eye_port": 2,
+                      },
+                      "id": 1,
+                      "name": "Sparky",
+                    }
+                  }
+                />
+              </React.Fragment>
+            </GridColumn>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                null,
+                null,
+                <React.Fragment>
+                  <Segment
+                    raised={true}
                   >
-                    <FormInput
-                      as={[Function]}
-                      control={[Function]}
-                      defaultValue=""
-                      inline={true}
-                      label="Name:"
-                      onChange={[Function]}
-                      required={true}
-                    />
-                    <FormField
-                      error={false}
+                    <Form
+                      as="form"
+                      loading={false}
+                      onSubmit={[Function]}
                     >
-                      <Accordion>
-                        <AccordionTitle
-                          active={false}
-                          onClick={[Function]}
-                        >
-                          <Icon
-                            as="i"
-                            name="dropdown"
-                          />
-                          Advanced
-                        </AccordionTitle>
-                        <AccordionContent
-                          active={false}
-                        >
-                          <TextArea
-                            as="textarea"
-                            defaultValue=""
-                            onChange={[Function]}
-                            rows={3}
-                          />
-                        </AccordionContent>
-                      </Accordion>
-                    </FormField>
-                    <FormButton
-                      as={[Function]}
-                      control={[Function]}
-                      primary={true}
-                    >
-                      Save
-                    </FormButton>
-                  </Form>,
-                  "raised": true,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": "0",
-                  "nodeType": "class",
-                  "props": Object {
-                    "as": "form",
-                    "children": Array [
                       <FormInput
                         as={[Function]}
                         control={[Function]}
-                        defaultValue=""
+                        defaultValue="Sparky"
                         inline={true}
                         label="Name:"
                         onChange={[Function]}
                         required={true}
-                      />,
+                      />
                       <FormField
                         error={false}
                       >
@@ -875,79 +952,71 @@ ShallowWrapper {
                           >
                             <TextArea
                               as="textarea"
-                              defaultValue=""
+                              defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
                               onChange={[Function]}
                               rows={3}
                             />
                           </AccordionContent>
                         </Accordion>
-                      </FormField>,
+                      </FormField>
                       <FormButton
                         as={[Function]}
                         control={[Function]}
                         primary={true}
                       >
                         Save
-                      </FormButton>,
-                    ],
-                    "loading": true,
-                    "onSubmit": [Function],
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "function",
-                      "props": Object {
-                        "as": [Function],
-                        "control": [Function],
-                        "defaultValue": "",
-                        "inline": true,
-                        "label": "Name:",
-                        "onChange": [Function],
-                        "required": true,
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": [Function],
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "function",
-                      "props": Object {
-                        "children": <Accordion>
-                          <AccordionTitle
-                            active={false}
-                            onClick={[Function]}
-                          >
-                            <Icon
-                              as="i"
-                              name="dropdown"
-                            />
-                            Advanced
-                          </AccordionTitle>
-                          <AccordionContent
-                            active={false}
-                          >
-                            <TextArea
-                              as="textarea"
-                              defaultValue=""
-                              onChange={[Function]}
-                              rows={3}
-                            />
-                          </AccordionContent>
-                        </Accordion>,
-                        "error": false,
-                      },
-                      "ref": null,
-                      "rendered": Object {
-                        "instance": null,
-                        "key": undefined,
-                        "nodeType": "function",
-                        "props": Object {
-                          "children": Array [
+                      </FormButton>
+                    </Form>
+                  </Segment>
+                  <Credential
+                    rover={
+                      Object {
+                        "client_id": "1234",
+                        "client_secret": "5678",
+                        "config": Object {
+                          "left_eye_port": 1,
+                          "right_eye_port": 2,
+                        },
+                        "id": 1,
+                        "name": "Sparky",
+                      }
+                    }
+                  />
+                </React.Fragment>,
+              ],
+              "width": 4,
+            },
+            "ref": null,
+            "rendered": Array [
+              null,
+              null,
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <Segment
+                      raised={true}
+                    >
+                      <Form
+                        as="form"
+                        loading={false}
+                        onSubmit={[Function]}
+                      >
+                        <FormInput
+                          as={[Function]}
+                          control={[Function]}
+                          defaultValue="Sparky"
+                          inline={true}
+                          label="Name:"
+                          onChange={[Function]}
+                          required={true}
+                        />
+                        <FormField
+                          error={false}
+                        >
+                          <Accordion>
                             <AccordionTitle
                               active={false}
                               onClick={[Function]}
@@ -957,35 +1026,231 @@ ShallowWrapper {
                                 name="dropdown"
                               />
                               Advanced
-                            </AccordionTitle>,
+                            </AccordionTitle>
                             <AccordionContent
                               active={false}
                             >
                               <TextArea
                                 as="textarea"
-                                defaultValue=""
+                                defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
                                 onChange={[Function]}
                                 rows={3}
                               />
-                            </AccordionContent>,
-                          ],
-                        },
-                        "ref": null,
-                        "rendered": Array [
-                          Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "class",
-                            "props": Object {
-                              "active": false,
-                              "children": Array [
+                            </AccordionContent>
+                          </Accordion>
+                        </FormField>
+                        <FormButton
+                          as={[Function]}
+                          control={[Function]}
+                          primary={true}
+                        >
+                          Save
+                        </FormButton>
+                      </Form>
+                    </Segment>,
+                    <Credential
+                      rover={
+                        Object {
+                          "client_id": "1234",
+                          "client_secret": "5678",
+                          "config": Object {
+                            "left_eye_port": 1,
+                            "right_eye_port": 2,
+                          },
+                          "id": 1,
+                          "name": "Sparky",
+                        }
+                      }
+                    />,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": <Form
+                        as="form"
+                        loading={false}
+                        onSubmit={[Function]}
+                      >
+                        <FormInput
+                          as={[Function]}
+                          control={[Function]}
+                          defaultValue="Sparky"
+                          inline={true}
+                          label="Name:"
+                          onChange={[Function]}
+                          required={true}
+                        />
+                        <FormField
+                          error={false}
+                        >
+                          <Accordion>
+                            <AccordionTitle
+                              active={false}
+                              onClick={[Function]}
+                            >
+                              <Icon
+                                as="i"
+                                name="dropdown"
+                              />
+                              Advanced
+                            </AccordionTitle>
+                            <AccordionContent
+                              active={false}
+                            >
+                              <TextArea
+                                as="textarea"
+                                defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                onChange={[Function]}
+                                rows={3}
+                              />
+                            </AccordionContent>
+                          </Accordion>
+                        </FormField>
+                        <FormButton
+                          as={[Function]}
+                          control={[Function]}
+                          primary={true}
+                        >
+                          Save
+                        </FormButton>
+                      </Form>,
+                      "raised": true,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": "1",
+                      "nodeType": "class",
+                      "props": Object {
+                        "as": "form",
+                        "children": Array [
+                          <FormInput
+                            as={[Function]}
+                            control={[Function]}
+                            defaultValue="Sparky"
+                            inline={true}
+                            label="Name:"
+                            onChange={[Function]}
+                            required={true}
+                          />,
+                          <FormField
+                            error={false}
+                          >
+                            <Accordion>
+                              <AccordionTitle
+                                active={false}
+                                onClick={[Function]}
+                              >
                                 <Icon
                                   as="i"
                                   name="dropdown"
-                                />,
-                                "Advanced",
+                                />
+                                Advanced
+                              </AccordionTitle>
+                              <AccordionContent
+                                active={false}
+                              >
+                                <TextArea
+                                  as="textarea"
+                                  defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                  onChange={[Function]}
+                                  rows={3}
+                                />
+                              </AccordionContent>
+                            </Accordion>
+                          </FormField>,
+                          <FormButton
+                            as={[Function]}
+                            control={[Function]}
+                            primary={true}
+                          >
+                            Save
+                          </FormButton>,
+                        ],
+                        "loading": false,
+                        "onSubmit": [Function],
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "function",
+                          "props": Object {
+                            "as": [Function],
+                            "control": [Function],
+                            "defaultValue": "Sparky",
+                            "inline": true,
+                            "label": "Name:",
+                            "onChange": [Function],
+                            "required": true,
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "function",
+                          "props": Object {
+                            "children": <Accordion>
+                              <AccordionTitle
+                                active={false}
+                                onClick={[Function]}
+                              >
+                                <Icon
+                                  as="i"
+                                  name="dropdown"
+                                />
+                                Advanced
+                              </AccordionTitle>
+                              <AccordionContent
+                                active={false}
+                              >
+                                <TextArea
+                                  as="textarea"
+                                  defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                  onChange={[Function]}
+                                  rows={3}
+                                />
+                              </AccordionContent>
+                            </Accordion>,
+                            "error": false,
+                          },
+                          "ref": null,
+                          "rendered": Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "function",
+                            "props": Object {
+                              "children": Array [
+                                <AccordionTitle
+                                  active={false}
+                                  onClick={[Function]}
+                                >
+                                  <Icon
+                                    as="i"
+                                    name="dropdown"
+                                  />
+                                  Advanced
+                                </AccordionTitle>,
+                                <AccordionContent
+                                  active={false}
+                                >
+                                  <TextArea
+                                    as="textarea"
+                                    defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                    onChange={[Function]}
+                                    rows={3}
+                                  />
+                                </AccordionContent>,
                               ],
-                              "onClick": [Function],
                             },
                             "ref": null,
                             "rendered": Array [
@@ -994,70 +1259,110 @@ ShallowWrapper {
                                 "key": undefined,
                                 "nodeType": "class",
                                 "props": Object {
-                                  "as": "i",
-                                  "name": "dropdown",
+                                  "active": false,
+                                  "children": Array [
+                                    <Icon
+                                      as="i"
+                                      name="dropdown"
+                                    />,
+                                    "Advanced",
+                                  ],
+                                  "onClick": [Function],
                                 },
                                 "ref": null,
-                                "rendered": null,
+                                "rendered": Array [
+                                  Object {
+                                    "instance": null,
+                                    "key": undefined,
+                                    "nodeType": "class",
+                                    "props": Object {
+                                      "as": "i",
+                                      "name": "dropdown",
+                                    },
+                                    "ref": null,
+                                    "rendered": null,
+                                    "type": [Function],
+                                  },
+                                  "Advanced",
+                                ],
                                 "type": [Function],
                               },
-                              "Advanced",
+                              Object {
+                                "instance": null,
+                                "key": undefined,
+                                "nodeType": "function",
+                                "props": Object {
+                                  "active": false,
+                                  "children": <TextArea
+                                    as="textarea"
+                                    defaultValue="{\\"left_eye_port\\":1,\\"right_eye_port\\":2}"
+                                    onChange={[Function]}
+                                    rows={3}
+                                  />,
+                                },
+                                "ref": null,
+                                "rendered": Object {
+                                  "instance": null,
+                                  "key": undefined,
+                                  "nodeType": "class",
+                                  "props": Object {
+                                    "as": "textarea",
+                                    "defaultValue": "{\\"left_eye_port\\":1,\\"right_eye_port\\":2}",
+                                    "onChange": [Function],
+                                    "rows": 3,
+                                  },
+                                  "ref": null,
+                                  "rendered": null,
+                                  "type": [Function],
+                                },
+                                "type": [Function],
+                              },
                             ],
                             "type": [Function],
                           },
-                          Object {
-                            "instance": null,
-                            "key": undefined,
-                            "nodeType": "function",
-                            "props": Object {
-                              "active": false,
-                              "children": <TextArea
-                                as="textarea"
-                                defaultValue=""
-                                onChange={[Function]}
-                                rows={3}
-                              />,
-                            },
-                            "ref": null,
-                            "rendered": Object {
-                              "instance": null,
-                              "key": undefined,
-                              "nodeType": "class",
-                              "props": Object {
-                                "as": "textarea",
-                                "defaultValue": "",
-                                "onChange": [Function],
-                                "rows": 3,
-                              },
-                              "ref": null,
-                              "rendered": null,
-                              "type": [Function],
-                            },
-                            "type": [Function],
+                          "type": [Function],
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "function",
+                          "props": Object {
+                            "as": [Function],
+                            "children": "Save",
+                            "control": [Function],
+                            "primary": true,
                           },
-                        ],
-                        "type": [Function],
-                      },
+                          "ref": null,
+                          "rendered": "Save",
+                          "type": [Function],
+                        },
+                      ],
                       "type": [Function],
                     },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "function",
-                      "props": Object {
-                        "as": [Function],
-                        "children": "Save",
-                        "control": [Function],
-                        "primary": true,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "rover": Object {
+                        "client_id": "1234",
+                        "client_secret": "5678",
+                        "config": Object {
+                          "left_eye_port": 1,
+                          "right_eye_port": 2,
+                        },
+                        "id": 1,
+                        "name": "Sparky",
                       },
-                      "ref": null,
-                      "rendered": "Save",
-                      "type": [Function],
                     },
-                  ],
-                  "type": [Function],
-                },
-                "type": [Function],
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": Symbol(react.fragment),
               },
             ],
             "type": [Function],
