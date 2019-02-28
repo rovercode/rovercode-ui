@@ -98,7 +98,7 @@ class RoverDetail extends Component {
   }
 
   render() {
-    const { rover } = this.props;
+    const { location, rover } = this.props;
     const {
       accordionActive,
       configError,
@@ -134,6 +134,16 @@ class RoverDetail extends Component {
                 <Grid.Row>
                   <Message positive>
                     Rover configuration saved
+                  </Message>
+                </Grid.Row>
+              ) : (null)
+            }
+            {
+              rover && location && location.state && location.state.created ? (
+                <Grid.Row>
+                  <Message icon info>
+                    <Icon name="arrow down" />
+                    {`Rover '${rover.name}' has been created. Click the button below to download the credentials.`}
                   </Message>
                 </Grid.Row>
               ) : (null)
@@ -183,6 +193,7 @@ class RoverDetail extends Component {
 }
 
 RoverDetail.defaultProps = {
+  location: null,
   rover: null,
 };
 
@@ -190,6 +201,11 @@ RoverDetail.propTypes = {
   editRover: PropTypes.func.isRequired,
   fetchRover: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      created: PropTypes.bool.isRequired,
+    }),
+  }),
   rover: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,

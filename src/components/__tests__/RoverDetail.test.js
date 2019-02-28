@@ -62,6 +62,37 @@ describe('The RoverDetail component', () => {
     expect(wrapper.find(Loader).exists()).toBe(true);
   });
 
+  test('displays created message', () => {
+    const rover = {
+      id: 1,
+      name: 'Sparky',
+      config: {
+        left_eye_port: 1,
+        right_eye_port: 2,
+      },
+      client_id: '1234',
+      client_secret: '5678',
+    };
+    const location = {
+      state: {
+        created: true,
+      },
+    };
+    const wrapper = shallow(
+      <RoverDetail
+        location={location}
+        rover={rover}
+        fetchRover={fetchRover}
+        editRover={editRover}
+        id={1}
+      />,
+    );
+
+    expect(wrapper.find(Message).exists()).toBe(true);
+    expect(wrapper.find(Message).prop('children')[1])
+      .toBe('Rover \'Sparky\' has been created. Click the button below to download the credentials.');
+  });
+
   test('shows the correct information the rover', async () => {
     const rover = {
       id: 1,

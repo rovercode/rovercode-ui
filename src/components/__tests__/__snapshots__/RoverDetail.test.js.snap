@@ -21,6 +21,7 @@ ShallowWrapper {
       }
     }
     id={1}
+    location={null}
     rover={
       Object {
         "client_id": "1234",
@@ -250,6 +251,7 @@ ShallowWrapper {
             "children": Array [
               null,
               null,
+              null,
               <React.Fragment>
                 <Segment
                   raised={true}
@@ -323,6 +325,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
+            null,
             null,
             null,
             Object {
@@ -915,6 +918,7 @@ ShallowWrapper {
               "children": Array [
                 null,
                 null,
+                null,
                 <React.Fragment>
                   <Segment
                     raised={true}
@@ -988,6 +992,7 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": Array [
+              null,
               null,
               null,
               Object {
