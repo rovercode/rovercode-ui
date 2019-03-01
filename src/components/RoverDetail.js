@@ -153,35 +153,39 @@ class RoverDetail extends Component {
                 <Loader active />
               ) : (
                 <Fragment>
-                  <Segment raised>
-                    <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
-                      <Form.Input
-                        inline
-                        label="Name:"
-                        defaultValue={rover.name}
-                        onChange={this.handleNameChange}
-                        required
-                      />
-                      <Form.Field error={configError}>
-                        <Accordion>
-                          <Accordion.Title active={accordionActive} onClick={this.handleClick}>
-                            <Icon name="dropdown" />
-                            Advanced
-                          </Accordion.Title>
-                          <Accordion.Content active={accordionActive}>
-                            <TextArea
-                              defaultValue={JSON.stringify(rover.config)}
-                              onChange={this.handleConfigChange}
-                            />
-                          </Accordion.Content>
-                        </Accordion>
-                      </Form.Field>
-                      <Form.Button primary>
-                        Save
-                      </Form.Button>
-                    </Form>
-                  </Segment>
-                  <Credential rover={rover} />
+                  <Grid.Row style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+                    <Credential rover={rover} />
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Segment raised>
+                      <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
+                        <Form.Input
+                          inline
+                          label="Name:"
+                          defaultValue={rover.name}
+                          onChange={this.handleNameChange}
+                          required
+                        />
+                        <Form.Field error={configError}>
+                          <Accordion>
+                            <Accordion.Title active={accordionActive} onClick={this.handleClick}>
+                              <Icon name="dropdown" />
+                              Advanced
+                            </Accordion.Title>
+                            <Accordion.Content active={accordionActive}>
+                              <TextArea
+                                defaultValue={JSON.stringify(rover.config)}
+                                onChange={this.handleConfigChange}
+                              />
+                            </Accordion.Content>
+                          </Accordion>
+                        </Form.Field>
+                        <Form.Button primary>
+                          Save
+                        </Form.Button>
+                      </Form>
+                    </Segment>
+                  </Grid.Row>
                 </Fragment>
               )
             }
