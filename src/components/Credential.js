@@ -65,6 +65,10 @@ class Credential extends Component {
           Enter WiFi Credentials
         </Modal.Header>
         <Modal.Content>
+          <p>
+            The credentials entered are only used for the configuration file for the rover.
+            This information does not leave the local browser and is not sent to the server.
+          </p>
           <Form id="apForm" onSubmit={this.downloadCredentials}>
             <Form.Input placeholder="Access point name" onChange={this.handleNameChange} required />
             <Form.Input type="password" placeholder="Access point password" onChange={this.handlePasswordChange} required />
