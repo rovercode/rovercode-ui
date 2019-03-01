@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   Accordion,
   Form,
   Grid,
   Header,
   Icon,
+  Loader,
   Message,
   Segment,
   TextArea,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+
+import Credential from './Credential';
 
 class RoverDetail extends Component {
   constructor(props) {
@@ -95,7 +98,7 @@ class RoverDetail extends Component {
   }
 
   render() {
-    const { rover } = this.props;
+    const { location, rover } = this.props;
     const {
       accordionActive,
       configError,
@@ -135,25 +138,57 @@ class RoverDetail extends Component {
                 </Grid.Row>
               ) : (null)
             }
-            <Segment raised>
-              <Form key={rover ? rover.id : 0} loading={!rover} onSubmit={this.saveRover}>
-                <Form.Input inline label="Name:" defaultValue={rover ? rover.name : ''} onChange={this.handleNameChange} required />
-                <Form.Field error={configError}>
-                  <Accordion>
-                    <Accordion.Title active={accordionActive} onClick={this.handleClick}>
-                      <Icon name="dropdown" />
-                      Advanced
-                    </Accordion.Title>
-                    <Accordion.Content active={accordionActive}>
-                      <TextArea defaultValue={rover ? JSON.stringify(rover.config) : ''} onChange={this.handleConfigChange} />
-                    </Accordion.Content>
-                  </Accordion>
-                </Form.Field>
-                <Form.Button primary>
-                  Save
-                </Form.Button>
-              </Form>
-            </Segment>
+            {
+              rover && location && location.state && location.state.created ? (
+                <Grid.Row>
+                  <Message icon info>
+                    <Icon name="arrow down" />
+                    {`Rover '${rover.name}' has been created. Click the button below to download the credentials.`}
+                  </Message>
+                </Grid.Row>
+              ) : (null)
+            }
+            {
+              rover === null ? (
+                <Loader active />
+              ) : (
+                <Fragment>
+                  <Grid.Row style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+                    <Credential rover={rover} />
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Segment raised>
+                      <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
+                        <Form.Input
+                          inline
+                          label="Name:"
+                          defaultValue={rover.name}
+                          onChange={this.handleNameChange}
+                          required
+                        />
+                        <Form.Field error={configError}>
+                          <Accordion>
+                            <Accordion.Title active={accordionActive} onClick={this.handleClick}>
+                              <Icon name="dropdown" />
+                              Advanced
+                            </Accordion.Title>
+                            <Accordion.Content active={accordionActive}>
+                              <TextArea
+                                defaultValue={JSON.stringify(rover.config)}
+                                onChange={this.handleConfigChange}
+                              />
+                            </Accordion.Content>
+                          </Accordion>
+                        </Form.Field>
+                        <Form.Button primary>
+                          Save
+                        </Form.Button>
+                      </Form>
+                    </Segment>
+                  </Grid.Row>
+                </Fragment>
+              )
+            }
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -162,6 +197,7 @@ class RoverDetail extends Component {
 }
 
 RoverDetail.defaultProps = {
+  location: null,
   rover: null,
 };
 
@@ -169,6 +205,11 @@ RoverDetail.propTypes = {
   editRover: PropTypes.func.isRequired,
   fetchRover: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      created: PropTypes.bool.isRequired,
+    }),
+  }),
   rover: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,

@@ -136,7 +136,12 @@ describe('The RoverList component', () => {
     wrapper.update();
 
     expect(wrapper.find(Redirect).exists()).toBe(true);
-    expect(wrapper.find(Redirect).prop('to')).toBe('/rovers/1');
+    expect(wrapper.find(Redirect).prop('to')).toEqual({
+      pathname: '/rovers/1',
+      state: {
+        created: true,
+      },
+    });
     expect(fetchRovers).toHaveBeenCalledTimes(1);
     expect(createRover).toHaveBeenCalledWith({
       name: 'Rovey',

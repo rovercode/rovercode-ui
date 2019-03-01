@@ -69,6 +69,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "brace": "0.11.1",
+    "js-file-download": "0.4.4",
     "js-interpreter": "1.4.6",
     "jwt-decode": "2.2.0",
     "moment": "2.24.0",

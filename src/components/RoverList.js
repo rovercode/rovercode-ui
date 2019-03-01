@@ -94,7 +94,11 @@ class RoverList extends Component {
       <Fragment>
         {
           newRoverId ? (
-            <Redirect to={`/rovers/${newRoverId}`} />
+            <Redirect to={{
+              pathname: `/rovers/${newRoverId}`,
+              state: { created: true },
+            }}
+            />
           ) : (null)
         }
         <Modal trigger={this.modalButton()} open={newRoverOpen} onClose={this.handleNewRoverClose}>
