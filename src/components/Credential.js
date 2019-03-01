@@ -70,8 +70,8 @@ class Credential extends Component {
             This information does not leave the local browser and is not sent to the server.
           </p>
           <Form id="apForm" onSubmit={this.downloadCredentials}>
-            <Form.Input placeholder="Access point name" onChange={this.handleNameChange} required />
-            <Form.Input type="password" placeholder="Access point password" onChange={this.handlePasswordChange} required />
+            <Form.Input inline label="Network Name:" onChange={this.handleNameChange} required />
+            <Form.Input inline label="Network Password:" type="password" onChange={this.handlePasswordChange} required />
           </Form>
         </Modal.Content>
         <Modal.Actions>
