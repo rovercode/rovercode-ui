@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
@@ -54,6 +55,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      SENTRY_DSN: JSON.stringify(process.env.FRONTEND_SENTRY_DSN),
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',

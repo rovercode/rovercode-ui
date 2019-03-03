@@ -9,6 +9,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
+import * as Sentry from '@sentry/browser';
 import rootReducer from './reducers/index';
 import AuthApi from './utils/auth-api';
 
@@ -20,6 +21,10 @@ import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 import ProtectedRoute from './components/ProtectedRoute';
+
+Sentry.init({
+  dsn: SENTRY_DSN, // eslint-disable-line no-undef
+});
 
 /* eslint-disable-next-line no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -5,7 +5,16 @@ script:
   - yarn test
   - yarn lint
 before_deploy:
-  - yarn build
+  - |
+    if [ "$TRAVIS_BRANCH" = "alpha" ]; then
+      eval export FRONTEND_SENTRY_DSN=https://88d114444d43458398b75b825909c30e@sentry.io/1406271
+    elif [ "$TRAVIS_BRANCH" = "beta" ]; then
+      eval export FRONTEND_SENTRY_DSN=https://a82f31ed5aa14c6f835de8e5ba8ef3fa@sentry.io/1406272
+    else
+      eval export FRONTEND_SENTRY_DSN=https://8ccf4910438348d494a8592312a4afdf@sentry.io/1406255
+    fi
+    yarn build
+
 deploy:
   - provider: s3
     access_key_id: AKIAIIORSR4VN3YQY2YQ
