@@ -1,4 +1,4 @@
-[![Chat](https://img.shields.io/badge/chat-developer-brightgreen.svg?style=flat)](https://rovercode.zulip.com)
+[![Chat](https://img.shields.io/badge/chat-developer-brightgreen.svg?style=flat)](https://rovercode.zulipchat.com)
 [![Zenhub Board](https://img.shields.io/badge/board-zenhub-purple.svg?style=flat)](https://app.zenhub.com/workspaces/rovercode-development-5c7e819df524621425116d03/boards)
 
 Rovercode User Interface
