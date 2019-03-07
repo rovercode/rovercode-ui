@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -66,7 +66,7 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'app.css',
     }),
-    new FaviconsWebpackPlugin({
+    new WebappWebpackPlugin({
       logo: './src/assets/images/favicon.png',
       persistentCache: false,
       icons: {
