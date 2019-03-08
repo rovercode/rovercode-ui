@@ -20,6 +20,7 @@ import RoverDetail from './containers/RoverDetail';
 import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
+import UserSetting from './containers/UserSetting';
 import ProtectedRoute from './components/ProtectedRoute';
 
 Sentry.init({
@@ -56,6 +57,7 @@ render(
           <ProtectedRoute exact path="/rovers" component={RoverList} />
           <ProtectedRoute exact path="/rovers/:id(\d+)" component={RoverDetail} />
           <ProtectedRoute exact path="/mission-control" component={MissionControl} />
+          <ProtectedRoute exact path="/user/settings" component={UserSetting} />
           <Route component={NotFound} />
         </Switch>
       </CookiesProvider>

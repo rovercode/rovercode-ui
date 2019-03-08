@@ -52,7 +52,7 @@ class TopNav extends Component {
           <Menu.Menu position="right">
             <Dropdown item text={userName}>
               <Dropdown.Menu>
-                <Dropdown.Item as={Link} to="/accounts/settings">
+                <Dropdown.Item as={Link} to="/user/settings">
                   Settings
                 </Dropdown.Item>
                 <Dropdown.Divider />

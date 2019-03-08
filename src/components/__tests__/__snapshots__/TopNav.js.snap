@@ -89,7 +89,7 @@ ShallowWrapper {
               <DropdownMenu>
                 <DropdownItem
                   as={[Function]}
-                  to="/accounts/settings"
+                  to="/user/settings"
                 >
                   Settings
                 </DropdownItem>
@@ -161,7 +161,7 @@ ShallowWrapper {
                 <DropdownMenu>
                   <DropdownItem
                     as={[Function]}
-                    to="/accounts/settings"
+                    to="/user/settings"
                   >
                     Settings
                   </DropdownItem>
@@ -263,7 +263,7 @@ ShallowWrapper {
                 <DropdownMenu>
                   <DropdownItem
                     as={[Function]}
-                    to="/accounts/settings"
+                    to="/user/settings"
                   >
                     Settings
                   </DropdownItem>
@@ -289,7 +289,7 @@ ShallowWrapper {
                 "children": <DropdownMenu>
                   <DropdownItem
                     as={[Function]}
-                    to="/accounts/settings"
+                    to="/user/settings"
                   >
                     Settings
                   </DropdownItem>
@@ -324,7 +324,7 @@ ShallowWrapper {
                   "children": Array [
                     <DropdownItem
                       as={[Function]}
-                      to="/accounts/settings"
+                      to="/user/settings"
                     >
                       Settings
                     </DropdownItem>,
@@ -346,7 +346,7 @@ ShallowWrapper {
                     "props": Object {
                       "as": [Function],
                       "children": "Settings",
-                      "to": "/accounts/settings",
+                      "to": "/user/settings",
                     },
                     "ref": null,
                     "rendered": "Settings",
@@ -445,7 +445,7 @@ ShallowWrapper {
                 <DropdownMenu>
                   <DropdownItem
                     as={[Function]}
-                    to="/accounts/settings"
+                    to="/user/settings"
                   >
                     Settings
                   </DropdownItem>
@@ -517,7 +517,7 @@ ShallowWrapper {
                   <DropdownMenu>
                     <DropdownItem
                       as={[Function]}
-                      to="/accounts/settings"
+                      to="/user/settings"
                     >
                       Settings
                     </DropdownItem>
@@ -619,7 +619,7 @@ ShallowWrapper {
                   <DropdownMenu>
                     <DropdownItem
                       as={[Function]}
-                      to="/accounts/settings"
+                      to="/user/settings"
                     >
                       Settings
                     </DropdownItem>
@@ -645,7 +645,7 @@ ShallowWrapper {
                   "children": <DropdownMenu>
                     <DropdownItem
                       as={[Function]}
-                      to="/accounts/settings"
+                      to="/user/settings"
                     >
                       Settings
                     </DropdownItem>
@@ -680,7 +680,7 @@ ShallowWrapper {
                     "children": Array [
                       <DropdownItem
                         as={[Function]}
-                        to="/accounts/settings"
+                        to="/user/settings"
                       >
                         Settings
                       </DropdownItem>,
@@ -702,7 +702,7 @@ ShallowWrapper {
                       "props": Object {
                         "as": [Function],
                         "children": "Settings",
-                        "to": "/accounts/settings",
+                        "to": "/user/settings",
                       },
                       "ref": null,
                       "rendered": "Settings",
