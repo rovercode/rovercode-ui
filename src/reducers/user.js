@@ -14,6 +14,7 @@ export default function user(
     username: null,
     email: null,
     exp: null,
+    isSocial: false,
     isEditingUsername: false,
     isEditingPassword: false,
     editUsernameError: null,
@@ -29,6 +30,7 @@ export default function user(
         username: action.payload.username,
         email: action.payload.email,
         exp: action.payload.exp,
+        isSocial: action.payload.isSocial,
       };
     case EDIT_USER_USERNAME:
       return {

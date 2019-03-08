@@ -16,6 +16,7 @@ describe('The user reducer', () => {
       username: 'testuser',
       email: 'testuser@example.com',
       exp: 1540178211,
+      isSocial: false,
     };
     expect(
       reducer({}, {
@@ -27,6 +28,7 @@ describe('The user reducer', () => {
       username: user.username,
       email: user.email,
       exp: user.exp,
+      isSocial: user.isSocial,
     });
   });
 
@@ -40,6 +42,7 @@ describe('The user reducer', () => {
       username: null,
       email: null,
       exp: null,
+      isSocial: false,
       isEditingUsername: true,
       isEditingPassword: false,
       editUsernameError: null,
@@ -88,6 +91,7 @@ describe('The user reducer', () => {
       username: null,
       email: null,
       exp: null,
+      isSocial: false,
       isEditingUsername: false,
       isEditingPassword: true,
       editUsernameError: null,
