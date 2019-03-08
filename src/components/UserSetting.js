@@ -15,8 +15,10 @@ class UserSetting extends Component {
   constructor(props) {
     super(props);
 
+    const { user } = props;
+
     this.state = {
-      username: null,
+      username: user.username,
       password1: null,
       password2: null,
       saveSuccess: false,
