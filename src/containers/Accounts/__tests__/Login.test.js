@@ -121,7 +121,7 @@ test('Login redirects to root after basic login success', async () => {
 
   expect(cookies.get('auth_jwt')).toBe(token);
   expect(wrapper.find(Redirect).exists()).toBe(true);
-  expect(store.dispatch).toHaveBeenCalledWith(updateUser(jwtDecode(token)));
+  expect(store.dispatch).toHaveBeenCalledWith(updateUser({ ...jwtDecode(token), isSocial: false }));
   expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
 
   cookies.remove('auth_jwt');

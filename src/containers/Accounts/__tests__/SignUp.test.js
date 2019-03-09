@@ -113,7 +113,7 @@ test('SignUp redirects to root after success', async () => {
   expect(cookies.get('auth_jwt')).toBe(token);
   expect(wrapper.find(Redirect).exists()).toBe(true);
   expect(wrapper.find(Redirect).prop('to')).toBe('/');
-  expect(store.dispatch).toHaveBeenCalledWith(updateUser(jwtDecode(token)));
+  expect(store.dispatch).toHaveBeenCalledWith(updateUser({ ...jwtDecode(token), isSocial: false }));
 
   cookies.remove('auth_jwt');
 });
