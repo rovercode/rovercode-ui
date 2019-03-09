@@ -17,7 +17,7 @@ import axios from 'axios';
 import { updateUser as actionUpdateUser } from '@/actions/user';
 
 const mapDispatchToProps = dispatch => ({
-  updateUser: data => dispatch(actionUpdateUser(data)),
+  updateUser: data => dispatch(actionUpdateUser({ ...data, isSocial: false })),
 });
 
 class SignUp extends Component {
