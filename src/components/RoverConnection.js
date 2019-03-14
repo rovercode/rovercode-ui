@@ -62,7 +62,8 @@ class RoverConnection extends Component {
     const { online } = this.state;
 
     const wsProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const wsUrl = `${wsProtocol}://${window.location.hostname}/ws/realtime/${clientId}`;
+    const wsPort = window.location.protocol === 'https:' ? '443' : '8000';
+    const wsUrl = `${wsProtocol}://${window.location.hostname}:${wsPort}/ws/realtime/${clientId}/`;
 
     return (
       <Fragment>
