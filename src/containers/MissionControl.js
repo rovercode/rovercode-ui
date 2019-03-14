@@ -7,6 +7,8 @@ import {
 } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
 
+import RoverConnectionList from '@/containers/RoverConnectionList';
+
 import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
@@ -26,6 +28,15 @@ const MissionControl = () => (
         <Grid.Row>
           <Segment basic compact>
             <ProgramName />
+          </Segment>
+        </Grid.Row>
+        <Divider />
+        <Grid.Row>
+          <Header as="h2" textAlign="center">
+            Rovers
+          </Header>
+          <Segment raised style={{ overflow: 'auto', maxHeight: 200, margin: '10px' }}>
+            <RoverConnectionList />
           </Segment>
         </Grid.Row>
         <Divider />
