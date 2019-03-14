@@ -6,7 +6,6 @@ import {
   Form,
   Header,
   Icon,
-  Label,
   Loader,
   Modal,
   Segment,
@@ -132,23 +131,9 @@ class RoverList extends Component {
                     rovers.map(rover => (
                       <Card key={rover.id}>
                         <Card.Content>
-                          <Label corner="right" style={{ borderColor: 'white' }}>
-                            {
-                              rover.connected ? (
-                                <Icon name="circle" color="green" />
-                              ) : (
-                                <Icon name="circle" color="red" />
-                              )
-                            }
-                          </Label>
                           <Card.Header>
                             {rover.name}
                           </Card.Header>
-                          <Card.Meta>
-                            {
-                              rover.connected ? 'Connected' : 'Not connected'
-                            }
-                          </Card.Meta>
                         </Card.Content>
                         <Card.Content extra>
                           <Button primary as={Link} to={`/rovers/${rover.id}`}>
@@ -197,7 +182,6 @@ RoverList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      connected: PropTypes.bool.isRequired,
     }),
   ),
 };
