@@ -18,6 +18,7 @@ export const REMOVE_ROVER_REJECTED = `${REMOVE_ROVER}_REJECTED`;
 export const CREATE_ROVER = 'CREATE_ROVER';
 export const CREATE_ROVER_FULFILLED = `${CREATE_ROVER}_FULFILLED`;
 export const CREATE_ROVER_REJECTED = `${CREATE_ROVER}_REJECTED`;
+export const CHANGE_ACTIVE_ROVER = 'CHANGE_ACTIVE_ROVER';
 
 // action creators
 export const fetchRovers = xhrOptions => ({
@@ -58,4 +59,9 @@ export const createRover = (settings, xhrOptions) => ({
     .then(({ data }) => (
       data
     )),
+});
+
+export const changeActiveRover = clientId => ({
+  type: CHANGE_ACTIVE_ROVER,
+  payload: clientId,
 });

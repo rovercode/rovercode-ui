@@ -1,6 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import {
+  changeActiveRover,
   createRover,
   editRover,
   fetchRover,
@@ -103,5 +104,13 @@ describe('Rover actions', () => {
 
     expect(type).toEqual('CREATE_ROVER');
     mock.restore();
+  });
+
+  test('change active rover', () => {
+    const action = changeActiveRover('1234');
+    const { type, payload } = action;
+
+    expect(type).toEqual('CHANGE_ACTIVE_ROVER');
+    expect(payload).toEqual('1234');
   });
 });
