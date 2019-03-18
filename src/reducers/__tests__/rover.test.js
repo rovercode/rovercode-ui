@@ -1,5 +1,6 @@
 import reducer from '../rover';
 import {
+  CHANGE_ACTIVE_ROVER,
   CREATE_ROVER,
   CREATE_ROVER_FULFILLED,
   CREATE_ROVER_REJECTED,
@@ -32,6 +33,7 @@ describe('The rover reducer', () => {
       error: null,
       rovers: null,
       rover: null,
+      activeRover: null,
     });
 
     const rovers = [];
@@ -72,6 +74,7 @@ describe('The rover reducer', () => {
       error: null,
       rovers: null,
       rover: null,
+      activeRover: null,
     });
 
     const rover = {
@@ -114,6 +117,7 @@ describe('The rover reducer', () => {
       error: null,
       rovers: null,
       rover: null,
+      activeRover: null,
     });
 
     const rover = {
@@ -155,6 +159,7 @@ describe('The rover reducer', () => {
       error: null,
       rovers: null,
       rover: null,
+      activeRover: null,
     });
 
     expect(
@@ -198,6 +203,7 @@ describe('The rover reducer', () => {
       error: null,
       rovers: null,
       rover: null,
+      activeRover: null,
     });
 
     const rover = {
@@ -229,6 +235,18 @@ describe('The rover reducer', () => {
     ).toEqual({
       error,
       isCreating: false,
+    });
+  });
+
+  test('should handle CHANGE_ACTIVE_ROVER', () => {
+    const activeRover = '1234';
+    expect(
+      reducer({}, {
+        type: CHANGE_ACTIVE_ROVER,
+        payload: activeRover,
+      }),
+    ).toEqual({
+      activeRover,
     });
   });
 });

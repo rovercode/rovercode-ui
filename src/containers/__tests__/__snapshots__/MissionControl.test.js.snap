@@ -4,12 +4,26 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
 <MissionControl
   store={
     Object {
-      "clearActions": [Function],
-      "dispatch": [MockFunction],
-      "getActions": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "payload": Promise {},
+              "type": "FETCH_ROVERS",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+        ],
+      },
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
+      Symbol(observable): [Function],
     }
   }
 >
@@ -63,6 +77,99 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                       <Component>
                         <div />
                       </Component>
+                    </div>
+                  </Segment>
+                </div>
+              </GridRow>
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Header
+                    as="h2"
+                    textAlign="center"
+                  >
+                    <h2
+                      className="ui center aligned header"
+                    >
+                      Rovers
+                    </h2>
+                  </Header>
+                  <Segment
+                    raised={true}
+                    style={
+                      Object {
+                        "margin": "10px",
+                        "maxHeight": 200,
+                        "overflow": "auto",
+                      }
+                    }
+                  >
+                    <div
+                      className="ui raised segment"
+                      style={
+                        Object {
+                          "margin": "10px",
+                          "maxHeight": 200,
+                          "overflow": "auto",
+                        }
+                      }
+                    >
+                      <withCookies(Component)>
+                        <Connect(RoverConnectionList)
+                          allCookies={Object {}}
+                          cookies={
+                            Cookies {
+                              "HAS_DOCUMENT_COOKIE": true,
+                              "changeListeners": Array [
+                                [Function],
+                              ],
+                              "cookies": Object {},
+                              "hooks": undefined,
+                            }
+                          }
+                        >
+                          <RoverConnectionList
+                            activeRover={null}
+                            allCookies={Object {}}
+                            changeActiveRover={[Function]}
+                            changeLeftSensorState={[Function]}
+                            changeRightSensorState={[Function]}
+                            cookies={
+                              Cookies {
+                                "HAS_DOCUMENT_COOKIE": true,
+                                "changeListeners": Array [
+                                  [Function],
+                                ],
+                                "cookies": Object {},
+                                "hooks": undefined,
+                              }
+                            }
+                            error={null}
+                            fetchRovers={[Function]}
+                            isCreating={false}
+                            isEditing={false}
+                            isFetching={false}
+                            isFetchingSingle={false}
+                            isRemoving={false}
+                            rover={null}
+                            rovers={null}
+                          >
+                            <Loader
+                              active={true}
+                            >
+                              <div
+                                className="ui active loader"
+                              />
+                            </Loader>
+                          </RoverConnectionList>
+                        </Connect(RoverConnectionList)>
+                      </withCookies(Component)>
                     </div>
                   </Segment>
                 </div>

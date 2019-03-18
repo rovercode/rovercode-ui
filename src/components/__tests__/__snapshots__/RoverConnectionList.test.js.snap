@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The RoverList component renders on the page with no errors 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RoverConnectionList
+    activeRover={null}
+    changeActiveRover={[MockFunction]}
+    changeLeftSensorState={[MockFunction]}
+    changeRightSensorState={[MockFunction]}
+    fetchRovers={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+        ],
+      }
+    }
+    rovers={
+      Array [
+        Object {
+          "client_id": "1234",
+          "id": 1,
+          "name": "Sparky",
+        },
+        Object {
+          "client_id": "5678",
+          "id": 2,
+          "name": "Marvin",
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <CardGroup
+        style={
+          Object {
+            "margin": "10px",
+          }
+        }
+      >
+        <RoverConnection
+          changeActiveRover={[MockFunction]}
+          changeLeftSensorState={[MockFunction]}
+          changeRightSensorState={[MockFunction]}
+          clientId="1234"
+          isActive={false}
+          name="Sparky"
+        />
+        <RoverConnection
+          changeActiveRover={[MockFunction]}
+          changeLeftSensorState={[MockFunction]}
+          changeRightSensorState={[MockFunction]}
+          clientId="5678"
+          isActive={false}
+          name="Marvin"
+        />
+      </CardGroup>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          null,
+          Array [
+            <RoverConnection
+              changeActiveRover={[MockFunction]}
+              changeLeftSensorState={[MockFunction]}
+              changeRightSensorState={[MockFunction]}
+              clientId="1234"
+              isActive={false}
+              name="Sparky"
+            />,
+            <RoverConnection
+              changeActiveRover={[MockFunction]}
+              changeLeftSensorState={[MockFunction]}
+              changeRightSensorState={[MockFunction]}
+              clientId="5678"
+              isActive={false}
+              name="Marvin"
+            />,
+          ],
+        ],
+        "style": Object {
+          "margin": "10px",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        null,
+        Object {
+          "instance": null,
+          "key": "1",
+          "nodeType": "class",
+          "props": Object {
+            "changeActiveRover": [MockFunction],
+            "changeLeftSensorState": [MockFunction],
+            "changeRightSensorState": [MockFunction],
+            "clientId": "1234",
+            "isActive": false,
+            "name": "Sparky",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "2",
+          "nodeType": "class",
+          "props": Object {
+            "changeActiveRover": [MockFunction],
+            "changeLeftSensorState": [MockFunction],
+            "changeRightSensorState": [MockFunction],
+            "clientId": "5678",
+            "isActive": false,
+            "name": "Marvin",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <CardGroup
+          style={
+            Object {
+              "margin": "10px",
+            }
+          }
+        >
+          <RoverConnection
+            changeActiveRover={[MockFunction]}
+            changeLeftSensorState={[MockFunction]}
+            changeRightSensorState={[MockFunction]}
+            clientId="1234"
+            isActive={false}
+            name="Sparky"
+          />
+          <RoverConnection
+            changeActiveRover={[MockFunction]}
+            changeLeftSensorState={[MockFunction]}
+            changeRightSensorState={[MockFunction]}
+            clientId="5678"
+            isActive={false}
+            name="Marvin"
+          />
+        </CardGroup>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            null,
+            Array [
+              <RoverConnection
+                changeActiveRover={[MockFunction]}
+                changeLeftSensorState={[MockFunction]}
+                changeRightSensorState={[MockFunction]}
+                clientId="1234"
+                isActive={false}
+                name="Sparky"
+              />,
+              <RoverConnection
+                changeActiveRover={[MockFunction]}
+                changeLeftSensorState={[MockFunction]}
+                changeRightSensorState={[MockFunction]}
+                clientId="5678"
+                isActive={false}
+                name="Marvin"
+              />,
+            ],
+          ],
+          "style": Object {
+            "margin": "10px",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          null,
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "class",
+            "props": Object {
+              "changeActiveRover": [MockFunction],
+              "changeLeftSensorState": [MockFunction],
+              "changeRightSensorState": [MockFunction],
+              "clientId": "1234",
+              "isActive": false,
+              "name": "Sparky",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "class",
+            "props": Object {
+              "changeActiveRover": [MockFunction],
+              "changeLeftSensorState": [MockFunction],
+              "changeRightSensorState": [MockFunction],
+              "clientId": "5678",
+              "isActive": false,
+              "name": "Marvin",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
