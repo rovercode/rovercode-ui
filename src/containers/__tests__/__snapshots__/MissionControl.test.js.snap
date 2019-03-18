@@ -140,6 +140,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                             changeActiveRover={[Function]}
                             changeLeftSensorState={[Function]}
                             changeRightSensorState={[Function]}
+                            commands={Array []}
                             cookies={
                               Cookies {
                                 "HAS_DOCUMENT_COOKIE": true,
@@ -157,6 +158,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                             isFetching={false}
                             isFetchingSingle={false}
                             isRemoving={false}
+                            popCommand={[Function]}
                             rover={null}
                             rovers={null}
                           >

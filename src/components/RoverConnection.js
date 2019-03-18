@@ -19,6 +19,11 @@ class RoverConnection extends Component {
 
   componentDidMount() {
     this.startHeartbeatTimer();
+    this.sendCommand();
+  }
+
+  componentDidUpdate() {
+    this.sendCommand();
   }
 
   startHeartbeatTimer = () => {
@@ -60,6 +65,15 @@ class RoverConnection extends Component {
     }
   }
 
+  sendCommand = () => {
+    const { commands, isActive, popCommand } = this.props;
+
+    if (commands.length && isActive) {
+      this.wsRef.sendMessage(commands[0]);
+      popCommand();
+    }
+  }
+
   render() {
     const { clientId, isActive, name } = this.props;
     const { online } = this.state;
@@ -89,11 +103,19 @@ class RoverConnection extends Component {
             </Card.Meta>
           </Card.Content>
         </Card>
-        <Websocket url={wsUrl} onMessage={this.onMessage} />
+        <Websocket
+          url={wsUrl}
+          onMessage={this.onMessage}
+          ref={(ws) => { this.wsRef = ws; }}
+        />
       </Fragment>
     );
   }
 }
+
+RoverConnection.defaultProps = {
+  commands: [],
+};
 
 RoverConnection.propTypes = {
   isActive: PropTypes.bool.isRequired,
@@ -102,6 +124,8 @@ RoverConnection.propTypes = {
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
   changeActiveRover: PropTypes.func.isRequired,
+  popCommand: PropTypes.func.isRequired,
+  commands: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default hot(module)(RoverConnection);

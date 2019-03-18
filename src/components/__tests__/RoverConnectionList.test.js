@@ -8,6 +8,8 @@ import RoverConnectionList from '../RoverConnectionList';
 let changeActiveRover;
 let changeLeftSensorState;
 let changeRightSensorState;
+let commands;
+let popCommand;
 let fetchRovers;
 
 describe('The RoverList component', () => {
@@ -15,6 +17,8 @@ describe('The RoverList component', () => {
     changeActiveRover = jest.fn();
     changeLeftSensorState = jest.fn();
     changeRightSensorState = jest.fn();
+    commands = [];
+    popCommand = jest.fn();
     fetchRovers = jest.fn(() => Promise.resolve({}));
   });
 
@@ -33,8 +37,10 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         fetchRovers={fetchRovers}
         rovers={rovers}
+        commands={commands}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -47,7 +53,9 @@ describe('The RoverList component', () => {
           changeActiveRover={changeActiveRover}
           changeLeftSensorState={changeLeftSensorState}
           changeRightSensorState={changeRightSensorState}
+          popCommand={popCommand}
           fetchRovers={fetchRovers}
+          commands={commands}
         />
       </MemoryRouter>,
     );
@@ -60,7 +68,9 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         fetchRovers={fetchRovers}
+        commands={commands}
       />,
     );
     expect(wrapper.find(Card).exists()).toBe(false);
@@ -83,8 +93,10 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         fetchRovers={fetchRovers}
         rovers={rovers}
+        commands={commands}
       />,
     );
     await wrapper.instance().componentDidMount();

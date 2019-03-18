@@ -18,6 +18,8 @@ class RoverConnectionList extends Component {
       changeActiveRover,
       changeLeftSensorState,
       changeRightSensorState,
+      commands,
+      popCommand,
       rovers,
     } = this.props;
 
@@ -51,6 +53,8 @@ class RoverConnectionList extends Component {
                     changeLeftSensorState={changeLeftSensorState}
                     changeRightSensorState={changeRightSensorState}
                     changeActiveRover={changeActiveRover}
+                    popCommand={popCommand}
+                    commands={commands}
                     isActive
                   />
                 ) : (null)
@@ -64,6 +68,7 @@ class RoverConnectionList extends Component {
                     changeLeftSensorState={changeLeftSensorState}
                     changeRightSensorState={changeRightSensorState}
                     changeActiveRover={changeActiveRover}
+                    popCommand={popCommand}
                     isActive={false}
                   />
                 ))
@@ -96,6 +101,8 @@ RoverConnectionList.propTypes = {
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
   changeActiveRover: PropTypes.func.isRequired,
+  popCommand: PropTypes.func.isRequired,
+  commands: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default hot(module)(RoverConnectionList);
