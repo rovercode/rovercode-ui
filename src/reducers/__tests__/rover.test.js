@@ -13,6 +13,8 @@ import {
   FETCH_ROVERS,
   FETCH_ROVERS_FULFILLED,
   FETCH_ROVERS_REJECTED,
+  POP_COMMAND,
+  PUSH_COMMAND,
   REMOVE_ROVER,
   REMOVE_ROVER_FULFILLED,
   REMOVE_ROVER_REJECTED,
@@ -34,6 +36,7 @@ describe('The rover reducer', () => {
       rovers: null,
       rover: null,
       activeRover: null,
+      commands: [],
     });
 
     const rovers = [];
@@ -75,6 +78,7 @@ describe('The rover reducer', () => {
       rovers: null,
       rover: null,
       activeRover: null,
+      commands: [],
     });
 
     const rover = {
@@ -118,6 +122,7 @@ describe('The rover reducer', () => {
       rovers: null,
       rover: null,
       activeRover: null,
+      commands: [],
     });
 
     const rover = {
@@ -160,6 +165,7 @@ describe('The rover reducer', () => {
       rovers: null,
       rover: null,
       activeRover: null,
+      commands: [],
     });
 
     expect(
@@ -204,6 +210,7 @@ describe('The rover reducer', () => {
       rovers: null,
       rover: null,
       activeRover: null,
+      commands: [],
     });
 
     const rover = {
@@ -247,6 +254,82 @@ describe('The rover reducer', () => {
       }),
     ).toEqual({
       activeRover,
+    });
+  });
+
+  test('should handle PUSH_COMMAND', () => {
+    const initialState = {
+      commands: [
+        'command1',
+        'command2',
+      ],
+    };
+    expect(
+      reducer(undefined, {
+        type: PUSH_COMMAND,
+        payload: 'command3',
+      }),
+    ).toEqual({
+      isEditing: false,
+      isFetching: false,
+      isFetchingSingle: false,
+      isRemoving: false,
+      isCreating: false,
+      error: null,
+      rovers: null,
+      rover: null,
+      activeRover: null,
+      commands: [
+        'command3',
+      ],
+    });
+    expect(
+      reducer(initialState, {
+        type: PUSH_COMMAND,
+        payload: 'command3',
+      }),
+    ).toEqual({
+      commands: [
+        'command1',
+        'command2',
+        'command3',
+      ],
+    });
+  });
+
+  test('should handle POP_COMMAND', () => {
+    const initialState = {
+      commands: [
+        'command1',
+        'command2',
+        'command3',
+      ],
+    };
+    expect(
+      reducer(undefined, {
+        type: POP_COMMAND,
+      }),
+    ).toEqual({
+      isEditing: false,
+      isFetching: false,
+      isFetchingSingle: false,
+      isRemoving: false,
+      isCreating: false,
+      error: null,
+      rovers: null,
+      rover: null,
+      activeRover: null,
+      commands: [],
+    });
+    expect(
+      reducer(initialState, {
+        type: POP_COMMAND,
+      }),
+    ).toEqual({
+      commands: [
+        'command2',
+        'command3',
+      ],
     });
   });
 });
