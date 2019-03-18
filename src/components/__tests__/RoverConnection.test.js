@@ -174,6 +174,54 @@ describe('The RoverList component', () => {
     expect(changeRightSensorState.mock.calls[1][0]).toBe(NOT_COVERED);
   });
 
+  test('ignores sensor sensor state on message with inactive', () => {
+    const wrapper = shallow(
+      <RoverConnection
+        changeActiveRover={changeActiveRover}
+        changeLeftSensorState={changeLeftSensorState}
+        changeRightSensorState={changeRightSensorState}
+        clientId="1234"
+        name="Sparky"
+        isActive={false}
+      />,
+    );
+
+    wrapper.instance().onMessage(JSON.stringify({
+      type: 'sensor-reading',
+      'sensor-type': 'distance',
+      'sensor-id': 'ultrasonic-left',
+      'sensor-value': true,
+      unit: 'active-high',
+    }));
+
+    wrapper.instance().onMessage(JSON.stringify({
+      type: 'sensor-reading',
+      'sensor-type': 'distance',
+      'sensor-id': 'ultrasonic-left',
+      'sensor-value': false,
+      unit: 'active-high',
+    }));
+
+    wrapper.instance().onMessage(JSON.stringify({
+      type: 'sensor-reading',
+      'sensor-type': 'distance',
+      'sensor-id': 'ultrasonic-right',
+      'sensor-value': true,
+      unit: 'active-high',
+    }));
+
+    wrapper.instance().onMessage(JSON.stringify({
+      type: 'sensor-reading',
+      'sensor-type': 'distance',
+      'sensor-id': 'ultrasonic-right',
+      'sensor-value': false,
+      unit: 'active-high',
+    }));
+
+    expect(changeLeftSensorState).toHaveBeenCalledTimes(0);
+    expect(changeRightSensorState).toHaveBeenCalledTimes(0);
+  });
+
   test('ignores unknown sensors', () => {
     const wrapper = shallow(
       <RoverConnection

@@ -36,17 +36,19 @@ class RoverConnection extends Component {
   setOnline = () => this.setState({ online: true })
 
   onMessage = (data) => {
-    const { changeLeftSensorState, changeRightSensorState } = this.props;
+    const { changeLeftSensorState, changeRightSensorState, isActive } = this.props;
     const { online } = this.state;
 
     const message = JSON.parse(data);
 
     if (message.type === 'sensor-reading') {
-      const value = message['sensor-value'];
-      if (message['sensor-id'] === 'ultrasonic-left') {
-        changeLeftSensorState(value ? COVERED : NOT_COVERED);
-      } else if (message['sensor-id'] === 'ultrasonic-right') {
-        changeRightSensorState(value ? COVERED : NOT_COVERED);
+      if (isActive) {
+        const value = message['sensor-value'];
+        if (message['sensor-id'] === 'ultrasonic-left') {
+          changeLeftSensorState(value ? COVERED : NOT_COVERED);
+        } else if (message['sensor-id'] === 'ultrasonic-right') {
+          changeRightSensorState(value ? COVERED : NOT_COVERED);
+        }
       }
     } else if (message.type === 'heartbeat') {
       clearTimeout(this.timeout);
