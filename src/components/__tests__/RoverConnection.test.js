@@ -51,7 +51,7 @@ describe('The RoverList component', () => {
     expect(wrapper.find(Card.Meta).first().prop('children')).toBe('Active');
     expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
     expect(wrapper.find(Websocket).length).toBe(1);
-    expect(wrapper.find(Websocket).prop('url')).toBe('ws://example.com/ws/realtime/1234');
+    expect(wrapper.find(Websocket).prop('url')).toBe('ws://example.com:8000/ws/realtime/1234/');
   });
 
   test('displays inactive rover', () => {
@@ -76,7 +76,7 @@ describe('The RoverList component', () => {
     expect(wrapper.find(Card.Meta).first().prop('children')).toBe('Inactive');
     expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
     expect(wrapper.find(Websocket).length).toBe(1);
-    expect(wrapper.find(Websocket).prop('url')).toBe('wss://example.com/ws/realtime/1234');
+    expect(wrapper.find(Websocket).prop('url')).toBe('wss://example.com:443/ws/realtime/1234/');
   });
 
   test('displays online rover', () => {

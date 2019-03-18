@@ -56,7 +56,7 @@ ShallowWrapper {
           debug={false}
           onMessage={[Function]}
           reconnect={true}
-          url="ws://localhost/ws/realtime/1234"
+          url="ws://localhost:8000/ws/realtime/1234/"
         />,
       ],
     },
@@ -185,7 +185,7 @@ ShallowWrapper {
           "debug": false,
           "onMessage": [Function],
           "reconnect": true,
-          "url": "ws://localhost/ws/realtime/1234",
+          "url": "ws://localhost:8000/ws/realtime/1234/",
         },
         "ref": null,
         "rendered": null,
@@ -231,7 +231,7 @@ ShallowWrapper {
             debug={false}
             onMessage={[Function]}
             reconnect={true}
-            url="ws://localhost/ws/realtime/1234"
+            url="ws://localhost:8000/ws/realtime/1234/"
           />,
         ],
       },
@@ -360,7 +360,7 @@ ShallowWrapper {
             "debug": false,
             "onMessage": [Function],
             "reconnect": true,
-            "url": "ws://localhost/ws/realtime/1234",
+            "url": "ws://localhost:8000/ws/realtime/1234/",
           },
           "ref": null,
           "rendered": null,
