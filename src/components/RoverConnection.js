@@ -3,6 +3,7 @@ import { Card, Label, Icon } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 import Websocket from 'react-websocket';
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
 
 const heartbeatTimeout = 8000; // milliseconds
 
@@ -43,9 +44,9 @@ class RoverConnection extends Component {
     if (message.type === 'sensor-reading') {
       const value = message['sensor-value'];
       if (message['sensor-id'] === 'ultrasonic-left') {
-        changeLeftSensorState(value);
+        changeLeftSensorState(value ? COVERED : NOT_COVERED);
       } else if (message['sensor-id'] === 'ultrasonic-right') {
-        changeRightSensorState(value);
+        changeRightSensorState(value ? COVERED : NOT_COVERED);
       }
     } else if (message.type === 'heartbeat') {
       clearTimeout(this.timeout);

@@ -3,6 +3,7 @@ import { Card, Icon } from 'semantic-ui-react';
 import { shallow } from 'enzyme';
 import Websocket from 'react-websocket';
 import RoverConnection from '../RoverConnection';
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
 
 let changeActiveRover;
 let changeLeftSensorState;
@@ -166,11 +167,11 @@ describe('The RoverList component', () => {
     }));
 
     expect(changeLeftSensorState).toHaveBeenCalledTimes(2);
-    expect(changeLeftSensorState.mock.calls[0][0]).toBe(true);
-    expect(changeLeftSensorState.mock.calls[1][0]).toBe(false);
+    expect(changeLeftSensorState.mock.calls[0][0]).toBe(COVERED);
+    expect(changeLeftSensorState.mock.calls[1][0]).toBe(NOT_COVERED);
     expect(changeRightSensorState).toHaveBeenCalledTimes(2);
-    expect(changeRightSensorState.mock.calls[0][0]).toBe(true);
-    expect(changeRightSensorState.mock.calls[1][0]).toBe(false);
+    expect(changeRightSensorState.mock.calls[0][0]).toBe(COVERED);
+    expect(changeRightSensorState.mock.calls[1][0]).toBe(NOT_COVERED);
   });
 
   test('ignores unknown sensors', () => {
