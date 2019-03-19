@@ -13,6 +13,7 @@ import {
   EXECUTION_STOP,
   EXECUTION_RESET,
 } from '@/actions/code';
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
 
 jest.mock('node-blockly/browser');
 
@@ -33,6 +34,10 @@ describe('The Workspace component', () => {
       code: {
         jsCode: '',
         execution: null,
+      },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
@@ -462,6 +467,10 @@ describe('The Workspace component', () => {
       code: {
         xmlCode: '<xml></xml>',
       },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
     const wrapper = shallow(
@@ -577,5 +586,48 @@ describe('The Workspace component', () => {
       );
       done();
     });
+  });
+
+  test('sets sensor cache correctly', () => {
+    const wrapper = shallow(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    );
+
+    const workspace = wrapper.dive().dive();
+
+    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(false);
+    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(false);
+
+    workspace.setProps({
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
+      },
+    });
+
+    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(true);
+    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(false);
+
+    workspace.setProps({
+      sensor: {
+        left: COVERED,
+        right: COVERED,
+      },
+    });
+
+    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(true);
+    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(true);
+
+    workspace.setProps({
+      sensor: {
+        left: NOT_COVERED,
+        right: COVERED,
+      },
+    });
+
+    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(false);
+    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(true);
   });
 });

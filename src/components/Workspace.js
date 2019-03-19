@@ -19,9 +19,10 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 import { append, clear } from '@/actions/console';
+import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
 
-const mapStateToProps = ({ code }) => ({ code });
+const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
@@ -166,7 +167,12 @@ class Workspace extends Component {
   }
 
   componentDidMount() {
-    const { code, clearConsole, writeToConsole } = this.props;
+    const {
+      code,
+      clearConsole,
+      sensor,
+      writeToConsole,
+    } = this.props;
 
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
@@ -186,6 +192,8 @@ class Workspace extends Component {
     });
 
     workspace.addChangeListener(this.updateCode);
+
+    this.updateSensorStateCache(sensor.left, sensor.right);
 
     this.setState({
       workspace,
@@ -221,6 +229,17 @@ class Workspace extends Component {
       default:
         break;
     }
+  }
+
+  componentDidUpdate() {
+    const { sensor } = this.props;
+
+    this.updateSensorStateCache(sensor.left, sensor.right);
+  }
+
+  updateSensorStateCache = (leftState, rightState) => {
+    this.sensorStateCache.SENSORS_leftIr = leftState === COVERED;
+    this.sensorStateCache.SENSORS_rightIr = rightState === COVERED;
   }
 
   onWorkspaceAvailable = (code) => {
@@ -408,6 +427,10 @@ class Workspace extends Component {
 Workspace.propTypes = {
   code: PropTypes.shape({
     jsCode: PropTypes.string,
+  }).isRequired,
+  sensor: PropTypes.shape({
+    left: PropTypes.number.isRequired,
+    right: PropTypes.number.isRequired,
   }).isRequired,
   updateJsCode: PropTypes.func.isRequired,
   updateXmlCode: PropTypes.func.isRequired,

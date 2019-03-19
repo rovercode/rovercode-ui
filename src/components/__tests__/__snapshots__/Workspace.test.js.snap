@@ -186,6 +186,12 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
       }
       createProgram={[Function]}
       saveProgram={[Function]}
+      sensor={
+        Object {
+          "left": 2,
+          "right": 2,
+        }
+      }
       store={
         Object {
           "clearActions": [Function],
