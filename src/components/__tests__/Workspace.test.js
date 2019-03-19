@@ -14,6 +14,7 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
+import { pushCommand } from '@/actions/rover';
 
 jest.mock('node-blockly/browser');
 
@@ -629,5 +630,17 @@ describe('The Workspace component', () => {
 
     expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(false);
     expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(true);
+  });
+
+  test('dispatches an action when sending to rover', () => {
+    const wrapper = shallow(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    );
+
+    wrapper.dive().props().sendToRover('command');
+
+    expect(store.dispatch).toHaveBeenCalledWith(pushCommand('command'));
   });
 });
