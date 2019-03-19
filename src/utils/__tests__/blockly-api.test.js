@@ -5,12 +5,14 @@ describe('Blockly API', () => {
   let beginSleep = null;
   let interpreter = null;
   let writeToConsole = null;
+  let sendToRover = null;
   let api = null;
 
   beforeEach(() => {
     highlightBlock = jest.fn();
     beginSleep = jest.fn();
     writeToConsole = jest.fn();
+    sendToRover = jest.fn();
     interpreter = {
       createPrimitive: jest.fn(),
       createNativeFunction: jest.fn(),
@@ -20,7 +22,7 @@ describe('Blockly API', () => {
     sensorStateCache.SENSORS_leftIr = false;
     sensorStateCache.SENSORS_rightIr = false;
 
-    api = new BlocklyApi(highlightBlock, beginSleep, sensorStateCache, writeToConsole);
+    api = new BlocklyApi(highlightBlock, beginSleep, sensorStateCache, writeToConsole, sendToRover);
     api.initApi(interpreter);
   });
 
@@ -65,17 +67,40 @@ describe('Blockly API', () => {
   test('handles setMotor', () => {
     const setMotorHandler = interpreter.createNativeFunction.mock.calls[2][0];
 
-    const result = setMotorHandler('LEFT', 'FORWARD', 100);
+    const result = setMotorHandler({ data: 'LEFT' }, { data: 'FORWARD' }, { data: 100 });
 
     expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
+    expect(sendToRover).toHaveBeenCalledWith(JSON.stringify({
+      type: 'motor-command',
+      'motor-id': 'motor-left',
+      'motor-value': 100,
+      direction: 'forward',
+      unit: 'percent',
+    }));
   });
 
   test('handles stopMotor', () => {
     const stopMotorHandler = interpreter.createNativeFunction.mock.calls[3][0];
 
-    const result = stopMotorHandler('LEFT');
+    const result = stopMotorHandler({ data: 'RIGHT' });
 
     expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(2);
+    expect(sendToRover.mock.calls[0][0]).toBe(JSON.stringify({
+      type: 'motor-command',
+      'motor-id': 'motor-right',
+      'motor-value': 0,
+      direction: 'forward',
+      unit: 'percent',
+    }));
+    expect(sendToRover.mock.calls[1][0]).toBe(JSON.stringify({
+      type: 'motor-command',
+      'motor-id': 'motor-right',
+      'motor-value': 0,
+      direction: 'backward',
+      unit: 'percent',
+    }));
   });
 
   test('handles getSensorCovered', () => {

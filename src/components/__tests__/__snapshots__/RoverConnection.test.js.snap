@@ -8,8 +8,10 @@ ShallowWrapper {
     changeLeftSensorState={[MockFunction]}
     changeRightSensorState={[MockFunction]}
     clientId="1234"
+    commands={Array []}
     isActive={true}
     name="Sparky"
+    popCommand={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -187,7 +189,7 @@ ShallowWrapper {
           "reconnect": true,
           "url": "ws://localhost:8000/ws/realtime/1234/",
         },
-        "ref": null,
+        "ref": [Function],
         "rendered": null,
         "type": [Function],
       },
@@ -362,7 +364,7 @@ ShallowWrapper {
             "reconnect": true,
             "url": "ws://localhost:8000/ws/realtime/1234/",
           },
-          "ref": null,
+          "ref": [Function],
           "rendered": null,
           "type": [Function],
         },

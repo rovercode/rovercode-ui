@@ -6,6 +6,8 @@ import {
   editRover,
   fetchRover,
   fetchRovers,
+  popCommand,
+  pushCommand,
   removeRover,
 } from '../rover';
 
@@ -112,5 +114,20 @@ describe('Rover actions', () => {
 
     expect(type).toEqual('CHANGE_ACTIVE_ROVER');
     expect(payload).toEqual('1234');
+  });
+
+  test('push command', () => {
+    const action = pushCommand('command');
+    const { type, payload } = action;
+
+    expect(type).toEqual('PUSH_COMMAND');
+    expect(payload).toEqual('command');
+  });
+
+  test('pop command', () => {
+    const action = popCommand();
+    const { type } = action;
+
+    expect(type).toEqual('POP_COMMAND');
   });
 });

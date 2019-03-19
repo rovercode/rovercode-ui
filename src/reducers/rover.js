@@ -12,6 +12,8 @@ import {
   FETCH_ROVERS,
   FETCH_ROVERS_FULFILLED,
   FETCH_ROVERS_REJECTED,
+  POP_COMMAND,
+  PUSH_COMMAND,
   REMOVE_ROVER,
   REMOVE_ROVER_FULFILLED,
   REMOVE_ROVER_REJECTED,
@@ -28,6 +30,7 @@ export default function rovers(
     rover: null,
     error: null,
     activeRover: null,
+    commands: [],
   },
   action,
 ) {
@@ -126,6 +129,16 @@ export default function rovers(
       return {
         ...state,
         activeRover: action.payload,
+      };
+    case PUSH_COMMAND:
+      return {
+        ...state,
+        commands: [...state.commands, action.payload],
+      };
+    case POP_COMMAND:
+      return {
+        ...state,
+        commands: [...state.commands.slice(1)],
       };
     default:
       return state;

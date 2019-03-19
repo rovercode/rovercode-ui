@@ -19,15 +19,18 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 import { append, clear } from '@/actions/console';
+import { pushCommand } from '@/actions/rover';
+import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
 
-const mapStateToProps = ({ code }) => ({ code });
+const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
   writeToConsole: message => dispatch(append(message)),
   clearConsole: () => dispatch(clear()),
   updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
+  sendToRover: command => dispatch(pushCommand(command)),
   saveProgram: (id, content, name) => {
     const saveProgramAction = actionSaveProgram(id, content, name, {
       headers: {
@@ -55,12 +58,6 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     });
   },
 });
-
-// TODO: rover API
-const sendMotorCommand = (command, pin, speed) => console.log(`Motor command: ${command}, ${pin}, ${speed}`); // eslint-disable-line no-console
-const leftMotor = { FORWARD: 'XIO-P0', BACKWARD: 'XIO-P1' };
-const rightMotor = { FORWARD: 'XIO-P6', BACKWARD: 'XIO-P7' };
-const motorPins = { LEFT: leftMotor, RIGHT: rightMotor };
 
 const toolbox = `
     <xml id="toolbox" style="display: none">
@@ -147,7 +144,7 @@ const toolbox = `
 class Workspace extends Component {
   constructor(props) {
     super(props);
-    const { writeToConsole } = this.props;
+    const { sendToRover, writeToConsole } = this.props;
 
     this.sensorStateCache = [];
     this.sensorStateCache.SENSORS_leftIr = false;
@@ -157,7 +154,7 @@ class Workspace extends Component {
     this.highlightPause = false;
 
     this.api = new BlocklyApi(this.highlightBlock, this.beginSleep,
-      this.sensorStateCache, writeToConsole);
+      this.sensorStateCache, writeToConsole, sendToRover);
 
     this.state = {
       workspace: null,
@@ -166,7 +163,12 @@ class Workspace extends Component {
   }
 
   componentDidMount() {
-    const { code, clearConsole, writeToConsole } = this.props;
+    const {
+      code,
+      clearConsole,
+      sensor,
+      writeToConsole,
+    } = this.props;
 
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
@@ -186,6 +188,8 @@ class Workspace extends Component {
     });
 
     workspace.addChangeListener(this.updateCode);
+
+    this.updateSensorStateCache(sensor.left, sensor.right);
 
     this.setState({
       workspace,
@@ -221,6 +225,17 @@ class Workspace extends Component {
       default:
         break;
     }
+  }
+
+  componentDidUpdate() {
+    const { sensor } = this.props;
+
+    this.updateSensorStateCache(sensor.left, sensor.right);
+  }
+
+  updateSensorStateCache = (leftState, rightState) => {
+    this.sensorStateCache.SENSORS_leftIr = leftState === COVERED;
+    this.sensorStateCache.SENSORS_rightIr = rightState === COVERED;
   }
 
   onWorkspaceAvailable = (code) => {
@@ -352,10 +367,10 @@ class Workspace extends Component {
   goToStopState = () => {
     const { changeExecutionState } = this.props;
 
-    sendMotorCommand('START_MOTOR', motorPins.LEFT.FORWARD, 0);
-    sendMotorCommand('START_MOTOR', motorPins.LEFT.BACKWARD, 0);
-    sendMotorCommand('START_MOTOR', motorPins.RIGHT.FORWARD, 0);
-    sendMotorCommand('START_MOTOR', motorPins.RIGHT.BACKWARD, 0);
+    this.api.sendMotorCommand('LEFT', 'FORWARD', 0);
+    this.api.sendMotorCommand('LEFT', 'BACKWARD', 0);
+    this.api.sendMotorCommand('RIGHT', 'FORWARD', 0);
+    this.api.sendMotorCommand('RIGHT', 'BACKWARD', 0);
     this.runningEnabled = false;
     changeExecutionState(EXECUTION_STOP);
   }
@@ -409,6 +424,10 @@ Workspace.propTypes = {
   code: PropTypes.shape({
     jsCode: PropTypes.string,
   }).isRequired,
+  sensor: PropTypes.shape({
+    left: PropTypes.number.isRequired,
+    right: PropTypes.number.isRequired,
+  }).isRequired,
   updateJsCode: PropTypes.func.isRequired,
   updateXmlCode: PropTypes.func.isRequired,
   changeExecutionState: PropTypes.func.isRequired,
@@ -417,6 +436,7 @@ Workspace.propTypes = {
   saveProgram: PropTypes.func.isRequired,
   createProgram: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  sendToRover: PropTypes.func.isRequired,
 };
 
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));

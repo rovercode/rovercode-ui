@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Icon } from 'semantic-ui-react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Websocket from 'react-websocket';
 import RoverConnection from '../RoverConnection';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
@@ -8,12 +8,20 @@ import { COVERED, NOT_COVERED } from '@/actions/sensor';
 let changeActiveRover;
 let changeLeftSensorState;
 let changeRightSensorState;
+let mockWsSend;
+let popCommand;
+
+global.WebSocket = jest.fn().mockImplementation(() => ({
+  send: mockWsSend,
+}));
 
 describe('The RoverList component', () => {
   beforeEach(() => {
     changeActiveRover = jest.fn();
     changeLeftSensorState = jest.fn();
     changeRightSensorState = jest.fn();
+    mockWsSend = jest.fn();
+    popCommand = jest.fn();
   });
 
   test('renders on the page with no errors', () => {
@@ -22,6 +30,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive
@@ -41,6 +50,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive
@@ -66,6 +76,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive={false}
@@ -86,6 +97,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive
@@ -107,6 +119,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive
@@ -128,6 +141,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive
@@ -180,6 +194,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive={false}
@@ -228,6 +243,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive
@@ -252,6 +268,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive
@@ -281,6 +298,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive
@@ -302,6 +320,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive={false}
@@ -321,6 +340,7 @@ describe('The RoverList component', () => {
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
         clientId="1234"
         name="Sparky"
         isActive={false}
@@ -334,5 +354,62 @@ describe('The RoverList component', () => {
     jest.runAllTimers();
 
     expect(wrapper.state('online')).toBe(false);
+  });
+
+  test('sends all commands when active', () => {
+    const wrapper = mount(
+      <RoverConnection
+        changeActiveRover={changeActiveRover}
+        changeLeftSensorState={changeLeftSensorState}
+        changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
+        clientId="1234"
+        name="Sparky"
+        commands={['command1', 'command2', 'command3']}
+        isActive
+      />,
+    );
+
+    expect(mockWsSend).toHaveBeenCalledTimes(1);
+    expect(popCommand).toHaveBeenCalledTimes(1);
+
+    wrapper.setProps({
+      commands: ['command2', 'command3'],
+    });
+
+    expect(mockWsSend).toHaveBeenCalledTimes(2);
+    expect(popCommand).toHaveBeenCalledTimes(2);
+
+    wrapper.setProps({
+      commands: ['command3'],
+    });
+
+    expect(mockWsSend).toHaveBeenCalledTimes(3);
+    expect(popCommand).toHaveBeenCalledTimes(3);
+
+    wrapper.setProps({
+      commands: [],
+    });
+
+    expect(mockWsSend).toHaveBeenCalledTimes(3);
+    expect(popCommand).toHaveBeenCalledTimes(3);
+  });
+
+  test('does not send commands when inactive', () => {
+    mount(
+      <RoverConnection
+        changeActiveRover={changeActiveRover}
+        changeLeftSensorState={changeLeftSensorState}
+        changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
+        clientId="1234"
+        name="Sparky"
+        commands={['command1', 'command2', 'command3']}
+        isActive={false}
+      />,
+    );
+
+    expect(mockWsSend).toHaveBeenCalledTimes(0);
+    expect(popCommand).toHaveBeenCalledTimes(0);
   });
 });

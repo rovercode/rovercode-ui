@@ -8,6 +8,7 @@ ShallowWrapper {
     changeActiveRover={[MockFunction]}
     changeLeftSensorState={[MockFunction]}
     changeRightSensorState={[MockFunction]}
+    commands={Array []}
     fetchRovers={
       [MockFunction] {
         "calls": Array [
@@ -21,6 +22,7 @@ ShallowWrapper {
         ],
       }
     }
+    popCommand={[MockFunction]}
     rovers={
       Array [
         Object {
@@ -62,16 +64,20 @@ ShallowWrapper {
           changeLeftSensorState={[MockFunction]}
           changeRightSensorState={[MockFunction]}
           clientId="1234"
+          commands={Array []}
           isActive={false}
           name="Sparky"
+          popCommand={[MockFunction]}
         />
         <RoverConnection
           changeActiveRover={[MockFunction]}
           changeLeftSensorState={[MockFunction]}
           changeRightSensorState={[MockFunction]}
           clientId="5678"
+          commands={Array []}
           isActive={false}
           name="Marvin"
+          popCommand={[MockFunction]}
         />
       </CardGroup>,
     },
@@ -89,16 +95,20 @@ ShallowWrapper {
               changeLeftSensorState={[MockFunction]}
               changeRightSensorState={[MockFunction]}
               clientId="1234"
+              commands={Array []}
               isActive={false}
               name="Sparky"
+              popCommand={[MockFunction]}
             />,
             <RoverConnection
               changeActiveRover={[MockFunction]}
               changeLeftSensorState={[MockFunction]}
               changeRightSensorState={[MockFunction]}
               clientId="5678"
+              commands={Array []}
               isActive={false}
               name="Marvin"
+              popCommand={[MockFunction]}
             />,
           ],
         ],
@@ -118,8 +128,10 @@ ShallowWrapper {
             "changeLeftSensorState": [MockFunction],
             "changeRightSensorState": [MockFunction],
             "clientId": "1234",
+            "commands": Array [],
             "isActive": false,
             "name": "Sparky",
+            "popCommand": [MockFunction],
           },
           "ref": null,
           "rendered": null,
@@ -134,8 +146,10 @@ ShallowWrapper {
             "changeLeftSensorState": [MockFunction],
             "changeRightSensorState": [MockFunction],
             "clientId": "5678",
+            "commands": Array [],
             "isActive": false,
             "name": "Marvin",
+            "popCommand": [MockFunction],
           },
           "ref": null,
           "rendered": null,
@@ -164,16 +178,20 @@ ShallowWrapper {
             changeLeftSensorState={[MockFunction]}
             changeRightSensorState={[MockFunction]}
             clientId="1234"
+            commands={Array []}
             isActive={false}
             name="Sparky"
+            popCommand={[MockFunction]}
           />
           <RoverConnection
             changeActiveRover={[MockFunction]}
             changeLeftSensorState={[MockFunction]}
             changeRightSensorState={[MockFunction]}
             clientId="5678"
+            commands={Array []}
             isActive={false}
             name="Marvin"
+            popCommand={[MockFunction]}
           />
         </CardGroup>,
       },
@@ -191,16 +209,20 @@ ShallowWrapper {
                 changeLeftSensorState={[MockFunction]}
                 changeRightSensorState={[MockFunction]}
                 clientId="1234"
+                commands={Array []}
                 isActive={false}
                 name="Sparky"
+                popCommand={[MockFunction]}
               />,
               <RoverConnection
                 changeActiveRover={[MockFunction]}
                 changeLeftSensorState={[MockFunction]}
                 changeRightSensorState={[MockFunction]}
                 clientId="5678"
+                commands={Array []}
                 isActive={false}
                 name="Marvin"
+                popCommand={[MockFunction]}
               />,
             ],
           ],
@@ -220,8 +242,10 @@ ShallowWrapper {
               "changeLeftSensorState": [MockFunction],
               "changeRightSensorState": [MockFunction],
               "clientId": "1234",
+              "commands": Array [],
               "isActive": false,
               "name": "Sparky",
+              "popCommand": [MockFunction],
             },
             "ref": null,
             "rendered": null,
@@ -236,8 +260,10 @@ ShallowWrapper {
               "changeLeftSensorState": [MockFunction],
               "changeRightSensorState": [MockFunction],
               "clientId": "5678",
+              "commands": Array [],
               "isActive": false,
               "name": "Marvin",
+              "popCommand": [MockFunction],
             },
             "ref": null,
             "rendered": null,

@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import RoverConnectionList from '../RoverConnectionList';
-import { changeActiveRover, fetchRovers } from '../../actions/rover';
+import { changeActiveRover, popCommand, fetchRovers } from '../../actions/rover';
 import { changeLeftSensorState, changeRightSensorState } from '../../actions/sensor';
 import { updateValidAuth } from '../../actions/auth';
 
@@ -21,6 +21,7 @@ describe('The RoverListConnectionContainer', () => {
       rover: {
         isFetching: false,
         rovers: [],
+        commands: [],
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
@@ -64,6 +65,12 @@ describe('The RoverListConnectionContainer', () => {
     wrapper.dive().props().changeActiveRover('1234');
 
     expect(store.dispatch).toHaveBeenCalledWith(changeActiveRover('1234'));
+  });
+
+  test('dispatches an action to pop command', () => {
+    wrapper.dive().props().popCommand();
+
+    expect(store.dispatch).toHaveBeenCalledWith(popCommand());
   });
 
   test('handles authentication error fetching rovers', (done) => {

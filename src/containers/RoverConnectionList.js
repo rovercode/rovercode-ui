@@ -5,6 +5,7 @@ import { withCookies, Cookies } from 'react-cookie';
 
 import {
   changeActiveRover as actionChangeActiveRover,
+  popCommand as actionPopCommand,
   fetchRovers,
 } from '@/actions/rover';
 import {
@@ -32,6 +33,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeLeftSensorState: state => dispatch(actionChangeLeftSensorState(state)),
   changeRightSensorState: state => dispatch(actionChangeRightSensorState(state)),
   changeActiveRover: clientId => dispatch(actionChangeActiveRover(clientId)),
+  popCommand: () => dispatch(actionPopCommand()),
 });
 
 const RoverConnectionListContainer = connect(
