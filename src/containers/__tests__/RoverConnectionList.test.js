@@ -20,7 +20,11 @@ describe('The RoverListConnectionContainer', () => {
     store = mockStore({
       rover: {
         isFetching: false,
-        rovers: [],
+        rovers: {
+          next: null,
+          previous: null,
+          results: [],
+        },
         commands: [],
       },
     });
@@ -29,10 +33,14 @@ describe('The RoverListConnectionContainer', () => {
     wrapper = shallow(<RoverConnectionList store={store} />, { context });
   });
   test('dispatches an action to fetch rovers', () => {
-    const rovers = [{
-      id: 1,
-      name: 'Mars',
-    }];
+    const rovers = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 1,
+        name: 'Mars',
+      }],
+    };
     const mockAxios = new MockAdapter(axios);
 
     mockAxios.onGet('/api/v1/rovers/').reply(200, rovers);

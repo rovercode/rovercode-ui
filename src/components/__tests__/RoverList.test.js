@@ -51,15 +51,19 @@ describe('The RoverList component', () => {
   });
 
   test('shows the correct number of rovers for the user', async () => {
-    const rovers = [{
-      id: 1,
-      name: 'Sparky',
-      owner: 1,
-    }, {
-      id: 2,
-      name: 'Marvin',
-      owner: 1,
-    }];
+    const rovers = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
     const wrapper = shallow(
       <RoverList
         rovers={rovers}
@@ -85,7 +89,11 @@ describe('The RoverList component', () => {
   });
 
   test('shows no rovers on error', async () => {
-    const rovers = [];
+    const rovers = {
+      next: null,
+      previous: null,
+      results: [],
+    };
     const wrapper = shallow(
       <RoverList
         rovers={rovers}
@@ -101,16 +109,34 @@ describe('The RoverList component', () => {
     expect(wrapper.find(Loader).exists()).toBe(false);
   });
 
+  test('shows loader when fetching', () => {
+    const wrapper = shallow(
+      <RoverList
+        createRover={createRover}
+        fetchRovers={fetchRovers}
+        removeRover={removeRover}
+        isFetching
+      />,
+    );
+
+    expect(wrapper.find(Header).exists()).toBe(false);
+    expect(wrapper.find(Loader).exists()).toBe(true);
+  });
+
   test('creates a rover and goes to new rover detail', async () => {
-    const rovers = [{
-      id: 1,
-      name: 'Sparky',
-      owner: 1,
-    }, {
-      id: 2,
-      name: 'Marvin',
-      owner: 1,
-    }];
+    const rovers = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
     const wrapper = shallow(
       <RoverList
         rovers={rovers}
@@ -140,15 +166,19 @@ describe('The RoverList component', () => {
   });
 
   test('removes a rover and reloads the rover list', async () => {
-    const rovers = [{
-      id: 1,
-      name: 'Sparky',
-      owner: 1,
-    }, {
-      id: 2,
-      name: 'Marvin',
-      owner: 1,
-    }];
+    const rovers = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
     const wrapper = shallow(
       <RoverList
         rovers={rovers}

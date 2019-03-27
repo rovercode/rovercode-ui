@@ -12,7 +12,7 @@ let commands;
 let popCommand;
 let fetchRovers;
 
-describe('The RoverList component', () => {
+describe('The RoverConnectionList component', () => {
   beforeEach(() => {
     changeActiveRover = jest.fn();
     changeLeftSensorState = jest.fn();
@@ -23,15 +23,6 @@ describe('The RoverList component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const rovers = [{
-      id: 1,
-      name: 'Sparky',
-      client_id: '1234',
-    }, {
-      id: 2,
-      name: 'Marvin',
-      client_id: '5678',
-    }];
     const wrapper = shallow(
       <RoverConnectionList
         changeActiveRover={changeActiveRover}
@@ -39,8 +30,8 @@ describe('The RoverList component', () => {
         changeRightSensorState={changeRightSensorState}
         popCommand={popCommand}
         fetchRovers={fetchRovers}
-        rovers={rovers}
         commands={commands}
+        rovers={null}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -71,6 +62,7 @@ describe('The RoverList component', () => {
         popCommand={popCommand}
         fetchRovers={fetchRovers}
         commands={commands}
+        isFetching
       />,
     );
     expect(wrapper.find(Card).exists()).toBe(false);
@@ -78,15 +70,19 @@ describe('The RoverList component', () => {
   });
 
   test('shows the correct rovers for the user', async () => {
-    const rovers = [{
-      id: 1,
-      name: 'Sparky',
-      client_id: '1234',
-    }, {
-      id: 2,
-      name: 'Marvin',
-      client_id: '5678',
-    }];
+    const rovers = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
     const wrapper = shallow(
       <RoverConnectionList
         activeRover="5678"

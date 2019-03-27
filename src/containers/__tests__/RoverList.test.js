@@ -19,7 +19,11 @@ describe('The RoverListContainer', () => {
     store = mockStore({
       rover: {
         isFetching: false,
-        rovers: [],
+        rovers: {
+          next: null,
+          previous: null,
+          results: [],
+        },
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());

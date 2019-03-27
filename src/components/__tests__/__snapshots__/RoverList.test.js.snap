@@ -18,8 +18,15 @@ ShallowWrapper {
         ],
       }
     }
+    isFetching={false}
     removeRover={[MockFunction]}
-    rovers={null}
+    rovers={
+      Object {
+        "next": null,
+        "previous": null,
+        "results": Array [],
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -99,9 +106,34 @@ ShallowWrapper {
             </Button>
           </ModalActions>
         </Modal>,
-        <Loader
-          active={true}
-        />,
+        <Segment
+          raised={true}
+          style={
+            Object {
+              "margin": "10px",
+            }
+          }
+        >
+          <Header
+            as="h1"
+            textAlign="center"
+          >
+            Rovers
+          </Header>
+          <CardGroup
+            centered={true}
+          />
+          <Confirm
+            cancelButton="No"
+            confirmButton="Yes"
+            content="Are you sure you want to remove null?"
+            header="Remove Rover"
+            onCancel={[Function]}
+            onConfirm={[Function]}
+            open={false}
+            size="small"
+          />
+        </Segment>,
       ],
     },
     "ref": null,
@@ -304,10 +336,78 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "active": true,
+          "children": Array [
+            <Header
+              as="h1"
+              textAlign="center"
+            >
+              Rovers
+            </Header>,
+            <CardGroup
+              centered={true}
+            />,
+            <Confirm
+              cancelButton="No"
+              confirmButton="Yes"
+              content="Are you sure you want to remove null?"
+              header="Remove Rover"
+              onCancel={[Function]}
+              onConfirm={[Function]}
+              open={false}
+              size="small"
+            />,
+          ],
+          "raised": true,
+          "style": Object {
+            "margin": "10px",
+          },
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "as": "h1",
+              "children": "Rovers",
+              "textAlign": "center",
+            },
+            "ref": null,
+            "rendered": "Rovers",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "centered": true,
+              "children": Array [],
+            },
+            "ref": null,
+            "rendered": Array [],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "cancelButton": "No",
+              "confirmButton": "Yes",
+              "content": "Are you sure you want to remove null?",
+              "header": "Remove Rover",
+              "onCancel": [Function],
+              "onConfirm": [Function],
+              "open": false,
+              "size": "small",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
     ],
@@ -383,9 +483,34 @@ ShallowWrapper {
               </Button>
             </ModalActions>
           </Modal>,
-          <Loader
-            active={true}
-          />,
+          <Segment
+            raised={true}
+            style={
+              Object {
+                "margin": "10px",
+              }
+            }
+          >
+            <Header
+              as="h1"
+              textAlign="center"
+            >
+              Rovers
+            </Header>
+            <CardGroup
+              centered={true}
+            />
+            <Confirm
+              cancelButton="No"
+              confirmButton="Yes"
+              content="Are you sure you want to remove null?"
+              header="Remove Rover"
+              onCancel={[Function]}
+              onConfirm={[Function]}
+              open={false}
+              size="small"
+            />
+          </Segment>,
         ],
       },
       "ref": null,
@@ -588,10 +713,78 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "active": true,
+            "children": Array [
+              <Header
+                as="h1"
+                textAlign="center"
+              >
+                Rovers
+              </Header>,
+              <CardGroup
+                centered={true}
+              />,
+              <Confirm
+                cancelButton="No"
+                confirmButton="Yes"
+                content="Are you sure you want to remove null?"
+                header="Remove Rover"
+                onCancel={[Function]}
+                onConfirm={[Function]}
+                open={false}
+                size="small"
+              />,
+            ],
+            "raised": true,
+            "style": Object {
+              "margin": "10px",
+            },
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "as": "h1",
+                "children": "Rovers",
+                "textAlign": "center",
+              },
+              "ref": null,
+              "rendered": "Rovers",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "centered": true,
+                "children": Array [],
+              },
+              "ref": null,
+              "rendered": Array [],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "cancelButton": "No",
+                "confirmButton": "Yes",
+                "content": "Are you sure you want to remove null?",
+                "header": "Remove Rover",
+                "onCancel": [Function],
+                "onConfirm": [Function],
+                "open": false,
+                "size": "small",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
       ],

@@ -20,14 +20,28 @@ ShallowWrapper {
         ],
       }
     }
-    programs={null}
+    programs={
+      Object {
+        "next": null,
+        "previous": null,
+        "results": Array [],
+      }
+    }
+    programsIsFetching={false}
     removeProgram={[MockFunction]}
     user={
       Object {
         "user_id": 1,
       }
     }
-    userPrograms={null}
+    userPrograms={
+      Object {
+        "next": null,
+        "previous": null,
+        "results": Array [],
+      }
+    }
+    userProgramsIsFetching={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -61,12 +75,42 @@ ShallowWrapper {
           New Program
         </Button>,
         null,
-        <Loader
-          active={true}
-        />,
-        <Loader
-          active={true}
-        />,
+        <Segment
+          raised={true}
+          style={
+            Object {
+              "margin": "10px",
+            }
+          }
+        >
+          <Header
+            as="h1"
+            textAlign="center"
+          >
+            My Programs
+          </Header>
+          <CardGroup
+            centered={true}
+          />
+        </Segment>,
+        <Segment
+          raised={true}
+          style={
+            Object {
+              "margin": "10px",
+            }
+          }
+        >
+          <Header
+            as="h1"
+            textAlign="center"
+          >
+            Find More
+          </Header>
+          <CardGroup
+            centered={true}
+          />
+        </Segment>,
         <Confirm
           cancelButton="No"
           confirmButton="Yes"
@@ -124,10 +168,50 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "active": true,
+          "children": Array [
+            <Header
+              as="h1"
+              textAlign="center"
+            >
+              My Programs
+            </Header>,
+            <CardGroup
+              centered={true}
+            />,
+          ],
+          "raised": true,
+          "style": Object {
+            "margin": "10px",
+          },
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "as": "h1",
+              "children": "My Programs",
+              "textAlign": "center",
+            },
+            "ref": null,
+            "rendered": "My Programs",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "centered": true,
+              "children": Array [],
+            },
+            "ref": null,
+            "rendered": Array [],
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
       Object {
@@ -135,10 +219,50 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "active": true,
+          "children": Array [
+            <Header
+              as="h1"
+              textAlign="center"
+            >
+              Find More
+            </Header>,
+            <CardGroup
+              centered={true}
+            />,
+          ],
+          "raised": true,
+          "style": Object {
+            "margin": "10px",
+          },
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "as": "h1",
+              "children": "Find More",
+              "textAlign": "center",
+            },
+            "ref": null,
+            "rendered": "Find More",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "centered": true,
+              "children": Array [],
+            },
+            "ref": null,
+            "rendered": Array [],
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
       Object {
@@ -186,12 +310,42 @@ ShallowWrapper {
             New Program
           </Button>,
           null,
-          <Loader
-            active={true}
-          />,
-          <Loader
-            active={true}
-          />,
+          <Segment
+            raised={true}
+            style={
+              Object {
+                "margin": "10px",
+              }
+            }
+          >
+            <Header
+              as="h1"
+              textAlign="center"
+            >
+              My Programs
+            </Header>
+            <CardGroup
+              centered={true}
+            />
+          </Segment>,
+          <Segment
+            raised={true}
+            style={
+              Object {
+                "margin": "10px",
+              }
+            }
+          >
+            <Header
+              as="h1"
+              textAlign="center"
+            >
+              Find More
+            </Header>
+            <CardGroup
+              centered={true}
+            />
+          </Segment>,
           <Confirm
             cancelButton="No"
             confirmButton="Yes"
@@ -249,10 +403,50 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "active": true,
+            "children": Array [
+              <Header
+                as="h1"
+                textAlign="center"
+              >
+                My Programs
+              </Header>,
+              <CardGroup
+                centered={true}
+              />,
+            ],
+            "raised": true,
+            "style": Object {
+              "margin": "10px",
+            },
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "as": "h1",
+                "children": "My Programs",
+                "textAlign": "center",
+              },
+              "ref": null,
+              "rendered": "My Programs",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "centered": true,
+                "children": Array [],
+              },
+              "ref": null,
+              "rendered": Array [],
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         Object {
@@ -260,10 +454,50 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "active": true,
+            "children": Array [
+              <Header
+                as="h1"
+                textAlign="center"
+              >
+                Find More
+              </Header>,
+              <CardGroup
+                centered={true}
+              />,
+            ],
+            "raised": true,
+            "style": Object {
+              "margin": "10px",
+            },
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "as": "h1",
+                "children": "Find More",
+                "textAlign": "center",
+              },
+              "ref": null,
+              "rendered": "Find More",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "centered": true,
+                "children": Array [],
+              },
+              "ref": null,
+              "rendered": Array [],
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         Object {

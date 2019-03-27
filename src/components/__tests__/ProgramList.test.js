@@ -45,17 +45,21 @@ describe('The ProgramList component', () => {
   });
 
   test('shows the correct number of programs for the user', async () => {
-    const programs = [{
-      id: 33,
-      name: 'Unnamed_Design_3',
-      content: '<xml><variables></variables></xml>',
-      user: 10,
-    }, {
-      id: 5,
-      name: 'Unnamed_Design_2',
-      content: '<xml><variables></variables></xml>',
-      user: 1,
-    }];
+    const programs = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: 1,
+      }],
+    };
     const wrapper = shallow(
       <ProgramList
         programs={programs}
@@ -73,11 +77,8 @@ describe('The ProgramList component', () => {
   });
 
   test('shows no programs on error', () => {
-    const programs = [];
     const wrapper = shallow(
       <ProgramList
-        programs={programs}
-        userPrograms={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -89,13 +90,49 @@ describe('The ProgramList component', () => {
     expect(wrapper.find(Loader).exists()).toBe(false);
   });
 
+  test('shows loading when programs fetching', () => {
+    const wrapper = shallow(
+      <ProgramList
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+        programsIsFetching
+      />,
+    );
+
+    expect(wrapper.find(Header).length).toBe(1);
+    expect(wrapper.find(Header).prop('children')).toBe('My Programs');
+    expect(wrapper.find(Loader).exists()).toBe(true);
+  });
+
+  test('shows loading when user programs fetching', () => {
+    const wrapper = shallow(
+      <ProgramList
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+        userProgramsIsFetching
+      />,
+    );
+
+    expect(wrapper.find(Header).length).toBe(1);
+    expect(wrapper.find(Header).prop('children')).toBe('Find More');
+    expect(wrapper.find(Loader).exists()).toBe(true);
+  });
+
   test('loads program on click', () => {
-    const programs = [{
-      id: 33,
-      name: 'Unnamed_Design_3',
-      content: '<xml><variables></variables></xml>',
-      user: 10,
-    }];
+    const programs = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
     const wrapper = shallow(
       <ProgramList
         programs={programs}
@@ -116,10 +153,8 @@ describe('The ProgramList component', () => {
   });
 
   test('redirects to mission control when program loads', () => {
-    const programs = [];
     const wrapper = shallow(
       <ProgramList
-        programs={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -136,12 +171,16 @@ describe('The ProgramList component', () => {
   });
 
   test('removes a program and reloads the program list', async () => {
-    const programs = [{
-      id: 33,
-      name: 'Unnamed_Design_3',
-      content: '<xml><variables></variables></xml>',
-      user: 10,
-    }];
+    const programs = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
     const wrapper = shallow(
       <ProgramList
         programs={programs}

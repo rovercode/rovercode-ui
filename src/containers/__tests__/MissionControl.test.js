@@ -27,6 +27,15 @@ describe('The MissionControl container', () => {
       code: {
         jsCode: 'testcode',
       },
+      rover: {
+        isFetching: false,
+        rovers: {
+          next: null,
+          previous: null,
+          results: [],
+        },
+        commands: [],
+      },
     });
     store.dispatch = jest.fn(() => Promise.resolve({}));
   });

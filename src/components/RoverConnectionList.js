@@ -19,6 +19,7 @@ class RoverConnectionList extends Component {
       changeLeftSensorState,
       changeRightSensorState,
       commands,
+      isFetching,
       popCommand,
       rovers,
     } = this.props;
@@ -27,22 +28,20 @@ class RoverConnectionList extends Component {
     let inactiveRovers = null;
 
     if (rovers) {
-      const activeRoverIndex = rovers.findIndex(rover => rover.client_id === activeRover);
+      const activeRoverIndex = rovers.results.findIndex(rover => rover.client_id === activeRover);
 
       if (activeRoverIndex > -1) {
-        ({ [`${activeRoverIndex}`]: activeRoverObject, ...inactiveRovers } = rovers);
+        ({ [`${activeRoverIndex}`]: activeRoverObject, ...inactiveRovers } = rovers.results);
         inactiveRovers = Object.values(inactiveRovers);
+      } else {
+        inactiveRovers = rovers.results;
       }
-    }
-
-    if (!inactiveRovers) {
-      inactiveRovers = rovers;
     }
 
     return (
       <Fragment>
         {
-          rovers ? (
+          !isFetching && inactiveRovers !== null ? (
             <Card.Group style={{ margin: '10px' }}>
               {
                 activeRoverObject ? (
@@ -85,18 +84,27 @@ class RoverConnectionList extends Component {
 
 RoverConnectionList.defaultProps = {
   activeRover: null,
-  rovers: null,
+  rovers: {
+    next: null,
+    previous: null,
+    results: [],
+  },
+  isFetching: false,
 };
 
 RoverConnectionList.propTypes = {
   activeRover: PropTypes.string,
-  rovers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      client_id: PropTypes.string.isRequired,
-    }),
-  ),
+  rovers: PropTypes.shape({
+    next: PropTypes.string,
+    previous: PropTypes.string,
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
+  }),
+  isFetching: PropTypes.bool,
   fetchRovers: PropTypes.func.isRequired,
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
