@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The RoverList component renders on the page with no errors 1`] = `
+exports[`The RoverConnectionList component renders on the page with no errors 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <RoverConnectionList
@@ -22,21 +22,9 @@ ShallowWrapper {
         ],
       }
     }
+    isFetching={false}
     popCommand={[MockFunction]}
-    rovers={
-      Array [
-        Object {
-          "client_id": "1234",
-          "id": 1,
-          "name": "Sparky",
-        },
-        Object {
-          "client_id": "5678",
-          "id": 2,
-          "name": "Marvin",
-        },
-      ]
-    }
+    rovers={null}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -52,34 +40,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <CardGroup
-        style={
-          Object {
-            "margin": "10px",
-          }
-        }
-      >
-        <RoverConnection
-          changeActiveRover={[MockFunction]}
-          changeLeftSensorState={[MockFunction]}
-          changeRightSensorState={[MockFunction]}
-          clientId="1234"
-          commands={Array []}
-          isActive={false}
-          name="Sparky"
-          popCommand={[MockFunction]}
-        />
-        <RoverConnection
-          changeActiveRover={[MockFunction]}
-          changeLeftSensorState={[MockFunction]}
-          changeRightSensorState={[MockFunction]}
-          clientId="5678"
-          commands={Array []}
-          isActive={false}
-          name="Marvin"
-          popCommand={[MockFunction]}
-        />
-      </CardGroup>,
+      "children": <Loader
+        active={true}
+      />,
     },
     "ref": null,
     "rendered": Object {
@@ -87,75 +50,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": Array [
-          null,
-          Array [
-            <RoverConnection
-              changeActiveRover={[MockFunction]}
-              changeLeftSensorState={[MockFunction]}
-              changeRightSensorState={[MockFunction]}
-              clientId="1234"
-              commands={Array []}
-              isActive={false}
-              name="Sparky"
-              popCommand={[MockFunction]}
-            />,
-            <RoverConnection
-              changeActiveRover={[MockFunction]}
-              changeLeftSensorState={[MockFunction]}
-              changeRightSensorState={[MockFunction]}
-              clientId="5678"
-              commands={Array []}
-              isActive={false}
-              name="Marvin"
-              popCommand={[MockFunction]}
-            />,
-          ],
-        ],
-        "style": Object {
-          "margin": "10px",
-        },
+        "active": true,
       },
       "ref": null,
-      "rendered": Array [
-        null,
-        Object {
-          "instance": null,
-          "key": "1",
-          "nodeType": "class",
-          "props": Object {
-            "changeActiveRover": [MockFunction],
-            "changeLeftSensorState": [MockFunction],
-            "changeRightSensorState": [MockFunction],
-            "clientId": "1234",
-            "commands": Array [],
-            "isActive": false,
-            "name": "Sparky",
-            "popCommand": [MockFunction],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": "2",
-          "nodeType": "class",
-          "props": Object {
-            "changeActiveRover": [MockFunction],
-            "changeLeftSensorState": [MockFunction],
-            "changeRightSensorState": [MockFunction],
-            "clientId": "5678",
-            "commands": Array [],
-            "isActive": false,
-            "name": "Marvin",
-            "popCommand": [MockFunction],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
+      "rendered": null,
       "type": [Function],
     },
     "type": Symbol(react.fragment),
@@ -166,34 +64,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": <CardGroup
-          style={
-            Object {
-              "margin": "10px",
-            }
-          }
-        >
-          <RoverConnection
-            changeActiveRover={[MockFunction]}
-            changeLeftSensorState={[MockFunction]}
-            changeRightSensorState={[MockFunction]}
-            clientId="1234"
-            commands={Array []}
-            isActive={false}
-            name="Sparky"
-            popCommand={[MockFunction]}
-          />
-          <RoverConnection
-            changeActiveRover={[MockFunction]}
-            changeLeftSensorState={[MockFunction]}
-            changeRightSensorState={[MockFunction]}
-            clientId="5678"
-            commands={Array []}
-            isActive={false}
-            name="Marvin"
-            popCommand={[MockFunction]}
-          />
-        </CardGroup>,
+        "children": <Loader
+          active={true}
+        />,
       },
       "ref": null,
       "rendered": Object {
@@ -201,75 +74,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": Array [
-            null,
-            Array [
-              <RoverConnection
-                changeActiveRover={[MockFunction]}
-                changeLeftSensorState={[MockFunction]}
-                changeRightSensorState={[MockFunction]}
-                clientId="1234"
-                commands={Array []}
-                isActive={false}
-                name="Sparky"
-                popCommand={[MockFunction]}
-              />,
-              <RoverConnection
-                changeActiveRover={[MockFunction]}
-                changeLeftSensorState={[MockFunction]}
-                changeRightSensorState={[MockFunction]}
-                clientId="5678"
-                commands={Array []}
-                isActive={false}
-                name="Marvin"
-                popCommand={[MockFunction]}
-              />,
-            ],
-          ],
-          "style": Object {
-            "margin": "10px",
-          },
+          "active": true,
         },
         "ref": null,
-        "rendered": Array [
-          null,
-          Object {
-            "instance": null,
-            "key": "1",
-            "nodeType": "class",
-            "props": Object {
-              "changeActiveRover": [MockFunction],
-              "changeLeftSensorState": [MockFunction],
-              "changeRightSensorState": [MockFunction],
-              "clientId": "1234",
-              "commands": Array [],
-              "isActive": false,
-              "name": "Sparky",
-              "popCommand": [MockFunction],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": "2",
-            "nodeType": "class",
-            "props": Object {
-              "changeActiveRover": [MockFunction],
-              "changeLeftSensorState": [MockFunction],
-              "changeRightSensorState": [MockFunction],
-              "clientId": "5678",
-              "commands": Array [],
-              "isActive": false,
-              "name": "Marvin",
-              "popCommand": [MockFunction],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-        ],
+        "rendered": null,
         "type": [Function],
       },
       "type": Symbol(react.fragment),

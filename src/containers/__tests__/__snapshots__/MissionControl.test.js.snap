@@ -151,24 +151,33 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                 "hooks": undefined,
                               }
                             }
-                            error={null}
                             fetchRovers={[Function]}
-                            isCreating={false}
-                            isEditing={false}
                             isFetching={false}
-                            isFetchingSingle={false}
-                            isRemoving={false}
                             popCommand={[Function]}
-                            rover={null}
-                            rovers={null}
+                            rovers={
+                              Object {
+                                "next": null,
+                                "previous": null,
+                                "results": Array [],
+                              }
+                            }
                           >
-                            <Loader
-                              active={true}
+                            <CardGroup
+                              style={
+                                Object {
+                                  "margin": "10px",
+                                }
+                              }
                             >
                               <div
-                                className="ui active loader"
+                                className="ui cards"
+                                style={
+                                  Object {
+                                    "margin": "10px",
+                                  }
+                                }
                               />
-                            </Loader>
+                            </CardGroup>
                           </RoverConnectionList>
                         </Connect(RoverConnectionList)>
                       </withCookies(Component)>

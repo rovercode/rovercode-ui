@@ -23,7 +23,11 @@ class ProgramList extends Component {
 
   componentDidMount() {
     const { fetchPrograms, user } = this.props;
-    return fetchPrograms(user.user_id).then(() => fetchPrograms());
+    return fetchPrograms({
+      include: user.user_id,
+    }).then(() => fetchPrograms({
+      exclude: user.user_id,
+    }));
   }
 
   showConfirm = e => this.setState({
@@ -62,7 +66,7 @@ class ProgramList extends Component {
       </Header>
       <Card.Group centered>
         {
-          programs.map(program => (
+          programs.results.map(program => (
             <Card key={program.id}>
               <Card.Content>
                 <Card.Header>
@@ -98,7 +102,13 @@ class ProgramList extends Component {
   )
 
   render() {
-    const { programs, userPrograms, user } = this.props;
+    const {
+      programs,
+      programsIsFetching,
+      userPrograms,
+      userProgramsIsFetching,
+      user,
+    } = this.props;
     const { confirmOpen, focusProgram, programLoaded } = this.state;
 
     return (
@@ -113,12 +123,12 @@ class ProgramList extends Component {
             : (null)
         }
         {
-          userPrograms === null
+          userProgramsIsFetching || userPrograms === null
             ? (<Loader active />)
             : this.programSegment(userPrograms, 'My Programs', user.user_id)
         }
         {
-          programs === null
+          programsIsFetching || programs === null
             ? (<Loader active />)
             : this.programSegment(programs, 'Find More', user.user_id)
         }
@@ -137,8 +147,18 @@ class ProgramList extends Component {
 }
 
 ProgramList.defaultProps = {
-  programs: null,
-  userPrograms: null,
+  programs: {
+    next: null,
+    previous: null,
+    results: [],
+  },
+  programsIsFetching: false,
+  userPrograms: {
+    next: null,
+    previous: null,
+    results: [],
+  },
+  userProgramsIsFetching: false,
 };
 
 ProgramList.propTypes = {
@@ -148,20 +168,30 @@ ProgramList.propTypes = {
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
   }).isRequired,
-  programs: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      user: PropTypes.number.isRequired,
-    }),
-  ),
-  userPrograms: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      user: PropTypes.number.isRequired,
-    }),
-  ),
+  programs: PropTypes.shape({
+    next: PropTypes.string,
+    previous: PropTypes.string,
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        user: PropTypes.number.isRequired,
+      }),
+    ),
+  }),
+  programsIsFetching: PropTypes.bool,
+  userPrograms: PropTypes.shape({
+    next: PropTypes.string,
+    previous: PropTypes.string,
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        user: PropTypes.number.isRequired,
+      }),
+    ),
+  }),
+  userProgramsIsFetching: PropTypes.bool,
 };
 
 export default ProgramList;

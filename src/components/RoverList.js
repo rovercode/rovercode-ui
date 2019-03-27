@@ -81,7 +81,7 @@ class RoverList extends Component {
   }
 
   render() {
-    const { rovers } = this.props;
+    const { isFetching, rovers } = this.props;
     const {
       confirmOpen,
       focusRover,
@@ -119,7 +119,7 @@ class RoverList extends Component {
           </Modal.Actions>
         </Modal>
         {
-          rovers === null
+          isFetching || rovers === null
             ? (<Loader active />)
             : (
               <Segment raised style={{ margin: '10px' }}>
@@ -128,7 +128,7 @@ class RoverList extends Component {
                 </Header>
                 <Card.Group centered>
                   {
-                    rovers.map(rover => (
+                    rovers.results.map(rover => (
                       <Card key={rover.id}>
                         <Card.Content>
                           <Card.Header>
@@ -171,19 +171,29 @@ class RoverList extends Component {
 }
 
 RoverList.defaultProps = {
-  rovers: null,
+  rovers: {
+    next: null,
+    previous: null,
+    results: [],
+  },
+  isFetching: false,
 };
 
 RoverList.propTypes = {
   fetchRovers: PropTypes.func.isRequired,
   removeRover: PropTypes.func.isRequired,
   createRover: PropTypes.func.isRequired,
-  rovers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ),
+  rovers: PropTypes.shape({
+    next: PropTypes.string,
+    previous: PropTypes.string,
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
+  }),
+  isFetching: PropTypes.bool,
 };
 
 export default RoverList;
