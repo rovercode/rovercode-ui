@@ -22,16 +22,22 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
       }
     });
   },
-  fetchPrograms: (userId) => {
+  fetchPrograms: (userIds) => {
     const xhrOptions = {
       headers: {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
     };
 
-    if (userId) {
+    if (userIds && userIds.include) {
       xhrOptions.params = {
-        user: userId,
+        user: userIds.include,
+      };
+    }
+
+    if (userIds && userIds.exclude) {
+      xhrOptions.params = {
+        user__not: userIds.exclude,
       };
     }
 

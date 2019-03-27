@@ -23,7 +23,11 @@ class ProgramList extends Component {
 
   componentDidMount() {
     const { fetchPrograms, user } = this.props;
-    return fetchPrograms(user.user_id).then(() => fetchPrograms());
+    return fetchPrograms({
+      include: user.user_id,
+    }).then(() => fetchPrograms({
+      exclude: user.user_id,
+    }));
   }
 
   showConfirm = e => this.setState({

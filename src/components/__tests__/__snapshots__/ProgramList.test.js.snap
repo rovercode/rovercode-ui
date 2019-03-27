@@ -9,7 +9,9 @@ ShallowWrapper {
       [MockFunction] {
         "calls": Array [
           Array [
-            1,
+            Object {
+              "include": 1,
+            },
           ],
         ],
         "results": Array [

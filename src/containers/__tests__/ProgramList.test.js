@@ -40,7 +40,9 @@ describe('The ProgramListContainer', () => {
     const mockAxios = new MockAdapter(axios);
 
     mockAxios.onGet('/api/v1/block-diagrams/').reply(200, programs);
-    wrapper.dive().props().fetchPrograms();
+    wrapper.dive().props().fetchPrograms({
+      exclude: 10,
+    });
 
     expect(store.dispatch).toHaveBeenCalledWith(
       fetchPrograms({
@@ -68,9 +70,7 @@ describe('The ProgramListContainer', () => {
       },
     }).reply(200, programs);
     wrapper.dive().props().fetchPrograms({
-      params: {
-        user: 10,
-      },
+      include: 10,
     });
 
     expect(store.dispatch).toHaveBeenCalledWith(
