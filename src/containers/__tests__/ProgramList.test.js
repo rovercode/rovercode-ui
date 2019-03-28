@@ -18,9 +18,16 @@ describe('The ProgramListContainer', () => {
   let wrapper;
   beforeEach(() => {
     store = mockStore({
-      programs: {
+      program: {
         isFetching: false,
-        programs: [],
+        programs: {
+          total_pages: 1,
+          results: [],
+        },
+        userPrograms: {
+          total_pages: 1,
+          results: [],
+        },
       },
       user: {
         user_id: 1,
@@ -31,18 +38,21 @@ describe('The ProgramListContainer', () => {
     wrapper = shallow(<ProgramList store={store} />, { context });
   });
   test('dispatches an action to fetch programs', () => {
-    const programs = [{
-      id: 33,
-      name: 'Unnamed_Design_3',
-      content: '<xml><variables></variables></xml>',
-      user: 10,
-    }];
+    const programs = {
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
     const mockAxios = new MockAdapter(axios);
 
     mockAxios.onGet('/api/v1/block-diagrams/').reply(200, programs);
     wrapper.dive().props().fetchPrograms({
       exclude: 10,
-    });
+    }, 2);
 
     expect(store.dispatch).toHaveBeenCalledWith(
       fetchPrograms({
@@ -56,12 +66,15 @@ describe('The ProgramListContainer', () => {
   });
 
   test('dispatches an action to fetch programs for a user', () => {
-    const programs = [{
-      id: 33,
-      name: 'Unnamed_Design_3',
-      content: '<xml><variables></variables></xml>',
-      user: 10,
-    }];
+    const programs = {
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
     const mockAxios = new MockAdapter(axios);
 
     mockAxios.onGet('/api/v1/block-diagrams/', {
