@@ -4,6 +4,7 @@ import {
   Card,
   Confirm,
   Form,
+  Grid,
   Header,
   Icon,
   Loader,
@@ -12,6 +13,8 @@ import {
 } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import CustomPagination from './CustomPagination';
 
 const defaultState = {
   confirmOpen: false,
@@ -78,6 +81,12 @@ class RoverList extends Component {
     return createRover({ name: newRoverName }).then(newRover => this.setState({
       newRoverId: newRover.value.id,
     }));
+  }
+
+  handlePageChange = (e, { activePage }) => {
+    const { fetchRovers } = this.props;
+
+    return fetchRovers(activePage);
   }
 
   render() {
@@ -153,6 +162,15 @@ class RoverList extends Component {
                     ))
                   }
                 </Card.Group>
+                <Grid centered>
+                  <Grid.Row>
+                    <CustomPagination
+                      defaultActivePage={1}
+                      totalPages={rovers.total_pages}
+                      onPageChange={this.handlePageChange}
+                    />
+                  </Grid.Row>
+                </Grid>
                 <Confirm
                   header="Remove Rover"
                   content={`Are you sure you want to remove ${focusRover.name}?`}
@@ -174,6 +192,7 @@ RoverList.defaultProps = {
   rovers: {
     next: null,
     previous: null,
+    total_pages: 1,
     results: [],
   },
   isFetching: false,
@@ -186,6 +205,7 @@ RoverList.propTypes = {
   rovers: PropTypes.shape({
     next: PropTypes.string,
     previous: PropTypes.string,
+    total_pages: PropTypes.number,
     results: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

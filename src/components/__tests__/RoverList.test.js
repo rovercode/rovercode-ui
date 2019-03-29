@@ -8,6 +8,7 @@ import {
   Loader,
 } from 'semantic-ui-react';
 import { shallow, mount } from 'enzyme';
+import CustomPagination from '../CustomPagination';
 import RoverList from '../RoverList';
 
 let createRover;
@@ -54,6 +55,7 @@ describe('The RoverList component', () => {
     const rovers = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [{
         id: 1,
         name: 'Sparky',
@@ -92,6 +94,7 @@ describe('The RoverList component', () => {
     const rovers = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [],
     };
     const wrapper = shallow(
@@ -127,6 +130,7 @@ describe('The RoverList component', () => {
     const rovers = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [{
         id: 1,
         name: 'Sparky',
@@ -169,6 +173,7 @@ describe('The RoverList component', () => {
     const rovers = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [{
         id: 1,
         name: 'Sparky',
@@ -271,5 +276,21 @@ describe('The RoverList component', () => {
     expect(fetchRovers).toHaveBeenCalledTimes(1);
     expect(removeRover).not.toHaveBeenCalled();
     expect(wrapper.state('newRoverOpen')).toBe(false);
+  });
+
+  test('change page on click', () => {
+    const wrapper = shallow(
+      <RoverList
+        createRover={createRover}
+        fetchRovers={fetchRovers}
+        removeRover={removeRover}
+      />,
+    );
+
+    wrapper.find(CustomPagination).simulate('pageChange', null, {
+      activePage: 2,
+    });
+
+    expect(fetchRovers).toHaveBeenCalledWith(2);
   });
 });
