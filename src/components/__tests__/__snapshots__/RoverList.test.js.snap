@@ -24,8 +24,19 @@ ShallowWrapper {
       Object {
         "next": null,
         "previous": null,
-        "results": Array [],
-        "total_pages": 1,
+        "results": Array [
+          Object {
+            "client_id": "1234",
+            "id": 1,
+            "name": "Sparky",
+          },
+          Object {
+            "client_id": "5678",
+            "id": 2,
+            "name": "Marvin",
+          },
+        ],
+        "total_pages": 2,
       }
     }
   />,
@@ -123,7 +134,64 @@ ShallowWrapper {
           </Header>
           <CardGroup
             centered={true}
-          />
+          >
+            <Card>
+              <CardContent>
+                <CardHeader>
+                  Sparky
+                </CardHeader>
+              </CardContent>
+              <CardContent
+                extra={true}
+              >
+                <Button
+                  as={[Function]}
+                  primary={true}
+                  to="/rovers/1"
+                >
+                  Configure
+                </Button>
+                <Button
+                  as="button"
+                  floated="right"
+                  id={1}
+                  name="Sparky"
+                  negative={true}
+                  onClick={[Function]}
+                >
+                  Remove
+                </Button>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent>
+                <CardHeader>
+                  Marvin
+                </CardHeader>
+              </CardContent>
+              <CardContent
+                extra={true}
+              >
+                <Button
+                  as={[Function]}
+                  primary={true}
+                  to="/rovers/2"
+                >
+                  Configure
+                </Button>
+                <Button
+                  as="button"
+                  floated="right"
+                  id={2}
+                  name="Marvin"
+                  negative={true}
+                  onClick={[Function]}
+                >
+                  Remove
+                </Button>
+              </CardContent>
+            </Card>
+          </CardGroup>
           <Grid
             centered={true}
           >
@@ -131,7 +199,7 @@ ShallowWrapper {
               <CustomPagination
                 defaultActivePage={1}
                 onPageChange={[Function]}
-                totalPages={1}
+                totalPages={2}
               />
             </GridRow>
           </Grid>
@@ -357,7 +425,64 @@ ShallowWrapper {
             </Header>,
             <CardGroup
               centered={true}
-            />,
+            >
+              <Card>
+                <CardContent>
+                  <CardHeader>
+                    Sparky
+                  </CardHeader>
+                </CardContent>
+                <CardContent
+                  extra={true}
+                >
+                  <Button
+                    as={[Function]}
+                    primary={true}
+                    to="/rovers/1"
+                  >
+                    Configure
+                  </Button>
+                  <Button
+                    as="button"
+                    floated="right"
+                    id={1}
+                    name="Sparky"
+                    negative={true}
+                    onClick={[Function]}
+                  >
+                    Remove
+                  </Button>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent>
+                  <CardHeader>
+                    Marvin
+                  </CardHeader>
+                </CardContent>
+                <CardContent
+                  extra={true}
+                >
+                  <Button
+                    as={[Function]}
+                    primary={true}
+                    to="/rovers/2"
+                  >
+                    Configure
+                  </Button>
+                  <Button
+                    as="button"
+                    floated="right"
+                    id={2}
+                    name="Marvin"
+                    negative={true}
+                    onClick={[Function]}
+                  >
+                    Remove
+                  </Button>
+                </CardContent>
+              </Card>
+            </CardGroup>,
             <Grid
               centered={true}
             >
@@ -365,7 +490,7 @@ ShallowWrapper {
                 <CustomPagination
                   defaultActivePage={1}
                   onPageChange={[Function]}
-                  totalPages={1}
+                  totalPages={2}
                 />
               </GridRow>
             </Grid>,
@@ -406,10 +531,316 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "centered": true,
-              "children": Array [],
+              "children": Array [
+                <Card>
+                  <CardContent>
+                    <CardHeader>
+                      Sparky
+                    </CardHeader>
+                  </CardContent>
+                  <CardContent
+                    extra={true}
+                  >
+                    <Button
+                      as={[Function]}
+                      primary={true}
+                      to="/rovers/1"
+                    >
+                      Configure
+                    </Button>
+                    <Button
+                      as="button"
+                      floated="right"
+                      id={1}
+                      name="Sparky"
+                      negative={true}
+                      onClick={[Function]}
+                    >
+                      Remove
+                    </Button>
+                  </CardContent>
+                </Card>,
+                <Card>
+                  <CardContent>
+                    <CardHeader>
+                      Marvin
+                    </CardHeader>
+                  </CardContent>
+                  <CardContent
+                    extra={true}
+                  >
+                    <Button
+                      as={[Function]}
+                      primary={true}
+                      to="/rovers/2"
+                    >
+                      Configure
+                    </Button>
+                    <Button
+                      as="button"
+                      floated="right"
+                      id={2}
+                      name="Marvin"
+                      negative={true}
+                      onClick={[Function]}
+                    >
+                      Remove
+                    </Button>
+                  </CardContent>
+                </Card>,
+              ],
             },
             "ref": null,
-            "rendered": Array [],
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "1",
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <CardContent>
+                      <CardHeader>
+                        Sparky
+                      </CardHeader>
+                    </CardContent>,
+                    <CardContent
+                      extra={true}
+                    >
+                      <Button
+                        as={[Function]}
+                        primary={true}
+                        to="/rovers/1"
+                      >
+                        Configure
+                      </Button>
+                      <Button
+                        as="button"
+                        floated="right"
+                        id={1}
+                        name="Sparky"
+                        negative={true}
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </Button>
+                    </CardContent>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": <CardHeader>
+                        Sparky
+                      </CardHeader>,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": "Sparky",
+                      },
+                      "ref": null,
+                      "rendered": "Sparky",
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <Button
+                          as={[Function]}
+                          primary={true}
+                          to="/rovers/1"
+                        >
+                          Configure
+                        </Button>,
+                        <Button
+                          as="button"
+                          floated="right"
+                          id={1}
+                          name="Sparky"
+                          negative={true}
+                          onClick={[Function]}
+                        >
+                          Remove
+                        </Button>,
+                      ],
+                      "extra": true,
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "as": [Function],
+                          "children": "Configure",
+                          "primary": true,
+                          "to": "/rovers/1",
+                        },
+                        "ref": null,
+                        "rendered": "Configure",
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "as": "button",
+                          "children": "Remove",
+                          "floated": "right",
+                          "id": 1,
+                          "name": "Sparky",
+                          "negative": true,
+                          "onClick": [Function],
+                        },
+                        "ref": null,
+                        "rendered": "Remove",
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "2",
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <CardContent>
+                      <CardHeader>
+                        Marvin
+                      </CardHeader>
+                    </CardContent>,
+                    <CardContent
+                      extra={true}
+                    >
+                      <Button
+                        as={[Function]}
+                        primary={true}
+                        to="/rovers/2"
+                      >
+                        Configure
+                      </Button>
+                      <Button
+                        as="button"
+                        floated="right"
+                        id={2}
+                        name="Marvin"
+                        negative={true}
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </Button>
+                    </CardContent>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": <CardHeader>
+                        Marvin
+                      </CardHeader>,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": "Marvin",
+                      },
+                      "ref": null,
+                      "rendered": "Marvin",
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <Button
+                          as={[Function]}
+                          primary={true}
+                          to="/rovers/2"
+                        >
+                          Configure
+                        </Button>,
+                        <Button
+                          as="button"
+                          floated="right"
+                          id={2}
+                          name="Marvin"
+                          negative={true}
+                          onClick={[Function]}
+                        >
+                          Remove
+                        </Button>,
+                      ],
+                      "extra": true,
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "as": [Function],
+                          "children": "Configure",
+                          "primary": true,
+                          "to": "/rovers/2",
+                        },
+                        "ref": null,
+                        "rendered": "Configure",
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "as": "button",
+                          "children": "Remove",
+                          "floated": "right",
+                          "id": 2,
+                          "name": "Marvin",
+                          "negative": true,
+                          "onClick": [Function],
+                        },
+                        "ref": null,
+                        "rendered": "Remove",
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
             "type": [Function],
           },
           Object {
@@ -422,7 +853,7 @@ ShallowWrapper {
                 <CustomPagination
                   defaultActivePage={1}
                   onPageChange={[Function]}
-                  totalPages={1}
+                  totalPages={2}
                 />
               </GridRow>,
             },
@@ -435,7 +866,7 @@ ShallowWrapper {
                 "children": <CustomPagination
                   defaultActivePage={1}
                   onPageChange={[Function]}
-                  totalPages={1}
+                  totalPages={2}
                 />,
               },
               "ref": null,
@@ -446,7 +877,7 @@ ShallowWrapper {
                 "props": Object {
                   "defaultActivePage": 1,
                   "onPageChange": [Function],
-                  "totalPages": 1,
+                  "totalPages": 2,
                 },
                 "ref": null,
                 "rendered": null,
@@ -566,7 +997,64 @@ ShallowWrapper {
             </Header>
             <CardGroup
               centered={true}
-            />
+            >
+              <Card>
+                <CardContent>
+                  <CardHeader>
+                    Sparky
+                  </CardHeader>
+                </CardContent>
+                <CardContent
+                  extra={true}
+                >
+                  <Button
+                    as={[Function]}
+                    primary={true}
+                    to="/rovers/1"
+                  >
+                    Configure
+                  </Button>
+                  <Button
+                    as="button"
+                    floated="right"
+                    id={1}
+                    name="Sparky"
+                    negative={true}
+                    onClick={[Function]}
+                  >
+                    Remove
+                  </Button>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent>
+                  <CardHeader>
+                    Marvin
+                  </CardHeader>
+                </CardContent>
+                <CardContent
+                  extra={true}
+                >
+                  <Button
+                    as={[Function]}
+                    primary={true}
+                    to="/rovers/2"
+                  >
+                    Configure
+                  </Button>
+                  <Button
+                    as="button"
+                    floated="right"
+                    id={2}
+                    name="Marvin"
+                    negative={true}
+                    onClick={[Function]}
+                  >
+                    Remove
+                  </Button>
+                </CardContent>
+              </Card>
+            </CardGroup>
             <Grid
               centered={true}
             >
@@ -574,7 +1062,7 @@ ShallowWrapper {
                 <CustomPagination
                   defaultActivePage={1}
                   onPageChange={[Function]}
-                  totalPages={1}
+                  totalPages={2}
                 />
               </GridRow>
             </Grid>
@@ -800,7 +1288,64 @@ ShallowWrapper {
               </Header>,
               <CardGroup
                 centered={true}
-              />,
+              >
+                <Card>
+                  <CardContent>
+                    <CardHeader>
+                      Sparky
+                    </CardHeader>
+                  </CardContent>
+                  <CardContent
+                    extra={true}
+                  >
+                    <Button
+                      as={[Function]}
+                      primary={true}
+                      to="/rovers/1"
+                    >
+                      Configure
+                    </Button>
+                    <Button
+                      as="button"
+                      floated="right"
+                      id={1}
+                      name="Sparky"
+                      negative={true}
+                      onClick={[Function]}
+                    >
+                      Remove
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent>
+                    <CardHeader>
+                      Marvin
+                    </CardHeader>
+                  </CardContent>
+                  <CardContent
+                    extra={true}
+                  >
+                    <Button
+                      as={[Function]}
+                      primary={true}
+                      to="/rovers/2"
+                    >
+                      Configure
+                    </Button>
+                    <Button
+                      as="button"
+                      floated="right"
+                      id={2}
+                      name="Marvin"
+                      negative={true}
+                      onClick={[Function]}
+                    >
+                      Remove
+                    </Button>
+                  </CardContent>
+                </Card>
+              </CardGroup>,
               <Grid
                 centered={true}
               >
@@ -808,7 +1353,7 @@ ShallowWrapper {
                   <CustomPagination
                     defaultActivePage={1}
                     onPageChange={[Function]}
-                    totalPages={1}
+                    totalPages={2}
                   />
                 </GridRow>
               </Grid>,
@@ -849,10 +1394,316 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "centered": true,
-                "children": Array [],
+                "children": Array [
+                  <Card>
+                    <CardContent>
+                      <CardHeader>
+                        Sparky
+                      </CardHeader>
+                    </CardContent>
+                    <CardContent
+                      extra={true}
+                    >
+                      <Button
+                        as={[Function]}
+                        primary={true}
+                        to="/rovers/1"
+                      >
+                        Configure
+                      </Button>
+                      <Button
+                        as="button"
+                        floated="right"
+                        id={1}
+                        name="Sparky"
+                        negative={true}
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </Button>
+                    </CardContent>
+                  </Card>,
+                  <Card>
+                    <CardContent>
+                      <CardHeader>
+                        Marvin
+                      </CardHeader>
+                    </CardContent>
+                    <CardContent
+                      extra={true}
+                    >
+                      <Button
+                        as={[Function]}
+                        primary={true}
+                        to="/rovers/2"
+                      >
+                        Configure
+                      </Button>
+                      <Button
+                        as="button"
+                        floated="right"
+                        id={2}
+                        name="Marvin"
+                        negative={true}
+                        onClick={[Function]}
+                      >
+                        Remove
+                      </Button>
+                    </CardContent>
+                  </Card>,
+                ],
               },
               "ref": null,
-              "rendered": Array [],
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "1",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <CardContent>
+                        <CardHeader>
+                          Sparky
+                        </CardHeader>
+                      </CardContent>,
+                      <CardContent
+                        extra={true}
+                      >
+                        <Button
+                          as={[Function]}
+                          primary={true}
+                          to="/rovers/1"
+                        >
+                          Configure
+                        </Button>
+                        <Button
+                          as="button"
+                          floated="right"
+                          id={1}
+                          name="Sparky"
+                          negative={true}
+                          onClick={[Function]}
+                        >
+                          Remove
+                        </Button>
+                      </CardContent>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": <CardHeader>
+                          Sparky
+                        </CardHeader>,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": "Sparky",
+                        },
+                        "ref": null,
+                        "rendered": "Sparky",
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": Array [
+                          <Button
+                            as={[Function]}
+                            primary={true}
+                            to="/rovers/1"
+                          >
+                            Configure
+                          </Button>,
+                          <Button
+                            as="button"
+                            floated="right"
+                            id={1}
+                            name="Sparky"
+                            negative={true}
+                            onClick={[Function]}
+                          >
+                            Remove
+                          </Button>,
+                        ],
+                        "extra": true,
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "as": [Function],
+                            "children": "Configure",
+                            "primary": true,
+                            "to": "/rovers/1",
+                          },
+                          "ref": null,
+                          "rendered": "Configure",
+                          "type": [Function],
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "as": "button",
+                            "children": "Remove",
+                            "floated": "right",
+                            "id": 1,
+                            "name": "Sparky",
+                            "negative": true,
+                            "onClick": [Function],
+                          },
+                          "ref": null,
+                          "rendered": "Remove",
+                          "type": [Function],
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "2",
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <CardContent>
+                        <CardHeader>
+                          Marvin
+                        </CardHeader>
+                      </CardContent>,
+                      <CardContent
+                        extra={true}
+                      >
+                        <Button
+                          as={[Function]}
+                          primary={true}
+                          to="/rovers/2"
+                        >
+                          Configure
+                        </Button>
+                        <Button
+                          as="button"
+                          floated="right"
+                          id={2}
+                          name="Marvin"
+                          negative={true}
+                          onClick={[Function]}
+                        >
+                          Remove
+                        </Button>
+                      </CardContent>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": <CardHeader>
+                          Marvin
+                        </CardHeader>,
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "children": "Marvin",
+                        },
+                        "ref": null,
+                        "rendered": "Marvin",
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": Array [
+                          <Button
+                            as={[Function]}
+                            primary={true}
+                            to="/rovers/2"
+                          >
+                            Configure
+                          </Button>,
+                          <Button
+                            as="button"
+                            floated="right"
+                            id={2}
+                            name="Marvin"
+                            negative={true}
+                            onClick={[Function]}
+                          >
+                            Remove
+                          </Button>,
+                        ],
+                        "extra": true,
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "as": [Function],
+                            "children": "Configure",
+                            "primary": true,
+                            "to": "/rovers/2",
+                          },
+                          "ref": null,
+                          "rendered": "Configure",
+                          "type": [Function],
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "as": "button",
+                            "children": "Remove",
+                            "floated": "right",
+                            "id": 2,
+                            "name": "Marvin",
+                            "negative": true,
+                            "onClick": [Function],
+                          },
+                          "ref": null,
+                          "rendered": "Remove",
+                          "type": [Function],
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
               "type": [Function],
             },
             Object {
@@ -865,7 +1716,7 @@ ShallowWrapper {
                   <CustomPagination
                     defaultActivePage={1}
                     onPageChange={[Function]}
-                    totalPages={1}
+                    totalPages={2}
                   />
                 </GridRow>,
               },
@@ -878,7 +1729,7 @@ ShallowWrapper {
                   "children": <CustomPagination
                     defaultActivePage={1}
                     onPageChange={[Function]}
-                    totalPages={1}
+                    totalPages={2}
                   />,
                 },
                 "ref": null,
@@ -889,7 +1740,7 @@ ShallowWrapper {
                   "props": Object {
                     "defaultActivePage": 1,
                     "onPageChange": [Function],
-                    "totalPages": 1,
+                    "totalPages": 2,
                   },
                   "ref": null,
                   "rendered": null,

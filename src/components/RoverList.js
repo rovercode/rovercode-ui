@@ -162,15 +162,19 @@ class RoverList extends Component {
                     ))
                   }
                 </Card.Group>
-                <Grid centered>
-                  <Grid.Row>
-                    <CustomPagination
-                      defaultActivePage={1}
-                      totalPages={rovers.total_pages}
-                      onPageChange={this.handlePageChange}
-                    />
-                  </Grid.Row>
-                </Grid>
+                {
+                  rovers.total_pages > 1 ? (
+                    <Grid centered>
+                      <Grid.Row>
+                        <CustomPagination
+                          defaultActivePage={1}
+                          totalPages={rovers.total_pages}
+                          onPageChange={this.handlePageChange}
+                        />
+                      </Grid.Row>
+                    </Grid>
+                  ) : (null)
+                }
                 <Confirm
                   header="Remove Rover"
                   content={`Are you sure you want to remove ${focusRover.name}?`}

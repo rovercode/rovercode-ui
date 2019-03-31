@@ -27,7 +27,7 @@ ShallowWrapper {
             "user": 1,
           },
         ],
-        "total_pages": 1,
+        "total_pages": 2,
       }
     }
   />,
@@ -127,7 +127,7 @@ ShallowWrapper {
             <CustomPagination
               defaultActivePage={1}
               onPageChange={[Function]}
-              totalPages={1}
+              totalPages={2}
             />
           </GridRow>
         </Grid>,
@@ -532,7 +532,7 @@ ShallowWrapper {
             <CustomPagination
               defaultActivePage={1}
               onPageChange={[Function]}
-              totalPages={1}
+              totalPages={2}
             />
           </GridRow>,
         },
@@ -545,7 +545,7 @@ ShallowWrapper {
             "children": <CustomPagination
               defaultActivePage={1}
               onPageChange={[Function]}
-              totalPages={1}
+              totalPages={2}
             />,
           },
           "ref": null,
@@ -556,7 +556,7 @@ ShallowWrapper {
             "props": Object {
               "defaultActivePage": 1,
               "onPageChange": [Function],
-              "totalPages": 1,
+              "totalPages": 2,
             },
             "ref": null,
             "rendered": null,
@@ -657,7 +657,7 @@ ShallowWrapper {
               <CustomPagination
                 defaultActivePage={1}
                 onPageChange={[Function]}
-                totalPages={1}
+                totalPages={2}
               />
             </GridRow>
           </Grid>,
@@ -1062,7 +1062,7 @@ ShallowWrapper {
               <CustomPagination
                 defaultActivePage={1}
                 onPageChange={[Function]}
-                totalPages={1}
+                totalPages={2}
               />
             </GridRow>,
           },
@@ -1075,7 +1075,7 @@ ShallowWrapper {
               "children": <CustomPagination
                 defaultActivePage={1}
                 onPageChange={[Function]}
-                totalPages={1}
+                totalPages={2}
               />,
             },
             "ref": null,
@@ -1086,7 +1086,7 @@ ShallowWrapper {
               "props": Object {
                 "defaultActivePage": 1,
                 "onPageChange": [Function],
-                "totalPages": 1,
+                "totalPages": 2,
               },
               "ref": null,
               "rendered": null,

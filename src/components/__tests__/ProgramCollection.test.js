@@ -21,7 +21,7 @@ describe('The ProgramCollection component', () => {
     const programs = {
       next: null,
       previous: null,
-      total_pages: 1,
+      total_pages: 2,
       results: [{
         id: 33,
         name: 'Unnamed_Design_3',
@@ -190,12 +190,17 @@ describe('The ProgramCollection component', () => {
     const programs = {
       next: null,
       previous: null,
-      total_pages: 1,
+      total_pages: 2,
       results: [{
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: 1,
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: 1,
       }],
     };
     const wrapper = shallow(

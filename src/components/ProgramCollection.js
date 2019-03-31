@@ -65,15 +65,19 @@ class ProgramCollection extends PureComponent {
             ))
           }
         </Card.Group>
-        <Grid centered>
-          <Grid.Row>
-            <CustomPagination
-              defaultActivePage={1}
-              totalPages={programs.total_pages}
-              onPageChange={this.handlePageChange}
-            />
-          </Grid.Row>
-        </Grid>
+        {
+          programs.total_pages > 1 ? (
+            <Grid centered>
+              <Grid.Row>
+                <CustomPagination
+                  defaultActivePage={1}
+                  totalPages={programs.total_pages}
+                  onPageChange={this.handlePageChange}
+                />
+              </Grid.Row>
+            </Grid>
+          ) : (null)
+        }
       </Fragment>
     );
   }
