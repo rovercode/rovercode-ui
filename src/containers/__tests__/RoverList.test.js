@@ -38,7 +38,7 @@ describe('The RoverListContainer', () => {
     const mockAxios = new MockAdapter(axios);
 
     mockAxios.onGet('/api/v1/rovers/').reply(200, rovers);
-    wrapper.dive().props().fetchRovers();
+    wrapper.dive().props().fetchRovers(2);
 
     expect(store.dispatch).toHaveBeenCalledWith(
       fetchRovers({

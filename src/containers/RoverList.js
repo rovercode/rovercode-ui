@@ -8,12 +8,18 @@ import RoverList from '../components/RoverList';
 
 const mapStateToProps = ({ rover }) => ({ ...rover });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  fetchRovers: () => {
-    const fetchRoversAction = fetchRovers({
+  fetchRovers: (page) => {
+    const xhrOptions = {
       headers: {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
-    });
+    };
+
+    if (page) {
+      xhrOptions.params = { page };
+    }
+
+    const fetchRoversAction = fetchRovers(xhrOptions);
     return dispatch(fetchRoversAction).catch((error) => {
       if (error.response.status === 401) {
         // Authentication is no longer valid

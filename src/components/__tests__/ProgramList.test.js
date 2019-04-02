@@ -1,10 +1,9 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import {
-  Button, Card, Header, Loader,
-} from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
+import ProgramCollection from '../ProgramCollection';
 import ProgramList from '../ProgramList';
 
 let fetchProgram;
@@ -48,6 +47,7 @@ describe('The ProgramList component', () => {
     const programs = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [{
         id: 33,
         name: 'Unnamed_Design_3',
@@ -71,22 +71,8 @@ describe('The ProgramList component', () => {
       />,
     );
 
-    expect(wrapper.find(Header).exists()).toBe(true);
-    expect(wrapper.find(Loader).exists()).toBe(false);
-    expect(wrapper.find(Card).length).toBe(4);
-  });
-
-  test('shows no programs on error', () => {
-    const wrapper = shallow(
-      <ProgramList
-        fetchProgram={fetchProgram}
-        fetchPrograms={fetchPrograms}
-        removeProgram={removeProgram}
-        user={{ user_id: 1 }}
-      />,
-    );
-
-    expect(wrapper.find(Header).exists()).toBe(true);
+    expect(wrapper.find(ProgramCollection).exists()).toBe(true);
+    expect(wrapper.find(ProgramCollection).length).toBe(2);
     expect(wrapper.find(Loader).exists()).toBe(false);
   });
 
@@ -101,8 +87,8 @@ describe('The ProgramList component', () => {
       />,
     );
 
-    expect(wrapper.find(Header).length).toBe(1);
-    expect(wrapper.find(Header).prop('children')).toBe('My Programs');
+    expect(wrapper.find(ProgramCollection).exists()).toBe(true);
+    expect(wrapper.find(ProgramCollection).length).toBe(1);
     expect(wrapper.find(Loader).exists()).toBe(true);
   });
 
@@ -117,39 +103,9 @@ describe('The ProgramList component', () => {
       />,
     );
 
-    expect(wrapper.find(Header).length).toBe(1);
-    expect(wrapper.find(Header).prop('children')).toBe('Find More');
+    expect(wrapper.find(ProgramCollection).exists()).toBe(true);
+    expect(wrapper.find(ProgramCollection).length).toBe(1);
     expect(wrapper.find(Loader).exists()).toBe(true);
-  });
-
-  test('loads program on click', () => {
-    const programs = {
-      next: null,
-      previous: null,
-      results: [{
-        id: 33,
-        name: 'Unnamed_Design_3',
-        content: '<xml><variables></variables></xml>',
-        user: 10,
-      }],
-    };
-    const wrapper = shallow(
-      <ProgramList
-        programs={programs}
-        fetchProgram={fetchProgram}
-        fetchPrograms={fetchPrograms}
-        removeProgram={removeProgram}
-        user={{ user_id: 1 }}
-      />,
-    );
-
-    wrapper.find(Button).last().simulate('click', {
-      target: {
-        id: 33,
-      },
-    });
-
-    expect(fetchProgram).toHaveBeenCalledWith(33);
   });
 
   test('redirects to mission control when program loads', () => {
@@ -170,10 +126,101 @@ describe('The ProgramList component', () => {
     expect(wrapper.find(Redirect).at(0).prop('to')).toBe('/mission-control');
   });
 
+  test('loads a program', async () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramList
+        programs={programs}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    await wrapper.instance().loadProgram({
+      target: {
+        id: 33,
+      },
+    });
+
+    expect(fetchProgram).toHaveBeenCalledWith(33);
+    expect(wrapper.state('programLoaded')).toBe(true);
+  });
+
+  test('fetches user programs after page change', async () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramList
+        programs={programs}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    await wrapper.instance().pageChange(2, true);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      include: 1,
+    }, 2);
+  });
+
+  test('fetches other programs after page change', async () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramList
+        programs={programs}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    await wrapper.instance().pageChange(2, false);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      exclude: 1,
+    }, 2);
+  });
+
   test('removes a program and reloads the program list', async () => {
     const programs = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [{
         id: 33,
         name: 'Unnamed_Design_3',

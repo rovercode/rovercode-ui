@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import {
-  Button, Card, Confirm, Header, Icon, Loader, Segment,
+  Button,
+  Confirm,
+  Icon,
+  Loader,
+  Segment,
 } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import ProgramCollection from './ProgramCollection';
 
 const defaultState = {
   programLoaded: false,
@@ -47,8 +53,12 @@ class ProgramList extends Component {
     this.setState(defaultState);
 
     return removeProgram(focusProgram.id)
-      .then(() => fetchPrograms(user.user_id))
-      .then(() => fetchPrograms());
+      .then(() => fetchPrograms({
+        include: user.user_id,
+      }))
+      .then(() => fetchPrograms({
+        exclude: user.user_id,
+      }));
   }
 
   loadProgram = (e) => {
@@ -59,45 +69,30 @@ class ProgramList extends Component {
     }));
   }
 
-  programSegment = (programs, label, userId) => (
+  pageChange = (page, owned) => {
+    const { fetchPrograms, user } = this.props;
+
+    if (owned) {
+      fetchPrograms({
+        include: user.user_id,
+      }, page);
+    } else {
+      fetchPrograms({
+        exclude: user.user_id,
+      }, page);
+    }
+  }
+
+  programSegment = (programs, label, owned) => (
     <Segment raised style={{ margin: '10px' }}>
-      <Header as="h1" textAlign="center">
-        {label}
-      </Header>
-      <Card.Group centered>
-        {
-          programs.results.map(program => (
-            <Card key={program.id}>
-              <Card.Content>
-                <Card.Header>
-                  {program.name}
-                </Card.Header>
-                <Card.Meta>
-                  { program.user === userId ? 'Mine' : program.user }
-                </Card.Meta>
-              </Card.Content>
-              <Card.Content extra>
-                <Button primary id={program.id} onClick={this.loadProgram}>
-                  { program.user === userId ? 'Keep Working' : 'View' }
-                </Button>
-                {
-                  program.user === userId ? (
-                    <Button
-                      negative
-                      id={program.id}
-                      name={program.name}
-                      onClick={this.showConfirm}
-                      floated="right"
-                    >
-                      Remove
-                    </Button>
-                  ) : (null)
-                }
-              </Card.Content>
-            </Card>
-          ))
-        }
-      </Card.Group>
+      <ProgramCollection
+        programs={programs}
+        label={label}
+        owned={owned}
+        onProgramClick={this.loadProgram}
+        onRemoveClick={this.showConfirm}
+        onPageChange={this.pageChange}
+      />
     </Segment>
   )
 
@@ -107,7 +102,6 @@ class ProgramList extends Component {
       programsIsFetching,
       userPrograms,
       userProgramsIsFetching,
-      user,
     } = this.props;
     const { confirmOpen, focusProgram, programLoaded } = this.state;
 
@@ -125,12 +119,12 @@ class ProgramList extends Component {
         {
           userProgramsIsFetching || userPrograms === null
             ? (<Loader active />)
-            : this.programSegment(userPrograms, 'My Programs', user.user_id)
+            : this.programSegment(userPrograms, 'My Programs', true)
         }
         {
           programsIsFetching || programs === null
             ? (<Loader active />)
-            : this.programSegment(programs, 'Find More', user.user_id)
+            : this.programSegment(programs, 'Find More', false)
         }
         <Confirm
           header="Remove Program"
@@ -150,12 +144,14 @@ ProgramList.defaultProps = {
   programs: {
     next: null,
     previous: null,
+    total_pages: 1,
     results: [],
   },
   programsIsFetching: false,
   userPrograms: {
     next: null,
     previous: null,
+    total_pages: 1,
     results: [],
   },
   userProgramsIsFetching: false,
@@ -171,6 +167,7 @@ ProgramList.propTypes = {
   programs: PropTypes.shape({
     next: PropTypes.string,
     previous: PropTypes.string,
+    total_pages: PropTypes.number,
     results: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -183,6 +180,7 @@ ProgramList.propTypes = {
   userPrograms: PropTypes.shape({
     next: PropTypes.string,
     previous: PropTypes.string,
+    total_pages: PropTypes.number,
     results: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

@@ -27,6 +27,7 @@ ShallowWrapper {
         "next": null,
         "previous": null,
         "results": Array [],
+        "total_pages": 1,
       }
     }
     programsIsFetching={false}
@@ -41,6 +42,7 @@ ShallowWrapper {
         "next": null,
         "previous": null,
         "results": Array [],
+        "total_pages": 1,
       }
     }
     userProgramsIsFetching={false}
@@ -85,14 +87,20 @@ ShallowWrapper {
             }
           }
         >
-          <Header
-            as="h1"
-            textAlign="center"
-          >
-            My Programs
-          </Header>
-          <CardGroup
-            centered={true}
+          <ProgramCollection
+            label="My Programs"
+            onPageChange={[Function]}
+            onProgramClick={[Function]}
+            onRemoveClick={[Function]}
+            owned={true}
+            programs={
+              Object {
+                "next": null,
+                "previous": null,
+                "results": Array [],
+                "total_pages": 1,
+              }
+            }
           />
         </Segment>,
         <Segment
@@ -103,14 +111,20 @@ ShallowWrapper {
             }
           }
         >
-          <Header
-            as="h1"
-            textAlign="center"
-          >
-            Find More
-          </Header>
-          <CardGroup
-            centered={true}
+          <ProgramCollection
+            label="Find More"
+            onPageChange={[Function]}
+            onProgramClick={[Function]}
+            onRemoveClick={[Function]}
+            owned={false}
+            programs={
+              Object {
+                "next": null,
+                "previous": null,
+                "results": Array [],
+                "total_pages": 1,
+              }
+            }
           />
         </Segment>,
         <Confirm
@@ -170,50 +184,48 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": Array [
-            <Header
-              as="h1"
-              textAlign="center"
-            >
-              My Programs
-            </Header>,
-            <CardGroup
-              centered={true}
-            />,
-          ],
+          "children": <ProgramCollection
+            label="My Programs"
+            onPageChange={[Function]}
+            onProgramClick={[Function]}
+            onRemoveClick={[Function]}
+            owned={true}
+            programs={
+              Object {
+                "next": null,
+                "previous": null,
+                "results": Array [],
+                "total_pages": 1,
+              }
+            }
+          />,
           "raised": true,
           "style": Object {
             "margin": "10px",
           },
         },
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "as": "h1",
-              "children": "My Programs",
-              "textAlign": "center",
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "label": "My Programs",
+            "onPageChange": [Function],
+            "onProgramClick": [Function],
+            "onRemoveClick": [Function],
+            "owned": true,
+            "programs": Object {
+              "next": null,
+              "previous": null,
+              "results": Array [],
+              "total_pages": 1,
             },
-            "ref": null,
-            "rendered": "My Programs",
-            "type": [Function],
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "centered": true,
-              "children": Array [],
-            },
-            "ref": null,
-            "rendered": Array [],
-            "type": [Function],
-          },
-        ],
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         "type": [Function],
       },
       Object {
@@ -221,50 +233,48 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": Array [
-            <Header
-              as="h1"
-              textAlign="center"
-            >
-              Find More
-            </Header>,
-            <CardGroup
-              centered={true}
-            />,
-          ],
+          "children": <ProgramCollection
+            label="Find More"
+            onPageChange={[Function]}
+            onProgramClick={[Function]}
+            onRemoveClick={[Function]}
+            owned={false}
+            programs={
+              Object {
+                "next": null,
+                "previous": null,
+                "results": Array [],
+                "total_pages": 1,
+              }
+            }
+          />,
           "raised": true,
           "style": Object {
             "margin": "10px",
           },
         },
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "as": "h1",
-              "children": "Find More",
-              "textAlign": "center",
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "label": "Find More",
+            "onPageChange": [Function],
+            "onProgramClick": [Function],
+            "onRemoveClick": [Function],
+            "owned": false,
+            "programs": Object {
+              "next": null,
+              "previous": null,
+              "results": Array [],
+              "total_pages": 1,
             },
-            "ref": null,
-            "rendered": "Find More",
-            "type": [Function],
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "centered": true,
-              "children": Array [],
-            },
-            "ref": null,
-            "rendered": Array [],
-            "type": [Function],
-          },
-        ],
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         "type": [Function],
       },
       Object {
@@ -320,14 +330,20 @@ ShallowWrapper {
               }
             }
           >
-            <Header
-              as="h1"
-              textAlign="center"
-            >
-              My Programs
-            </Header>
-            <CardGroup
-              centered={true}
+            <ProgramCollection
+              label="My Programs"
+              onPageChange={[Function]}
+              onProgramClick={[Function]}
+              onRemoveClick={[Function]}
+              owned={true}
+              programs={
+                Object {
+                  "next": null,
+                  "previous": null,
+                  "results": Array [],
+                  "total_pages": 1,
+                }
+              }
             />
           </Segment>,
           <Segment
@@ -338,14 +354,20 @@ ShallowWrapper {
               }
             }
           >
-            <Header
-              as="h1"
-              textAlign="center"
-            >
-              Find More
-            </Header>
-            <CardGroup
-              centered={true}
+            <ProgramCollection
+              label="Find More"
+              onPageChange={[Function]}
+              onProgramClick={[Function]}
+              onRemoveClick={[Function]}
+              owned={false}
+              programs={
+                Object {
+                  "next": null,
+                  "previous": null,
+                  "results": Array [],
+                  "total_pages": 1,
+                }
+              }
             />
           </Segment>,
           <Confirm
@@ -405,50 +427,48 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": Array [
-              <Header
-                as="h1"
-                textAlign="center"
-              >
-                My Programs
-              </Header>,
-              <CardGroup
-                centered={true}
-              />,
-            ],
+            "children": <ProgramCollection
+              label="My Programs"
+              onPageChange={[Function]}
+              onProgramClick={[Function]}
+              onRemoveClick={[Function]}
+              owned={true}
+              programs={
+                Object {
+                  "next": null,
+                  "previous": null,
+                  "results": Array [],
+                  "total_pages": 1,
+                }
+              }
+            />,
             "raised": true,
             "style": Object {
               "margin": "10px",
             },
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "as": "h1",
-                "children": "My Programs",
-                "textAlign": "center",
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "label": "My Programs",
+              "onPageChange": [Function],
+              "onProgramClick": [Function],
+              "onRemoveClick": [Function],
+              "owned": true,
+              "programs": Object {
+                "next": null,
+                "previous": null,
+                "results": Array [],
+                "total_pages": 1,
               },
-              "ref": null,
-              "rendered": "My Programs",
-              "type": [Function],
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "centered": true,
-                "children": Array [],
-              },
-              "ref": null,
-              "rendered": Array [],
-              "type": [Function],
-            },
-          ],
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {
@@ -456,50 +476,48 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": Array [
-              <Header
-                as="h1"
-                textAlign="center"
-              >
-                Find More
-              </Header>,
-              <CardGroup
-                centered={true}
-              />,
-            ],
+            "children": <ProgramCollection
+              label="Find More"
+              onPageChange={[Function]}
+              onProgramClick={[Function]}
+              onRemoveClick={[Function]}
+              owned={false}
+              programs={
+                Object {
+                  "next": null,
+                  "previous": null,
+                  "results": Array [],
+                  "total_pages": 1,
+                }
+              }
+            />,
             "raised": true,
             "style": Object {
               "margin": "10px",
             },
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "as": "h1",
-                "children": "Find More",
-                "textAlign": "center",
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "label": "Find More",
+              "onPageChange": [Function],
+              "onProgramClick": [Function],
+              "onRemoveClick": [Function],
+              "owned": false,
+              "programs": Object {
+                "next": null,
+                "previous": null,
+                "results": Array [],
+                "total_pages": 1,
               },
-              "ref": null,
-              "rendered": "Find More",
-              "type": [Function],
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "centered": true,
-                "children": Array [],
-              },
-              "ref": null,
-              "rendered": Array [],
-              "type": [Function],
-            },
-          ],
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {

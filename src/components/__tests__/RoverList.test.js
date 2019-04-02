@@ -8,6 +8,7 @@ import {
   Loader,
 } from 'semantic-ui-react';
 import { shallow, mount } from 'enzyme';
+import CustomPagination from '../CustomPagination';
 import RoverList from '../RoverList';
 
 let createRover;
@@ -26,8 +27,23 @@ describe('The RoverList component', () => {
   });
 
   test('renders on the page with no errors', () => {
+    const rovers = {
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
     const wrapper = shallow(
       <RoverList
+        rovers={rovers}
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
@@ -37,10 +53,25 @@ describe('The RoverList component', () => {
   });
 
   test('fetches rovers on mount', async () => {
+    const rovers = {
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
     fetchRovers = jest.fn();
     await mount(
       <MemoryRouter>
         <RoverList
+          rovers={rovers}
           createRover={createRover}
           fetchRovers={fetchRovers}
           removeRover={removeRover}
@@ -54,6 +85,7 @@ describe('The RoverList component', () => {
     const rovers = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [{
         id: 1,
         name: 'Sparky',
@@ -92,6 +124,7 @@ describe('The RoverList component', () => {
     const rovers = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [],
     };
     const wrapper = shallow(
@@ -127,6 +160,7 @@ describe('The RoverList component', () => {
     const rovers = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [{
         id: 1,
         name: 'Sparky',
@@ -169,6 +203,7 @@ describe('The RoverList component', () => {
     const rovers = {
       next: null,
       previous: null,
+      total_pages: 1,
       results: [{
         id: 1,
         name: 'Sparky',
@@ -271,5 +306,63 @@ describe('The RoverList component', () => {
     expect(fetchRovers).toHaveBeenCalledTimes(1);
     expect(removeRover).not.toHaveBeenCalled();
     expect(wrapper.state('newRoverOpen')).toBe(false);
+  });
+
+  test('change page on click', () => {
+    const rovers = {
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
+    const wrapper = shallow(
+      <RoverList
+        rovers={rovers}
+        createRover={createRover}
+        fetchRovers={fetchRovers}
+        removeRover={removeRover}
+      />,
+    );
+
+    wrapper.find(CustomPagination).simulate('pageChange', null, {
+      activePage: 2,
+    });
+
+    expect(fetchRovers).toHaveBeenCalledWith(2);
+  });
+
+  test('no pagination for single page', () => {
+    const rovers = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
+    const wrapper = shallow(
+      <RoverList
+        rovers={rovers}
+        createRover={createRover}
+        fetchRovers={fetchRovers}
+        removeRover={removeRover}
+      />,
+    );
+
+    expect(wrapper.find(CustomPagination).exists()).toBe(false);
   });
 });
