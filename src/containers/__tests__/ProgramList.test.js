@@ -51,7 +51,7 @@ describe('The ProgramListContainer', () => {
 
     mockAxios.onGet('/api/v1/block-diagrams/').reply(200, programs);
     wrapper.dive().props().fetchPrograms({
-      exclude: 10,
+      user__not: 10,
     }, 2);
 
     expect(store.dispatch).toHaveBeenCalledWith(
@@ -83,7 +83,7 @@ describe('The ProgramListContainer', () => {
       },
     }).reply(200, programs);
     wrapper.dive().props().fetchPrograms({
-      include: 10,
+      user: 10,
     });
 
     expect(store.dispatch).toHaveBeenCalledWith(

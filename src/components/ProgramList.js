@@ -30,9 +30,9 @@ class ProgramList extends Component {
   componentDidMount() {
     const { fetchPrograms, user } = this.props;
     return fetchPrograms({
-      include: user.user_id,
+      user: user.user_id,
     }).then(() => fetchPrograms({
-      exclude: user.user_id,
+      user__not: user.user_id,
     }));
   }
 
@@ -54,10 +54,10 @@ class ProgramList extends Component {
 
     return removeProgram(focusProgram.id)
       .then(() => fetchPrograms({
-        include: user.user_id,
+        user: user.user_id,
       }))
       .then(() => fetchPrograms({
-        exclude: user.user_id,
+        user__not: user.user_id,
       }));
   }
 
@@ -74,12 +74,14 @@ class ProgramList extends Component {
 
     if (owned) {
       fetchPrograms({
-        include: user.user_id,
-      }, page);
+        user: user.user_id,
+        page,
+      });
     } else {
       fetchPrograms({
-        exclude: user.user_id,
-      }, page);
+        user__not: user.user_id,
+        page,
+      });
     }
   }
 

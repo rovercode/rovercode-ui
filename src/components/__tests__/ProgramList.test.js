@@ -183,8 +183,9 @@ describe('The ProgramList component', () => {
     await wrapper.instance().pageChange(2, true);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
-      include: 1,
-    }, 2);
+      user: 1,
+      page: 2,
+    });
   });
 
   test('fetches other programs after page change', async () => {
@@ -212,8 +213,9 @@ describe('The ProgramList component', () => {
     await wrapper.instance().pageChange(2, false);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
-      exclude: 1,
-    }, 2);
+      user__not: 1,
+      page: 2,
+    });
   });
 
   test('removes a program and reloads the program list', async () => {
