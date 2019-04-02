@@ -90,6 +90,7 @@ ShallowWrapper {
             onPageChange={[Function]}
             onProgramClick={[Function]}
             onRemoveClick={[Function]}
+            onSearchChange={[Function]}
             owned={true}
             programs={
               Object {
@@ -114,6 +115,7 @@ ShallowWrapper {
             onPageChange={[Function]}
             onProgramClick={[Function]}
             onRemoveClick={[Function]}
+            onSearchChange={[Function]}
             owned={false}
             programs={
               Object {
@@ -187,6 +189,7 @@ ShallowWrapper {
             onPageChange={[Function]}
             onProgramClick={[Function]}
             onRemoveClick={[Function]}
+            onSearchChange={[Function]}
             owned={true}
             programs={
               Object {
@@ -212,6 +215,7 @@ ShallowWrapper {
             "onPageChange": [Function],
             "onProgramClick": [Function],
             "onRemoveClick": [Function],
+            "onSearchChange": [Function],
             "owned": true,
             "programs": Object {
               "next": null,
@@ -236,6 +240,7 @@ ShallowWrapper {
             onPageChange={[Function]}
             onProgramClick={[Function]}
             onRemoveClick={[Function]}
+            onSearchChange={[Function]}
             owned={false}
             programs={
               Object {
@@ -261,6 +266,7 @@ ShallowWrapper {
             "onPageChange": [Function],
             "onProgramClick": [Function],
             "onRemoveClick": [Function],
+            "onSearchChange": [Function],
             "owned": false,
             "programs": Object {
               "next": null,
@@ -333,6 +339,7 @@ ShallowWrapper {
               onPageChange={[Function]}
               onProgramClick={[Function]}
               onRemoveClick={[Function]}
+              onSearchChange={[Function]}
               owned={true}
               programs={
                 Object {
@@ -357,6 +364,7 @@ ShallowWrapper {
               onPageChange={[Function]}
               onProgramClick={[Function]}
               onRemoveClick={[Function]}
+              onSearchChange={[Function]}
               owned={false}
               programs={
                 Object {
@@ -430,6 +438,7 @@ ShallowWrapper {
               onPageChange={[Function]}
               onProgramClick={[Function]}
               onRemoveClick={[Function]}
+              onSearchChange={[Function]}
               owned={true}
               programs={
                 Object {
@@ -455,6 +464,7 @@ ShallowWrapper {
               "onPageChange": [Function],
               "onProgramClick": [Function],
               "onRemoveClick": [Function],
+              "onSearchChange": [Function],
               "owned": true,
               "programs": Object {
                 "next": null,
@@ -479,6 +489,7 @@ ShallowWrapper {
               onPageChange={[Function]}
               onProgramClick={[Function]}
               onRemoveClick={[Function]}
+              onSearchChange={[Function]}
               owned={false}
               programs={
                 Object {
@@ -504,6 +515,7 @@ ShallowWrapper {
               "onPageChange": [Function],
               "onProgramClick": [Function],
               "onRemoveClick": [Function],
+              "onSearchChange": [Function],
               "owned": false,
               "programs": Object {
                 "next": null,

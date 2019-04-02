@@ -218,6 +218,66 @@ describe('The ProgramList component', () => {
     });
   });
 
+  test('fetches programs after search change', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramList
+        programs={programs}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    wrapper.instance().searchChange('abc', true);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      user: 1,
+      search: 'abc',
+    });
+  });
+
+  test('fetches other programs after search change', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramList
+        programs={programs}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    wrapper.instance().searchChange('abc', false);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      user__not: 1,
+      search: 'abc',
+    });
+  });
+
   test('removes a program and reloads the program list', async () => {
     const programs = {
       next: null,

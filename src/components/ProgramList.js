@@ -85,6 +85,22 @@ class ProgramList extends Component {
     }
   }
 
+  searchChange = (query, owned) => {
+    const { fetchPrograms, user } = this.props;
+
+    if (owned) {
+      fetchPrograms({
+        user: user.user_id,
+        search: query,
+      });
+    } else {
+      fetchPrograms({
+        user__not: user.user_id,
+        search: query,
+      });
+    }
+  }
+
   programSegment = (programs, label, owned) => (
     <Segment raised style={{ margin: '10px' }}>
       <ProgramCollection
@@ -94,6 +110,7 @@ class ProgramList extends Component {
         onProgramClick={this.loadProgram}
         onRemoveClick={this.showConfirm}
         onPageChange={this.pageChange}
+        onSearchChange={this.searchChange}
       />
     </Segment>
   )

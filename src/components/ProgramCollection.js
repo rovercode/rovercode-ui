@@ -6,6 +6,7 @@ import {
   Card,
   Grid,
   Header,
+  Input,
 } from 'semantic-ui-react';
 
 import CustomPagination from './CustomPagination';
@@ -15,6 +16,12 @@ class ProgramCollection extends PureComponent {
     const { onPageChange, owned } = this.props;
 
     onPageChange(activePage, owned);
+  }
+
+  handleSearchChange = (event) => {
+    const { onSearchChange, owned } = this.props;
+
+    onSearchChange(event.target.value, owned);
   }
 
   render() {
@@ -28,9 +35,24 @@ class ProgramCollection extends PureComponent {
 
     return (
       <Fragment>
-        <Header as="h1" textAlign="center">
-          {label}
-        </Header>
+        <Grid centered columns={3}>
+          <Grid.Row>
+            <Grid.Column />
+            <Grid.Column>
+              <Header as="h1" textAlign="center">
+                {label}
+              </Header>
+            </Grid.Column>
+            <Grid.Column textAlign="right">
+              <Input
+                className="prompt"
+                icon="search"
+                placeholder="Search..."
+                onChange={this.handleSearchChange}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
         <Card.Group centered>
           {
             programs.results.map(program => (
@@ -105,6 +127,7 @@ ProgramCollection.propTypes = {
   onProgramClick: PropTypes.func.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onPageChange: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
 };
 
 export default hot(module)(ProgramCollection);
