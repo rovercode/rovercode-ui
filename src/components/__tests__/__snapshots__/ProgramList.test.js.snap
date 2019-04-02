@@ -30,7 +30,6 @@ ShallowWrapper {
         "total_pages": 1,
       }
     }
-    programsIsFetching={false}
     removeProgram={[MockFunction]}
     user={
       Object {
@@ -45,7 +44,6 @@ ShallowWrapper {
         "total_pages": 1,
       }
     }
-    userProgramsIsFetching={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

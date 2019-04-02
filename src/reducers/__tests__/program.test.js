@@ -1,21 +1,21 @@
 import reducer from '../program';
 import {
-  FETCH_PROGRAMS,
+  FETCH_PROGRAMS_PENDING,
   FETCH_PROGRAMS_FULFILLED,
   FETCH_PROGRAMS_REJECTED,
-  FETCH_USER_PROGRAMS,
+  FETCH_USER_PROGRAMS_PENDING,
   FETCH_USER_PROGRAMS_FULFILLED,
   FETCH_USER_PROGRAMS_REJECTED,
-  REMOVE_PROGRAM,
+  REMOVE_PROGRAM_PENDING,
   REMOVE_PROGRAM_FULFILLED,
   REMOVE_PROGRAM_REJECTED,
 } from '../../actions/program';
 
 describe('The program reducer', () => {
-  test('should handle FETCH_PROGRAMS', () => {
+  test('should handle FETCH_PROGRAMS_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: FETCH_PROGRAMS,
+        type: FETCH_PROGRAMS_PENDING,
       }),
     ).toEqual({
       programsIsFetching: true,
@@ -50,10 +50,10 @@ describe('The program reducer', () => {
       programsIsFetching: false,
     });
   });
-  test('should handle FETCH_USER_PROGRAMS', () => {
+  test('should handle FETCH_USER_PROGRAMS_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: FETCH_USER_PROGRAMS,
+        type: FETCH_USER_PROGRAMS_PENDING,
       }),
     ).toEqual({
       programsIsFetching: false,
@@ -88,10 +88,10 @@ describe('The program reducer', () => {
       userProgramsIsFetching: false,
     });
   });
-  test('should handle REMOVE_PROGRAM', () => {
+  test('should handle REMOVE_PROGRAM_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: REMOVE_PROGRAM,
+        type: REMOVE_PROGRAM_PENDING,
       }),
     ).toEqual({
       programsIsFetching: false,

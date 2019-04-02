@@ -99,12 +99,7 @@ class ProgramList extends Component {
   )
 
   render() {
-    const {
-      programs,
-      programsIsFetching,
-      userPrograms,
-      userProgramsIsFetching,
-    } = this.props;
+    const { programs, userPrograms } = this.props;
     const { confirmOpen, focusProgram, programLoaded } = this.state;
 
     return (
@@ -119,12 +114,12 @@ class ProgramList extends Component {
             : (null)
         }
         {
-          userProgramsIsFetching || userPrograms === null
+          userPrograms === null
             ? (<Loader active />)
             : this.programSegment(userPrograms, 'My Programs', true)
         }
         {
-          programsIsFetching || programs === null
+          programs === null
             ? (<Loader active />)
             : this.programSegment(programs, 'Find More', false)
         }
@@ -149,14 +144,12 @@ ProgramList.defaultProps = {
     total_pages: 1,
     results: [],
   },
-  programsIsFetching: false,
   userPrograms: {
     next: null,
     previous: null,
     total_pages: 1,
     results: [],
   },
-  userProgramsIsFetching: false,
 };
 
 ProgramList.propTypes = {
@@ -178,7 +171,6 @@ ProgramList.propTypes = {
       }),
     ),
   }),
-  programsIsFetching: PropTypes.bool,
   userPrograms: PropTypes.shape({
     next: PropTypes.string,
     previous: PropTypes.string,
@@ -191,7 +183,6 @@ ProgramList.propTypes = {
       }),
     ),
   }),
-  userProgramsIsFetching: PropTypes.bool,
 };
 
 export default ProgramList;

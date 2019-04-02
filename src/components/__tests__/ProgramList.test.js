@@ -83,7 +83,7 @@ describe('The ProgramList component', () => {
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
-        programsIsFetching
+        programs={null}
       />,
     );
 
@@ -99,7 +99,7 @@ describe('The ProgramList component', () => {
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
-        userProgramsIsFetching
+        userPrograms={null}
       />,
     );
 
