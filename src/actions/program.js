@@ -26,6 +26,11 @@ export const fetchPrograms = (xhrOptions) => {
 
   return ({
     type,
+    meta: {
+      debounce: {
+        time: 500,
+      },
+    },
     payload: axios.get('/api/v1/block-diagrams/', xhrOptions)
       .then(({ data }) => (
         data
