@@ -22,28 +22,13 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
       }
     });
   },
-  fetchPrograms: (userIds, page) => {
+  fetchPrograms: (params) => {
     const xhrOptions = {
       headers: {
         Authorization: `JWT ${cookies.get('auth_jwt')}`,
       },
+      params,
     };
-
-    if (userIds && userIds.include) {
-      xhrOptions.params = {
-        user: userIds.include,
-      };
-    }
-
-    if (userIds && userIds.exclude) {
-      xhrOptions.params = {
-        user__not: userIds.exclude,
-      };
-    }
-
-    if (page) {
-      xhrOptions.params.page = page;
-    }
 
     const fetchProgramsAction = fetchPrograms(xhrOptions);
     return dispatch(fetchProgramsAction).catch((error) => {

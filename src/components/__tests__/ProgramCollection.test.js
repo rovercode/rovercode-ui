@@ -1,6 +1,9 @@
 import React from 'react';
 import {
-  Button, Card, Header,
+  Button,
+  Card,
+  Header,
+  Input,
 } from 'semantic-ui-react';
 import { shallow } from 'enzyme';
 import CustomPagination from '../CustomPagination';
@@ -9,12 +12,14 @@ import ProgramCollection from '../ProgramCollection';
 let onProgramClick;
 let onRemoveClick;
 let onPageChange;
+let onSearchChange;
 
 describe('The ProgramCollection component', () => {
   beforeEach(() => {
     onProgramClick = jest.fn();
     onRemoveClick = jest.fn();
     onPageChange = jest.fn();
+    onSearchChange = jest.fn();
   });
 
   test('renders on the page with no errors', () => {
@@ -42,6 +47,7 @@ describe('The ProgramCollection component', () => {
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onPageChange={onPageChange}
+        onSearchChange={onSearchChange}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -72,6 +78,7 @@ describe('The ProgramCollection component', () => {
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onPageChange={onPageChange}
+        onSearchChange={onSearchChange}
       />,
     );
 
@@ -105,6 +112,7 @@ describe('The ProgramCollection component', () => {
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onPageChange={onPageChange}
+        onSearchChange={onSearchChange}
       />,
     );
 
@@ -134,6 +142,7 @@ describe('The ProgramCollection component', () => {
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onPageChange={onPageChange}
+        onSearchChange={onSearchChange}
       />,
     );
 
@@ -170,6 +179,7 @@ describe('The ProgramCollection component', () => {
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onPageChange={onPageChange}
+        onSearchChange={onSearchChange}
       />,
     );
 
@@ -211,6 +221,7 @@ describe('The ProgramCollection component', () => {
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onPageChange={onPageChange}
+        onSearchChange={onSearchChange}
       />,
     );
 
@@ -219,5 +230,43 @@ describe('The ProgramCollection component', () => {
     });
 
     expect(onPageChange).toHaveBeenCalledWith(2, true);
+  });
+
+  test('callback when search changes', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 1,
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: 1,
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramCollection
+        programs={programs}
+        label="My Programs"
+        owned
+        onProgramClick={onProgramClick}
+        onRemoveClick={onRemoveClick}
+        onPageChange={onPageChange}
+        onSearchChange={onSearchChange}
+      />,
+    );
+
+    wrapper.find(Input).simulate('change', {
+      target: {
+        value: 'abc',
+      },
+    });
+
+    expect(onSearchChange).toHaveBeenCalledWith('abc', true);
   });
 });

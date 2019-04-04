@@ -9,6 +9,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
+import createDebounce from 'redux-debounced';
 import * as Sentry from '@sentry/browser';
 import rootReducer from './reducers/index';
 import AuthApi from './utils/auth-api';
@@ -34,6 +35,7 @@ const reduxMiddleware = composeEnhancers(
     thunk,
     createLogger(),
     promise,
+    createDebounce(),
   ),
 );
 

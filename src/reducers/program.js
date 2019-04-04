@@ -1,11 +1,11 @@
 import {
-  FETCH_PROGRAMS,
+  FETCH_PROGRAMS_PENDING,
   FETCH_PROGRAMS_FULFILLED,
   FETCH_PROGRAMS_REJECTED,
-  FETCH_USER_PROGRAMS,
+  FETCH_USER_PROGRAMS_PENDING,
   FETCH_USER_PROGRAMS_FULFILLED,
   FETCH_USER_PROGRAMS_REJECTED,
-  REMOVE_PROGRAM,
+  REMOVE_PROGRAM_PENDING,
   REMOVE_PROGRAM_FULFILLED,
   REMOVE_PROGRAM_REJECTED,
 } from '../actions/program';
@@ -23,12 +23,12 @@ export default function programs(
   action,
 ) {
   switch (action.type) {
-    case FETCH_PROGRAMS:
+    case FETCH_PROGRAMS_PENDING:
       return {
         ...state,
         programsIsFetching: true,
       };
-    case FETCH_USER_PROGRAMS:
+    case FETCH_USER_PROGRAMS_PENDING:
       return {
         ...state,
         userProgramsIsFetching: true,
@@ -59,7 +59,7 @@ export default function programs(
         userProgramsIsFetching: false,
         userProgramsError: action.payload,
       };
-    case REMOVE_PROGRAM:
+    case REMOVE_PROGRAM_PENDING:
       return {
         ...state,
         isRemoving: true,

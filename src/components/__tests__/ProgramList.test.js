@@ -83,7 +83,7 @@ describe('The ProgramList component', () => {
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
-        programsIsFetching
+        programs={null}
       />,
     );
 
@@ -99,7 +99,7 @@ describe('The ProgramList component', () => {
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
-        userProgramsIsFetching
+        userPrograms={null}
       />,
     );
 
@@ -183,8 +183,9 @@ describe('The ProgramList component', () => {
     await wrapper.instance().pageChange(2, true);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
-      include: 1,
-    }, 2);
+      user: 1,
+      page: 2,
+    });
   });
 
   test('fetches other programs after page change', async () => {
@@ -212,8 +213,69 @@ describe('The ProgramList component', () => {
     await wrapper.instance().pageChange(2, false);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
-      exclude: 1,
-    }, 2);
+      user__not: 1,
+      page: 2,
+    });
+  });
+
+  test('fetches programs after search change', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramList
+        programs={programs}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    wrapper.instance().searchChange('abc', true);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      user: 1,
+      search: 'abc',
+    });
+  });
+
+  test('fetches other programs after search change', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: 10,
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramList
+        programs={programs}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+      />,
+    );
+
+    wrapper.instance().searchChange('abc', false);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      user__not: 1,
+      search: 'abc',
+    });
   });
 
   test('removes a program and reloads the program list', async () => {

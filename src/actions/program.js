@@ -4,12 +4,15 @@
 import axios from 'axios';
 
 export const FETCH_PROGRAMS = 'FETCH_PROGRAMS';
+export const FETCH_PROGRAMS_PENDING = `${FETCH_PROGRAMS}_PENDING`;
 export const FETCH_PROGRAMS_FULFILLED = `${FETCH_PROGRAMS}_FULFILLED`;
 export const FETCH_PROGRAMS_REJECTED = `${FETCH_PROGRAMS}_REJECTED`;
 export const FETCH_USER_PROGRAMS = 'FETCH_USER_PROGRAMS';
+export const FETCH_USER_PROGRAMS_PENDING = `${FETCH_USER_PROGRAMS}_PENDING`;
 export const FETCH_USER_PROGRAMS_FULFILLED = `${FETCH_USER_PROGRAMS}_FULFILLED`;
 export const FETCH_USER_PROGRAMS_REJECTED = `${FETCH_USER_PROGRAMS}_REJECTED`;
 export const REMOVE_PROGRAM = 'REMOVE_PROGRAM';
+export const REMOVE_PROGRAM_PENDING = `${REMOVE_PROGRAM}_PENDING`;
 export const REMOVE_PROGRAM_FULFILLED = `${REMOVE_PROGRAM}_FULFILLED`;
 export const REMOVE_PROGRAM_REJECTED = `${REMOVE_PROGRAM}_REJECTED`;
 
@@ -23,6 +26,11 @@ export const fetchPrograms = (xhrOptions) => {
 
   return ({
     type,
+    meta: {
+      debounce: {
+        time: 500,
+      },
+    },
     payload: axios.get('/api/v1/block-diagrams/', xhrOptions)
       .then(({ data }) => (
         data
