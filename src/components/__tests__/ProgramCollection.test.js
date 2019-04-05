@@ -31,12 +31,16 @@ describe('The ProgramCollection component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }, {
         id: 5,
         name: 'Unnamed_Design_2',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }],
     };
     const wrapper = shallow(
@@ -62,12 +66,16 @@ describe('The ProgramCollection component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }, {
         id: 5,
         name: 'Unnamed_Design_2',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }],
     };
     const wrapper = shallow(
@@ -97,12 +105,16 @@ describe('The ProgramCollection component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }, {
         id: 5,
         name: 'Unnamed_Design_2',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }],
     };
     const wrapper = shallow(
@@ -118,7 +130,7 @@ describe('The ProgramCollection component', () => {
 
     expect(wrapper.find(Header).exists()).toBe(true);
     expect(wrapper.find(Card).length).toBe(2);
-    expect(wrapper.find(Card.Meta).first().prop('children')).toBe(1);
+    expect(wrapper.find(Card.Meta).first().prop('children')).toBe('testuser');
     expect(wrapper.find(Button).first().prop('children')).toBe('View');
   });
 
@@ -131,7 +143,9 @@ describe('The ProgramCollection component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }],
     };
     const wrapper = shallow(
@@ -168,7 +182,9 @@ describe('The ProgramCollection component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }],
     };
     const wrapper = shallow(
@@ -205,12 +221,16 @@ describe('The ProgramCollection component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }, {
         id: 5,
         name: 'Unnamed_Design_2',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }],
     };
     const wrapper = shallow(
@@ -241,12 +261,16 @@ describe('The ProgramCollection component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }, {
         id: 5,
         name: 'Unnamed_Design_2',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }],
     };
     const wrapper = shallow(

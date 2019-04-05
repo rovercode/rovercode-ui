@@ -184,7 +184,9 @@ ProgramList.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        user: PropTypes.number.isRequired,
+        user: PropTypes.shape({
+          username: PropTypes.string.isRequired,
+        }).isRequired,
       }),
     ),
   }),
@@ -196,7 +198,9 @@ ProgramList.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        user: PropTypes.number.isRequired,
+        user: PropTypes.shape({
+          username: PropTypes.string.isRequired,
+        }).isRequired,
       }),
     ),
   }),

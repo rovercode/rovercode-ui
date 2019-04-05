@@ -19,13 +19,17 @@ ShallowWrapper {
             "content": "<xml><variables></variables></xml>",
             "id": 33,
             "name": "Unnamed_Design_3",
-            "user": 10,
+            "user": Object {
+              "username": "admin",
+            },
           },
           Object {
             "content": "<xml><variables></variables></xml>",
             "id": 5,
             "name": "Unnamed_Design_2",
-            "user": 1,
+            "user": Object {
+              "username": "testuser",
+            },
           },
         ],
         "total_pages": 2,

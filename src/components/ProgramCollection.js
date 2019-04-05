@@ -62,7 +62,7 @@ class ProgramCollection extends PureComponent {
                     {program.name}
                   </Card.Header>
                   <Card.Meta>
-                    { owned ? 'Mine' : program.user }
+                    { owned ? 'Mine' : program.user.username }
                   </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
@@ -118,7 +118,9 @@ ProgramCollection.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        user: PropTypes.number.isRequired,
+        user: PropTypes.shape({
+          username: PropTypes.string.isRequired,
+        }).isRequired,
       }),
     ),
   }).isRequired,
