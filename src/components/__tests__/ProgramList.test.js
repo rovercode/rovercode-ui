@@ -52,12 +52,16 @@ describe('The ProgramList component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }, {
         id: 5,
         name: 'Unnamed_Design_2',
         content: '<xml><variables></variables></xml>',
-        user: 1,
+        user: {
+          username: 'testuser',
+        },
       }],
     };
     const wrapper = shallow(
@@ -135,7 +139,9 @@ describe('The ProgramList component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }],
     };
     const wrapper = shallow(
@@ -167,7 +173,9 @@ describe('The ProgramList component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }],
     };
     const wrapper = shallow(
@@ -197,7 +205,9 @@ describe('The ProgramList component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }],
     };
     const wrapper = shallow(
@@ -227,7 +237,9 @@ describe('The ProgramList component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }],
     };
     const wrapper = shallow(
@@ -257,7 +269,9 @@ describe('The ProgramList component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }],
     };
     const wrapper = shallow(
@@ -287,7 +301,9 @@ describe('The ProgramList component', () => {
         id: 33,
         name: 'Unnamed_Design_3',
         content: '<xml><variables></variables></xml>',
-        user: 10,
+        user: {
+          username: 'admin',
+        },
       }],
     };
     const wrapper = shallow(
