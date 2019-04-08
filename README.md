@@ -18,12 +18,12 @@ Dependencies
 
 To install the production dependencies (for just running the application), run:
 ```sh
-yarn install --production
+yarn install --pure-lockfile --production
 ```
 
 To install development dependencies (for running tests, lint, etc), run:
 ```sh
-yarn install
+yarn install --pure-lockfile
 ```
 
 Running
