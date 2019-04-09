@@ -4,8 +4,10 @@ import { hot } from 'react-hot-loader';
 import {
   Button,
   Card,
+  Dropdown,
   Grid,
   Header,
+  Icon,
   Input,
 } from 'semantic-ui-react';
 
@@ -18,15 +20,17 @@ class ProgramCollection extends Component {
     this.state = {
       page: 1,
       searchQuery: null,
+      ordering: 'name',
     };
   }
 
   update = () => {
     const { onUpdate, owned } = this.props;
-    const { currentPage, searchQuery } = this.state;
+    const { page, ordering, searchQuery } = this.state;
 
     const params = {
-      page: currentPage,
+      page,
+      ordering,
     };
 
     if (searchQuery) {
@@ -36,13 +40,31 @@ class ProgramCollection extends Component {
     onUpdate(params, owned);
   }
 
+  toggleOrdering = (name) => {
+    const { ordering } = this.state;
+
+    if (ordering.endsWith(name)) {
+      if (ordering.startsWith('-')) {
+        return ordering.substr(1);
+      }
+
+      return `-${ordering}`;
+    }
+
+    return name;
+  }
+
   handlePageChange = (e, { activePage }) => this.setState({
     page: activePage,
   }, () => this.update())
 
   handleSearchChange = event => this.setState({
     searchQuery: event.target.value,
-    currentPage: 1,
+    page: 1,
+  }, () => this.update())
+
+  handleOrderingChange = (e, { name }) => this.setState({
+    ordering: this.toggleOrdering(name),
   }, () => this.update())
 
   render() {
@@ -53,11 +75,13 @@ class ProgramCollection extends Component {
       programs,
       owned,
     } = this.props;
+    const { ordering } = this.state;
 
     return (
       <Fragment>
-        <Grid centered columns={3}>
+        <Grid centered columns={5}>
           <Grid.Row>
+            <Grid.Column />
             <Grid.Column />
             <Grid.Column>
               <Header as="h1" textAlign="center">
@@ -71,6 +95,29 @@ class ProgramCollection extends Component {
                 placeholder="Search..."
                 onChange={this.handleSearchChange}
               />
+            </Grid.Column>
+            <Grid.Column>
+              <Dropdown
+                text="Sort"
+                icon="sort"
+                floating
+                labeled
+                button
+                className="icon"
+              >
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={this.handleOrderingChange} name="name">
+                    Name
+                    {
+                      ordering === 'name' ? (
+                        <Icon name="caret down" />
+                      ) : (
+                        <Icon name="caret up" />
+                      )
+                    }
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Grid.Column>
           </Grid.Row>
         </Grid>

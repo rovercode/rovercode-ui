@@ -243,6 +243,7 @@ describe('The ProgramCollection component', () => {
 
     expect(onUpdate).toHaveBeenCalledWith({
       page: 2,
+      ordering: 'name',
     }, true);
   });
 
@@ -287,6 +288,67 @@ describe('The ProgramCollection component', () => {
     expect(onUpdate).toHaveBeenCalledWith({
       search: 'abc',
       page: 1,
+      ordering: 'name',
+    }, true);
+  });
+
+  test('callback when order changes', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramCollection
+        programs={programs}
+        label="My Programs"
+        owned
+        onProgramClick={onProgramClick}
+        onRemoveClick={onRemoveClick}
+        onUpdate={onUpdate}
+      />,
+    );
+
+    wrapper.find({ name: 'name' }).simulate('click', null, {
+      name: 'name',
+    });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 1,
+      ordering: '-name',
+    }, true);
+
+    wrapper.find({ name: 'name' }).simulate('click', null, {
+      name: 'name',
+    });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 1,
+      ordering: 'name',
+    }, true);
+
+    wrapper.instance().handleOrderingChange(null, {
+      name: 'field_name',
+    });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 1,
+      ordering: 'field_name',
     }, true);
   });
 });
