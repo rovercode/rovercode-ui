@@ -11,15 +11,13 @@ import ProgramCollection from '../ProgramCollection';
 
 let onProgramClick;
 let onRemoveClick;
-let onPageChange;
-let onSearchChange;
+let onUpdate;
 
 describe('The ProgramCollection component', () => {
   beforeEach(() => {
     onProgramClick = jest.fn();
     onRemoveClick = jest.fn();
-    onPageChange = jest.fn();
-    onSearchChange = jest.fn();
+    onUpdate = jest.fn();
   });
 
   test('renders on the page with no errors', () => {
@@ -50,8 +48,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -85,8 +82,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -123,8 +119,7 @@ describe('The ProgramCollection component', () => {
         label="My Programs"
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -155,8 +150,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -194,8 +188,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -240,8 +233,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -249,7 +241,9 @@ describe('The ProgramCollection component', () => {
       activePage: 2,
     });
 
-    expect(onPageChange).toHaveBeenCalledWith(2, true);
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 2,
+    }, true);
   });
 
   test('callback when search changes', () => {
@@ -280,8 +274,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -291,6 +284,9 @@ describe('The ProgramCollection component', () => {
       },
     });
 
-    expect(onSearchChange).toHaveBeenCalledWith('abc', true);
+    expect(onUpdate).toHaveBeenCalledWith({
+      search: 'abc',
+      page: 1,
+    }, true);
   });
 });

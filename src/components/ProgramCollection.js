@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import {
@@ -11,18 +11,39 @@ import {
 
 import CustomPagination from './CustomPagination';
 
-class ProgramCollection extends PureComponent {
-  handlePageChange = (e, { activePage }) => {
-    const { onPageChange, owned } = this.props;
+class ProgramCollection extends Component {
+  constructor(props) {
+    super(props);
 
-    onPageChange(activePage, owned);
+    this.state = {
+      page: 1,
+      searchQuery: null,
+    };
   }
 
-  handleSearchChange = (event) => {
-    const { onSearchChange, owned } = this.props;
+  update = () => {
+    const { onUpdate, owned } = this.props;
+    const { currentPage, searchQuery } = this.state;
 
-    onSearchChange(event.target.value, owned);
+    const params = {
+      page: currentPage,
+    };
+
+    if (searchQuery) {
+      params.search = searchQuery;
+    }
+
+    onUpdate(params, owned);
   }
+
+  handlePageChange = (e, { activePage }) => this.setState({
+    page: activePage,
+  }, () => this.update())
+
+  handleSearchChange = event => this.setState({
+    searchQuery: event.target.value,
+    currentPage: 1,
+  }, () => this.update())
 
   render() {
     const {
@@ -128,8 +149,7 @@ ProgramCollection.propTypes = {
   owned: PropTypes.bool,
   onProgramClick: PropTypes.func.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  onSearchChange: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default hot(module)(ProgramCollection);

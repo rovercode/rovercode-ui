@@ -5,10 +5,9 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ProgramCollection
     label="My Programs"
-    onPageChange={[MockFunction]}
     onProgramClick={[MockFunction]}
     onRemoveClick={[MockFunction]}
-    onSearchChange={[MockFunction]}
+    onUpdate={[MockFunction]}
     owned={true}
     programs={
       Object {

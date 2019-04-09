@@ -69,34 +69,18 @@ class ProgramList extends Component {
     }));
   }
 
-  pageChange = (page, owned) => {
+  fetch = (params, owned) => {
     const { fetchPrograms, user } = this.props;
 
     if (owned) {
       fetchPrograms({
         user: user.user_id,
-        page,
+        ...params,
       });
     } else {
       fetchPrograms({
         user__not: user.user_id,
-        page,
-      });
-    }
-  }
-
-  searchChange = (query, owned) => {
-    const { fetchPrograms, user } = this.props;
-
-    if (owned) {
-      fetchPrograms({
-        user: user.user_id,
-        search: query,
-      });
-    } else {
-      fetchPrograms({
-        user__not: user.user_id,
-        search: query,
+        ...params,
       });
     }
   }
@@ -109,8 +93,7 @@ class ProgramList extends Component {
         owned={owned}
         onProgramClick={this.loadProgram}
         onRemoveClick={this.showConfirm}
-        onPageChange={this.pageChange}
-        onSearchChange={this.searchChange}
+        onUpdate={this.fetch}
       />
     </Segment>
   )
