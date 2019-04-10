@@ -188,7 +188,9 @@ describe('The ProgramList component', () => {
       />,
     );
 
-    await wrapper.instance().pageChange(2, true);
+    await wrapper.instance().fetch({
+      page: 2,
+    }, true);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
       user: 1,
@@ -220,7 +222,9 @@ describe('The ProgramList component', () => {
       />,
     );
 
-    await wrapper.instance().pageChange(2, false);
+    await wrapper.instance().fetch({
+      page: 2,
+    }, false);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
       user__not: 1,
@@ -252,10 +256,14 @@ describe('The ProgramList component', () => {
       />,
     );
 
-    wrapper.instance().searchChange('abc', true);
+    wrapper.instance().fetch({
+      search: 'abc',
+      page: 1,
+    }, true);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
       user: 1,
+      page: 1,
       search: 'abc',
     });
   });
@@ -284,10 +292,14 @@ describe('The ProgramList component', () => {
       />,
     );
 
-    wrapper.instance().searchChange('abc', false);
+    wrapper.instance().fetch({
+      search: 'abc',
+      page: 1,
+    }, false);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
       user__not: 1,
+      page: 1,
       search: 'abc',
     });
   });

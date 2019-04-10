@@ -87,10 +87,9 @@ ShallowWrapper {
         >
           <ProgramCollection
             label="My Programs"
-            onPageChange={[Function]}
             onProgramClick={[Function]}
             onRemoveClick={[Function]}
-            onSearchChange={[Function]}
+            onUpdate={[Function]}
             owned={true}
             programs={
               Object {
@@ -112,10 +111,9 @@ ShallowWrapper {
         >
           <ProgramCollection
             label="Find More"
-            onPageChange={[Function]}
             onProgramClick={[Function]}
             onRemoveClick={[Function]}
-            onSearchChange={[Function]}
+            onUpdate={[Function]}
             owned={false}
             programs={
               Object {
@@ -186,10 +184,9 @@ ShallowWrapper {
         "props": Object {
           "children": <ProgramCollection
             label="My Programs"
-            onPageChange={[Function]}
             onProgramClick={[Function]}
             onRemoveClick={[Function]}
-            onSearchChange={[Function]}
+            onUpdate={[Function]}
             owned={true}
             programs={
               Object {
@@ -212,10 +209,9 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "label": "My Programs",
-            "onPageChange": [Function],
             "onProgramClick": [Function],
             "onRemoveClick": [Function],
-            "onSearchChange": [Function],
+            "onUpdate": [Function],
             "owned": true,
             "programs": Object {
               "next": null,
@@ -237,10 +233,9 @@ ShallowWrapper {
         "props": Object {
           "children": <ProgramCollection
             label="Find More"
-            onPageChange={[Function]}
             onProgramClick={[Function]}
             onRemoveClick={[Function]}
-            onSearchChange={[Function]}
+            onUpdate={[Function]}
             owned={false}
             programs={
               Object {
@@ -263,10 +258,9 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "label": "Find More",
-            "onPageChange": [Function],
             "onProgramClick": [Function],
             "onRemoveClick": [Function],
-            "onSearchChange": [Function],
+            "onUpdate": [Function],
             "owned": false,
             "programs": Object {
               "next": null,
@@ -336,10 +330,9 @@ ShallowWrapper {
           >
             <ProgramCollection
               label="My Programs"
-              onPageChange={[Function]}
               onProgramClick={[Function]}
               onRemoveClick={[Function]}
-              onSearchChange={[Function]}
+              onUpdate={[Function]}
               owned={true}
               programs={
                 Object {
@@ -361,10 +354,9 @@ ShallowWrapper {
           >
             <ProgramCollection
               label="Find More"
-              onPageChange={[Function]}
               onProgramClick={[Function]}
               onRemoveClick={[Function]}
-              onSearchChange={[Function]}
+              onUpdate={[Function]}
               owned={false}
               programs={
                 Object {
@@ -435,10 +427,9 @@ ShallowWrapper {
           "props": Object {
             "children": <ProgramCollection
               label="My Programs"
-              onPageChange={[Function]}
               onProgramClick={[Function]}
               onRemoveClick={[Function]}
-              onSearchChange={[Function]}
+              onUpdate={[Function]}
               owned={true}
               programs={
                 Object {
@@ -461,10 +452,9 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "label": "My Programs",
-              "onPageChange": [Function],
               "onProgramClick": [Function],
               "onRemoveClick": [Function],
-              "onSearchChange": [Function],
+              "onUpdate": [Function],
               "owned": true,
               "programs": Object {
                 "next": null,
@@ -486,10 +476,9 @@ ShallowWrapper {
           "props": Object {
             "children": <ProgramCollection
               label="Find More"
-              onPageChange={[Function]}
               onProgramClick={[Function]}
               onRemoveClick={[Function]}
-              onSearchChange={[Function]}
+              onUpdate={[Function]}
               owned={false}
               programs={
                 Object {
@@ -512,10 +501,9 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "label": "Find More",
-              "onPageChange": [Function],
               "onProgramClick": [Function],
               "onRemoveClick": [Function],
-              "onSearchChange": [Function],
+              "onUpdate": [Function],
               "owned": false,
               "programs": Object {
                 "next": null,

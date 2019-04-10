@@ -11,15 +11,13 @@ import ProgramCollection from '../ProgramCollection';
 
 let onProgramClick;
 let onRemoveClick;
-let onPageChange;
-let onSearchChange;
+let onUpdate;
 
 describe('The ProgramCollection component', () => {
   beforeEach(() => {
     onProgramClick = jest.fn();
     onRemoveClick = jest.fn();
-    onPageChange = jest.fn();
-    onSearchChange = jest.fn();
+    onUpdate = jest.fn();
   });
 
   test('renders on the page with no errors', () => {
@@ -50,8 +48,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -85,8 +82,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -123,8 +119,7 @@ describe('The ProgramCollection component', () => {
         label="My Programs"
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -155,8 +150,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -194,8 +188,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -240,8 +233,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -249,7 +241,10 @@ describe('The ProgramCollection component', () => {
       activePage: 2,
     });
 
-    expect(onPageChange).toHaveBeenCalledWith(2, true);
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 2,
+      ordering: 'name',
+    }, true);
   });
 
   test('callback when search changes', () => {
@@ -280,8 +275,7 @@ describe('The ProgramCollection component', () => {
         owned
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
-        onPageChange={onPageChange}
-        onSearchChange={onSearchChange}
+        onUpdate={onUpdate}
       />,
     );
 
@@ -291,6 +285,70 @@ describe('The ProgramCollection component', () => {
       },
     });
 
-    expect(onSearchChange).toHaveBeenCalledWith('abc', true);
+    expect(onUpdate).toHaveBeenCalledWith({
+      search: 'abc',
+      page: 1,
+      ordering: 'name',
+    }, true);
+  });
+
+  test('callback when order changes', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }],
+    };
+    const wrapper = shallow(
+      <ProgramCollection
+        programs={programs}
+        label="My Programs"
+        owned
+        onProgramClick={onProgramClick}
+        onRemoveClick={onRemoveClick}
+        onUpdate={onUpdate}
+      />,
+    );
+
+    wrapper.find({ name: 'name' }).simulate('click', null, {
+      name: 'name',
+    });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 1,
+      ordering: '-name',
+    }, true);
+
+    wrapper.find({ name: 'name' }).simulate('click', null, {
+      name: 'name',
+    });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 1,
+      ordering: 'name',
+    }, true);
+
+    wrapper.instance().handleOrderingChange(null, {
+      name: 'field_name',
+    });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 1,
+      ordering: 'field_name',
+    }, true);
   });
 });

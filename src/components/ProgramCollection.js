@@ -1,28 +1,71 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import {
   Button,
   Card,
+  Dropdown,
   Grid,
   Header,
+  Icon,
   Input,
 } from 'semantic-ui-react';
 
 import CustomPagination from './CustomPagination';
 
-class ProgramCollection extends PureComponent {
-  handlePageChange = (e, { activePage }) => {
-    const { onPageChange, owned } = this.props;
+class ProgramCollection extends Component {
+  constructor(props) {
+    super(props);
 
-    onPageChange(activePage, owned);
+    this.state = {
+      page: 1,
+      searchQuery: null,
+      ordering: 'name',
+    };
   }
 
-  handleSearchChange = (event) => {
-    const { onSearchChange, owned } = this.props;
+  update = () => {
+    const { onUpdate, owned } = this.props;
+    const { page, ordering, searchQuery } = this.state;
 
-    onSearchChange(event.target.value, owned);
+    const params = {
+      page,
+      ordering,
+    };
+
+    if (searchQuery) {
+      params.search = searchQuery;
+    }
+
+    onUpdate(params, owned);
   }
+
+  toggleOrdering = (name) => {
+    const { ordering } = this.state;
+
+    if (ordering.endsWith(name)) {
+      if (ordering.startsWith('-')) {
+        return ordering.substr(1);
+      }
+
+      return `-${ordering}`;
+    }
+
+    return name;
+  }
+
+  handlePageChange = (e, { activePage }) => this.setState({
+    page: activePage,
+  }, () => this.update())
+
+  handleSearchChange = event => this.setState({
+    searchQuery: event.target.value,
+    page: 1,
+  }, () => this.update())
+
+  handleOrderingChange = (e, { name }) => this.setState({
+    ordering: this.toggleOrdering(name),
+  }, () => this.update())
 
   render() {
     const {
@@ -32,11 +75,13 @@ class ProgramCollection extends PureComponent {
       programs,
       owned,
     } = this.props;
+    const { ordering } = this.state;
 
     return (
       <Fragment>
-        <Grid centered columns={3}>
+        <Grid centered columns={5}>
           <Grid.Row>
+            <Grid.Column />
             <Grid.Column />
             <Grid.Column>
               <Header as="h1" textAlign="center">
@@ -50,6 +95,29 @@ class ProgramCollection extends PureComponent {
                 placeholder="Search..."
                 onChange={this.handleSearchChange}
               />
+            </Grid.Column>
+            <Grid.Column>
+              <Dropdown
+                text="Sort"
+                icon="sort"
+                floating
+                labeled
+                button
+                className="icon"
+              >
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={this.handleOrderingChange} name="name">
+                    Name
+                    {
+                      ordering === 'name' ? (
+                        <Icon name="caret down" />
+                      ) : (
+                        <Icon name="caret up" />
+                      )
+                    }
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -128,8 +196,7 @@ ProgramCollection.propTypes = {
   owned: PropTypes.bool,
   onProgramClick: PropTypes.func.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  onSearchChange: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default hot(module)(ProgramCollection);
