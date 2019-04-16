@@ -6,6 +6,7 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
+import PropTypes from 'prop-types';
 
 import RoverConnectionList from '@/containers/RoverConnectionList';
 
@@ -16,18 +17,18 @@ import Indicator from '@/components/Indicator';
 import ProgramName from '@/components/ProgramName';
 import Workspace from '@/components/Workspace';
 
-const MissionControl = () => (
+const MissionControl = ({ location }) => (
   <Grid style={{ height: '100vh' }}>
     <Grid.Row>
       <Grid.Column width={13}>
-        <Workspace>
+        <Workspace location={location}>
           <Control />
         </Workspace>
       </Grid.Column>
       <Grid.Column width={3}>
         <Grid.Row>
           <Segment basic compact>
-            <ProgramName />
+            <ProgramName location={location} />
           </Segment>
         </Grid.Row>
         <Divider />
@@ -69,5 +70,21 @@ const MissionControl = () => (
     </Grid.Row>
   </Grid>
 );
+
+MissionControl.defaultProps = {
+  location: {
+    state: {
+      readOnly: false,
+    },
+  },
+};
+
+MissionControl.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      readOnly: PropTypes.bool,
+    }),
+  }),
+};
 
 export default hot(module)(MissionControl);

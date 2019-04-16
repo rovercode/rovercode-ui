@@ -2,6 +2,13 @@
 
 exports[`The MissionControl container renders on the page with no errors 1`] = `
 <MissionControl
+  location={
+    Object {
+      "state": Object {
+        "readOnly": false,
+      },
+    }
+  }
   store={
     Object {
       "dispatch": [MockFunction] {
@@ -52,7 +59,15 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
             <div
               className="thirteen wide column"
             >
-              <Component>
+              <Component
+                location={
+                  Object {
+                    "state": Object {
+                      "readOnly": false,
+                    },
+                  }
+                }
+              >
                 <div />
               </Component>
             </div>
@@ -74,7 +89,15 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     <div
                       className="ui basic compact segment"
                     >
-                      <Component>
+                      <Component
+                        location={
+                          Object {
+                            "state": Object {
+                              "readOnly": false,
+                            },
+                          }
+                        }
+                      >
                         <div />
                       </Component>
                     </div>

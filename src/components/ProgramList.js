@@ -13,6 +13,7 @@ import ProgramCollection from './ProgramCollection';
 
 const defaultState = {
   programLoaded: false,
+  programReadOnly: false,
   confirmOpen: false,
   focusProgram: {
     id: null,
@@ -63,9 +64,11 @@ class ProgramList extends Component {
 
   loadProgram = (e) => {
     const { fetchProgram } = this.props;
+    const readOnly = e.target.dataset.owned === 'false';
 
     fetchProgram(e.target.id).then(() => this.setState({
       programLoaded: true,
+      programReadOnly: readOnly,
     }));
   }
 
@@ -100,7 +103,12 @@ class ProgramList extends Component {
 
   render() {
     const { programs, userPrograms } = this.props;
-    const { confirmOpen, focusProgram, programLoaded } = this.state;
+    const {
+      confirmOpen,
+      focusProgram,
+      programLoaded,
+      programReadOnly,
+    } = this.state;
 
     return (
       <Fragment>
@@ -109,9 +117,13 @@ class ProgramList extends Component {
           New Program
         </Button>
         {
-          programLoaded
-            ? (<Redirect to="/mission-control" />)
-            : (null)
+          programLoaded ? (
+            <Redirect to={{
+              pathname: '/mission-control',
+              state: { readOnly: programReadOnly },
+            }}
+            />
+          ) : (null)
         }
         {
           userPrograms === null
