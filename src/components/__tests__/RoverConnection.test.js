@@ -354,6 +354,10 @@ describe('The RoverList component', () => {
     jest.runAllTimers();
 
     expect(wrapper.state('online')).toBe(false);
+
+    wrapper.unmount();
+
+    expect(clearTimeout).toHaveBeenCalledTimes(1);
   });
 
   test('sends all commands when active', () => {
