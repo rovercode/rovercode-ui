@@ -1,4 +1,5 @@
 import React from 'react';
+import { Message } from 'semantic-ui-react';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
@@ -82,6 +83,7 @@ describe('The Workspace component', () => {
 
     wrapper.dive().dive().instance().updateJsCode();
     expect(Blockly.JavaScript.STATEMENT_PREFIX).toEqual('highlightBlock(%1);\n');
+    expect(wrapper.find(Message).exists()).toBe(false);
   });
 
   test('goes to running state on state change', () => {
@@ -200,7 +202,7 @@ describe('The Workspace component', () => {
 
   test('updates javascript code', () => {
     const wrapper = shallow(
-      <Workspace store={store}>
+      <Workspace store={store} location={{}}>
         <div />
       </Workspace>, { context },
     );
@@ -211,6 +213,24 @@ describe('The Workspace component', () => {
     workspace.instance().updateCode();
 
     expect(workspace.instance().updateJsCode).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(saveProgram());
+  });
+
+  test('updates javascript code when read only', () => {
+    const wrapper = shallow(
+      <Workspace store={store} location={{ state: { readOnly: true } }}>
+        <div />
+      </Workspace>, { context },
+    );
+
+    const workspace = wrapper.dive().dive();
+    workspace.instance().updateJsCode = jest.fn();
+    workspace.update();
+    workspace.instance().updateCode();
+
+    expect(workspace.instance().updateJsCode).toHaveBeenCalled();
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+    expect(workspace.find(Message).exists()).toBe(true);
   });
 
   test('runs code after waking if running', () => {

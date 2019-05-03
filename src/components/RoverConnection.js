@@ -26,6 +26,10 @@ class RoverConnection extends Component {
     this.sendCommand();
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+  }
+
   startHeartbeatTimer = () => {
     this.timeout = setTimeout(this.setOffline, heartbeatTimeout);
   }

@@ -13,7 +13,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
     }
   }
 >
-  <Connect(Console)
+  <Connect(ProgramName)
     allCookies={Object {}}
     cookies={
       Cookies {
@@ -36,7 +36,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
       }
     }
   >
-    <Console
+    <ProgramName
       allCookies={Object {}}
       changeName={[Function]}
       code={
@@ -52,6 +52,13 @@ exports[`The Console component renders on the page with no errors 1`] = `
           ],
           "cookies": Object {},
           "hooks": undefined,
+        }
+      }
+      location={
+        Object {
+          "state": Object {
+            "readOnly": false,
+          },
         }
       }
       store={
@@ -88,6 +95,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
     >
       <Input
         defaultValue="test name"
+        disabled={false}
         label="Name:"
         onChange={[Function]}
         type="text"
@@ -108,6 +116,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
           </Label>
           <input
             defaultValue="test name"
+            disabled={false}
             onChange={[Function]}
             type="text"
           />
@@ -146,7 +155,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
           />
         </Modal>
       </Confirm>
-    </Console>
-  </Connect(Console)>
+    </ProgramName>
+  </Connect(ProgramName)>
 </withCookies(Component)>
 `;

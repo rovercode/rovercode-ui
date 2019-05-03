@@ -134,7 +134,7 @@ class ProgramCollection extends Component {
                   </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
-                  <Button primary id={program.id} onClick={onProgramClick}>
+                  <Button primary id={program.id} data-owned={owned} onClick={onProgramClick}>
                     { owned ? 'Keep Working' : 'View' }
                   </Button>
                   {

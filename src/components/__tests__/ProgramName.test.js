@@ -37,6 +37,16 @@ describe('The Console component', () => {
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(wrapper.find(Input).length).toBe(1);
     expect(wrapper.find(Input).props().defaultValue).toBe('test name');
+    expect(wrapper.find(Input).props().disabled).toBe(false);
+  });
+
+  test('disabled when read only', () => {
+    const wrapper = shallow(
+      <ProgramName store={store} location={{ state: { readOnly: true } }} />,
+      { context },
+    ).dive().dive();
+
+    expect(wrapper.find(Input).props().disabled).toBe(true);
   });
 
   test('handles change', () => {

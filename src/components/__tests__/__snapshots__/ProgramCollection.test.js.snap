@@ -130,6 +130,7 @@ ShallowWrapper {
             >
               <Button
                 as="button"
+                data-owned={true}
                 id={33}
                 onClick={[MockFunction]}
                 primary={true}
@@ -162,6 +163,7 @@ ShallowWrapper {
             >
               <Button
                 as="button"
+                data-owned={true}
                 id={5}
                 onClick={[MockFunction]}
                 primary={true}
@@ -566,6 +568,7 @@ ShallowWrapper {
               >
                 <Button
                   as="button"
+                  data-owned={true}
                   id={33}
                   onClick={[MockFunction]}
                   primary={true}
@@ -598,6 +601,7 @@ ShallowWrapper {
               >
                 <Button
                   as="button"
+                  data-owned={true}
                   id={5}
                   onClick={[MockFunction]}
                   primary={true}
@@ -639,6 +643,7 @@ ShallowWrapper {
                 >
                   <Button
                     as="button"
+                    data-owned={true}
                     id={33}
                     onClick={[MockFunction]}
                     primary={true}
@@ -709,6 +714,7 @@ ShallowWrapper {
                   "children": Array [
                     <Button
                       as="button"
+                      data-owned={true}
                       id={33}
                       onClick={[MockFunction]}
                       primary={true}
@@ -737,6 +743,7 @@ ShallowWrapper {
                     "props": Object {
                       "as": "button",
                       "children": "Keep Working",
+                      "data-owned": true,
                       "id": 33,
                       "onClick": [MockFunction],
                       "primary": true,
@@ -787,6 +794,7 @@ ShallowWrapper {
                 >
                   <Button
                     as="button"
+                    data-owned={true}
                     id={5}
                     onClick={[MockFunction]}
                     primary={true}
@@ -857,6 +865,7 @@ ShallowWrapper {
                   "children": Array [
                     <Button
                       as="button"
+                      data-owned={true}
                       id={5}
                       onClick={[MockFunction]}
                       primary={true}
@@ -885,6 +894,7 @@ ShallowWrapper {
                     "props": Object {
                       "as": "button",
                       "children": "Keep Working",
+                      "data-owned": true,
                       "id": 5,
                       "onClick": [MockFunction],
                       "primary": true,
@@ -1053,6 +1063,7 @@ ShallowWrapper {
               >
                 <Button
                   as="button"
+                  data-owned={true}
                   id={33}
                   onClick={[MockFunction]}
                   primary={true}
@@ -1085,6 +1096,7 @@ ShallowWrapper {
               >
                 <Button
                   as="button"
+                  data-owned={true}
                   id={5}
                   onClick={[MockFunction]}
                   primary={true}
@@ -1489,6 +1501,7 @@ ShallowWrapper {
                 >
                   <Button
                     as="button"
+                    data-owned={true}
                     id={33}
                     onClick={[MockFunction]}
                     primary={true}
@@ -1521,6 +1534,7 @@ ShallowWrapper {
                 >
                   <Button
                     as="button"
+                    data-owned={true}
                     id={5}
                     onClick={[MockFunction]}
                     primary={true}
@@ -1562,6 +1576,7 @@ ShallowWrapper {
                   >
                     <Button
                       as="button"
+                      data-owned={true}
                       id={33}
                       onClick={[MockFunction]}
                       primary={true}
@@ -1632,6 +1647,7 @@ ShallowWrapper {
                     "children": Array [
                       <Button
                         as="button"
+                        data-owned={true}
                         id={33}
                         onClick={[MockFunction]}
                         primary={true}
@@ -1660,6 +1676,7 @@ ShallowWrapper {
                       "props": Object {
                         "as": "button",
                         "children": "Keep Working",
+                        "data-owned": true,
                         "id": 33,
                         "onClick": [MockFunction],
                         "primary": true,
@@ -1710,6 +1727,7 @@ ShallowWrapper {
                   >
                     <Button
                       as="button"
+                      data-owned={true}
                       id={5}
                       onClick={[MockFunction]}
                       primary={true}
@@ -1780,6 +1798,7 @@ ShallowWrapper {
                     "children": Array [
                       <Button
                         as="button"
+                        data-owned={true}
                         id={5}
                         onClick={[MockFunction]}
                         primary={true}
@@ -1808,6 +1827,7 @@ ShallowWrapper {
                       "props": Object {
                         "as": "button",
                         "children": "Keep Working",
+                        "data-owned": true,
                         "id": 5,
                         "onClick": [MockFunction],
                         "primary": true,

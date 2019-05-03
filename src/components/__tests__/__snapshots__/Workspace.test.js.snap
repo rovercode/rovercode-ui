@@ -185,6 +185,13 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         }
       }
       createProgram={[Function]}
+      location={
+        Object {
+          "state": Object {
+            "readOnly": false,
+          },
+        }
+      }
       saveProgram={[Function]}
       sendToRover={[Function]}
       sensor={
@@ -363,17 +370,18 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             "position": "absolute",
           }
         }
-      />
-      <div
-        style={
-          Object {
-            "bottom": 30,
-            "position": "absolute",
-            "right": 100,
-          }
-        }
       >
-        <div />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "position": "absolute",
+              "right": 100,
+            }
+          }
+        >
+          <div />
+        </div>
       </div>
     </Workspace>
   </Connect(Workspace)>

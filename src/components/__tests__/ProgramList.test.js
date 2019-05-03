@@ -127,7 +127,12 @@ describe('The ProgramList component', () => {
     });
 
     expect(wrapper.find(Redirect).exists()).toBe(true);
-    expect(wrapper.find(Redirect).at(0).prop('to')).toBe('/mission-control');
+    expect(wrapper.find(Redirect).at(0).prop('to')).toEqual({
+      pathname: '/mission-control',
+      state: {
+        readOnly: false,
+      },
+    });
   });
 
   test('loads a program', async () => {
@@ -157,6 +162,9 @@ describe('The ProgramList component', () => {
     await wrapper.instance().loadProgram({
       target: {
         id: 33,
+        dataset: {
+          owned: 'false',
+        },
       },
     });
 

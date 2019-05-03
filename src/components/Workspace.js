@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import { Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -22,6 +23,7 @@ import { append, clear } from '@/actions/console';
 import { pushCommand } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
+import ReadOnlyComponent from '@/components/ReadOnly';
 
 const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -141,7 +143,7 @@ const toolbox = `
       </category>
     </xml>`;
 
-class Workspace extends Component {
+class Workspace extends ReadOnlyComponent {
   constructor(props) {
     super(props);
     const { sendToRover, writeToConsole } = this.props;
@@ -185,6 +187,7 @@ class Workspace extends Component {
         scaleSpeed: 1.2,
       },
       trashcan: true,
+      readOnly: this.isReadOnly(),
     });
 
     workspace.addChangeListener(this.updateCode);
@@ -300,12 +303,14 @@ class Workspace extends Component {
   }
 
   updateCode = () => {
-    const { code, saveProgram } = this.props;
+    const { code, location: { state: { readOnly } }, saveProgram } = this.props;
 
     this.updateJsCode();
     const xmlCode = this.updateXmlCode();
 
-    saveProgram(code.id, xmlCode, code.name);
+    if (!readOnly) {
+      saveProgram(code.id, xmlCode, code.name);
+    }
   }
 
   beginSleep = (sleepTimeInMs) => {
@@ -411,9 +416,20 @@ class Workspace extends Component {
 
     return (
       <Fragment>
-        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv" />
-        <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
-          { children }
+        {
+          this.isReadOnly() ? (
+            <Message info>
+              <Message.Header>
+                Read Only View
+              </Message.Header>
+              You are viewing another user&apos;s program in a read-only view.
+            </Message>
+          ) : (null)
+        }
+        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv">
+          <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
+            { children }
+          </div>
         </div>
       </Fragment>
     );
