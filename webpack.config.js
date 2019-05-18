@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
-const path = require('path');
+const path = require('path'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = {
   output: {
