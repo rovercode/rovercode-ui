@@ -1,7 +1,8 @@
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
+const path = require('path'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = {
   output: {
@@ -54,15 +55,18 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      SENTRY_DSN: JSON.stringify(process.env.FRONTEND_SENTRY_DSN),
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
-      title: 'rovercode web',
+      title: 'Rovercode',
     }),
     new ExtractTextPlugin({
       filename: 'app.css',
     }),
-    new FaviconsWebpackPlugin({
+    new WebappWebpackPlugin({
       logo: './src/assets/images/favicon.png',
       persistentCache: false,
       icons: {

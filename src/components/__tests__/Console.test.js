@@ -49,7 +49,7 @@ describe('The Console component', () => {
         scrollIntoView: mockScroll,
       },
     };
-    wrapper.setState();
+    wrapper.instance().componentDidUpdate();
 
     expect(mockScroll).toHaveBeenCalled();
   });

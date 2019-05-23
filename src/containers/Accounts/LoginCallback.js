@@ -12,7 +12,7 @@ import { updateValidAuth as actionUpdateValidAuth } from '@/actions/auth';
 import { updateUser as actionUpdateUser } from '@/actions/user';
 
 const mapDispatchToProps = dispatch => ({
-  updateUser: data => dispatch(actionUpdateUser(data)),
+  updateUser: data => dispatch(actionUpdateUser({ ...data, isSocial: true })),
   updateValidAuth: isValidAuth => dispatch(actionUpdateValidAuth(isValidAuth)),
 });
 

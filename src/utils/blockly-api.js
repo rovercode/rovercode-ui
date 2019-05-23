@@ -1,15 +1,20 @@
-// TODO: rover API
-const sendMotorCommand = (command, pin, speed) => console.log(`Motor command: ${command}, ${pin}, ${speed}`); // eslint-disable-line no-console
-const leftMotor = { FORWARD: 'XIO-P0', BACKWARD: 'XIO-P1' };
-const rightMotor = { FORWARD: 'XIO-P6', BACKWARD: 'XIO-P7' };
-const motorPins = { LEFT: leftMotor, RIGHT: rightMotor };
-
 class BlocklyApi {
-  constructor(highlightBlock, beginSleep, sensorStateCache, writeToConsole) {
+  constructor(highlightBlock, beginSleep, sensorStateCache, writeToConsole, sendToRover) {
     this.highlightBlock = highlightBlock;
     this.beginSleep = beginSleep;
     this.sensorStateCache = sensorStateCache;
     this.writeToConsole = writeToConsole;
+    this.sendToRover = sendToRover;
+  }
+
+  sendMotorCommand = (blocklyMotor, blocklyDirection, speed) => {
+    this.sendToRover(JSON.stringify({
+      type: 'motor-command',
+      'motor-id': blocklyMotor === 'LEFT' ? 'motor-left' : 'motor-right',
+      'motor-value': speed,
+      direction: blocklyDirection === 'FORWARD' ? 'forward' : 'backward',
+      unit: 'percent',
+    }));
   }
 
   initApi = (interpreter, scope) => {
@@ -32,8 +37,7 @@ class BlocklyApi {
 
     // Add set motor API function
     wrapper = (motor, direction, speed) => {
-      const pin = motorPins[motor][direction];
-      sendMotorCommand('START_MOTOR', pin, speed);
+      this.sendMotorCommand(motor.data, direction.data, speed.data);
       return false;
     };
     interpreter.setProperty(scope, 'setMotor',
@@ -42,8 +46,8 @@ class BlocklyApi {
     // Add stop motor API function
     wrapper = (motor) => {
       /* Stop both forward and backward pins, just to be safe */
-      sendMotorCommand('START_MOTOR', motorPins[motor].FORWARD, 0);
-      sendMotorCommand('START_MOTOR', motorPins[motor].BACKWARD, 0);
+      this.sendMotorCommand(motor.data, 'FORWARD', 0);
+      this.sendMotorCommand(motor.data, 'BACKWARD', 0);
       return false;
     };
     interpreter.setProperty(scope, 'stopMotor',

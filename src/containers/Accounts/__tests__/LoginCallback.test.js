@@ -100,6 +100,6 @@ test('LoginCallback redirects to root after success', async () => {
   expect(redirect.prop('to')).toBe('/');
   expect(wrapper.find(Loader).exists()).toBe(false);
   expect(cookies.get('auth_jwt')).toBe(token);
-  expect(store.dispatch).toHaveBeenCalledWith(updateUser(jwtDecode(token)));
+  expect(store.dispatch).toHaveBeenCalledWith(updateUser({ ...jwtDecode(token), isSocial: true }));
   expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
 });

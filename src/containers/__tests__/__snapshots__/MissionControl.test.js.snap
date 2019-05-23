@@ -2,133 +2,316 @@
 
 exports[`The MissionControl container renders on the page with no errors 1`] = `
 <MissionControl
+  location={
+    Object {
+      "state": Object {
+        "readOnly": false,
+      },
+    }
+  }
   store={
     Object {
-      "clearActions": [Function],
-      "dispatch": [MockFunction],
-      "getActions": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "payload": Promise {},
+              "type": "FETCH_ROVERS",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+        ],
+      },
       "getState": [Function],
       "replaceReducer": [Function],
       "subscribe": [Function],
+      Symbol(observable): [Function],
     }
   }
 >
   <Grid
-    columns={16}
-    divided={true}
+    style={
+      Object {
+        "height": "100vh",
+      }
+    }
   >
     <div
-      className="ui divided sixteen column grid"
+      className="ui grid"
+      style={
+        Object {
+          "height": "100vh",
+        }
+      }
     >
       <GridRow>
         <div
           className="row"
         >
           <GridColumn
-            width={6}
+            width={13}
           >
             <div
-              className="six wide column"
+              className="thirteen wide column"
             >
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Component>
-                    <div />
-                  </Component>
-                </div>
-              </GridRow>
+              <Component
+                location={
+                  Object {
+                    "state": Object {
+                      "readOnly": false,
+                    },
+                  }
+                }
+              >
+                <div />
+              </Component>
             </div>
           </GridColumn>
           <GridColumn
-            width={6}
+            width={3}
           >
             <div
-              className="six wide column"
+              className="three wide column"
             >
               <GridRow>
                 <div
                   className="row"
                 >
-                  <Component>
-                    <div />
-                  </Component>
-                </div>
-              </GridRow>
-              <hr />
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Component>
-                    <div />
-                  </Component>
-                </div>
-              </GridRow>
-              <hr />
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Component>
-                    <div />
-                  </Component>
-                </div>
-              </GridRow>
-              <hr />
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Link
-                    replace={false}
-                    to="/"
+                  <Segment
+                    basic={true}
+                    compact={true}
                   >
-                    <a
-                      href="/"
-                      onClick={[Function]}
+                    <div
+                      className="ui basic compact segment"
                     >
-                      <Button
-                        as="button"
-                        role="button"
+                      <Component
+                        location={
+                          Object {
+                            "state": Object {
+                              "readOnly": false,
+                            },
+                          }
+                        }
                       >
-                        <button
-                          className="ui button"
-                          onClick={[Function]}
-                          role="button"
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
+                </div>
+              </GridRow>
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Header
+                    as="h2"
+                    textAlign="center"
+                  >
+                    <h2
+                      className="ui center aligned header"
+                    >
+                      Rovers
+                    </h2>
+                  </Header>
+                  <Segment
+                    raised={true}
+                    style={
+                      Object {
+                        "margin": "10px",
+                        "maxHeight": 200,
+                        "overflow": "auto",
+                      }
+                    }
+                  >
+                    <div
+                      className="ui raised segment"
+                      style={
+                        Object {
+                          "margin": "10px",
+                          "maxHeight": 200,
+                          "overflow": "auto",
+                        }
+                      }
+                    >
+                      <withCookies(Component)>
+                        <Connect(RoverConnectionList)
+                          allCookies={Object {}}
+                          cookies={
+                            Cookies {
+                              "HAS_DOCUMENT_COOKIE": true,
+                              "changeListeners": Array [
+                                [Function],
+                              ],
+                              "cookies": Object {},
+                              "hooks": undefined,
+                            }
+                          }
                         >
-                          Home
-                        </button>
-                      </Button>
-                    </a>
-                  </Link>
+                          <RoverConnectionList
+                            activeRover={null}
+                            allCookies={Object {}}
+                            changeActiveRover={[Function]}
+                            changeLeftSensorState={[Function]}
+                            changeRightSensorState={[Function]}
+                            commands={Array []}
+                            cookies={
+                              Cookies {
+                                "HAS_DOCUMENT_COOKIE": true,
+                                "changeListeners": Array [
+                                  [Function],
+                                ],
+                                "cookies": Object {},
+                                "hooks": undefined,
+                              }
+                            }
+                            fetchRovers={[Function]}
+                            isFetching={false}
+                            popCommand={[Function]}
+                            rovers={
+                              Object {
+                                "next": null,
+                                "previous": null,
+                                "results": Array [],
+                              }
+                            }
+                          >
+                            <CardGroup
+                              style={
+                                Object {
+                                  "margin": "10px",
+                                }
+                              }
+                            >
+                              <div
+                                className="ui cards"
+                                style={
+                                  Object {
+                                    "margin": "10px",
+                                  }
+                                }
+                              />
+                            </CardGroup>
+                          </RoverConnectionList>
+                        </Connect(RoverConnectionList)>
+                      </withCookies(Component)>
+                    </div>
+                  </Segment>
                 </div>
               </GridRow>
-            </div>
-          </GridColumn>
-          <GridColumn
-            width={4}
-          >
-            <div
-              className="four wide column"
-            >
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
               <GridRow>
                 <div
                   className="row"
                 >
-                  <Component>
-                    <div />
-                  </Component>
+                  <Header
+                    as="h2"
+                    textAlign="center"
+                  >
+                    <h2
+                      className="ui center aligned header"
+                    >
+                      Sensors
+                    </h2>
+                  </Header>
+                  <Segment
+                    raised={true}
+                    style={
+                      Object {
+                        "margin": "10px",
+                      }
+                    }
+                  >
+                    <div
+                      className="ui raised segment"
+                      style={
+                        Object {
+                          "margin": "10px",
+                        }
+                      }
+                    >
+                      <Component>
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
                 </div>
               </GridRow>
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
               <GridRow>
                 <div
                   className="row"
                 >
-                  <Component>
-                    <div />
-                  </Component>
+                  <Header
+                    as="h2"
+                    textAlign="center"
+                  >
+                    <h2
+                      className="ui center aligned header"
+                    >
+                      Debug Console
+                    </h2>
+                  </Header>
+                  <Segment
+                    style={
+                      Object {
+                        "margin": "10px",
+                      }
+                    }
+                  >
+                    <div
+                      className="ui segment"
+                      style={
+                        Object {
+                          "margin": "10px",
+                        }
+                      }
+                    >
+                      <Component>
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
+                </div>
+              </GridRow>
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Segment
+                    basic={true}
+                    compact={true}
+                  >
+                    <div
+                      className="ui basic compact segment"
+                    >
+                      <Component>
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
                 </div>
               </GridRow>
             </div>

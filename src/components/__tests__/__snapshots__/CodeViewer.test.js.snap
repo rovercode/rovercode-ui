@@ -63,17 +63,15 @@ exports[`The CodeViewer component handles blank code with no errors 1`] = `
       trigger={
         <Button
           as="button"
-          role="button"
+          primary={true}
         >
           Show Me The Code!
         </Button>
       }
     >
       <Portal
-        className="ui page modals dimmer transition visible active"
         closeOnDocumentClick={false}
         closeOnEscape={true}
-        closeOnRootNodeClick={true}
         eventPool="Modal"
         mountNode={<body />}
         onClose={[Function]}
@@ -84,7 +82,7 @@ exports[`The CodeViewer component handles blank code with no errors 1`] = `
         trigger={
           <Button
             as="button"
-            role="button"
+            primary={true}
           >
             Show Me The Code!
           </Button>
@@ -93,27 +91,30 @@ exports[`The CodeViewer component handles blank code with no errors 1`] = `
         <Ref
           innerRef={[Function]}
         >
-          <Button
-            as="button"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="button"
+          <RefFindNode
+            innerRef={[Function]}
           >
-            <button
-              className="ui button"
+            <Button
+              as="button"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              role="button"
+              primary={true}
             >
-              Show Me The Code!
-            </button>
-          </Button>
+              <button
+                className="ui primary button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                Show Me The Code!
+              </button>
+            </Button>
+          </RefFindNode>
         </Ref>
       </Portal>
     </Modal>
@@ -184,17 +185,15 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
       trigger={
         <Button
           as="button"
-          role="button"
+          primary={true}
         >
           Show Me The Code!
         </Button>
       }
     >
       <Portal
-        className="ui page modals dimmer transition visible active"
         closeOnDocumentClick={false}
         closeOnEscape={true}
-        closeOnRootNodeClick={true}
         eventPool="Modal"
         mountNode={<body />}
         onClose={[Function]}
@@ -205,7 +204,7 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
         trigger={
           <Button
             as="button"
-            role="button"
+            primary={true}
           >
             Show Me The Code!
           </Button>
@@ -214,27 +213,30 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
         <Ref
           innerRef={[Function]}
         >
-          <Button
-            as="button"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="button"
+          <RefFindNode
+            innerRef={[Function]}
           >
-            <button
-              className="ui button"
+            <Button
+              as="button"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              role="button"
+              primary={true}
             >
-              Show Me The Code!
-            </button>
-          </Button>
+              <button
+                className="ui primary button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                Show Me The Code!
+              </button>
+            </Button>
+          </RefFindNode>
         </Ref>
       </Portal>
     </Modal>

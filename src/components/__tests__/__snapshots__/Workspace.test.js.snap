@@ -185,7 +185,21 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         }
       }
       createProgram={[Function]}
+      location={
+        Object {
+          "state": Object {
+            "readOnly": false,
+          },
+        }
+      }
       saveProgram={[Function]}
+      sendToRover={[Function]}
+      sensor={
+        Object {
+          "left": 2,
+          "right": 2,
+        }
+      }
       store={
         Object {
           "clearActions": [Function],
@@ -350,13 +364,25 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
       writeToConsole={[Function]}
     >
       <div
+        id="blocklyDiv"
         style={
           Object {
-            "height": "480px",
-            "width": "600px",
+            "position": "absolute",
           }
         }
-      />
+      >
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "position": "absolute",
+              "right": 100,
+            }
+          }
+        >
+          <div />
+        </div>
+      </div>
     </Workspace>
   </Connect(Workspace)>
 </withCookies(Component)>
