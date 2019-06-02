@@ -1,0 +1,389 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Workspace component renders on the page with no errors 1`] = `
+<withCookies(Component)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "payload": "test-code",
+              "type": "UPDATE_JSCODE",
+            },
+          ],
+          Array [
+            Object {
+              "payload": "test-dom-text",
+              "type": "UPDATE_XMLCODE",
+            },
+          ],
+          Array [
+            Object {
+              "payload": Promise {},
+              "type": "SAVE_PROGRAM",
+            },
+          ],
+          Array [
+            Object {
+              "type": "CLEAR",
+            },
+          ],
+          Array [
+            Object {
+              "payload": "rovercode console started",
+              "type": "APPEND",
+            },
+          ],
+          Array [
+            Object {
+              "payload": Promise {},
+              "type": "CREATE_PROGRAM",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+          Object {
+            "isThrow": false,
+            "value": Promise {},
+          },
+        ],
+      },
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Workspace)
+    allCookies={Object {}}
+    cookies={
+      Cookies {
+        "HAS_DOCUMENT_COOKIE": true,
+        "changeListeners": Array [
+          [Function],
+        ],
+        "cookies": Object {},
+        "hooks": undefined,
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "payload": "test-code",
+                "type": "UPDATE_JSCODE",
+              },
+            ],
+            Array [
+              Object {
+                "payload": "test-dom-text",
+                "type": "UPDATE_XMLCODE",
+              },
+            ],
+            Array [
+              Object {
+                "payload": Promise {},
+                "type": "SAVE_PROGRAM",
+              },
+            ],
+            Array [
+              Object {
+                "type": "CLEAR",
+              },
+            ],
+            Array [
+              Object {
+                "payload": "rovercode console started",
+                "type": "APPEND",
+              },
+            ],
+            Array [
+              Object {
+                "payload": Promise {},
+                "type": "CREATE_PROGRAM",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": Promise {},
+            },
+            Object {
+              "isThrow": false,
+              "value": Promise {},
+            },
+            Object {
+              "isThrow": false,
+              "value": Promise {},
+            },
+            Object {
+              "isThrow": false,
+              "value": Promise {},
+            },
+            Object {
+              "isThrow": false,
+              "value": Promise {},
+            },
+            Object {
+              "isThrow": false,
+              "value": Promise {},
+            },
+          ],
+        },
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <Workspace
+      allCookies={Object {}}
+      changeExecutionState={[Function]}
+      clearConsole={[Function]}
+      code={
+        Object {
+          "execution": null,
+          "jsCode": "",
+        }
+      }
+      cookies={
+        Cookies {
+          "HAS_DOCUMENT_COOKIE": true,
+          "changeListeners": Array [
+            [Function],
+          ],
+          "cookies": Object {},
+          "hooks": undefined,
+        }
+      }
+      createProgram={[Function]}
+      location={
+        Object {
+          "state": Object {
+            "readOnly": false,
+          },
+        }
+      }
+      saveProgram={[Function]}
+      sendToRover={[Function]}
+      sensor={
+        Object {
+          "left": 2,
+          "right": 2,
+        }
+      }
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "payload": "test-code",
+                  "type": "UPDATE_JSCODE",
+                },
+              ],
+              Array [
+                Object {
+                  "payload": "test-dom-text",
+                  "type": "UPDATE_XMLCODE",
+                },
+              ],
+              Array [
+                Object {
+                  "payload": Promise {},
+                  "type": "SAVE_PROGRAM",
+                },
+              ],
+              Array [
+                Object {
+                  "type": "CLEAR",
+                },
+              ],
+              Array [
+                Object {
+                  "payload": "rovercode console started",
+                  "type": "APPEND",
+                },
+              ],
+              Array [
+                Object {
+                  "payload": Promise {},
+                  "type": "CREATE_PROGRAM",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": Promise {},
+              },
+              Object {
+                "isThrow": false,
+                "value": Promise {},
+              },
+              Object {
+                "isThrow": false,
+                "value": Promise {},
+              },
+              Object {
+                "isThrow": false,
+                "value": Promise {},
+              },
+              Object {
+                "isThrow": false,
+                "value": Promise {},
+              },
+              Object {
+                "isThrow": false,
+                "value": Promise {},
+              },
+            ],
+          },
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+      storeSubscription={
+        Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "payload": "test-code",
+                    "type": "UPDATE_JSCODE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": "test-dom-text",
+                    "type": "UPDATE_XMLCODE",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": Promise {},
+                    "type": "SAVE_PROGRAM",
+                  },
+                ],
+                Array [
+                  Object {
+                    "type": "CLEAR",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": "rovercode console started",
+                    "type": "APPEND",
+                  },
+                ],
+                Array [
+                  Object {
+                    "payload": Promise {},
+                    "type": "CREATE_PROGRAM",
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": Promise {},
+                },
+                Object {
+                  "isThrow": false,
+                  "value": Promise {},
+                },
+                Object {
+                  "isThrow": false,
+                  "value": Promise {},
+                },
+                Object {
+                  "isThrow": false,
+                  "value": Promise {},
+                },
+                Object {
+                  "isThrow": false,
+                  "value": Promise {},
+                },
+                Object {
+                  "isThrow": false,
+                  "value": Promise {},
+                },
+              ],
+            },
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        }
+      }
+      updateJsCode={[Function]}
+      updateXmlCode={[Function]}
+      writeToConsole={[Function]}
+    >
+      <div
+        id="blocklyDiv"
+        style={
+          Object {
+            "position": "absolute",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "position": "absolute",
+              "right": 100,
+            }
+          }
+        >
+          <div />
+        </div>
+      </div>
+    </Workspace>
+  </Connect(Workspace)>
+</withCookies(Component)>
+`;

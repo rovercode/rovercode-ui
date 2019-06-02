@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Indicator component renders on the page with no errors 1`] = `
+<Connect(Indicator)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Indicator
+    dispatch={[MockFunction]}
+    sensor={
+      Object {
+        "left": 2,
+        "right": 2,
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [MockFunction],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Grid
+      centered={true}
+      columns={12}
+    >
+      <div
+        className="ui centered twelve column grid"
+      >
+        <GridRow>
+          <div
+            className="row"
+          >
+            <GridColumn
+              width={6}
+            >
+              <div
+                className="six wide column"
+              >
+                <div
+                  className="indicator not-covered"
+                  id="leftIndicator"
+                />
+              </div>
+            </GridColumn>
+            <GridColumn
+              width={6}
+            >
+              <div
+                className="six wide column"
+              >
+                <div
+                  className="indicator not-covered"
+                  id="rightIndicator"
+                />
+              </div>
+            </GridColumn>
+          </div>
+        </GridRow>
+      </div>
+    </Grid>
+  </Indicator>
+</Connect(Indicator)>
+`;

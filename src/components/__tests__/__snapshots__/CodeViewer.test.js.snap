@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The CodeViewer component handles blank code with no errors 1`] = `
+<Connect(CodeViewer)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <CodeViewer
+    code={
+      Object {
+        "jsCode": null,
+      }
+    }
+    dispatch={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Modal
+      basic={true}
+      centered={true}
+      closeIcon={true}
+      closeOnDimmerClick={true}
+      closeOnDocumentClick={false}
+      dimmer="blurring"
+      eventPool="Modal"
+      trigger={
+        <Button
+          as="button"
+          primary={true}
+        >
+          Show Me The Code!
+        </Button>
+      }
+    >
+      <Portal
+        closeOnDocumentClick={false}
+        closeOnEscape={true}
+        eventPool="Modal"
+        mountNode={<body />}
+        onClose={[Function]}
+        onMount={[Function]}
+        onOpen={[Function]}
+        onUnmount={[Function]}
+        openOnTriggerClick={true}
+        trigger={
+          <Button
+            as="button"
+            primary={true}
+          >
+            Show Me The Code!
+          </Button>
+        }
+      >
+        <Ref
+          innerRef={[Function]}
+        >
+          <RefFindNode
+            innerRef={[Function]}
+          >
+            <Button
+              as="button"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              primary={true}
+            >
+              <button
+                className="ui primary button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                Show Me The Code!
+              </button>
+            </Button>
+          </RefFindNode>
+        </Ref>
+      </Portal>
+    </Modal>
+  </CodeViewer>
+</Connect(CodeViewer)>
+`;
+
+exports[`The CodeViewer component renders on the page with no errors 1`] = `
+<Connect(CodeViewer)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <CodeViewer
+    code={
+      Object {
+        "jsCode": "test code",
+      }
+    }
+    dispatch={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Modal
+      basic={true}
+      centered={true}
+      closeIcon={true}
+      closeOnDimmerClick={true}
+      closeOnDocumentClick={false}
+      dimmer="blurring"
+      eventPool="Modal"
+      trigger={
+        <Button
+          as="button"
+          primary={true}
+        >
+          Show Me The Code!
+        </Button>
+      }
+    >
+      <Portal
+        closeOnDocumentClick={false}
+        closeOnEscape={true}
+        eventPool="Modal"
+        mountNode={<body />}
+        onClose={[Function]}
+        onMount={[Function]}
+        onOpen={[Function]}
+        onUnmount={[Function]}
+        openOnTriggerClick={true}
+        trigger={
+          <Button
+            as="button"
+            primary={true}
+          >
+            Show Me The Code!
+          </Button>
+        }
+      >
+        <Ref
+          innerRef={[Function]}
+        >
+          <RefFindNode
+            innerRef={[Function]}
+          >
+            <Button
+              as="button"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              primary={true}
+            >
+              <button
+                className="ui primary button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+              >
+                Show Me The Code!
+              </button>
+            </Button>
+          </RefFindNode>
+        </Ref>
+      </Portal>
+    </Modal>
+  </CodeViewer>
+</Connect(CodeViewer)>
+`;

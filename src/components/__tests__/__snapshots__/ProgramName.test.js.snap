@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Console component renders on the page with no errors 1`] = `
+<withCookies(Component)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(ProgramName)
+    allCookies={Object {}}
+    cookies={
+      Cookies {
+        "HAS_DOCUMENT_COOKIE": true,
+        "changeListeners": Array [
+          [Function],
+        ],
+        "cookies": Object {},
+        "hooks": undefined,
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <ProgramName
+      allCookies={Object {}}
+      changeName={[Function]}
+      code={
+        Object {
+          "name": "test name",
+        }
+      }
+      cookies={
+        Cookies {
+          "HAS_DOCUMENT_COOKIE": true,
+          "changeListeners": Array [
+            [Function],
+          ],
+          "cookies": Object {},
+          "hooks": undefined,
+        }
+      }
+      location={
+        Object {
+          "state": Object {
+            "readOnly": false,
+          },
+        }
+      }
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [MockFunction],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+      storeSubscription={
+        Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [MockFunction],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        }
+      }
+    >
+      <Input
+        defaultValue="test name"
+        disabled={false}
+        label="Name:"
+        onChange={[Function]}
+        type="text"
+      >
+        <div
+          className="ui labeled input"
+        >
+          <Label
+            className="label"
+            content="Name:"
+          >
+            <div
+              className="ui label label"
+              onClick={[Function]}
+            >
+              Name:
+            </div>
+          </Label>
+          <input
+            defaultValue="test name"
+            disabled={false}
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </Input>
+      <Confirm
+        cancelButton="Cancel"
+        confirmButton="OK"
+        content="Are you sure that you want to change the name of this program?"
+        onCancel={[Function]}
+        onConfirm={[Function]}
+        open={false}
+        size="small"
+      >
+        <Modal
+          centered={true}
+          closeOnDimmerClick={true}
+          closeOnDocumentClick={false}
+          dimmer={true}
+          eventPool="Modal"
+          onClose={[Function]}
+          open={false}
+          size="small"
+        >
+          <Portal
+            closeOnDocumentClick={false}
+            closeOnEscape={true}
+            eventPool="Modal"
+            mountNode={<body />}
+            onClose={[Function]}
+            onMount={[Function]}
+            onOpen={[Function]}
+            onUnmount={[Function]}
+            open={false}
+            openOnTriggerClick={true}
+          />
+        </Modal>
+      </Confirm>
+    </ProgramName>
+  </Connect(ProgramName)>
+</withCookies(Component)>
+`;

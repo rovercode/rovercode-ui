@@ -2,3 +2,7 @@ dist/
 node_modules/
 coverage/
 yarn-error.log
+*.swp
+
+.idea/
+.vscode/

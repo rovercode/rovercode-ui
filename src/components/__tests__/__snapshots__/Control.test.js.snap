@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Control component renders on the page with no errors 1`] = `
+<Connect(Control)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Control
+    changeExecutionState={[Function]}
+    code={
+      Object {
+        "execution": 3,
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [MockFunction],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Button
+      animated="vertical"
+      as="button"
+      color="green"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      size="huge"
+    >
+      <button
+        className="ui green huge vertical animated button"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+      >
+        <ButtonContent
+          hidden={true}
+        >
+          <div
+            className="hidden content"
+          >
+            Run
+          </div>
+        </ButtonContent>
+        <ButtonContent
+          visible={true}
+        >
+          <div
+            className="visible content"
+          >
+            <Icon
+              as="i"
+              name="play"
+            >
+              <i
+                aria-hidden="true"
+                className="play icon"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </ButtonContent>
+      </button>
+    </Button>
+    <Button
+      animated="vertical"
+      as="button"
+      color="yellow"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      style={
+        Object {
+          "verticalAlign": "bottom",
+        }
+      }
+    >
+      <button
+        className="ui yellow vertical animated button"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        style={
+          Object {
+            "verticalAlign": "bottom",
+          }
+        }
+      >
+        <ButtonContent
+          hidden={true}
+        >
+          <div
+            className="hidden content"
+          >
+            Step
+          </div>
+        </ButtonContent>
+        <ButtonContent
+          visible={true}
+        >
+          <div
+            className="visible content"
+          >
+            <Icon
+              as="i"
+              name="step forward"
+            >
+              <i
+                aria-hidden="true"
+                className="step forward icon"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </ButtonContent>
+      </button>
+    </Button>
+    <Button
+      animated="vertical"
+      as="button"
+      color="blue"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      style={
+        Object {
+          "verticalAlign": "bottom",
+        }
+      }
+    >
+      <button
+        className="ui blue vertical animated button"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        style={
+          Object {
+            "verticalAlign": "bottom",
+          }
+        }
+      >
+        <ButtonContent
+          hidden={true}
+        >
+          <div
+            className="hidden content"
+          >
+            Reset
+          </div>
+        </ButtonContent>
+        <ButtonContent
+          visible={true}
+        >
+          <div
+            className="visible content"
+          >
+            <Icon
+              as="i"
+              name="repeat"
+            >
+              <i
+                aria-hidden="true"
+                className="repeat icon"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </ButtonContent>
+      </button>
+    </Button>
+  </Control>
+</Connect(Control)>
+`;

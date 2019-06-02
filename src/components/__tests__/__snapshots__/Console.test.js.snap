@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Console component renders on the page with no errors 1`] = `
+<Connect(Console)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Console
+    clear={[Function]}
+    console={
+      Object {
+        "messages": Array [
+          "first",
+          "second",
+        ],
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [MockFunction],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [MockFunction],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "200px",
+          "overflow": "scroll",
+        }
+      }
+    >
+      <p
+        key="0"
+      >
+        &gt;&gt; first
+      </p>
+      <p
+        key="1"
+      >
+        &gt;&gt; second
+      </p>
+      <div />
+    </div>
+    <Button
+      as="button"
+      onClick={[Function]}
+      primary={true}
+      style={
+        Object {
+          "marginTop": "10px",
+        }
+      }
+    >
+      <button
+        className="ui primary button"
+        onClick={[Function]}
+        style={
+          Object {
+            "marginTop": "10px",
+          }
+        }
+      >
+        Clear
+      </button>
+    </Button>
+  </Console>
+</Connect(Console)>
+`;
