@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { Message } from 'semantic-ui-react';
+import { Button, Grid, Message } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -161,6 +162,7 @@ class Workspace extends ReadOnlyComponent {
     this.state = {
       workspace: null,
       interpreter: null,
+      remixCreated: null,
     };
   }
 
@@ -411,19 +413,46 @@ class Workspace extends ReadOnlyComponent {
     this.updateCode();
   }
 
+  remix = () => {
+    const { code, createProgram, saveProgram } = this.props;
+
+    return createProgram(code.name)
+      .then(data => saveProgram(data.value.id, code.xmlCode, data.value.name))
+      .then(data => this.setState({ remixCreated: data.value.name }));
+  }
+
   render() {
     const { children } = this.props;
+    const { remixCreated } = this.state;
 
     return (
       <Fragment>
         {
+          remixCreated ? (
+            <Redirect to={{
+              pathname: '/programs',
+              state: { remix: remixCreated },
+            }}
+            />
+          ) : (null)
+        }
+        {
           this.isReadOnly() ? (
-            <Message info>
-              <Message.Header>
-                Read Only View
-              </Message.Header>
-              You are viewing another user&apos;s program in a read-only view.
-            </Message>
+            <Grid verticalAlign="middle">
+              <Grid.Column width={12}>
+                <Message info>
+                  <Message.Header>
+                    Read Only View
+                  </Message.Header>
+                  You are viewing another user&apos;s program in a read-only view.
+                </Message>
+              </Grid.Column>
+              <Grid.Column width={4}>
+                <Button primary size="huge" onClick={this.remix}>
+                  Remix
+                </Button>
+              </Grid.Column>
+            </Grid>
           ) : (null)
         }
         <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv">

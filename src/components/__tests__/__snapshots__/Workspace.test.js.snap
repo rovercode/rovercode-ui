@@ -172,6 +172,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         Object {
           "execution": null,
           "jsCode": "",
+          "name": "test program",
         }
       }
       cookies={

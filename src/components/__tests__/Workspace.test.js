@@ -1,5 +1,6 @@
 import React from 'react';
 import { Message } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
@@ -36,6 +37,7 @@ describe('The Workspace component', () => {
       code: {
         jsCode: '',
         execution: null,
+        name: 'test program',
       },
       sensor: {
         left: NOT_COVERED,
@@ -662,5 +664,62 @@ describe('The Workspace component', () => {
     wrapper.dive().props().sendToRover('command');
 
     expect(store.dispatch).toHaveBeenCalledWith(pushCommand('command'));
+  });
+
+  test('Remixes a program', (done) => {
+    const localStore = mockStore({
+      code: {
+        name: 'test program',
+        xmlCode: '<xml></xml>',
+      },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    localStore.dispatch = jest.fn(() => Promise.resolve());
+    const mockCreateProgram = jest.fn(() => Promise.resolve({
+        value: {
+          id: 1,
+          name: 'test program',
+        },
+      }));
+    const mockSaveProgram = jest.fn(() => Promise.resolve({
+        value: {
+          name: 'test program',
+        },
+      }));
+    const wrapper = shallow(
+      <Workspace store={localStore}>
+        <div />
+      </Workspace>, { context },
+    );
+
+    const workspace = wrapper.dive().dive();
+    workspace.setProps({
+      createProgram: mockCreateProgram,
+      saveProgram: mockSaveProgram,
+    });
+
+    workspace.instance().remix().then(() => {
+      expect(workspace.state('remixCreated')).toBe('test program');
+      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
+      expect(mockSaveProgram).toHaveBeenCalledWith(1, '<xml></xml>', 'test program');
+      done();
+    });
+  });
+
+  test('Redirects to program list after remix', () => {
+    const wrapper = shallow(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    );
+
+    const workspace = wrapper.dive().dive();
+    workspace.setState({ remixCreated: 'test' });
+    workspace.update();
+
+    expect(workspace.find(Redirect).exists()).toBe(true);
   });
 });
