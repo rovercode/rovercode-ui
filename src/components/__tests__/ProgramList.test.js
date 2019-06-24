@@ -24,7 +24,7 @@ describe('The ProgramList component', () => {
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
-        location={ { state: undefined } }
+        location={{ state: undefined }}
       />,
     );
     expect(wrapper).toMatchSnapshot();

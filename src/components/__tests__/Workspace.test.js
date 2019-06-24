@@ -679,16 +679,16 @@ describe('The Workspace component', () => {
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
     const mockCreateProgram = jest.fn(() => Promise.resolve({
-        value: {
-          id: 1,
-          name: 'test program',
-        },
-      }));
+      value: {
+        id: 1,
+        name: 'test program',
+      },
+    }));
     const mockSaveProgram = jest.fn(() => Promise.resolve({
-        value: {
-          name: 'test program',
-        },
-      }));
+      value: {
+        name: 'test program',
+      },
+    }));
     const wrapper = shallow(
       <Workspace store={localStore}>
         <div />
