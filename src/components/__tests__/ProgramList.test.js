@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { Loader } from 'semantic-ui-react';
+import { Loader, Message } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
 import ProgramCollection from '../ProgramCollection';
@@ -24,6 +24,7 @@ describe('The ProgramList component', () => {
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
+        location={ { state: undefined } }
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -383,5 +384,25 @@ describe('The ProgramList component', () => {
     expect(fetchPrograms).toHaveBeenCalledTimes(1);
     expect(removeProgram).not.toHaveBeenCalled();
     expect(wrapper.state('confirmOpen')).toBe(false);
+  });
+
+  test('Message shown when remix created', () => {
+    const location = {
+      state: {
+        remix: 'test program',
+      },
+    };
+    const wrapper = shallow(
+      <ProgramList
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        user={{ user_id: 1 }}
+        location={location}
+      />,
+    );
+
+    expect(wrapper.find(Message).exists()).toBe(true);
+    expect(wrapper.find(Message).prop('children')).toContain('test program');
   });
 });

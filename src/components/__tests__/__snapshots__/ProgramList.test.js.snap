@@ -22,6 +22,11 @@ ShallowWrapper {
         ],
       }
     }
+    location={
+      Object {
+        "state": undefined,
+      }
+    }
     programs={
       Object {
         "next": null,
@@ -76,6 +81,7 @@ ShallowWrapper {
           />
           New Program
         </Button>,
+        null,
         null,
         <Segment
           raised={true}
@@ -176,6 +182,7 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
+      null,
       null,
       Object {
         "instance": null,
@@ -320,6 +327,7 @@ ShallowWrapper {
             New Program
           </Button>,
           null,
+          null,
           <Segment
             raised={true}
             style={
@@ -419,6 +427,7 @@ ShallowWrapper {
           ],
           "type": [Function],
         },
+        null,
         null,
         Object {
           "instance": null,

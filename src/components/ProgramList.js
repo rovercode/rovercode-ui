@@ -4,6 +4,7 @@ import {
   Confirm,
   Icon,
   Loader,
+  Message,
   Segment,
 } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
@@ -102,13 +103,18 @@ class ProgramList extends Component {
   )
 
   render() {
-    const { programs, userPrograms } = this.props;
+    const { location, programs, userPrograms } = this.props;
     const {
       confirmOpen,
       focusProgram,
       programLoaded,
       programReadOnly,
     } = this.state;
+
+    let remix = null;
+    if (location.state) {
+      ({ remix } = location.state);
+    }
 
     return (
       <Fragment>
@@ -123,6 +129,20 @@ class ProgramList extends Component {
               state: { readOnly: programReadOnly },
             }}
             />
+          ) : (null)
+        }
+        {
+          remix ? (
+            <Message info>
+              <Message.Header>
+                Remixed Program Created
+              </Message.Header>
+              A new program
+              `
+              {remix}
+              `
+              identical to the remixed program has been created for you to edit.
+            </Message>
           ) : (null)
         }
         {
@@ -162,6 +182,11 @@ ProgramList.defaultProps = {
     total_pages: 1,
     results: [],
   },
+  location: {
+    state: {
+      remixCreated: null,
+    },
+  },
 };
 
 ProgramList.propTypes = {
@@ -198,6 +223,11 @@ ProgramList.propTypes = {
         }).isRequired,
       }),
     ),
+  }),
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      remixCreated: PropTypes.string,
+    }),
   }),
 };
 
