@@ -1,5 +1,6 @@
 import {
   CHANGE_EXECUTION_STATE,
+  CHANGE_READ_ONLY,
   UPDATE_JSCODE,
   UPDATE_XMLCODE,
   CHANGE_NAME,
@@ -29,6 +30,7 @@ export default function code(
     isCreating: false,
     isChangingName: false,
     error: null,
+    isReadOnly: false,
   },
   action,
 ) {
@@ -126,6 +128,11 @@ export default function code(
         ...state,
         isCreating: false,
         error: action.payload,
+      };
+    case CHANGE_READ_ONLY:
+      return {
+        ...state,
+        isReadOnly: action.payload,
       };
     default:
       return state;

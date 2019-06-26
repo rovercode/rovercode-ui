@@ -6,6 +6,7 @@ import {
   changeExecutionState,
   changeName,
   changeId,
+  changeReadOnly,
   fetchProgram,
   saveProgram,
   createProgram,
@@ -131,5 +132,13 @@ describe('Code actions', () => {
     expect(type).toEqual('CREATE_PROGRAM');
     expect(payload).toEqual(program);
     mock.restore();
+  });
+
+  test('changeReadOnly', () => {
+    const action = changeReadOnly(true);
+    const { type, payload } = action;
+
+    expect(type).toEqual('CHANGE_READ_ONLY');
+    expect(payload).toEqual(true);
   });
 });

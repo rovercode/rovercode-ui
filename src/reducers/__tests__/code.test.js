@@ -8,6 +8,7 @@ import {
   CHANGE_NAME_FULFILLED,
   CHANGE_NAME_REJECTED,
   CHANGE_ID,
+  CHANGE_READ_ONLY,
   FETCH_PROGRAM,
   FETCH_PROGRAM_FULFILLED,
   FETCH_PROGRAM_REJECTED,
@@ -247,6 +248,17 @@ describe('The code reducer', () => {
     ).toEqual({
       isCreating: false,
       error: { detail },
+    });
+  });
+
+  test('should handle CHANGE_READ_ONLY', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_READ_ONLY,
+        payload: true,
+      }),
+    ).toEqual({
+      isReadOnly: true,
     });
   });
 

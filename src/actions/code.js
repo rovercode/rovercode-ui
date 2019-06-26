@@ -20,6 +20,7 @@ export const CHANGE_NAME = 'CHANGE_NAME';
 export const CHANGE_NAME_FULFILLED = `${CHANGE_NAME}_FULFILLED`;
 export const CHANGE_NAME_REJECTED = `${CHANGE_NAME}_REJECTED`;
 export const CHANGE_ID = 'CHANGE_ID';
+export const CHANGE_READ_ONLY = 'CHANGE_READ_ONLY';
 
 // Execution States
 export const EXECUTION_RUN = 1;
@@ -86,4 +87,9 @@ export const createProgram = (name, xhroptions) => ({
     .then(({ data }) => (
       data
     )),
+});
+
+export const changeReadOnly = isReadOnly => ({
+  type: CHANGE_READ_ONLY,
+  payload: isReadOnly,
 });
