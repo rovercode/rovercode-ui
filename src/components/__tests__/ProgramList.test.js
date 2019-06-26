@@ -1,17 +1,19 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { Loader, Message } from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
 import ProgramCollection from '../ProgramCollection';
 import ProgramList from '../ProgramList';
 
+let changeReadOnly;
 let fetchProgram;
 let fetchPrograms;
 let removeProgram;
 
 describe('The ProgramList component', () => {
   beforeEach(() => {
+    changeReadOnly = jest.fn();
     fetchProgram = jest.fn(() => Promise.resolve({}));
     fetchPrograms = jest.fn(() => Promise.resolve({}));
     removeProgram = jest.fn(() => Promise.resolve({}));
@@ -20,11 +22,11 @@ describe('The ProgramList component', () => {
   test('renders on the page with no errors', () => {
     const wrapper = shallow(
       <ProgramList
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
-        location={{ state: undefined }}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -34,6 +36,7 @@ describe('The ProgramList component', () => {
     await mount(
       <MemoryRouter>
         <ProgramList
+          changeReadOnly={changeReadOnly}
           fetchProgram={fetchProgram}
           fetchPrograms={fetchPrograms}
           removeProgram={removeProgram}
@@ -68,6 +71,7 @@ describe('The ProgramList component', () => {
     const wrapper = shallow(
       <ProgramList
         programs={programs}
+        changeReadOnly={changeReadOnly}
         userPrograms={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
@@ -84,6 +88,7 @@ describe('The ProgramList component', () => {
   test('shows loading when programs fetching', () => {
     const wrapper = shallow(
       <ProgramList
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -100,6 +105,7 @@ describe('The ProgramList component', () => {
   test('shows loading when user programs fetching', () => {
     const wrapper = shallow(
       <ProgramList
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -116,6 +122,7 @@ describe('The ProgramList component', () => {
   test('redirects to mission control when program loads', () => {
     const wrapper = shallow(
       <ProgramList
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -130,9 +137,6 @@ describe('The ProgramList component', () => {
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).at(0).prop('to')).toEqual({
       pathname: '/mission-control',
-      state: {
-        readOnly: false,
-      },
     });
   });
 
@@ -152,6 +156,7 @@ describe('The ProgramList component', () => {
     };
     const wrapper = shallow(
       <ProgramList
+        changeReadOnly={changeReadOnly}
         programs={programs}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
@@ -169,6 +174,7 @@ describe('The ProgramList component', () => {
       },
     });
 
+    expect(changeReadOnly).toHaveBeenCalledWith(true);
     expect(fetchProgram).toHaveBeenCalledWith(33);
     expect(wrapper.state('programLoaded')).toBe(true);
   });
@@ -190,6 +196,7 @@ describe('The ProgramList component', () => {
     const wrapper = shallow(
       <ProgramList
         programs={programs}
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -224,6 +231,7 @@ describe('The ProgramList component', () => {
     const wrapper = shallow(
       <ProgramList
         programs={programs}
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -258,6 +266,7 @@ describe('The ProgramList component', () => {
     const wrapper = shallow(
       <ProgramList
         programs={programs}
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -294,6 +303,7 @@ describe('The ProgramList component', () => {
     const wrapper = shallow(
       <ProgramList
         programs={programs}
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -330,6 +340,7 @@ describe('The ProgramList component', () => {
     const wrapper = shallow(
       <ProgramList
         programs={programs}
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -352,6 +363,7 @@ describe('The ProgramList component', () => {
   test('shows confirm dialog', () => {
     const wrapper = shallow(
       <ProgramList
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -372,6 +384,7 @@ describe('The ProgramList component', () => {
   test('cancel dialog does not remove program', () => {
     const wrapper = shallow(
       <ProgramList
+        changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
@@ -384,25 +397,5 @@ describe('The ProgramList component', () => {
     expect(fetchPrograms).toHaveBeenCalledTimes(1);
     expect(removeProgram).not.toHaveBeenCalled();
     expect(wrapper.state('confirmOpen')).toBe(false);
-  });
-
-  test('Message shown when remix created', () => {
-    const location = {
-      state: {
-        remix: 'test program',
-      },
-    };
-    const wrapper = shallow(
-      <ProgramList
-        fetchProgram={fetchProgram}
-        fetchPrograms={fetchPrograms}
-        removeProgram={removeProgram}
-        user={{ user_id: 1 }}
-        location={location}
-      />,
-    );
-
-    expect(wrapper.find(Message).exists()).toBe(true);
-    expect(wrapper.find(Message).prop('children')).toContain('test program');
   });
 });

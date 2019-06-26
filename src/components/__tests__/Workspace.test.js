@@ -219,8 +219,21 @@ describe('The Workspace component', () => {
   });
 
   test('updates javascript code when read only', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        isReadOnly: true,
+      },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    localStore.dispatch = jest.fn(() => Promise.resolve());
     const wrapper = shallow(
-      <Workspace store={store} location={{ state: { readOnly: true } }}>
+      <Workspace store={localStore}>
         <div />
       </Workspace>, { context },
     );

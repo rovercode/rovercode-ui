@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Button, Grid, Message } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -24,7 +24,6 @@ import { append, clear } from '@/actions/console';
 import { pushCommand } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
-import ReadOnlyComponent from '@/components/ReadOnly';
 
 const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -144,7 +143,7 @@ const toolbox = `
       </category>
     </xml>`;
 
-class Workspace extends ReadOnlyComponent {
+class Workspace extends Component {
   constructor(props) {
     super(props);
     const { sendToRover, writeToConsole } = this.props;
@@ -189,7 +188,7 @@ class Workspace extends ReadOnlyComponent {
         scaleSpeed: 1.2,
       },
       trashcan: true,
-      readOnly: this.isReadOnly(),
+      readOnly: code.isReadOnly,
     });
 
     workspace.addChangeListener(this.updateCode);
@@ -305,12 +304,12 @@ class Workspace extends ReadOnlyComponent {
   }
 
   updateCode = () => {
-    const { code, location: { state: { readOnly } }, saveProgram } = this.props;
+    const { code, saveProgram } = this.props;
 
     this.updateJsCode();
     const xmlCode = this.updateXmlCode();
 
-    if (!readOnly) {
+    if (!code.isReadOnly) {
       saveProgram(code.id, xmlCode, code.name);
     }
   }
@@ -422,7 +421,7 @@ class Workspace extends ReadOnlyComponent {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, code } = this.props;
     const { remixCreated } = this.state;
 
     return (
@@ -437,7 +436,7 @@ class Workspace extends ReadOnlyComponent {
           ) : (null)
         }
         {
-          this.isReadOnly() ? (
+          code.isReadOnly ? (
             <Grid verticalAlign="middle">
               <Grid.Column width={12}>
                 <Message info>
@@ -468,6 +467,7 @@ class Workspace extends ReadOnlyComponent {
 Workspace.propTypes = {
   code: PropTypes.shape({
     jsCode: PropTypes.string,
+    isReadOnly: PropTypes.bool,
   }).isRequired,
   sensor: PropTypes.shape({
     left: PropTypes.number.isRequired,

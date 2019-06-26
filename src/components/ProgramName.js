@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Confirm, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 
 import { updateValidAuth } from '@/actions/auth';
 import { changeName as actionChangeName } from '@/actions/code';
-import ReadOnlyComponent from '@/components/ReadOnly';
 
 const mapStateToProps = ({ code }) => ({ code });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -26,7 +25,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   },
 });
 
-class ProgramName extends ReadOnlyComponent {
+class ProgramName extends Component {
   constructor(props) {
     super(props);
 
@@ -70,6 +69,7 @@ class ProgramName extends ReadOnlyComponent {
   }
 
   render() {
+    const { code } = this.props;
     const { confirmOpen, editingName, previousPropName } = this.state;
     let actionProp = {};
 
@@ -89,7 +89,7 @@ class ProgramName extends ReadOnlyComponent {
           type="text"
           label="Name:"
           defaultValue={editingName}
-          disabled={this.isReadOnly()}
+          disabled={code.isReadOnly}
           onChange={this.handleChange}
           {...actionProp}
         />
@@ -108,6 +108,7 @@ ProgramName.propTypes = {
   code: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
+    isReadOnly: PropTypes.bool,
   }).isRequired,
   changeName: PropTypes.func.isRequired,
 };

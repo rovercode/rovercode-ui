@@ -12,7 +12,7 @@ import ProgramName from '../ProgramName';
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
 
-describe('The Console component', () => {
+describe('The ProgramName component', () => {
   const mockStore = configureStore();
   const context = { cookies };
   let store;
@@ -21,6 +21,7 @@ describe('The Console component', () => {
     store = mockStore({
       code: {
         name: 'test name',
+        isReadOnly: false,
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
@@ -41,8 +42,14 @@ describe('The Console component', () => {
   });
 
   test('disabled when read only', () => {
+    const localStore = mockStore({
+      code: {
+        name: 'test name',
+        isReadOnly: true,
+      },
+    });
     const wrapper = shallow(
-      <ProgramName store={store} location={{ state: { readOnly: true } }} />,
+      <ProgramName store={localStore} />,
       { context },
     ).dive().dive();
 

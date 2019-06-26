@@ -4,7 +4,6 @@ import {
   Confirm,
   Icon,
   Loader,
-  Message,
   Segment,
 } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
@@ -14,7 +13,6 @@ import ProgramCollection from './ProgramCollection';
 
 const defaultState = {
   programLoaded: false,
-  programReadOnly: false,
   confirmOpen: false,
   focusProgram: {
     id: null,
@@ -64,13 +62,16 @@ class ProgramList extends Component {
   }
 
   loadProgram = (e) => {
-    const { fetchProgram } = this.props;
+    const { changeReadOnly, fetchProgram } = this.props;
     const readOnly = e.target.dataset.owned === 'false';
 
-    fetchProgram(e.target.id).then(() => this.setState({
-      programLoaded: true,
-      programReadOnly: readOnly,
-    }));
+
+    fetchProgram(e.target.id).then(() => {
+      changeReadOnly(readOnly);
+      this.setState({
+        programLoaded: true,
+      });
+    });
   }
 
   fetch = (params, owned) => {
@@ -103,18 +104,12 @@ class ProgramList extends Component {
   )
 
   render() {
-    const { location, programs, userPrograms } = this.props;
+    const { programs, userPrograms } = this.props;
     const {
       confirmOpen,
       focusProgram,
       programLoaded,
-      programReadOnly,
     } = this.state;
-
-    let remix = null;
-    if (location.state) {
-      ({ remix } = location.state);
-    }
 
     return (
       <Fragment>
@@ -126,23 +121,8 @@ class ProgramList extends Component {
           programLoaded ? (
             <Redirect to={{
               pathname: '/mission-control',
-              state: { readOnly: programReadOnly },
             }}
             />
-          ) : (null)
-        }
-        {
-          remix ? (
-            <Message info>
-              <Message.Header>
-                Remixed Program Created
-              </Message.Header>
-              A new program
-              `
-              {remix}
-              `
-              identical to the remixed program has been created for you to edit.
-            </Message>
           ) : (null)
         }
         {
@@ -182,17 +162,13 @@ ProgramList.defaultProps = {
     total_pages: 1,
     results: [],
   },
-  location: {
-    state: {
-      remixCreated: null,
-    },
-  },
 };
 
 ProgramList.propTypes = {
   fetchProgram: PropTypes.func.isRequired,
   fetchPrograms: PropTypes.func.isRequired,
   removeProgram: PropTypes.func.isRequired,
+  changeReadOnly: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
   }).isRequired,
@@ -223,11 +199,6 @@ ProgramList.propTypes = {
         }).isRequired,
       }),
     ),
-  }),
-  location: PropTypes.shape({
-    state: PropTypes.shape({
-      remixCreated: PropTypes.string,
-    }),
   }),
 };
 

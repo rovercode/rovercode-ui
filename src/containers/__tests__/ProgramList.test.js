@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import ProgramList from '../ProgramList';
-import { fetchProgram } from '../../actions/code';
+import { changeReadOnly, fetchProgram } from '../../actions/code';
 import { fetchPrograms, removeProgram } from '../../actions/program';
 import { updateValidAuth } from '../../actions/auth';
 
@@ -261,5 +261,13 @@ describe('The ProgramListContainer', () => {
       );
       done();
     });
+  });
+
+  test('dispatches an action to change read only', () => {
+    wrapper.dive().props().changeReadOnly(true);
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      changeReadOnly(true),
+    );
   });
 });
