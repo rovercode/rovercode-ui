@@ -15,6 +15,7 @@ import {
   saveProgram as actionSaveProgram,
   createProgram as actionCreateProgram,
   changeReadOnly as actionChangeReadOnly,
+  fetchProgram as actionFetchProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
@@ -54,6 +55,19 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
       },
     });
     return dispatch(createProgramAction).catch((error) => {
+      if (error.response.status === 401) {
+        // Authentication is no longer valid
+        dispatch(updateValidAuth(false));
+      }
+    });
+  },
+  fetchProgram: (id) => {
+    const fetchProgramAction = actionFetchProgram(id, {
+      headers: {
+        Authorization: `JWT ${cookies.get('auth_jwt')}`,
+      },
+    });
+    return dispatch(fetchProgramAction).catch((error) => {
       if (error.response.status === 401) {
         // Authentication is no longer valid
         dispatch(updateValidAuth(false));
@@ -428,11 +442,15 @@ class Workspace extends Component {
       code,
       changeReadOnly,
       createProgram,
+      fetchProgram,
       saveProgram,
     } = this.props;
 
-    return createProgram(code.name)
-      .then(data => saveProgram(data.value.id, code.xmlCode, data.value.name))
+    // Need to fetch the program again since the current code has editable="false" tags
+    return Promise.all([fetchProgram(code.id), createProgram(code.name)])
+      .then(([fetchData, createData]) => saveProgram(
+        createData.value.id, fetchData.value.content, createData.value.name,
+      ))
       .then(() => {
         changeReadOnly(false);
         this.createWorkspace();
@@ -492,6 +510,7 @@ Workspace.propTypes = {
   children: PropTypes.node.isRequired,
   sendToRover: PropTypes.func.isRequired,
   changeReadOnly: PropTypes.func.isRequired,
+  fetchProgram: PropTypes.func.isRequired,
 };
 
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));
