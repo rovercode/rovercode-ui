@@ -1,6 +1,5 @@
 import React from 'react';
 import { Message } from 'semantic-ui-react';
-import { Redirect } from 'react-router-dom';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
@@ -715,14 +714,20 @@ describe('The Workspace component', () => {
     });
 
     workspace.instance().remix().then(() => {
-      expect(workspace.state('remixCreated')).toBe('test program');
       expect(mockCreateProgram).toHaveBeenCalledWith('test program');
       expect(mockSaveProgram).toHaveBeenCalledWith(1, '<xml></xml>', 'test program');
       done();
     });
   });
 
-  test('Redirects to program list after remix', () => {
+  test('Replaces blockly if exists', () => {
+    const mockElement = {
+      remove: jest.fn(),
+    };
+    document.getElementsByClassName = jest.fn(() => ([
+      mockElement,
+      mockElement,
+    ]));
     const wrapper = shallow(
       <Workspace store={store}>
         <div />
@@ -730,9 +735,13 @@ describe('The Workspace component', () => {
     );
 
     const workspace = wrapper.dive().dive();
-    workspace.setState({ remixCreated: 'test' });
-    workspace.update();
+    workspace.instance().updateCode = jest.fn();
+    workspace.setState({
+      workspace: {},
+    });
+    workspace.instance().createWorkspace();
 
-    expect(workspace.find(Redirect).exists()).toBe(true);
+    expect(document.getElementsByClassName).toHaveBeenCalledTimes(1);
+    expect(mockElement.remove).toHaveBeenCalledTimes(2);
   });
 });

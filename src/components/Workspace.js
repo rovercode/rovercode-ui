@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Grid, Message } from 'semantic-ui-react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -15,6 +14,7 @@ import {
   changeExecutionState as actionChangeExecutionState,
   saveProgram as actionSaveProgram,
   createProgram as actionCreateProgram,
+  changeReadOnly as actionChangeReadOnly,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
@@ -33,6 +33,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   clearConsole: () => dispatch(clear()),
   updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
   sendToRover: command => dispatch(pushCommand(command)),
+  changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
   saveProgram: (id, content, name) => {
     const saveProgramAction = actionSaveProgram(id, content, name, {
       headers: {
@@ -161,46 +162,20 @@ class Workspace extends Component {
     this.state = {
       workspace: null,
       interpreter: null,
-      remixCreated: null,
     };
   }
 
   componentDidMount() {
-    const {
-      code,
-      clearConsole,
-      sensor,
-      writeToConsole,
-    } = this.props;
+    const { clearConsole, writeToConsole } = this.props;
 
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
     Blockly.Flyout.prototype.CORNER_RADIUS = 0;
     Blockly.BlockSvg.START_HAT = true;
-    const workspace = Blockly.inject(this.editorDiv, {
-      toolbox,
-      zoom: {
-        controls: true,
-        wheel: false,
-        startScale: 1.0,
-        maxScale: 3,
-        minScale: 0.3,
-        scaleSpeed: 1.2,
-      },
-      trashcan: true,
-      readOnly: code.isReadOnly,
-    });
 
-    workspace.addChangeListener(this.updateCode);
-
-    this.updateSensorStateCache(sensor.left, sensor.right);
-
-    this.setState({
-      workspace,
-    }, () => this.onWorkspaceAvailable(code.xmlCode));
+    this.createWorkspace();
 
     clearConsole();
-    window.addEventListener('resize', this.onResize, false);
     writeToConsole('rovercode console started');
   }
 
@@ -269,6 +244,42 @@ class Workspace extends Component {
       this.editorDiv.style.height = `${blocklyArea.offsetHeight}px`;
     }
     Blockly.svgResize(workspace);
+  }
+
+  createWorkspace = () => {
+    const { code, sensor } = this.props;
+    const { workspace: oldWorkspace } = this.state;
+
+    // Clear any prior Blockly workspaces since `readOnly` cannot be changed
+    // https://groups.google.com/forum/#!topic/blockly/NCukwTKMR0U
+    if (oldWorkspace) {
+      const oldElements = document.getElementsByClassName('injectionDiv');
+      [...oldElements].forEach(element => element.remove());
+    }
+
+    const workspace = Blockly.inject(this.editorDiv, {
+      toolbox,
+      zoom: {
+        controls: true,
+        wheel: false,
+        startScale: 1.0,
+        maxScale: 3,
+        minScale: 0.3,
+        scaleSpeed: 1.2,
+      },
+      trashcan: true,
+      readOnly: code.isReadOnly,
+    });
+
+    workspace.addChangeListener(this.updateCode);
+
+    this.updateSensorStateCache(sensor.left, sensor.right);
+
+    this.setState({
+      workspace,
+    }, () => this.onWorkspaceAvailable(code.xmlCode));
+
+    window.addEventListener('resize', this.onResize, false);
   }
 
   updateXmlCode = () => {
@@ -413,28 +424,26 @@ class Workspace extends Component {
   }
 
   remix = () => {
-    const { code, createProgram, saveProgram } = this.props;
+    const {
+      code,
+      changeReadOnly,
+      createProgram,
+      saveProgram,
+    } = this.props;
 
     return createProgram(code.name)
       .then(data => saveProgram(data.value.id, code.xmlCode, data.value.name))
-      .then(data => this.setState({ remixCreated: data.value.name }));
+      .then(() => {
+        changeReadOnly(false);
+        this.createWorkspace();
+      });
   }
 
   render() {
     const { children, code } = this.props;
-    const { remixCreated } = this.state;
 
     return (
       <Fragment>
-        {
-          remixCreated ? (
-            <Redirect to={{
-              pathname: '/programs',
-              state: { remix: remixCreated },
-            }}
-            />
-          ) : (null)
-        }
         {
           code.isReadOnly ? (
             <Grid verticalAlign="middle">
@@ -482,6 +491,7 @@ Workspace.propTypes = {
   createProgram: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   sendToRover: PropTypes.func.isRequired,
+  changeReadOnly: PropTypes.func.isRequired,
 };
 
 export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));

@@ -37,7 +37,7 @@ describe('The ProgramName component', () => {
 
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(wrapper.find(Input).length).toBe(1);
-    expect(wrapper.find(Input).props().defaultValue).toBe('test name');
+    expect(wrapper.find(Input).props().value).toBe('test name');
     expect(wrapper.find(Input).props().disabled).toBe(false);
   });
 
@@ -63,7 +63,7 @@ describe('The ProgramName component', () => {
     wrapper.update();
 
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
-    expect(wrapper.find(Input).props().defaultValue).toBe('new name');
+    expect(wrapper.find(Input).props().value).toBe('new name');
     expect(wrapper.find(Input).props().action).toBeDefined();
   });
 

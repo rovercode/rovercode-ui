@@ -31,7 +31,7 @@ class ProgramName extends Component {
 
     this.state = {
       confirmOpen: false,
-      editingName: null,
+      editingName: '',
       previousPropName: null, // eslint-disable-line react/no-unused-state
     };
   }
@@ -88,7 +88,7 @@ class ProgramName extends Component {
         <Input
           type="text"
           label="Name:"
-          defaultValue={editingName}
+          value={editingName}
           disabled={code.isReadOnly}
           onChange={this.handleChange}
           {...actionProp}
