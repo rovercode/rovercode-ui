@@ -7,5 +7,10 @@
     "react-hot-loader/babel",
     "@babel/plugin-transform-spread",
     "@babel/plugin-proposal-class-properties",
+    [
+      "react-intl", {
+        "messagesDir": "src/translations/extracted",
+      }
+    ]
   ]
 }
