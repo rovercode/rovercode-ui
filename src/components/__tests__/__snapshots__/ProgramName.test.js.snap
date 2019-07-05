@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The Console component renders on the page with no errors 1`] = `
+exports[`The ProgramName component renders on the page with no errors 1`] = `
 <withCookies(Component)
   store={
     Object {
@@ -41,6 +41,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
       changeName={[Function]}
       code={
         Object {
+          "isReadOnly": false,
           "name": "test name",
         }
       }
@@ -52,13 +53,6 @@ exports[`The Console component renders on the page with no errors 1`] = `
           ],
           "cookies": Object {},
           "hooks": undefined,
-        }
-      }
-      location={
-        Object {
-          "state": Object {
-            "readOnly": false,
-          },
         }
       }
       store={
@@ -94,11 +88,11 @@ exports[`The Console component renders on the page with no errors 1`] = `
       }
     >
       <Input
-        defaultValue="test name"
         disabled={false}
         label="Name:"
         onChange={[Function]}
         type="text"
+        value="test name"
       >
         <div
           className="ui labeled input"
@@ -115,10 +109,10 @@ exports[`The Console component renders on the page with no errors 1`] = `
             </div>
           </Label>
           <input
-            defaultValue="test name"
             disabled={false}
             onChange={[Function]}
             type="text"
+            value="test name"
           />
         </div>
       </Input>

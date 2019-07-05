@@ -4,6 +4,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ProgramList
+    changeReadOnly={[MockFunction]}
     fetchProgram={[MockFunction]}
     fetchPrograms={
       [MockFunction] {

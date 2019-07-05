@@ -12,7 +12,7 @@ import ProgramName from '../ProgramName';
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
 
-describe('The Console component', () => {
+describe('The ProgramName component', () => {
   const mockStore = configureStore();
   const context = { cookies };
   let store;
@@ -21,6 +21,7 @@ describe('The Console component', () => {
     store = mockStore({
       code: {
         name: 'test name',
+        isReadOnly: false,
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
@@ -36,13 +37,19 @@ describe('The Console component', () => {
 
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(wrapper.find(Input).length).toBe(1);
-    expect(wrapper.find(Input).props().defaultValue).toBe('test name');
+    expect(wrapper.find(Input).props().value).toBe('test name');
     expect(wrapper.find(Input).props().disabled).toBe(false);
   });
 
   test('disabled when read only', () => {
+    const localStore = mockStore({
+      code: {
+        name: 'test name',
+        isReadOnly: true,
+      },
+    });
     const wrapper = shallow(
-      <ProgramName store={store} location={{ state: { readOnly: true } }} />,
+      <ProgramName store={localStore} />,
       { context },
     ).dive().dive();
 
@@ -56,7 +63,7 @@ describe('The Console component', () => {
     wrapper.update();
 
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
-    expect(wrapper.find(Input).props().defaultValue).toBe('new name');
+    expect(wrapper.find(Input).props().value).toBe('new name');
     expect(wrapper.find(Input).props().action).toBeDefined();
   });
 

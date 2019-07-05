@@ -8,6 +8,7 @@ import { updateValidAuth } from '@/actions/auth';
 import {
   changeExecutionState,
   createProgram,
+  fetchProgram,
   saveProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
@@ -36,6 +37,7 @@ describe('The Workspace component', () => {
       code: {
         jsCode: '',
         execution: null,
+        name: 'test program',
       },
       sensor: {
         left: NOT_COVERED,
@@ -217,8 +219,21 @@ describe('The Workspace component', () => {
   });
 
   test('updates javascript code when read only', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        isReadOnly: true,
+      },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    localStore.dispatch = jest.fn(() => Promise.resolve());
     const wrapper = shallow(
-      <Workspace store={store} location={{ state: { readOnly: true } }}>
+      <Workspace store={localStore}>
         <div />
       </Workspace>, { context },
     );
@@ -584,7 +599,7 @@ describe('The Workspace component', () => {
     });
   });
 
-  test('handles other error when saving', (done) => {
+  test('handles other error when creating', (done) => {
     const error = new Error();
     error.response = {
       status: 500,
@@ -600,6 +615,57 @@ describe('The Workspace component', () => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         createProgram('test', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
+  });
+
+  test('handles authentication error when fetching', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 401,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    const wrapper = shallow(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    );
+    wrapper.dive().props().fetchProgram(1).then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        fetchProgram(1, {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
+  test('handles other error when fetching', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    const wrapper = shallow(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    );
+    wrapper.dive().props().fetchProgram(1).then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        fetchProgram(1, {
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
@@ -662,5 +728,82 @@ describe('The Workspace component', () => {
     wrapper.dive().props().sendToRover('command');
 
     expect(store.dispatch).toHaveBeenCalledWith(pushCommand('command'));
+  });
+
+  test('Remixes a program', (done) => {
+    const localStore = mockStore({
+      code: {
+        id: 1,
+        name: 'test program',
+        xmlCode: '<xml></xml>',
+      },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    localStore.dispatch = jest.fn(() => Promise.resolve());
+    const mockCreateProgram = jest.fn(() => Promise.resolve({
+      value: {
+        id: 1,
+        name: 'test program',
+      },
+    }));
+    const mockFetchProgram = jest.fn(() => Promise.resolve({
+      value: {
+        id: 1,
+        name: 'test program',
+        content: '<xml></xml>',
+      },
+    }));
+    const mockSaveProgram = jest.fn(() => Promise.resolve({
+      value: {
+        name: 'test program',
+      },
+    }));
+    const wrapper = shallow(
+      <Workspace store={localStore}>
+        <div />
+      </Workspace>, { context },
+    );
+
+    const workspace = wrapper.dive().dive();
+    workspace.setProps({
+      createProgram: mockCreateProgram,
+      fetchProgram: mockFetchProgram,
+      saveProgram: mockSaveProgram,
+    });
+
+    workspace.instance().remix().then(() => {
+      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
+      expect(mockFetchProgram).toHaveBeenCalledWith(1);
+      expect(mockSaveProgram).toHaveBeenCalledWith(1, '<xml></xml>', 'test program');
+      done();
+    });
+  });
+
+  test('Replaces blockly if exists', () => {
+    const mockElement = {
+      remove: jest.fn(),
+    };
+    document.getElementsByClassName = jest.fn(() => ([
+      mockElement,
+      mockElement,
+    ]));
+    const wrapper = shallow(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    );
+
+    const workspace = wrapper.dive().dive();
+    workspace.instance().updateCode = jest.fn();
+    workspace.setState({
+      workspace: {},
+    });
+    workspace.instance().createWorkspace();
+
+    expect(document.getElementsByClassName).toHaveBeenCalledTimes(1);
+    expect(mockElement.remove).toHaveBeenCalledTimes(2);
   });
 });

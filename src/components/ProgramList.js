@@ -13,7 +13,6 @@ import ProgramCollection from './ProgramCollection';
 
 const defaultState = {
   programLoaded: false,
-  programReadOnly: false,
   confirmOpen: false,
   focusProgram: {
     id: null,
@@ -63,13 +62,16 @@ class ProgramList extends Component {
   }
 
   loadProgram = (e) => {
-    const { fetchProgram } = this.props;
+    const { changeReadOnly, fetchProgram } = this.props;
     const readOnly = e.target.dataset.owned === 'false';
 
-    fetchProgram(e.target.id).then(() => this.setState({
-      programLoaded: true,
-      programReadOnly: readOnly,
-    }));
+
+    fetchProgram(e.target.id).then(() => {
+      changeReadOnly(readOnly);
+      this.setState({
+        programLoaded: true,
+      });
+    });
   }
 
   fetch = (params, owned) => {
@@ -107,7 +109,6 @@ class ProgramList extends Component {
       confirmOpen,
       focusProgram,
       programLoaded,
-      programReadOnly,
     } = this.state;
 
     return (
@@ -120,7 +121,6 @@ class ProgramList extends Component {
           programLoaded ? (
             <Redirect to={{
               pathname: '/mission-control',
-              state: { readOnly: programReadOnly },
             }}
             />
           ) : (null)
@@ -168,6 +168,7 @@ ProgramList.propTypes = {
   fetchProgram: PropTypes.func.isRequired,
   fetchPrograms: PropTypes.func.isRequired,
   removeProgram: PropTypes.func.isRequired,
+  changeReadOnly: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
   }).isRequired,

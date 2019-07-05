@@ -167,11 +167,13 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
     <Workspace
       allCookies={Object {}}
       changeExecutionState={[Function]}
+      changeReadOnly={[Function]}
       clearConsole={[Function]}
       code={
         Object {
           "execution": null,
           "jsCode": "",
+          "name": "test program",
         }
       }
       cookies={
@@ -185,13 +187,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         }
       }
       createProgram={[Function]}
-      location={
-        Object {
-          "state": Object {
-            "readOnly": false,
-          },
-        }
-      }
+      fetchProgram={[Function]}
       saveProgram={[Function]}
       sendToRover={[Function]}
       sensor={

@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
-import { fetchProgram } from '../actions/code';
+import { changeReadOnly as actionChangeReadOnly, fetchProgram } from '../actions/code';
 import { fetchPrograms, removeProgram } from '../actions/program';
 import { updateValidAuth } from '../actions/auth';
 import ProgramList from '../components/ProgramList';
 
-const mapStateToProps = ({ program, user }) => ({ ...program, user });
+const mapStateToProps = ({ code, program, user }) => ({ code, ...program, user });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchProgram: (id) => {
     const fetchProgramAction = fetchProgram(id, {
@@ -51,6 +51,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
       }
     });
   },
+  changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
 });
 
 const ProgramListContainer = connect(
