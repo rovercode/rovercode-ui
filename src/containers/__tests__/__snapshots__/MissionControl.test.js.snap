@@ -22,7 +22,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
         ],

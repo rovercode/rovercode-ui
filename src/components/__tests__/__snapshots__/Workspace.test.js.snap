@@ -45,27 +45,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
         ],
@@ -132,27 +132,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           ],
           "results": Array [
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
           ],
@@ -239,27 +239,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             ],
             "results": Array [
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
             ],
@@ -322,27 +322,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               ],
               "results": Array [
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
               ],
