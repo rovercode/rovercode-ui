@@ -16,7 +16,9 @@
     "lint:fix": "eslint webpack.config* src --fix --color --format stylish"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "setupFiles": [
       "./jestsetup.js"
     ],
