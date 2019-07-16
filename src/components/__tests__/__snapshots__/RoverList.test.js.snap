@@ -71,7 +71,7 @@ ShallowWrapper {
               primary={true}
               style={
                 Object {
-                  "marginLeft": "10px",
+                  "marginLeft": "10%",
                 }
               }
             >
@@ -122,7 +122,7 @@ ShallowWrapper {
           raised={true}
           style={
             Object {
-              "margin": "10px",
+              "margin": "10px 10% 10px 10%",
             }
           }
         >
@@ -273,7 +273,7 @@ ShallowWrapper {
             primary={true}
             style={
               Object {
-                "marginLeft": "10px",
+                "marginLeft": "10%",
               }
             }
           >
@@ -507,7 +507,7 @@ ShallowWrapper {
           ],
           "raised": true,
           "style": Object {
-            "margin": "10px",
+            "margin": "10px 10% 10px 10%",
           },
         },
         "ref": null,
@@ -934,7 +934,7 @@ ShallowWrapper {
                 primary={true}
                 style={
                   Object {
-                    "marginLeft": "10px",
+                    "marginLeft": "10%",
                   }
                 }
               >
@@ -985,7 +985,7 @@ ShallowWrapper {
             raised={true}
             style={
               Object {
-                "margin": "10px",
+                "margin": "10px 10% 10px 10%",
               }
             }
           >
@@ -1136,7 +1136,7 @@ ShallowWrapper {
               primary={true}
               style={
                 Object {
-                  "marginLeft": "10px",
+                  "marginLeft": "10%",
                 }
               }
             >
@@ -1370,7 +1370,7 @@ ShallowWrapper {
             ],
             "raised": true,
             "style": Object {
-              "margin": "10px",
+              "margin": "10px 10% 10px 10%",
             },
           },
           "ref": null,
