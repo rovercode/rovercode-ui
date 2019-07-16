@@ -54,9 +54,7 @@ ShallowWrapper {
           centered={true}
           columns={5}
         >
-          <GridRow
-            centered={true}
-          >
+          <GridRow>
             <GridColumn />
             <GridColumn />
             <GridColumn>
@@ -188,9 +186,7 @@ ShallowWrapper {
         <Grid
           centered={true}
         >
-          <GridRow
-            centered={true}
-          >
+          <GridRow>
             <CustomPagination
               defaultActivePage={1}
               onPageChange={[Function]}
@@ -208,9 +204,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "centered": true,
-          "children": <GridRow
-            centered={true}
-          >
+          "children": <GridRow>
             <GridColumn />
             <GridColumn />
             <GridColumn>
@@ -276,7 +270,6 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "centered": true,
             "children": Array [
               <GridColumn />,
               <GridColumn />,
@@ -942,9 +935,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "centered": true,
-          "children": <GridRow
-            centered={true}
-          >
+          "children": <GridRow>
             <CustomPagination
               defaultActivePage={1}
               onPageChange={[Function]}
@@ -958,7 +949,6 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "centered": true,
             "children": <CustomPagination
               defaultActivePage={1}
               onPageChange={[Function]}
@@ -997,9 +987,7 @@ ShallowWrapper {
             centered={true}
             columns={5}
           >
-            <GridRow
-              centered={true}
-            >
+            <GridRow>
               <GridColumn />
               <GridColumn />
               <GridColumn>
@@ -1131,9 +1119,7 @@ ShallowWrapper {
           <Grid
             centered={true}
           >
-            <GridRow
-              centered={true}
-            >
+            <GridRow>
               <CustomPagination
                 defaultActivePage={1}
                 onPageChange={[Function]}
@@ -1151,9 +1137,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "centered": true,
-            "children": <GridRow
-              centered={true}
-            >
+            "children": <GridRow>
               <GridColumn />
               <GridColumn />
               <GridColumn>
@@ -1219,7 +1203,6 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "centered": true,
               "children": Array [
                 <GridColumn />,
                 <GridColumn />,
@@ -1885,9 +1868,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "centered": true,
-            "children": <GridRow
-              centered={true}
-            >
+            "children": <GridRow>
               <CustomPagination
                 defaultActivePage={1}
                 onPageChange={[Function]}
@@ -1901,7 +1882,6 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "centered": true,
               "children": <CustomPagination
                 defaultActivePage={1}
                 onPageChange={[Function]}
