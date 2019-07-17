@@ -31,7 +31,7 @@ class RoverConnectionList extends Component {
       const activeRoverIndex = rovers.results.findIndex(rover => rover.client_id === activeRover);
 
       if (activeRoverIndex > -1) {
-        ({ [`${activeRoverIndex}`]: activeRoverObject, ...inactiveRovers } = rovers.results);
+        ({ [activeRoverIndex]: activeRoverObject, ...inactiveRovers } = rovers.results);
         inactiveRovers = Object.values(inactiveRovers);
       } else {
         inactiveRovers = rovers.results;

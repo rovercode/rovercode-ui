@@ -2,6 +2,33 @@
 
 exports[`The Workspace component renders on the page with no errors 1`] = `
 <withCookies(Component)
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "onError": [Function],
+      "textComponent": "span",
+      "timeZone": null,
+    }
+  }
   store={
     Object {
       "clearActions": [Function],
@@ -32,7 +59,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           ],
           Array [
             Object {
-              "payload": "rovercode console started",
+              "payload": "Rovercode console started",
               "type": "APPEND",
             },
           ],
@@ -45,27 +72,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
         ],
@@ -77,7 +104,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
     }
   }
 >
-  <Connect(Workspace)
+  <InjectIntl(Connect(Workspace))
     allCookies={Object {}}
     cookies={
       Cookies {
@@ -87,6 +114,33 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         ],
         "cookies": Object {},
         "hooks": undefined,
+      }
+    }
+    intl={
+      Object {
+        "defaultFormats": Object {},
+        "defaultLocale": "en",
+        "formatDate": [Function],
+        "formatHTMLMessage": [Function],
+        "formatMessage": [Function],
+        "formatNumber": [Function],
+        "formatPlural": [Function],
+        "formatRelative": [Function],
+        "formatTime": [Function],
+        "formats": Object {},
+        "formatters": Object {
+          "getDateTimeFormat": [Function],
+          "getMessageFormat": [Function],
+          "getNumberFormat": [Function],
+          "getPluralFormat": [Function],
+          "getRelativeFormat": [Function],
+        },
+        "locale": "en",
+        "messages": Object {},
+        "now": [Function],
+        "onError": [Function],
+        "textComponent": "span",
+        "timeZone": null,
       }
     }
     store={
@@ -119,7 +173,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             ],
             Array [
               Object {
-                "payload": "rovercode console started",
+                "payload": "Rovercode console started",
                 "type": "APPEND",
               },
             ],
@@ -132,27 +186,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           ],
           "results": Array [
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
             Object {
-              "isThrow": false,
+              "type": "return",
               "value": Promise {},
             },
           ],
@@ -164,18 +218,8 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
       }
     }
   >
-    <Workspace
+    <Connect(Workspace)
       allCookies={Object {}}
-      changeExecutionState={[Function]}
-      changeReadOnly={[Function]}
-      clearConsole={[Function]}
-      code={
-        Object {
-          "execution": null,
-          "jsCode": "",
-          "name": "test program",
-        }
-      }
       cookies={
         Cookies {
           "HAS_DOCUMENT_COOKIE": true,
@@ -186,14 +230,31 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           "hooks": undefined,
         }
       }
-      createProgram={[Function]}
-      fetchProgram={[Function]}
-      saveProgram={[Function]}
-      sendToRover={[Function]}
-      sensor={
+      intl={
         Object {
-          "left": 2,
-          "right": 2,
+          "defaultFormats": Object {},
+          "defaultLocale": "en",
+          "formatDate": [Function],
+          "formatHTMLMessage": [Function],
+          "formatMessage": [Function],
+          "formatNumber": [Function],
+          "formatPlural": [Function],
+          "formatRelative": [Function],
+          "formatTime": [Function],
+          "formats": Object {},
+          "formatters": Object {
+            "getDateTimeFormat": [Function],
+            "getMessageFormat": [Function],
+            "getNumberFormat": [Function],
+            "getPluralFormat": [Function],
+            "getRelativeFormat": [Function],
+          },
+          "locale": "en",
+          "messages": Object {},
+          "now": [Function],
+          "onError": [Function],
+          "textComponent": "span",
+          "timeZone": null,
         }
       }
       store={
@@ -226,7 +287,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               ],
               Array [
                 Object {
-                  "payload": "rovercode console started",
+                  "payload": "Rovercode console started",
                   "type": "APPEND",
                 },
               ],
@@ -239,27 +300,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             ],
             "results": Array [
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
               Object {
-                "isThrow": false,
+                "type": "return",
                 "value": Promise {},
               },
             ],
@@ -270,17 +331,68 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           "subscribe": [Function],
         }
       }
-      storeSubscription={
-        Subscription {
-          "listeners": Object {
-            "clear": [Function],
-            "get": [Function],
-            "notify": [Function],
-            "subscribe": [Function],
-          },
-          "onStateChange": [Function],
-          "parentSub": undefined,
-          "store": Object {
+    >
+      <Workspace
+        allCookies={Object {}}
+        changeExecutionState={[Function]}
+        changeReadOnly={[Function]}
+        clearConsole={[Function]}
+        code={
+          Object {
+            "execution": null,
+            "jsCode": "",
+            "name": "test program",
+          }
+        }
+        cookies={
+          Cookies {
+            "HAS_DOCUMENT_COOKIE": true,
+            "changeListeners": Array [
+              [Function],
+            ],
+            "cookies": Object {},
+            "hooks": undefined,
+          }
+        }
+        createProgram={[Function]}
+        fetchProgram={[Function]}
+        intl={
+          Object {
+            "defaultFormats": Object {},
+            "defaultLocale": "en",
+            "formatDate": [Function],
+            "formatHTMLMessage": [Function],
+            "formatMessage": [Function],
+            "formatNumber": [Function],
+            "formatPlural": [Function],
+            "formatRelative": [Function],
+            "formatTime": [Function],
+            "formats": Object {},
+            "formatters": Object {
+              "getDateTimeFormat": [Function],
+              "getMessageFormat": [Function],
+              "getNumberFormat": [Function],
+              "getPluralFormat": [Function],
+              "getRelativeFormat": [Function],
+            },
+            "locale": "en",
+            "messages": Object {},
+            "now": [Function],
+            "onError": [Function],
+            "textComponent": "span",
+            "timeZone": null,
+          }
+        }
+        saveProgram={[Function]}
+        sendToRover={[Function]}
+        sensor={
+          Object {
+            "left": 2,
+            "right": 2,
+          }
+        }
+        store={
+          Object {
             "clearActions": [Function],
             "dispatch": [MockFunction] {
               "calls": Array [
@@ -309,7 +421,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 ],
                 Array [
                   Object {
-                    "payload": "rovercode console started",
+                    "payload": "Rovercode console started",
                     "type": "APPEND",
                   },
                 ],
@@ -322,27 +434,27 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               ],
               "results": Array [
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
                 Object {
-                  "isThrow": false,
+                  "type": "return",
                   "value": Promise {},
                 },
               ],
@@ -351,35 +463,119 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             "getState": [Function],
             "replaceReducer": [Function],
             "subscribe": [Function],
-          },
-          "unsubscribe": [Function],
-        }
-      }
-      updateJsCode={[Function]}
-      updateXmlCode={[Function]}
-      writeToConsole={[Function]}
-    >
-      <div
-        id="blocklyDiv"
-        style={
-          Object {
-            "position": "absolute",
           }
         }
+        storeSubscription={
+          Subscription {
+            "listeners": Object {
+              "clear": [Function],
+              "get": [Function],
+              "notify": [Function],
+              "subscribe": [Function],
+            },
+            "onStateChange": [Function],
+            "parentSub": undefined,
+            "store": Object {
+              "clearActions": [Function],
+              "dispatch": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "payload": "test-code",
+                      "type": "UPDATE_JSCODE",
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "payload": "test-dom-text",
+                      "type": "UPDATE_XMLCODE",
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "payload": Promise {},
+                      "type": "SAVE_PROGRAM",
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "type": "CLEAR",
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "payload": "Rovercode console started",
+                      "type": "APPEND",
+                    },
+                  ],
+                  Array [
+                    Object {
+                      "payload": Promise {},
+                      "type": "CREATE_PROGRAM",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  Object {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  Object {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  Object {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  Object {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  Object {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                ],
+              },
+              "getActions": [Function],
+              "getState": [Function],
+              "replaceReducer": [Function],
+              "subscribe": [Function],
+            },
+            "unsubscribe": [Function],
+          }
+        }
+        updateJsCode={[Function]}
+        updateXmlCode={[Function]}
+        writeToConsole={[Function]}
       >
         <div
+          id="blocklyDiv"
           style={
             Object {
-              "bottom": 30,
               "position": "absolute",
-              "right": 100,
             }
           }
         >
-          <div />
+          <div
+            style={
+              Object {
+                "bottom": 30,
+                "position": "absolute",
+                "right": 100,
+              }
+            }
+          >
+            <div />
+          </div>
         </div>
-      </div>
-    </Workspace>
-  </Connect(Workspace)>
+      </Workspace>
+    </Connect(Workspace)>
+  </InjectIntl(Connect(Workspace))>
 </withCookies(Component)>
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
-import { shallow, mount } from 'enzyme';
+import { mountWithIntl, shallowWithIntl } from 'enzyme-react-intl';
 import ProgramCollection from '../ProgramCollection';
 import ProgramList from '../ProgramList';
 
@@ -20,7 +20,7 @@ describe('The ProgramList component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
@@ -28,12 +28,18 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
+    wrapper.setState({
+      focusProgram: {
+        id: 1,
+        name: 'Test Program',
+      },
+    });
     expect(wrapper).toMatchSnapshot();
   });
 
   test('fetches programs on mount', async () => {
-    await mount(
+    await mountWithIntl(
       <MemoryRouter>
         <ProgramList
           changeReadOnly={changeReadOnly}
@@ -68,7 +74,7 @@ describe('The ProgramList component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
         changeReadOnly={changeReadOnly}
@@ -78,7 +84,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(2);
@@ -86,7 +92,7 @@ describe('The ProgramList component', () => {
   });
 
   test('shows loading when programs fetching', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
@@ -95,7 +101,7 @@ describe('The ProgramList component', () => {
         user={{ user_id: 1 }}
         programs={null}
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(1);
@@ -103,7 +109,7 @@ describe('The ProgramList component', () => {
   });
 
   test('shows loading when user programs fetching', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
@@ -112,7 +118,7 @@ describe('The ProgramList component', () => {
         user={{ user_id: 1 }}
         userPrograms={null}
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(1);
@@ -120,7 +126,7 @@ describe('The ProgramList component', () => {
   });
 
   test('redirects to mission control when program loads', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
@@ -128,7 +134,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     wrapper.setState({
       programLoaded: true,
@@ -154,7 +160,7 @@ describe('The ProgramList component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         changeReadOnly={changeReadOnly}
         programs={programs}
@@ -163,10 +169,13 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     await wrapper.instance().loadProgram({
       target: {
+        parentNode: {
+          id: undefined,
+        },
         id: 33,
         dataset: {
           owned: 'false',
@@ -175,6 +184,25 @@ describe('The ProgramList component', () => {
     });
 
     expect(changeReadOnly).toHaveBeenCalledWith(true);
+    expect(fetchProgram).toHaveBeenCalledWith(33);
+    expect(wrapper.state('programLoaded')).toBe(true);
+
+    wrapper.setState({
+      programLoaded: false,
+    });
+
+    await wrapper.instance().loadProgram({
+      target: {
+        parentNode: {
+          id: 55,
+          dataset: {
+            owned: 'true',
+          },
+        },
+      },
+    });
+
+    expect(changeReadOnly).toHaveBeenCalledWith(false);
     expect(fetchProgram).toHaveBeenCalledWith(33);
     expect(wrapper.state('programLoaded')).toBe(true);
   });
@@ -193,7 +221,7 @@ describe('The ProgramList component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
         changeReadOnly={changeReadOnly}
@@ -202,7 +230,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     await wrapper.instance().fetch({
       page: 2,
@@ -228,7 +256,7 @@ describe('The ProgramList component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
         changeReadOnly={changeReadOnly}
@@ -237,7 +265,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     await wrapper.instance().fetch({
       page: 2,
@@ -263,7 +291,7 @@ describe('The ProgramList component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
         changeReadOnly={changeReadOnly}
@@ -272,7 +300,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     wrapper.instance().fetch({
       search: 'abc',
@@ -300,7 +328,7 @@ describe('The ProgramList component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
         changeReadOnly={changeReadOnly}
@@ -309,7 +337,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     wrapper.instance().fetch({
       search: 'abc',
@@ -337,7 +365,7 @@ describe('The ProgramList component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
         changeReadOnly={changeReadOnly}
@@ -346,7 +374,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     wrapper.setState({
       focusProgram: {
@@ -361,7 +389,7 @@ describe('The ProgramList component', () => {
   });
 
   test('shows confirm dialog', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
@@ -369,10 +397,13 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     wrapper.instance().showConfirm({
       target: {
+        parentNode: {
+          id: undefined,
+        },
         id: 33,
         name: 'Unnamed_Design_3',
       },
@@ -382,7 +413,7 @@ describe('The ProgramList component', () => {
   });
 
   test('cancel dialog does not remove program', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramList
         changeReadOnly={changeReadOnly}
         fetchProgram={fetchProgram}
@@ -390,7 +421,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         user={{ user_id: 1 }}
       />,
-    );
+    ).dive();
 
     wrapper.instance().cancelRemove();
 

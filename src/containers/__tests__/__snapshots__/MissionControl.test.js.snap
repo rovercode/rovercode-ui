@@ -22,7 +22,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
             "value": Promise {},
           },
         ],
@@ -120,7 +120,15 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     <h2
                       className="ui center aligned header"
                     >
-                      Rovers
+                      <FormattedMessage
+                        defaultMessage="Rovers"
+                        id="app.mission_control.rovers"
+                        values={Object {}}
+                      >
+                        <span>
+                          Rovers
+                        </span>
+                      </FormattedMessage>
                     </h2>
                   </Header>
                   <Segment
@@ -224,7 +232,15 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     <h2
                       className="ui center aligned header"
                     >
-                      Sensors
+                      <FormattedMessage
+                        defaultMessage="Sensors"
+                        id="app.mission_control.sensors"
+                        values={Object {}}
+                      >
+                        <span>
+                          Sensors
+                        </span>
+                      </FormattedMessage>
                     </h2>
                   </Header>
                   <Segment
@@ -266,7 +282,15 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     <h2
                       className="ui center aligned header"
                     >
-                      Debug Console
+                      <FormattedMessage
+                        defaultMessage="Debug Console"
+                        id="app.mission_control.console"
+                        values={Object {}}
+                      >
+                        <span>
+                          Debug Console
+                        </span>
+                      </FormattedMessage>
                     </h2>
                   </Header>
                   <Segment

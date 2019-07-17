@@ -8,6 +8,7 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -111,11 +112,18 @@ class PasswordResetCallback extends Component {
   }
 
   render() {
+    const { intl } = this.props;
     const {
       success,
       password1Error,
       password2Error,
     } = this.state;
+
+    const passwordPlaceholder = intl.formatMessage({
+      id: 'app.password_reset_callback.password',
+      description: 'Placeholder for password entry',
+      defaultMessage: 'Password',
+    });
 
     return (
       <Fragment>
@@ -127,12 +135,20 @@ class PasswordResetCallback extends Component {
         <Grid centered columns={16}>
           <Grid.Row>
             <Header size="huge">
-              Reset Password
+              <FormattedMessage
+                id="app.password_reset_callback.header"
+                description="Header for password reset"
+                defaultMessage="Password Reset"
+              />
             </Header>
           </Grid.Row>
           <Grid.Row>
             <p>
-              Enter a new password for your account below.
+              <FormattedMessage
+                id="app.password_reset_callback.new_password"
+                description="Directs the user to enter a new password"
+                defaultMessage="Enter a new password for your account below."
+              />
             </p>
           </Grid.Row>
           {this.errorMessage()}
@@ -140,10 +156,14 @@ class PasswordResetCallback extends Component {
             <Grid.Column width={4}>
               <Segment raised secondary>
                 <Form floated="left" onSubmit={this.confirm}>
-                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder="Password" onChange={this.handlePassword1Change} error={password1Error} />
-                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder="Password" onChange={this.handlePassword2Change} error={password2Error} />
+                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder={passwordPlaceholder} onChange={this.handlePassword1Change} error={password1Error} />
+                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder={passwordPlaceholder} onChange={this.handlePassword2Change} error={password2Error} />
                   <Form.Button primary type="submit">
-                    Set Password
+                    <FormattedMessage
+                      id="app.password_reset_callback.set"
+                      description="Button label for initiating set password"
+                      defaultMessage="Set Password"
+                    />
                   </Form.Button>
                 </Form>
               </Segment>
@@ -162,6 +182,7 @@ PasswordResetCallback.propTypes = {
       token: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default PasswordResetCallback;
+export default injectIntl(PasswordResetCallback);

@@ -7,6 +7,7 @@ import {
   Image,
   Menu,
 } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 import { withCookies, Cookies } from 'react-cookie';
 
 import logoImage from '@/assets/images/rovercode_logo_magenta.png';
@@ -44,20 +45,36 @@ class TopNav extends Component {
             <Image src={logoImage} size="mini" />
           </Menu.Item>
           <Menu.Item as={Link} to="/programs">
-            Programs
+            <FormattedMessage
+              id="app.top_nav.programs"
+              description="Button label to go to programs"
+              defaultMessage="Programs"
+            />
           </Menu.Item>
           <Menu.Item as={Link} to="/rovers">
-            Rovers
+            <FormattedMessage
+              id="app.top_nav.rovers"
+              description="Button label to go to rovers"
+              defaultMessage="Rovers"
+            />
           </Menu.Item>
           <Menu.Menu position="right">
             <Dropdown item text={userName}>
               <Dropdown.Menu>
                 <Dropdown.Item as={Link} to="/user/settings">
-                  Settings
+                  <FormattedMessage
+                    id="app.top_nav.settings"
+                    description="Button label to go to settings"
+                    defaultMessage="Settings"
+                  />
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item as={Button} onClick={this.signout}>
-                  Sign Out
+                  <FormattedMessage
+                    id="app.top_nav.sign_out"
+                    description="Button label to sign out"
+                    defaultMessage="Sign Out"
+                  />
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

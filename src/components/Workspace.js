@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Grid, Message } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -180,7 +181,13 @@ class Workspace extends Component {
   }
 
   componentDidMount() {
-    const { clearConsole, writeToConsole } = this.props;
+    const { clearConsole, intl, writeToConsole } = this.props;
+
+    const consoleStart = intl.formatMessage({
+      id: 'app.workspace.console',
+      description: 'Indicates that the console has started',
+      defaultMessage: 'console started',
+    });
 
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
@@ -190,7 +197,7 @@ class Workspace extends Component {
     this.createWorkspace();
 
     clearConsole();
-    writeToConsole('rovercode console started');
+    writeToConsole(`Rovercode ${consoleStart}`);
   }
 
   componentWillUpdate(nextProps) {
@@ -468,14 +475,26 @@ class Workspace extends Component {
               <Grid.Column width={12}>
                 <Message info>
                   <Message.Header>
-                    Read Only View
+                    <FormattedMessage
+                      id="app.workspace.read_only_header"
+                      description="Header to indicate viewing in read only mode"
+                      defaultMessage="Read Only View"
+                    />
                   </Message.Header>
-                  You are viewing another user&apos;s program in a read-only view.
+                  <FormattedMessage
+                    id="app.workspace.read_only_content"
+                    description="Informs the user that this program is another user's and cannot be edited"
+                    defaultMessage="You are viewing another user's program in a read-only view."
+                  />
                 </Message>
               </Grid.Column>
               <Grid.Column width={4}>
                 <Button primary size="huge" onClick={this.remix}>
-                  Remix
+                  <FormattedMessage
+                    id="app.workspace.remix"
+                    description="Button label to copy other user's program for this user to edit"
+                    defaultMessage="Remix"
+                  />
                 </Button>
               </Grid.Column>
             </Grid>
@@ -511,6 +530,9 @@ Workspace.propTypes = {
   sendToRover: PropTypes.func.isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   fetchProgram: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));
+export default hot(module)(
+  withCookies(injectIntl(connect(mapStateToProps, mapDispatchToProps)(Workspace))),
+);

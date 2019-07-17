@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallowWithIntl } from 'enzyme-react-intl';
 import { Redirect } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 import { Cookies } from 'react-cookie';
@@ -31,9 +31,11 @@ const match = {
 test('LoginCallback renders on the page with no errors', () => {
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
-  const wrapper = shallow(<LoginCallback location={location} match={match} store={store} />, {
-    context: { cookies },
-  });
+  const wrapper = shallowWithIntl(
+    <LoginCallback location={location} match={match} store={store} />, {
+      context: { cookies },
+    },
+  ).dive();
 
   expect(wrapper).toMatchSnapshot();
 });
@@ -41,13 +43,13 @@ test('LoginCallback renders on the page with no errors', () => {
 test('LoginCallback displays loader while loading', () => {
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
-  const cookiesWrapper = shallow(
+  const cookiesWrapper = shallowWithIntl(
     <LoginCallback location={location} match={match} store={store} />, {
       context: { cookies },
     },
   );
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   expect(wrapper.find(Loader).exists()).toBe(true);
   expect(wrapper.find(Redirect).exists()).toBe(false);
@@ -58,13 +60,13 @@ test('LoginCallback redirects to login after failure', async () => {
   mock.onPost('/jwt/auth/social/google/login/').timeout();
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
-  const cookiesWrapper = shallow(
+  const cookiesWrapper = shallowWithIntl(
     <LoginCallback location={location} match={match} store={store} />, {
       context: { cookies },
     },
   );
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   await wrapper.instance().componentDidMount();
   wrapper.update();
@@ -84,13 +86,13 @@ test('LoginCallback redirects to root after success', async () => {
   });
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
-  const cookiesWrapper = shallow(
+  const cookiesWrapper = shallowWithIntl(
     <LoginCallback location={location} match={match} store={store} />, {
       context: { cookies },
     },
   );
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   await wrapper.instance().componentDidMount();
   wrapper.update();

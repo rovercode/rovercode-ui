@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Icon } from 'semantic-ui-react';
-import { mount, shallow } from 'enzyme';
+import { FormattedMessage } from 'react-intl';
+import { shallow } from 'enzyme';
+import { mountWithIntl } from 'enzyme-react-intl';
 import Websocket from 'react-websocket';
 import RoverConnection from '../RoverConnection';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
@@ -15,7 +17,7 @@ global.WebSocket = jest.fn().mockImplementation(() => ({
   send: mockWsSend,
 }));
 
-describe('The RoverList component', () => {
+describe('The RoverConnection component', () => {
   beforeEach(() => {
     changeActiveRover = jest.fn();
     changeLeftSensorState = jest.fn();
@@ -59,7 +61,8 @@ describe('The RoverList component', () => {
 
     expect(wrapper.find(Card).length).toBe(1);
     expect(wrapper.find(Card).first().prop('color')).toBe('blue');
-    expect(wrapper.find(Card.Meta).first().prop('children')).toBe('Active');
+    expect(wrapper.find(Card.Meta).first().children().find(FormattedMessage)
+      .prop('defaultMessage')).toBe('Active');
     expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
     expect(wrapper.find(Websocket).length).toBe(1);
     expect(wrapper.find(Websocket).prop('url')).toBe('ws://example.com:8000/ws/realtime/1234/');
@@ -85,7 +88,8 @@ describe('The RoverList component', () => {
 
     expect(wrapper.find(Card).length).toBe(1);
     expect(wrapper.find(Card).first().prop('color')).toBeNull();
-    expect(wrapper.find(Card.Meta).first().prop('children')).toBe('Inactive');
+    expect(wrapper.find(Card.Meta).first().children().find(FormattedMessage)
+      .prop('defaultMessage')).toBe('Inactive');
     expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
     expect(wrapper.find(Websocket).length).toBe(1);
     expect(wrapper.find(Websocket).prop('url')).toBe('wss://example.com:443/ws/realtime/1234/');
@@ -361,7 +365,7 @@ describe('The RoverList component', () => {
   });
 
   test('sends all commands when active', () => {
-    const wrapper = mount(
+    const wrapper = mountWithIntl(
       <RoverConnection
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
@@ -400,7 +404,7 @@ describe('The RoverList component', () => {
   });
 
   test('does not send commands when inactive', () => {
-    mount(
+    mountWithIntl(
       <RoverConnection
         changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}

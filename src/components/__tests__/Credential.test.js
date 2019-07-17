@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form } from 'semantic-ui-react';
-import { shallow } from 'enzyme';
+import { shallowWithIntl } from 'enzyme-react-intl';
+
 import fileDownload from 'js-file-download';
 
 import Credential from '../Credential';
@@ -24,12 +25,12 @@ describe('The Credential component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = shallow(<Credential rover={rover} />);
+    const wrapper = shallowWithIntl(<Credential rover={rover} />).dive();
     expect(wrapper).toMatchSnapshot();
   });
 
   test('operates dialog properly', () => {
-    const wrapper = shallow(<Credential rover={rover} />);
+    const wrapper = shallowWithIntl(<Credential rover={rover} />).dive();
 
     wrapper.instance().handleDownloadOpen();
 
@@ -59,7 +60,7 @@ describe('The Credential component', () => {
   });
 
   test('cancel dialog does not download credentials', () => {
-    const wrapper = shallow(<Credential rover={rover} />);
+    const wrapper = shallowWithIntl(<Credential rover={rover} />).dive();
 
     wrapper.instance().handleDownloadOpen();
 

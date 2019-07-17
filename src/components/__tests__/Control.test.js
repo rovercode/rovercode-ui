@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
+import { mountWithIntl } from 'enzyme-react-intl';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 
@@ -27,7 +28,7 @@ describe('The Control component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = mount(<Control store={store} />);
+    const wrapper = mountWithIntl(<Control store={store} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

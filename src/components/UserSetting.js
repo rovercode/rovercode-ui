@@ -9,6 +9,7 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 
 class UserSetting extends Component {
@@ -86,13 +87,19 @@ class UserSetting extends Component {
   }
 
   saveUserPassword = () => {
-    const { editUserPassword } = this.props;
+    const { editUserPassword, intl } = this.props;
     const { password1, password2 } = this.state;
+
+    const passwordMatch = intl.formatMessage({
+      id: 'app.user_setting.match',
+      description: 'Error message indicating both passwords must match',
+      defaultMessage: 'Passwords must match',
+    });
 
     if (password1 !== password2) {
       this.setState({
-        password1Error: ['Passwords must match'],
-        password2Error: ['Passwords must match'],
+        password1Error: [passwordMatch],
+        password2Error: [passwordMatch],
       });
       return null;
     }
@@ -110,7 +117,7 @@ class UserSetting extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
-    const { user } = this.props;
+    const { intl, user } = this.props;
     const {
       saveSuccess,
       usernameError,
@@ -118,13 +125,35 @@ class UserSetting extends Component {
       password2Error,
     } = this.state;
 
+    const usernameLabel = intl.formatMessage({
+      id: 'app.user_setting.username',
+      description: 'Label for username entry',
+      defaultMessage: 'Username:',
+    });
+
+    const passwordLabel = intl.formatMessage({
+      id: 'app.user_setting.password',
+      description: 'Label for password entry',
+      defaultMessage: 'New Password:',
+    });
+
+    const verifyLabel = intl.formatMessage({
+      id: 'app.user_setting.verify',
+      description: 'Label for password verify entry',
+      defaultMessage: 'Verify:',
+    });
+
     return (
       <Grid centered divided="vertically" columns={16}>
         <Grid.Row>
           <Header as="h1">
             <Icon name="settings" />
             <Header.Content>
-              My Settings
+              <FormattedMessage
+                id="app.user_setting.header"
+                description="Header for the user's settings"
+                defaultMessage="My Settings"
+              />
             </Header.Content>
           </Header>
         </Grid.Row>
@@ -138,7 +167,11 @@ class UserSetting extends Component {
             {
               <Fragment>
                 <Message info>
-                  Changing any of these settings requires signing back in.
+                  <FormattedMessage
+                    id="app.user_setting.info"
+                    description="Notifies the user that changing settings requires signing back in"
+                    defaultMessage="Changing any of these settings requires signing back in."
+                  />
                 </Message>
                 {this.errorMessage()}
                 <Grid.Row style={{ paddingBottom: '10px', paddingTop: '10px' }}>
@@ -146,13 +179,17 @@ class UserSetting extends Component {
                     <Header dividing>
                       <Icon name="user" />
                       <Header.Content>
-                        Change Username
+                        <FormattedMessage
+                          id="app.user_setting.username_header"
+                          description="Header for changing username"
+                          defaultMessage="Change Username"
+                        />
                       </Header.Content>
                     </Header>
                     <Form key={user.user_id} onSubmit={this.saveUserUsername}>
                       <Form.Input
                         inline
-                        label="Username:"
+                        label={usernameLabel}
                         name="username"
                         error={usernameError}
                         defaultValue={user.username}
@@ -160,7 +197,11 @@ class UserSetting extends Component {
                         required
                       />
                       <Form.Button primary>
-                        Save
+                        <FormattedMessage
+                          id="app.user_setting.save_username"
+                          description="Button label to save username settings"
+                          defaultMessage="Save"
+                        />
                       </Form.Button>
                     </Form>
                   </Segment>
@@ -172,13 +213,17 @@ class UserSetting extends Component {
                         <Header dividing>
                           <Icon name="lock" />
                           <Header.Content>
-                            Change Password
+                            <FormattedMessage
+                              id="app.user_setting.password_header"
+                              description="Header for changing password"
+                              defaultMessage="Change Password"
+                            />
                           </Header.Content>
                         </Header>
                         <Form key={user.user_id} onSubmit={this.saveUserPassword}>
                           <Form.Group widths="equal">
                             <Form.Input
-                              label="New Password:"
+                              label={passwordLabel}
                               name="password1"
                               error={password1Error}
                               onChange={this.handleChange}
@@ -186,7 +231,7 @@ class UserSetting extends Component {
                               required
                             />
                             <Form.Input
-                              label="Verify:"
+                              label={verifyLabel}
                               name="password2"
                               error={password2Error}
                               onChange={this.handleChange}
@@ -195,7 +240,11 @@ class UserSetting extends Component {
                             />
                           </Form.Group>
                           <Form.Button primary>
-                            Save
+                            <FormattedMessage
+                              id="app.user_setting.save_password"
+                              description="Button label to save password settings"
+                              defaultMessage="Save"
+                            />
                           </Form.Button>
                         </Form>
                       </Segment>
@@ -219,6 +268,7 @@ UserSetting.propTypes = {
     username: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
   }).isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default UserSetting;
+export default injectIntl(UserSetting);

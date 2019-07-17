@@ -1,149 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginCallback renders on the page with no errors 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <withCookies(Component)
-    location={
-      Object {
-        "search": "?state=1234&code=5678",
-      }
+<Connect(LoginCallback)
+  allCookies={Object {}}
+  cookies={
+    Cookies {
+      "HAS_DOCUMENT_COOKIE": true,
+      "changeListeners": Array [
+        [Function],
+      ],
+      "cookies": Object {},
+      "hooks": undefined,
     }
-    match={
-      Object {
-        "params": Object {
-          "service": "google",
-        },
-      }
-    }
-    store={
-      Object {
-        "clearActions": [Function],
-        "dispatch": [MockFunction],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "checkPropTypes": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "class",
-    "props": Object {
-      "allCookies": Object {},
-      "cookies": Cookies {
-        "HAS_DOCUMENT_COOKIE": true,
-        "changeListeners": Array [
-          [Function],
-        ],
-        "cookies": Object {},
-        "hooks": undefined,
-      },
-      "location": Object {
-        "search": "?state=1234&code=5678",
-      },
-      "match": Object {
-        "params": Object {
-          "service": "google",
-        },
-      },
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [MockFunction],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-    },
-    "ref": null,
-    "rendered": null,
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
+  }
+  intl={
     Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "allCookies": Object {},
-        "cookies": Cookies {
-          "HAS_DOCUMENT_COOKIE": true,
-          "changeListeners": Array [
-            [Function],
-          ],
-          "cookies": Object {},
-          "hooks": undefined,
-        },
-        "location": Object {
-          "search": "?state=1234&code=5678",
-        },
-        "match": Object {
-          "params": Object {
-            "service": "google",
-          },
-        },
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [MockFunction],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
       },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "legacyContextMode": "parent",
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": false,
-          },
-          "getDerivedStateFromError": true,
-          "getDerivedStateFromProps": Object {
-            "hasShouldComponentUpdateBug": false,
-          },
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "onError": [Function],
+      "textComponent": "span",
+      "timeZone": null,
+    }
+  }
+  location={
+    Object {
+      "search": "?state=1234&code=5678",
+    }
+  }
+  match={
+    Object {
+      "params": Object {
+        "service": "google",
       },
-    },
-    "context": Object {
-      "cookies": Cookies {
-        "HAS_DOCUMENT_COOKIE": true,
-        "changeListeners": Array [
-          [Function],
-        ],
-        "cookies": Object {},
-        "hooks": undefined,
-      },
-    },
-    Symbol(enzyme.__providerValues__): undefined,
-  },
-  Symbol(enzyme.__providerValues__): Map {},
-  Symbol(enzyme.__childContext__): null,
-}
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
 `;

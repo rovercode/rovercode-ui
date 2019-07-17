@@ -5,7 +5,8 @@ import {
   Header,
   Input,
 } from 'semantic-ui-react';
-import { shallow } from 'enzyme';
+import { FormattedMessage } from 'react-intl';
+import { shallowWithIntl } from 'enzyme-react-intl';
 import CustomPagination from '../CustomPagination';
 import ProgramCollection from '../ProgramCollection';
 
@@ -41,7 +42,7 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
@@ -50,7 +51,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    );
+    ).dive();
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -75,7 +76,7 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
@@ -84,12 +85,14 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(Header).exists()).toBe(true);
     expect(wrapper.find(Card).length).toBe(2);
-    expect(wrapper.find(Card.Meta).first().prop('children')).toBe('Mine');
-    expect(wrapper.find(Button).first().prop('children')).toBe('Keep Working');
+    expect(wrapper.find(Card.Meta).first().children().find(FormattedMessage)
+      .prop('defaultMessage')).toBe('Mine');
+    expect(wrapper.find(Button).first().children().find(FormattedMessage)
+      .prop('defaultMessage')).toBe('Keep Working');
   });
 
   test('shows the correct number of programs for other users', () => {
@@ -113,7 +116,7 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
@@ -121,12 +124,13 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(Header).exists()).toBe(true);
     expect(wrapper.find(Card).length).toBe(2);
     expect(wrapper.find(Card.Meta).first().prop('children')).toBe('testuser');
-    expect(wrapper.find(Button).first().prop('children')).toBe('View');
+    expect(wrapper.find(Button).first().children().find(FormattedMessage)
+      .prop('defaultMessage')).toBe('View');
   });
 
   test('callback when program click', () => {
@@ -143,7 +147,7 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
@@ -152,7 +156,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    );
+    ).dive();
 
     wrapper.find(Button).first().simulate('click', {
       target: {
@@ -181,7 +185,7 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
@@ -190,7 +194,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    );
+    ).dive();
 
     wrapper.find(Button).last().simulate('click', {
       target: {
@@ -226,7 +230,7 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
@@ -235,7 +239,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    );
+    ).dive();
 
     wrapper.find(CustomPagination).simulate('pageChange', null, {
       activePage: 2,
@@ -268,7 +272,7 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
@@ -277,7 +281,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    );
+    ).dive();
 
     wrapper.find(Input).simulate('change', {
       target: {
@@ -313,7 +317,7 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
@@ -322,7 +326,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    );
+    ).dive();
 
     wrapper.find({ name: 'name' }).simulate('click', null, {
       name: 'name',

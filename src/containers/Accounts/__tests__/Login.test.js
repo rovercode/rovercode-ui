@@ -1,8 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { Form, Message, MessageHeader } from 'semantic-ui-react';
-import { shallow } from 'enzyme';
+import { shallowWithIntl } from 'enzyme-react-intl';
 import { Cookies } from 'react-cookie';
+import { FormattedMessage } from 'react-intl';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import configureStore from 'redux-mock-store';
@@ -26,11 +27,11 @@ const location = {
 };
 
 test('Login renders on the page with no errors', () => {
-  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Message).exists()).toBe(false);
@@ -48,11 +49,11 @@ test('Login redirects to social api on button click', async () => {
     },
   };
 
-  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   await wrapper.instance().redirectToSocial(element);
 
@@ -72,17 +73,19 @@ test('Login shows error message on api error', async () => {
     },
   };
 
-  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   await wrapper.instance().redirectToSocial(element);
   wrapper.update();
 
   expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(MessageHeader).prop('children')).toBe('There was an error initiating social login.');
+  expect(wrapper.find(MessageHeader).children().find(FormattedMessage).prop('defaultMessage')).toBe(
+    'There was an error initiating social login.',
+  );
   expect(window.location.assign).not.toBeCalled();
 });
 
@@ -99,11 +102,11 @@ test('Login redirects to root after basic login success', async () => {
     token,
   });
 
-  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   wrapper.find(Form.Input).first().simulate('change', {
     target: {
@@ -137,11 +140,11 @@ test('Login shows error message after basic login failure', async () => {
     password,
   }).reply(400);
 
-  const cookiesWrapper = shallow(<Login location={location} store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<Login location={location} store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   wrapper.find(Form.Input).first().simulate('change', {
     target: {
@@ -158,6 +161,8 @@ test('Login shows error message after basic login failure', async () => {
   wrapper.update();
 
   expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(MessageHeader).prop('children')).toBe('Invalid username or password.');
+  expect(wrapper.find(MessageHeader).children().find(FormattedMessage).prop('defaultMessage')).toBe(
+    'Invalid username or password.',
+  );
   expect(cookies.get('auth_jwt')).toBeUndefined();
 });

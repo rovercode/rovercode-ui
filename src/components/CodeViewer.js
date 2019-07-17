@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
@@ -36,7 +37,11 @@ class CodeViewer extends Component {
         )}
       >
         <Modal.Header>
-          Here is the code in
+          <FormattedMessage
+            id="app.code_viewer.description"
+            description="Describes the programming language in the code viewer"
+            defaultMessage="Here is the code in"
+          />
           {' '}
           <a href="https://en.wikipedia.org/wiki/JavaScript">
             JavaScript
@@ -63,7 +68,10 @@ CodeViewer.propTypes = {
   code: PropTypes.shape({
     jsCode: PropTypes.string,
   }).isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.instanceOf(FormattedMessage),
+    PropTypes.string,
+  ]).isRequired,
 };
 
 export default hot(module)(connect(mapStateToProps)(CodeViewer));

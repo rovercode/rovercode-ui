@@ -2,7 +2,8 @@ import jwtDecode from 'jwt-decode';
 
 class AuthApi {
   // From: https://www.w3schools.com/js/js_cookies.asp
-  getCookie = /* istanbul ignore next */ (cname) => {
+  /* istanbul ignore next */
+  getCookie = (cname) => {
     const name = `${cname}=`;
     const decodedCookie = decodeURIComponent(document.cookie);
     const ca = decodedCookie.split(';');
