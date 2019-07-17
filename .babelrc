@@ -11,6 +11,9 @@
     [
       "react-intl", {
         "messagesDir": "src/translations/extracted",
+	"enforceDescriptions": true,
+	"enforceDefaultMessage": true,
+	"extractFromFormatMessageCall": true,
       }
     ]
   ]
