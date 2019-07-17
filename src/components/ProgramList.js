@@ -91,7 +91,7 @@ class ProgramList extends Component {
   }
 
   programSegment = (programs, label, owned) => (
-    <Segment raised style={{ margin: '10px' }}>
+    <Segment raised style={{ margin: '10px 10% 10px 10%' }}>
       <ProgramCollection
         programs={programs}
         label={label}
@@ -113,7 +113,7 @@ class ProgramList extends Component {
 
     return (
       <Fragment>
-        <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10px' }}>
+        <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10%' }}>
           <Icon name="plus" />
           New Program
         </Button>

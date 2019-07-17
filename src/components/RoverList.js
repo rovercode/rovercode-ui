@@ -60,7 +60,7 @@ class RoverList extends Component {
   }
 
   modalButton = () => (
-    <Button primary style={{ marginLeft: '10px' }} onClick={this.handleNewRoverOpen}>
+    <Button primary style={{ marginLeft: '10%' }} onClick={this.handleNewRoverOpen}>
       <Icon name="plus" />
       Register New Rover
     </Button>
@@ -131,7 +131,7 @@ class RoverList extends Component {
           isFetching || rovers === null
             ? (<Loader active />)
             : (
-              <Segment raised style={{ margin: '10px' }}>
+              <Segment raised style={{ margin: '10px 10% 10px 10%' }}>
                 <Header as="h1" textAlign="center">
                   Rovers
                 </Header>
