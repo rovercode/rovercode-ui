@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { clear as actionClear } from '@/actions/console';
@@ -45,7 +46,11 @@ class Console extends Component {
           <div ref={this.bottomRef} />
         </div>
         <Button primary onClick={this.handleClear} style={{ marginTop: '10px' }}>
-          Clear
+          <FormattedMessage
+            id="app.console.clear"
+            description="Button label to clear the console"
+            defaultMessage="Clear"
+          />
         </Button>
       </Fragment>
     );

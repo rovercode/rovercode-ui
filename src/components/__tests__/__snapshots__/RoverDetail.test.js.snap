@@ -10,7 +10,11 @@ exports[`The RoverDetail component renders on the page with no errors 1`] = `
     <Header
       as="h1"
     >
-      Rover Settings
+      <FormattedMessage
+        defaultMessage="Rover Settings"
+        id="app.rover_detail.header"
+        values={Object {}}
+      />
     </Header>
   </GridRow>
   <GridRow>
@@ -25,7 +29,7 @@ exports[`The RoverDetail component renders on the page with no errors 1`] = `
           }
         }
       >
-        <Credential
+        <InjectIntl(Credential)
           rover={
             Object {
               "client_id": "1234",
@@ -71,7 +75,11 @@ exports[`The RoverDetail component renders on the page with no errors 1`] = `
                     as="i"
                     name="dropdown"
                   />
-                  Advanced
+                  <FormattedMessage
+                    defaultMessage="Advanced"
+                    id="app.rover_detail.advanced"
+                    values={Object {}}
+                  />
                 </AccordionTitle>
                 <AccordionContent
                   active={false}
@@ -90,7 +98,11 @@ exports[`The RoverDetail component renders on the page with no errors 1`] = `
               control={[Function]}
               primary={true}
             >
-              Save
+              <FormattedMessage
+                defaultMessage="Save"
+                id="app.rover_detail.save"
+                values={Object {}}
+              />
             </FormButton>
           </Form>
         </Segment>

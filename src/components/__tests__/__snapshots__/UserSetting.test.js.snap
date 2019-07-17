@@ -15,7 +15,11 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
         name="settings"
       />
       <HeaderContent>
-        My Settings
+        <FormattedMessage
+          defaultMessage="My Settings"
+          id="app.user_setting.header"
+          values={Object {}}
+        />
       </HeaderContent>
     </Header>
   </GridRow>
@@ -26,7 +30,11 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
       <Message
         info={true}
       >
-        Changing any of these settings requires signing back in.
+        <FormattedMessage
+          defaultMessage="Changing any of these settings requires signing back in."
+          id="app.user_setting.info"
+          values={Object {}}
+        />
       </Message>
       <GridRow
         style={
@@ -47,7 +55,11 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
               name="user"
             />
             <HeaderContent>
-              Change Username
+              <FormattedMessage
+                defaultMessage="Change Username"
+                id="app.user_setting.username_header"
+                values={Object {}}
+              />
             </HeaderContent>
           </Header>
           <Form
@@ -71,7 +83,11 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
               control={[Function]}
               primary={true}
             >
-              Save
+              <FormattedMessage
+                defaultMessage="Save"
+                id="app.user_setting.save_username"
+                values={Object {}}
+              />
             </FormButton>
           </Form>
         </Segment>
@@ -88,7 +104,11 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
               name="lock"
             />
             <HeaderContent>
-              Change Password
+              <FormattedMessage
+                defaultMessage="Change Password"
+                id="app.user_setting.password_header"
+                values={Object {}}
+              />
             </HeaderContent>
           </Header>
           <Form
@@ -125,7 +145,11 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
               control={[Function]}
               primary={true}
             >
-              Save
+              <FormattedMessage
+                defaultMessage="Save"
+                id="app.user_setting.save_password"
+                values={Object {}}
+              />
             </FormButton>
           </Form>
         </Segment>

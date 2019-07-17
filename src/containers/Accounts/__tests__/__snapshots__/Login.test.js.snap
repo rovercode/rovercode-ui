@@ -8,7 +8,11 @@ exports[`Login renders on the page with no errors 1`] = `
   >
     <GridRow>
       <p>
-        You can sign up / sign in with one of your existing third-party accounts.
+        <FormattedMessage
+          defaultMessage="You can sign up / sign in with one of your existing third-party accounts."
+          id="app.login.social"
+          values={Object {}}
+        />
       </p>
     </GridRow>
     <GridRow>
@@ -26,7 +30,11 @@ exports[`Login renders on the page with no errors 1`] = `
             as="i"
             name="google"
           />
-          Sign in with Google
+          <FormattedMessage
+            defaultMessage="Sign in with Google"
+            id="app.login.button_google"
+            values={Object {}}
+          />
         </Button>
       </GridColumn>
       <GridColumn
@@ -43,24 +51,40 @@ exports[`Login renders on the page with no errors 1`] = `
             as="i"
             name="github"
           />
-          Sign in with GitHub
+          <FormattedMessage
+            defaultMessage="Sign in with GitHub"
+            id="app.login.button_github"
+            values={Object {}}
+          />
         </Button>
       </GridColumn>
     </GridRow>
     <GridRow>
       <p>
-        Don't have any of those accounts?
+        <FormattedMessage
+          defaultMessage="Don't have any of those accounts?"
+          id="app.login.social_question"
+          values={Object {}}
+        />
          
         <a
           href="/accounts/signup"
         >
-          Create a rovercode account.
+          <FormattedMessage
+            defaultMessage="Create a rovercode account."
+            id="app.login.create"
+            values={Object {}}
+          />
         </a>
       </p>
     </GridRow>
     <GridRow>
       <p>
-        Already have a rovercode account? Sign in here:
+        <FormattedMessage
+          defaultMessage="Already have a rovercode account? Sign in here:"
+          id="app.login.account_question"
+          values={Object {}}
+        />
       </p>
     </GridRow>
     <GridRow>
@@ -101,7 +125,11 @@ exports[`Login renders on the page with no errors 1`] = `
               primary={true}
               type="submit"
             >
-              Sign In
+              <FormattedMessage
+                defaultMessage="Sign In"
+                id="app.login.sign_in"
+                values={Object {}}
+              />
             </FormButton>
           </Form>
         </Segment>
@@ -112,7 +140,11 @@ exports[`Login renders on the page with no errors 1`] = `
         <a
           href="/accounts/reset"
         >
-          Forgot Password?
+          <FormattedMessage
+            defaultMessage="Forgot Password?"
+            id="app.login.forgot"
+            values={Object {}}
+          />
         </a>
       </p>
     </GridRow>

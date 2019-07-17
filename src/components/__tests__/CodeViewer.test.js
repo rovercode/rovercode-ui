@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 
 import CodeViewer from '../CodeViewer';
@@ -19,7 +18,7 @@ describe('The CodeViewer component', () => {
         Show Me The Code!
       </CodeViewer>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('handles blank code with no errors', () => {
@@ -33,6 +32,6 @@ describe('The CodeViewer component', () => {
         Show Me The Code!
       </CodeViewer>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

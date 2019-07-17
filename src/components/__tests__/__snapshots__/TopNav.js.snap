@@ -21,13 +21,21 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
       as={[Function]}
       to="/programs"
     >
-      Programs
+      <FormattedMessage
+        defaultMessage="Programs"
+        id="app.top_nav.programs"
+        values={Object {}}
+      />
     </MenuItem>
     <MenuItem
       as={[Function]}
       to="/rovers"
     >
-      Rovers
+      <FormattedMessage
+        defaultMessage="Rovers"
+        id="app.top_nav.rovers"
+        values={Object {}}
+      />
     </MenuItem>
     <MenuMenu
       position="right"
@@ -54,14 +62,22 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
             as={[Function]}
             to="/user/settings"
           >
-            Settings
+            <FormattedMessage
+              defaultMessage="Settings"
+              id="app.top_nav.settings"
+              values={Object {}}
+            />
           </DropdownItem>
           <DropdownDivider />
           <DropdownItem
             as={[Function]}
             onClick={[Function]}
           >
-            Sign Out
+            <FormattedMessage
+              defaultMessage="Sign Out"
+              id="app.top_nav.sign_out"
+              values={Object {}}
+            />
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

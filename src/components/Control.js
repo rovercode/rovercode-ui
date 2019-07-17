@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import {
@@ -23,7 +24,11 @@ const Control = ({ code, changeExecutionState }) => (
       code.execution === EXECUTION_RUN ? (
         <Button color="red" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STOP)} animated="vertical">
           <Button.Content hidden>
-            Stop
+            <FormattedMessage
+              id="app.control.stop"
+              description="Button label to stop execution of the code"
+              defaultMessage="Stop"
+            />
           </Button.Content>
           <Button.Content visible>
             <Icon name="stop" />
@@ -33,7 +38,11 @@ const Control = ({ code, changeExecutionState }) => (
         <Fragment>
           <Button color="green" size="huge" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RUN)} animated="vertical">
             <Button.Content hidden>
-              Run
+              <FormattedMessage
+                id="app.control.run"
+                description="Button label to start execution of the code"
+                defaultMessage="Run"
+              />
             </Button.Content>
             <Button.Content visible>
               <Icon name="play" />
@@ -41,7 +50,11 @@ const Control = ({ code, changeExecutionState }) => (
           </Button>
           <Button color="yellow" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STEP)} animated="vertical" style={{ verticalAlign: 'bottom' }}>
             <Button.Content hidden>
-              Step
+              <FormattedMessage
+                id="app.control.step"
+                description="Button label to step one place forward in the code"
+                defaultMessage="Step"
+              />
             </Button.Content>
             <Button.Content visible>
               <Icon name="step forward" />
@@ -49,7 +62,11 @@ const Control = ({ code, changeExecutionState }) => (
           </Button>
           <Button color="blue" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RESET)} animated="vertical" style={{ verticalAlign: 'bottom' }}>
             <Button.Content hidden>
-              Reset
+              <FormattedMessage
+                id="app.control.reset"
+                description="Button label to reset to the beginning of the code"
+                defaultMessage="Reset"
+              />
             </Button.Content>
             <Button.Content visible>
               <Icon name="repeat" />

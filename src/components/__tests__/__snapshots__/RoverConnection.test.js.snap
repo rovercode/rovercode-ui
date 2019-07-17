@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The RoverList component renders on the page with no errors 1`] = `
+exports[`The RoverConnection component renders on the page with no errors 1`] = `
 <Fragment>
   <Card
     color="blue"
@@ -24,7 +24,11 @@ exports[`The RoverList component renders on the page with no errors 1`] = `
         Sparky
       </CardHeader>
       <CardMeta>
-        Active
+        <FormattedMessage
+          defaultMessage="Active"
+          id="app.rover_connection.active"
+          values={Object {}}
+        />
       </CardMeta>
     </CardContent>
   </Card>

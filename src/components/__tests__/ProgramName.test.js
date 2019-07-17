@@ -1,6 +1,6 @@
 import React from 'react';
 import { Confirm, Input } from 'semantic-ui-react';
-import { mount, shallow } from 'enzyme';
+import { mountWithIntl, shallowWithIntl } from 'enzyme-react-intl';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
@@ -28,12 +28,14 @@ describe('The ProgramName component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = mount(<ProgramName store={store} />, { context });
+    const wrapper = mountWithIntl(<ProgramName store={store} />, { context });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   test('displays name', () => {
-    const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
+    const wrapper = shallowWithIntl(
+      <ProgramName store={store} />, { context },
+    ).dive().dive().dive();
 
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(wrapper.find(Input).length).toBe(1);
@@ -48,16 +50,18 @@ describe('The ProgramName component', () => {
         isReadOnly: true,
       },
     });
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ProgramName store={localStore} />,
       { context },
-    ).dive().dive();
+    ).dive().dive().dive();
 
     expect(wrapper.find(Input).props().disabled).toBe(true);
   });
 
   test('handles change', () => {
-    const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
+    const wrapper = shallowWithIntl(
+      <ProgramName store={store} />, { context },
+    ).dive().dive().dive();
 
     wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
     wrapper.update();
@@ -68,7 +72,9 @@ describe('The ProgramName component', () => {
   });
 
   test('handles save cancel', () => {
-    const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
+    const wrapper = shallowWithIntl(
+      <ProgramName store={store} />, { context },
+    ).dive().dive().dive();
 
     wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
     wrapper.update();
@@ -88,7 +94,9 @@ describe('The ProgramName component', () => {
   });
 
   test('handles save confirm', () => {
-    const wrapper = shallow(<ProgramName store={store} />, { context }).dive().dive();
+    const wrapper = shallowWithIntl(
+      <ProgramName store={store} />, { context },
+    ).dive().dive().dive();
 
     wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
     wrapper.update();
@@ -115,7 +123,7 @@ describe('The ProgramName component', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    const wrapper = shallow(<ProgramName store={store} />, { context });
+    const wrapper = shallowWithIntl(<ProgramName store={store} />, { context }).dive();
     wrapper.dive().props().changeName(1, 'testname').then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
       expect(store.dispatch).toHaveBeenCalledWith(
@@ -137,7 +145,7 @@ describe('The ProgramName component', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    const wrapper = shallow(<ProgramName store={store} />, { context });
+    const wrapper = shallowWithIntl(<ProgramName store={store} />, { context }).dive();
     wrapper.dive().props().changeName(1, 'testname').then(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(

@@ -10,17 +10,30 @@ exports[`SignUp renders on the page with no errors 1`] = `
       <Header
         size="huge"
       >
-        Sign Up
+        <FormattedMessage
+          defaultMessage="Sign Up"
+          id="app.signup.header"
+          values={Object {}}
+        />
       </Header>
     </GridRow>
     <GridRow>
       <p>
+        <FormattedMessage
+          defaultMessage="Already have an account? Then please"
+          id="app.signup.check_1"
+          values={Object {}}
+        />
         Already have an account? Then please
          
         <a
           href="/accounts/login"
         >
-          sign in.
+          <FormattedMessage
+            defaultMessage="sign in."
+            id="app.signup.check_2"
+            values={Object {}}
+          />
         </a>
       </p>
     </GridRow>
@@ -85,7 +98,11 @@ exports[`SignUp renders on the page with no errors 1`] = `
               primary={true}
               type="submit"
             >
-              Sign Up
+              <FormattedMessage
+                defaultMessage="Sign Up"
+                id="app.signup.signup"
+                values={Object {}}
+              />
             </FormButton>
           </Form>
         </Segment>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, List, Message } from 'semantic-ui-react';
-import { shallow } from 'enzyme';
+import { shallowWithIntl } from 'enzyme-react-intl';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -9,7 +9,7 @@ import PasswordReset from '../PasswordReset';
 const mock = new MockAdapter(axios);
 
 test('PasswordReset renders on the page with no errors', () => {
-  const wrapper = shallow(<PasswordReset />);
+  const wrapper = shallowWithIntl(<PasswordReset />).dive();
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Message).exists()).toBe(false);
@@ -22,7 +22,7 @@ test('PasswordReset displays form errors', async () => {
       'This field may not be blank.',
     ],
   });
-  const wrapper = shallow(<PasswordReset />);
+  const wrapper = shallowWithIntl(<PasswordReset />).dive();
 
   await wrapper.instance().reset();
   wrapper.update();
@@ -42,7 +42,7 @@ test('PasswordReset displays success', async () => {
   }).reply(200, {
     detail: 'Password reset e-mail has been sent.',
   });
-  const wrapper = shallow(<PasswordReset />);
+  const wrapper = shallowWithIntl(<PasswordReset />).dive();
 
   wrapper.find(Form.Input).at(0).simulate('change', {
     target: {

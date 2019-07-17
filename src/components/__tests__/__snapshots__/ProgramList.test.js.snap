@@ -16,7 +16,11 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       as="i"
       name="plus"
     />
-    New Program
+    <FormattedMessage
+      defaultMessage="New Program"
+      id="app.program_list.new"
+      values={Object {}}
+    />
   </Button>
   <Segment
     raised={true}
@@ -26,7 +30,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       }
     }
   >
-    <ProgramCollection
+    <InjectIntl(ProgramCollection)
       label="My Programs"
       onProgramClick={[Function]}
       onRemoveClick={[Function]}
@@ -50,7 +54,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       }
     }
   >
-    <ProgramCollection
+    <InjectIntl(ProgramCollection)
       label="Find More"
       onProgramClick={[Function]}
       onRemoveClick={[Function]}
@@ -69,7 +73,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
   <Confirm
     cancelButton="No"
     confirmButton="Yes"
-    content="Are you sure you want to remove null?"
+    content="Are you sure you want to remove Test Program?"
     header="Remove Program"
     onCancel={[Function]}
     onConfirm={[Function]}

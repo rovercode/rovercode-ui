@@ -3,6 +3,7 @@ import { Confirm, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
+import { injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { updateValidAuth } from '@/actions/auth';
@@ -69,15 +70,33 @@ class ProgramName extends Component {
   }
 
   render() {
-    const { code } = this.props;
+    const { code, intl } = this.props;
     const { confirmOpen, editingName, previousPropName } = this.state;
     let actionProp = {};
+
+    const saveAction = intl.formatMessage({
+      id: 'app.program_name.save',
+      description: 'Button label for saving new program name',
+      defaultMessage: 'Save',
+    });
+
+    const nameLabel = intl.formatMessage({
+      id: 'app.program_name.name',
+      description: 'Label for new program name entry',
+      defaultMessage: 'Name:',
+    });
+
+    const confirmText = intl.formatMessage({
+      id: 'app.program_name.confirm',
+      description: 'Confirmation of program name change',
+      defaultMessage: 'Are you sure that you want to change the name of this program?',
+    });
 
     // Only show `Save` when the name has changed
     if (editingName !== previousPropName) {
       actionProp = {
         action: {
-          content: 'Save',
+          content: saveAction,
           onClick: this.openConfirm,
         },
       };
@@ -87,14 +106,14 @@ class ProgramName extends Component {
       <Fragment>
         <Input
           type="text"
-          label="Name:"
+          label={nameLabel}
           value={editingName}
           disabled={code.isReadOnly}
           onChange={this.handleChange}
           {...actionProp}
         />
         <Confirm
-          content="Are you sure that you want to change the name of this program?"
+          content={confirmText}
           open={confirmOpen}
           onCancel={this.closeConfirm}
           onConfirm={this.handleSave}
@@ -111,6 +130,13 @@ ProgramName.propTypes = {
     isReadOnly: PropTypes.bool,
   }).isRequired,
   changeName: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(ProgramName)));
+export default hot(module)(
+  withCookies(
+    injectIntl(
+      connect(mapStateToProps, mapDispatchToProps)(ProgramName),
+    ),
+  ),
+);

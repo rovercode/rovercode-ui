@@ -15,7 +15,11 @@ exports[`NotFound renders on the page with no errors 1`] = `
     <Header
       size="huge"
     >
-      Sorry, the page you're looking for doesn't exist.
+      <FormattedMessage
+        defaultMessage="Sorry, the page you're looking for doesn't exist."
+        id="app.global.not_exist"
+        values={Object {}}
+      />
     </Header>
   </GridRow>
 </Grid>

@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
+import { mountWithIntl } from 'enzyme-react-intl';
 import moment from 'moment';
 import MockDate from 'mockdate';
 import { Cookies } from 'react-cookie';
@@ -34,7 +34,7 @@ describe('The ProtectedRoute component', () => {
   test('renders component when authenticated', () => {
     MockDate.set(moment.unix(1540341528));
 
-    const wrapper = mount(
+    const wrapper = mountWithIntl(
       <MemoryRouter initialEntries={['/']} initialIndex={0}>
         <Switch>
           <Route exact path="/accounts/login" />
@@ -56,7 +56,7 @@ describe('The ProtectedRoute component', () => {
   test('renders redirect when not authenticated', () => {
     MockDate.set(moment.unix(1540341530));
 
-    const wrapper = mount(
+    const wrapper = mountWithIntl(
       <MemoryRouter initialEntries={['/']} initialIndex={0}>
         <Switch>
           <Route exact path="/accounts/login" />
@@ -82,7 +82,7 @@ describe('The ProtectedRoute component', () => {
         isValidAuth: true,
       },
     });
-    const wrapper = mount(
+    const wrapper = mountWithIntl(
       <MemoryRouter initialEntries={['/']} initialIndex={0}>
         <Switch>
           <Route exact path="/accounts/login" />
@@ -111,7 +111,7 @@ describe('The ProtectedRoute component', () => {
         isValidAuth: false,
       },
     });
-    const wrapper = mount(
+    const wrapper = mountWithIntl(
       <MemoryRouter initialEntries={['/']} initialIndex={0}>
         <Switch>
           <Route exact path="/accounts/login" />
