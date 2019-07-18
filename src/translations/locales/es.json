@@ -53,7 +53,7 @@
   "app.program_list.dialog_content": "Are you sure you want to remove {name}?",
   "app.program_list.dialog_header": "Remove Program",
   "app.program_list.my_programs": "Mis Programas",
-  "app.program_list.new": "Programa Nueva",
+  "app.program_list.new": "Programa Nuevo",
   "app.program_list.other_programs": "Encontrar Mas",
   "app.program_name.confirm": "¿Estás seguro de que quieres cambiar el nombre de este programa?",
   "app.program_name.name": "Nombre:",
