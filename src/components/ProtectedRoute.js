@@ -3,20 +3,26 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { logout as actionLogout } from '@/actions/auth';
 import TopNav from './TopNav';
 
 const mapStateToProps = ({ auth, user }) => ({ auth, user });
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(actionLogout()),
+});
 
 class ProtectedRoute extends Component {
   isAuthenticated = () => {
-    const { auth, user } = this.props;
+    const { auth, logout, user } = this.props;
 
     if (!auth.isValidAuth) {
+      logout();
       return false;
     }
 
     if (user.exp) {
       if (moment().isAfter(moment.unix(user.exp))) {
+        logout();
         return false;
       }
       return true;
@@ -53,6 +59,7 @@ ProtectedRoute.propTypes = {
     exp: PropTypes.number,
   }).isRequired,
   component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(ProtectedRoute);
+export default connect(mapStateToProps, mapDispatchToProps)(ProtectedRoute);

@@ -8,6 +8,7 @@ import moment from 'moment';
 import MockDate from 'mockdate';
 import { Cookies } from 'react-cookie';
 
+import { logout } from '@/actions/auth';
 import ProtectedRoute from '../ProtectedRoute';
 
 const cookiesValues = { };
@@ -30,6 +31,7 @@ describe('The ProtectedRoute component', () => {
         isValidAuth: true,
       },
     });
+    store.dispatch = jest.fn();
   });
 
   test('renders component when authenticated', () => {
@@ -76,6 +78,7 @@ describe('The ProtectedRoute component', () => {
     expect(wrapper.find(TestComponent).exists()).toBe(false);
     expect(wrapper.find(Route).exists()).toBe(true);
     expect(wrapper.find(Route).prop('path')).toBe('/accounts/login');
+    expect(store.dispatch).toHaveBeenCalledWith(logout());
 
     MockDate.reset();
   });
@@ -118,6 +121,7 @@ describe('The ProtectedRoute component', () => {
         isValidAuth: false,
       },
     });
+    store.dispatch = jest.fn();
     const wrapper = mountWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter initialEntries={['/']} initialIndex={0}>
@@ -135,5 +139,6 @@ describe('The ProtectedRoute component', () => {
     expect(wrapper.find(TestComponent).exists()).toBe(false);
     expect(wrapper.find(Route).exists()).toBe(true);
     expect(wrapper.find(Route).prop('path')).toBe('/accounts/login');
+    expect(store.dispatch).toHaveBeenCalledWith(logout());
   });
 });
