@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import {
@@ -9,8 +10,13 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { withCookies, Cookies } from 'react-cookie';
+import { logout as actionLogout } from '@/actions/auth';
 
 import logoImage from '@/assets/images/rovercode_logo_magenta.png';
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(actionLogout()),
+});
 
 class TopNav extends Component {
   constructor(props) {
@@ -22,9 +28,10 @@ class TopNav extends Component {
   }
 
   signout = () => {
-    const { cookies } = this.props;
+    const { cookies, logout } = this.props;
 
     cookies.remove('auth_jwt', { path: '/' });
+    logout();
 
     this.setState({ redirectToLogin: true });
   }
@@ -92,6 +99,7 @@ TopNav.defaultProps = {
 TopNav.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   userName: PropTypes.string,
+  logout: PropTypes.func.isRequired,
 };
 
-export default withCookies(TopNav);
+export default withCookies(connect(null, mapDispatchToProps)(TopNav));

@@ -2,9 +2,14 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
+import configureStore from 'redux-mock-store';
 import TopNav from '../TopNav';
+import { logout } from '@/actions/auth';
 
 const cookies = new Cookies();
+const mockStore = configureStore();
+const store = mockStore();
+store.dispatch = jest.fn();
 
 describe('The TopNav component', () => {
   beforeEach(() => {
@@ -12,19 +17,19 @@ describe('The TopNav component', () => {
   });
 
   test('should render on the page with no errors', () => {
-    const topNav = shallow(<TopNav userName="Dale Gribble" />, {
+    const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
       context: { cookies },
     });
-    const wrapper = topNav.dive();
+    const wrapper = topNav.dive().dive();
 
     expect(wrapper).toMatchSnapshot();
   });
 
   test('should sign out', () => {
-    const topNav = shallow(<TopNav userName="Dale Gribble" />, {
+    const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
       context: { cookies },
     });
-    const wrapper = topNav.dive();
+    const wrapper = topNav.dive().dive();
 
     expect(wrapper.find(Redirect).exists()).toBe(false);
     expect(cookies.get('auth_jwt', { path: '/' })).toBe('1234');
@@ -35,5 +40,6 @@ describe('The TopNav component', () => {
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).prop('to')).toBe('/accounts/login');
     expect(cookies.get('auth_jwt', { path: '/' })).toBeUndefined();
+    expect(store.dispatch).toHaveBeenCalledWith(logout());
   });
 });
