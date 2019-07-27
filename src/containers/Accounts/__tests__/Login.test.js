@@ -45,6 +45,9 @@ test('Login redirects to social api on button click', async () => {
 
   const element = {
     target: {
+      parentNode: {
+        id: undefined,
+      },
       id: 'google',
     },
   };
@@ -69,6 +72,9 @@ test('Login shows error message on api error', async () => {
 
   const element = {
     target: {
+      parentNode: {
+        id: undefined,
+      },
       id: 'google',
     },
   };

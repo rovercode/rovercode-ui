@@ -74,7 +74,7 @@ class Login extends Component {
   }
 
   redirectToSocial = (element) => {
-    const service = element.target.id;
+    const service = element.target.parentNode.id || element.target.id;
     return axios.post(`/jwt/auth/social/${service}/auth-server/`)
       .then((response) => {
         const url = URL(response.data.url);
