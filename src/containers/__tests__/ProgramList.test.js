@@ -145,7 +145,9 @@ describe('The ProgramListContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().fetchPrograms().then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -166,7 +168,9 @@ describe('The ProgramListContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().fetchProgram().then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -187,7 +191,9 @@ describe('The ProgramListContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().removeProgram(1).then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -210,7 +216,7 @@ describe('The ProgramListContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().fetchPrograms().then(() => {
+    wrapper.dive().props().fetchPrograms().catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchPrograms({
@@ -230,7 +236,7 @@ describe('The ProgramListContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().fetchProgram().then(() => {
+    wrapper.dive().props().fetchProgram().catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchProgram({
@@ -250,7 +256,7 @@ describe('The ProgramListContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().removeProgram(1).then(() => {
+    wrapper.dive().props().removeProgram(1).catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         removeProgram(1, {

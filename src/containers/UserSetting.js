@@ -3,39 +3,15 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
 import { editUserPassword, editUserUsername } from '@/actions/user';
-import { updateValidAuth } from '@/actions/auth';
+import { checkAuthError, authHeader } from '@/actions/auth';
 import UserSetting from '@/components/UserSetting';
 
 const mapStateToProps = ({ user }) => ({ user });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  editUserUsername: (username) => {
-    const editUserUsernameAction = editUserUsername(username, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(editUserUsernameAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        return dispatch(updateValidAuth(false));
-      }
-      throw error;
-    });
-  },
-  editUserPassword: (password) => {
-    const editUserPasswordAction = editUserPassword(password, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(editUserPasswordAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        return dispatch(updateValidAuth(false));
-      }
-      throw error;
-    });
-  },
+  editUserUsername: username => dispatch(editUserUsername(username, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  editUserPassword: password => dispatch(editUserPassword(password, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
 const UserSettingContainer = connect(

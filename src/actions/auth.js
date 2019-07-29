@@ -13,3 +13,19 @@ export const updateValidAuth = isValidAuth => ({
 export const logout = () => ({
   type: USER_LOGOUT,
 });
+
+// helper functions
+export const checkAuthError = dispatch => (error) => {
+  if (error.response.status === 401) {
+    // Authentication is no longer valid
+    dispatch(updateValidAuth(false));
+  } else {
+    throw error;
+  }
+};
+
+export const authHeader = cookies => ({
+  headers: {
+    Authorization: `JWT ${cookies.get('auth_jwt')}`,
+  },
+});

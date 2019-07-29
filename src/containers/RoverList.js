@@ -3,56 +3,24 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
 import { createRover, fetchRovers, removeRover } from '../actions/rover';
-import { updateValidAuth } from '../actions/auth';
+import { checkAuthError, authHeader } from '../actions/auth';
 import RoverList from '../components/RoverList';
 
 const mapStateToProps = ({ rover }) => ({ ...rover });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchRovers: (page) => {
-    const xhrOptions = {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    };
+    const xhrOptions = authHeader(cookies);
 
     if (page) {
       xhrOptions.params = { page };
     }
 
-    const fetchRoversAction = fetchRovers(xhrOptions);
-    return dispatch(fetchRoversAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
+    return dispatch(fetchRovers(xhrOptions)).catch(checkAuthError(dispatch));
   },
-  createRover: (settings) => {
-    const createRoverAction = createRover(settings, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(createRoverAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
-  removeRover: (id) => {
-    const removeRoverAction = removeRover(id, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(removeRoverAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  createRover: settings => dispatch(createRover(settings, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  removeRover: id => dispatch(removeRover(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
 const RoverListContainer = connect(

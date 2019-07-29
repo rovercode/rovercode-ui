@@ -527,7 +527,9 @@ describe('The Workspace component', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -560,7 +562,7 @@ describe('The Workspace component', () => {
         <div />
       </Workspace>, { context },
     ).dive();
-    wrapper.dive().props().saveProgram(1, '<xml></xml>', 'test').then(() => {
+    wrapper.dive().props().saveProgram(1, '<xml></xml>', 'test').catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         saveProgram(1, '<xml></xml>', 'test', {
@@ -578,7 +580,9 @@ describe('The Workspace component', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -611,7 +615,7 @@ describe('The Workspace component', () => {
         <div />
       </Workspace>, { context },
     ).dive();
-    wrapper.dive().props().createProgram('test').then(() => {
+    wrapper.dive().props().createProgram('test').catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         createProgram('test', {
@@ -629,7 +633,9 @@ describe('The Workspace component', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -662,7 +668,7 @@ describe('The Workspace component', () => {
         <div />
       </Workspace>, { context },
     ).dive();
-    wrapper.dive().props().fetchProgram(1).then(() => {
+    wrapper.dive().props().fetchProgram(1).catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchProgram(1, {
