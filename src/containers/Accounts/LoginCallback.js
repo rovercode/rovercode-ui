@@ -24,6 +24,7 @@ class LoginCallback extends Component {
     this.state = {
       loading: true,
       loginSuccess: false,
+      error: null,
     };
   }
 
@@ -46,17 +47,22 @@ class LoginCallback extends Component {
           loginSuccess: true,
         });
       })
-      .catch(() => {
+      .catch((error) => {
+        let errorMessage = null;
+        if (error.response) {
+          errorMessage = error.response.data.non_field_errors;
+        }
         this.setState({
           loading: false,
           loginSuccess: false,
+          error: errorMessage,
         });
       });
   }
 
   redirect = () => {
     const { intl } = this.props;
-    const { loading, loginSuccess } = this.state;
+    const { error, loading, loginSuccess } = this.state;
 
     const loggingIn = intl.formatMessage({
       id: 'app.login_callback.logging_in',
@@ -72,7 +78,13 @@ class LoginCallback extends Component {
       return <Redirect to="/" />;
     }
 
-    return <Redirect to="/accounts/login" />;
+    return (
+      <Redirect to={{
+        pathname: '/accounts/login',
+        state: { callbackError: error },
+      }}
+      />
+    );
   }
 
   render() {
