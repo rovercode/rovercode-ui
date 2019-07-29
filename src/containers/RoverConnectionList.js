@@ -12,24 +12,12 @@ import {
   changeLeftSensorState as actionChangeLeftSensorState,
   changeRightSensorState as actionChangeRightSensorState,
 } from '@/actions/sensor';
-import { updateValidAuth } from '@/actions/auth';
+import { checkAuthError, authHeader } from '@/actions/auth';
 import RoverConnectionList from '@/components/RoverConnectionList';
 
 const mapStateToProps = ({ rover }) => ({ ...rover });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  fetchRovers: () => {
-    const fetchRoversAction = fetchRovers({
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(fetchRoversAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  fetchRovers: () => dispatch(fetchRovers(authHeader(cookies))).catch(checkAuthError(dispatch)),
   changeLeftSensorState: state => dispatch(actionChangeLeftSensorState(state)),
   changeRightSensorState: state => dispatch(actionChangeRightSensorState(state)),
   changeActiveRover: clientId => dispatch(actionChangeActiveRover(clientId)),

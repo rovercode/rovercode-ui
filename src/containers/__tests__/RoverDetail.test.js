@@ -79,7 +79,9 @@ describe('The RoverDetailContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().fetchRover().then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -104,7 +106,9 @@ describe('The RoverDetailContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().editRover(1, rover).then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -127,7 +131,7 @@ describe('The RoverDetailContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().fetchRover().then(() => {
+    wrapper.dive().props().fetchRover().catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchRover({
@@ -151,7 +155,7 @@ describe('The RoverDetailContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().editRover(1, rover).then(() => {
+    wrapper.dive().props().editRover(1, rover).catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         editRover(1, rover, {
