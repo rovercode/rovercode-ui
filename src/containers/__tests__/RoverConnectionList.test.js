@@ -86,7 +86,9 @@ describe('The RoverListConnectionContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().fetchRovers().then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -109,7 +111,7 @@ describe('The RoverListConnectionContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().fetchRovers().then(() => {
+    wrapper.dive().props().fetchRovers().catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchRovers({

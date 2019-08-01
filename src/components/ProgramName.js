@@ -6,24 +6,13 @@ import { withCookies } from 'react-cookie';
 import { injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { updateValidAuth } from '@/actions/auth';
+import { checkAuthError, authHeader } from '@/actions/auth';
 import { changeName as actionChangeName } from '@/actions/code';
 
 const mapStateToProps = ({ code }) => ({ code });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  changeName: (id, name) => {
-    const changeNameAction = actionChangeName(id, name, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(changeNameAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  changeName: (id, name) => dispatch(actionChangeName(id, name, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
 class ProgramName extends Component {

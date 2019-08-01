@@ -22,6 +22,7 @@
   "app.login.password": "Contraseña",
   "app.login.sign_in": "Iniciar sesión",
   "app.login.social": "Puedes registrar / iniciar sesión con cuenta de terceros.",
+  "app.login.social_callback_error": "Ocurrió un error creando una cuenta con tu red social.",
   "app.login.social_contact_1": "Contactar",
   "app.login.social_contact_2": "para ayuda con ese problema.",
   "app.login.social_error": "Ocurrió un error al iniciar sesión social.",

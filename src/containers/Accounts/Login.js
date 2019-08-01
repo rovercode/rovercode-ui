@@ -74,7 +74,7 @@ class Login extends Component {
   }
 
   redirectToSocial = (element) => {
-    const service = element.target.id;
+    const service = element.target.parentNode.id || element.target.id;
     return axios.post(`/jwt/auth/social/${service}/auth-server/`)
       .then((response) => {
         const url = URL(response.data.url);
@@ -93,7 +93,7 @@ class Login extends Component {
   }
 
   render() {
-    const { intl } = this.props;
+    const { intl, location } = this.props;
     const { basicError, basicSuccess, socialError } = this.state;
 
     const usernamePlaceholder = intl.formatMessage({
@@ -152,6 +152,24 @@ class Login extends Component {
                       description="Second part of instructions for contacting support"
                       defaultMessage="for help with this issue."
                     />
+                  </p>
+                </Message>
+              </Grid.Row>
+            ) : (null)
+          }
+          {
+            location && location.state && location.state.callbackError ? (
+              <Grid.Row>
+                <Message negative>
+                  <Message.Header>
+                    <FormattedMessage
+                      id="app.login.social_callback_error"
+                      description="Notifies the user of an error in third-party registration"
+                      defaultMessage="There was an error creating an account using social provider."
+                    />
+                  </Message.Header>
+                  <p>
+                    {location.state.callbackError}
                   </p>
                 </Message>
               </Grid.Row>
@@ -254,11 +272,24 @@ class Login extends Component {
   }
 }
 
+Login.defaultProps = {
+  location: {
+    state: {
+      callbackError: null,
+    },
+  },
+};
+
 Login.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   updateUser: PropTypes.func.isRequired,
   updateValidAuth: PropTypes.func.isRequired,
   intl: intlShape.isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      callbackError: PropTypes.arrayOf(PropTypes.string),
+    }),
+  }),
 };
 
 export default withCookies(injectIntl(connect(null, mapDispatchToProps)(Login)));

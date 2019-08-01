@@ -45,6 +45,9 @@ test('Login redirects to social api on button click', async () => {
 
   const element = {
     target: {
+      parentNode: {
+        id: undefined,
+      },
       id: 'google',
     },
   };
@@ -69,6 +72,9 @@ test('Login shows error message on api error', async () => {
 
   const element = {
     target: {
+      parentNode: {
+        id: undefined,
+      },
       id: 'google',
     },
   };
@@ -87,6 +93,27 @@ test('Login shows error message on api error', async () => {
     'There was an error initiating social login.',
   );
   expect(window.location.assign).not.toBeCalled();
+});
+
+test('Login shows error message on callback error', () => {
+  const localLocation = {
+    pathname: '/login',
+    state: {
+      callbackError: ['User is already registered with this e-mail address'],
+    },
+  };
+
+  const cookiesWrapper = shallowWithIntl(<Login location={localLocation} store={store} />, {
+    context: { cookies },
+  });
+
+  const wrapper = cookiesWrapper.dive().dive().dive();
+
+  expect(wrapper.find(Message).exists()).toBe(true);
+  expect(wrapper.find(MessageHeader).children().find(FormattedMessage).prop('defaultMessage')).toBe(
+    'There was an error creating an account using social provider.',
+  );
+  expect(wrapper.find(Message).find('p').text()).toBe(localLocation.state.callbackError[0]);
 });
 
 test('Login redirects to root after basic login success', async () => {

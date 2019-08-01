@@ -14,7 +14,8 @@ import { createLogger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import createDebounce from 'redux-debounced';
 import * as Sentry from '@sentry/browser';
-import rootReducer from './reducers/index';
+import appReducers from './reducers/index';
+import { USER_LOGOUT } from './actions/auth';
 import AuthApi from './utils/auth-api';
 
 
@@ -71,6 +72,15 @@ const authApi = new AuthApi();
 const preloadedState = {
   user: authApi.userData(),
 };
+
+const rootReducer = (state, action) => {
+  if (action.type === USER_LOGOUT) {
+    state = undefined;
+  }
+
+  return appReducers(state, action);
+};
+
 const store = createStore(rootReducer, preloadedState, reduxMiddleware);
 
 // sets a reference to store @ window.store

@@ -22,6 +22,7 @@
   "app.login.password": "Password",
   "app.login.sign_in": "Sign In",
   "app.login.social": "You can sign up / sign in with one of your existing third-party accounts.",
+  "app.login.social_callback_error": "There was an error creating an account using social provider.",
   "app.login.social_contact_1": "Contact",
   "app.login.social_contact_2": "for help with this issue.",
   "app.login.social_error": "There was an error initiating social login.",

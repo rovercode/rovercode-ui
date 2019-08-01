@@ -8,7 +8,7 @@ import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
 import Interpreter from 'js-interpreter';
 
-import { updateValidAuth } from '@/actions/auth';
+import { checkAuthError, authHeader } from '@/actions/auth';
 import {
   updateJsCode as actionUpdateJsCode,
   updateXmlCode as actionUpdateXmlCode,
@@ -36,45 +36,13 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
   sendToRover: command => dispatch(pushCommand(command)),
   changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
-  saveProgram: (id, content, name) => {
-    const saveProgramAction = actionSaveProgram(id, content, name, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(saveProgramAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
-  createProgram: (name) => {
-    const createProgramAction = actionCreateProgram(name, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(createProgramAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
-  fetchProgram: (id) => {
-    const fetchProgramAction = actionFetchProgram(id, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(fetchProgramAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  saveProgram: (id, content, name) => dispatch(
+    actionSaveProgram(id, content, name, authHeader(cookies)),
+  ).catch(checkAuthError(dispatch)),
+  createProgram: name => dispatch(actionCreateProgram(name, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  fetchProgram: id => dispatch(actionFetchProgram(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
 const toolbox = `
