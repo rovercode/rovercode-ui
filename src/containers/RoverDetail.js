@@ -7,7 +7,7 @@ import { checkAuthError, authHeader } from '../actions/auth';
 import { fetchUserList } from '../actions/user';
 import RoverDetail from '../components/RoverDetail';
 
-const mapStateToProps = ({ rover }) => ({ ...rover });
+const mapStateToProps = ({ rover, user }) => ({ ...rover, user });
 const mapDispatchToProps = (dispatch, { cookies, match }) => ({
   id: parseInt(match.params.id, 10),
   editRover: (id, settings) => dispatch(editRover(id, settings, authHeader(cookies)))

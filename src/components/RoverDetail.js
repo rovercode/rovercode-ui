@@ -117,7 +117,12 @@ class RoverDetail extends Component {
   }
 
   render() {
-    const { intl, location, rover } = this.props;
+    const {
+      intl,
+      location,
+      rover,
+      user,
+    } = this.props;
     const {
       accordionActive,
       configError,
@@ -133,11 +138,12 @@ class RoverDetail extends Component {
       defaultMessage: 'Name:',
     });
 
-    const options = userList.map(user => ({
-      key: user.username,
-      text: user.username,
-      value: user.username,
+    let options = userList.map(userItem => ({
+      key: userItem.username,
+      text: userItem.username,
+      value: userItem.username,
     }));
+    options = options.filter(item => item.text !== user.username);
 
     return (
       <Grid centered divided="vertically" columns={16}>
@@ -278,6 +284,7 @@ class RoverDetail extends Component {
 RoverDetail.defaultProps = {
   location: null,
   rover: null,
+  user: null,
 };
 
 RoverDetail.propTypes = {
@@ -294,6 +301,9 @@ RoverDetail.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     config: PropTypes.object.isRequired,
+  }),
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
   }),
   intl: intlShape.isRequired,
 };

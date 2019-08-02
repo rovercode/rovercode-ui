@@ -16,6 +16,9 @@ import RoverDetail from '../RoverDetail';
 let fetchRover;
 let editRover;
 let fetchUserList;
+const user = {
+  username: 'testuser',
+};
 
 describe('The RoverDetail component', () => {
   beforeEach(() => {
@@ -57,6 +60,7 @@ describe('The RoverDetail component', () => {
     const wrapper = shallowWithIntl(
       <RoverDetail
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
         fetchUserList={fetchUserList}
@@ -73,6 +77,7 @@ describe('The RoverDetail component', () => {
           fetchRover={fetchRover}
           editRover={editRover}
           fetchUserList={fetchUserList}
+          user={user}
           id={1}
         />
       </MemoryRouter>,
@@ -101,6 +106,7 @@ describe('The RoverDetail component', () => {
       <RoverDetail
         location={location}
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
         fetchUserList={fetchUserList}
@@ -130,6 +136,7 @@ describe('The RoverDetail component', () => {
     const wrapper = shallowWithIntl(
       <RoverDetail
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
         fetchUserList={fetchUserList}
@@ -163,6 +170,7 @@ describe('The RoverDetail component', () => {
     const wrapper = shallowWithIntl(
       <RoverDetail
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
         fetchUserList={fetchUserList}
@@ -226,6 +234,7 @@ describe('The RoverDetail component', () => {
     const wrapper = shallowWithIntl(
       <RoverDetail
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
         fetchUserList={fetchUserList}
