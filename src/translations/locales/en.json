@@ -69,6 +69,7 @@
   "app.rover_detail.name": "Name:",
   "app.rover_detail.save": "Save",
   "app.rover_detail.saved": "Rover configuration saved",
+  "app.rover_detail.shared_user_label": "Share with:",
   "app.rover_list.cancel": "No",
   "app.rover_list.configure": "Configure",
   "app.rover_list.confirm": "Yes",
