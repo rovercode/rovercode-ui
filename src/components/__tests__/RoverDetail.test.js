@@ -2,6 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 import {
   Accordion,
+  Dropdown,
   Form,
   Header,
   Loader,
@@ -14,6 +15,7 @@ import RoverDetail from '../RoverDetail';
 
 let fetchRover;
 let editRover;
+let fetchUserList;
 
 describe('The RoverDetail component', () => {
   beforeEach(() => {
@@ -28,6 +30,16 @@ describe('The RoverDetail component', () => {
         name: 'Rover',
         config: {},
       },
+    }));
+    fetchUserList = jest.fn(() => Promise.resolve({
+      value: [
+        {
+          username: 'user1',
+        },
+        {
+          username: 'user2',
+        },
+      ],
     }));
   });
 
@@ -47,6 +59,7 @@ describe('The RoverDetail component', () => {
         rover={rover}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
     ).dive();
@@ -56,7 +69,12 @@ describe('The RoverDetail component', () => {
   test('fetches rover on mount', async () => {
     const wrapper = await mountWithIntl(
       <MemoryRouter>
-        <RoverDetail fetchRover={fetchRover} editRover={editRover} id={1} />
+        <RoverDetail
+          fetchRover={fetchRover}
+          editRover={editRover}
+          fetchUserList={fetchUserList}
+          id={1}
+        />
       </MemoryRouter>,
     );
     expect(fetchRover).toBeCalledWith(1);
@@ -85,6 +103,7 @@ describe('The RoverDetail component', () => {
         rover={rover}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
     ).dive();
@@ -113,6 +132,7 @@ describe('The RoverDetail component', () => {
         rover={rover}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
     ).dive();
@@ -145,6 +165,7 @@ describe('The RoverDetail component', () => {
         rover={rover}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
     ).dive();
@@ -163,6 +184,12 @@ describe('The RoverDetail component', () => {
         }),
       },
     });
+    wrapper.find(Dropdown).simulate('change', {}, {
+      value: [
+        'user1',
+        'user2',
+      ],
+    });
     wrapper.update();
     await wrapper.instance().saveRover();
 
@@ -178,6 +205,10 @@ describe('The RoverDetail component', () => {
         left_eye_port: 3,
         right_eye_port: 4,
       },
+      shared_users: [
+        'user1',
+        'user2',
+      ],
     });
   });
 
@@ -197,11 +228,12 @@ describe('The RoverDetail component', () => {
         rover={rover}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
     ).dive();
 
-    expect(wrapper.find(Form.Field).prop('error')).toBe(false);
+    expect(wrapper.find(Form.Field).first().prop('error')).toBe(false);
 
     wrapper.find(TextArea).simulate('change', {
       target: {
@@ -211,7 +243,7 @@ describe('The RoverDetail component', () => {
 
     wrapper.update();
 
-    expect(wrapper.find(Form.Field).prop('error')).toBe(true);
+    expect(wrapper.find(Form.Field).first().prop('error')).toBe(true);
 
     await wrapper.instance().saveRover();
     wrapper.update();

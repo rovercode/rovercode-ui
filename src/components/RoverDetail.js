@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {
   Accordion,
+  Dropdown,
   Form,
   Grid,
   Header,
@@ -22,6 +23,8 @@ class RoverDetail extends Component {
     this.state = {
       name: null,
       config: {},
+      sharedUsers: [],
+      userList: [],
       accordionActive: false,
       configError: false,
       saveError: false,
@@ -30,12 +33,15 @@ class RoverDetail extends Component {
   }
 
   componentDidMount() {
-    const { fetchRover, id } = this.props;
+    const { fetchRover, fetchUserList, id } = this.props;
 
-    return fetchRover(id).then(data => this.setState({
-      name: data.value.name,
-      config: data.value.config,
-    }));
+    return Promise.all([fetchRover(id), fetchUserList()])
+      .then(([roverData, userData]) => this.setState({
+        name: roverData.value.name,
+        config: roverData.value.config,
+        sharedUsers: roverData.value.shared_users,
+        userList: userData.value,
+      }));
   }
 
   saveRoverSuccess = () => {
@@ -50,7 +56,12 @@ class RoverDetail extends Component {
 
   saveRover = () => {
     const { editRover, id } = this.props;
-    const { config, configError, name } = this.state;
+    const {
+      config,
+      configError,
+      name,
+      sharedUsers,
+    } = this.state;
 
     if (configError) {
       this.setState({
@@ -68,6 +79,7 @@ class RoverDetail extends Component {
     return editRover(id, {
       name,
       config,
+      shared_users: sharedUsers,
     }).then(this.saveRoverSuccess);
   }
 
@@ -98,6 +110,12 @@ class RoverDetail extends Component {
     });
   }
 
+  handleSharedUserChange = (event, data) => {
+    this.setState({
+      sharedUsers: data.value,
+    });
+  }
+
   render() {
     const { intl, location, rover } = this.props;
     const {
@@ -105,6 +123,8 @@ class RoverDetail extends Component {
       configError,
       saveError,
       saveSuccess,
+      sharedUsers,
+      userList,
     } = this.state;
 
     const nameLabel = intl.formatMessage({
@@ -112,6 +132,12 @@ class RoverDetail extends Component {
       description: 'Label for rover name entry',
       defaultMessage: 'Name:',
     });
+
+    const options = userList.map(user => ({
+      key: user.username,
+      text: user.username,
+      value: user.username,
+    }));
 
     return (
       <Grid centered divided="vertically" columns={16}>
@@ -214,6 +240,21 @@ class RoverDetail extends Component {
                             </Accordion.Content>
                           </Accordion>
                         </Form.Field>
+                        <Form.Field>
+                          <FormattedMessage
+                            id="app.rover_detail.shared_user_label"
+                            description="Label for selecting users to share the rover with"
+                            defaultMessage="Share with:"
+                          />
+                          <Dropdown
+                            fluid
+                            multiple
+                            selection
+                            value={sharedUsers}
+                            options={options}
+                            onChange={this.handleSharedUserChange}
+                          />
+                        </Form.Field>
                         <Form.Button primary>
                           <FormattedMessage
                             id="app.rover_detail.save"
@@ -242,6 +283,7 @@ RoverDetail.defaultProps = {
 RoverDetail.propTypes = {
   editRover: PropTypes.func.isRequired,
   fetchRover: PropTypes.func.isRequired,
+  fetchUserList: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({

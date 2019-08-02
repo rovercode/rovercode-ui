@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
 import { editRover, fetchRover } from '../actions/rover';
 import { checkAuthError, authHeader } from '../actions/auth';
+import { fetchUserList } from '../actions/user';
 import RoverDetail from '../components/RoverDetail';
 
 const mapStateToProps = ({ rover }) => ({ ...rover });
@@ -12,6 +13,8 @@ const mapDispatchToProps = (dispatch, { cookies, match }) => ({
   editRover: (id, settings) => dispatch(editRover(id, settings, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
   fetchRover: id => dispatch(fetchRover(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  fetchUserList: () => dispatch(fetchUserList(authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
 });
 

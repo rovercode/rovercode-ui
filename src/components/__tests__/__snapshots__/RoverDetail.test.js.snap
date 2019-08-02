@@ -93,6 +93,34 @@ exports[`The RoverDetail component renders on the page with no errors 1`] = `
                 </AccordionContent>
               </Accordion>
             </FormField>
+            <FormField>
+              <FormattedMessage
+                defaultMessage="Share with:"
+                id="app.rover_detail.shared_user_label"
+                values={Object {}}
+              />
+              <Dropdown
+                additionLabel="Add "
+                additionPosition="top"
+                closeOnBlur={true}
+                deburr={false}
+                fluid={true}
+                icon="dropdown"
+                minCharacters={1}
+                multiple={true}
+                noResultsMessage="No results found."
+                onChange={[Function]}
+                openOnFocus={true}
+                options={Array []}
+                renderLabel={[Function]}
+                searchInput="text"
+                selectOnBlur={true}
+                selectOnNavigation={true}
+                selection={true}
+                value={Array []}
+                wrapSelection={true}
+              />
+            </FormField>
             <FormButton
               as={[Function]}
               control={[Function]}
