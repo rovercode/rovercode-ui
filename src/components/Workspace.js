@@ -258,6 +258,7 @@ class Workspace extends Component {
       },
       trashcan: true,
       readOnly: code.isReadOnly,
+      scrollbars: true,
     });
 
     workspace.addChangeListener(this.updateCode);
