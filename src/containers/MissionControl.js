@@ -16,6 +16,7 @@ import Console from '@/components/Console';
 import Control from '@/components/Control';
 import Indicator from '@/components/Indicator';
 import ProgramName from '@/components/ProgramName';
+import ProgramTags from '@/components/ProgramTags';
 import Workspace from '@/components/Workspace';
 
 const MissionControl = ({ location }) => (
@@ -31,6 +32,17 @@ const MissionControl = ({ location }) => (
           <Segment basic compact>
             <ProgramName location={location} />
           </Segment>
+        </Grid.Row>
+        <Divider />
+        <Grid.Row>
+          <Header as="h2" textAlign="center">
+            <FormattedMessage
+              id="app.mission_control.tags"
+              description="Header for list of the program's tags"
+              defaultMessage="Tags"
+            />
+          </Header>
+          <ProgramTags />
         </Grid.Row>
         <Divider />
         <Grid.Row>
