@@ -6,6 +6,9 @@ import {
   CHANGE_NAME,
   CHANGE_NAME_FULFILLED,
   CHANGE_NAME_REJECTED,
+  CHANGE_PROGRAM_TAGS,
+  CHANGE_PROGRAM_TAGS_FULFILLED,
+  CHANGE_PROGRAM_TAGS_REJECTED,
   CHANGE_ID,
   FETCH_PROGRAM,
   FETCH_PROGRAM_FULFILLED,
@@ -25,10 +28,12 @@ export default function code(
     execution: null,
     name: null,
     id: null,
+    tags: [],
     isFetching: false,
     isSaving: false,
     isCreating: false,
     isChangingName: false,
+    isChangingProgramTags: false,
     error: null,
     isReadOnly: false,
   },
@@ -67,6 +72,23 @@ export default function code(
         isChangingName: false,
         error: action.payload,
       };
+    case CHANGE_PROGRAM_TAGS:
+      return {
+        ...state,
+        isChangingProgramTags: true,
+      };
+    case CHANGE_PROGRAM_TAGS_FULFILLED:
+      return {
+        ...state,
+        isChangingProgramTags: false,
+        tags: action.payload.owner_tags,
+      };
+    case CHANGE_PROGRAM_TAGS_REJECTED:
+      return {
+        ...state,
+        isChangingProgramTags: false,
+        error: action.payload,
+      };
     case CHANGE_ID:
       return {
         ...state,
@@ -84,6 +106,7 @@ export default function code(
         xmlCode: action.payload.content,
         id: action.payload.id,
         name: action.payload.name,
+        tags: action.payload.owner_tags,
       };
     case FETCH_PROGRAM_REJECTED:
       return {

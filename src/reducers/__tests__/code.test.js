@@ -7,6 +7,9 @@ import {
   CHANGE_NAME,
   CHANGE_NAME_FULFILLED,
   CHANGE_NAME_REJECTED,
+  CHANGE_PROGRAM_TAGS,
+  CHANGE_PROGRAM_TAGS_FULFILLED,
+  CHANGE_PROGRAM_TAGS_REJECTED,
   CHANGE_ID,
   CHANGE_READ_ONLY,
   FETCH_PROGRAM,
@@ -92,6 +95,48 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       isChangingName: false,
+      error: { detail },
+    });
+  });
+
+  test('should handle CHANGE_PROGRAM_TAGS', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_PROGRAM_TAGS,
+      }),
+    ).toEqual({
+      isChangingProgramTags: true,
+    });
+  });
+
+  test('should handle CHANGE_PROGRAM_TAGS_FULFILLED', () => {
+    const tags = ['tag1', 'tag2'];
+
+    expect(
+      reducer({}, {
+        type: CHANGE_PROGRAM_TAGS_FULFILLED,
+        payload: {
+          owner_tags: tags,
+        },
+      }),
+    ).toEqual({
+      isChangingProgramTags: false,
+      tags,
+    });
+  });
+
+  test('should handle CHANGE_PROGRAM_TAGS_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: CHANGE_PROGRAM_TAGS_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isChangingProgramTags: false,
       error: { detail },
     });
   });
