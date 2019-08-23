@@ -70,7 +70,15 @@ const toolbox = `
       <category name="sensors" colour="160">
         <block type="sensors_get_covered"></block>
       </category>
-      <category name="colour" colour="20">
+      <category name="lights" colour="20">
+        <block type="chainable_rgb_led_set">
+          <value name="LED_ID">
+            <block type="math_number">
+              <field name="NUM">0</field>
+            </block>
+          </value>
+        </block>
+        <block type="colour_picker"></block>
         <block type="colour_random"></block>
         <block type="colour_rgb"></block>
         <block type="colour_blend"></block>
