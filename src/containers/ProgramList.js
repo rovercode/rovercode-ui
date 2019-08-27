@@ -5,9 +5,14 @@ import { withCookies, Cookies } from 'react-cookie';
 import { changeReadOnly as actionChangeReadOnly, fetchProgram } from '../actions/code';
 import { fetchPrograms, removeProgram } from '../actions/program';
 import { checkAuthError, authHeader } from '../actions/auth';
+import { fetchTags } from '../actions/tag';
 import ProgramList from '../components/ProgramList';
 
-const mapStateToProps = ({ code, program, user }) => ({ code, ...program, user });
+const mapStateToProps = ({
+  code, program, tag, user,
+}) => ({
+  code, ...program, tag, user,
+});
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchProgram: id => dispatch(fetchProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
@@ -21,6 +26,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   removeProgram: id => dispatch(removeProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
   changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
+  fetchTags: () => dispatch(fetchTags(authHeader(cookies))).catch(checkAuthError(dispatch)),
 });
 
 const ProgramListContainer = connect(
