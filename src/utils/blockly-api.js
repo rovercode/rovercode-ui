@@ -18,15 +18,12 @@ class BlocklyApi {
   }
 
   setChainableRgbLed = (blocklyLedId, blocklyColorHexString) => {
-    console.log('Setting the LED!');
     if (blocklyLedId === null || blocklyColorHexString === null) {
-      console.log('Missing something!');
       return;
     }
     const red = parseInt(blocklyColorHexString.substring(1, 3), 16);
     const green = parseInt(blocklyColorHexString.substring(3, 5), 16);
     const blue = parseInt(blocklyColorHexString.substring(5, 7), 16);
-    console.log(red, green, blue);
     this.sendToRover(JSON.stringify({
       type: 'chainable-rgb-led-command',
       'led-id': blocklyLedId,
@@ -72,15 +69,6 @@ class BlocklyApi {
     interpreter.setProperty(scope, 'stopMotor',
       interpreter.createNativeFunction(wrapper));
 
-    // Add set chainable RGB LED API function
-    wrapper = (ledId, colorHexString) => {
-      console.log('In the wrapper man!');
-      this.setChainableRgbLed(ledId.data, colorHexString.data);
-      return false;
-    };
-    interpreter.setProperty(scope, 'setChainableRgbLed',
-      interpreter.createNativeFunction(wrapper));
-
     // Add get sensor covered API function
     wrapper = (sensor) => {
       const sensorCovered = this.sensorStateCache[sensor];
@@ -97,6 +85,14 @@ class BlocklyApi {
       return false;
     };
     interpreter.setProperty(scope, 'sleep',
+      interpreter.createNativeFunction(wrapper));
+
+    // Add set chainable RGB LED API function
+    wrapper = (ledId, colorHexString) => {
+      this.setChainableRgbLed(ledId.data, colorHexString.data);
+      return false;
+    };
+    interpreter.setProperty(scope, 'setChainableRgbLed',
       interpreter.createNativeFunction(wrapper));
   }
 }
