@@ -98,7 +98,7 @@ const toolbox = `
         <block type="math_random_int"></block>
         <block type="math_random_float"></block>
       </category>
-      <category name="text" colour="20">
+      <category name="text" colour="160">
         <block type="text"></block>
         <block type="text_print"></block>
         <block type="text_append"></block>
