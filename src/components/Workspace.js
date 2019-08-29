@@ -318,7 +318,7 @@ class Workspace extends Component {
     this.updateJsCode();
     const xmlCode = this.updateXmlCode();
 
-    if (!code.isReadOnly) {
+    if (!code.isReadOnly && code.id) {
       saveProgram(code.id, xmlCode, code.name);
     }
   }
