@@ -22,16 +22,23 @@ class ProgramCollection extends Component {
       page: 1,
       searchQuery: null,
       ordering: 'name',
+      tagFilters: [],
     };
   }
 
   update = () => {
     const { onUpdate, owned } = this.props;
-    const { page, ordering, searchQuery } = this.state;
+    const {
+      page,
+      ordering,
+      searchQuery,
+      tagFilters,
+    } = this.state;
 
     const params = {
       page,
       ordering,
+      tag: tagFilters.join(),
     };
 
     if (searchQuery) {
@@ -68,6 +75,10 @@ class ProgramCollection extends Component {
     ordering: this.toggleOrdering(name),
   }, () => this.update())
 
+  handleTagFilterChange = (event, data) => this.setState({
+    tagFilters: data.value,
+  }, () => this.update())
+
   render() {
     const {
       label,
@@ -76,13 +87,20 @@ class ProgramCollection extends Component {
       programs,
       owned,
       intl,
+      tag,
     } = this.props;
-    const { ordering } = this.state;
+    const { ordering, tagFilters } = this.state;
 
     const searchPlaceholder = intl.formatMessage({
       id: 'app.program_collection.search',
       description: 'Placeholder for search entry',
       defaultMessage: 'Search...',
+    });
+
+    const tagFilterPlaceholder = intl.formatMessage({
+      id: 'app.program_collection.filter',
+      description: 'Placeholder for selecting tags used to filter',
+      defaultMessage: 'Tag filters...',
     });
 
     const sortText = intl.formatMessage({
@@ -93,16 +111,10 @@ class ProgramCollection extends Component {
 
     return (
       <Fragment>
-        <Grid centered columns={5}>
+        <Grid>
           <Grid.Row>
-            <Grid.Column />
-            <Grid.Column />
-            <Grid.Column>
-              <Header as="h1" textAlign="center">
-                {label}
-              </Header>
-            </Grid.Column>
-            <Grid.Column textAlign="right">
+            <Grid.Column width={2} />
+            <Grid.Column width={4}>
               <Input
                 className="prompt"
                 icon="search"
@@ -110,7 +122,13 @@ class ProgramCollection extends Component {
                 onChange={this.handleSearchChange}
               />
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column width={4}>
+              <Header as="h1" textAlign="center">
+                {label}
+              </Header>
+            </Grid.Column>
+            <Grid.Column width={1} />
+            <Grid.Column floated="right" width={2}>
               <Dropdown
                 text={sortText}
                 icon="sort"
@@ -136,6 +154,21 @@ class ProgramCollection extends Component {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
+            </Grid.Column>
+            <Grid.Column width={3}>
+              <Dropdown
+                multiple
+                selection
+                scrolling
+                placeholder={tagFilterPlaceholder}
+                value={tagFilters}
+                options={tag.tags.map(t => ({
+                  key: t.name,
+                  text: t.name,
+                  value: t.name,
+                }))}
+                onChange={this.handleTagFilterChange}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -219,6 +252,9 @@ class ProgramCollection extends Component {
 
 ProgramCollection.defaultProps = {
   owned: false,
+  tag: {
+    tags: [],
+  },
 };
 
 ProgramCollection.propTypes = {
@@ -236,6 +272,11 @@ ProgramCollection.propTypes = {
       }),
     ),
   }).isRequired,
+  tag: PropTypes.shape({
+    tags: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+    })),
+  }),
   label: PropTypes.string.isRequired,
   owned: PropTypes.bool,
   onProgramClick: PropTypes.func.isRequired,

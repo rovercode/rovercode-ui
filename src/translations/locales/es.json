@@ -43,6 +43,7 @@
   "app.password_reset_callback.new_password": "Introduzca una contraseña nueva para su cuenta.",
   "app.password_reset_callback.password": "Contraseña",
   "app.password_reset_callback.set": "Crear Contraseña",
+  "app.program_collection.filter": "Tag filters...",
   "app.program_collection.mine": "Mio",
   "app.program_collection.name": "Nombre",
   "app.program_collection.remove": "Quitar",

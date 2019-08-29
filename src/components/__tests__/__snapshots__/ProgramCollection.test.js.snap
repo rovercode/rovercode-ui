@@ -2,23 +2,13 @@
 
 exports[`The ProgramCollection component renders on the page with no errors 1`] = `
 <Fragment>
-  <Grid
-    centered={true}
-    columns={5}
-  >
+  <Grid>
     <GridRow>
-      <GridColumn />
-      <GridColumn />
-      <GridColumn>
-        <Header
-          as="h1"
-          textAlign="center"
-        >
-          My Programs
-        </Header>
-      </GridColumn>
       <GridColumn
-        textAlign="right"
+        width={2}
+      />
+      <GridColumn
+        width={4}
       >
         <Input
           className="prompt"
@@ -28,7 +18,23 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
           type="text"
         />
       </GridColumn>
-      <GridColumn>
+      <GridColumn
+        width={4}
+      >
+        <Header
+          as="h1"
+          textAlign="center"
+        >
+          My Programs
+        </Header>
+      </GridColumn>
+      <GridColumn
+        width={1}
+      />
+      <GridColumn
+        floated="right"
+        width={2}
+      >
         <Dropdown
           additionLabel="Add "
           additionPosition="top"
@@ -66,6 +72,32 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
+      </GridColumn>
+      <GridColumn
+        width={3}
+      >
+        <Dropdown
+          additionLabel="Add "
+          additionPosition="top"
+          closeOnBlur={true}
+          deburr={false}
+          icon="dropdown"
+          minCharacters={1}
+          multiple={true}
+          noResultsMessage="No results found."
+          onChange={[Function]}
+          openOnFocus={true}
+          options={Array []}
+          placeholder="Tag filters..."
+          renderLabel={[Function]}
+          scrolling={true}
+          searchInput="text"
+          selectOnBlur={true}
+          selectOnNavigation={true}
+          selection={true}
+          value={Array []}
+          wrapSelection={true}
+        />
       </GridColumn>
     </GridRow>
   </Grid>
