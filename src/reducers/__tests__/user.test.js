@@ -7,6 +7,9 @@ import {
   EDIT_USER_PASSWORD,
   EDIT_USER_PASSWORD_FULFILLED,
   EDIT_USER_PASSWORD_REJECTED,
+  FETCH_USER_LIST,
+  FETCH_USER_LIST_FULFILLED,
+  FETCH_USER_LIST_REJECTED,
 } from '../../actions/user';
 
 describe('The user reducer', () => {
@@ -43,10 +46,13 @@ describe('The user reducer', () => {
       email: null,
       exp: null,
       isSocial: false,
+      userList: [],
       isEditingUsername: true,
       isEditingPassword: false,
+      isFetchingUserList: false,
       editUsernameError: null,
       editPasswordError: null,
+      fetchUserListError: null,
     });
   });
 
@@ -92,10 +98,13 @@ describe('The user reducer', () => {
       email: null,
       exp: null,
       isSocial: false,
+      userList: [],
       isEditingUsername: false,
       isEditingPassword: true,
+      isFetchingUserList: false,
       editUsernameError: null,
       editPasswordError: null,
+      fetchUserListError: null,
     });
   });
 
@@ -125,6 +134,60 @@ describe('The user reducer', () => {
     ).toEqual({
       isEditingPassword: false,
       editPasswordError: error,
+    });
+  });
+
+  test('should handle FETCH_USER_LIST', () => {
+    expect(
+      reducer(undefined, {
+        type: FETCH_USER_LIST,
+      }),
+    ).toEqual({
+      user_id: null,
+      username: null,
+      email: null,
+      exp: null,
+      isSocial: false,
+      userList: [],
+      isEditingUsername: false,
+      isEditingPassword: false,
+      isFetchingUserList: true,
+      editUsernameError: null,
+      editPasswordError: null,
+      fetchUserListError: null,
+    });
+  });
+
+  test('should handle FETCH_USER_LIST_FULFILLED', () => {
+    const userList = [
+      {
+        username: 'user1',
+      },
+      {
+        username: 'user2',
+      },
+    ];
+    expect(
+      reducer({}, {
+        type: FETCH_USER_LIST_FULFILLED,
+        payload: userList,
+      }),
+    ).toEqual({
+      userList,
+      isFetchingUserList: false,
+    });
+  });
+
+  test('should handle FETCH_USER_LIST_REJECTED', () => {
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: FETCH_USER_LIST_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      isFetchingUserList: false,
+      fetchUserListError: error,
     });
   });
 

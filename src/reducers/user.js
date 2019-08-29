@@ -6,6 +6,9 @@ import {
   EDIT_USER_PASSWORD,
   EDIT_USER_PASSWORD_FULFILLED,
   EDIT_USER_PASSWORD_REJECTED,
+  FETCH_USER_LIST,
+  FETCH_USER_LIST_FULFILLED,
+  FETCH_USER_LIST_REJECTED,
 } from '../actions/user';
 
 export default function user(
@@ -15,10 +18,13 @@ export default function user(
     email: null,
     exp: null,
     isSocial: false,
+    userList: [],
     isEditingUsername: false,
     isEditingPassword: false,
+    isFetchingUserList: false,
     editUsernameError: null,
     editPasswordError: null,
+    fetchUserListError: null,
   },
   action,
 ) {
@@ -65,6 +71,23 @@ export default function user(
         ...state,
         isEditingPassword: false,
         editPasswordError: action.payload,
+      };
+    case FETCH_USER_LIST:
+      return {
+        ...state,
+        isFetchingUserList: true,
+      };
+    case FETCH_USER_LIST_FULFILLED:
+      return {
+        ...state,
+        isFetchingUserList: false,
+        userList: action.payload,
+      };
+    case FETCH_USER_LIST_REJECTED:
+      return {
+        ...state,
+        isFetchingUserList: false,
+        fetchUserListError: action.payload,
       };
     default:
       return state;

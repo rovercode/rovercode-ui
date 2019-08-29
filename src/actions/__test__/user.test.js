@@ -1,6 +1,11 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { editUserUsername, editUserPassword, updateUser } from '../user';
+import {
+  editUserUsername,
+  editUserPassword,
+  fetchUserList,
+  updateUser,
+} from '../user';
 
 
 describe('User actions', () => {
@@ -52,5 +57,25 @@ describe('User actions', () => {
 
     expect(type).toEqual('EDIT_USER_PASSWORD');
     expect(payload).toEqual('Password changed');
+  });
+  test('fetchUserList', async () => {
+    const mock = new MockAdapter(axios);
+    const userList = [
+      {
+        username: 'user1',
+      },
+      {
+        username: 'user2',
+      },
+    ];
+
+    mock.onGet('/api/v1/users/').reply(200, userList);
+
+    const action = fetchUserList();
+    const { type } = action;
+    const payload = await action.payload;
+
+    expect(type).toEqual('FETCH_USER_LIST');
+    expect(payload).toEqual(userList);
   });
 });
