@@ -6271,9 +6271,9 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-"node-blockly@git+https://github.com/rovercode/node-blockly.git#custom-blockly":
+"node-blockly@git+https://github.com/rovercode/node-blockly.git#670c2213b7b284863878d838f430b0f3c1933e10":
   version "1.0.35"
-  resolved "git+https://github.com/rovercode/node-blockly.git#47ba66f64edea8776679062311c38cfead48c607"
+  resolved "git+https://github.com/rovercode/node-blockly.git#670c2213b7b284863878d838f430b0f3c1933e10"
   dependencies:
     jsdom "^11.3.0"
     xmlshim "^0.2.1"
