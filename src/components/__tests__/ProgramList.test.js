@@ -10,6 +10,7 @@ let changeReadOnly;
 let fetchProgram;
 let fetchPrograms;
 let removeProgram;
+let fetchTags;
 
 describe('The ProgramList component', () => {
   beforeEach(() => {
@@ -17,6 +18,7 @@ describe('The ProgramList component', () => {
     fetchProgram = jest.fn(() => Promise.resolve({}));
     fetchPrograms = jest.fn(() => Promise.resolve({}));
     removeProgram = jest.fn(() => Promise.resolve({}));
+    fetchTags = jest.fn(() => Promise.resolve({}));
   });
 
   test('renders on the page with no errors', () => {
@@ -26,6 +28,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -46,6 +49,7 @@ describe('The ProgramList component', () => {
           fetchProgram={fetchProgram}
           fetchPrograms={fetchPrograms}
           removeProgram={removeProgram}
+          fetchTags={fetchTags}
           user={{ user_id: 1 }}
         />
       </MemoryRouter>,
@@ -82,6 +86,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -98,6 +103,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
         programs={null}
       />,
@@ -115,6 +121,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
         userPrograms={null}
       />,
@@ -132,6 +139,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -167,6 +175,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -228,6 +237,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -263,6 +273,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -298,6 +309,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -335,6 +347,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -372,6 +385,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -395,6 +409,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();
@@ -419,6 +434,7 @@ describe('The ProgramList component', () => {
         fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
+        fetchTags={fetchTags}
         user={{ user_id: 1 }}
       />,
     ).dive();

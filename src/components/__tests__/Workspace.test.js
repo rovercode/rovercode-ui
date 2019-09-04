@@ -38,6 +38,7 @@ describe('The Workspace component', () => {
         jsCode: '',
         execution: null,
         name: 'test program',
+        id: 1,
       },
       sensor: {
         left: NOT_COVERED,

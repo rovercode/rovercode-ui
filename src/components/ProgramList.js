@@ -29,12 +29,12 @@ class ProgramList extends Component {
   }
 
   componentDidMount() {
-    const { fetchPrograms, user } = this.props;
+    const { fetchPrograms, fetchTags, user } = this.props;
     return fetchPrograms({
       user: user.user_id,
     }).then(() => fetchPrograms({
       user__not: user.user_id,
-    }));
+    })).then(() => fetchTags());
   }
 
   showConfirm = e => this.setState({
@@ -95,10 +95,11 @@ class ProgramList extends Component {
     }
   }
 
-  programSegment = (programs, label, owned) => (
+  programSegment = (programs, tag, label, owned) => (
     <Segment raised style={{ margin: '10px 10% 10px 10%' }}>
       <ProgramCollection
         programs={programs}
+        tag={tag}
         label={label}
         owned={owned}
         onProgramClick={this.loadProgram}
@@ -109,7 +110,12 @@ class ProgramList extends Component {
   )
 
   render() {
-    const { intl, programs, userPrograms } = this.props;
+    const {
+      intl,
+      programs,
+      tag,
+      userPrograms,
+    } = this.props;
     const {
       confirmOpen,
       focusProgram,
@@ -175,12 +181,12 @@ class ProgramList extends Component {
         {
           userPrograms === null
             ? (<Loader active />)
-            : this.programSegment(userPrograms, myProgramsHeader, true)
+            : this.programSegment(userPrograms, tag, myProgramsHeader, true)
         }
         {
           programs === null
             ? (<Loader active />)
-            : this.programSegment(programs, otherProgramsHeader, false)
+            : this.programSegment(programs, tag, otherProgramsHeader, false)
         }
         <Confirm
           header={dialogHeader}
@@ -209,6 +215,9 @@ ProgramList.defaultProps = {
     total_pages: 1,
     results: [],
   },
+  tag: {
+    tags: [],
+  },
 };
 
 ProgramList.propTypes = {
@@ -216,6 +225,7 @@ ProgramList.propTypes = {
   fetchPrograms: PropTypes.func.isRequired,
   removeProgram: PropTypes.func.isRequired,
   changeReadOnly: PropTypes.func.isRequired,
+  fetchTags: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
   }).isRequired,
@@ -246,6 +256,11 @@ ProgramList.propTypes = {
         }).isRequired,
       }),
     ),
+  }),
+  tag: PropTypes.shape({
+    tags: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+    })),
   }),
   intl: intlShape.isRequired,
 };

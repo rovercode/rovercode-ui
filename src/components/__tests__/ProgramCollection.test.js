@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Button,
   Card,
+  Dropdown,
   Header,
   Input,
 } from 'semantic-ui-react';
@@ -248,6 +249,7 @@ describe('The ProgramCollection component', () => {
     expect(onUpdate).toHaveBeenCalledWith({
       page: 2,
       ordering: 'name',
+      tag: '',
     }, true);
   });
 
@@ -293,6 +295,7 @@ describe('The ProgramCollection component', () => {
       search: 'abc',
       page: 1,
       ordering: 'name',
+      tag: '',
     }, true);
   });
 
@@ -335,6 +338,7 @@ describe('The ProgramCollection component', () => {
     expect(onUpdate).toHaveBeenCalledWith({
       page: 1,
       ordering: '-name',
+      tag: '',
     }, true);
 
     wrapper.find({ name: 'name' }).simulate('click', null, {
@@ -344,6 +348,7 @@ describe('The ProgramCollection component', () => {
     expect(onUpdate).toHaveBeenCalledWith({
       page: 1,
       ordering: 'name',
+      tag: '',
     }, true);
 
     wrapper.instance().handleOrderingChange(null, {
@@ -353,6 +358,61 @@ describe('The ProgramCollection component', () => {
     expect(onUpdate).toHaveBeenCalledWith({
       page: 1,
       ordering: 'field_name',
+      tag: '',
+    }, true);
+  });
+
+  test('callback when tag changes', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }],
+    };
+
+    const tag = {
+      tags: [{
+        name: 'tag1',
+      }],
+    };
+
+    const wrapper = shallowWithIntl(
+      <ProgramCollection
+        programs={programs}
+        tag={tag}
+        label="My Programs"
+        owned
+        onProgramClick={onProgramClick}
+        onRemoveClick={onRemoveClick}
+        onUpdate={onUpdate}
+      />,
+    ).dive();
+
+    wrapper.find(Dropdown).last().simulate('change', {}, {
+      value: [
+        'tag1',
+        'tag2',
+      ],
+    });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 1,
+      ordering: 'name',
+      tag: 'tag1,tag2',
     }, true);
   });
 });

@@ -44,6 +44,11 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
           "total_pages": 1,
         }
       }
+      tag={
+        Object {
+          "tags": Array [],
+        }
+      }
     />
   </Segment>
   <Segment
@@ -66,6 +71,11 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
           "previous": null,
           "results": Array [],
           "total_pages": 1,
+        }
+      }
+      tag={
+        Object {
+          "tags": Array [],
         }
       }
     />

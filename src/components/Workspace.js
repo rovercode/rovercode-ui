@@ -70,7 +70,15 @@ const toolbox = `
       <category name="sensors" colour="160">
         <block type="sensors_get_covered"></block>
       </category>
-      <category name="colour" colour="20">
+      <category name="lights" colour="20">
+        <block type="chainable_rgb_led_set">
+          <value name="LED_ID">
+            <block type="math_number">
+              <field name="NUM">0</field>
+            </block>
+          </value>
+        </block>
+        <block type="colour_picker"></block>
         <block type="colour_random"></block>
         <block type="colour_rgb"></block>
         <block type="colour_blend"></block>
@@ -90,7 +98,7 @@ const toolbox = `
         <block type="math_random_int"></block>
         <block type="math_random_float"></block>
       </category>
-      <category name="text" colour="20">
+      <category name="text" colour="160">
         <block type="text"></block>
         <block type="text_print"></block>
         <block type="text_append"></block>
@@ -310,7 +318,7 @@ class Workspace extends Component {
     this.updateJsCode();
     const xmlCode = this.updateXmlCode();
 
-    if (!code.isReadOnly) {
+    if (!code.isReadOnly && code.id) {
       saveProgram(code.id, xmlCode, code.name);
     }
   }

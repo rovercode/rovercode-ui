@@ -7,6 +7,7 @@ import configureStore from 'redux-mock-store';
 import ProgramList from '../ProgramList';
 import { changeReadOnly, fetchProgram } from '../../actions/code';
 import { fetchPrograms, removeProgram } from '../../actions/program';
+import { fetchTags } from '../../actions/tag';
 import { updateValidAuth } from '../../actions/auth';
 
 const cookiesValues = { auth_jwt: '1234' };
@@ -140,6 +141,23 @@ describe('The ProgramListContainer', () => {
     mockAxios.restore();
   });
 
+  test('dispatches an action to fetch tags', () => {
+    const mockAxios = new MockAdapter(axios);
+
+    mockAxios.onGet('/api/v1/tags/').reply(200);
+    wrapper.dive().props().fetchTags();
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      fetchTags({
+        headers: {
+          Authorization: `JWT ${cookiesValues.auth_jwt}`,
+        },
+      }),
+    );
+
+    mockAxios.restore();
+  });
+
   test('handles authentication error fetching programs', (done) => {
     const error = new Error();
     error.response = {
@@ -209,6 +227,29 @@ describe('The ProgramListContainer', () => {
     });
   });
 
+  test('handles authentication error fetching tags', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 401,
+    };
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
+
+    wrapper.dive().props().fetchTags().then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        fetchTags({
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
   test('handles other error fetching programs', (done) => {
     const error = new Error();
     error.response = {
@@ -260,6 +301,26 @@ describe('The ProgramListContainer', () => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         removeProgram(1, {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
+  });
+
+  test('handles other error fetching tags', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    wrapper.dive().props().fetchTags().catch(() => {
+      expect(store.dispatch.mock.calls.length).toBe(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        fetchTags({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },

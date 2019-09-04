@@ -25,6 +25,7 @@ describe('The MissionControl container', () => {
     store = createStore(rootReducer, {
       code: {
         jsCode: 'testcode',
+        tags: [],
       },
       rover: {
         isFetching: false,

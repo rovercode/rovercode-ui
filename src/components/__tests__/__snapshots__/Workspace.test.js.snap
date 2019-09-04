@@ -340,6 +340,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         code={
           Object {
             "execution": null,
+            "id": 1,
             "jsCode": "",
             "name": "test program",
           }
