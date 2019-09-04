@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { logout as actionLogout } from '@/actions/auth';
-import TopNav from './TopNav';
 import { FormattedMessage } from 'react-intl';
 import { Segment } from 'semantic-ui-react';
+import TopNav from './TopNav';
 
 const mapStateToProps = ({ auth, user }) => ({ auth, user });
 const mapDispatchToProps = dispatch => ({
@@ -51,47 +51,46 @@ class ProtectedRoute extends Component {
 
         <Segment textAlign="center" raised style={{ margin: '10px 10% 10px 10%' }}>
           <h4>
+            <FormattedMessage
+              id="app.protected_route.conduct_message"
+              description="Rovercode Code of Conduct"
+              defaultMessage="All users must follow the "
+            />
+            <a href="asdf">
               <FormattedMessage
-                id="app.protected_route.conduct_message"
+                id="app.protected_route.conduct_link"
                 description="Rovercode Code of Conduct"
-                defaultMessage="All users must follow the "
+                defaultMessage="Rovercode Code of Conduct."
               />
-              <a href="asdf">
-                <FormattedMessage
-                  id="app.protected_route.conduct_link"
-                  description="Rovercode Code of Conduct"
-                  defaultMessage="Rovercode Code of Conduct."
-                />
-              </a>
+            </a>
           </h4>
           <h4>
-              <FormattedMessage
-                id="app.protected_route.inappropriate_message"
-                description="Instructions for what a student should do if they experience harassment"
-                defaultMessage="If you see in appropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
-                />
+            <FormattedMessage
+              id="app.protected_route.inappropriate_message"
+              description="Instructions for what a student should do if they experience harassment"
+              defaultMessage="If you see in appropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
+            />
           </h4>
           <h4>
-              <FormattedMessage
-                id="app.protected_route.teachers_message"
-                description="Teacher conduct reporting link"
-                defaultMessage="Teachers, visit "
-              />
-          <a href="asdf">
+            <FormattedMessage
+              id="app.protected_route.teachers_message"
+              description="Teacher conduct reporting link"
+              defaultMessage="Teachers, visit "
+            />
+            <a href="asdf">
               <FormattedMessage
                 id="app.protected_route.teachers_link"
                 description="Teacher conduct reporting link"
                 defaultMessage="this page "
               />
-          </a>
-              <FormattedMessage
-                id="app.protected_route.teachers_secondmessage"
-                description="Teacher conduct reporting link"
-                defaultMessage="to report the issue."
-              />
+            </a>
+            <FormattedMessage
+              id="app.protected_route.teachers_secondmessage"
+              description="Teacher conduct reporting link"
+              defaultMessage="to report the issue."
+            />
           </h4>
         </Segment>
-      
       </Fragment>
     );
   }
