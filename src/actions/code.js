@@ -24,6 +24,7 @@ export const CHANGE_PROGRAM_TAGS_FULFILLED = `${CHANGE_PROGRAM_TAGS}_FULFILLED`;
 export const CHANGE_PROGRAM_TAGS_REJECTED = `${CHANGE_PROGRAM_TAGS}_REJECTED`;
 export const CHANGE_ID = 'CHANGE_ID';
 export const CHANGE_READ_ONLY = 'CHANGE_READ_ONLY';
+export const CLEAR_PROGRAM = 'CLEAR_PROGRAM';
 
 // Execution States
 export const EXECUTION_RUN = 1;
@@ -105,4 +106,8 @@ export const changeProgramTags = (id, tags, xhroptions) => ({
 export const changeReadOnly = isReadOnly => ({
   type: CHANGE_READ_ONLY,
   payload: isReadOnly,
+});
+
+export const clearProgram = () => ({
+  type: CLEAR_PROGRAM,
 });

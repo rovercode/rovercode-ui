@@ -19,24 +19,27 @@ import {
   CREATE_PROGRAM,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
+  CLEAR_PROGRAM,
 } from '../actions/code';
 
+const defaultState = {
+  jsCode: null,
+  xmlCode: null,
+  execution: null,
+  name: null,
+  id: null,
+  tags: [],
+  isFetching: false,
+  isSaving: false,
+  isCreating: false,
+  isChangingName: false,
+  isChangingProgramTags: false,
+  error: null,
+  isReadOnly: false,
+};
+
 export default function code(
-  state = {
-    jsCode: null,
-    xmlCode: null,
-    execution: null,
-    name: null,
-    id: null,
-    tags: [],
-    isFetching: false,
-    isSaving: false,
-    isCreating: false,
-    isChangingName: false,
-    isChangingProgramTags: false,
-    error: null,
-    isReadOnly: false,
-  },
+  state = defaultState,
   action,
 ) {
   switch (action.type) {
@@ -157,6 +160,8 @@ export default function code(
         ...state,
         isReadOnly: action.payload,
       };
+    case CLEAR_PROGRAM:
+      return defaultState;
     default:
       return state;
   }

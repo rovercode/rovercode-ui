@@ -29,7 +29,15 @@ class ProgramList extends Component {
   }
 
   componentDidMount() {
-    const { fetchPrograms, fetchTags, user } = this.props;
+    const {
+      clearProgram,
+      fetchPrograms,
+      fetchTags,
+      user,
+    } = this.props;
+
+    clearProgram();
+
     return fetchPrograms({
       user: user.user_id,
     }).then(() => fetchPrograms({
@@ -226,6 +234,7 @@ ProgramList.propTypes = {
   removeProgram: PropTypes.func.isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   fetchTags: PropTypes.func.isRequired,
+  clearProgram: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
   }).isRequired,

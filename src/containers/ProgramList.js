@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
-import { changeReadOnly as actionChangeReadOnly, fetchProgram } from '../actions/code';
+import { changeReadOnly as actionChangeReadOnly, clearProgram, fetchProgram } from '../actions/code';
 import { fetchPrograms, removeProgram } from '../actions/program';
 import { checkAuthError, authHeader } from '../actions/auth';
 import { fetchTags } from '../actions/tag';
@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     .catch(checkAuthError(dispatch)),
   changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
   fetchTags: () => dispatch(fetchTags(authHeader(cookies))).catch(checkAuthError(dispatch)),
+  clearProgram: () => dispatch(clearProgram()),
 });
 
 const ProgramListContainer = connect(

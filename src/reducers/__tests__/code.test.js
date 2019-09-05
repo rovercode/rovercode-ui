@@ -21,6 +21,7 @@ import {
   CREATE_PROGRAM,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
+  CLEAR_PROGRAM,
 } from '../../actions/code';
 
 describe('The code reducer', () => {
@@ -304,6 +305,29 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       isReadOnly: true,
+    });
+  });
+
+  test('should handle CLEAR_PROGRAM', () => {
+    expect(
+      reducer({}, {
+        type: CLEAR_PROGRAM,
+        payload: undefined,
+      }),
+    ).toEqual({
+      jsCode: null,
+      xmlCode: null,
+      execution: null,
+      name: null,
+      id: null,
+      tags: [],
+      isFetching: false,
+      isSaving: false,
+      isCreating: false,
+      isChangingName: false,
+      isChangingProgramTags: false,
+      error: null,
+      isReadOnly: false,
     });
   });
 
