@@ -344,14 +344,13 @@ class Workspace extends Component {
   }
 
   stepCode = () => {
-    const { changeExecutionState } = this.props;
     const { interpreter, workspace } = this.state;
 
     const ok = interpreter.step();
     if (!ok) {
       // Program complete, no more code to execute.
       workspace.highlightBlock(null);
-      changeExecutionState(EXECUTION_STOP);
+      this.resetCode();
       return false;
     }
 
