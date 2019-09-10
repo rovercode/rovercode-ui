@@ -60,7 +60,7 @@ describe('The RoverConnection component', () => {
     );
 
     expect(wrapper.find(Card).length).toBe(1);
-    expect(wrapper.find(Card).first().prop('color')).toBe('blue');
+    expect(wrapper.find(Card).first().hasClass('highlight')).toBe(true);
     expect(wrapper.find(Card.Meta).first().children().find(FormattedMessage)
       .prop('defaultMessage')).toBe('Active');
     expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
@@ -87,7 +87,7 @@ describe('The RoverConnection component', () => {
     );
 
     expect(wrapper.find(Card).length).toBe(1);
-    expect(wrapper.find(Card).first().prop('color')).toBeNull();
+    expect(wrapper.find(Card).first().hasClass('highlight')).toBe(false);
     expect(wrapper.find(Card.Meta).first().children().find(FormattedMessage)
       .prop('defaultMessage')).toBe('Inactive');
     expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
