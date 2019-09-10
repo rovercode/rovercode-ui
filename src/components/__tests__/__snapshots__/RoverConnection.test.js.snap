@@ -3,7 +3,7 @@
 exports[`The RoverConnection component renders on the page with no errors 1`] = `
 <Fragment>
   <Card
-    color="blue"
+    className="highlight"
     onClick={[Function]}
   >
     <CardContent>

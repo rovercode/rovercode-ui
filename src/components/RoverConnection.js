@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import Websocket from 'react-websocket';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 
+import '@/css/card.css';
+
 const heartbeatTimeout = 8000; // milliseconds
 
 class RoverConnection extends Component {
@@ -89,7 +91,7 @@ class RoverConnection extends Component {
 
     return (
       <Fragment>
-        <Card color={isActive ? 'blue' : null} onClick={this.setActive}>
+        <Card className={isActive ? 'highlight' : null} onClick={this.setActive}>
           <Card.Content>
             <Label corner="right" style={{ borderColor: 'white' }}>
               {
