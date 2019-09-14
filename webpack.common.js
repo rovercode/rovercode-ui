@@ -82,13 +82,4 @@ module.exports = {
     }),
   ],
   devtool: 'source-map',
-  devServer: {
-    hot: true,
-    historyApiFallback: true,
-    contentBase: './',
-    proxy: {
-      '/api': 'http://localhost:8000',
-      '/jwt': 'http://localhost:8000',
-    },
-  },
 };

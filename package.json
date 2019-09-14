@@ -8,7 +8,8 @@
   "license": "GPL-3.0",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server --hot --mode development",
+    "start:local": "webpack-dev-server --hot --mode development --config webpack.local.js",
+    "start:alpha": "webpack-dev-server --hot --mode development --config webpack.alpha.js",
     "build": "webpack --mode production",
     "i18n:manage": "node src/translations/runner.js",
     "test": "jest --coverage --color",
@@ -74,7 +75,8 @@
     "webapp-webpack-plugin": "^2.6.0",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "@sentry/browser": "^4.6.4",
