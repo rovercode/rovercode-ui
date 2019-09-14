@@ -13,8 +13,8 @@
     "build": "webpack --config webpack.production.js",
     "i18n:manage": "node src/translations/runner.js",
     "test": "jest --coverage --color",
-    "lint": "eslint webpack.config* src --color --format stylish",
-    "lint:fix": "eslint webpack.config* src --fix --color --format stylish"
+    "lint": "eslint webpack.* src --color --format stylish",
+    "lint:fix": "eslint webpack.* src --fix --color --format stylish"
   },
   "jest": {
     "snapshotSerializers": [
