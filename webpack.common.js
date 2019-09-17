@@ -1,8 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const WebappWebpackPlugin = require('webapp-webpack-plugin');
-const path = require('path'); // eslint-disable-line import/no-extraneous-dependencies
+const path = require('path');
 
 module.exports = {
   output: {
@@ -82,13 +84,4 @@ module.exports = {
     }),
   ],
   devtool: 'source-map',
-  devServer: {
-    hot: true,
-    historyApiFallback: true,
-    contentBase: './',
-    proxy: {
-      '/api': 'http://localhost:8000',
-      '/jwt': 'http://localhost:8000',
-    },
-  },
 };
