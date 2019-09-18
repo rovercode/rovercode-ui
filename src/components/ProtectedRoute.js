@@ -48,45 +48,45 @@ class ProtectedRoute extends Component {
             )
           )}
         />
-        <Divider section/>
-        <div textalign="center" style={{ margin: '10px 10% 10px 10%' }}>
+        <Divider section />
+        <div style={{ textAlign: 'center', margin: '10px 10% 10px 10%' }}>
           <p>
             <FormattedMessage
-                id="app.protected_route.conduct_message"
-                description="Rovercode Code of Conduct"
-                defaultMessage="All users must follow the "
-              />
+              id="app.protected_route.conduct_message"
+              description="Rovercode Code of Conduct"
+              defaultMessage="All users must follow the "
+            />
             <a href="asdf">
-                <FormattedMessage
-                  id="app.protected_route.conduct_link"
-                  description="Rovercode Code of Conduct"
-                  defaultMessage="Rovercode Code of Conduct."
-                />
-              </a>
-            <FormattedMessage
-                id="app.protected_route.inappropriate_message"
-                description="Instructions for what a student should do if they experience harassment"
-                defaultMessage=" If you see in appropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
+              <FormattedMessage
+                id="app.protected_route.conduct_link"
+                description="Rovercode Code of Conduct"
+                defaultMessage="Rovercode Code of Conduct."
               />
+            </a>
             <FormattedMessage
-                id="app.protected_route.teachers_message"
-                description="Teacher conduct reporting link"
-                defaultMessage=" Teachers, visit "
-              />
-           <a href="asdf">
-           <FormattedMessage
+              id="app.protected_route.inappropriate_message"
+              description="Instructions for what a student should do if they experience harassment"
+              defaultMessage=" If you see in appropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
+            />
+            <FormattedMessage
+              id="app.protected_route.teachers_message"
+              description="Teacher conduct reporting link"
+              defaultMessage=" Teachers, visit "
+            />
+            <a href="asdf">
+              <FormattedMessage
                 id="app.protected_route.teachers_link"
                 description="Teacher conduct reporting link"
                 defaultMessage="this page "
               />
-          </a>
-           <FormattedMessage
-                id="app.protected_route.teachers_secondmessage"
-                description="Teacher conduct reporting link"
-                defaultMessage="to report the issue."
-              />
+            </a>
+            <FormattedMessage
+              id="app.protected_route.teachers_secondmessage"
+              description="Teacher conduct reporting link"
+              defaultMessage="to report the issue."
+            />
           </p>
-          </div>
+        </div>
       </Fragment>
     );
   }
