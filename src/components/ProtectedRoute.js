@@ -49,7 +49,7 @@ class ProtectedRoute extends Component {
           )}
         />
         <Divider section />
-        <div style={{ textAlign: 'center', margin: '10px 10% 10px 10%' }}>
+        <div style={{ textAlign: 'center', margin: '10px 10% 10px 10%', paddingBottom: '20px' }}>
           <p>
             <FormattedMessage
               id="app.protected_route.conduct_message"
