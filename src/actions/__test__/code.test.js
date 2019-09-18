@@ -11,6 +11,7 @@ import {
   fetchProgram,
   saveProgram,
   createProgram,
+  clearProgram,
   EXECUTION_RUN,
 } from '../code';
 
@@ -158,5 +159,13 @@ describe('Code actions', () => {
 
     expect(type).toEqual('CHANGE_READ_ONLY');
     expect(payload).toEqual(true);
+  });
+
+  test('clearProgram', () => {
+    const action = clearProgram();
+    const { type, payload } = action;
+
+    expect(type).toEqual('CLEAR_PROGRAM');
+    expect(payload).toBeUndefined();
   });
 });
