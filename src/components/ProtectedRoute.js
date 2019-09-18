@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { logout as actionLogout } from '@/actions/auth';
 import { FormattedMessage } from 'react-intl';
-import { Segment } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 import TopNav from './TopNav';
 
 const mapStateToProps = ({ auth, user }) => ({ auth, user });
@@ -48,8 +48,8 @@ class ProtectedRoute extends Component {
             )
           )}
         />
-
-        <Segment textAlign="center" raised style={{ margin: '10px 10% 10px 10%' }}>
+        <Divider section/>
+        <div textalign="center" style={{ margin: '10px 10% 10px 10%' }}>
           <p>
             <FormattedMessage
                 id="app.protected_route.conduct_message"
@@ -63,19 +63,15 @@ class ProtectedRoute extends Component {
                   defaultMessage="Rovercode Code of Conduct."
                 />
               </a>
-          </p>
-          <p>
             <FormattedMessage
                 id="app.protected_route.inappropriate_message"
                 description="Instructions for what a student should do if they experience harassment"
-                defaultMessage="If you see in appropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
+                defaultMessage=" If you see in appropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
               />
-          </p>
-          <p>
             <FormattedMessage
                 id="app.protected_route.teachers_message"
                 description="Teacher conduct reporting link"
-                defaultMessage="Teachers, visit "
+                defaultMessage=" Teachers, visit "
               />
            <a href="asdf">
            <FormattedMessage
@@ -90,7 +86,7 @@ class ProtectedRoute extends Component {
                 defaultMessage="to report the issue."
               />
           </p>
-        </Segment>
+          </div>
       </Fragment>
     );
   }
