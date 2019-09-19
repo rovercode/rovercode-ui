@@ -24,7 +24,6 @@ exports[`SignUp renders on the page with no errors 1`] = `
           id="app.signup.check_1"
           values={Object {}}
         />
-        Already have an account? Then please
          
         <a
           href="/accounts/login"

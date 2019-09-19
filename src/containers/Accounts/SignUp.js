@@ -197,7 +197,6 @@ class SignUp extends Component {
                 description="First part of Checking if the user already has an account"
                 defaultMessage="Already have an account? Then please"
               />
-              Already have an account? Then please
               {' '}
               <a href="/accounts/login">
                 <FormattedMessage
