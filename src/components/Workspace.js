@@ -223,20 +223,12 @@ class Workspace extends Component {
     // https://developers.google.com/blockly/guides/configure/web/resizable
     const { workspace } = this.state;
 
-    // Compute the absolute coordinates and dimensions of blocklyArea.
     const blocklyArea = document.getElementById('blocklyDiv').parentNode;
-    let element = blocklyArea;
-    let x = 0;
-    let y = 0;
-    do {
-      x += element.offsetLeft;
-      y += element.offsetTop;
-      element = element.parentNode;
-    } while (element);
+
     // Position blocklyDiv over blocklyArea.
     if (this.editorDiv) {
-      this.editorDiv.style.left = `${x}px`;
-      this.editorDiv.style.top = `${y}px`;
+      this.editorDiv.style.left = '0px';
+      this.editorDiv.style.top = '0px';
       this.editorDiv.style.width = `${blocklyArea.offsetWidth}px`;
       this.editorDiv.style.height = `${blocklyArea.offsetHeight}px`;
     }
