@@ -468,7 +468,7 @@ class Workspace extends Component {
             </Grid>
           ) : (null)
         }
-        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv">
+        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ height: code.isReadOnly ? '80vh' : '90vh' }} id="blocklyDiv">
           <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
             { children }
           </div>

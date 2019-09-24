@@ -20,7 +20,7 @@ import ProgramTags from '@/components/ProgramTags';
 import Workspace from '@/components/Workspace';
 
 const MissionControl = ({ location }) => (
-  <Grid style={{ height: '90vh' }}>
+  <Grid>
     <Grid.Row>
       <Grid.Column width={3}>
         <Grid.Row>
