@@ -559,7 +559,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           id="blocklyDiv"
           style={
             Object {
-              "position": "absolute",
+              "height": "90vh",
             }
           }
         >
