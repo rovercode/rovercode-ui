@@ -53,7 +53,7 @@ class ProtectedRoute extends Component {
           <p>
             <FormattedMessage
               id="app.protected_route.conduct_message"
-              description="Rovercode Code of Conduct"
+              description="Description and link to inform the user of the location of the Rovercode Code of Conduct"
               defaultMessage="All users must follow the "
             />
             <a href="https://docs.rovercode.com/conduct/code-of-conduct">
@@ -70,7 +70,7 @@ class ProtectedRoute extends Component {
             />
             <FormattedMessage
               id="app.protected_route.teachers_message"
-              description="Teacher conduct reporting link"
+              description="Description and link to inform the teacher of where to report issues"
               defaultMessage=" Teachers, visit "
             />
             <a href="https://docs.rovercode.com/conduct/report">
