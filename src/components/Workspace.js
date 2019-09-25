@@ -223,20 +223,12 @@ class Workspace extends Component {
     // https://developers.google.com/blockly/guides/configure/web/resizable
     const { workspace } = this.state;
 
-    // Compute the absolute coordinates and dimensions of blocklyArea.
     const blocklyArea = document.getElementById('blocklyDiv').parentNode;
-    let element = blocklyArea;
-    let x = 0;
-    let y = 0;
-    do {
-      x += element.offsetLeft;
-      y += element.offsetTop;
-      element = element.parentNode;
-    } while (element);
+
     // Position blocklyDiv over blocklyArea.
     if (this.editorDiv) {
-      this.editorDiv.style.left = `${x}px`;
-      this.editorDiv.style.top = `${y}px`;
+      this.editorDiv.style.left = '0px';
+      this.editorDiv.style.top = '0px';
       this.editorDiv.style.width = `${blocklyArea.offsetWidth}px`;
       this.editorDiv.style.height = `${blocklyArea.offsetHeight}px`;
     }
@@ -476,7 +468,7 @@ class Workspace extends Component {
             </Grid>
           ) : (null)
         }
-        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv">
+        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ height: code.isReadOnly ? '80vh' : '90vh' }} id="blocklyDiv">
           <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
             { children }
           </div>

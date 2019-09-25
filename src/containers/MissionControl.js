@@ -20,13 +20,8 @@ import ProgramTags from '@/components/ProgramTags';
 import Workspace from '@/components/Workspace';
 
 const MissionControl = ({ location }) => (
-  <Grid style={{ height: '100vh' }}>
+  <Grid>
     <Grid.Row>
-      <Grid.Column width={13}>
-        <Workspace location={location}>
-          <Control />
-        </Workspace>
-      </Grid.Column>
       <Grid.Column width={3}>
         <Grid.Row>
           <Segment basic compact>
@@ -45,6 +40,24 @@ const MissionControl = ({ location }) => (
           <ProgramTags />
         </Grid.Row>
         <Divider />
+        <Grid.Row>
+          <Segment basic compact>
+            <CodeViewer>
+              <FormattedMessage
+                id="app.mission_control.show_code"
+                description="Button label for displaying user's code"
+                defaultMessage="Show Me The Code!"
+              />
+            </CodeViewer>
+          </Segment>
+        </Grid.Row>
+      </Grid.Column>
+      <Grid.Column width={10}>
+        <Workspace location={location}>
+          <Control />
+        </Workspace>
+      </Grid.Column>
+      <Grid.Column width={3}>
         <Grid.Row>
           <Header as="h2" textAlign="center">
             <FormattedMessage
@@ -81,18 +94,6 @@ const MissionControl = ({ location }) => (
           </Header>
           <Segment style={{ margin: '10px' }}>
             <Console />
-          </Segment>
-        </Grid.Row>
-        <Divider />
-        <Grid.Row>
-          <Segment basic compact>
-            <CodeViewer>
-              <FormattedMessage
-                id="app.mission_control.show_code"
-                description="Button label for displaying user's code"
-                defaultMessage="Show Me The Code!"
-              />
-            </CodeViewer>
           </Segment>
         </Grid.Row>
       </Grid.Column>
