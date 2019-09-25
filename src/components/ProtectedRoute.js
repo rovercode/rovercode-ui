@@ -66,7 +66,7 @@ class ProtectedRoute extends Component {
             <FormattedMessage
               id="app.protected_route.inappropriate_message"
               description="Instructions for what a student should do if they experience harassment"
-              defaultMessage=" If you see in appropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
+              defaultMessage=" If you see inappropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
             />
             <FormattedMessage
               id="app.protected_route.teachers_message"
