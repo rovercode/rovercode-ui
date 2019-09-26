@@ -1,5 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import { Button, Grid, Message } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import {
+  Button,
+  Container,
+  Grid,
+  Message,
+} from 'semantic-ui-react';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
@@ -436,7 +441,7 @@ class Workspace extends Component {
     const { children, code } = this.props;
 
     return (
-      <Fragment>
+      <Container style={{ height: code.isReadOnly ? '70vh' : '80vh' }}>
         {
           code.isReadOnly ? (
             <Grid verticalAlign="middle">
@@ -468,12 +473,12 @@ class Workspace extends Component {
             </Grid>
           ) : (null)
         }
-        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ height: code.isReadOnly ? '80vh' : '90vh' }} id="blocklyDiv">
+        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
           <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
             { children }
           </div>
         </div>
-      </Fragment>
+      </Container>
     );
   }
 }
