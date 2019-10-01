@@ -1,10 +1,14 @@
 import {
   CHANGE_EXECUTION_STATE,
+  CHANGE_READ_ONLY,
   UPDATE_JSCODE,
   UPDATE_XMLCODE,
   CHANGE_NAME,
   CHANGE_NAME_FULFILLED,
   CHANGE_NAME_REJECTED,
+  CHANGE_PROGRAM_TAGS,
+  CHANGE_PROGRAM_TAGS_FULFILLED,
+  CHANGE_PROGRAM_TAGS_REJECTED,
   CHANGE_ID,
   FETCH_PROGRAM,
   FETCH_PROGRAM_FULFILLED,
@@ -15,21 +19,27 @@ import {
   CREATE_PROGRAM,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
+  CLEAR_PROGRAM,
 } from '../actions/code';
 
+const defaultState = {
+  jsCode: null,
+  xmlCode: null,
+  execution: null,
+  name: null,
+  id: null,
+  tags: [],
+  isFetching: false,
+  isSaving: false,
+  isCreating: false,
+  isChangingName: false,
+  isChangingProgramTags: false,
+  error: null,
+  isReadOnly: false,
+};
+
 export default function code(
-  state = {
-    jsCode: null,
-    xmlCode: null,
-    execution: null,
-    name: null,
-    id: null,
-    isFetching: false,
-    isSaving: false,
-    isCreating: false,
-    isChangingName: false,
-    error: null,
-  },
+  state = defaultState,
   action,
 ) {
   switch (action.type) {
@@ -65,6 +75,23 @@ export default function code(
         isChangingName: false,
         error: action.payload,
       };
+    case CHANGE_PROGRAM_TAGS:
+      return {
+        ...state,
+        isChangingProgramTags: true,
+      };
+    case CHANGE_PROGRAM_TAGS_FULFILLED:
+      return {
+        ...state,
+        isChangingProgramTags: false,
+        tags: action.payload.owner_tags,
+      };
+    case CHANGE_PROGRAM_TAGS_REJECTED:
+      return {
+        ...state,
+        isChangingProgramTags: false,
+        error: action.payload,
+      };
     case CHANGE_ID:
       return {
         ...state,
@@ -82,6 +109,7 @@ export default function code(
         xmlCode: action.payload.content,
         id: action.payload.id,
         name: action.payload.name,
+        tags: action.payload.owner_tags,
       };
     case FETCH_PROGRAM_REJECTED:
       return {
@@ -127,6 +155,13 @@ export default function code(
         isCreating: false,
         error: action.payload,
       };
+    case CHANGE_READ_ONLY:
+      return {
+        ...state,
+        isReadOnly: action.payload,
+      };
+    case CLEAR_PROGRAM:
+      return defaultState;
     default:
       return state;
   }

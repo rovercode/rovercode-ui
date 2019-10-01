@@ -3,38 +3,19 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
 import { editRover, fetchRover } from '../actions/rover';
-import { updateValidAuth } from '../actions/auth';
+import { checkAuthError, authHeader } from '../actions/auth';
+import { fetchUserList } from '../actions/user';
 import RoverDetail from '../components/RoverDetail';
 
-const mapStateToProps = ({ rover }) => ({ ...rover });
+const mapStateToProps = ({ rover, user }) => ({ ...rover, user });
 const mapDispatchToProps = (dispatch, { cookies, match }) => ({
   id: parseInt(match.params.id, 10),
-  editRover: (id, settings) => {
-    const editRoverAction = editRover(id, settings, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(editRoverAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
-  fetchRover: (id) => {
-    const fetchRoverAction = fetchRover(id, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(fetchRoverAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  editRover: (id, settings) => dispatch(editRover(id, settings, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  fetchRover: id => dispatch(fetchRover(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  fetchUserList: () => dispatch(fetchUserList(authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
 const RoverDetailContainer = connect(

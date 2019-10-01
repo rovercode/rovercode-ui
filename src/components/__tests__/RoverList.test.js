@@ -7,7 +7,7 @@ import {
   Header,
   Loader,
 } from 'semantic-ui-react';
-import { shallow, mount } from 'enzyme';
+import { mountWithIntl, shallowWithIntl } from 'enzyme-react-intl';
 import CustomPagination from '../CustomPagination';
 import RoverList from '../RoverList';
 
@@ -41,14 +41,14 @@ describe('The RoverList component', () => {
         client_id: '5678',
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         rovers={rovers}
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -68,7 +68,7 @@ describe('The RoverList component', () => {
       }],
     };
     fetchRovers = jest.fn();
-    await mount(
+    await mountWithIntl(
       <MemoryRouter>
         <RoverList
           rovers={rovers}
@@ -96,14 +96,14 @@ describe('The RoverList component', () => {
         client_id: '5678',
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         rovers={rovers}
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
     await wrapper.instance().componentDidMount();
     wrapper.update();
 
@@ -127,14 +127,14 @@ describe('The RoverList component', () => {
       total_pages: 1,
       results: [],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         rovers={rovers}
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
     await wrapper.instance().componentDidMount();
     wrapper.update();
 
@@ -143,14 +143,14 @@ describe('The RoverList component', () => {
   });
 
   test('shows loader when fetching', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
         isFetching
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(Header).exists()).toBe(false);
     expect(wrapper.find(Loader).exists()).toBe(true);
@@ -171,14 +171,14 @@ describe('The RoverList component', () => {
         client_id: '5678',
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         rovers={rovers}
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
 
     wrapper.setState({
       newRoverName: 'Rovey',
@@ -214,14 +214,14 @@ describe('The RoverList component', () => {
         client_id: '5678',
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         rovers={rovers}
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
 
     wrapper.setState({
       focusRover: {
@@ -236,16 +236,20 @@ describe('The RoverList component', () => {
   });
 
   test('shows confirm dialog', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
 
     wrapper.instance().showConfirm({
       target: {
+        parentNode: {
+          id: undefined,
+          name: undefined,
+        },
         id: 1,
         name: 'Sparky',
       },
@@ -255,13 +259,13 @@ describe('The RoverList component', () => {
   });
 
   test('cancel dialog does not remove rover', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
 
     wrapper.instance().cancelRemove();
 
@@ -271,13 +275,13 @@ describe('The RoverList component', () => {
   });
 
   test('shows new rover dialog', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
 
     wrapper.instance().handleNewRoverOpen();
 
@@ -293,13 +297,13 @@ describe('The RoverList component', () => {
   });
 
   test('cancel dialog does not create rover', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
 
     wrapper.instance().handleNewRoverClose();
 
@@ -323,14 +327,14 @@ describe('The RoverList component', () => {
         client_id: '5678',
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         rovers={rovers}
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
 
     wrapper.find(CustomPagination).simulate('pageChange', null, {
       activePage: 2,
@@ -354,14 +358,14 @@ describe('The RoverList component', () => {
         client_id: '5678',
       }],
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverList
         rovers={rovers}
         createRover={createRover}
         fetchRovers={fetchRovers}
         removeRover={removeRover}
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(CustomPagination).exists()).toBe(false);
   });

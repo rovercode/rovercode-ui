@@ -8,6 +8,7 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
@@ -145,6 +146,7 @@ class SignUp extends Component {
   }
 
   render() {
+    const { intl } = this.props;
     const {
       success,
       usernameError,
@@ -152,6 +154,24 @@ class SignUp extends Component {
       password1Error,
       password2Error,
     } = this.state;
+
+    const passwordPlaceholder = intl.formatMessage({
+      id: 'app.signup.password',
+      description: 'Placeholder for password entry',
+      defaultMessage: 'Password',
+    });
+
+    const usernamePlaceholder = intl.formatMessage({
+      id: 'app.signup.username',
+      description: 'Placeholder for username entry',
+      defaultMessage: 'Username',
+    });
+
+    const emailPlaceholder = intl.formatMessage({
+      id: 'app.signup.email',
+      description: 'Placeholder for email entry',
+      defaultMessage: 'Email',
+    });
 
     return (
       <Fragment>
@@ -163,15 +183,27 @@ class SignUp extends Component {
         <Grid centered columns={16}>
           <Grid.Row>
             <Header size="huge">
-              Sign Up
+              <FormattedMessage
+                id="app.signup.header"
+                description="Header for sign up"
+                defaultMessage="Sign Up"
+              />
             </Header>
           </Grid.Row>
           <Grid.Row>
             <p>
-              Already have an account? Then please
+              <FormattedMessage
+                id="app.signup.check_1"
+                description="First part of Checking if the user already has an account"
+                defaultMessage="Already have an account? Then please"
+              />
               {' '}
               <a href="/accounts/login">
-                sign in.
+                <FormattedMessage
+                  id="app.signup.check_2"
+                  description="Second part of Checking if the user already has an account"
+                  defaultMessage="sign in."
+                />
               </a>
             </p>
           </Grid.Row>
@@ -180,12 +212,16 @@ class SignUp extends Component {
             <Grid.Column width={4}>
               <Segment raised secondary>
                 <Form floated="left" onSubmit={this.signUp}>
-                  <Form.Input required icon="user" iconPosition="left" placeholder="Username" onChange={this.handleUsernameChange} error={usernameError} />
-                  <Form.Input required icon="mail" iconPosition="left" placeholder="Email" onChange={this.handleEmailChange} error={emailError} />
-                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder="Password" onChange={this.handlePassword1Change} error={password1Error} />
-                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder="Password" onChange={this.handlePassword2Change} error={password2Error} />
+                  <Form.Input required icon="user" iconPosition="left" placeholder={usernamePlaceholder} onChange={this.handleUsernameChange} error={usernameError} />
+                  <Form.Input required icon="mail" iconPosition="left" placeholder={emailPlaceholder} onChange={this.handleEmailChange} error={emailError} />
+                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder={passwordPlaceholder} onChange={this.handlePassword1Change} error={password1Error} />
+                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder={passwordPlaceholder} onChange={this.handlePassword2Change} error={password2Error} />
                   <Form.Button primary type="submit">
-                    Sign Up
+                    <FormattedMessage
+                      id="app.signup.signup"
+                      description="Button label for initiating sign up"
+                      defaultMessage="Sign Up"
+                    />
                   </Form.Button>
                 </Form>
               </Segment>
@@ -200,6 +236,7 @@ class SignUp extends Component {
 SignUp.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   updateUser: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default withCookies(connect(null, mapDispatchToProps)(SignUp));
+export default withCookies(injectIntl(connect(null, mapDispatchToProps)(SignUp)));

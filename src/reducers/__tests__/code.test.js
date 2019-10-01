@@ -7,7 +7,11 @@ import {
   CHANGE_NAME,
   CHANGE_NAME_FULFILLED,
   CHANGE_NAME_REJECTED,
+  CHANGE_PROGRAM_TAGS,
+  CHANGE_PROGRAM_TAGS_FULFILLED,
+  CHANGE_PROGRAM_TAGS_REJECTED,
   CHANGE_ID,
+  CHANGE_READ_ONLY,
   FETCH_PROGRAM,
   FETCH_PROGRAM_FULFILLED,
   FETCH_PROGRAM_REJECTED,
@@ -17,6 +21,7 @@ import {
   CREATE_PROGRAM,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
+  CLEAR_PROGRAM,
 } from '../../actions/code';
 
 describe('The code reducer', () => {
@@ -91,6 +96,48 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       isChangingName: false,
+      error: { detail },
+    });
+  });
+
+  test('should handle CHANGE_PROGRAM_TAGS', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_PROGRAM_TAGS,
+      }),
+    ).toEqual({
+      isChangingProgramTags: true,
+    });
+  });
+
+  test('should handle CHANGE_PROGRAM_TAGS_FULFILLED', () => {
+    const tags = ['tag1', 'tag2'];
+
+    expect(
+      reducer({}, {
+        type: CHANGE_PROGRAM_TAGS_FULFILLED,
+        payload: {
+          owner_tags: tags,
+        },
+      }),
+    ).toEqual({
+      isChangingProgramTags: false,
+      tags,
+    });
+  });
+
+  test('should handle CHANGE_PROGRAM_TAGS_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: CHANGE_PROGRAM_TAGS_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isChangingProgramTags: false,
       error: { detail },
     });
   });
@@ -247,6 +294,40 @@ describe('The code reducer', () => {
     ).toEqual({
       isCreating: false,
       error: { detail },
+    });
+  });
+
+  test('should handle CHANGE_READ_ONLY', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_READ_ONLY,
+        payload: true,
+      }),
+    ).toEqual({
+      isReadOnly: true,
+    });
+  });
+
+  test('should handle CLEAR_PROGRAM', () => {
+    expect(
+      reducer({}, {
+        type: CLEAR_PROGRAM,
+        payload: undefined,
+      }),
+    ).toEqual({
+      jsCode: null,
+      xmlCode: null,
+      execution: null,
+      name: null,
+      id: null,
+      tags: [],
+      isFetching: false,
+      isSaving: false,
+      isCreating: false,
+      isChangingName: false,
+      isChangingProgramTags: false,
+      error: null,
+      isReadOnly: false,
     });
   });
 

@@ -1,5 +1,11 @@
-import React, { Fragment } from 'react';
-import { Message } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import {
+  Button,
+  Container,
+  Grid,
+  Message,
+} from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -7,13 +13,15 @@ import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
 import Interpreter from 'js-interpreter';
 
-import { updateValidAuth } from '@/actions/auth';
+import { checkAuthError, authHeader } from '@/actions/auth';
 import {
   updateJsCode as actionUpdateJsCode,
   updateXmlCode as actionUpdateXmlCode,
   changeExecutionState as actionChangeExecutionState,
   saveProgram as actionSaveProgram,
   createProgram as actionCreateProgram,
+  changeReadOnly as actionChangeReadOnly,
+  fetchProgram as actionFetchProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
@@ -23,7 +31,6 @@ import { append, clear } from '@/actions/console';
 import { pushCommand } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
-import ReadOnlyComponent from '@/components/ReadOnly';
 
 const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -33,32 +40,14 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   clearConsole: () => dispatch(clear()),
   updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
   sendToRover: command => dispatch(pushCommand(command)),
-  saveProgram: (id, content, name) => {
-    const saveProgramAction = actionSaveProgram(id, content, name, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(saveProgramAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
-  createProgram: (name) => {
-    const createProgramAction = actionCreateProgram(name, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(createProgramAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
+  saveProgram: (id, content, name) => dispatch(
+    actionSaveProgram(id, content, name, authHeader(cookies)),
+  ).catch(checkAuthError(dispatch)),
+  createProgram: name => dispatch(actionCreateProgram(name, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  fetchProgram: id => dispatch(actionFetchProgram(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
 const toolbox = `
@@ -86,7 +75,15 @@ const toolbox = `
       <category name="sensors" colour="160">
         <block type="sensors_get_covered"></block>
       </category>
-      <category name="colour" colour="20">
+      <category name="lights" colour="20">
+        <block type="chainable_rgb_led_set">
+          <value name="LED_ID">
+            <block type="math_number">
+              <field name="NUM">0</field>
+            </block>
+          </value>
+        </block>
+        <block type="colour_picker"></block>
         <block type="colour_random"></block>
         <block type="colour_rgb"></block>
         <block type="colour_blend"></block>
@@ -106,7 +103,7 @@ const toolbox = `
         <block type="math_random_int"></block>
         <block type="math_random_float"></block>
       </category>
-      <category name="text" colour="20">
+      <category name="text" colour="160">
         <block type="text"></block>
         <block type="text_print"></block>
         <block type="text_append"></block>
@@ -143,7 +140,7 @@ const toolbox = `
       </category>
     </xml>`;
 
-class Workspace extends ReadOnlyComponent {
+class Workspace extends Component {
   constructor(props) {
     super(props);
     const { sendToRover, writeToConsole } = this.props;
@@ -165,42 +162,23 @@ class Workspace extends ReadOnlyComponent {
   }
 
   componentDidMount() {
-    const {
-      code,
-      clearConsole,
-      sensor,
-      writeToConsole,
-    } = this.props;
+    const { clearConsole, intl, writeToConsole } = this.props;
+
+    const consoleStart = intl.formatMessage({
+      id: 'app.workspace.console',
+      description: 'Indicates that the console has started',
+      defaultMessage: 'console started',
+    });
 
     Blockly.HSV_SATURATION = 0.85;
     Blockly.HSV_VALUE = 0.9;
     Blockly.Flyout.prototype.CORNER_RADIUS = 0;
     Blockly.BlockSvg.START_HAT = true;
-    const workspace = Blockly.inject(this.editorDiv, {
-      toolbox,
-      zoom: {
-        controls: true,
-        wheel: false,
-        startScale: 1.0,
-        maxScale: 3,
-        minScale: 0.3,
-        scaleSpeed: 1.2,
-      },
-      trashcan: true,
-      readOnly: this.isReadOnly(),
-    });
 
-    workspace.addChangeListener(this.updateCode);
-
-    this.updateSensorStateCache(sensor.left, sensor.right);
-
-    this.setState({
-      workspace,
-    }, () => this.onWorkspaceAvailable(code.xmlCode));
+    this.createWorkspace();
 
     clearConsole();
-    window.addEventListener('resize', this.onResize, false);
-    writeToConsole('rovercode console started');
+    writeToConsole(`Rovercode ${consoleStart}`);
   }
 
   componentWillUpdate(nextProps) {
@@ -250,24 +228,53 @@ class Workspace extends ReadOnlyComponent {
     // https://developers.google.com/blockly/guides/configure/web/resizable
     const { workspace } = this.state;
 
-    // Compute the absolute coordinates and dimensions of blocklyArea.
     const blocklyArea = document.getElementById('blocklyDiv').parentNode;
-    let element = blocklyArea;
-    let x = 0;
-    let y = 0;
-    do {
-      x += element.offsetLeft;
-      y += element.offsetTop;
-      element = element.parentNode;
-    } while (element);
+
     // Position blocklyDiv over blocklyArea.
     if (this.editorDiv) {
-      this.editorDiv.style.left = `${x}px`;
-      this.editorDiv.style.top = `${y}px`;
+      this.editorDiv.style.left = '0px';
+      this.editorDiv.style.top = '0px';
       this.editorDiv.style.width = `${blocklyArea.offsetWidth}px`;
       this.editorDiv.style.height = `${blocklyArea.offsetHeight}px`;
     }
     Blockly.svgResize(workspace);
+  }
+
+  createWorkspace = () => {
+    const { code, sensor } = this.props;
+    const { workspace: oldWorkspace } = this.state;
+
+    // Clear any prior Blockly workspaces since `readOnly` cannot be changed
+    // https://groups.google.com/forum/#!topic/blockly/NCukwTKMR0U
+    if (oldWorkspace) {
+      const oldElements = document.getElementsByClassName('injectionDiv');
+      [...oldElements].forEach(element => element.remove());
+    }
+
+    const workspace = Blockly.inject(this.editorDiv, {
+      toolbox,
+      zoom: {
+        controls: true,
+        wheel: false,
+        startScale: 1.0,
+        maxScale: 3,
+        minScale: 0.3,
+        scaleSpeed: 1.2,
+      },
+      trashcan: true,
+      readOnly: code.isReadOnly,
+      scrollbars: true,
+    });
+
+    workspace.addChangeListener(this.updateCode);
+
+    this.updateSensorStateCache(sensor.left, sensor.right);
+
+    this.setState({
+      workspace,
+    }, () => this.onWorkspaceAvailable(code.xmlCode));
+
+    window.addEventListener('resize', this.onResize, false);
   }
 
   updateXmlCode = () => {
@@ -303,12 +310,12 @@ class Workspace extends ReadOnlyComponent {
   }
 
   updateCode = () => {
-    const { code, location: { state: { readOnly } }, saveProgram } = this.props;
+    const { code, saveProgram } = this.props;
 
     this.updateJsCode();
     const xmlCode = this.updateXmlCode();
 
-    if (!readOnly) {
+    if (!code.isReadOnly && code.id) {
       saveProgram(code.id, xmlCode, code.name);
     }
   }
@@ -334,14 +341,13 @@ class Workspace extends ReadOnlyComponent {
   }
 
   stepCode = () => {
-    const { changeExecutionState } = this.props;
     const { interpreter, workspace } = this.state;
 
     const ok = interpreter.step();
     if (!ok) {
       // Program complete, no more code to execute.
       workspace.highlightBlock(null);
-      changeExecutionState(EXECUTION_STOP);
+      this.resetCode();
       return false;
     }
 
@@ -411,27 +417,68 @@ class Workspace extends ReadOnlyComponent {
     this.updateCode();
   }
 
+  remix = () => {
+    const {
+      code,
+      changeReadOnly,
+      createProgram,
+      fetchProgram,
+      saveProgram,
+    } = this.props;
+
+    // Need to fetch the program again since the current code has editable="false" tags
+    return Promise.all([fetchProgram(code.id), createProgram(code.name)])
+      .then(([fetchData, createData]) => saveProgram(
+        createData.value.id, fetchData.value.content, createData.value.name,
+      ))
+      .then(() => {
+        changeReadOnly(false);
+        this.createWorkspace();
+      });
+  }
+
   render() {
-    const { children } = this.props;
+    const { children, code } = this.props;
 
     return (
-      <Fragment>
+      <Container style={{ height: code.isReadOnly ? '70vh' : '80vh' }}>
         {
-          this.isReadOnly() ? (
-            <Message info>
-              <Message.Header>
-                Read Only View
-              </Message.Header>
-              You are viewing another user&apos;s program in a read-only view.
-            </Message>
+          code.isReadOnly ? (
+            <Grid verticalAlign="middle">
+              <Grid.Column width={12}>
+                <Message info>
+                  <Message.Header>
+                    <FormattedMessage
+                      id="app.workspace.read_only_header"
+                      description="Header to indicate viewing in read only mode"
+                      defaultMessage="Read Only View"
+                    />
+                  </Message.Header>
+                  <FormattedMessage
+                    id="app.workspace.read_only_content"
+                    description="Informs the user that this program is another user's and cannot be edited"
+                    defaultMessage="You are viewing another user's program in a read-only view."
+                  />
+                </Message>
+              </Grid.Column>
+              <Grid.Column width={4}>
+                <Button primary size="huge" onClick={this.remix}>
+                  <FormattedMessage
+                    id="app.workspace.remix"
+                    description="Button label to copy other user's program for this user to edit"
+                    defaultMessage="Remix"
+                  />
+                </Button>
+              </Grid.Column>
+            </Grid>
           ) : (null)
         }
-        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} style={{ position: 'absolute' }} id="blocklyDiv">
+        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
           <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
             { children }
           </div>
         </div>
-      </Fragment>
+      </Container>
     );
   }
 }
@@ -439,6 +486,7 @@ class Workspace extends ReadOnlyComponent {
 Workspace.propTypes = {
   code: PropTypes.shape({
     jsCode: PropTypes.string,
+    isReadOnly: PropTypes.bool,
   }).isRequired,
   sensor: PropTypes.shape({
     left: PropTypes.number.isRequired,
@@ -453,6 +501,11 @@ Workspace.propTypes = {
   createProgram: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   sendToRover: PropTypes.func.isRequired,
+  changeReadOnly: PropTypes.func.isRequired,
+  fetchProgram: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(Workspace)));
+export default hot(module)(
+  withCookies(injectIntl(connect(mapStateToProps, mapDispatchToProps)(Workspace))),
+);

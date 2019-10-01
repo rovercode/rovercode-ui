@@ -7,6 +7,7 @@ import configureStore from 'redux-mock-store';
 import RoverDetail from '../RoverDetail';
 import { editRover, fetchRover } from '../../actions/rover';
 import { updateValidAuth } from '../../actions/auth';
+import { fetchUserList } from '../../actions/user';
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -74,12 +75,39 @@ describe('The RoverDetailContainer', () => {
     mockAxios.restore();
   });
 
+  test('dispatches an action to fetch user list', () => {
+    const userList = [
+      {
+        username: 'user1',
+      },
+      {
+        username: 'user2',
+      },
+    ];
+    const mockAxios = new MockAdapter(axios);
+
+    mockAxios.onDelete('/api/v1/users/').reply(200, userList);
+    wrapper.dive().props().fetchUserList();
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      fetchUserList({
+        headers: {
+          Authorization: `JWT ${cookiesValues.auth_jwt}`,
+        },
+      }),
+    );
+
+    mockAxios.restore();
+  });
+
   test('handles authentication error fetching rover', (done) => {
     const error = new Error();
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().fetchRover().then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -104,12 +132,37 @@ describe('The RoverDetailContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().editRover(1, rover).then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
       expect(store.dispatch).toHaveBeenCalledWith(
         editRover(1, rover, {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
+  test('handles authentication error fetching user list', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 401,
+    };
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
+
+    wrapper.dive().props().fetchUserList().then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        fetchUserList({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
@@ -127,7 +180,7 @@ describe('The RoverDetailContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().fetchRover().then(() => {
+    wrapper.dive().props().fetchRover().catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchRover({
@@ -151,10 +204,30 @@ describe('The RoverDetailContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().editRover(1, rover).then(() => {
+    wrapper.dive().props().editRover(1, rover).catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         editRover(1, rover, {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
+  });
+
+  test('handles other error fetching user list', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    store.dispatch = jest.fn(() => Promise.reject(error));
+
+    wrapper.dive().props().fetchUserList().catch(() => {
+      expect(store.dispatch.mock.calls.length).toBe(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        fetchUserList({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },

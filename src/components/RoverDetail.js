@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {
   Accordion,
+  Dropdown,
   Form,
   Grid,
   Header,
@@ -10,6 +11,7 @@ import {
   Segment,
   TextArea,
 } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import Credential from './Credential';
@@ -21,6 +23,8 @@ class RoverDetail extends Component {
     this.state = {
       name: null,
       config: {},
+      sharedUsers: [],
+      userList: [],
       accordionActive: false,
       configError: false,
       saveError: false,
@@ -29,12 +33,15 @@ class RoverDetail extends Component {
   }
 
   componentDidMount() {
-    const { fetchRover, id } = this.props;
+    const { fetchRover, fetchUserList, id } = this.props;
 
-    return fetchRover(id).then(data => this.setState({
-      name: data.value.name,
-      config: data.value.config,
-    }));
+    return Promise.all([fetchRover(id), fetchUserList()])
+      .then(([roverData, userData]) => this.setState({
+        name: roverData.value.name,
+        config: roverData.value.config,
+        sharedUsers: roverData.value.shared_users,
+        userList: userData.value,
+      }));
   }
 
   saveRoverSuccess = () => {
@@ -49,7 +56,12 @@ class RoverDetail extends Component {
 
   saveRover = () => {
     const { editRover, id } = this.props;
-    const { config, configError, name } = this.state;
+    const {
+      config,
+      configError,
+      name,
+      sharedUsers,
+    } = this.state;
 
     if (configError) {
       this.setState({
@@ -67,6 +79,7 @@ class RoverDetail extends Component {
     return editRover(id, {
       name,
       config,
+      shared_users: sharedUsers,
     }).then(this.saveRoverSuccess);
   }
 
@@ -97,20 +110,50 @@ class RoverDetail extends Component {
     });
   }
 
+  handleSharedUserChange = (event, data) => {
+    this.setState({
+      sharedUsers: data.value,
+    });
+  }
+
   render() {
-    const { location, rover } = this.props;
+    const {
+      intl,
+      location,
+      rover,
+      user,
+    } = this.props;
     const {
       accordionActive,
       configError,
       saveError,
       saveSuccess,
+      sharedUsers,
+      userList,
     } = this.state;
+
+    const nameLabel = intl.formatMessage({
+      id: 'app.rover_detail.name',
+      description: 'Label for rover name entry',
+      defaultMessage: 'Name:',
+    });
+
+    let options = userList.map(userItem => ({
+      key: userItem.username,
+      text: userItem.username,
+      value: userItem.username,
+    }));
+    options = options.filter(item => item.text !== user.username);
 
     return (
       <Grid centered divided="vertically" columns={16}>
         <Grid.Row>
           <Header as="h1">
-            Rover Settings
+            <FormattedMessage
+              id="app.rover_detail.header"
+              description="Header for rover settings"
+              defaultMessage="Rover Settings"
+            />
           </Header>
         </Grid.Row>
         <Grid.Row>
@@ -120,10 +163,18 @@ class RoverDetail extends Component {
                 <Grid.Row>
                   <Message negative>
                     <Message.Header>
-                      Error found in configuration
+                      <FormattedMessage
+                        id="app.rover_detail.error_config"
+                        description="Error message for invalid configuration"
+                        defaultMessage="Error found in configuration"
+                      />
                     </Message.Header>
                     <p>
-                      Please fix the error before saving.
+                      <FormattedMessage
+                        id="app.rover_detail.fix"
+                        description="Directs the user to fix the error before saving"
+                        defaultMessage="Please fix the error before saving."
+                      />
                     </p>
                   </Message>
                 </Grid.Row>
@@ -133,7 +184,11 @@ class RoverDetail extends Component {
               saveSuccess ? (
                 <Grid.Row>
                   <Message positive>
-                    Rover configuration saved
+                    <FormattedMessage
+                      id="app.rover_detail.saved"
+                      description="Notifies the user that the configuration was saved"
+                      defaultMessage="Rover configuration saved"
+                    />
                   </Message>
                 </Grid.Row>
               ) : (null)
@@ -143,7 +198,14 @@ class RoverDetail extends Component {
                 <Grid.Row>
                   <Message icon info>
                     <Icon name="arrow down" />
-                    {`Rover '${rover.name}' has been created. Click the button below to download the credentials.`}
+                    <FormattedMessage
+                      id="app.rover_detail.created"
+                      description="Notifies the user that the rover has been created"
+                      defaultMessage="Rover '{name}' has been created. Click the button below to download the credentials."
+                      values={{
+                        name: rover.name,
+                      }}
+                    />
                   </Message>
                 </Grid.Row>
               ) : (null)
@@ -161,7 +223,7 @@ class RoverDetail extends Component {
                       <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
                         <Form.Input
                           inline
-                          label="Name:"
+                          label={nameLabel}
                           defaultValue={rover.name}
                           onChange={this.handleNameChange}
                           required
@@ -170,7 +232,11 @@ class RoverDetail extends Component {
                           <Accordion>
                             <Accordion.Title active={accordionActive} onClick={this.handleClick}>
                               <Icon name="dropdown" />
-                              Advanced
+                              <FormattedMessage
+                                id="app.rover_detail.advanced"
+                                description="Button label to access advanced settings"
+                                defaultMessage="Advanced"
+                              />
                             </Accordion.Title>
                             <Accordion.Content active={accordionActive}>
                               <TextArea
@@ -180,8 +246,27 @@ class RoverDetail extends Component {
                             </Accordion.Content>
                           </Accordion>
                         </Form.Field>
+                        <Form.Field>
+                          <FormattedMessage
+                            id="app.rover_detail.shared_user_label"
+                            description="Label for selecting users to share the rover with"
+                            defaultMessage="Share with:"
+                          />
+                          <Dropdown
+                            fluid
+                            multiple
+                            selection
+                            value={sharedUsers}
+                            options={options}
+                            onChange={this.handleSharedUserChange}
+                          />
+                        </Form.Field>
                         <Form.Button primary>
-                          Save
+                          <FormattedMessage
+                            id="app.rover_detail.save"
+                            description="Button label to save settings"
+                            defaultMessage="Save"
+                          />
                         </Form.Button>
                       </Form>
                     </Segment>
@@ -199,11 +284,13 @@ class RoverDetail extends Component {
 RoverDetail.defaultProps = {
   location: null,
   rover: null,
+  user: null,
 };
 
 RoverDetail.propTypes = {
   editRover: PropTypes.func.isRequired,
   fetchRover: PropTypes.func.isRequired,
+  fetchUserList: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({
@@ -215,6 +302,10 @@ RoverDetail.propTypes = {
     name: PropTypes.string.isRequired,
     config: PropTypes.object.isRequired,
   }),
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }),
+  intl: intlShape.isRequired,
 };
 
-export default RoverDetail;
+export default injectIntl(RoverDetail);

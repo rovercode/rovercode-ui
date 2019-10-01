@@ -6,6 +6,7 @@ import {
   Modal,
 } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import fileDownload from 'js-file-download';
 
@@ -25,7 +26,11 @@ class Credential extends Component {
   downloadButton = () => (
     <Button onClick={this.handleDownloadOpen}>
       <Icon name="download" />
-      Download Credentials
+      <FormattedMessage
+        id="app.credential.open"
+        description="Button label to open credential dialog"
+        defaultMessage="Download Credentials"
+      />
     </Button>
   )
 
@@ -57,29 +62,57 @@ class Credential extends Component {
   }
 
   render() {
+    const { intl } = this.props;
     const { downloadOpen } = this.state;
+
+    const networkNameLabel = intl.formatMessage({
+      id: 'app.credential.name',
+      description: 'Label for WiFi access point name entry',
+      defaultMessage: 'Network Name:',
+    });
+
+    const networkPasswordLabel = intl.formatMessage({
+      id: 'app.credential.password',
+      description: 'Label for WiFi access point password entry',
+      defaultMessage: 'Network Password:',
+    });
 
     return (
       <Modal trigger={this.downloadButton()} open={downloadOpen} onClose={this.handleDownloadClose}>
         <Modal.Header>
-          Enter WiFi Credentials
+          <FormattedMessage
+            id="app.credential.header"
+            description="Header for entering WiFi access point and password"
+            defaultMessage="Enter WiFi Credentials"
+          />
         </Modal.Header>
         <Modal.Content>
           <p>
-            The credentials entered are only used for the configuration file for the rover.
-            This information does not leave the local browser and is not sent to the server.
+            <FormattedMessage
+              id="app.credential.description"
+              description="Explains to the user what happens with the entered WiFi access point and password"
+              defaultMessage="The credentials entered are only used for the configuration file for the rover. This information does not leave the local browser and is not sent to the server."
+            />
           </p>
           <Form id="apForm" onSubmit={this.downloadCredentials}>
-            <Form.Input inline label="Network Name:" onChange={this.handleNameChange} required />
-            <Form.Input inline label="Network Password:" type="password" onChange={this.handlePasswordChange} required />
+            <Form.Input inline label={networkNameLabel} onChange={this.handleNameChange} required />
+            <Form.Input inline label={networkPasswordLabel} type="password" onChange={this.handlePasswordChange} required />
           </Form>
         </Modal.Content>
         <Modal.Actions>
           <Button primary type="submit" form="apForm">
-            Download
+            <FormattedMessage
+              id="app.credential.download"
+              description="Button label to begin download of rover configuration"
+              defaultMessage="Download"
+            />
           </Button>
           <Button onClick={this.handleDownloadClose}>
-            Cancel
+            <FormattedMessage
+              id="app.credential.cancel"
+              description="Button label to cancel download of rover configuration"
+              defaultMessage="Cancel"
+            />
           </Button>
         </Modal.Actions>
       </Modal>
@@ -93,6 +126,7 @@ Credential.propTypes = {
     client_id: PropTypes.string.isRequired,
     client_secret: PropTypes.string.isRequired,
   }).isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default hot(module)(Credential);
+export default hot(module)(injectIntl(Credential));

@@ -2,6 +2,33 @@
 
 exports[`The Control component renders on the page with no errors 1`] = `
 <Connect(Control)
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "onError": [Function],
+      "textComponent": "span",
+      "timeZone": null,
+    }
+  }
   store={
     Object {
       "clearActions": [Function],
@@ -18,6 +45,33 @@ exports[`The Control component renders on the page with no errors 1`] = `
     code={
       Object {
         "execution": 3,
+      }
+    }
+    intl={
+      Object {
+        "defaultFormats": Object {},
+        "defaultLocale": "en",
+        "formatDate": [Function],
+        "formatHTMLMessage": [Function],
+        "formatMessage": [Function],
+        "formatNumber": [Function],
+        "formatPlural": [Function],
+        "formatRelative": [Function],
+        "formatTime": [Function],
+        "formats": Object {},
+        "formatters": Object {
+          "getDateTimeFormat": [Function],
+          "getMessageFormat": [Function],
+          "getNumberFormat": [Function],
+          "getPluralFormat": [Function],
+          "getRelativeFormat": [Function],
+        },
+        "locale": "en",
+        "messages": Object {},
+        "now": [Function],
+        "onError": [Function],
+        "textComponent": "span",
+        "timeZone": null,
       }
     }
     store={
@@ -71,7 +125,15 @@ exports[`The Control component renders on the page with no errors 1`] = `
           <div
             className="hidden content"
           >
-            Run
+            <FormattedMessage
+              defaultMessage="Run"
+              id="app.control.run"
+              values={Object {}}
+            >
+              <span>
+                Run
+              </span>
+            </FormattedMessage>
           </div>
         </ButtonContent>
         <ButtonContent
@@ -122,7 +184,15 @@ exports[`The Control component renders on the page with no errors 1`] = `
           <div
             className="hidden content"
           >
-            Step
+            <FormattedMessage
+              defaultMessage="Step"
+              id="app.control.step"
+              values={Object {}}
+            >
+              <span>
+                Step
+              </span>
+            </FormattedMessage>
           </div>
         </ButtonContent>
         <ButtonContent
@@ -173,7 +243,15 @@ exports[`The Control component renders on the page with no errors 1`] = `
           <div
             className="hidden content"
           >
-            Reset
+            <FormattedMessage
+              defaultMessage="Reset"
+              id="app.control.reset"
+              values={Object {}}
+            >
+              <span>
+                Reset
+              </span>
+            </FormattedMessage>
           </div>
         </ButtonContent>
         <ButtonContent

@@ -6,6 +6,7 @@ import {
   Loader,
   Segment,
 } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -13,7 +14,6 @@ import ProgramCollection from './ProgramCollection';
 
 const defaultState = {
   programLoaded: false,
-  programReadOnly: false,
   confirmOpen: false,
   focusProgram: {
     id: null,
@@ -29,19 +29,27 @@ class ProgramList extends Component {
   }
 
   componentDidMount() {
-    const { fetchPrograms, user } = this.props;
+    const {
+      clearProgram,
+      fetchPrograms,
+      fetchTags,
+      user,
+    } = this.props;
+
+    clearProgram();
+
     return fetchPrograms({
       user: user.user_id,
     }).then(() => fetchPrograms({
       user__not: user.user_id,
-    }));
+    })).then(() => fetchTags());
   }
 
   showConfirm = e => this.setState({
     confirmOpen: true,
     focusProgram: {
-      id: e.target.id,
-      name: e.target.name,
+      id: e.target.parentNode.id || e.target.id,
+      name: e.target.parentNode.name || e.target.name,
     },
   })
 
@@ -63,13 +71,20 @@ class ProgramList extends Component {
   }
 
   loadProgram = (e) => {
-    const { fetchProgram } = this.props;
-    const readOnly = e.target.dataset.owned === 'false';
+    const { changeReadOnly, fetchProgram } = this.props;
+    let program = e.target;
+    if (e.target.parentNode.id) {
+      program = e.target.parentNode;
+    }
+    const readOnly = program.dataset.owned === 'false';
 
-    fetchProgram(e.target.id).then(() => this.setState({
-      programLoaded: true,
-      programReadOnly: readOnly,
-    }));
+
+    fetchProgram(program.id).then(() => {
+      changeReadOnly(readOnly);
+      this.setState({
+        programLoaded: true,
+      });
+    });
   }
 
   fetch = (params, owned) => {
@@ -88,10 +103,11 @@ class ProgramList extends Component {
     }
   }
 
-  programSegment = (programs, label, owned) => (
-    <Segment raised style={{ margin: '10px' }}>
+  programSegment = (programs, tag, label, owned) => (
+    <Segment raised style={{ margin: '10px 10% 10px 10%' }}>
       <ProgramCollection
         programs={programs}
+        tag={tag}
         label={label}
         owned={owned}
         onProgramClick={this.loadProgram}
@@ -102,25 +118,70 @@ class ProgramList extends Component {
   )
 
   render() {
-    const { programs, userPrograms } = this.props;
+    const {
+      intl,
+      programs,
+      tag,
+      userPrograms,
+    } = this.props;
     const {
       confirmOpen,
       focusProgram,
       programLoaded,
-      programReadOnly,
     } = this.state;
+
+    const myProgramsHeader = intl.formatMessage({
+      id: 'app.program_list.my_programs',
+      description: 'Header for all of user\'s programs',
+      defaultMessage: 'My Programs',
+    });
+
+    const otherProgramsHeader = intl.formatMessage({
+      id: 'app.program_list.other_programs',
+      description: 'Header for finding other user\'s programs',
+      defaultMessage: 'Find More',
+    });
+
+    const cancelButtonText = intl.formatMessage({
+      id: 'app.program_list.cancel',
+      description: 'Button label to cancel removing program',
+      defaultMessage: 'No',
+    });
+
+    const confirmButtonText = intl.formatMessage({
+      id: 'app.program_list.confirm',
+      description: 'Button label to confirm removing program',
+      defaultMessage: 'Yes',
+    });
+
+    const dialogHeader = intl.formatMessage({
+      id: 'app.program_list.dialog_header',
+      description: 'Header for removing program confirmation dialog',
+      defaultMessage: 'Remove Program',
+    });
+
+    const dialogContent = intl.formatMessage({
+      id: 'app.program_list.dialog_content',
+      description: 'Asks the user to confirm removing program',
+      defaultMessage: 'Are you sure you want to remove {name}?',
+    }, {
+      name: focusProgram.name,
+    });
 
     return (
       <Fragment>
-        <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10px' }}>
+        <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10%' }}>
           <Icon name="plus" />
-          New Program
+          <FormattedMessage
+            id="app.program_list.new"
+            description="Button label to create new program"
+            defaultMessage="New Program"
+          />
         </Button>
         {
           programLoaded ? (
             <Redirect to={{
               pathname: '/mission-control',
-              state: { readOnly: programReadOnly },
             }}
             />
           ) : (null)
@@ -128,21 +189,21 @@ class ProgramList extends Component {
         {
           userPrograms === null
             ? (<Loader active />)
-            : this.programSegment(userPrograms, 'My Programs', true)
+            : this.programSegment(userPrograms, tag, myProgramsHeader, true)
         }
         {
           programs === null
             ? (<Loader active />)
-            : this.programSegment(programs, 'Find More', false)
+            : this.programSegment(programs, tag, otherProgramsHeader, false)
         }
         <Confirm
-          header="Remove Program"
-          content={`Are you sure you want to remove ${focusProgram.name}?`}
+          header={dialogHeader}
+          content={dialogContent}
           open={confirmOpen}
           onConfirm={this.removeProgram}
           onCancel={this.cancelRemove}
-          cancelButton="No"
-          confirmButton="Yes"
+          cancelButton={cancelButtonText}
+          confirmButton={confirmButtonText}
         />
       </Fragment>
     );
@@ -162,12 +223,18 @@ ProgramList.defaultProps = {
     total_pages: 1,
     results: [],
   },
+  tag: {
+    tags: [],
+  },
 };
 
 ProgramList.propTypes = {
   fetchProgram: PropTypes.func.isRequired,
   fetchPrograms: PropTypes.func.isRequired,
   removeProgram: PropTypes.func.isRequired,
+  changeReadOnly: PropTypes.func.isRequired,
+  fetchTags: PropTypes.func.isRequired,
+  clearProgram: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
   }).isRequired,
@@ -199,6 +266,12 @@ ProgramList.propTypes = {
       }),
     ),
   }),
+  tag: PropTypes.shape({
+    tags: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+    })),
+  }),
+  intl: intlShape.isRequired,
 };
 
-export default ProgramList;
+export default injectIntl(ProgramList);

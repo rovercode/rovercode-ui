@@ -1,0 +1,5 @@
+.ui.cards a.card.highlight,
+.ui.cards a.card.highlight:active,
+.ui.cards a.card.highlight:hover {
+  background-color: #cce6ff;
+}

@@ -1,7 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The Console component renders on the page with no errors 1`] = `
+exports[`The ProgramName component renders on the page with no errors 1`] = `
 <withCookies(Component)
+  intl={
+    Object {
+      "defaultFormats": Object {},
+      "defaultLocale": "en",
+      "formatDate": [Function],
+      "formatHTMLMessage": [Function],
+      "formatMessage": [Function],
+      "formatNumber": [Function],
+      "formatPlural": [Function],
+      "formatRelative": [Function],
+      "formatTime": [Function],
+      "formats": Object {},
+      "formatters": Object {
+        "getDateTimeFormat": [Function],
+        "getMessageFormat": [Function],
+        "getNumberFormat": [Function],
+        "getPluralFormat": [Function],
+        "getRelativeFormat": [Function],
+      },
+      "locale": "en",
+      "messages": Object {},
+      "now": [Function],
+      "onError": [Function],
+      "textComponent": "span",
+      "timeZone": null,
+    }
+  }
   store={
     Object {
       "clearActions": [Function],
@@ -13,7 +40,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
     }
   }
 >
-  <Connect(ProgramName)
+  <InjectIntl(Connect(ProgramName))
     allCookies={Object {}}
     cookies={
       Cookies {
@@ -23,6 +50,33 @@ exports[`The Console component renders on the page with no errors 1`] = `
         ],
         "cookies": Object {},
         "hooks": undefined,
+      }
+    }
+    intl={
+      Object {
+        "defaultFormats": Object {},
+        "defaultLocale": "en",
+        "formatDate": [Function],
+        "formatHTMLMessage": [Function],
+        "formatMessage": [Function],
+        "formatNumber": [Function],
+        "formatPlural": [Function],
+        "formatRelative": [Function],
+        "formatTime": [Function],
+        "formats": Object {},
+        "formatters": Object {
+          "getDateTimeFormat": [Function],
+          "getMessageFormat": [Function],
+          "getNumberFormat": [Function],
+          "getPluralFormat": [Function],
+          "getRelativeFormat": [Function],
+        },
+        "locale": "en",
+        "messages": Object {},
+        "now": [Function],
+        "onError": [Function],
+        "textComponent": "span",
+        "timeZone": null,
       }
     }
     store={
@@ -36,14 +90,8 @@ exports[`The Console component renders on the page with no errors 1`] = `
       }
     }
   >
-    <ProgramName
+    <Connect(ProgramName)
       allCookies={Object {}}
-      changeName={[Function]}
-      code={
-        Object {
-          "name": "test name",
-        }
-      }
       cookies={
         Cookies {
           "HAS_DOCUMENT_COOKIE": true,
@@ -54,11 +102,31 @@ exports[`The Console component renders on the page with no errors 1`] = `
           "hooks": undefined,
         }
       }
-      location={
+      intl={
         Object {
-          "state": Object {
-            "readOnly": false,
+          "defaultFormats": Object {},
+          "defaultLocale": "en",
+          "formatDate": [Function],
+          "formatHTMLMessage": [Function],
+          "formatMessage": [Function],
+          "formatNumber": [Function],
+          "formatPlural": [Function],
+          "formatRelative": [Function],
+          "formatTime": [Function],
+          "formats": Object {},
+          "formatters": Object {
+            "getDateTimeFormat": [Function],
+            "getMessageFormat": [Function],
+            "getNumberFormat": [Function],
+            "getPluralFormat": [Function],
+            "getRelativeFormat": [Function],
           },
+          "locale": "en",
+          "messages": Object {},
+          "now": [Function],
+          "onError": [Function],
+          "textComponent": "span",
+          "timeZone": null,
         }
       }
       store={
@@ -71,91 +139,149 @@ exports[`The Console component renders on the page with no errors 1`] = `
           "subscribe": [Function],
         }
       }
-      storeSubscription={
-        Subscription {
-          "listeners": Object {
-            "clear": [Function],
-            "get": [Function],
-            "notify": [Function],
-            "subscribe": [Function],
-          },
-          "onStateChange": [Function],
-          "parentSub": undefined,
-          "store": Object {
+    >
+      <ProgramName
+        allCookies={Object {}}
+        changeName={[Function]}
+        code={
+          Object {
+            "isReadOnly": false,
+            "name": "test name",
+          }
+        }
+        cookies={
+          Cookies {
+            "HAS_DOCUMENT_COOKIE": true,
+            "changeListeners": Array [
+              [Function],
+            ],
+            "cookies": Object {},
+            "hooks": undefined,
+          }
+        }
+        intl={
+          Object {
+            "defaultFormats": Object {},
+            "defaultLocale": "en",
+            "formatDate": [Function],
+            "formatHTMLMessage": [Function],
+            "formatMessage": [Function],
+            "formatNumber": [Function],
+            "formatPlural": [Function],
+            "formatRelative": [Function],
+            "formatTime": [Function],
+            "formats": Object {},
+            "formatters": Object {
+              "getDateTimeFormat": [Function],
+              "getMessageFormat": [Function],
+              "getNumberFormat": [Function],
+              "getPluralFormat": [Function],
+              "getRelativeFormat": [Function],
+            },
+            "locale": "en",
+            "messages": Object {},
+            "now": [Function],
+            "onError": [Function],
+            "textComponent": "span",
+            "timeZone": null,
+          }
+        }
+        store={
+          Object {
             "clearActions": [Function],
             "dispatch": [MockFunction],
             "getActions": [Function],
             "getState": [Function],
             "replaceReducer": [Function],
             "subscribe": [Function],
-          },
-          "unsubscribe": [Function],
+          }
         }
-      }
-    >
-      <Input
-        defaultValue="test name"
-        disabled={false}
-        label="Name:"
-        onChange={[Function]}
-        type="text"
+        storeSubscription={
+          Subscription {
+            "listeners": Object {
+              "clear": [Function],
+              "get": [Function],
+              "notify": [Function],
+              "subscribe": [Function],
+            },
+            "onStateChange": [Function],
+            "parentSub": undefined,
+            "store": Object {
+              "clearActions": [Function],
+              "dispatch": [MockFunction],
+              "getActions": [Function],
+              "getState": [Function],
+              "replaceReducer": [Function],
+              "subscribe": [Function],
+            },
+            "unsubscribe": [Function],
+          }
+        }
       >
-        <div
-          className="ui labeled input"
+        <Input
+          disabled={false}
+          label="Name:"
+          onChange={[Function]}
+          type="text"
+          value="test name"
         >
-          <Label
-            className="label"
-            content="Name:"
+          <div
+            className="ui labeled input"
           >
-            <div
-              className="ui label label"
-              onClick={[Function]}
+            <Label
+              className="label"
+              content="Name:"
             >
-              Name:
-            </div>
-          </Label>
-          <input
-            defaultValue="test name"
-            disabled={false}
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
-      </Input>
-      <Confirm
-        cancelButton="Cancel"
-        confirmButton="OK"
-        content="Are you sure that you want to change the name of this program?"
-        onCancel={[Function]}
-        onConfirm={[Function]}
-        open={false}
-        size="small"
-      >
-        <Modal
-          centered={true}
-          closeOnDimmerClick={true}
-          closeOnDocumentClick={false}
-          dimmer={true}
-          eventPool="Modal"
-          onClose={[Function]}
+              <div
+                className="ui label label"
+                onClick={[Function]}
+              >
+                Name:
+              </div>
+            </Label>
+            <input
+              disabled={false}
+              onChange={[Function]}
+              type="text"
+              value="test name"
+            />
+          </div>
+        </Input>
+        <Confirm
+          cancelButton="Cancel"
+          confirmButton="OK"
+          content="Are you sure that you want to change the name of this program?"
+          onCancel={[Function]}
+          onConfirm={[Function]}
           open={false}
           size="small"
         >
-          <Portal
+          <Modal
+            centered={true}
+            closeOnDimmerClick={true}
             closeOnDocumentClick={false}
-            closeOnEscape={true}
+            dimmer={true}
             eventPool="Modal"
-            mountNode={<body />}
             onClose={[Function]}
-            onMount={[Function]}
-            onOpen={[Function]}
-            onUnmount={[Function]}
             open={false}
-            openOnTriggerClick={true}
-          />
-        </Modal>
-      </Confirm>
-    </ProgramName>
-  </Connect(ProgramName)>
+            size="small"
+          >
+            <Portal
+              closeOnDocumentClick={false}
+              closeOnEscape={true}
+              eventPool="Modal"
+              mountNode={<body />}
+              onClose={[Function]}
+              onMount={[Function]}
+              onOpen={[Function]}
+              onUnmount={[Function]}
+              open={false}
+              openOnTriggerClick={true}
+            />
+          </Modal>
+        </Confirm>
+      </ProgramName>
+    </Connect(ProgramName)>
+  </InjectIntl(Connect(ProgramName))>
 </withCookies(Component)>
 `;

@@ -7,6 +7,7 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import axios from 'axios';
 
 class PasswordReset extends Component {
@@ -72,24 +73,42 @@ class PasswordReset extends Component {
   }
 
   render() {
+    const { intl } = this.props;
     const { success, emailError } = this.state;
+
+    const emailPlaceholder = intl.formatMessage({
+      id: 'app.password_reset.email_placeholder',
+      description: 'Placeholder for email entry',
+      defaultMessage: 'Email',
+    });
 
     return (
       <Grid centered columns={16}>
         <Grid.Row>
           <Header size="huge">
-            Password Reset
+            <FormattedMessage
+              id="app.password_reset.header"
+              description="Header for password reset"
+              defaultMessage="Password Reset"
+            />
           </Header>
         </Grid.Row>
         <Grid.Row>
           <p>
-            Forgotten your password?
+            <FormattedMessage
+              id="app.password_reset.verify"
+              description="Verifies that the user has forgotten password"
+              defaultMessage="Forgotten your password?"
+            />
           </p>
         </Grid.Row>
         <Grid.Row>
           <p>
-            Enter your e-mail address below, and we&apos;ll send you an e-mail
-            allowing you to reset it.
+            <FormattedMessage
+              id="app.password_reset.email"
+              description="Directs the user to enter e-mail for password reset"
+              defaultMessage="Enter your e-mail address below, and well send you an e-mail allowing you to reset it."
+            />
           </p>
         </Grid.Row>
         {
@@ -104,9 +123,13 @@ class PasswordReset extends Component {
           <Grid.Column width={4}>
             <Segment raised secondary>
               <Form floated="left" onSubmit={this.reset}>
-                <Form.Input required icon="mail" iconPosition="left" placeholder="Email" onChange={this.handleEmailChange} error={emailError} />
+                <Form.Input required icon="mail" iconPosition="left" placeholder={emailPlaceholder} onChange={this.handleEmailChange} error={emailError} />
                 <Form.Button primary type="submit">
-                  Reset Password
+                  <FormattedMessage
+                    id="app.password_reset.reset"
+                    description="Button label for initiating reset password"
+                    defaultMessage="Reset Password"
+                  />
                 </Form.Button>
               </Form>
             </Segment>
@@ -117,4 +140,8 @@ class PasswordReset extends Component {
   }
 }
 
-export default PasswordReset;
+PasswordReset.propTypes = {
+  intl: intlShape.isRequired,
+};
+
+export default injectIntl(PasswordReset);

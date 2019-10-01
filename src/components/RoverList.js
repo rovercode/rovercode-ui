@@ -11,6 +11,7 @@ import {
   Modal,
   Segment,
 } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -43,8 +44,8 @@ class RoverList extends Component {
   showConfirm = e => this.setState({
     confirmOpen: true,
     focusRover: {
-      id: e.target.id,
-      name: e.target.name,
+      id: e.target.parentNode.id || e.target.id,
+      name: e.target.parentNode.name || e.target.name,
     },
   })
 
@@ -60,7 +61,7 @@ class RoverList extends Component {
   }
 
   modalButton = () => (
-    <Button primary style={{ marginLeft: '10px' }} onClick={this.handleNewRoverOpen}>
+    <Button primary style={{ marginLeft: '10%' }} onClick={this.handleNewRoverOpen}>
       <Icon name="plus" />
       Register New Rover
     </Button>
@@ -90,13 +91,45 @@ class RoverList extends Component {
   }
 
   render() {
-    const { isFetching, rovers } = this.props;
+    const { intl, isFetching, rovers } = this.props;
     const {
       confirmOpen,
       focusRover,
       newRoverOpen,
       newRoverId,
     } = this.state;
+
+    const cancelButtonText = intl.formatMessage({
+      id: 'app.rover_list.cancel',
+      description: 'Button label to cancel removing rover',
+      defaultMessage: 'No',
+    });
+
+    const confirmButtonText = intl.formatMessage({
+      id: 'app.rover_list.confirm',
+      description: 'Button label to confirm removing rover',
+      defaultMessage: 'Yes',
+    });
+
+    const dialogHeader = intl.formatMessage({
+      id: 'app.rover_list.dialog_header',
+      description: 'Header for removing rover confirmation dialog',
+      defaultMessage: 'Remove Rover',
+    });
+
+    const dialogContent = intl.formatMessage({
+      id: 'app.rover_list.dialog_content',
+      description: 'Asks the user to confirm removing rover',
+      defaultMessage: 'Are you sure you want to remove {name}?',
+    }, {
+      name: focusRover.name,
+    });
+
+    const placeholder = intl.formatMessage({
+      id: 'app.rover_list.placeholder',
+      description: 'Placeholder for rover name entry',
+      defaultMessage: 'Rover name',
+    });
 
     return (
       <Fragment>
@@ -111,19 +144,31 @@ class RoverList extends Component {
         }
         <Modal trigger={this.modalButton()} open={newRoverOpen} onClose={this.handleNewRoverClose}>
           <Modal.Header>
-            Enter the name of the rover
+            <FormattedMessage
+              id="app.rover_list.create_header"
+              description="Header to direct the user to enter the name of the rover"
+              defaultMessage="Enter the name of the rover"
+            />
           </Modal.Header>
           <Modal.Content>
             <Form id="nameForm" onSubmit={this.createRover}>
-              <Form.Input placeholder="Rover name" onChange={this.handleNameChange} required />
+              <Form.Input placeholder={placeholder} onChange={this.handleNameChange} required />
             </Form>
           </Modal.Content>
           <Modal.Actions>
             <Button primary type="submit" form="nameForm">
-              Create
+              <FormattedMessage
+                id="app.rover_list.dialog_create"
+                description="Button label to create the rover"
+                defaultMessage="Create"
+              />
             </Button>
             <Button onClick={this.handleNewRoverClose}>
-              Cancel
+              <FormattedMessage
+                id="app.rover_list.dialog_cancel"
+                description="Button label to cancel creating a rover"
+                defaultMessage="Cancel"
+              />
             </Button>
           </Modal.Actions>
         </Modal>
@@ -131,9 +176,13 @@ class RoverList extends Component {
           isFetching || rovers === null
             ? (<Loader active />)
             : (
-              <Segment raised style={{ margin: '10px' }}>
+              <Segment raised style={{ margin: '10px 10% 10px 10%' }}>
                 <Header as="h1" textAlign="center">
-                  Rovers
+                  <FormattedMessage
+                    id="app.rover_list.header"
+                    description="Header for the list of rovers"
+                    defaultMessage="Rovers"
+                  />
                 </Header>
                 <Card.Group centered>
                   {
@@ -146,7 +195,11 @@ class RoverList extends Component {
                         </Card.Content>
                         <Card.Content extra>
                           <Button primary as={Link} to={`/rovers/${rover.id}`}>
-                              Configure
+                            <FormattedMessage
+                              id="app.rover_list.configure"
+                              description="Button label to configure a rover"
+                              defaultMessage="Configure"
+                            />
                           </Button>
                           <Button
                             negative
@@ -155,7 +208,11 @@ class RoverList extends Component {
                             onClick={this.showConfirm}
                             floated="right"
                           >
-                              Remove
+                            <FormattedMessage
+                              id="app.rover_list.remove"
+                              description="Button label to remove a rover"
+                              defaultMessage="Remove"
+                            />
                           </Button>
                         </Card.Content>
                       </Card>
@@ -176,13 +233,13 @@ class RoverList extends Component {
                   ) : (null)
                 }
                 <Confirm
-                  header="Remove Rover"
-                  content={`Are you sure you want to remove ${focusRover.name}?`}
+                  header={dialogHeader}
+                  content={dialogContent}
                   open={confirmOpen}
                   onConfirm={this.removeRover}
                   onCancel={this.cancelRemove}
-                  cancelButton="No"
-                  confirmButton="Yes"
+                  cancelButton={cancelButtonText}
+                  confirmButton={confirmButtonText}
                 />
               </Segment>
             )
@@ -218,6 +275,7 @@ RoverList.propTypes = {
     ),
   }),
   isFetching: PropTypes.bool,
+  intl: intlShape.isRequired,
 };
 
-export default RoverList;
+export default injectIntl(RoverList);

@@ -1,38 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Confirm, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
+import { injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { updateValidAuth } from '@/actions/auth';
+import { checkAuthError, authHeader } from '@/actions/auth';
 import { changeName as actionChangeName } from '@/actions/code';
-import ReadOnlyComponent from '@/components/ReadOnly';
 
 const mapStateToProps = ({ code }) => ({ code });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  changeName: (id, name) => {
-    const changeNameAction = actionChangeName(id, name, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(changeNameAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  changeName: (id, name) => dispatch(actionChangeName(id, name, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
-class ProgramName extends ReadOnlyComponent {
+class ProgramName extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       confirmOpen: false,
-      editingName: null,
+      editingName: '',
       previousPropName: null, // eslint-disable-line react/no-unused-state
     };
   }
@@ -70,14 +59,33 @@ class ProgramName extends ReadOnlyComponent {
   }
 
   render() {
+    const { code, intl } = this.props;
     const { confirmOpen, editingName, previousPropName } = this.state;
     let actionProp = {};
+
+    const saveAction = intl.formatMessage({
+      id: 'app.program_name.save',
+      description: 'Button label for saving new program name',
+      defaultMessage: 'Save',
+    });
+
+    const nameLabel = intl.formatMessage({
+      id: 'app.program_name.name',
+      description: 'Label for new program name entry',
+      defaultMessage: 'Name:',
+    });
+
+    const confirmText = intl.formatMessage({
+      id: 'app.program_name.confirm',
+      description: 'Confirmation of program name change',
+      defaultMessage: 'Are you sure that you want to change the name of this program?',
+    });
 
     // Only show `Save` when the name has changed
     if (editingName !== previousPropName) {
       actionProp = {
         action: {
-          content: 'Save',
+          content: saveAction,
           onClick: this.openConfirm,
         },
       };
@@ -87,14 +95,14 @@ class ProgramName extends ReadOnlyComponent {
       <Fragment>
         <Input
           type="text"
-          label="Name:"
-          defaultValue={editingName}
-          disabled={this.isReadOnly()}
+          label={nameLabel}
+          value={editingName}
+          disabled={code.isReadOnly}
           onChange={this.handleChange}
           {...actionProp}
         />
         <Confirm
-          content="Are you sure that you want to change the name of this program?"
+          content={confirmText}
           open={confirmOpen}
           onCancel={this.closeConfirm}
           onConfirm={this.handleSave}
@@ -108,8 +116,16 @@ ProgramName.propTypes = {
   code: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
+    isReadOnly: PropTypes.bool,
   }).isRequired,
   changeName: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default hot(module)(withCookies(connect(mapStateToProps, mapDispatchToProps)(ProgramName)));
+export default hot(module)(
+  withCookies(
+    injectIntl(
+      connect(mapStateToProps, mapDispatchToProps)(ProgramName),
+    ),
+  ),
+);

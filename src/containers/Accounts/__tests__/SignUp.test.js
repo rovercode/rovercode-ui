@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { Form, List, Message } from 'semantic-ui-react';
-import { shallow } from 'enzyme';
+import { shallowWithIntl } from 'enzyme-react-intl';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -22,11 +22,11 @@ const cookiesValues = { };
 const cookies = new Cookies(cookiesValues);
 
 test('SignUp renders on the page with no errors', () => {
-  const cookiesWrapper = shallow(<SignUp store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<SignUp store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Message).exists()).toBe(false);
@@ -43,11 +43,11 @@ test('SignUp displays form errors', async () => {
       'This password is entirely numeric.',
     ],
   });
-  const cookiesWrapper = shallow(<SignUp store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<SignUp store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
   await wrapper.instance().signUp();
   wrapper.update();
 
@@ -80,11 +80,11 @@ test('SignUp redirects to root after success', async () => {
   }).reply(200, {
     token,
   });
-  const cookiesWrapper = shallow(<SignUp store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<SignUp store={store} />, {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive();
 
   wrapper.find(Form.Input).at(0).simulate('change', {
     target: {
