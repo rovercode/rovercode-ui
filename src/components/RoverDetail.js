@@ -10,6 +10,7 @@ import {
   Message,
   Segment,
   TextArea,
+  Popup,
 } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -136,6 +137,7 @@ class RoverDetail extends Component {
       id: 'app.rover_detail.name',
       description: 'Label for rover name entry',
       defaultMessage: 'Name:',
+
     });
 
     let options = userList.map(userItem => ({
@@ -221,13 +223,22 @@ class RoverDetail extends Component {
                   <Grid.Row>
                     <Segment raised>
                       <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
-                        <Form.Input
-                          inline
-                          label={nameLabel}
-                          defaultValue={rover.name}
-                          onChange={this.handleNameChange}
-                          required
-                        />
+                        <Form.Field inline>
+                          <label>
+                            <Popup
+                              trigger={<Icon circular name="help" style={{ marginRight: '10px' }} />}
+                              content="The default theme's basic popup removes the pointing arrow."
+                              basic
+                            />
+                            {nameLabel}
+                          </label>
+                          <Form.Input
+                            inline
+                            defaultValue={rover.name}
+                            onChange={this.handleNameChange}
+                            required
+                          />
+                        </Form.Field>
                         <Form.Field error={configError}>
                           <Accordion>
                             <Accordion.Title active={accordionActive} onClick={this.handleClick}>
