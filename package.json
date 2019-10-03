@@ -17,6 +17,9 @@
     "lint:fix": "eslint webpack.* src --fix --color --format stylish"
   },
   "jest": {
+    "globals": {
+      "LOGGER_ENDPOINT": ""
+    },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
