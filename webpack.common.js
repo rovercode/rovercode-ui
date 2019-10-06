@@ -59,6 +59,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       SENTRY_DSN: JSON.stringify(process.env.FRONTEND_SENTRY_DSN),
+      LOGGER_ENDPOINT: JSON.stringify(process.env.FRONTEND_LOGGER_ENDPOINT),
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
