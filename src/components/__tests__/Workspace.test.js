@@ -19,9 +19,11 @@ import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import { pushCommand } from '@/actions/rover';
 
 jest.mock('node-blockly/browser');
+jest.mock('sumo-logger');
 
 import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first
 import Workspace from '../Workspace'; // eslint-disable-line import/first
+
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
