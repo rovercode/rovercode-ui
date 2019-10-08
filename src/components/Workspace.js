@@ -31,6 +31,7 @@ import { append, clear } from '@/actions/console';
 import { pushCommand } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
+import logger from '@/utils/logger';
 
 const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -428,9 +429,12 @@ class Workspace extends Component {
 
     // Need to fetch the program again since the current code has editable="false" tags
     return Promise.all([fetchProgram(code.id), createProgram(code.name)])
-      .then(([fetchData, createData]) => saveProgram(
-        createData.value.id, fetchData.value.content, createData.value.name,
-      ))
+      .then(([fetchData, createData]) => {
+        logger.log(JSON.stringify({
+          event: 'remix', userId: createData.user_id, sourceProgramId: code.id, newProgramId: createData.value.id,
+        }));
+        saveProgram(createData.value.id, fetchData.value.content, createData.value.name);
+      })
       .then(() => {
         changeReadOnly(false);
         this.createWorkspace();
