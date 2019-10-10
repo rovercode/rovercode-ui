@@ -22,8 +22,8 @@ jest.mock('node-blockly/browser');
 jest.mock('sumo-logger');
 
 import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first
-import Workspace from '../Workspace';
-import SumoLogger from "sumo-logger"; // eslint-disable-line import/first
+import SumoLogger from 'sumo-logger'; // eslint-disable-line import/first
+import Workspace from '../Workspace'; // eslint-disable-line import/first
 
 
 const cookiesValues = { auth_jwt: '1234' };
