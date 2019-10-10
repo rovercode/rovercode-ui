@@ -433,7 +433,7 @@ class Workspace extends Component {
         logger.log(JSON.stringify({
           event: 'remix', userId: createData.user_id, sourceProgramId: code.id, newProgramId: createData.value.id,
         }));
-        saveProgram(createData.value.id, fetchData.value.content, createData.value.name);
+        return saveProgram(createData.value.id, fetchData.value.content, createData.value.name);
       })
       .then(() => {
         changeReadOnly(false);
