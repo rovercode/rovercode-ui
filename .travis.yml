@@ -10,10 +10,13 @@ before_deploy:
   - |
     if [ "$TRAVIS_BRANCH" = "alpha" ]; then
       eval export FRONTEND_SENTRY_DSN=https://88d114444d43458398b75b825909c30e@sentry.io/1406271
+      eval export FRONTEND_LOGGER_ENDPOINT=https://endpoint5.collection.us2.sumologic.com/receiver/v1/http/ZaVnC4dhaV0uI8K0CiECmYVRYAVau-_Lo8TjrkWC9OwPEut5y_AaDOVGto4SGwr4wiQEVWzdtH6keVnhWSiST0GvGBNUjjO0YEaUq1HwpFjV7HsqaVWYhQ==
     elif [ "$TRAVIS_BRANCH" = "beta" ]; then
       eval export FRONTEND_SENTRY_DSN=https://a82f31ed5aa14c6f835de8e5ba8ef3fa@sentry.io/1406272
+      eval export FRONTEND_LOGGER_ENDPOINT=https://endpoint5.collection.us2.sumologic.com/receiver/v1/http/ZaVnC4dhaV2YCwsKwtRRXcpk3bflt-bogF8u0T76IrkGlskmBrA2jfp2gcvfXGfy4NjKZUtSaSNz_OSUTfNL1NPTfcYWFsIWWNxrVWRJD6gFUkBgkt7fxg==
     else
       eval export FRONTEND_SENTRY_DSN=https://8ccf4910438348d494a8592312a4afdf@sentry.io/1406255
+      eval export FRONTEND_LOGGER_ENDPOINT=https://endpoint5.collection.us2.sumologic.com/receiver/v1/http/ZaVnC4dhaV2oB8AnxMbQANacTvKDVkwB20H-dae3lHDkY_kgPmF0dOzVQNabDUt1Btd6c7L-RF_kwk9wR-9JZYDJdOeXQh78cWVu_CsHw6VbVrpq2hepVg==
     fi
     yarn build
 
