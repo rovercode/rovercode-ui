@@ -6,9 +6,12 @@ import {
   changeExecutionState,
   changeName,
   changeId,
+  changeReadOnly,
+  changeProgramTags,
   fetchProgram,
   saveProgram,
   createProgram,
+  clearProgram,
   EXECUTION_RUN,
 } from '../code';
 
@@ -131,5 +134,38 @@ describe('Code actions', () => {
     expect(type).toEqual('CREATE_PROGRAM');
     expect(payload).toEqual(program);
     mock.restore();
+  });
+
+  test('change program tags', async () => {
+    const mock = new MockAdapter(axios);
+    const program = {
+      owner_tags: ['tag1', 'tag2'],
+    };
+
+    mock.onPatch('/api/v1/block-diagrams/1/', program).reply(200, program);
+
+    const action = changeProgramTags(1, program.owner_tags);
+    const { type } = action;
+    const payload = await action.payload;
+
+    expect(type).toEqual('CHANGE_PROGRAM_TAGS');
+    expect(payload).toEqual(program);
+    mock.restore();
+  });
+
+  test('changeReadOnly', () => {
+    const action = changeReadOnly(true);
+    const { type, payload } = action;
+
+    expect(type).toEqual('CHANGE_READ_ONLY');
+    expect(payload).toEqual(true);
+  });
+
+  test('clearProgram', () => {
+    const action = clearProgram();
+    const { type, payload } = action;
+
+    expect(type).toEqual('CLEAR_PROGRAM');
+    expect(payload).toBeUndefined();
   });
 });

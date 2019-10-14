@@ -16,13 +16,23 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
           Array [
             Object {
               "payload": Promise {},
+              "type": "FETCH_TAGS",
+            },
+          ],
+          Array [
+            Object {
+              "payload": Promise {},
               "type": "FETCH_ROVERS",
             },
           ],
         ],
         "results": Array [
           Object {
-            "isThrow": false,
+            "type": "return",
+            "value": Promise {},
+          },
+          Object {
+            "type": "return",
             "value": Promise {},
           },
         ],
@@ -34,44 +44,14 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
     }
   }
 >
-  <Grid
-    style={
-      Object {
-        "height": "100vh",
-      }
-    }
-  >
+  <Grid>
     <div
       className="ui grid"
-      style={
-        Object {
-          "height": "100vh",
-        }
-      }
     >
       <GridRow>
         <div
           className="row"
         >
-          <GridColumn
-            width={13}
-          >
-            <div
-              className="thirteen wide column"
-            >
-              <Component
-                location={
-                  Object {
-                    "state": Object {
-                      "readOnly": false,
-                    },
-                  }
-                }
-              >
-                <div />
-              </Component>
-            </div>
-          </GridColumn>
           <GridColumn
             width={3}
           >
@@ -120,7 +100,354 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     <h2
                       className="ui center aligned header"
                     >
-                      Rovers
+                      <FormattedMessage
+                        defaultMessage="Tags"
+                        id="app.mission_control.tags"
+                        values={Object {}}
+                      >
+                        <span>
+                          Tags
+                        </span>
+                      </FormattedMessage>
+                    </h2>
+                  </Header>
+                  <withCookies(Component)>
+                    <InjectIntl(Connect(ProgramTags))
+                      allCookies={Object {}}
+                      cookies={
+                        Cookies {
+                          "HAS_DOCUMENT_COOKIE": true,
+                          "changeListeners": Array [
+                            [Function],
+                            [Function],
+                          ],
+                          "cookies": Object {},
+                          "hooks": undefined,
+                        }
+                      }
+                    >
+                      <Connect(ProgramTags)
+                        allCookies={Object {}}
+                        cookies={
+                          Cookies {
+                            "HAS_DOCUMENT_COOKIE": true,
+                            "changeListeners": Array [
+                              [Function],
+                              [Function],
+                            ],
+                            "cookies": Object {},
+                            "hooks": undefined,
+                          }
+                        }
+                        intl={
+                          Object {
+                            "defaultFormats": Object {},
+                            "defaultLocale": "en",
+                            "formatDate": [Function],
+                            "formatHTMLMessage": [Function],
+                            "formatMessage": [Function],
+                            "formatNumber": [Function],
+                            "formatPlural": [Function],
+                            "formatRelative": [Function],
+                            "formatTime": [Function],
+                            "formats": Object {},
+                            "formatters": Object {
+                              "getDateTimeFormat": [Function],
+                              "getMessageFormat": [Function],
+                              "getNumberFormat": [Function],
+                              "getPluralFormat": [Function],
+                              "getRelativeFormat": [Function],
+                            },
+                            "locale": "en",
+                            "messages": Object {},
+                            "now": [Function],
+                            "onError": [Function],
+                            "textComponent": "span",
+                            "timeZone": null,
+                          }
+                        }
+                      >
+                        <ProgramTags
+                          allCookies={Object {}}
+                          changeProgramTags={[Function]}
+                          code={
+                            Object {
+                              "jsCode": "testcode",
+                              "tags": Array [],
+                            }
+                          }
+                          cookies={
+                            Cookies {
+                              "HAS_DOCUMENT_COOKIE": true,
+                              "changeListeners": Array [
+                                [Function],
+                                [Function],
+                              ],
+                              "cookies": Object {},
+                              "hooks": undefined,
+                            }
+                          }
+                          fetchTags={[Function]}
+                          intl={
+                            Object {
+                              "defaultFormats": Object {},
+                              "defaultLocale": "en",
+                              "formatDate": [Function],
+                              "formatHTMLMessage": [Function],
+                              "formatMessage": [Function],
+                              "formatNumber": [Function],
+                              "formatPlural": [Function],
+                              "formatRelative": [Function],
+                              "formatTime": [Function],
+                              "formats": Object {},
+                              "formatters": Object {
+                                "getDateTimeFormat": [Function],
+                                "getMessageFormat": [Function],
+                                "getNumberFormat": [Function],
+                                "getPluralFormat": [Function],
+                                "getRelativeFormat": [Function],
+                              },
+                              "locale": "en",
+                              "messages": Object {},
+                              "now": [Function],
+                              "onError": [Function],
+                              "textComponent": "span",
+                              "timeZone": null,
+                            }
+                          }
+                          tag={
+                            Object {
+                              "error": null,
+                              "isFetching": false,
+                              "tags": Array [],
+                            }
+                          }
+                        >
+                          <Grid
+                            centered={true}
+                            container={true}
+                          >
+                            <div
+                              className="ui centered container grid"
+                            >
+                              <GridRow>
+                                <div
+                                  className="row"
+                                >
+                                  <Dropdown
+                                    additionLabel="Add "
+                                    additionPosition="top"
+                                    allowAdditions={true}
+                                    closeOnBlur={true}
+                                    closeOnChange={true}
+                                    deburr={false}
+                                    fluid={true}
+                                    icon="dropdown"
+                                    minCharacters={1}
+                                    multiple={true}
+                                    noResultsMessage="No results found."
+                                    onAddItem={[Function]}
+                                    onChange={[Function]}
+                                    openOnFocus={true}
+                                    options={Array []}
+                                    placeholder="Add tags..."
+                                    renderLabel={[Function]}
+                                    search={true}
+                                    searchInput="text"
+                                    selectOnBlur={true}
+                                    selectOnNavigation={true}
+                                    selection={true}
+                                    value={Array []}
+                                    wrapSelection={true}
+                                  >
+                                    <div
+                                      aria-expanded={false}
+                                      className="ui fluid multiple search selection dropdown"
+                                      onBlur={[Function]}
+                                      onChange={[Function]}
+                                      onClick={[Function]}
+                                      onFocus={[Function]}
+                                      onMouseDown={[Function]}
+                                      role="combobox"
+                                    >
+                                      <DropdownSearchInput
+                                        autoComplete="off"
+                                        inputRef={[Function]}
+                                        key="text"
+                                        onChange={[Function]}
+                                        style={
+                                          Object {
+                                            "width": undefined,
+                                          }
+                                        }
+                                        tabIndex={0}
+                                        type="text"
+                                        value=""
+                                      >
+                                        <input
+                                          aria-autocomplete="list"
+                                          autoComplete="off"
+                                          className="search"
+                                          onChange={[Function]}
+                                          style={
+                                            Object {
+                                              "width": undefined,
+                                            }
+                                          }
+                                          tabIndex={0}
+                                          type="text"
+                                          value=""
+                                        />
+                                      </DropdownSearchInput>
+                                      <span
+                                        className="sizer"
+                                      />
+                                      <div
+                                        aria-live="polite"
+                                        className="default text"
+                                        role="alert"
+                                      >
+                                        Add tags...
+                                      </div>
+                                      <Icon
+                                        as="i"
+                                        className=""
+                                        name="dropdown"
+                                        onClick={[Function]}
+                                      >
+                                        <i
+                                          aria-hidden="true"
+                                          className="dropdown icon"
+                                          onClick={[Function]}
+                                        />
+                                      </Icon>
+                                      <DropdownMenu
+                                        aria-multiselectable={true}
+                                        role="listbox"
+                                      >
+                                        <div
+                                          aria-multiselectable={true}
+                                          className="menu transition"
+                                          role="listbox"
+                                        >
+                                          <div
+                                            className="message"
+                                          >
+                                            No results found.
+                                          </div>
+                                        </div>
+                                      </DropdownMenu>
+                                    </div>
+                                  </Dropdown>
+                                </div>
+                              </GridRow>
+                              <GridRow>
+                                <div
+                                  className="row"
+                                >
+                                  <Button
+                                    as="button"
+                                    disabled={true}
+                                    onClick={[Function]}
+                                    primary={true}
+                                  >
+                                    <button
+                                      className="ui primary disabled button"
+                                      disabled={true}
+                                      onClick={[Function]}
+                                      tabIndex={-1}
+                                    >
+                                      <FormattedMessage
+                                        defaultMessage="Save"
+                                        id="app.program_tags.save"
+                                        values={Object {}}
+                                      >
+                                        <span>
+                                          Save
+                                        </span>
+                                      </FormattedMessage>
+                                    </button>
+                                  </Button>
+                                </div>
+                              </GridRow>
+                            </div>
+                          </Grid>
+                        </ProgramTags>
+                      </Connect(ProgramTags)>
+                    </InjectIntl(Connect(ProgramTags))>
+                  </withCookies(Component)>
+                </div>
+              </GridRow>
+              <Divider>
+                <div
+                  className="ui divider"
+                />
+              </Divider>
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Segment
+                    basic={true}
+                    compact={true}
+                  >
+                    <div
+                      className="ui basic compact segment"
+                    >
+                      <Component>
+                        <div />
+                      </Component>
+                    </div>
+                  </Segment>
+                </div>
+              </GridRow>
+            </div>
+          </GridColumn>
+          <GridColumn
+            width={10}
+          >
+            <div
+              className="ten wide column"
+            >
+              <Component
+                location={
+                  Object {
+                    "state": Object {
+                      "readOnly": false,
+                    },
+                  }
+                }
+              >
+                <div />
+              </Component>
+            </div>
+          </GridColumn>
+          <GridColumn
+            width={3}
+          >
+            <div
+              className="three wide column"
+            >
+              <GridRow>
+                <div
+                  className="row"
+                >
+                  <Header
+                    as="h2"
+                    textAlign="center"
+                  >
+                    <h2
+                      className="ui center aligned header"
+                    >
+                      <FormattedMessage
+                        defaultMessage="Rovers"
+                        id="app.mission_control.rovers"
+                        values={Object {}}
+                      >
+                        <span>
+                          Rovers
+                        </span>
+                      </FormattedMessage>
                     </h2>
                   </Header>
                   <Segment
@@ -151,6 +478,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                               "HAS_DOCUMENT_COOKIE": true,
                               "changeListeners": Array [
                                 [Function],
+                                [Function],
                               ],
                               "cookies": Object {},
                               "hooks": undefined,
@@ -168,6 +496,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                               Cookies {
                                 "HAS_DOCUMENT_COOKIE": true,
                                 "changeListeners": Array [
+                                  [Function],
                                   [Function],
                                 ],
                                 "cookies": Object {},
@@ -224,7 +553,15 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     <h2
                       className="ui center aligned header"
                     >
-                      Sensors
+                      <FormattedMessage
+                        defaultMessage="Sensors"
+                        id="app.mission_control.sensors"
+                        values={Object {}}
+                      >
+                        <span>
+                          Sensors
+                        </span>
+                      </FormattedMessage>
                     </h2>
                   </Header>
                   <Segment
@@ -266,7 +603,15 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     <h2
                       className="ui center aligned header"
                     >
-                      Debug Console
+                      <FormattedMessage
+                        defaultMessage="Debug Console"
+                        id="app.mission_control.console"
+                        values={Object {}}
+                      >
+                        <span>
+                          Debug Console
+                        </span>
+                      </FormattedMessage>
                     </h2>
                   </Header>
                   <Segment
@@ -283,29 +628,6 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                           "margin": "10px",
                         }
                       }
-                    >
-                      <Component>
-                        <div />
-                      </Component>
-                    </div>
-                  </Segment>
-                </div>
-              </GridRow>
-              <Divider>
-                <div
-                  className="ui divider"
-                />
-              </Divider>
-              <GridRow>
-                <div
-                  className="row"
-                >
-                  <Segment
-                    basic={true}
-                    compact={true}
-                  >
-                    <div
-                      className="ui basic compact segment"
                     >
                       <Component>
                         <div />

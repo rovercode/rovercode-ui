@@ -2,17 +2,23 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 import {
   Accordion,
+  Dropdown,
   Form,
   Header,
   Loader,
   Message,
   TextArea,
 } from 'semantic-ui-react';
-import { shallow, mount } from 'enzyme';
+import { FormattedMessage } from 'react-intl';
+import { mountWithIntl, shallowWithIntl } from 'enzyme-react-intl';
 import RoverDetail from '../RoverDetail';
 
 let fetchRover;
 let editRover;
+let fetchUserList;
+const user = {
+  username: 'testuser',
+};
 
 describe('The RoverDetail component', () => {
   beforeEach(() => {
@@ -28,6 +34,16 @@ describe('The RoverDetail component', () => {
         config: {},
       },
     }));
+    fetchUserList = jest.fn(() => Promise.resolve({
+      value: [
+        {
+          username: 'user1',
+        },
+        {
+          username: 'user2',
+        },
+      ],
+    }));
   });
 
   test('renders on the page with no errors', () => {
@@ -41,21 +57,29 @@ describe('The RoverDetail component', () => {
       client_id: '1234',
       client_secret: '5678',
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverDetail
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
-    );
+    ).dive();
     expect(wrapper).toMatchSnapshot();
   });
 
   test('fetches rover on mount', async () => {
-    const wrapper = await mount(
+    const wrapper = await mountWithIntl(
       <MemoryRouter>
-        <RoverDetail fetchRover={fetchRover} editRover={editRover} id={1} />
+        <RoverDetail
+          fetchRover={fetchRover}
+          editRover={editRover}
+          fetchUserList={fetchUserList}
+          user={user}
+          id={1}
+        />
       </MemoryRouter>,
     );
     expect(fetchRover).toBeCalledWith(1);
@@ -78,19 +102,24 @@ describe('The RoverDetail component', () => {
         created: true,
       },
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverDetail
         location={location}
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(Message).exists()).toBe(true);
-    expect(wrapper.find(Message).prop('children')[1])
-      .toBe('Rover \'Sparky\' has been created. Click the button below to download the credentials.');
+    expect(wrapper.find(Message).children().find(FormattedMessage).prop('defaultMessage'))
+      .toBe('Rover \'{name}\' has been created. Click the button below to download the credentials.');
+    expect(wrapper.find(Message).children().find(FormattedMessage).prop('values')).toEqual({
+      name: 'Sparky',
+    });
   });
 
   test('shows the correct information the rover', async () => {
@@ -104,14 +133,16 @@ describe('The RoverDetail component', () => {
       client_id: '1234',
       client_secret: '5678',
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverDetail
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
-    );
+    ).dive();
     await wrapper.instance().componentDidMount();
     wrapper.update();
 
@@ -136,14 +167,16 @@ describe('The RoverDetail component', () => {
       client_id: '1234',
       client_secret: '5678',
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverDetail
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
-    );
+    ).dive();
 
     wrapper.find(Form.Input).simulate('change', {
       target: {
@@ -158,6 +191,12 @@ describe('The RoverDetail component', () => {
           right_eye_port: 4,
         }),
       },
+    });
+    wrapper.find(Dropdown).simulate('change', {}, {
+      value: [
+        'user1',
+        'user2',
+      ],
     });
     wrapper.update();
     await wrapper.instance().saveRover();
@@ -174,6 +213,10 @@ describe('The RoverDetail component', () => {
         left_eye_port: 3,
         right_eye_port: 4,
       },
+      shared_users: [
+        'user1',
+        'user2',
+      ],
     });
   });
 
@@ -188,16 +231,18 @@ describe('The RoverDetail component', () => {
       client_id: '1234',
       client_secret: '5678',
     };
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <RoverDetail
         rover={rover}
+        user={user}
         fetchRover={fetchRover}
         editRover={editRover}
+        fetchUserList={fetchUserList}
         id={1}
       />,
-    );
+    ).dive();
 
-    expect(wrapper.find(Form.Field).prop('error')).toBe(false);
+    expect(wrapper.find(Form.Field).first().prop('error')).toBe(false);
 
     wrapper.find(TextArea).simulate('change', {
       target: {
@@ -207,7 +252,7 @@ describe('The RoverDetail component', () => {
 
     wrapper.update();
 
-    expect(wrapper.find(Form.Field).prop('error')).toBe(true);
+    expect(wrapper.find(Form.Field).first().prop('error')).toBe(true);
 
     await wrapper.instance().saveRover();
     wrapper.update();

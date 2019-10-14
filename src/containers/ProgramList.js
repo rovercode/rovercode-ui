@@ -2,55 +2,32 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
-import { fetchProgram } from '../actions/code';
+import { changeReadOnly as actionChangeReadOnly, clearProgram, fetchProgram } from '../actions/code';
 import { fetchPrograms, removeProgram } from '../actions/program';
-import { updateValidAuth } from '../actions/auth';
+import { checkAuthError, authHeader } from '../actions/auth';
+import { fetchTags } from '../actions/tag';
 import ProgramList from '../components/ProgramList';
 
-const mapStateToProps = ({ program, user }) => ({ ...program, user });
+const mapStateToProps = ({
+  code, program, tag, user,
+}) => ({
+  code, ...program, tag, user,
+});
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  fetchProgram: (id) => {
-    const fetchProgramAction = fetchProgram(id, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(fetchProgramAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  fetchProgram: id => dispatch(fetchProgram(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
   fetchPrograms: (params) => {
-    const xhrOptions = {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-      params,
-    };
+    const xhrOptions = authHeader(cookies);
 
-    const fetchProgramsAction = fetchPrograms(xhrOptions);
-    return dispatch(fetchProgramsAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
+    xhrOptions.params = params;
+
+    return dispatch(fetchPrograms(xhrOptions)).catch(checkAuthError(dispatch));
   },
-  removeProgram: (id) => {
-    const removeProgramAction = removeProgram(id, {
-      headers: {
-        Authorization: `JWT ${cookies.get('auth_jwt')}`,
-      },
-    });
-    return dispatch(removeProgramAction).catch((error) => {
-      if (error.response.status === 401) {
-        // Authentication is no longer valid
-        dispatch(updateValidAuth(false));
-      }
-    });
-  },
+  removeProgram: id => dispatch(removeProgram(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
+  fetchTags: () => dispatch(fetchTags(authHeader(cookies))).catch(checkAuthError(dispatch)),
+  clearProgram: () => dispatch(clearProgram()),
 });
 
 const ProgramListContainer = connect(

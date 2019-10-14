@@ -19,7 +19,12 @@ export const CHANGE_EXECUTION_STATE = 'CHANGE_EXECUTION_STATE';
 export const CHANGE_NAME = 'CHANGE_NAME';
 export const CHANGE_NAME_FULFILLED = `${CHANGE_NAME}_FULFILLED`;
 export const CHANGE_NAME_REJECTED = `${CHANGE_NAME}_REJECTED`;
+export const CHANGE_PROGRAM_TAGS = 'CHANGE_PROGRAM_TAGS';
+export const CHANGE_PROGRAM_TAGS_FULFILLED = `${CHANGE_PROGRAM_TAGS}_FULFILLED`;
+export const CHANGE_PROGRAM_TAGS_REJECTED = `${CHANGE_PROGRAM_TAGS}_REJECTED`;
 export const CHANGE_ID = 'CHANGE_ID';
+export const CHANGE_READ_ONLY = 'CHANGE_READ_ONLY';
+export const CLEAR_PROGRAM = 'CLEAR_PROGRAM';
 
 // Execution States
 export const EXECUTION_RUN = 1;
@@ -86,4 +91,23 @@ export const createProgram = (name, xhroptions) => ({
     .then(({ data }) => (
       data
     )),
+});
+
+export const changeProgramTags = (id, tags, xhroptions) => ({
+  type: CHANGE_PROGRAM_TAGS,
+  payload: axios.patch(`/api/v1/block-diagrams/${id}/`, {
+    owner_tags: tags,
+  }, xhroptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const changeReadOnly = isReadOnly => ({
+  type: CHANGE_READ_ONLY,
+  payload: isReadOnly,
+});
+
+export const clearProgram = () => ({
+  type: CLEAR_PROGRAM,
 });

@@ -94,7 +94,9 @@ describe('The RoverListContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().fetchRovers().then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -119,7 +121,9 @@ describe('The RoverListContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().createRover(rover).then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -140,7 +144,9 @@ describe('The RoverListContainer', () => {
     error.response = {
       status: 401,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn();
+    store.dispatch.mockReturnValueOnce(Promise.reject(error));
+    store.dispatch.mockReturnValue(Promise.resolve());
 
     wrapper.dive().props().removeRover(1).then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
@@ -163,7 +169,7 @@ describe('The RoverListContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().fetchRovers().then(() => {
+    wrapper.dive().props().fetchRovers().catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchRovers({
@@ -187,7 +193,7 @@ describe('The RoverListContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().createRover(rover).then(() => {
+    wrapper.dive().props().createRover(rover).catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         createRover(rover, {
@@ -207,7 +213,7 @@ describe('The RoverListContainer', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    wrapper.dive().props().removeRover(1).then(() => {
+    wrapper.dive().props().removeRover(1).catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         removeRover(1, {

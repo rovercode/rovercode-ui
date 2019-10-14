@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Card, Label, Icon } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Websocket from 'react-websocket';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
+
+import '@/css/card.css';
 
 const heartbeatTimeout = 8000; // milliseconds
 
@@ -88,7 +91,7 @@ class RoverConnection extends Component {
 
     return (
       <Fragment>
-        <Card color={isActive ? 'blue' : null} onClick={this.setActive}>
+        <Card className={isActive ? 'highlight' : null} onClick={this.setActive}>
           <Card.Content>
             <Label corner="right" style={{ borderColor: 'white' }}>
               {
@@ -103,7 +106,21 @@ class RoverConnection extends Component {
               { name }
             </Card.Header>
             <Card.Meta>
-              { isActive ? 'Active' : 'Inactive' }
+              {
+                isActive ? (
+                  <FormattedMessage
+                    id="app.rover_connection.active"
+                    description="Label indicating the rover is connected"
+                    defaultMessage="Active"
+                  />
+                ) : (
+                  <FormattedMessage
+                    id="app.rover_connection.inactive"
+                    description="Label indicating the rover is not connected"
+                    defaultMessage="Inactive"
+                  />
+                )
+              }
             </Card.Meta>
           </Card.Content>
         </Card>

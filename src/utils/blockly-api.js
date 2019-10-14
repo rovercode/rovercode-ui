@@ -17,6 +17,22 @@ class BlocklyApi {
     }));
   }
 
+  setChainableRgbLed = (blocklyLedId, blocklyColorHexString) => {
+    if (blocklyLedId === null || blocklyColorHexString === null) {
+      return;
+    }
+    const red = parseInt(blocklyColorHexString.substring(1, 3), 16);
+    const green = parseInt(blocklyColorHexString.substring(3, 5), 16);
+    const blue = parseInt(blocklyColorHexString.substring(5, 7), 16);
+    this.sendToRover(JSON.stringify({
+      type: 'chainable-rgb-led-command',
+      'led-id': blocklyLedId,
+      'red-value': red,
+      'green-value': green,
+      'blue-value': blue,
+    }));
+  }
+
   initApi = (interpreter, scope) => {
     // Add an API function for the alert() block.
     let wrapper = (text) => {
@@ -69,6 +85,14 @@ class BlocklyApi {
       return false;
     };
     interpreter.setProperty(scope, 'sleep',
+      interpreter.createNativeFunction(wrapper));
+
+    // Add set chainable RGB LED API function
+    wrapper = (ledId, colorHexString) => {
+      this.setChainableRgbLed(ledId.data, colorHexString.data);
+      return false;
+    };
+    interpreter.setProperty(scope, 'setChainableRgbLed',
       interpreter.createNativeFunction(wrapper));
   }
 }

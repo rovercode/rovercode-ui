@@ -5,6 +5,7 @@ import console from './console';
 import program from './program';
 import rover from './rover';
 import sensor from './sensor';
+import tag from './tag';
 import user from './user';
 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
   program,
   rover,
   sensor,
+  tag,
   user,
 });

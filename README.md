@@ -31,9 +31,14 @@ Running
 
 **NOTE**: The application running the development webserver requires the [rovercode api](https://github.com/rovercode/rovercode-web) to be running at http://localhost:8000
 
-To run the development web server, run:
+To run the development web server using a locally running API instance, run:
 ```sh
-yarn start
+yarn start:local
+```
+
+To run the development web server using the API instance on alpha.rovercode.com, run:
+```sh
+yarn start:alpha
 ```
 
 Unit Testing

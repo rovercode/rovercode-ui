@@ -2,8 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 import { Provider as ReduxProvider } from 'react-redux';
 import { createStore } from 'redux';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { mountWithIntl } from 'enzyme-react-intl';
 import { Cookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 import rootReducer from '@/reducers/index';
@@ -26,6 +25,7 @@ describe('The MissionControl container', () => {
     store = createStore(rootReducer, {
       code: {
         jsCode: 'testcode',
+        tags: [],
       },
       rover: {
         isFetching: false,
@@ -42,7 +42,7 @@ describe('The MissionControl container', () => {
 
   test('renders on the page with no errors', () => {
     const context = { cookies };
-    wrapper = mount(
+    wrapper = mountWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
           <MissionControl store={store} />
@@ -54,6 +54,6 @@ describe('The MissionControl container', () => {
     );
     const mcWrapper = wrapper.find(MissionControl);
 
-    expect(toJson(mcWrapper)).toMatchSnapshot();
+    expect(mcWrapper).toMatchSnapshot();
   });
 });

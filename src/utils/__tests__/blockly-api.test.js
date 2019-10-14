@@ -122,4 +122,38 @@ describe('Blockly API', () => {
     expect(writeToConsole).toHaveBeenCalled();
     expect(writeToConsole).toHaveBeenCalledWith('Sleeping for 100ms.');
   });
+
+  test('handles setChainableRgbLed', () => {
+    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[6][0];
+
+    const result = setChainableRgbLedHandler({ data: 0 }, { data: '#ff0042' });
+
+    expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
+    expect(sendToRover).toHaveBeenCalledWith(JSON.stringify({
+      type: 'chainable-rgb-led-command',
+      'led-id': 0,
+      'red-value': 255,
+      'green-value': 0,
+      'blue-value': 66, // 0x42 = 66
+    }));
+  });
+
+  test('handles setChainableRgbLed missing LED id', () => {
+    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[6][0];
+
+    const result = setChainableRgbLedHandler({ data: null }, { data: '#ff0042' });
+
+    expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(0);
+  });
+
+  test('handles setChainableRgbLed missing color', () => {
+    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[6][0];
+
+    const result = setChainableRgbLedHandler({ data: 0 }, { data: null });
+
+    expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(0);
+  });
 });

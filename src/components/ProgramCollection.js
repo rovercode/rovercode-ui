@@ -10,6 +10,7 @@ import {
   Icon,
   Input,
 } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 
 import CustomPagination from './CustomPagination';
 
@@ -21,16 +22,23 @@ class ProgramCollection extends Component {
       page: 1,
       searchQuery: null,
       ordering: 'name',
+      tagFilters: [],
     };
   }
 
   update = () => {
     const { onUpdate, owned } = this.props;
-    const { page, ordering, searchQuery } = this.state;
+    const {
+      page,
+      ordering,
+      searchQuery,
+      tagFilters,
+    } = this.state;
 
     const params = {
       page,
       ordering,
+      tag: tagFilters.join(),
     };
 
     if (searchQuery) {
@@ -67,6 +75,10 @@ class ProgramCollection extends Component {
     ordering: this.toggleOrdering(name),
   }, () => this.update())
 
+  handleTagFilterChange = (event, data) => this.setState({
+    tagFilters: data.value,
+  }, () => this.update())
+
   render() {
     const {
       label,
@@ -74,31 +86,51 @@ class ProgramCollection extends Component {
       onRemoveClick,
       programs,
       owned,
+      intl,
+      tag,
     } = this.props;
-    const { ordering } = this.state;
+    const { ordering, tagFilters } = this.state;
+
+    const searchPlaceholder = intl.formatMessage({
+      id: 'app.program_collection.search',
+      description: 'Placeholder for search entry',
+      defaultMessage: 'Search...',
+    });
+
+    const tagFilterPlaceholder = intl.formatMessage({
+      id: 'app.program_collection.filter',
+      description: 'Placeholder for selecting tags used to filter',
+      defaultMessage: 'Tag filters...',
+    });
+
+    const sortText = intl.formatMessage({
+      id: 'app.program_collection.sort',
+      description: 'Button label for sort options',
+      defaultMessage: 'Sort',
+    });
 
     return (
       <Fragment>
-        <Grid centered columns={5}>
+        <Grid>
           <Grid.Row>
-            <Grid.Column />
-            <Grid.Column />
-            <Grid.Column>
+            <Grid.Column width={2} />
+            <Grid.Column width={4}>
+              <Input
+                className="prompt"
+                icon="search"
+                placeholder={searchPlaceholder}
+                onChange={this.handleSearchChange}
+              />
+            </Grid.Column>
+            <Grid.Column width={4}>
               <Header as="h1" textAlign="center">
                 {label}
               </Header>
             </Grid.Column>
-            <Grid.Column textAlign="right">
-              <Input
-                className="prompt"
-                icon="search"
-                placeholder="Search..."
-                onChange={this.handleSearchChange}
-              />
-            </Grid.Column>
-            <Grid.Column>
+            <Grid.Column width={1} />
+            <Grid.Column floated="right" width={2}>
               <Dropdown
-                text="Sort"
+                text={sortText}
                 icon="sort"
                 floating
                 labeled
@@ -107,7 +139,11 @@ class ProgramCollection extends Component {
               >
                 <Dropdown.Menu>
                   <Dropdown.Item onClick={this.handleOrderingChange} name="name">
-                    Name
+                    <FormattedMessage
+                      id="app.program_collection.name"
+                      description="Button label to sort by name"
+                      defaultMessage="Name"
+                    />
                     {
                       ordering === 'name' ? (
                         <Icon name="caret down" />
@@ -118,6 +154,21 @@ class ProgramCollection extends Component {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
+            </Grid.Column>
+            <Grid.Column width={3}>
+              <Dropdown
+                multiple
+                selection
+                scrolling
+                placeholder={tagFilterPlaceholder}
+                value={tagFilters}
+                options={tag.tags.map(t => ({
+                  key: t.name,
+                  text: t.name,
+                  value: t.name,
+                }))}
+                onChange={this.handleTagFilterChange}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -130,12 +181,34 @@ class ProgramCollection extends Component {
                     {program.name}
                   </Card.Header>
                   <Card.Meta>
-                    { owned ? 'Mine' : program.user.username }
+                    {
+                      owned ? (
+                        <FormattedMessage
+                          id="app.program_collection.mine"
+                          description="Label to indicate program owned by user"
+                          defaultMessage="Mine"
+                        />
+                      ) : program.user.username
+                    }
                   </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
                   <Button primary id={program.id} data-owned={owned} onClick={onProgramClick}>
-                    { owned ? 'Keep Working' : 'View' }
+                    {
+                      owned ? (
+                        <FormattedMessage
+                          id="app.program_collection.work"
+                          description="Button label to keep working on program"
+                          defaultMessage="Keep Working"
+                        />
+                      ) : (
+                        <FormattedMessage
+                          id="app.program_collection.view"
+                          description="Button label to view a program"
+                          defaultMessage="View"
+                        />
+                      )
+                    }
                   </Button>
                   {
                     owned ? (
@@ -146,7 +219,11 @@ class ProgramCollection extends Component {
                         onClick={onRemoveClick}
                         floated="right"
                       >
-                        Remove
+                        <FormattedMessage
+                          id="app.program_collection.remove"
+                          description="Button label to remove a program"
+                          defaultMessage="Remove"
+                        />
                       </Button>
                     ) : (null)
                   }
@@ -175,6 +252,9 @@ class ProgramCollection extends Component {
 
 ProgramCollection.defaultProps = {
   owned: false,
+  tag: {
+    tags: [],
+  },
 };
 
 ProgramCollection.propTypes = {
@@ -192,11 +272,17 @@ ProgramCollection.propTypes = {
       }),
     ),
   }).isRequired,
+  tag: PropTypes.shape({
+    tags: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+    })),
+  }),
   label: PropTypes.string.isRequired,
   owned: PropTypes.bool,
   onProgramClick: PropTypes.func.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default hot(module)(ProgramCollection);
+export default hot(module)(injectIntl(ProgramCollection));
