@@ -78,7 +78,6 @@ class BlocklyApi {
       interpreter.createNativeFunction(wrapper));
 
     // Add continue API function
-    /* TODO: Make the highlighting stay on continue block while sleeping */
     wrapper = (lengthInMs) => {
       this.beginSleep(lengthInMs);
       this.writeToConsole(`Sleeping for ${lengthInMs}ms.`);
