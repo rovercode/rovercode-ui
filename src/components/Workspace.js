@@ -344,6 +344,10 @@ class Workspace extends Component {
   stepCode = () => {
     const { interpreter, workspace } = this.state;
 
+    if (this.sleeping) {
+      return true;
+    }
+
     const ok = interpreter.step();
     if (!ok) {
       // Program complete, no more code to execute.
