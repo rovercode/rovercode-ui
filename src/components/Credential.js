@@ -12,8 +12,8 @@ import fileDownload from 'js-file-download';
 
 const defaultState = {
   downloadOpen: false,
-  apName: null,
-  apPassword: null,
+  apName: '',
+  apPassword: '',
 };
 
 class Credential extends Component {
@@ -95,8 +95,8 @@ class Credential extends Component {
             />
           </p>
           <Form id="apForm" onSubmit={this.downloadCredentials}>
-            <Form.Input inline label={networkNameLabel} onChange={this.handleNameChange} required />
-            <Form.Input inline label={networkPasswordLabel} type="password" onChange={this.handlePasswordChange} required />
+            <Form.Input inline label={networkNameLabel} onChange={this.handleNameChange} />
+            <Form.Input inline label={networkPasswordLabel} type="password" onChange={this.handlePasswordChange} />
           </Form>
         </Modal.Content>
         <Modal.Actions>
