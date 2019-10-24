@@ -398,6 +398,28 @@ describe('The Workspace component', () => {
     expect(workspace.instance().highlightPause).toBe(false);
   });
 
+  test('stops stepping when sleeping', () => {
+    const wrapper = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive();
+
+    const mockInterpreter = {
+      step: jest.fn(() => true),
+    };
+    const workspace = wrapper.dive().dive();
+    workspace.setState({
+      interpreter: mockInterpreter,
+    });
+    workspace.update();
+    workspace.instance().sleeping = true;
+    const result = workspace.instance().stepCode();
+
+    expect(result).toBe(true);
+    expect(mockInterpreter.step).not.toHaveBeenCalled();
+  });
+
   test('continues stepping when not at the end', () => {
     const mockStep = jest.fn();
     mockStep.mockReturnValueOnce(true).mockReturnValueOnce(false);
