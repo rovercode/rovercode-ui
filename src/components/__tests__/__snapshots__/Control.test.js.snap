@@ -114,47 +114,99 @@ exports[`The Control component renders on the page with no errors 1`] = `
       onMouseDown={[Function]}
       size="huge"
     >
-      <button
-        className="ui green huge vertical animated button"
-        onClick={[Function]}
-        onMouseDown={[Function]}
+      <Ref
+        innerRef={
+          Object {
+            "current": <button
+              class="ui green huge vertical animated button"
+            >
+              <div
+                class="hidden content"
+              >
+                <span>
+                  Run
+                </span>
+              </div>
+              <div
+                class="visible content"
+              >
+                <i
+                  aria-hidden="true"
+                  class="play icon"
+                />
+              </div>
+            </button>,
+          }
+        }
       >
-        <ButtonContent
-          hidden={true}
+        <RefFindNode
+          innerRef={
+            Object {
+              "current": <button
+                class="ui green huge vertical animated button"
+              >
+                <div
+                  class="hidden content"
+                >
+                  <span>
+                    Run
+                  </span>
+                </div>
+                <div
+                  class="visible content"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="play icon"
+                  />
+                </div>
+              </button>,
+            }
+          }
         >
-          <div
-            className="hidden content"
+          <button
+            className="ui green huge vertical animated button"
+            onClick={[Function]}
+            onMouseDown={[Function]}
           >
-            <FormattedMessage
-              defaultMessage="Run"
-              id="app.control.run"
-              values={Object {}}
+            <ButtonContent
+              hidden={true}
             >
-              <span>
-                Run
-              </span>
-            </FormattedMessage>
-          </div>
-        </ButtonContent>
-        <ButtonContent
-          visible={true}
-        >
-          <div
-            className="visible content"
-          >
-            <Icon
-              as="i"
-              name="play"
+              <div
+                className="hidden content"
+              >
+                <FormattedMessage
+                  defaultMessage="Run"
+                  id="app.control.run"
+                  values={Object {}}
+                >
+                  <span>
+                    Run
+                  </span>
+                </FormattedMessage>
+              </div>
+            </ButtonContent>
+            <ButtonContent
+              visible={true}
             >
-              <i
-                aria-hidden="true"
-                className="play icon"
-                onClick={[Function]}
-              />
-            </Icon>
-          </div>
-        </ButtonContent>
-      </button>
+              <div
+                className="visible content"
+              >
+                <Icon
+                  as="i"
+                  name="play"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="play icon"
+                    onClick={[Function]}
+                  />
+                </Icon>
+              </div>
+            </ButtonContent>
+          </button>
+        </RefFindNode>
+      </Ref>
     </Button>
     <Button
       animated="vertical"
@@ -168,52 +220,106 @@ exports[`The Control component renders on the page with no errors 1`] = `
         }
       }
     >
-      <button
-        className="ui yellow vertical animated button"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        style={
+      <Ref
+        innerRef={
           Object {
-            "verticalAlign": "bottom",
+            "current": <button
+              class="ui yellow vertical animated button"
+              style="vertical-align: bottom;"
+            >
+              <div
+                class="hidden content"
+              >
+                <span>
+                  Step
+                </span>
+              </div>
+              <div
+                class="visible content"
+              >
+                <i
+                  aria-hidden="true"
+                  class="step forward icon"
+                />
+              </div>
+            </button>,
           }
         }
       >
-        <ButtonContent
-          hidden={true}
+        <RefFindNode
+          innerRef={
+            Object {
+              "current": <button
+                class="ui yellow vertical animated button"
+                style="vertical-align: bottom;"
+              >
+                <div
+                  class="hidden content"
+                >
+                  <span>
+                    Step
+                  </span>
+                </div>
+                <div
+                  class="visible content"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="step forward icon"
+                  />
+                </div>
+              </button>,
+            }
+          }
         >
-          <div
-            className="hidden content"
+          <button
+            className="ui yellow vertical animated button"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            style={
+              Object {
+                "verticalAlign": "bottom",
+              }
+            }
           >
-            <FormattedMessage
-              defaultMessage="Step"
-              id="app.control.step"
-              values={Object {}}
+            <ButtonContent
+              hidden={true}
             >
-              <span>
-                Step
-              </span>
-            </FormattedMessage>
-          </div>
-        </ButtonContent>
-        <ButtonContent
-          visible={true}
-        >
-          <div
-            className="visible content"
-          >
-            <Icon
-              as="i"
-              name="step forward"
+              <div
+                className="hidden content"
+              >
+                <FormattedMessage
+                  defaultMessage="Step"
+                  id="app.control.step"
+                  values={Object {}}
+                >
+                  <span>
+                    Step
+                  </span>
+                </FormattedMessage>
+              </div>
+            </ButtonContent>
+            <ButtonContent
+              visible={true}
             >
-              <i
-                aria-hidden="true"
-                className="step forward icon"
-                onClick={[Function]}
-              />
-            </Icon>
-          </div>
-        </ButtonContent>
-      </button>
+              <div
+                className="visible content"
+              >
+                <Icon
+                  as="i"
+                  name="step forward"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="step forward icon"
+                    onClick={[Function]}
+                  />
+                </Icon>
+              </div>
+            </ButtonContent>
+          </button>
+        </RefFindNode>
+      </Ref>
     </Button>
     <Button
       animated="vertical"
@@ -227,52 +333,106 @@ exports[`The Control component renders on the page with no errors 1`] = `
         }
       }
     >
-      <button
-        className="ui blue vertical animated button"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        style={
+      <Ref
+        innerRef={
           Object {
-            "verticalAlign": "bottom",
+            "current": <button
+              class="ui blue vertical animated button"
+              style="vertical-align: bottom;"
+            >
+              <div
+                class="hidden content"
+              >
+                <span>
+                  Reset
+                </span>
+              </div>
+              <div
+                class="visible content"
+              >
+                <i
+                  aria-hidden="true"
+                  class="repeat icon"
+                />
+              </div>
+            </button>,
           }
         }
       >
-        <ButtonContent
-          hidden={true}
+        <RefFindNode
+          innerRef={
+            Object {
+              "current": <button
+                class="ui blue vertical animated button"
+                style="vertical-align: bottom;"
+              >
+                <div
+                  class="hidden content"
+                >
+                  <span>
+                    Reset
+                  </span>
+                </div>
+                <div
+                  class="visible content"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="repeat icon"
+                  />
+                </div>
+              </button>,
+            }
+          }
         >
-          <div
-            className="hidden content"
+          <button
+            className="ui blue vertical animated button"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            style={
+              Object {
+                "verticalAlign": "bottom",
+              }
+            }
           >
-            <FormattedMessage
-              defaultMessage="Reset"
-              id="app.control.reset"
-              values={Object {}}
+            <ButtonContent
+              hidden={true}
             >
-              <span>
-                Reset
-              </span>
-            </FormattedMessage>
-          </div>
-        </ButtonContent>
-        <ButtonContent
-          visible={true}
-        >
-          <div
-            className="visible content"
-          >
-            <Icon
-              as="i"
-              name="repeat"
+              <div
+                className="hidden content"
+              >
+                <FormattedMessage
+                  defaultMessage="Reset"
+                  id="app.control.reset"
+                  values={Object {}}
+                >
+                  <span>
+                    Reset
+                  </span>
+                </FormattedMessage>
+              </div>
+            </ButtonContent>
+            <ButtonContent
+              visible={true}
             >
-              <i
-                aria-hidden="true"
-                className="repeat icon"
-                onClick={[Function]}
-              />
-            </Icon>
-          </div>
-        </ButtonContent>
-      </button>
+              <div
+                className="visible content"
+              >
+                <Icon
+                  as="i"
+                  name="repeat"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="repeat icon"
+                    onClick={[Function]}
+                  />
+                </Icon>
+              </div>
+            </ButtonContent>
+          </button>
+        </RefFindNode>
+      </Ref>
     </Button>
   </Control>
 </Connect(Control)>

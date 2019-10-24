@@ -3,9 +3,9 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { logout as actionLogout } from '@/actions/auth';
 import { FormattedMessage } from 'react-intl';
 import { Divider } from 'semantic-ui-react';
+import { logout as actionLogout } from '@/actions/auth';
 import TopNav from './TopNav';
 
 const mapStateToProps = ({ auth, user }) => ({ auth, user });
@@ -99,6 +99,7 @@ ProtectedRoute.propTypes = {
   }).isRequired,
   user: PropTypes.shape({
     exp: PropTypes.number,
+    username: PropTypes.string,
   }).isRequired,
   component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   logout: PropTypes.func.isRequired,
