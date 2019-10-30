@@ -224,20 +224,28 @@ class RoverDetail extends Component {
                     <Segment raised>
                       <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
                         <Form.Field inline>
-                          <label>
+                          {/* <label>
                             <Popup
                               trigger={<Icon circular name="help" style={{ marginRight: '10px' }} />}
                               content="The default theme's basic popup removes the pointing arrow."
                               basic
                             />
                             {nameLabel}
-                          </label>
+                          </label> */}
                           <Form.Input
                             inline
                             defaultValue={rover.name}
                             onChange={this.handleNameChange}
                             required
-                          />
+                          >
+                            <label>{nameLabel}</label>
+                            <input />
+                            <Popup
+                              trigger={<Icon circular name="help" style={{ marginRight: '10px' }} />}
+                              content="The default theme's basic popup removes the pointing arrow."
+                              basic
+                            />
+                          </Form.Input>
                         </Form.Field>
                         <Form.Field error={configError}>
                           <Accordion>
