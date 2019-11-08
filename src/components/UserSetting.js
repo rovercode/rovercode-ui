@@ -267,6 +267,7 @@ UserSetting.propTypes = {
     user_id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
+    isSocial: PropTypes.bool.isRequired,
   }).isRequired,
   intl: intlShape.isRequired,
 };

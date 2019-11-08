@@ -182,9 +182,11 @@ class Workspace extends Component {
     writeToConsole(`Rovercode ${consoleStart}`);
   }
 
-  componentWillUpdate(nextProps) {
-    const { code: currentCode } = this.props;
-    const { code: nextCode } = nextProps;
+  componentDidUpdate(prevProps) {
+    const { code: currentCode } = prevProps;
+    const { code: nextCode, sensor } = this.props;
+
+    this.updateSensorStateCache(sensor.left, sensor.right);
 
     // Ignore if execution state has not changed unless stepping
     if (nextCode.execution === currentCode.execution && nextCode.execution !== EXECUTION_STEP) {
@@ -207,12 +209,6 @@ class Workspace extends Component {
       default:
         break;
     }
-  }
-
-  componentDidUpdate() {
-    const { sensor } = this.props;
-
-    this.updateSensorStateCache(sensor.left, sensor.right);
   }
 
   updateSensorStateCache = (leftState, rightState) => {
@@ -493,7 +489,10 @@ class Workspace extends Component {
 
 Workspace.propTypes = {
   code: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
     jsCode: PropTypes.string,
+    xmlCode: PropTypes.string,
     isReadOnly: PropTypes.bool,
   }).isRequired,
   sensor: PropTypes.shape({
