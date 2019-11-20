@@ -11,6 +11,7 @@ import {
   Segment,
   TextArea,
   Popup,
+  Label,
 } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -232,19 +233,22 @@ class RoverDetail extends Component {
                             />
                             {nameLabel}
                           </label> */}
+                          <label>{nameLabel}</label>
                           <Form.Input
                             inline
                             defaultValue={rover.name}
                             onChange={this.handleNameChange}
                             required
                           >
-                            <label>{nameLabel}</label>
+                            
                             <input />
+                            <Label color='black' floating>
                             <Popup
-                              trigger={<Icon circular name="help" style={{ marginRight: '10px' }} />}
+                              trigger={<Icon circular name="question-circle" style={{ marginRight: '0'}} />}
                               content="The default theme's basic popup removes the pointing arrow."
                               basic
                             />
+                            </Label>
                           </Form.Input>
                         </Form.Field>
                         <Form.Field error={configError}>
