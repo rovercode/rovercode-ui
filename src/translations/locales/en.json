@@ -70,6 +70,7 @@
   "app.protected_route.teachers_link": "this page ",
   "app.protected_route.teachers_message": " Teachers, visit ",
   "app.protected_route.teachers_secondmessage": "to report the issue.",
+  "app.protected_route.rover_name_tooltip": "Make up a name for your rover. Don't use your name.",
   "app.rover_connection.active": "Active",
   "app.rover_connection.inactive": "Inactive",
   "app.rover_detail.advanced": "Advanced",

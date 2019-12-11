@@ -225,14 +225,6 @@ class RoverDetail extends Component {
                     <Segment raised>
                       <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
                         <Form.Field inline>
-                          {/* <label>
-                            <Popup
-                              trigger={<Icon circular name="help" style={{ marginRight: '10px' }} />}
-                              content="The default theme's basic popup removes the pointing arrow."
-                              basic
-                            />
-                            {nameLabel}
-                          </label> */}
                           <label>{nameLabel}</label>
                           <Form.Input
                             inline
@@ -240,14 +232,19 @@ class RoverDetail extends Component {
                             onChange={this.handleNameChange}
                             required
                           >
-                            
                             <input />
-                            <Label color='black' floating>
-                            <Popup
-                              trigger={<Icon circular name="question-circle" style={{ marginRight: '0'}} />}
-                              content="The default theme's basic popup removes the pointing arrow."
-                              basic
-                            />
+                            <Label color="" floating>
+                              <Popup
+                                trigger={<Icon circular name="question" style={{ marginRight: '0' }} />}
+                                content={(
+                                  <FormattedMessage
+                                    id="app.protected_route.rover_name_tooltip"
+                                    description="Tooltip for rover name field"
+                                    defaultMessage="Make up a name for your rover. Don't use your name."
+                                  />
+)}
+                                basic
+                              />
                             </Label>
                           </Form.Input>
                         </Form.Field>
