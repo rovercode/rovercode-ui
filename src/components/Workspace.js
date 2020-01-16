@@ -31,6 +31,7 @@ import { append, clear } from '@/actions/console';
 import { pushCommand } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
+import logger from '@/utils/logger';
 
 const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -181,9 +182,11 @@ class Workspace extends Component {
     writeToConsole(`Rovercode ${consoleStart}`);
   }
 
-  componentWillUpdate(nextProps) {
-    const { code: currentCode } = this.props;
-    const { code: nextCode } = nextProps;
+  componentDidUpdate(prevProps) {
+    const { code: currentCode } = prevProps;
+    const { code: nextCode, sensor } = this.props;
+
+    this.updateSensorStateCache(sensor.left, sensor.right);
 
     // Ignore if execution state has not changed unless stepping
     if (nextCode.execution === currentCode.execution && nextCode.execution !== EXECUTION_STEP) {
@@ -206,12 +209,6 @@ class Workspace extends Component {
       default:
         break;
     }
-  }
-
-  componentDidUpdate() {
-    const { sensor } = this.props;
-
-    this.updateSensorStateCache(sensor.left, sensor.right);
   }
 
   updateSensorStateCache = (leftState, rightState) => {
@@ -343,6 +340,10 @@ class Workspace extends Component {
   stepCode = () => {
     const { interpreter, workspace } = this.state;
 
+    if (this.sleeping) {
+      return true;
+    }
+
     const ok = interpreter.step();
     if (!ok) {
       // Program complete, no more code to execute.
@@ -428,9 +429,12 @@ class Workspace extends Component {
 
     // Need to fetch the program again since the current code has editable="false" tags
     return Promise.all([fetchProgram(code.id), createProgram(code.name)])
-      .then(([fetchData, createData]) => saveProgram(
-        createData.value.id, fetchData.value.content, createData.value.name,
-      ))
+      .then(([fetchData, createData]) => {
+        logger.log(JSON.stringify({
+          event: 'remix', userId: createData.user_id, sourceProgramId: code.id, newProgramId: createData.value.id,
+        }));
+        return saveProgram(createData.value.id, fetchData.value.content, createData.value.name);
+      })
       .then(() => {
         changeReadOnly(false);
         this.createWorkspace();
@@ -485,7 +489,10 @@ class Workspace extends Component {
 
 Workspace.propTypes = {
   code: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
     jsCode: PropTypes.string,
+    xmlCode: PropTypes.string,
     isReadOnly: PropTypes.bool,
   }).isRequired,
   sensor: PropTypes.shape({

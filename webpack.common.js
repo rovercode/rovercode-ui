@@ -2,8 +2,8 @@
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const WebappWebpackPlugin = require('webapp-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -59,6 +59,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       SENTRY_DSN: JSON.stringify(process.env.FRONTEND_SENTRY_DSN),
+      LOGGER_ENDPOINT: JSON.stringify(process.env.FRONTEND_LOGGER_ENDPOINT),
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
@@ -68,18 +69,21 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'app.css',
     }),
-    new WebappWebpackPlugin({
+    new FaviconsWebpackPlugin({
       logo: './src/assets/images/favicon.png',
-      persistentCache: false,
-      icons: {
-        android: false,
-        appleIcon: false,
-        appleStartup: false,
-        coast: false,
-        favicons: true,
-        firefox: false,
-        windows: false,
-        yandex: false,
+      cache: true,
+      inject: true,
+      favicons: {
+        icons: {
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: false,
+          windows: false,
+          yandex: false,
+        },
       },
     }),
   ],
