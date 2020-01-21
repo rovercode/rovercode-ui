@@ -103,16 +103,40 @@ exports[`The CodeViewer component handles blank code with no errors 1`] = `
               onMouseLeave={[Function]}
               primary={true}
             >
-              <button
-                className="ui primary button"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
+              <Ref
+                innerRef={
+                  Object {
+                    "current": <button
+                      class="ui primary button"
+                    >
+                      Show Me The Code!
+                    </button>,
+                  }
+                }
               >
-                Show Me The Code!
-              </button>
+                <RefFindNode
+                  innerRef={
+                    Object {
+                      "current": <button
+                        class="ui primary button"
+                      >
+                        Show Me The Code!
+                      </button>,
+                    }
+                  }
+                >
+                  <button
+                    className="ui primary button"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                  >
+                    Show Me The Code!
+                  </button>
+                </RefFindNode>
+              </Ref>
             </Button>
           </RefFindNode>
         </Ref>
@@ -225,16 +249,40 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
               onMouseLeave={[Function]}
               primary={true}
             >
-              <button
-                className="ui primary button"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
+              <Ref
+                innerRef={
+                  Object {
+                    "current": <button
+                      class="ui primary button"
+                    >
+                      Show Me The Code!
+                    </button>,
+                  }
+                }
               >
-                Show Me The Code!
-              </button>
+                <RefFindNode
+                  innerRef={
+                    Object {
+                      "current": <button
+                        class="ui primary button"
+                      >
+                        Show Me The Code!
+                      </button>,
+                    }
+                  }
+                >
+                  <button
+                    className="ui primary button"
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                  >
+                    Show Me The Code!
+                  </button>
+                </RefFindNode>
+              </Ref>
             </Button>
           </RefFindNode>
         </Ref>

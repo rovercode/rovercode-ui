@@ -27,15 +27,17 @@ class RoverConnectionList extends Component {
     let activeRoverObject = null;
     let inactiveRovers = null;
 
-    if (rovers) {
-      const activeRoverIndex = rovers.results.findIndex(rover => rover.client_id === activeRover);
-
-      if (activeRoverIndex > -1) {
-        ({ [activeRoverIndex]: activeRoverObject, ...inactiveRovers } = rovers.results);
-        inactiveRovers = Object.values(inactiveRovers);
-      } else {
-        inactiveRovers = rovers.results;
+    if (rovers && rovers.results.length) {
+      let activeRoverIndex = rovers.results.findIndex(rover => rover.client_id === activeRover);
+      if (activeRoverIndex < 0) {
+        changeActiveRover(rovers.results[0].client_id);
+        activeRoverIndex = 0;
       }
+
+      ({ [activeRoverIndex]: activeRoverObject, ...inactiveRovers } = rovers.results);
+      inactiveRovers = Object.values(inactiveRovers);
+    } else if (!isFetching) {
+      inactiveRovers = [];
     }
 
     return (
@@ -101,6 +103,7 @@ RoverConnectionList.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
+        client_id: PropTypes.string.isRequired,
       }),
     ),
   }),

@@ -139,25 +139,55 @@ exports[`The Console component renders on the page with no errors 1`] = `
         }
       }
     >
-      <button
-        className="ui primary button"
-        onClick={[Function]}
-        style={
+      <Ref
+        innerRef={
           Object {
-            "marginTop": "10px",
+            "current": <button
+              class="ui primary button"
+              style="margin-top: 10px;"
+            >
+              <span>
+                Clear
+              </span>
+            </button>,
           }
         }
       >
-        <FormattedMessage
-          defaultMessage="Clear"
-          id="app.console.clear"
-          values={Object {}}
+        <RefFindNode
+          innerRef={
+            Object {
+              "current": <button
+                class="ui primary button"
+                style="margin-top: 10px;"
+              >
+                <span>
+                  Clear
+                </span>
+              </button>,
+            }
+          }
         >
-          <span>
-            Clear
-          </span>
-        </FormattedMessage>
-      </button>
+          <button
+            className="ui primary button"
+            onClick={[Function]}
+            style={
+              Object {
+                "marginTop": "10px",
+              }
+            }
+          >
+            <FormattedMessage
+              defaultMessage="Clear"
+              id="app.console.clear"
+              values={Object {}}
+            >
+              <span>
+                Clear
+              </span>
+            </FormattedMessage>
+          </button>
+        </RefFindNode>
+      </Ref>
     </Button>
   </Console>
 </Connect(Console)>

@@ -32,6 +32,7 @@ describe('The RoverConnectionList component', () => {
         fetchRovers={fetchRovers}
         commands={commands}
         rovers={null}
+        isFetching
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -102,5 +103,41 @@ describe('The RoverConnectionList component', () => {
     expect(wrapper.find(RoverConnection).length).toBe(2);
     expect(wrapper.find(RoverConnection).first().prop('name')).toBe('Marvin');
     expect(wrapper.find(RoverConnection).last().prop('name')).toBe('Sparky');
+    expect(changeActiveRover).not.toHaveBeenCalled();
+  });
+
+  test('sets the active rover if not set', async () => {
+    const rovers = {
+      next: null,
+      previous: null,
+      results: [{
+        id: 1,
+        name: 'Sparky',
+        client_id: '1234',
+      }, {
+        id: 2,
+        name: 'Marvin',
+        client_id: '5678',
+      }],
+    };
+    const wrapper = shallow(
+      <RoverConnectionList
+        changeActiveRover={changeActiveRover}
+        changeLeftSensorState={changeLeftSensorState}
+        changeRightSensorState={changeRightSensorState}
+        popCommand={popCommand}
+        fetchRovers={fetchRovers}
+        rovers={rovers}
+        commands={commands}
+      />,
+    );
+    await wrapper.instance().componentDidMount();
+    wrapper.update();
+
+    expect(wrapper.find(Loader).exists()).toBe(false);
+    expect(wrapper.find(RoverConnection).length).toBe(2);
+    expect(wrapper.find(RoverConnection).first().prop('name')).toBe('Sparky');
+    expect(wrapper.find(RoverConnection).last().prop('name')).toBe('Marvin');
+    expect(changeActiveRover).toHaveBeenCalledWith('1234');
   });
 });
