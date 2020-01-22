@@ -11,6 +11,10 @@ export const FETCH_USER_PROGRAMS = 'FETCH_USER_PROGRAMS';
 export const FETCH_USER_PROGRAMS_PENDING = `${FETCH_USER_PROGRAMS}_PENDING`;
 export const FETCH_USER_PROGRAMS_FULFILLED = `${FETCH_USER_PROGRAMS}_FULFILLED`;
 export const FETCH_USER_PROGRAMS_REJECTED = `${FETCH_USER_PROGRAMS}_REJECTED`;
+export const FETCH_FEATURED_PROGRAMS = 'FETCH_FEATURED_PROGRAMS';
+export const FETCH_FEATURED_PROGRAMS_PENDING = `${FETCH_FEATURED_PROGRAMS}_PENDING`;
+export const FETCH_FEATURED_PROGRAMS_FULFILLED = `${FETCH_FEATURED_PROGRAMS}_FULFILLED`;
+export const FETCH_FEATURED_PROGRAMS_REJECTED = `${FETCH_FEATURED_PROGRAMS}_REJECTED`;
 export const REMOVE_PROGRAM = 'REMOVE_PROGRAM';
 export const REMOVE_PROGRAM_PENDING = `${REMOVE_PROGRAM}_PENDING`;
 export const REMOVE_PROGRAM_FULFILLED = `${REMOVE_PROGRAM}_FULFILLED`;
@@ -22,6 +26,8 @@ export const fetchPrograms = (xhrOptions) => {
 
   if (xhrOptions && xhrOptions.params && xhrOptions.params.user) {
     type = FETCH_USER_PROGRAMS;
+  } else if (xhrOptions && xhrOptions.params && xhrOptions.params.admin_tags) {
+    type = FETCH_FEATURED_PROGRAMS;
   }
 
   return ({

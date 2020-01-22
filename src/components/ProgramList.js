@@ -42,6 +42,8 @@ class ProgramList extends Component {
       user: user.user_id,
     }).then(() => fetchPrograms({
       user__not: user.user_id,
+    })).then(() => fetchPrograms({
+      admin_tags: "featured",
     })).then(() => fetchTags());
   }
 
@@ -123,6 +125,7 @@ class ProgramList extends Component {
       programs,
       tag,
       userPrograms,
+      featuredPrograms,
     } = this.props;
     const {
       confirmOpen,
@@ -134,6 +137,12 @@ class ProgramList extends Component {
       id: 'app.program_list.my_programs',
       description: 'Header for all of user\'s programs',
       defaultMessage: 'My Programs',
+    });
+
+    const featuredProgramsHeader = intl.formatMessage({
+      id: 'app.program_list.featured_programs',
+      description: 'Header for all featured programs',
+      defaultMessage: 'Featured Programs',
     });
 
     const otherProgramsHeader = intl.formatMessage({
@@ -192,6 +201,11 @@ class ProgramList extends Component {
             : this.programSegment(userPrograms, tag, myProgramsHeader, true)
         }
         {
+          featuredPrograms === null
+            ? (<Loader active />)
+            : this.programSegment(featuredPrograms, tag, featuredProgramsHeader, true)
+        }
+        {
           programs === null
             ? (<Loader active />)
             : this.programSegment(programs, tag, otherProgramsHeader, false)
@@ -218,6 +232,12 @@ ProgramList.defaultProps = {
     results: [],
   },
   userPrograms: {
+    next: null,
+    previous: null,
+    total_pages: 1,
+    results: [],
+  },
+  featuredPrograms: {
     next: null,
     previous: null,
     total_pages: 1,
@@ -253,6 +273,20 @@ ProgramList.propTypes = {
     ),
   }),
   userPrograms: PropTypes.shape({
+    next: PropTypes.string,
+    previous: PropTypes.string,
+    total_pages: PropTypes.number,
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        user: PropTypes.shape({
+          username: PropTypes.string.isRequired,
+        }).isRequired,
+      }),
+    ),
+  }),
+  featuredPrograms: PropTypes.shape({
     next: PropTypes.string,
     previous: PropTypes.string,
     total_pages: PropTypes.number,
