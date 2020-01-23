@@ -103,6 +103,7 @@ exports[`The RoverDetail component renders on the page with no errors 1`] = `
                 additionLabel="Add "
                 additionPosition="top"
                 closeOnBlur={true}
+                closeOnEscape={true}
                 deburr={false}
                 fluid={true}
                 icon="dropdown"

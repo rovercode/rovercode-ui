@@ -7,7 +7,20 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
     inverted={true}
   >
     <MenuItem
-      as={[Function]}
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "displayName": "Link",
+          "propTypes": Object {
+            "innerRef": [Function],
+            "onClick": [Function],
+            "replace": [Function],
+            "target": [Function],
+            "to": [Function],
+          },
+          "render": [Function],
+        }
+      }
       to="/"
     >
       <Image
@@ -18,7 +31,20 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
       />
     </MenuItem>
     <MenuItem
-      as={[Function]}
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "displayName": "Link",
+          "propTypes": Object {
+            "innerRef": [Function],
+            "onClick": [Function],
+            "replace": [Function],
+            "target": [Function],
+            "to": [Function],
+          },
+          "render": [Function],
+        }
+      }
       to="/programs"
     >
       <FormattedMessage
@@ -28,7 +54,20 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
       />
     </MenuItem>
     <MenuItem
-      as={[Function]}
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "displayName": "Link",
+          "propTypes": Object {
+            "innerRef": [Function],
+            "onClick": [Function],
+            "replace": [Function],
+            "target": [Function],
+            "to": [Function],
+          },
+          "render": [Function],
+        }
+      }
       to="/rovers"
     >
       <FormattedMessage
@@ -44,6 +83,7 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
         additionLabel="Add "
         additionPosition="top"
         closeOnBlur={true}
+        closeOnEscape={true}
         deburr={false}
         icon="dropdown"
         item={true}
@@ -59,7 +99,20 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
       >
         <DropdownMenu>
           <DropdownItem
-            as={[Function]}
+            as={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "displayName": "Link",
+                "propTypes": Object {
+                  "innerRef": [Function],
+                  "onClick": [Function],
+                  "replace": [Function],
+                  "target": [Function],
+                  "to": [Function],
+                },
+                "render": [Function],
+              }
+            }
             to="/user/settings"
           >
             <FormattedMessage

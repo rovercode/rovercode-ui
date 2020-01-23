@@ -53,6 +53,7 @@ describe('The UserSetting component', () => {
       user_id: 1,
       username: 'testuser',
       email: 'test@example.com',
+      isSocial: false,
     };
     const wrapper = shallowWithIntl(
       <UserSetting
@@ -82,6 +83,7 @@ describe('The UserSetting component', () => {
       user_id: 1,
       username: 'testuser',
       email: 'test@example.com',
+      isSocial: false,
     };
     const wrapper = shallowWithIntl(
       <UserSetting
@@ -116,6 +118,7 @@ describe('The UserSetting component', () => {
       user_id: 1,
       username: 'testuser',
       email: 'test@example.com',
+      isSocial: false,
     };
     const wrapper = shallowWithIntl(
       <UserSetting
@@ -150,6 +153,7 @@ describe('The UserSetting component', () => {
       user_id: 1,
       username: 'testuser',
       email: 'test@example.com',
+      isSocial: false,
     };
     const error = new Error();
     error.response = {
@@ -183,6 +187,7 @@ describe('The UserSetting component', () => {
       user_id: 1,
       username: 'testuser',
       email: 'test@example.com',
+      isSocial: false,
     };
     const error = new Error();
     error.response = {

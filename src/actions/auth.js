@@ -16,7 +16,7 @@ export const logout = () => ({
 
 // helper functions
 export const checkAuthError = dispatch => (error) => {
-  if (error.response.status === 401) {
+  if (error.response && error.response.status === 401) {
     // Authentication is no longer valid
     dispatch(updateValidAuth(false));
   } else {
