@@ -203,7 +203,7 @@ class ProgramList extends Component {
         {
           featuredPrograms === null
             ? (<Loader active />)
-            : this.programSegment(featuredPrograms, tag, featuredProgramsHeader, true)
+            : this.programSegment(featuredPrograms, tag, featuredProgramsHeader, false)
         }
         {
           programs === null
