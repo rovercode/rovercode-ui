@@ -43,7 +43,7 @@ class ProgramList extends Component {
     }).then(() => fetchPrograms({
       user__not: user.user_id,
     })).then(() => fetchPrograms({
-      admin_tags: "featured",
+      admin_tags: 'featured',
     })).then(() => fetchTags());
   }
 

@@ -98,7 +98,7 @@ describe('The ProgramList component', () => {
     ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(2);
+    expect(wrapper.find(ProgramCollection).length).toBe(3);
     expect(wrapper.find(Loader).exists()).toBe(false);
   });
 
@@ -117,7 +117,7 @@ describe('The ProgramList component', () => {
     ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(1);
+    expect(wrapper.find(ProgramCollection).length).toBe(2);
     expect(wrapper.find(Loader).exists()).toBe(true);
   });
 
@@ -136,7 +136,26 @@ describe('The ProgramList component', () => {
     ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(1);
+    expect(wrapper.find(ProgramCollection).length).toBe(2);
+    expect(wrapper.find(Loader).exists()).toBe(true);
+  });
+
+  test('shows loading when featured programs fetching', () => {
+    const wrapper = shallowWithIntl(
+      <ProgramList
+        changeReadOnly={changeReadOnly}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        fetchTags={fetchTags}
+        clearProgram={clearProgram}
+        user={{ user_id: 1 }}
+        featuredPrograms={null}
+      />,
+    ).dive();
+
+    expect(wrapper.find(ProgramCollection).exists()).toBe(true);
+    expect(wrapper.find(ProgramCollection).length).toBe(2);
     expect(wrapper.find(Loader).exists()).toBe(true);
   });
 
@@ -413,7 +432,7 @@ describe('The ProgramList component', () => {
     });
     await wrapper.instance().removeProgram();
 
-    expect(fetchPrograms).toHaveBeenCalledTimes(4);
+    expect(fetchPrograms).toHaveBeenCalledTimes(5);
     expect(removeProgram).toHaveBeenCalledWith(33);
   });
 

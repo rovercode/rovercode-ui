@@ -6,6 +6,9 @@ import {
   FETCH_USER_PROGRAMS_PENDING,
   FETCH_USER_PROGRAMS_FULFILLED,
   FETCH_USER_PROGRAMS_REJECTED,
+  FETCH_FEATURED_PROGRAMS_PENDING,
+  FETCH_FEATURED_PROGRAMS_FULFILLED,
+  FETCH_FEATURED_PROGRAMS_REJECTED,
   REMOVE_PROGRAM_PENDING,
   REMOVE_PROGRAM_FULFILLED,
   REMOVE_PROGRAM_REJECTED,
@@ -24,6 +27,9 @@ describe('The program reducer', () => {
       userProgramsIsFetching: false,
       userProgramsError: null,
       userPrograms: null,
+      featuredProgramsIsFetching: false,
+      featuredProgramsError: null,
+      featuredPrograms: null,
       isRemoving: false,
     });
 
@@ -62,6 +68,9 @@ describe('The program reducer', () => {
       userProgramsIsFetching: true,
       userProgramsError: null,
       userPrograms: null,
+      featuredProgramsIsFetching: false,
+      featuredProgramsError: null,
+      featuredPrograms: null,
       isRemoving: false,
     });
 
@@ -88,6 +97,47 @@ describe('The program reducer', () => {
       userProgramsIsFetching: false,
     });
   });
+  test('should handle FETCH_FEATURED_PROGRAMS_PENDING', () => {
+    expect(
+      reducer(undefined, {
+        type: FETCH_FEATURED_PROGRAMS_PENDING,
+      }),
+    ).toEqual({
+      programsIsFetching: false,
+      programsError: null,
+      programs: null,
+      userProgramsIsFetching: false,
+      userProgramsError: null,
+      userPrograms: null,
+      featuredProgramsIsFetching: true,
+      featuredProgramsError: null,
+      featuredPrograms: null,
+      isRemoving: false,
+    });
+
+    const featuredPrograms = [];
+    expect(
+      reducer({}, {
+        type: FETCH_FEATURED_PROGRAMS_FULFILLED,
+        payload: featuredPrograms,
+      }),
+    ).toEqual({
+      featuredPrograms,
+      featuredProgramsIsFetching: false,
+      featuredProgramsError: null,
+    });
+
+    const featuredProgramsError = 'woops';
+    expect(
+      reducer({}, {
+        type: FETCH_FEATURED_PROGRAMS_REJECTED,
+        payload: featuredProgramsError,
+      }),
+    ).toEqual({
+      featuredProgramsError,
+      featuredProgramsIsFetching: false,
+    });
+  });
   test('should handle REMOVE_PROGRAM_PENDING', () => {
     expect(
       reducer(undefined, {
@@ -100,6 +150,9 @@ describe('The program reducer', () => {
       userProgramsIsFetching: false,
       userProgramsError: null,
       userPrograms: null,
+      featuredProgramsIsFetching: false,
+      featuredProgramsError: null,
+      featuredPrograms: null,
       isRemoving: true,
     });
 

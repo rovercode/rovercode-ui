@@ -17,11 +17,14 @@ export default function programs(
   state = {
     programsIsFetching: false,
     userProgramsIsFetching: false,
+    featuredProgramsIsFetching: false,
     isRemoving: false,
     programs: null,
     userPrograms: null,
+    featuredPrograms: null,
     programsError: null,
     userProgramsError: null,
+    featuredProgramsError: null,
   },
   action,
 ) {

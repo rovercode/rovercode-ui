@@ -73,6 +73,35 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
     }
   >
     <InjectIntl(ProgramCollection)
+      label="Featured Programs"
+      onProgramClick={[Function]}
+      onRemoveClick={[Function]}
+      onUpdate={[Function]}
+      owned={false}
+      programs={
+        Object {
+          "next": null,
+          "previous": null,
+          "results": Array [],
+          "total_pages": 1,
+        }
+      }
+      tag={
+        Object {
+          "tags": Array [],
+        }
+      }
+    />
+  </Segment>
+  <Segment
+    raised={true}
+    style={
+      Object {
+        "margin": "10px 10% 10px 10%",
+      }
+    }
+  >
+    <InjectIntl(ProgramCollection)
       label="Find More"
       onProgramClick={[Function]}
       onRemoveClick={[Function]}
