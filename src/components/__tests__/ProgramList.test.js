@@ -509,7 +509,7 @@ describe('The ProgramList component', () => {
     });
     await wrapper.instance().removeProgram();
 
-    expect(fetchPrograms).toHaveBeenCalledTimes(6);
+    expect(fetchPrograms).toHaveBeenCalledTimes(4);
     expect(removeProgram).toHaveBeenCalledWith(33);
   });
 
