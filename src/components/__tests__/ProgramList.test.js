@@ -272,7 +272,7 @@ describe('The ProgramList component', () => {
       />,
     ).dive();
 
-    await wrapper.instance().fetch({
+    await wrapper.instance().fetchUserPrograms({
       page: 2,
     }, true);
 
@@ -309,7 +309,7 @@ describe('The ProgramList component', () => {
       />,
     ).dive();
 
-    await wrapper.instance().fetch({
+    await wrapper.instance().fetchOtherPrograms({
       page: 2,
     }, false);
 
@@ -346,7 +346,7 @@ describe('The ProgramList component', () => {
       />,
     ).dive();
 
-    wrapper.instance().fetch({
+    wrapper.instance().fetchUserPrograms({
       search: 'abc',
       page: 1,
     }, true);
@@ -385,7 +385,7 @@ describe('The ProgramList component', () => {
       />,
     ).dive();
 
-    wrapper.instance().fetch({
+    wrapper.instance().fetchOtherPrograms({
       search: 'abc',
       page: 1,
     }, false);
@@ -432,7 +432,7 @@ describe('The ProgramList component', () => {
     });
     await wrapper.instance().removeProgram();
 
-    expect(fetchPrograms).toHaveBeenCalledTimes(5);
+    expect(fetchPrograms).toHaveBeenCalledTimes(6);
     expect(removeProgram).toHaveBeenCalledWith(33);
   });
 
