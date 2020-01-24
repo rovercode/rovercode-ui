@@ -27,7 +27,7 @@ class ProgramCollection extends Component {
   }
 
   update = () => {
-    const { onUpdate, owned } = this.props;
+    const { onUpdate } = this.props;
     const {
       page,
       ordering,
@@ -45,7 +45,7 @@ class ProgramCollection extends Component {
       params.search = searchQuery;
     }
 
-    onUpdate(params, owned);
+    onUpdate(params);
   }
 
   toggleOrdering = (name) => {
@@ -81,11 +81,11 @@ class ProgramCollection extends Component {
 
   render() {
     const {
+      user,
       label,
       onProgramClick,
       onRemoveClick,
       programs,
-      owned,
       intl,
       tag,
     } = this.props;
@@ -182,7 +182,7 @@ class ProgramCollection extends Component {
                   </Card.Header>
                   <Card.Meta>
                     {
-                      owned ? (
+                      user.username === program.user.username ? (
                         <FormattedMessage
                           id="app.program_collection.mine"
                           description="Label to indicate program owned by user"
@@ -193,9 +193,14 @@ class ProgramCollection extends Component {
                   </Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
-                  <Button primary id={program.id} data-owned={owned} onClick={onProgramClick}>
+                  <Button
+                    primary
+                    id={program.id}
+                    data-owned={user.username === program.user.username}
+                    onClick={onProgramClick}
+                  >
                     {
-                      owned ? (
+                      user.username === program.user.username ? (
                         <FormattedMessage
                           id="app.program_collection.work"
                           description="Button label to keep working on program"
@@ -211,7 +216,7 @@ class ProgramCollection extends Component {
                     }
                   </Button>
                   {
-                    owned ? (
+                    user.username === program.user.username ? (
                       <Button
                         negative
                         id={program.id}
@@ -251,13 +256,15 @@ class ProgramCollection extends Component {
 }
 
 ProgramCollection.defaultProps = {
-  owned: false,
   tag: {
     tags: [],
   },
 };
 
 ProgramCollection.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }).isRequired,
   programs: PropTypes.shape({
     next: PropTypes.string,
     previous: PropTypes.string,
@@ -278,7 +285,6 @@ ProgramCollection.propTypes = {
     })),
   }),
   label: PropTypes.string.isRequired,
-  owned: PropTypes.bool,
   onProgramClick: PropTypes.func.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,

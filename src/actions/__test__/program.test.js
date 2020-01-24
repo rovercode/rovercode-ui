@@ -52,6 +52,34 @@ describe('Program actions', () => {
     mock.restore();
   });
 
+  test('fetch featured programs', async () => {
+    const mock = new MockAdapter(axios);
+    const programs = [{
+      id: 33,
+      name: 'Unnamed_Design_3',
+      content: '<xml><variables></variables></xml>',
+      admin_tags: ['featured'],
+    }];
+
+    mock.onGet('/api/v1/block-diagrams/', {
+      params: {
+        admin_tags: ['featured'],
+      },
+    }).reply(200, programs);
+
+    const action = fetchPrograms({
+      params: {
+        admin_tags: ['featured'],
+      },
+    });
+    const { type } = action;
+    const payload = await action.payload;
+
+    expect(type).toEqual('FETCH_FEATURED_PROGRAMS');
+    expect(payload).toEqual(programs);
+    mock.restore();
+  });
+
   test('remove program', async () => {
     const mock = new MockAdapter(axios);
 

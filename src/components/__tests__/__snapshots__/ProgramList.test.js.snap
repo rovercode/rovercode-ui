@@ -48,7 +48,6 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       onProgramClick={[Function]}
       onRemoveClick={[Function]}
       onUpdate={[Function]}
-      owned={true}
       programs={
         Object {
           "next": null,
@@ -60,6 +59,46 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       tag={
         Object {
           "tags": Array [],
+        }
+      }
+      user={
+        Object {
+          "user_id": 1,
+          "username": "testuser",
+        }
+      }
+    />
+  </Segment>
+  <Segment
+    raised={true}
+    style={
+      Object {
+        "margin": "10px 10% 10px 10%",
+      }
+    }
+  >
+    <InjectIntl(ProgramCollection)
+      label="Featured Programs"
+      onProgramClick={[Function]}
+      onRemoveClick={[Function]}
+      onUpdate={[Function]}
+      programs={
+        Object {
+          "next": null,
+          "previous": null,
+          "results": Array [],
+          "total_pages": 1,
+        }
+      }
+      tag={
+        Object {
+          "tags": Array [],
+        }
+      }
+      user={
+        Object {
+          "user_id": 1,
+          "username": "testuser",
         }
       }
     />
@@ -77,7 +116,6 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       onProgramClick={[Function]}
       onRemoveClick={[Function]}
       onUpdate={[Function]}
-      owned={false}
       programs={
         Object {
           "next": null,
@@ -89,6 +127,12 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       tag={
         Object {
           "tags": Array [],
+        }
+      }
+      user={
+        Object {
+          "user_id": 1,
+          "username": "testuser",
         }
       }
     />

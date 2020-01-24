@@ -32,7 +32,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
     wrapper.setState({
@@ -54,7 +54,7 @@ describe('The ProgramList component', () => {
           removeProgram={removeProgram}
           fetchTags={fetchTags}
           clearProgram={clearProgram}
-          user={{ user_id: 1 }}
+          user={{ user_id: 1, username: 'testuser' }}
         />
       </MemoryRouter>,
     );
@@ -93,12 +93,12 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(2);
+    expect(wrapper.find(ProgramCollection).length).toBe(3);
     expect(wrapper.find(Loader).exists()).toBe(false);
   });
 
@@ -111,14 +111,15 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
         programs={null}
       />,
     ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(1);
+    expect(wrapper.find(ProgramCollection).length).toBe(2);
     expect(wrapper.find(Loader).exists()).toBe(true);
+    expect(wrapper.find(Loader).length).toBe(1);
   });
 
   test('shows loading when user programs fetching', () => {
@@ -130,14 +131,35 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
         userPrograms={null}
       />,
     ).dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(1);
+    expect(wrapper.find(ProgramCollection).length).toBe(2);
     expect(wrapper.find(Loader).exists()).toBe(true);
+    expect(wrapper.find(Loader).length).toBe(1);
+  });
+
+  test('shows loading when featured programs fetching', () => {
+    const wrapper = shallowWithIntl(
+      <ProgramList
+        changeReadOnly={changeReadOnly}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        fetchTags={fetchTags}
+        clearProgram={clearProgram}
+        user={{ user_id: 1, username: 'testuser' }}
+        featuredPrograms={null}
+      />,
+    ).dive();
+
+    expect(wrapper.find(ProgramCollection).exists()).toBe(true);
+    expect(wrapper.find(ProgramCollection).length).toBe(2);
+    expect(wrapper.find(Loader).exists()).toBe(true);
+    expect(wrapper.find(Loader).length).toBe(1);
   });
 
   test('redirects to mission control when program loads', () => {
@@ -149,7 +171,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
@@ -186,7 +208,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
@@ -249,16 +271,53 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
-    await wrapper.instance().fetch({
+    await wrapper.instance().fetchUserPrograms({
       page: 2,
     }, true);
 
     expect(fetchPrograms).toHaveBeenCalledWith({
       user: 1,
+      page: 2,
+    });
+  });
+
+  test('fetches featured programs after page change', async () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'admin',
+        },
+      }],
+    };
+    const wrapper = shallowWithIntl(
+      <ProgramList
+        programs={programs}
+        changeReadOnly={changeReadOnly}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        fetchTags={fetchTags}
+        clearProgram={clearProgram}
+        user={{ user_id: 1, username: 'testuser' }}
+      />,
+    ).dive();
+
+    await wrapper.instance().fetchFeaturedPrograms({
+      page: 2,
+    }, false);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      admin_tags: 'featured',
       page: 2,
     });
   });
@@ -286,11 +345,11 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
-    await wrapper.instance().fetch({
+    await wrapper.instance().fetchOtherPrograms({
       page: 2,
     }, false);
 
@@ -323,11 +382,11 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
-    wrapper.instance().fetch({
+    wrapper.instance().fetchUserPrograms({
       search: 'abc',
       page: 1,
     }, true);
@@ -338,6 +397,46 @@ describe('The ProgramList component', () => {
       search: 'abc',
     });
   });
+
+  test('fetches featured programs after search change', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'admin',
+        },
+      }],
+    };
+    const wrapper = shallowWithIntl(
+      <ProgramList
+        programs={programs}
+        changeReadOnly={changeReadOnly}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        fetchTags={fetchTags}
+        clearProgram={clearProgram}
+        user={{ user_id: 1, username: 'testuser' }}
+      />,
+    ).dive();
+
+    wrapper.instance().fetchFeaturedPrograms({
+      search: 'abc',
+      page: 1,
+    }, false);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      admin_tags: 'featured',
+      page: 1,
+      search: 'abc',
+    });
+  });
+
 
   test('fetches other programs after search change', () => {
     const programs = {
@@ -362,11 +461,11 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
-    wrapper.instance().fetch({
+    wrapper.instance().fetchOtherPrograms({
       search: 'abc',
       page: 1,
     }, false);
@@ -401,7 +500,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
@@ -413,7 +512,7 @@ describe('The ProgramList component', () => {
     });
     await wrapper.instance().removeProgram();
 
-    expect(fetchPrograms).toHaveBeenCalledTimes(4);
+    expect(fetchPrograms).toHaveBeenCalledTimes(6);
     expect(removeProgram).toHaveBeenCalledWith(33);
   });
 
@@ -426,7 +525,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
@@ -452,7 +551,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1, username: 'testuser' }}
       />,
     ).dive();
 
