@@ -55,6 +55,7 @@
   "app.program_list.confirm": "Sí",
   "app.program_list.dialog_content": "¿Estás seguro de que quieres eliminar {name}?",
   "app.program_list.dialog_header": "Quitar Program",
+  "app.program_list.featured_programs": "Featured Programs",
   "app.program_list.my_programs": "Mis Programas",
   "app.program_list.new": "Programa Nuevo",
   "app.program_list.other_programs": "Encontrar Mas",

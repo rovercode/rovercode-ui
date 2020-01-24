@@ -161,11 +161,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
           Unnamed_Design_2
         </CardHeader>
         <CardMeta>
-          <FormattedMessage
-            defaultMessage="Mine"
-            id="app.program_collection.mine"
-            values={Object {}}
-          />
+          testuser
         </CardMeta>
       </CardContent>
       <CardContent
@@ -173,28 +169,14 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
       >
         <Button
           as="button"
-          data-owned={true}
+          data-owned={false}
           id={5}
           onClick={[MockFunction]}
           primary={true}
         >
           <FormattedMessage
-            defaultMessage="Keep Working"
-            id="app.program_collection.work"
-            values={Object {}}
-          />
-        </Button>
-        <Button
-          as="button"
-          floated="right"
-          id={5}
-          name="Unnamed_Design_2"
-          negative={true}
-          onClick={[MockFunction]}
-        >
-          <FormattedMessage
-            defaultMessage="Remove"
-            id="app.program_collection.remove"
+            defaultMessage="View"
+            id="app.program_collection.view"
             values={Object {}}
           />
         </Button>
