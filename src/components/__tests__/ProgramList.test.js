@@ -282,6 +282,43 @@ describe('The ProgramList component', () => {
     });
   });
 
+  test('fetches featured programs after page change', async () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'admin',
+        },
+      }],
+    };
+    const wrapper = shallowWithIntl(
+      <ProgramList
+        programs={programs}
+        changeReadOnly={changeReadOnly}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        fetchTags={fetchTags}
+        clearProgram={clearProgram}
+        user={{ user_id: 1 }}
+      />,
+    ).dive();
+
+    await wrapper.instance().fetchFeaturedPrograms({
+      page: 2,
+    }, false);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      admin_tags: ['featured'],
+      page: 2,
+    });
+  });
+
   test('fetches other programs after page change', async () => {
     const programs = {
       next: null,
@@ -357,6 +394,46 @@ describe('The ProgramList component', () => {
       search: 'abc',
     });
   });
+
+  test('fetches featured programs after search change', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'admin',
+        },
+      }],
+    };
+    const wrapper = shallowWithIntl(
+      <ProgramList
+        programs={programs}
+        changeReadOnly={changeReadOnly}
+        fetchProgram={fetchProgram}
+        fetchPrograms={fetchPrograms}
+        removeProgram={removeProgram}
+        fetchTags={fetchTags}
+        clearProgram={clearProgram}
+        user={{ user_id: 1 }}
+      />,
+    ).dive();
+
+    wrapper.instance().fetchFeaturedPrograms({
+      search: 'abc',
+      page: 1,
+    }, false);
+
+    expect(fetchPrograms).toHaveBeenCalledWith({
+      admin_tags: ['featured'],
+      page: 1,
+      search: 'abc',
+    });
+  });
+
 
   test('fetches other programs after search change', () => {
     const programs = {
