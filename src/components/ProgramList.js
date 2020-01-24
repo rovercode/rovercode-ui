@@ -69,6 +69,9 @@ class ProgramList extends Component {
       }))
       .then(() => fetchPrograms({
         user__not: user.user_id,
+      }))
+      .then(() => fetchPrograms({
+        admin_tags: 'featured',
       }));
   }
 
@@ -89,32 +92,40 @@ class ProgramList extends Component {
     });
   }
 
-  fetch = (params, owned) => {
+  fetchUserPrograms = (params) => {
     const { fetchPrograms, user } = this.props;
-
-    if (owned) {
-      fetchPrograms({
-        user: user.user_id,
-        ...params,
-      });
-    } else {
-      fetchPrograms({
-        user__not: user.user_id,
-        ...params,
-      });
-    }
+    fetchPrograms({
+      user: user.user_id,
+      ...params,
+    });
   }
 
-  programSegment = (programs, tag, label, owned) => (
+  fetchFeaturedPrograms = (params) => {
+    const { fetchPrograms } = this.props;
+    fetchPrograms({
+      admin_tags: 'featured',
+      ...params,
+    });
+  }
+
+  fetchOtherPrograms = (params) => {
+    const { fetchPrograms, user } = this.props;
+    fetchPrograms({
+      user__not: user.user_id,
+      ...params,
+    });
+  }
+
+  programSegment = (programs, user, tag, label, onUpdate) => (
     <Segment raised style={{ margin: '10px 10% 10px 10%' }}>
       <ProgramCollection
         programs={programs}
+        user={user}
         tag={tag}
         label={label}
-        owned={owned}
         onProgramClick={this.loadProgram}
         onRemoveClick={this.showConfirm}
-        onUpdate={this.fetch}
+        onUpdate={onUpdate}
       />
     </Segment>
   )
@@ -123,6 +134,7 @@ class ProgramList extends Component {
     const {
       intl,
       programs,
+      user,
       tag,
       userPrograms,
       featuredPrograms,
@@ -198,17 +210,19 @@ class ProgramList extends Component {
         {
           userPrograms === null
             ? (<Loader active />)
-            : this.programSegment(userPrograms, tag, myProgramsHeader, true)
+            : this.programSegment(userPrograms, user, tag,
+              myProgramsHeader, this.fetchUserPrograms)
         }
         {
           featuredPrograms === null
             ? (<Loader active />)
-            : this.programSegment(featuredPrograms, tag, featuredProgramsHeader, false)
+            : this.programSegment(featuredPrograms, user, tag,
+              featuredProgramsHeader, this.fetchFeaturedPrograms)
         }
         {
           programs === null
             ? (<Loader active />)
-            : this.programSegment(programs, tag, otherProgramsHeader, false)
+            : this.programSegment(programs, user, tag, otherProgramsHeader, this.fetchOtherPrograms)
         }
         <Confirm
           header={dialogHeader}
@@ -257,6 +271,7 @@ ProgramList.propTypes = {
   clearProgram: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired,
   }).isRequired,
   programs: PropTypes.shape({
     next: PropTypes.string,
