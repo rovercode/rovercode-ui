@@ -22,8 +22,8 @@ describe('The ProgramCollection component', () => {
     onProgramClick = jest.fn();
     onRemoveClick = jest.fn();
     onUpdate = jest.fn();
-    adminUser = {username : 'admin'};
-    testUser = {username : 'testuser'};
+    adminUser = { username: 'admin' };
+    testUser = { username: 'testuser' };
   });
 
   test('renders on the page with no errors', () => {

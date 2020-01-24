@@ -103,7 +103,7 @@ class ProgramList extends Component {
   fetchFeaturedPrograms = (params) => {
     const { fetchPrograms } = this.props;
     fetchPrograms({
-      admin_tags: ['featured'],
+      admin_tags: 'featured',
       ...params,
     });
   }
