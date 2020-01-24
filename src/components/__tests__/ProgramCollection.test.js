@@ -14,12 +14,16 @@ import ProgramCollection from '../ProgramCollection';
 let onProgramClick;
 let onRemoveClick;
 let onUpdate;
+let adminUser;
+let testUser;
 
 describe('The ProgramCollection component', () => {
   beforeEach(() => {
     onProgramClick = jest.fn();
     onRemoveClick = jest.fn();
     onUpdate = jest.fn();
+    adminUser = { username: 'admin' };
+    testUser = { username: 'testuser' };
   });
 
   test('renders on the page with no errors', () => {
@@ -47,7 +51,7 @@ describe('The ProgramCollection component', () => {
       <ProgramCollection
         programs={programs}
         label="My Programs"
-        owned
+        user={adminUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -81,7 +85,7 @@ describe('The ProgramCollection component', () => {
       <ProgramCollection
         programs={programs}
         label="My Programs"
-        owned
+        user={testUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -121,6 +125,7 @@ describe('The ProgramCollection component', () => {
       <ProgramCollection
         programs={programs}
         label="My Programs"
+        user={adminUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -152,7 +157,7 @@ describe('The ProgramCollection component', () => {
       <ProgramCollection
         programs={programs}
         label="My Programs"
-        owned
+        user={adminUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -190,7 +195,7 @@ describe('The ProgramCollection component', () => {
       <ProgramCollection
         programs={programs}
         label="My Programs"
-        owned
+        user={adminUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -235,7 +240,7 @@ describe('The ProgramCollection component', () => {
       <ProgramCollection
         programs={programs}
         label="My Programs"
-        owned
+        user={adminUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -250,7 +255,7 @@ describe('The ProgramCollection component', () => {
       page: 2,
       ordering: 'name',
       tag: '',
-    }, true);
+    });
   });
 
   test('callback when search changes', () => {
@@ -278,7 +283,7 @@ describe('The ProgramCollection component', () => {
       <ProgramCollection
         programs={programs}
         label="My Programs"
-        owned
+        user={adminUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -296,7 +301,7 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: 'name',
       tag: '',
-    }, true);
+    });
   });
 
   test('callback when order changes', () => {
@@ -324,7 +329,7 @@ describe('The ProgramCollection component', () => {
       <ProgramCollection
         programs={programs}
         label="My Programs"
-        owned
+        user={adminUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -339,7 +344,7 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: '-name',
       tag: '',
-    }, true);
+    });
 
     wrapper.find({ name: 'name' }).simulate('click', null, {
       name: 'name',
@@ -349,7 +354,7 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: 'name',
       tag: '',
-    }, true);
+    });
 
     wrapper.instance().handleOrderingChange(null, {
       name: 'field_name',
@@ -359,7 +364,7 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: 'field_name',
       tag: '',
-    }, true);
+    });
   });
 
   test('callback when tag changes', () => {
@@ -395,7 +400,7 @@ describe('The ProgramCollection component', () => {
         programs={programs}
         tag={tag}
         label="My Programs"
-        owned
+        user={adminUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
@@ -413,6 +418,6 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: 'name',
       tag: 'tag1,tag2',
-    }, true);
+    });
   });
 });
