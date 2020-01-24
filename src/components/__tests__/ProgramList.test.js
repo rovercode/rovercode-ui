@@ -119,6 +119,7 @@ describe('The ProgramList component', () => {
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(2);
     expect(wrapper.find(Loader).exists()).toBe(true);
+    expect(wrapper.find(Loader).length).toBe(1);
   });
 
   test('shows loading when user programs fetching', () => {
@@ -138,6 +139,7 @@ describe('The ProgramList component', () => {
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(2);
     expect(wrapper.find(Loader).exists()).toBe(true);
+    expect(wrapper.find(Loader).length).toBe(1);
   });
 
   test('shows loading when featured programs fetching', () => {
@@ -157,6 +159,7 @@ describe('The ProgramList component', () => {
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(2);
     expect(wrapper.find(Loader).exists()).toBe(true);
+    expect(wrapper.find(Loader).length).toBe(1);
   });
 
   test('redirects to mission control when program loads', () => {
