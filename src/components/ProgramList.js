@@ -66,6 +66,12 @@ class ProgramList extends Component {
     return removeProgram(focusProgram.id)
       .then(() => fetchPrograms({
         user: user.user_id,
+      }))
+      .then(() => fetchPrograms({
+        user__not: user.user_id,
+      }))
+      .then(() => fetchPrograms({
+        admin_tags: 'featured',
       }));
   }
 
