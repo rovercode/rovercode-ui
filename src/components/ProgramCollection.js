@@ -263,7 +263,6 @@ ProgramCollection.defaultProps = {
 
 ProgramCollection.propTypes = {
   user: PropTypes.shape({
-    user_id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
   }).isRequired,
   programs: PropTypes.shape({

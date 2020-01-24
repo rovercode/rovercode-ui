@@ -64,6 +64,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       user={
         Object {
           "user_id": 1,
+          "username": "testuser",
         }
       }
     />
@@ -97,6 +98,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       user={
         Object {
           "user_id": 1,
+          "username": "testuser",
         }
       }
     />
@@ -130,6 +132,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       user={
         Object {
           "user_id": 1,
+          "username": "testuser",
         }
       }
     />

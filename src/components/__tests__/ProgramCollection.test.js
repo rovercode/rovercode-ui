@@ -255,7 +255,7 @@ describe('The ProgramCollection component', () => {
       page: 2,
       ordering: 'name',
       tag: '',
-    }, true);
+    });
   });
 
   test('callback when search changes', () => {
@@ -301,7 +301,7 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: 'name',
       tag: '',
-    }, true);
+    });
   });
 
   test('callback when order changes', () => {
@@ -344,7 +344,7 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: '-name',
       tag: '',
-    }, true);
+    });
 
     wrapper.find({ name: 'name' }).simulate('click', null, {
       name: 'name',
@@ -354,7 +354,7 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: 'name',
       tag: '',
-    }, true);
+    });
 
     wrapper.instance().handleOrderingChange(null, {
       name: 'field_name',
@@ -364,7 +364,7 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: 'field_name',
       tag: '',
-    }, true);
+    });
   });
 
   test('callback when tag changes', () => {
@@ -418,6 +418,6 @@ describe('The ProgramCollection component', () => {
       page: 1,
       ordering: 'name',
       tag: 'tag1,tag2',
-    }, true);
+    });
   });
 });

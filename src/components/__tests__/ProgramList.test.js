@@ -32,7 +32,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
     wrapper.setState({
@@ -54,7 +54,7 @@ describe('The ProgramList component', () => {
           removeProgram={removeProgram}
           fetchTags={fetchTags}
           clearProgram={clearProgram}
-          user={{ user_id: 1 }}
+          user={{ user_id: 1 , username: 'testuser'}}
         />
       </MemoryRouter>,
     );
@@ -93,7 +93,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -111,7 +111,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
         programs={null}
       />,
     ).dive();
@@ -130,7 +130,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
         userPrograms={null}
       />,
     ).dive();
@@ -149,7 +149,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
         featuredPrograms={null}
       />,
     ).dive();
@@ -168,7 +168,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -205,7 +205,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -268,7 +268,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -305,7 +305,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -342,7 +342,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -379,7 +379,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -418,7 +418,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -458,7 +458,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -497,7 +497,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -522,7 +522,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
@@ -548,7 +548,7 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
-        user={{ user_id: 1 }}
+        user={{ user_id: 1 , username: 'testuser'}}
       />,
     ).dive();
 
