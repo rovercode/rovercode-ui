@@ -225,7 +225,7 @@ class RoverDetail extends Component {
                     <Segment raised>
                       <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
                         <Form.Field inline>
-                          <label>{nameLabel}</label>
+                          <Label>{nameLabel}</Label>
                           <Form.Input
                             inline
                             defaultValue={rover.name}
@@ -233,19 +233,17 @@ class RoverDetail extends Component {
                             required
                           >
                             <input />
-                            <Label color="" floating>
-                              <Popup
-                                trigger={<Icon circular name="question" style={{ marginRight: '0' }} />}
-                                content={(
-                                  <FormattedMessage
-                                    id="app.protected_route.rover_name_tooltip"
-                                    description="Tooltip for rover name field"
-                                    defaultMessage="Make up a name for your rover. Don't use your name."
-                                  />
-)}
-                                basic
-                              />
-                            </Label>
+                            <Popup
+                              trigger={<Icon circular bordered={false} color="red" name="question" size="small" />}
+                              content={(
+                                <FormattedMessage
+                                  id="app.protected_route.rover_name_tooltip"
+                                  description="Tooltip for rover name field"
+                                  defaultMessage="Make up a name for your rover. Don't use your name."
+                                />
+                              )}
+                              basic
+                            />
                           </Form.Input>
                         </Form.Field>
                         <Form.Field error={configError}>
