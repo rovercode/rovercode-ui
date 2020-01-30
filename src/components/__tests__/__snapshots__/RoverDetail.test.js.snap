@@ -54,15 +54,54 @@ exports[`The RoverDetail component renders on the page with no errors 1`] = `
             loading={false}
             onSubmit={[Function]}
           >
-            <FormInput
-              as={[Function]}
-              control={[Function]}
-              defaultValue="Sparky"
+            <FormField
               inline={true}
-              label="Name:"
-              onChange={[Function]}
-              required={true}
-            />
+            >
+              <Label>
+                Name:
+              </Label>
+              <FormInput
+                as={[Function]}
+                control={[Function]}
+                defaultValue="Sparky"
+                inline={true}
+                onChange={[Function]}
+                required={true}
+              >
+                <input />
+                <Popup
+                  basic={true}
+                  content={
+                    <FormattedMessage
+                      defaultMessage="Make up a name for your rover. Don't use your name."
+                      id="app.protected_route.rover_name_tooltip"
+                      values={Object {}}
+                    />
+                  }
+                  disabled={false}
+                  eventsEnabled={true}
+                  offset={0}
+                  on={
+                    Array [
+                      "click",
+                      "hover",
+                    ]
+                  }
+                  pinned={false}
+                  position="top left"
+                  trigger={
+                    <Icon
+                      as="i"
+                      bordered={false}
+                      circular={true}
+                      color="red"
+                      name="question"
+                      size="small"
+                    />
+                  }
+                />
+              </FormInput>
+            </FormField>
             <FormField
               error={false}
             >

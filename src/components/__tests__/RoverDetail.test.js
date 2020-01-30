@@ -242,7 +242,7 @@ describe('The RoverDetail component', () => {
       />,
     ).dive();
 
-    expect(wrapper.find(Form.Field).first().prop('error')).toBe(false);
+    expect(wrapper.find(Form.Field).at(1).prop('error')).toBe(false);
 
     wrapper.find(TextArea).simulate('change', {
       target: {
@@ -252,7 +252,7 @@ describe('The RoverDetail component', () => {
 
     wrapper.update();
 
-    expect(wrapper.find(Form.Field).first().prop('error')).toBe(true);
+    expect(wrapper.find(Form.Field).at(1).prop('error')).toBe(true);
 
     await wrapper.instance().saveRover();
     wrapper.update();
