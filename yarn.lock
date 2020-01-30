@@ -4594,7 +4594,7 @@ html-minifier-terser@^5.0.1:
     relateurl "^0.2.7"
     terser "^4.3.9"
 
-"html-webpack-plugin@>=4.0.0 || ^4.0.0-beta.11", html-webpack-plugin@^4.0.0:
+"html-webpack-plugin@>=4.0.0 || ^4.0.0-beta.11", html-webpack-plugin@^4.0.0-beta.11:
   version "4.0.0-beta.11"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-4.0.0-beta.11.tgz#3059a69144b5aecef97708196ca32f9e68677715"
   integrity sha512-4Xzepf0qWxf8CGg7/WQM5qBB2Lc/NFI7MhU59eUDTkuQp3skZczH4UA1d6oQyDEIoMDgERVhRyTdtUPZ5s5HBg==
@@ -6419,9 +6419,9 @@ node-abi@^2.7.0:
   dependencies:
     semver "^5.4.1"
 
-"node-blockly@git+https://github.com/rovercode/node-blockly.git#073996e7952b5a9c7cda784966d40090e80d275a":
+"node-blockly@git+https://github.com/rovercode/node-blockly.git#838025e1e0c5cf5c021f40d8bb4889265a9ca277":
   version "1.0.35"
-  resolved "git+https://github.com/rovercode/node-blockly.git#073996e7952b5a9c7cda784966d40090e80d275a"
+  resolved "git+https://github.com/rovercode/node-blockly.git#838025e1e0c5cf5c021f40d8bb4889265a9ca277"
   dependencies:
     jsdom "^11.3.0"
     xmlshim "^0.2.1"
