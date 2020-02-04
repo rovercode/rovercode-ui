@@ -10,6 +10,8 @@ import {
   Message,
   Segment,
   TextArea,
+  Popup,
+  Label,
 } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -136,6 +138,7 @@ class RoverDetail extends Component {
       id: 'app.rover_detail.name',
       description: 'Label for rover name entry',
       defaultMessage: 'Name:',
+
     });
 
     let options = userList.map(userItem => ({
@@ -221,13 +224,28 @@ class RoverDetail extends Component {
                   <Grid.Row>
                     <Segment raised>
                       <Form key={rover.id} loading={!rover} onSubmit={this.saveRover}>
-                        <Form.Input
-                          inline
-                          label={nameLabel}
-                          defaultValue={rover.name}
-                          onChange={this.handleNameChange}
-                          required
-                        />
+                        <Form.Field inline>
+                          <Label>{nameLabel}</Label>
+                          <Form.Input
+                            inline
+                            defaultValue={rover.name}
+                            onChange={this.handleNameChange}
+                            required
+                          >
+                            <input />
+                            <Popup
+                              trigger={<Icon circular bordered={false} color="red" name="question" size="small" />}
+                              content={(
+                                <FormattedMessage
+                                  id="app.protected_route.rover_name_tooltip"
+                                  description="Tooltip for rover name field"
+                                  defaultMessage="Make up a name for your rover. Don't use your name."
+                                />
+                              )}
+                              basic
+                            />
+                          </Form.Input>
+                        </Form.Field>
                         <Form.Field error={configError}>
                           <Accordion>
                             <Accordion.Title active={accordionActive} onClick={this.handleClick}>
