@@ -26,6 +26,7 @@ import RoverList from './containers/RoverList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 import UserSetting from './containers/UserSetting';
+import UserProfile from './containers/UserProfile';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import enMessages from './translations/locales/en.json';
@@ -99,6 +100,7 @@ render(
             <ProtectedRoute exact path="/rovers/:id(\d+)" component={RoverDetail} />
             <ProtectedRoute exact path="/mission-control" component={MissionControl} />
             <ProtectedRoute exact path="/user/settings" component={UserSetting} />
+            <ProtectedRoute exact path="/user/:id(\d+)" component={UserProfile} />
             <Route component={NotFound} />
           </Switch>
         </CookiesProvider>
