@@ -390,7 +390,8 @@ class Workspace extends Component {
   highlightBlock = (id) => {
     const { workspace } = this.state;
 
-    if (workspace.getBlockById(id).getCommentText().indexOf('PASS') > -1) {
+    const comment = workspace.getBlockById(id).getCommentText();
+    if (comment && comment.indexOf('PASS') > -1) {
       this.highlightPause = false;
     } else {
       this.highlightPause = true;
