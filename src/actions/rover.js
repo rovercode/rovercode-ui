@@ -21,6 +21,20 @@ export const CREATE_ROVER_REJECTED = `${CREATE_ROVER}_REJECTED`;
 export const CHANGE_ACTIVE_ROVER = 'CHANGE_ACTIVE_ROVER';
 export const PUSH_COMMAND = 'PUSH_COMMAND';
 export const POP_COMMAND = 'POP_COMMAND';
+export const SCAN = 'SCAN';
+export const SCAN_FULFILLED = `${SCAN}_FULFILLED`;
+export const SCAN_REJECTED = `${SCAN}_REJECTED`;
+export const CONNECT_ROVER = 'CONNECT_ROVER';
+export const CONNECT_ROVER_FULFILLED = `${CONNECT_ROVER}_FULFILLED`;
+export const CONNECT_ROVER_REJECTED = `${CONNECT_ROVER}_REJECTED`;
+export const SEND_ROVER = 'SEND_ROVER';
+export const SEND_ROVER_FULFILLED = `${SEND_ROVER}_FULFILLED`;
+export const SEND_ROVER_REJECTED = `${SEND_ROVER}_REJECTED`;
+export const DISCONNECT_ROVER = 'DISCONNECT_ROVER';
+
+const UART_SERVICE_UUID = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
+const UART_TX_CHARACTERISTIC_UUID = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
+const UART_RX_CHARACTERISTIC_UUID = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
 // action creators
 export const fetchRovers = xhrOptions => ({
@@ -75,4 +89,35 @@ export const pushCommand = command => ({
 
 export const popCommand = () => ({
   type: POP_COMMAND,
+});
+
+export const scan = () => ({
+  type: SCAN,
+  payload: navigator.bluetooth.requestDevice({
+    filters: [{ namePrefix: 'BBC micro:bit' }],
+    optionalServices: [UART_SERVICE_UUID],
+  })
+    .then(device => (
+      device
+    )),
+});
+
+export const connect = device => ({
+  type: CONNECT_ROVER,
+  payload: device.gatt.connect()
+    .then(server => server.getPrimaryService(UART_SERVICE_UUID))
+    .then(service => service.getCharacteristic(UART_RX_CHARACTERISTIC_UUID))
+    .then(characteristic => (
+      characteristic
+    )),
+});
+
+export const send = (channel, message) => ({
+  type: SEND_ROVER,
+  payload: channel.writeValue(message),
+});
+
+export const disconnect = device => ({
+  type: DISCONNECT_ROVER,
+  payload: device.gatt.disconnect(),
 });

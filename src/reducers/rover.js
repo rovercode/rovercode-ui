@@ -12,11 +12,19 @@ import {
   FETCH_ROVERS,
   FETCH_ROVERS_FULFILLED,
   FETCH_ROVERS_REJECTED,
-  POP_COMMAND,
-  PUSH_COMMAND,
   REMOVE_ROVER,
   REMOVE_ROVER_FULFILLED,
   REMOVE_ROVER_REJECTED,
+  SCAN,
+  SCAN_FULFILLED,
+  SCAN_REJECTED,
+  CONNECT_ROVER,
+  CONNECT_ROVER_FULFILLED,
+  CONNECT_ROVER_REJECTED,
+  SEND_ROVER,
+  SEND_ROVER_FULFILLED,
+  SEND_ROVER_REJECTED,
+  DISCONNECT_ROVER,
 } from '../actions/rover';
 
 export default function rovers(
@@ -26,11 +34,15 @@ export default function rovers(
     isEditing: false,
     isRemoving: false,
     isCreating: false,
+    isScanning: false,
+    isConnecting: false,
     rovers: null,
     rover: null,
     error: null,
     activeRover: null,
     commands: [],
+    transmitChannel: null,
+    receiveChannel: null,
   },
   action,
 ) {
@@ -130,15 +142,64 @@ export default function rovers(
         ...state,
         activeRover: action.payload,
       };
-    case PUSH_COMMAND:
+    case SCAN:
       return {
         ...state,
-        commands: [...state.commands, action.payload],
+        isScanning: true,
       };
-    case POP_COMMAND:
+    case SCAN_FULFILLED:
       return {
         ...state,
-        commands: [...state.commands.slice(1)],
+        isScanning: false,
+        error: null,
+        rover: action.payload,
+      };
+    case SCAN_REJECTED:
+      return {
+        ...state,
+        isScanning: false,
+        error: action.payload,
+      };
+    case CONNECT_ROVER:
+      return {
+        ...state,
+        isConnecting: true,
+      };
+    case CONNECT_ROVER_FULFILLED:
+      return {
+        ...state,
+        isConnecting: false,
+        error: null,
+        transmitChannel: action.payload,
+      };
+    case CONNECT_ROVER_REJECTED:
+      return {
+        ...state,
+        isConnecting: false,
+        error: action.payload,
+      };
+    case SEND_ROVER:
+      return {
+        ...state,
+        isSending: true,
+      };
+    case SEND_ROVER_FULFILLED:
+      return {
+        ...state,
+        isSending: false,
+        error: null,
+      };
+    case SEND_ROVER_REJECTED:
+      return {
+        ...state,
+        isSending: false,
+        error: action.payload,
+      };
+    case DISCONNECT_ROVER:
+      return {
+        ...state,
+        rover: null,
+        error: null,
       };
     default:
       return state;

@@ -7,6 +7,9 @@ import {
   changeActiveRover as actionChangeActiveRover,
   popCommand as actionPopCommand,
   fetchRovers,
+  scan as roverScan,
+  connect as roverConnect,
+  disconnect as roverDisconnect,
 } from '@/actions/rover';
 import {
   changeLeftSensorState as actionChangeLeftSensorState,
@@ -22,6 +25,9 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeRightSensorState: state => dispatch(actionChangeRightSensorState(state)),
   changeActiveRover: clientId => dispatch(actionChangeActiveRover(clientId)),
   popCommand: () => dispatch(actionPopCommand()),
+  connectToRover: rover => dispatch(roverConnect(rover)),
+  disconnectFromRover: rover => dispatch(roverDisconnect(rover)),
+  scanForRover: () => dispatch(roverScan()),
 });
 
 const RoverConnectionListContainer = connect(
