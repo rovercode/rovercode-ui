@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeRightSensorState: state => dispatch(actionChangeRightSensorState(state)),
   changeActiveRover: clientId => dispatch(actionChangeActiveRover(clientId)),
   popCommand: () => dispatch(actionPopCommand()),
-  connectToRover: rover => dispatch(roverConnect(rover)),
+  connectToRover: (rover, onMessage) => dispatch(roverConnect(rover, onMessage)),
   disconnectFromRover: rover => dispatch(roverDisconnect(rover)),
   scanForRover: () => dispatch(roverScan()),
 });

@@ -170,7 +170,8 @@ export default function rovers(
         ...state,
         isConnecting: false,
         error: null,
-        transmitChannel: action.payload,
+        receiveChannel: action.payload[1],
+        transmitChannel: action.payload[0],
       };
     case CONNECT_ROVER_REJECTED:
       return {
@@ -199,6 +200,8 @@ export default function rovers(
       return {
         ...state,
         rover: null,
+        receiveChannel: null,
+        transmitChannel: null,
         error: null,
       };
     default:

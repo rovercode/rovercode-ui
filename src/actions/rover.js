@@ -96,20 +96,25 @@ export const scan = () => ({
   payload: navigator.bluetooth.requestDevice({
     filters: [{ namePrefix: 'BBC micro:bit' }],
     optionalServices: [UART_SERVICE_UUID],
-  })
-    .then(device => (
-      device
-    )),
+  }),
 });
 
-export const connect = device => ({
+export const connect = (device, onMessage) => ({
   type: CONNECT_ROVER,
   payload: device.gatt.connect()
     .then(server => server.getPrimaryService(UART_SERVICE_UUID))
-    .then(service => service.getCharacteristic(UART_RX_CHARACTERISTIC_UUID))
-    .then(characteristic => (
-      characteristic
-    )),
+    .then(service => Promise.all([
+      service.getCharacteristic(UART_RX_CHARACTERISTIC_UUID),
+      service.getCharacteristic(UART_TX_CHARACTERISTIC_UUID)
+        .then((characteristic) => {
+          characteristic.startNotifications();
+          characteristic.addEventListener(
+            'characteristicvaluechanged',
+            onMessage,
+          );
+          return characteristic;
+        }),
+    ])),
 });
 
 export const send = (channel, message) => ({
