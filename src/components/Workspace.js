@@ -283,6 +283,13 @@ class Workspace extends Component {
     }, () => this.onWorkspaceAvailable(code.xmlCode));
 
     window.addEventListener('resize', this.onResize, false);
+
+    let pingButton = document.getElementById('ping');
+    pingButton.addEventListener("click", e => {
+      console.log("ping clicked");
+      let encoder = new TextEncoder();
+      this.sendToRover("P\n");
+    });
   }
 
   updateXmlCode = () => {
@@ -494,6 +501,7 @@ class Workspace extends Component {
             { children }
           </div>
         </div>
+        <button id='ping'>Ping</button>
       </Container>
     );
   }
