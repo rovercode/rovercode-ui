@@ -8,13 +8,15 @@ class BlocklyApi {
   }
 
   sendMotorCommand = (blocklyMotor, blocklyDirection, speed) => {
-    this.sendToRover(JSON.stringify({
-      type: 'motor-command',
-      'motor-id': blocklyMotor === 'LEFT' ? 'motor-left' : 'motor-right',
-      'motor-value': speed,
-      direction: blocklyDirection === 'FORWARD' ? 'forward' : 'backward',
-      unit: 'percent',
-    }));
+    console.log("Sending to rover");
+    this.sendToRover("P\n");
+    // this.sendToRover(JSON.stringify({
+    //   type: 'motor-command',
+    //   'motor-id': blocklyMotor === 'LEFT' ? 'motor-left' : 'motor-right',
+    //   'motor-value': speed,
+    //   direction: blocklyDirection === 'FORWARD' ? 'forward' : 'backward',
+    //   unit: 'percent',
+    // }));
   }
 
   setChainableRgbLed = (blocklyLedId, blocklyColorHexString) => {
