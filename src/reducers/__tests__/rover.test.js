@@ -1,6 +1,5 @@
 import reducer from '../rover';
 import {
-  CHANGE_ACTIVE_ROVER,
   CREATE_ROVER,
   CREATE_ROVER_FULFILLED,
   CREATE_ROVER_REJECTED,
@@ -13,11 +12,19 @@ import {
   FETCH_ROVERS,
   FETCH_ROVERS_FULFILLED,
   FETCH_ROVERS_REJECTED,
-  POP_COMMAND,
-  PUSH_COMMAND,
   REMOVE_ROVER,
   REMOVE_ROVER_FULFILLED,
   REMOVE_ROVER_REJECTED,
+  SCAN,
+  SCAN_FULFILLED,
+  SCAN_REJECTED,
+  CONNECT_ROVER,
+  CONNECT_ROVER_FULFILLED,
+  CONNECT_ROVER_REJECTED,
+  SEND_ROVER,
+  SEND_ROVER_FULFILLED,
+  SEND_ROVER_REJECTED,
+  DISCONNECT_ROVER,
 } from '../../actions/rover';
 
 describe('The rover reducer', () => {
@@ -32,11 +39,16 @@ describe('The rover reducer', () => {
       isFetchingSingle: false,
       isRemoving: false,
       isCreating: false,
+      isConnecting: false,
+      isScanning: false,
+      isSending: false,
       error: null,
       rovers: null,
       rover: null,
       activeRover: null,
       commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
     });
 
     const rovers = [];
@@ -74,11 +86,16 @@ describe('The rover reducer', () => {
       isFetchingSingle: true,
       isRemoving: false,
       isCreating: false,
+      isConnecting: false,
+      isScanning: false,
+      isSending: false,
       error: null,
       rovers: null,
       rover: null,
       activeRover: null,
       commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
     });
 
     const rover = {
@@ -118,11 +135,16 @@ describe('The rover reducer', () => {
       isFetchingSingle: false,
       isRemoving: false,
       isCreating: false,
+      isConnecting: false,
+      isScanning: false,
+      isSending: false,
       error: null,
       rovers: null,
       rover: null,
       activeRover: null,
       commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
     });
 
     const rover = {
@@ -161,11 +183,16 @@ describe('The rover reducer', () => {
       isFetchingSingle: false,
       isRemoving: true,
       isCreating: false,
+      isConnecting: false,
+      isScanning: false,
+      isSending: false,
       error: null,
       rovers: null,
       rover: null,
       activeRover: null,
       commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
     });
 
     expect(
@@ -206,11 +233,16 @@ describe('The rover reducer', () => {
       isFetchingSingle: false,
       isRemoving: false,
       isCreating: true,
+      isConnecting: false,
+      isScanning: false,
+      isSending: false,
       error: null,
       rovers: null,
       rover: null,
       activeRover: null,
       commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
     });
 
     const rover = {
@@ -245,29 +277,10 @@ describe('The rover reducer', () => {
     });
   });
 
-  test('should handle CHANGE_ACTIVE_ROVER', () => {
-    const activeRover = '1234';
-    expect(
-      reducer({}, {
-        type: CHANGE_ACTIVE_ROVER,
-        payload: activeRover,
-      }),
-    ).toEqual({
-      activeRover,
-    });
-  });
-
-  test('should handle PUSH_COMMAND', () => {
-    const initialState = {
-      commands: [
-        'command1',
-        'command2',
-      ],
-    };
+  test('should handle SCAN', () => {
     expect(
       reducer(undefined, {
-        type: PUSH_COMMAND,
-        payload: 'command3',
+        type: SCAN,
       }),
     ).toEqual({
       isEditing: false,
@@ -275,61 +288,159 @@ describe('The rover reducer', () => {
       isFetchingSingle: false,
       isRemoving: false,
       isCreating: false,
-      error: null,
-      rovers: null,
-      rover: null,
-      activeRover: null,
-      commands: [
-        'command3',
-      ],
-    });
-    expect(
-      reducer(initialState, {
-        type: PUSH_COMMAND,
-        payload: 'command3',
-      }),
-    ).toEqual({
-      commands: [
-        'command1',
-        'command2',
-        'command3',
-      ],
-    });
-  });
-
-  test('should handle POP_COMMAND', () => {
-    const initialState = {
-      commands: [
-        'command1',
-        'command2',
-        'command3',
-      ],
-    };
-    expect(
-      reducer(undefined, {
-        type: POP_COMMAND,
-      }),
-    ).toEqual({
-      isEditing: false,
-      isFetching: false,
-      isFetchingSingle: false,
-      isRemoving: false,
-      isCreating: false,
+      isConnecting: false,
+      isScanning: true,
+      isSending: false,
       error: null,
       rovers: null,
       rover: null,
       activeRover: null,
       commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
     });
+
+    const device = {
+      name: 'abcde',
+    };
     expect(
-      reducer(initialState, {
-        type: POP_COMMAND,
+      reducer({}, {
+        type: SCAN_FULFILLED,
+        payload: device,
       }),
     ).toEqual({
-      commands: [
-        'command2',
-        'command3',
-      ],
+      rover: device,
+      isScanning: false,
+      error: null,
+    });
+
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: SCAN_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      error,
+      isScanning: false,
+    });
+  });
+
+  test('should handle CONNECT_ROVER', () => {
+    expect(
+      reducer(undefined, {
+        type: CONNECT_ROVER,
+      }),
+    ).toEqual({
+      isEditing: false,
+      isFetching: false,
+      isFetchingSingle: false,
+      isRemoving: false,
+      isCreating: false,
+      isConnecting: true,
+      isScanning: false,
+      isSending: false,
+      error: null,
+      rovers: null,
+      rover: null,
+      activeRover: null,
+      commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
+    });
+
+    const transmitChannel = { name: 'transmit' };
+    const receiveChannel = { name: 'receive' };
+    const result = [transmitChannel, receiveChannel];
+    expect(
+      reducer({}, {
+        type: CONNECT_ROVER_FULFILLED,
+        payload: result,
+      }),
+    ).toEqual({
+      transmitChannel,
+      receiveChannel,
+      isConnecting: false,
+      error: null,
+    });
+
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: CONNECT_ROVER_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      error,
+      isConnecting: false,
+    });
+  });
+
+  test('should handle SEND_ROVER', () => {
+    expect(
+      reducer(undefined, {
+        type: SEND_ROVER,
+      }),
+    ).toEqual({
+      isEditing: false,
+      isFetching: false,
+      isFetchingSingle: false,
+      isRemoving: false,
+      isCreating: false,
+      isConnecting: false,
+      isScanning: false,
+      isSending: true,
+      error: null,
+      rovers: null,
+      rover: null,
+      activeRover: null,
+      commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
+    });
+
+    expect(
+      reducer({}, {
+        type: SEND_ROVER_FULFILLED,
+      }),
+    ).toEqual({
+      isSending: false,
+      error: null,
+    });
+
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: SEND_ROVER_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      error,
+      isSending: false,
+    });
+  });
+
+  test('should handle DISCONNECT_ROVER', () => {
+    expect(
+      reducer(undefined, {
+        type: DISCONNECT_ROVER,
+      }),
+    ).toEqual({
+      isEditing: false,
+      isFetching: false,
+      isFetchingSingle: false,
+      isRemoving: false,
+      isCreating: false,
+      isConnecting: false,
+      isScanning: false,
+      isSending: false,
+      error: null,
+      rovers: null,
+      rover: null,
+      activeRover: null,
+      commands: [],
+      receiveChannel: null,
+      transmitChannel: null,
     });
   });
 });

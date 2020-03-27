@@ -72,8 +72,6 @@
   "app.protected_route.teachers_link": "this page",
   "app.protected_route.teachers_message": "Teachers, visit this page to report the issue.",
   "app.protected_route.teachers_secondmessage": "to report the issue.",
-  "app.rover_connection.active": "Activo",
-  "app.rover_connection.inactive": "Inactivo",
   "app.rover_detail.advanced": "Configuración avanzada",
   "app.rover_detail.created": "Rover '{name}' ha sido creado. Haz clic en el botón de abajo para descargar las credenciales.",
   "app.rover_detail.error_config": "Error encontrado en la configuración",

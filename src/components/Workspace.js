@@ -217,8 +217,6 @@ class Workspace extends Component {
     if (rover) {
       const encoder = new TextEncoder();
       sendToRover(rover.transmitChannel, encoder.encode(command));
-    } else {
-      console.error('Connect to a rover');
     }
   }
 
@@ -498,6 +496,10 @@ class Workspace extends Component {
     );
   }
 }
+
+Workspace.defaultProps = {
+  rover: null,
+};
 
 Workspace.propTypes = {
   code: PropTypes.shape({

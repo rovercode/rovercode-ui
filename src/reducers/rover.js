@@ -1,5 +1,4 @@
 import {
-  CHANGE_ACTIVE_ROVER,
   CREATE_ROVER,
   CREATE_ROVER_FULFILLED,
   CREATE_ROVER_REJECTED,
@@ -36,6 +35,7 @@ export default function rovers(
     isCreating: false,
     isScanning: false,
     isConnecting: false,
+    isSending: false,
     rovers: null,
     rover: null,
     error: null,
@@ -136,11 +136,6 @@ export default function rovers(
         ...state,
         isCreating: false,
         error: action.payload,
-      };
-    case CHANGE_ACTIVE_ROVER:
-      return {
-        ...state,
-        activeRover: action.payload,
       };
     case SCAN:
       return {

@@ -18,9 +18,6 @@ export const REMOVE_ROVER_REJECTED = `${REMOVE_ROVER}_REJECTED`;
 export const CREATE_ROVER = 'CREATE_ROVER';
 export const CREATE_ROVER_FULFILLED = `${CREATE_ROVER}_FULFILLED`;
 export const CREATE_ROVER_REJECTED = `${CREATE_ROVER}_REJECTED`;
-export const CHANGE_ACTIVE_ROVER = 'CHANGE_ACTIVE_ROVER';
-export const PUSH_COMMAND = 'PUSH_COMMAND';
-export const POP_COMMAND = 'POP_COMMAND';
 export const SCAN = 'SCAN';
 export const SCAN_FULFILLED = `${SCAN}_FULFILLED`;
 export const SCAN_REJECTED = `${SCAN}_REJECTED`;
@@ -75,20 +72,6 @@ export const createRover = (settings, xhrOptions) => ({
     .then(({ data }) => (
       data
     )),
-});
-
-export const changeActiveRover = clientId => ({
-  type: CHANGE_ACTIVE_ROVER,
-  payload: clientId,
-});
-
-export const pushCommand = command => ({
-  type: PUSH_COMMAND,
-  payload: command,
-});
-
-export const popCommand = () => ({
-  type: POP_COMMAND,
 });
 
 export const scan = () => ({
