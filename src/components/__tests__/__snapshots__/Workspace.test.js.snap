@@ -384,6 +384,13 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             "timeZone": null,
           }
         }
+        rover={
+          Object {
+            "transmitChannel": Object {
+              "writeValue": [MockFunction],
+            },
+          }
+        }
         saveProgram={[Function]}
         sendToRover={[Function]}
         sensor={

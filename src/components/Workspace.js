@@ -28,20 +28,20 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 import { append, clear } from '@/actions/console';
-import { pushCommand } from '@/actions/rover';
+import { send } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
 import logger from '@/utils/logger';
 
-const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
+const mapStateToProps = ({ code, rover, sensor }) => ({ code, rover, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
   changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
   writeToConsole: message => dispatch(append(message)),
   clearConsole: () => dispatch(clear()),
   updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
-  sendToRover: command => dispatch(pushCommand(command)),
   changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
+  sendToRover: (channel, message) => dispatch(send(channel, message)),
   saveProgram: (id, content, name) => dispatch(
     actionSaveProgram(id, content, name, authHeader(cookies)),
   ).catch(checkAuthError(dispatch)),
@@ -144,7 +144,7 @@ const toolbox = `
 class Workspace extends Component {
   constructor(props) {
     super(props);
-    const { sendToRover, writeToConsole } = this.props;
+    const { writeToConsole } = this.props;
 
     this.sensorStateCache = [];
     this.sensorStateCache.SENSORS_leftIr = false;
@@ -154,7 +154,7 @@ class Workspace extends Component {
     this.highlightPause = false;
 
     this.api = new BlocklyApi(this.highlightBlock, this.beginSleep,
-      this.sensorStateCache, writeToConsole, sendToRover);
+      this.sensorStateCache, writeToConsole, this.sendToRover);
 
     this.state = {
       workspace: null,
@@ -208,6 +208,15 @@ class Workspace extends Component {
         break;
       default:
         break;
+    }
+  }
+
+  sendToRover = (command) => {
+    const { rover, sendToRover } = this.props;
+
+    if (rover) {
+      const encoder = new TextEncoder();
+      sendToRover(rover.transmitChannel, encoder.encode(command));
     }
   }
 
@@ -488,6 +497,10 @@ class Workspace extends Component {
   }
 }
 
+Workspace.defaultProps = {
+  rover: null,
+};
+
 Workspace.propTypes = {
   code: PropTypes.shape({
     id: PropTypes.number,
@@ -500,6 +513,9 @@ Workspace.propTypes = {
     left: PropTypes.number.isRequired,
     right: PropTypes.number.isRequired,
   }).isRequired,
+  rover: PropTypes.shape({
+    transmitChannel: PropTypes.object,
+  }),
   updateJsCode: PropTypes.func.isRequired,
   updateXmlCode: PropTypes.func.isRequired,
   changeExecutionState: PropTypes.func.isRequired,

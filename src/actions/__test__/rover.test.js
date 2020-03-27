@@ -1,14 +1,15 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import {
-  changeActiveRover,
+  connect,
   createRover,
+  disconnect,
   editRover,
   fetchRover,
   fetchRovers,
-  popCommand,
-  pushCommand,
   removeRover,
+  scan,
+  send,
 } from '../rover';
 
 
@@ -108,26 +109,52 @@ describe('Rover actions', () => {
     mock.restore();
   });
 
-  test('change active rover', () => {
-    const action = changeActiveRover('1234');
+  test('rover scan', () => {
+    const mockDevice = { name: 'Sparky' };
+    const mockBluetooth = {
+      requestDevice: jest.fn(() => mockDevice),
+    };
+    global.navigator.bluetooth = mockBluetooth;
+    const action = scan();
     const { type, payload } = action;
 
-    expect(type).toEqual('CHANGE_ACTIVE_ROVER');
-    expect(payload).toEqual('1234');
+    expect(type).toEqual('SCAN');
+    expect(payload).toEqual(mockDevice);
   });
 
-  test('push command', () => {
-    const action = pushCommand('command');
-    const { type, payload } = action;
-
-    expect(type).toEqual('PUSH_COMMAND');
-    expect(payload).toEqual('command');
-  });
-
-  test('pop command', () => {
-    const action = popCommand();
+  test('connect rover', async () => {
+    const characteristic = {
+      startNotifications: jest.fn(),
+      addEventListener: jest.fn(),
+    };
+    const service = {
+      getCharacteristic: () => Promise.resolve(characteristic),
+    };
+    const server = {
+      getPrimaryService: () => Promise.resolve(service),
+    };
+    const action = connect({ gatt: { connect: () => Promise.resolve(server) } });
     const { type } = action;
+    const payload = await action.payload;
 
-    expect(type).toEqual('POP_COMMAND');
+    expect(type).toEqual('CONNECT_ROVER');
+    expect(payload).toEqual([characteristic, characteristic]);
+  });
+
+  test('rover send', async () => {
+    const action = send({ writeValue: () => Promise.resolve(null) });
+    const { type } = action;
+    const payload = await action.payload;
+
+    expect(type).toEqual('SEND_ROVER');
+    expect(payload).toEqual(null);
+  });
+
+  test('disconnect rover', () => {
+    const action = disconnect({ gatt: { disconnect: jest.fn(() => null) } });
+    const { type, payload } = action;
+
+    expect(type).toEqual('DISCONNECT_ROVER');
+    expect(payload).toEqual(null);
   });
 });

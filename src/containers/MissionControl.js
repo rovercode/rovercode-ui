@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
-import RoverConnectionList from '@/containers/RoverConnectionList';
+import RoverConnection from '@/containers/RoverConnection';
 
 import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
@@ -67,7 +67,7 @@ const MissionControl = ({ location }) => (
             />
           </Header>
           <Segment raised style={{ overflow: 'auto', maxHeight: 200, margin: '10px' }}>
-            <RoverConnectionList />
+            <RoverConnection />
           </Segment>
         </Grid.Row>
         <Divider />
