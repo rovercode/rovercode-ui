@@ -58,13 +58,6 @@ class TopNav extends Component {
               defaultMessage="Programs"
             />
           </Menu.Item>
-          <Menu.Item as={Link} to="/rovers">
-            <FormattedMessage
-              id="app.top_nav.rovers"
-              description="Button label to go to rovers"
-              defaultMessage="Rovers"
-            />
-          </Menu.Item>
           <Menu.Menu position="right">
             <Dropdown item text={userName}>
               <Dropdown.Menu>

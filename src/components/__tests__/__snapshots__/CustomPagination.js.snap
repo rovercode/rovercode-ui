@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The CustomPagination component should render on the page with no errors 1`] = `
+<Pagination
+  aria-label="Pagination Navigation"
+  boundaryRange={1}
+  defaultActivePage={1}
+  ellipsisItem={
+    Object {
+      "content": <Icon
+        as="i"
+        name="ellipsis horizontal"
+      />,
+      "icon": true,
+    }
+  }
+  firstItem={
+    Object {
+      "content": <Icon
+        as="i"
+        name="angle double left"
+      />,
+      "icon": true,
+    }
+  }
+  lastItem={
+    Object {
+      "content": <Icon
+        as="i"
+        name="angle double right"
+      />,
+      "icon": true,
+    }
+  }
+  nextItem={
+    Object {
+      "content": <Icon
+        as="i"
+        name="angle right"
+      />,
+      "icon": true,
+    }
+  }
+  pageItem={Object {}}
+  prevItem={
+    Object {
+      "content": <Icon
+        as="i"
+        name="angle left"
+      />,
+      "icon": true,
+    }
+  }
+  siblingRange={1}
+  totalPages={5}
+/>
+`;
