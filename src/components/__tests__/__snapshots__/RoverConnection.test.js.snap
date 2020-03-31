@@ -4,6 +4,7 @@ exports[`The RoverConnection component renders on the page with no errors 1`] = 
 <Fragment>
   <Button
     as="button"
+    fluid={true}
     onClick={[Function]}
     primary={true}
   >
@@ -12,7 +13,7 @@ exports[`The RoverConnection component renders on the page with no errors 1`] = 
       id="app.rover_list.disconnect"
       values={Object {}}
     />
-     Sparky
+     abcde
   </Button>
 </Fragment>
 `;

@@ -27,7 +27,7 @@ const generateDataView = (array) => {
 describe('The RoverConnection component', () => {
   beforeEach(() => {
     rover = {
-      name: 'Sparky',
+      name: 'BBC micro:bit [abcde]',
     };
 
     changeLeftSensorState = jest.fn();
@@ -51,6 +51,7 @@ describe('The RoverConnection component', () => {
   test('renders on the page with no errors', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(FormattedMessage).prop('defaultMessage')).toEqual('Disconnect from');
+    expect(wrapper.find(Button).children().at(1).text()).toBe(' abcde');
   });
 
   test('renders connect button when not connected', () => {

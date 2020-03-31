@@ -58,17 +58,8 @@ const MissionControl = ({ location }) => (
         </Workspace>
       </Grid.Column>
       <Grid.Column width={3}>
-        <Grid.Row>
-          <Header as="h2" textAlign="center">
-            <FormattedMessage
-              id="app.mission_control.rovers"
-              description="Header for list of the user's rovers"
-              defaultMessage="Rovers"
-            />
-          </Header>
-          <Segment raised style={{ overflow: 'auto', maxHeight: 200, margin: '10px' }}>
-            <RoverConnection />
-          </Segment>
+        <Grid.Row style={{ marginLeft: '20px', marginRight: '20px' }}>
+          <RoverConnection />
         </Grid.Row>
         <Divider />
         <Grid.Row>
