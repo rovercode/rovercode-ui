@@ -10,7 +10,10 @@ class RoverConnection extends Component {
   connect = () => {
     const { scanForRover, connectToRover } = this.props;
 
-    scanForRover().then(rover => connectToRover(rover.value, this.onMessage));
+    return scanForRover().then((rover) => {
+      rover.value.addEventListener('gattserverdisconnected', this.onDisconnected);
+      return connectToRover(rover.value, this.onMessage);
+    });
   }
 
   onMessage = (event) => {
@@ -33,14 +36,20 @@ class RoverConnection extends Component {
     }
   }
 
-  render() {
+  onDisconnected = () => {
     const { disconnectFromRover, rover } = this.props;
+
+    disconnectFromRover(rover);
+  }
+
+  render() {
+    const { rover } = this.props;
 
     return (
       <Fragment>
         {
           rover ? (
-            <Button primary fluid onClick={() => disconnectFromRover(rover)}>
+            <Button primary fluid onClick={this.onDisconnected}>
               <FormattedMessage
                 id="app.rover_list.disconnect"
                 description="Button label to disconnect from the rover"

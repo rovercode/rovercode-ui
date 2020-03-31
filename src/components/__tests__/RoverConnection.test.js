@@ -28,6 +28,7 @@ describe('The RoverConnection component', () => {
   beforeEach(() => {
     rover = {
       name: 'BBC micro:bit [abcde]',
+      addEventListener: jest.fn(),
     };
 
     changeLeftSensorState = jest.fn();
@@ -151,6 +152,7 @@ describe('The RoverConnection component', () => {
     await wrapper.instance().connect();
 
     expect(scanForRover).toHaveBeenCalled();
+    expect(rover.addEventListener).toHaveBeenCalled();
     expect(connectToRover).toHaveBeenCalledWith(rover, wrapper.instance().onMessage);
   });
 
