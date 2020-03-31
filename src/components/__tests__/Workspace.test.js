@@ -16,7 +16,7 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
-import { pushCommand } from '@/actions/rover';
+import { send } from '@/actions/rover';
 
 jest.mock('node-blockly/browser');
 jest.mock('sumo-logger');
@@ -46,6 +46,11 @@ describe('The Workspace component', () => {
       sensor: {
         left: NOT_COVERED,
         right: NOT_COVERED,
+      },
+      rover: {
+        transmitChannel: {
+          writeValue: jest.fn(),
+        },
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
@@ -757,9 +762,33 @@ describe('The Workspace component', () => {
       </Workspace>, { context },
     ).dive();
 
-    wrapper.dive().props().sendToRover('command');
+    wrapper.dive().dive().instance().sendToRover('command');
 
-    expect(store.dispatch).toHaveBeenCalledWith(pushCommand('command'));
+    expect(store.dispatch).toHaveBeenCalledWith(send(store.getState().rover.transmitChannel, 'command'));
+  });
+
+  test('dispatches an action when sending to rover with no connected rover', () => {
+    const localStore = mockStore({
+      code: {
+        id: 1,
+        name: 'test program',
+        xmlCode: '<xml></xml>',
+      },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    localStore.dispatch = jest.fn(() => Promise.resolve());
+    const wrapper = shallowWithIntl(
+      <Workspace store={localStore}>
+        <div />
+      </Workspace>, { context },
+    ).dive();
+
+    wrapper.dive().dive().instance().sendToRover('command');
+
+    expect(store.dispatch).not.toHaveBeenCalled();
   });
 
   test('Remixes a program', (done) => {

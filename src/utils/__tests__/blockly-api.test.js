@@ -71,13 +71,7 @@ describe('Blockly API', () => {
 
     expect(result).toBe(false);
     expect(sendToRover).toHaveBeenCalledTimes(1);
-    expect(sendToRover).toHaveBeenCalledWith(JSON.stringify({
-      type: 'motor-command',
-      'motor-id': 'motor-left',
-      'motor-value': 100,
-      direction: 'forward',
-      unit: 'percent',
-    }));
+    expect(sendToRover).toHaveBeenCalledWith('left-motor:100\n');
   });
 
   test('handles stopMotor', () => {
@@ -87,20 +81,8 @@ describe('Blockly API', () => {
 
     expect(result).toBe(false);
     expect(sendToRover).toHaveBeenCalledTimes(2);
-    expect(sendToRover.mock.calls[0][0]).toBe(JSON.stringify({
-      type: 'motor-command',
-      'motor-id': 'motor-right',
-      'motor-value': 0,
-      direction: 'forward',
-      unit: 'percent',
-    }));
-    expect(sendToRover.mock.calls[1][0]).toBe(JSON.stringify({
-      type: 'motor-command',
-      'motor-id': 'motor-right',
-      'motor-value': 0,
-      direction: 'backward',
-      unit: 'percent',
-    }));
+    expect(sendToRover.mock.calls[0][0]).toBe('right-motor:0\n');
+    expect(sendToRover.mock.calls[1][0]).toBe('right-motor:0\n');
   });
 
   test('handles getSensorCovered', () => {

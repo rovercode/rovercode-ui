@@ -2,41 +2,18 @@
 
 exports[`The RoverConnection component renders on the page with no errors 1`] = `
 <Fragment>
-  <Card
-    className="highlight"
+  <Button
+    as="button"
+    fluid={true}
     onClick={[Function]}
+    primary={true}
   >
-    <CardContent>
-      <Label
-        corner="right"
-        style={
-          Object {
-            "borderColor": "white",
-          }
-        }
-      >
-        <Icon
-          as="i"
-          name="circle outline"
-        />
-      </Label>
-      <CardHeader>
-        Sparky
-      </CardHeader>
-      <CardMeta>
-        <FormattedMessage
-          defaultMessage="Active"
-          id="app.rover_connection.active"
-          values={Object {}}
-        />
-      </CardMeta>
-    </CardContent>
-  </Card>
-  <Websocket
-    debug={false}
-    onMessage={[Function]}
-    reconnect={true}
-    url="ws://localhost:8000/ws/realtime/1234/"
-  />
+    <FormattedMessage
+      defaultMessage="Disconnect from"
+      id="app.rover_list.disconnect"
+      values={Object {}}
+    />
+     abcde
+  </Button>
 </Fragment>
 `;

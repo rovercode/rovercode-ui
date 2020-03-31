@@ -19,18 +19,8 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
               "type": "FETCH_TAGS",
             },
           ],
-          Array [
-            Object {
-              "payload": Promise {},
-              "type": "FETCH_ROVERS",
-            },
-          ],
         ],
         "results": Array [
-          Object {
-            "type": "return",
-            "value": Promise {},
-          },
           Object {
             "type": "return",
             "value": Promise {},
@@ -119,7 +109,6 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                           "HAS_DOCUMENT_COOKIE": true,
                           "changeListeners": Array [
                             [Function],
-                            [Function],
                           ],
                           "cookies": Object {},
                           "hooks": undefined,
@@ -132,7 +121,6 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                           Cookies {
                             "HAS_DOCUMENT_COOKIE": true,
                             "changeListeners": Array [
-                              [Function],
                               [Function],
                             ],
                             "cookies": Object {},
@@ -180,7 +168,6 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                             Cookies {
                               "HAS_DOCUMENT_COOKIE": true,
                               "changeListeners": Array [
-                                [Function],
                                 [Function],
                               ],
                               "cookies": Object {},
@@ -585,113 +572,92 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
             <div
               className="three wide column"
             >
-              <GridRow>
+              <GridRow
+                style={
+                  Object {
+                    "marginLeft": "20px",
+                    "marginRight": "20px",
+                  }
+                }
+              >
                 <div
                   className="row"
-                >
-                  <Header
-                    as="h2"
-                    textAlign="center"
-                  >
-                    <h2
-                      className="ui center aligned header"
-                    >
-                      <FormattedMessage
-                        defaultMessage="Rovers"
-                        id="app.mission_control.rovers"
-                        values={Object {}}
-                      >
-                        <span>
-                          Rovers
-                        </span>
-                      </FormattedMessage>
-                    </h2>
-                  </Header>
-                  <Segment
-                    raised={true}
-                    style={
-                      Object {
-                        "margin": "10px",
-                        "maxHeight": 200,
-                        "overflow": "auto",
-                      }
+                  style={
+                    Object {
+                      "marginLeft": "20px",
+                      "marginRight": "20px",
                     }
-                  >
-                    <div
-                      className="ui raised segment"
-                      style={
+                  }
+                >
+                  <Connect(RoverConnection)>
+                    <RoverConnection
+                      changeLeftSensorState={[Function]}
+                      changeRightSensorState={[Function]}
+                      commands={Array []}
+                      connectToRover={[Function]}
+                      disconnectFromRover={[Function]}
+                      isFetching={false}
+                      rover={null}
+                      rovers={
                         Object {
-                          "margin": "10px",
-                          "maxHeight": 200,
-                          "overflow": "auto",
+                          "next": null,
+                          "previous": null,
+                          "results": Array [],
                         }
                       }
+                      scanForRover={[Function]}
                     >
-                      <withCookies(Component)>
-                        <Connect(RoverConnectionList)
-                          allCookies={Object {}}
-                          cookies={
-                            Cookies {
-                              "HAS_DOCUMENT_COOKIE": true,
-                              "changeListeners": Array [
-                                [Function],
-                                [Function],
-                              ],
-                              "cookies": Object {},
-                              "hooks": undefined,
+                      <Button
+                        as="button"
+                        fluid={true}
+                        onClick={[Function]}
+                        primary={true}
+                      >
+                        <Ref
+                          innerRef={
+                            Object {
+                              "current": <button
+                                class="ui fluid primary button"
+                              >
+                                <span>
+                                  Connect to rover
+                                </span>
+                              </button>,
                             }
                           }
                         >
-                          <RoverConnectionList
-                            activeRover={null}
-                            allCookies={Object {}}
-                            changeActiveRover={[Function]}
-                            changeLeftSensorState={[Function]}
-                            changeRightSensorState={[Function]}
-                            commands={Array []}
-                            cookies={
-                              Cookies {
-                                "HAS_DOCUMENT_COOKIE": true,
-                                "changeListeners": Array [
-                                  [Function],
-                                  [Function],
-                                ],
-                                "cookies": Object {},
-                                "hooks": undefined,
-                              }
-                            }
-                            fetchRovers={[Function]}
-                            isFetching={false}
-                            popCommand={[Function]}
-                            rovers={
+                          <RefFindNode
+                            innerRef={
                               Object {
-                                "next": null,
-                                "previous": null,
-                                "results": Array [],
+                                "current": <button
+                                  class="ui fluid primary button"
+                                >
+                                  <span>
+                                    Connect to rover
+                                  </span>
+                                </button>,
                               }
                             }
                           >
-                            <CardGroup
-                              style={
-                                Object {
-                                  "margin": "10px",
-                                }
-                              }
+                            <button
+                              className="ui fluid primary button"
+                              onClick={[Function]}
                             >
-                              <div
-                                className="ui cards"
-                                style={
-                                  Object {
-                                    "margin": "10px",
-                                  }
-                                }
-                              />
-                            </CardGroup>
-                          </RoverConnectionList>
-                        </Connect(RoverConnectionList)>
-                      </withCookies(Component)>
-                    </div>
-                  </Segment>
+                              <FormattedMessage
+                                defaultMessage="Connect to rover"
+                                id="app.rover_list.connect"
+                                values={Object {}}
+                              >
+                                <span>
+                                  Connect to rover
+                                </span>
+                              </FormattedMessage>
+                            </button>
+                          </RefFindNode>
+                        </Ref>
+                      </Button>
+                    </RoverConnection>
+                  </Connect(RoverConnection)>
                 </div>
               </GridRow>
               <Divider>
