@@ -23,7 +23,6 @@
   "app.login.username": "Nombre de Usuario",
   "app.login_callback.logging_in": "Iniciando sesión...",
   "app.mission_control.console": "Depurar Consola",
-  "app.mission_control.rovers": "Rovers",
   "app.mission_control.sensors": "Sensores",
   "app.mission_control.show_code": "Mostrame el Codigo!",
   "app.mission_control.tags": "Tags",

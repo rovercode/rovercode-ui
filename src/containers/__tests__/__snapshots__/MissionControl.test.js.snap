@@ -572,118 +572,92 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
             <div
               className="three wide column"
             >
-              <GridRow>
+              <GridRow
+                style={
+                  Object {
+                    "marginLeft": "20px",
+                    "marginRight": "20px",
+                  }
+                }
+              >
                 <div
                   className="row"
-                >
-                  <Header
-                    as="h2"
-                    textAlign="center"
-                  >
-                    <h2
-                      className="ui center aligned header"
-                    >
-                      <FormattedMessage
-                        defaultMessage="Rovers"
-                        id="app.mission_control.rovers"
-                        values={Object {}}
-                      >
-                        <span>
-                          Rovers
-                        </span>
-                      </FormattedMessage>
-                    </h2>
-                  </Header>
-                  <Segment
-                    raised={true}
-                    style={
-                      Object {
-                        "margin": "10px",
-                        "maxHeight": 200,
-                        "overflow": "auto",
-                      }
+                  style={
+                    Object {
+                      "marginLeft": "20px",
+                      "marginRight": "20px",
                     }
-                  >
-                    <div
-                      className="ui raised segment"
-                      style={
+                  }
+                >
+                  <Connect(RoverConnection)>
+                    <RoverConnection
+                      changeLeftSensorState={[Function]}
+                      changeRightSensorState={[Function]}
+                      commands={Array []}
+                      connectToRover={[Function]}
+                      disconnectFromRover={[Function]}
+                      isFetching={false}
+                      rover={null}
+                      rovers={
                         Object {
-                          "margin": "10px",
-                          "maxHeight": 200,
-                          "overflow": "auto",
+                          "next": null,
+                          "previous": null,
+                          "results": Array [],
                         }
                       }
+                      scanForRover={[Function]}
                     >
-                      <Connect(RoverConnection)>
-                        <RoverConnection
-                          changeLeftSensorState={[Function]}
-                          changeRightSensorState={[Function]}
-                          commands={Array []}
-                          connectToRover={[Function]}
-                          disconnectFromRover={[Function]}
-                          isFetching={false}
-                          rover={null}
-                          rovers={
+                      <Button
+                        as="button"
+                        fluid={true}
+                        onClick={[Function]}
+                        primary={true}
+                      >
+                        <Ref
+                          innerRef={
                             Object {
-                              "next": null,
-                              "previous": null,
-                              "results": Array [],
+                              "current": <button
+                                class="ui fluid primary button"
+                              >
+                                <span>
+                                  Connect to rover
+                                </span>
+                              </button>,
                             }
                           }
-                          scanForRover={[Function]}
                         >
-                          <Button
-                            as="button"
-                            onClick={[Function]}
-                            primary={true}
-                          >
-                            <Ref
-                              innerRef={
-                                Object {
-                                  "current": <button
-                                    class="ui primary button"
-                                  >
-                                    <span>
-                                      Connect to rover
-                                    </span>
-                                  </button>,
-                                }
-                              }
-                            >
-                              <RefFindNode
-                                innerRef={
-                                  Object {
-                                    "current": <button
-                                      class="ui primary button"
-                                    >
-                                      <span>
-                                        Connect to rover
-                                      </span>
-                                    </button>,
-                                  }
-                                }
-                              >
-                                <button
-                                  className="ui primary button"
-                                  onClick={[Function]}
+                          <RefFindNode
+                            innerRef={
+                              Object {
+                                "current": <button
+                                  class="ui fluid primary button"
                                 >
-                                  <FormattedMessage
-                                    defaultMessage="Connect to rover"
-                                    id="app.rover_list.connect"
-                                    values={Object {}}
-                                  >
-                                    <span>
-                                      Connect to rover
-                                    </span>
-                                  </FormattedMessage>
-                                </button>
-                              </RefFindNode>
-                            </Ref>
-                          </Button>
-                        </RoverConnection>
-                      </Connect(RoverConnection)>
-                    </div>
-                  </Segment>
+                                  <span>
+                                    Connect to rover
+                                  </span>
+                                </button>,
+                              }
+                            }
+                          >
+                            <button
+                              className="ui fluid primary button"
+                              onClick={[Function]}
+                            >
+                              <FormattedMessage
+                                defaultMessage="Connect to rover"
+                                id="app.rover_list.connect"
+                                values={Object {}}
+                              >
+                                <span>
+                                  Connect to rover
+                                </span>
+                              </FormattedMessage>
+                            </button>
+                          </RefFindNode>
+                        </Ref>
+                      </Button>
+                    </RoverConnection>
+                  </Connect(RoverConnection)>
                 </div>
               </GridRow>
               <Divider>

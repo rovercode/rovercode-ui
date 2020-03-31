@@ -40,16 +40,16 @@ class RoverConnection extends Component {
       <Fragment>
         {
           rover ? (
-            <Button primary onClick={() => disconnectFromRover(rover)}>
+            <Button primary fluid onClick={() => disconnectFromRover(rover)}>
               <FormattedMessage
                 id="app.rover_list.disconnect"
                 description="Button label to disconnect from the rover"
                 defaultMessage="Disconnect from"
               />
-              {` ${rover.name}`}
+              {` ${rover.name.slice(15, 20)}`}
             </Button>
           ) : (
-            <Button primary onClick={this.connect}>
+            <Button primary fluid onClick={this.connect}>
               <FormattedMessage
                 id="app.rover_list.connect"
                 description="Button label to connect to the rover"

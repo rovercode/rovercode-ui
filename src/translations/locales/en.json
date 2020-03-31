@@ -23,7 +23,6 @@
   "app.login.username": "Username",
   "app.login_callback.logging_in": "Logging in...",
   "app.mission_control.console": "Debug Console",
-  "app.mission_control.rovers": "Rovers",
   "app.mission_control.sensors": "Sensors",
   "app.mission_control.show_code": "Show Me The Code!",
   "app.mission_control.tags": "Tags",
