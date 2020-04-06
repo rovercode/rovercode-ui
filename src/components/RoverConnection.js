@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
+import { write } from 'js-interpreter';
 
 class RoverConnection extends Component {
   connect = () => {
@@ -17,7 +18,7 @@ class RoverConnection extends Component {
   }
 
   onMessage = (event) => {
-    const { changeLeftSensorState, changeRightSensorState } = this.props;
+    const { changeLeftSensorState, changeRightSensorState, writeToConsole } = this.props;
 
     const receivedData = [];
     for (let i = 0; i < event.target.value.byteLength; i++) {
@@ -25,6 +26,8 @@ class RoverConnection extends Component {
     }
 
     const receivedString = String.fromCharCode.apply(null, receivedData);
+    writeToConsole(new Date().getMilliseconds() + receivedString);
+    console.log(receivedString);
     if (receivedString === 'left-sensor:1') {
       changeLeftSensorState(COVERED);
     } else if (receivedString === 'left-sensor:0') {
@@ -85,6 +88,7 @@ RoverConnection.propTypes = {
   scanForRover: PropTypes.func.isRequired,
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
+  writeToConsole: PropTypes.func.isRequired,
 };
 
 export default hot(module)(RoverConnection);

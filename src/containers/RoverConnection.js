@@ -6,6 +6,7 @@ import {
   connect as roverConnect,
   disconnect as roverDisconnect,
 } from '@/actions/rover';
+import { append } from '@/actions/console';
 import {
   changeLeftSensorState as actionChangeLeftSensorState,
   changeRightSensorState as actionChangeRightSensorState,
@@ -19,6 +20,7 @@ const mapDispatchToProps = dispatch => ({
   connectToRover: (rover, onMessage) => dispatch(roverConnect(rover, onMessage)),
   disconnectFromRover: rover => dispatch(roverDisconnect(rover)),
   scanForRover: () => dispatch(roverScan()),
+  writeToConsole: message => dispatch(append(message)),
 });
 
 const RoverConnectionContainer = connect(
