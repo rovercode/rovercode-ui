@@ -25,7 +25,6 @@ class RoverConnection extends Component {
     }
 
     const receivedString = String.fromCharCode.apply(null, receivedData);
-    console.log(receivedString);
     if (receivedString === 'left-sensor:1') {
       changeLeftSensorState(COVERED);
     } else if (receivedString === 'left-sensor:0') {
