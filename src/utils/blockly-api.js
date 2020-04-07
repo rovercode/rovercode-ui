@@ -8,7 +8,9 @@ class BlocklyApi {
   }
 
   sendMotorCommand = (blocklyMotor, blocklyDirection, speed) => {
-    const motor = blocklyMotor === 'LEFT' ? 'left-motor' : 'right-motor';
+    const motor = blocklyMotor === 'LEFT'  ? 'left-motor'  :
+                  blocklyMotor === 'RIGHT' ? 'right-motor' :
+                                             'both-motors';
     if (blocklyDirection === 'BACKWARD') {
       speed *= -1;
     }

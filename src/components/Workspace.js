@@ -218,6 +218,7 @@ class Workspace extends Component {
       const encoder = new TextEncoder();
       sendToRover(rover.transmitChannel, encoder.encode(command));
     }
+    this.beginSleep(100);
   }
 
   updateSensorStateCache = (leftState, rightState) => {
@@ -388,10 +389,7 @@ class Workspace extends Component {
   goToStopState = () => {
     const { changeExecutionState } = this.props;
 
-    this.api.sendMotorCommand('LEFT', 'FORWARD', 0);
-    this.api.sendMotorCommand('LEFT', 'BACKWARD', 0);
-    this.api.sendMotorCommand('RIGHT', 'FORWARD', 0);
-    this.api.sendMotorCommand('RIGHT', 'BACKWARD', 0);
+    this.api.sendMotorCommand('BOTH', 'FORWARD', 0);
     this.runningEnabled = false;
     changeExecutionState(EXECUTION_STOP);
   }
