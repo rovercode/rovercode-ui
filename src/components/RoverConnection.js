@@ -7,6 +7,30 @@ import PropTypes from 'prop-types';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 
 class RoverConnection extends Component {
+  constructor(props) {
+    super(props);
+
+    this.protocolMap = {
+      'light-sens': this.handleLightSensor,
+    };
+  }
+
+  handleLightSensor = (params) => {
+    const { changeLeftSensorState, changeRightSensorState } = this.props;
+
+    const [left, right] = params.split(',');
+    if (parseInt(left, 10) > 500) {
+      changeLeftSensorState(COVERED);
+    } else {
+      changeLeftSensorState(NOT_COVERED);
+    }
+    if (parseInt(right, 10) > 500) {
+      changeRightSensorState(COVERED);
+    } else {
+      changeRightSensorState(NOT_COVERED);
+    }
+  }
+
   connect = () => {
     const { scanForRover, connectToRover } = this.props;
 
@@ -17,22 +41,18 @@ class RoverConnection extends Component {
   }
 
   onMessage = (event) => {
-    const { changeLeftSensorState, changeRightSensorState } = this.props;
-
     const receivedData = [];
     for (let i = 0; i < event.target.value.byteLength; i++) {
       receivedData[i] = event.target.value.getUint8(i);
     }
 
     const receivedString = String.fromCharCode.apply(null, receivedData);
-    if (receivedString === 'left-sensor:1') {
-      changeLeftSensorState(COVERED);
-    } else if (receivedString === 'left-sensor:0') {
-      changeLeftSensorState(NOT_COVERED);
-    } else if (receivedString === 'right-sensor:1') {
-      changeRightSensorState(COVERED);
-    } else if (receivedString === 'right-sensor:0') {
-      changeRightSensorState(NOT_COVERED);
+
+    const [command, params] = receivedString.split(':');
+    try {
+      this.protocolMap[command](params);
+    } catch (e) {
+      // Unknown command received
     }
   }
 

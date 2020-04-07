@@ -70,66 +70,70 @@ describe('The RoverConnection component', () => {
   });
 
   test('changes sensor state on message', () => {
-    const leftSensor1 = [
-      108, 101, 102, 116, 45, 115, 101, 110, 115, 111, 114, 58, 49,
+    // light-sens:600,600
+    const test1 = [
+      108, 105, 103, 104, 116, 45, 115, 101, 110, 115, 58, 54, 48, 48, 44, 54, 48, 48,
     ];
 
     wrapper.instance().onMessage({
       target: {
-        value: generateDataView(leftSensor1),
+        value: generateDataView(test1),
       },
     });
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
-    expect(changeRightSensorState).not.toHaveBeenCalled();
+    expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
 
-    const leftSensor0 = [
-      108, 101, 102, 116, 45, 115, 101, 110, 115, 111, 114, 58, 48,
+    // light-sens:100,600
+    const test2 = [
+      108, 105, 103, 104, 116, 45, 115, 101, 110, 115, 58, 49, 48, 48, 44, 54, 48, 48,
     ];
 
     wrapper.instance().onMessage({
       target: {
-        value: generateDataView(leftSensor0),
+        value: generateDataView(test2),
       },
     });
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
-    expect(changeRightSensorState).not.toHaveBeenCalled();
-
-    changeRightSensorState.mockReset();
-    changeLeftSensorState.mockReset();
-
-    const rightSensor1 = [
-      114, 105, 103, 104, 116, 45, 115, 101, 110, 115, 111, 114, 58, 49,
-    ];
-
-    wrapper.instance().onMessage({
-      target: {
-        value: generateDataView(rightSensor1),
-      },
-    });
-
     expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
-    expect(changeLeftSensorState).not.toHaveBeenCalled();
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
 
-    const rightSensor0 = [
-      114, 105, 103, 104, 116, 45, 115, 101, 110, 115, 111, 114, 58, 48,
+    // light-sens:100,100
+    const test3 = [
+      108, 105, 103, 104, 116, 45, 115, 101, 110, 115, 58, 49, 48, 48, 44, 49, 48, 48,
     ];
 
     wrapper.instance().onMessage({
       target: {
-        value: generateDataView(rightSensor0),
+        value: generateDataView(test3),
       },
     });
 
+    expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
-    expect(changeLeftSensorState).not.toHaveBeenCalled();
+
+    changeRightSensorState.mockReset();
+    changeLeftSensorState.mockReset();
+
+    // light-sens:600,100
+    const test4 = [
+      108, 105, 103, 104, 116, 45, 115, 101, 110, 115, 58, 54, 48, 48, 44, 49, 48, 48,
+    ];
+
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(test4),
+      },
+    });
+
+    expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
+    expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
