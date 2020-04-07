@@ -489,8 +489,9 @@ describe('The Workspace component', () => {
     ).dive();
 
     const workspace = wrapper.dive().dive();
+    workspace.instance().api.sendMotorCommand = jest.fn();
     workspace.instance().goToStopState();
-
+    expect(workspace.instance().api.sendMotorCommand).toHaveBeenCalledWith('BOTH', 'FORWARD', 0);
     expect(workspace.instance().runningEnabled).toBe(false);
   });
 
