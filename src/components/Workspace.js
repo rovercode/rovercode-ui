@@ -218,7 +218,6 @@ class Workspace extends Component {
       const encoder = new TextEncoder();
       sendToRover(rover.transmitChannel, encoder.encode(command));
     }
-    this.beginSleep(100);
   }
 
   updateSensorStateCache = (leftState, rightState) => {
