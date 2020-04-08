@@ -73,75 +73,61 @@ describe('The RoverConnection component', () => {
     expect(wrapper.find(FormattedMessage).prop('defaultMessage')).toEqual('Connect to rover');
   });
 
-  test('changes sensor state on message', () => {
-    // light-sens:600,600
-    const test1 = [
-      108, 105, 103, 104, 116, 45, 115, 101, 110, 115, 58, 54, 48, 48, 44, 54, 48, 48,
-    ];
-
+  test('changes light sensor state on message', () => {
     wrapper.instance().onMessage({
       target: {
-        value: generateDataView(test1),
+        value: generateDataView(Buffer.from('light-sens:600,600')),
       },
     });
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
+    expect(write).toHaveBeenCalledWith('Light Sensor - L:600 R:600');
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
-
-    // light-sens:100,600
-    const test2 = [
-      108, 105, 103, 104, 116, 45, 115, 101, 110, 115, 58, 49, 48, 48, 44, 54, 48, 48,
-    ];
+    write.mockReset();
 
     wrapper.instance().onMessage({
       target: {
-        value: generateDataView(test2),
+        value: generateDataView(Buffer.from('light-sens:100,600')),
       },
     });
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
+    expect(write).toHaveBeenCalledWith('Light Sensor - L:100 R:600');
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
-
-    // light-sens:100,100
-    const test3 = [
-      108, 105, 103, 104, 116, 45, 115, 101, 110, 115, 58, 49, 48, 48, 44, 49, 48, 48,
-    ];
+    write.mockReset();
 
     wrapper.instance().onMessage({
       target: {
-        value: generateDataView(test3),
+        value: generateDataView(Buffer.from('light-sens:100,100')),
       },
     });
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
+    expect(write).toHaveBeenCalledWith('Light Sensor - L:100 R:100');
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
-
-    // light-sens:600,100
-    const test4 = [
-      108, 105, 103, 104, 116, 45, 115, 101, 110, 115, 58, 54, 48, 48, 44, 49, 48, 48,
-    ];
+    write.mockReset();
 
     wrapper.instance().onMessage({
       target: {
-        value: generateDataView(test4),
+        value: generateDataView(Buffer.from('light-sens:600,100')),
       },
     });
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
+    expect(write).toHaveBeenCalledWith('Light Sensor - L:600 R:100');
+  });
 
-    changeRightSensorState.mockReset();
-    changeLeftSensorState.mockReset();
-
+  test('outputs error on unknown message', () => {
     const invalid = [
       114, 105,
     ];
@@ -154,6 +140,107 @@ describe('The RoverConnection component', () => {
 
     expect(changeRightSensorState).not.toHaveBeenCalled();
     expect(changeLeftSensorState).not.toHaveBeenCalled();
+    expect(write).toHaveBeenCalledWith('Unknown rover message received.');
+  });
+
+  test('outputs line sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('line-sens:100,200')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Line Sensor - L:100 R:200');
+  });
+
+  test('outputs distance sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('dist-sens:123')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Distance Sensor - 123 mm');
+  });
+
+  test('outputs uBit temperature sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('ub-temp-sens:24')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('uBit Temperature Sensor - 24 C');
+  });
+
+  test('outputs uBit light sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('ub-light-sens:127')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('uBit Light Sensor - 127');
+  });
+
+  test('outputs acceleration sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('accel:123,456,789')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Acceleration Sensor - X:123 mG Y:456 mG Z:789 mG');
+  });
+
+  test('outputs gyroscope sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('gyro:85,92')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Gryoscope Sensor - Pitch:85 degrees Roll:92 degrees');
+  });
+
+  test('outputs compass sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('compass-sens:100')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Compass Sensor - 100 degrees');
+  });
+
+  test('outputs magnetic force sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('mag-sens:80')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Magnetic Force Sensor - 80 uT');
+  });
+
+  test('outputs battery sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('battery-sens:3300')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Battery Sensor - 3300 mV');
+  });
+
+  test('outputs dew point state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('dewpoint-sens:24')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Dew Point Sensor - 24 C');
   });
 
   test('connects to rover', async () => {
