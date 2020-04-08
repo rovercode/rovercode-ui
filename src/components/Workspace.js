@@ -150,6 +150,7 @@ class Workspace extends Component {
     this.sensorStateCache.SENSORS_leftIr = false;
     this.sensorStateCache.SENSORS_rightIr = false;
     this.sleeping = false;
+    this.sending = false;
     this.runningEnabled = false;
     this.highlightPause = false;
 
@@ -183,11 +184,17 @@ class Workspace extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { code: currentCode } = prevProps;
-    const { code: nextCode, sensor } = this.props;
+    const { code: currentCode, rover: currentRover } = prevProps;
+    const { code: nextCode, sensor, rover: nextRover } = this.props;
 
     this.updateSensorStateCache(sensor.left, sensor.right);
 
+    // Sleep the execution if we are still sending a command to the rover
+    if (!currentRover.isSending && nextRover.isSending) {
+      this.sending = true;
+    } else if (currentRover.isSending && !nextRover.isSending) {
+      this.sending = false;
+    }
     // Ignore if execution state has not changed unless stepping
     if (nextCode.execution === currentCode.execution && nextCode.execution !== EXECUTION_STEP) {
       return;
@@ -341,7 +348,7 @@ class Workspace extends Component {
   }
 
   runCode = () => {
-    if (this.stepCode() && this.runningEnabled && !this.sleeping) {
+    if (this.stepCode() && this.runningEnabled && !this.sleeping && !this.sending) {
       setTimeout(this.runCode, 10);
     }
   }
@@ -515,6 +522,7 @@ Workspace.propTypes = {
   }).isRequired,
   rover: PropTypes.shape({
     transmitChannel: PropTypes.object,
+    isSending: PropTypes.bool,
   }),
   updateJsCode: PropTypes.func.isRequired,
   updateXmlCode: PropTypes.func.isRequired,
