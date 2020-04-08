@@ -11,6 +11,7 @@ let changeRightSensorState;
 let connectToRover;
 let disconnectFromRover;
 let scanForRover;
+let write;
 let rover;
 let wrapper;
 
@@ -36,6 +37,7 @@ describe('The RoverConnection component', () => {
     connectToRover = jest.fn(() => Promise.resolve({}));
     disconnectFromRover = jest.fn();
     scanForRover = jest.fn(() => Promise.resolve({ value: rover }));
+    write = jest.fn();
 
     wrapper = shallow(
       <RoverConnection
@@ -44,6 +46,7 @@ describe('The RoverConnection component', () => {
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
+        write={write}
         rover={rover}
       />,
     );
@@ -63,6 +66,7 @@ describe('The RoverConnection component', () => {
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
+        write={write}
       />,
     );
 

@@ -606,6 +606,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                         }
                       }
                       scanForRover={[Function]}
+                      write={[Function]}
                     >
                       <Button
                         as="button"

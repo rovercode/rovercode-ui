@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 
+import { append } from '@/actions/console';
 import {
   scan as roverScan,
   connect as roverConnect,
@@ -19,6 +20,7 @@ const mapDispatchToProps = dispatch => ({
   connectToRover: (rover, onMessage) => dispatch(roverConnect(rover, onMessage)),
   disconnectFromRover: rover => dispatch(roverDisconnect(rover)),
   scanForRover: () => dispatch(roverScan()),
+  write: message => dispatch(append(message)),
 });
 
 const RoverConnectionContainer = connect(

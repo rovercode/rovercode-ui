@@ -105,6 +105,7 @@ RoverConnection.propTypes = {
   scanForRover: PropTypes.func.isRequired,
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
+  write: PropTypes.func.isRequired,
 };
 
 export default hot(module)(RoverConnection);
