@@ -1,12 +1,12 @@
 import {
   UPDATE_USER,
-  EDIT_USER_USERNAME,
+  EDIT_USER_USERNAME_PENDING,
   EDIT_USER_USERNAME_FULFILLED,
   EDIT_USER_USERNAME_REJECTED,
-  EDIT_USER_PASSWORD,
+  EDIT_USER_PASSWORD_PENDING,
   EDIT_USER_PASSWORD_FULFILLED,
   EDIT_USER_PASSWORD_REJECTED,
-  FETCH_USER_LIST,
+  FETCH_USER_LIST_PENDING,
   FETCH_USER_LIST_FULFILLED,
   FETCH_USER_LIST_REJECTED,
 } from '../actions/user';
@@ -38,7 +38,7 @@ export default function user(
         exp: action.payload.exp,
         isSocial: action.payload.isSocial,
       };
-    case EDIT_USER_USERNAME:
+    case EDIT_USER_USERNAME_PENDING:
       return {
         ...state,
         isEditingUsername: true,
@@ -56,7 +56,7 @@ export default function user(
         isEditingUsername: false,
         editUsernameError: action.payload,
       };
-    case EDIT_USER_PASSWORD:
+    case EDIT_USER_PASSWORD_PENDING:
       return {
         ...state,
         isEditingPassword: true,
@@ -72,7 +72,7 @@ export default function user(
         isEditingPassword: false,
         editPasswordError: action.payload,
       };
-    case FETCH_USER_LIST:
+    case FETCH_USER_LIST_PENDING:
       return {
         ...state,
         isFetchingUserList: true,
