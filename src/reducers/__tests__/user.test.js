@@ -1,13 +1,13 @@
 import reducer from '../user';
 import {
   UPDATE_USER,
-  EDIT_USER_USERNAME,
+  EDIT_USER_USERNAME_PENDING,
   EDIT_USER_USERNAME_FULFILLED,
   EDIT_USER_USERNAME_REJECTED,
-  EDIT_USER_PASSWORD,
+  EDIT_USER_PASSWORD_PENDING,
   EDIT_USER_PASSWORD_FULFILLED,
   EDIT_USER_PASSWORD_REJECTED,
-  FETCH_USER_LIST,
+  FETCH_USER_LIST_PENDING,
   FETCH_USER_LIST_FULFILLED,
   FETCH_USER_LIST_REJECTED,
 } from '../../actions/user';
@@ -35,10 +35,10 @@ describe('The user reducer', () => {
     });
   });
 
-  test('should handle EDIT_USER_USERNAME', () => {
+  test('should handle EDIT_USER_USERNAME_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: EDIT_USER_USERNAME,
+        type: EDIT_USER_USERNAME_PENDING,
       }),
     ).toEqual({
       user_id: null,
@@ -87,10 +87,10 @@ describe('The user reducer', () => {
     });
   });
 
-  test('should handle EDIT_USER_PASSWORD', () => {
+  test('should handle EDIT_USER_PASSWORD_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: EDIT_USER_PASSWORD,
+        type: EDIT_USER_PASSWORD_PENDING,
       }),
     ).toEqual({
       user_id: null,
@@ -137,10 +137,10 @@ describe('The user reducer', () => {
     });
   });
 
-  test('should handle FETCH_USER_LIST', () => {
+  test('should handle FETCH_USER_LIST_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: FETCH_USER_LIST,
+        type: FETCH_USER_LIST_PENDING,
       }),
     ).toEqual({
       user_id: null,

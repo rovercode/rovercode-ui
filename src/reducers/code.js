@@ -3,20 +3,20 @@ import {
   CHANGE_READ_ONLY,
   UPDATE_JSCODE,
   UPDATE_XMLCODE,
-  CHANGE_NAME,
+  CHANGE_NAME_PENDING,
   CHANGE_NAME_FULFILLED,
   CHANGE_NAME_REJECTED,
-  CHANGE_PROGRAM_TAGS,
+  CHANGE_PROGRAM_TAGS_PENDING,
   CHANGE_PROGRAM_TAGS_FULFILLED,
   CHANGE_PROGRAM_TAGS_REJECTED,
   CHANGE_ID,
-  FETCH_PROGRAM,
+  FETCH_PROGRAM_PENDING,
   FETCH_PROGRAM_FULFILLED,
   FETCH_PROGRAM_REJECTED,
-  SAVE_PROGRAM,
+  SAVE_PROGRAM_PENDING,
   SAVE_PROGRAM_FULFILLED,
   SAVE_PROGRAM_REJECTED,
-  CREATE_PROGRAM,
+  CREATE_PROGRAM_PENDING,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
   CLEAR_PROGRAM,
@@ -58,7 +58,7 @@ export default function code(
         ...state,
         execution: action.payload,
       };
-    case CHANGE_NAME:
+    case CHANGE_NAME_PENDING:
       return {
         ...state,
         isChangingName: true,
@@ -75,7 +75,7 @@ export default function code(
         isChangingName: false,
         error: action.payload,
       };
-    case CHANGE_PROGRAM_TAGS:
+    case CHANGE_PROGRAM_TAGS_PENDING:
       return {
         ...state,
         isChangingProgramTags: true,
@@ -97,7 +97,7 @@ export default function code(
         ...state,
         id: action.payload,
       };
-    case FETCH_PROGRAM:
+    case FETCH_PROGRAM_PENDING:
       return {
         ...state,
         isFetching: true,
@@ -117,7 +117,7 @@ export default function code(
         isFetching: false,
         error: action.payload,
       };
-    case SAVE_PROGRAM:
+    case SAVE_PROGRAM_PENDING:
       return {
         ...state,
         isSaving: true,
@@ -136,7 +136,7 @@ export default function code(
         isSaving: false,
         error: action.payload,
       };
-    case CREATE_PROGRAM:
+    case CREATE_PROGRAM_PENDING:
       return {
         ...state,
         isCreating: true,
