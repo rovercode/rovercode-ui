@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import { Button } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
+import React, { Component } from 'react';
+import { Button, Popup } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
@@ -141,32 +141,42 @@ class RoverConnection extends Component {
     disconnectFromRover(rover);
   }
 
-  render() {
-    const { rover } = this.props;
+  supportedPlatform = () => navigator && navigator.bluetooth
 
-    return (
-      <Fragment>
-        {
-          rover ? (
-            <Button primary fluid onClick={this.onDisconnected}>
-              <FormattedMessage
-                id="app.rover_list.disconnect"
-                description="Button label to disconnect from the rover"
-                defaultMessage="Disconnect from"
-              />
-              {` ${rover.name.slice(15, 20)}`}
-            </Button>
-          ) : (
-            <Button primary fluid onClick={this.connect}>
-              <FormattedMessage
-                id="app.rover_list.connect"
-                description="Button label to connect to the rover"
-                defaultMessage="Connect to rover"
-              />
-            </Button>
-          )
-        }
-      </Fragment>
+  render() {
+    const { intl, rover } = this.props;
+
+    const popupText = intl.formatMessage({
+      id: 'app.rover_connection.unsupported_platform',
+      description: 'Popup text for unsupported platform',
+      defaultMessage: 'Please use a supported platform',
+    });
+
+    if (rover) {
+      return (
+        <Button primary fluid onClick={this.onDisconnected}>
+          <FormattedMessage
+            id="app.rover_connection.disconnect"
+            description="Button label to disconnect from the rover"
+            defaultMessage="Disconnect from"
+          />
+          {` ${rover.name.slice(15, 20)}`}
+        </Button>
+      );
+    }
+
+    const button = (
+      <Button primary fluid disabled={!this.supportedPlatform()} onClick={this.connect}>
+        <FormattedMessage
+          id="app.rover_connection.connect"
+          description="Button label to connect to the rover"
+          defaultMessage="Connect to rover"
+        />
+      </Button>
+    );
+
+    return this.supportedPlatform() ? button : (
+      <Popup content={popupText} trigger={<span>{button}</span>} />
     );
   }
 }
@@ -185,6 +195,7 @@ RoverConnection.propTypes = {
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default hot(module)(RoverConnection);
+export default hot(module)(injectIntl(RoverConnection));
