@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Popup } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import { shallow } from 'enzyme';
+import { shallowWithIntl } from 'enzyme-react-intl';
 import RoverConnection from '../RoverConnection';
 
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
@@ -39,7 +39,7 @@ describe('The RoverConnection component', () => {
     scanForRover = jest.fn(() => Promise.resolve({ value: rover }));
     write = jest.fn();
 
-    wrapper = shallow(
+    wrapper = shallowWithIntl(
       <RoverConnection
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
@@ -49,7 +49,7 @@ describe('The RoverConnection component', () => {
         write={write}
         rover={rover}
       />,
-    );
+    ).dive();
   });
 
   test('renders on the page with no errors', () => {
@@ -59,7 +59,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('renders connect button when not connected', () => {
-    wrapper = shallow(
+    wrapper = shallowWithIntl(
       <RoverConnection
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
@@ -68,9 +68,28 @@ describe('The RoverConnection component', () => {
         scanForRover={scanForRover}
         write={write}
       />,
-    );
+    ).dive();
 
     expect(wrapper.find(FormattedMessage).prop('defaultMessage')).toEqual('Connect to rover');
+    expect(wrapper.find(Button).prop('disabled')).toBe(false);
+  });
+
+  test('renders disabled connect button when on unsupported platform', () => {
+    wrapper = shallowWithIntl(
+      <RoverConnection
+        changeLeftSensorState={changeLeftSensorState}
+        changeRightSensorState={changeRightSensorState}
+        connectToRover={connectToRover}
+        disconnectFromRover={disconnectFromRover}
+        scanForRover={scanForRover}
+        write={write}
+      />,
+    ).dive();
+
+    wrapper.instance().supportedPlatform = jest.fn(() => false);
+    wrapper.instance().forceUpdate();
+
+    expect(wrapper.find(Popup).exists()).toBe(true);
   });
 
   test('changes light sensor state on message', () => {

@@ -1,19 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The RoverConnection component renders on the page with no errors 1`] = `
-<Fragment>
-  <Button
-    as="button"
-    fluid={true}
-    onClick={[Function]}
-    primary={true}
-  >
-    <FormattedMessage
-      defaultMessage="Disconnect from"
-      id="app.rover_list.disconnect"
-      values={Object {}}
-    />
-     abcde
-  </Button>
-</Fragment>
+<Button
+  as="button"
+  fluid={true}
+  onClick={[Function]}
+  primary={true}
+>
+  <FormattedMessage
+    defaultMessage="Disconnect from"
+    id="app.rover_connection.disconnect"
+    values={Object {}}
+  />
+   abcde
+</Button>
 `;
