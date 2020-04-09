@@ -2,12 +2,15 @@
 // async actions https://redux.js.org/advanced/asyncactions
 
 export const SCAN = 'SCAN';
+export const SCAN_PENDING = `${SCAN}_PENDING`;
 export const SCAN_FULFILLED = `${SCAN}_FULFILLED`;
 export const SCAN_REJECTED = `${SCAN}_REJECTED`;
 export const CONNECT_ROVER = 'CONNECT_ROVER';
+export const CONNECT_ROVER_PENDING = `${CONNECT_ROVER}_PENDING`;
 export const CONNECT_ROVER_FULFILLED = `${CONNECT_ROVER}_FULFILLED`;
 export const CONNECT_ROVER_REJECTED = `${CONNECT_ROVER}_REJECTED`;
 export const SEND_ROVER = 'SEND_ROVER';
+export const SEND_ROVER_PENDING = `${SEND_ROVER}_PENDING`;
 export const SEND_ROVER_FULFILLED = `${SEND_ROVER}_FULFILLED`;
 export const SEND_ROVER_REJECTED = `${SEND_ROVER}_REJECTED`;
 export const DISCONNECT_ROVER = 'DISCONNECT_ROVER';

@@ -1,11 +1,11 @@
 import {
-  SCAN,
+  SCAN_PENDING,
   SCAN_FULFILLED,
   SCAN_REJECTED,
-  CONNECT_ROVER,
+  CONNECT_ROVER_PENDING,
   CONNECT_ROVER_FULFILLED,
   CONNECT_ROVER_REJECTED,
-  SEND_ROVER,
+  SEND_ROVER_PENDING,
   SEND_ROVER_FULFILLED,
   SEND_ROVER_REJECTED,
   DISCONNECT_ROVER,
@@ -24,7 +24,7 @@ export default function rovers(
   action,
 ) {
   switch (action.type) {
-    case SCAN:
+    case SCAN_PENDING:
       return {
         ...state,
         isScanning: true,
@@ -42,7 +42,7 @@ export default function rovers(
         isScanning: false,
         error: action.payload,
       };
-    case CONNECT_ROVER:
+    case CONNECT_ROVER_PENDING:
       return {
         ...state,
         isConnecting: true,
@@ -61,7 +61,7 @@ export default function rovers(
         isConnecting: false,
         error: action.payload,
       };
-    case SEND_ROVER:
+    case SEND_ROVER_PENDING:
       return {
         ...state,
         isSending: true,
