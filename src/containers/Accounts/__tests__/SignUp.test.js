@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { Form, List, Message } from 'semantic-ui-react';
-import { shallowWithIntl } from 'enzyme-react-intl';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -26,7 +25,9 @@ test('SignUp renders on the page with no errors', () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Message).exists()).toBe(false);
@@ -47,7 +48,9 @@ test('SignUp displays form errors', async () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
   await wrapper.instance().signUp();
   wrapper.update();
 
@@ -84,7 +87,9 @@ test('SignUp redirects to root after success', async () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
 
   wrapper.find(Form.Input).at(0).simulate('change', {
     target: {

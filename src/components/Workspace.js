@@ -5,7 +5,7 @@ import {
   Grid,
   Message,
 } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -35,19 +35,19 @@ import logger from '@/utils/logger';
 
 const mapStateToProps = ({ code, rover, sensor }) => ({ code, rover, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  updateJsCode: jsCode => dispatch(actionUpdateJsCode(jsCode)),
-  changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
-  writeToConsole: message => dispatch(append(message)),
+  updateJsCode: (jsCode) => dispatch(actionUpdateJsCode(jsCode)),
+  changeExecutionState: (state) => dispatch(actionChangeExecutionState(state)),
+  writeToConsole: (message) => dispatch(append(message)),
   clearConsole: () => dispatch(clear()),
-  updateXmlCode: xmlCode => dispatch(actionUpdateXmlCode(xmlCode)),
-  changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
+  updateXmlCode: (xmlCode) => dispatch(actionUpdateXmlCode(xmlCode)),
+  changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   sendToRover: (channel, message) => dispatch(send(channel, message)),
   saveProgram: (id, content, name) => dispatch(
     actionSaveProgram(id, content, name, authHeader(cookies)),
   ).catch(checkAuthError(dispatch)),
-  createProgram: name => dispatch(actionCreateProgram(name, authHeader(cookies)))
+  createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
-  fetchProgram: id => dispatch(actionFetchProgram(id, authHeader(cookies)))
+  fetchProgram: (id) => dispatch(actionFetchProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
 });
 
@@ -254,7 +254,7 @@ class Workspace extends Component {
     // https://groups.google.com/forum/#!topic/blockly/NCukwTKMR0U
     if (oldWorkspace) {
       const oldElements = document.getElementsByClassName('injectionDiv');
-      [...oldElements].forEach(element => element.remove());
+      [...oldElements].forEach((element) => element.remove());
     }
 
     const workspace = Blockly.inject(this.editorDiv, {
@@ -524,7 +524,9 @@ Workspace.propTypes = {
   sendToRover: PropTypes.func.isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   fetchProgram: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default hot(module)(

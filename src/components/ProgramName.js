@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Confirm, Input } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { checkAuthError, authHeader } from '@/actions/auth';
@@ -92,7 +92,7 @@ class ProgramName extends Component {
     }
 
     return (
-      <Fragment>
+      <>
         <Input
           type="text"
           label={nameLabel}
@@ -107,7 +107,7 @@ class ProgramName extends Component {
           onCancel={this.closeConfirm}
           onConfirm={this.handleSave}
         />
-      </Fragment>
+      </>
     );
   }
 }
@@ -119,7 +119,9 @@ ProgramName.propTypes = {
     isReadOnly: PropTypes.bool,
   }).isRequired,
   changeName: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default hot(module)(

@@ -31,8 +31,8 @@ export const scan = () => ({
 export const connect = (device, onMessage) => ({
   type: CONNECT_ROVER,
   payload: device.gatt.connect()
-    .then(server => server.getPrimaryService(UART_SERVICE_UUID))
-    .then(service => Promise.all([
+    .then((server) => server.getPrimaryService(UART_SERVICE_UUID))
+    .then((service) => Promise.all([
       service.getCharacteristic(UART_RX_CHARACTERISTIC_UUID),
       service.getCharacteristic(UART_TX_CHARACTERISTIC_UUID)
         .then((characteristic) => {
@@ -51,7 +51,7 @@ export const send = (channel, message) => ({
   payload: channel.writeValue(message),
 });
 
-export const disconnect = device => ({
+export const disconnect = (device) => ({
   type: DISCONNECT_ROVER,
   payload: device.gatt.disconnect(),
 });

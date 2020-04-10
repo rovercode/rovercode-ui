@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import {
   Form,
@@ -8,7 +8,7 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -126,7 +126,7 @@ class PasswordResetCallback extends Component {
     });
 
     return (
-      <Fragment>
+      <>
         {
           success ? (
             <Redirect to="/accounts/login" />
@@ -170,7 +170,7 @@ class PasswordResetCallback extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Fragment>
+      </>
     );
   }
 }
@@ -182,7 +182,9 @@ PasswordResetCallback.propTypes = {
       token: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default injectIntl(PasswordResetCallback);

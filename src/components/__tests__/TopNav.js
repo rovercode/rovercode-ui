@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
-import TopNav from '../TopNav';
 import { logout } from '@/actions/auth';
+import TopNav from '../TopNav';
 
 const cookies = new Cookies();
 const mockStore = configureStore();
@@ -20,7 +20,7 @@ describe('The TopNav component', () => {
     const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
       context: { cookies },
     });
-    const wrapper = topNav.dive().dive();
+    const wrapper = topNav.dive().dive().dive().dive();
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -29,7 +29,7 @@ describe('The TopNav component', () => {
     const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
       context: { cookies },
     });
-    const wrapper = topNav.dive().dive();
+    const wrapper = topNav.dive().dive().dive().dive();
 
     expect(wrapper.find(Redirect).exists()).toBe(false);
     expect(cookies.get('auth_jwt', { path: '/' })).toBe('1234');

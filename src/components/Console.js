@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { clear as actionClear } from '@/actions/console';
 
 const mapStateToProps = ({ console }) => ({ console });
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   clear: () => dispatch(actionClear()),
 });
 
@@ -34,7 +34,7 @@ class Console extends Component {
 
     /* eslint-disable react/no-array-index-key */
     return (
-      <Fragment>
+      <>
         <div style={{ height: '200px', overflow: 'scroll' }}>
           {
             console.messages.map((message, index) => (
@@ -52,7 +52,7 @@ class Console extends Component {
             defaultMessage="Clear"
           />
         </Button>
-      </Fragment>
+      </>
     );
   }
 }

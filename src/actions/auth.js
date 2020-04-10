@@ -5,7 +5,7 @@ export const UPDATE_VALID_AUTH = 'UPDATE_VALID_AUTH';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 // action creators
-export const updateValidAuth = isValidAuth => ({
+export const updateValidAuth = (isValidAuth) => ({
   type: UPDATE_VALID_AUTH,
   payload: isValidAuth,
 });
@@ -15,7 +15,7 @@ export const logout = () => ({
 });
 
 // helper functions
-export const checkAuthError = dispatch => (error) => {
+export const checkAuthError = (dispatch) => (error) => {
   if (error.response && error.response.status === 401) {
     // Authentication is no longer valid
     dispatch(updateValidAuth(false));
@@ -24,7 +24,7 @@ export const checkAuthError = dispatch => (error) => {
   }
 };
 
-export const authHeader = cookies => ({
+export const authHeader = (cookies) => ({
   headers: {
     Authorization: `JWT ${cookies.get('auth_jwt')}`,
   },
