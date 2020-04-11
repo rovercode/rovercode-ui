@@ -87,7 +87,7 @@
     "@sentry/browser": "^5.15.4",
     "axios": "^0.19.2",
     "brace": "^0.11.1",
-    "js-interpreter": "^2.2.0",
+    "js-interpreter": "^1.4.6",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "node-blockly": "git+https://github.com/rovercode/node-blockly.git#548f57a48f0e918f2f4a98074852927c8ebfd6a5",
