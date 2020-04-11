@@ -2,33 +2,6 @@
 
 exports[`The Console component renders on the page with no errors 1`] = `
 <Connect(Console)
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "onError": [Function],
-      "textComponent": "span",
-      "timeZone": null,
-    }
-  }
   store={
     Object {
       "clearActions": [Function],
@@ -50,33 +23,6 @@ exports[`The Console component renders on the page with no errors 1`] = `
         ],
       }
     }
-    intl={
-      Object {
-        "defaultFormats": Object {},
-        "defaultLocale": "en",
-        "formatDate": [Function],
-        "formatHTMLMessage": [Function],
-        "formatMessage": [Function],
-        "formatNumber": [Function],
-        "formatPlural": [Function],
-        "formatRelative": [Function],
-        "formatTime": [Function],
-        "formats": Object {},
-        "formatters": Object {
-          "getDateTimeFormat": [Function],
-          "getMessageFormat": [Function],
-          "getNumberFormat": [Function],
-          "getPluralFormat": [Function],
-          "getRelativeFormat": [Function],
-        },
-        "locale": "en",
-        "messages": Object {},
-        "now": [Function],
-        "onError": [Function],
-        "textComponent": "span",
-        "timeZone": null,
-      }
-    }
     store={
       Object {
         "clearActions": [Function],
@@ -85,27 +31,6 @@ exports[`The Console component renders on the page with no errors 1`] = `
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],
-      }
-    }
-    storeSubscription={
-      Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [MockFunction],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": [Function],
       }
     }
   >
@@ -146,9 +71,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
               class="ui primary button"
               style="margin-top: 10px;"
             >
-              <span>
-                Clear
-              </span>
+              Clear
             </button>,
           }
         }
@@ -160,9 +83,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
                 class="ui primary button"
                 style="margin-top: 10px;"
               >
-                <span>
-                  Clear
-                </span>
+                Clear
               </button>,
             }
           }
@@ -181,9 +102,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
               id="app.console.clear"
               values={Object {}}
             >
-              <span>
-                Clear
-              </span>
+              Clear
             </FormattedMessage>
           </button>
         </RefFindNode>

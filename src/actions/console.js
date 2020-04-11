@@ -5,7 +5,7 @@ export const APPEND = 'APPEND';
 export const CLEAR = 'CLEAR';
 
 // action creators
-export const append = message => ({
+export const append = (message) => ({
   type: APPEND,
   payload: message,
 });

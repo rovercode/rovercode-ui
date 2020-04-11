@@ -1,10 +1,9 @@
 import React from 'react';
 import { Button, Popup } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import { shallowWithIntl } from 'enzyme-react-intl';
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import RoverConnection from '../RoverConnection';
 
-import { COVERED, NOT_COVERED } from '@/actions/sensor';
 
 let changeLeftSensorState;
 let changeRightSensorState;
@@ -49,7 +48,7 @@ describe('The RoverConnection component', () => {
         write={write}
         rover={rover}
       />,
-    ).dive();
+    ).dive().dive();
   });
 
   test('renders on the page with no errors', () => {
@@ -68,7 +67,7 @@ describe('The RoverConnection component', () => {
         scanForRover={scanForRover}
         write={write}
       />,
-    ).dive();
+    ).dive().dive();
 
     expect(wrapper.find(FormattedMessage).prop('defaultMessage')).toEqual('Connect to rover');
     expect(wrapper.find(Button).prop('disabled')).toBe(false);
@@ -84,7 +83,7 @@ describe('The RoverConnection component', () => {
         scanForRover={scanForRover}
         write={write}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.instance().supportedPlatform = jest.fn(() => false);
     wrapper.instance().forceUpdate();

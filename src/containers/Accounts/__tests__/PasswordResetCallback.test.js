@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { Form, List, Message } from 'semantic-ui-react';
-import { shallowWithIntl } from 'enzyme-react-intl';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -17,7 +16,7 @@ const match = {
 };
 
 test('PasswordResetCallback renders on the page with no errors', () => {
-  const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive();
+  const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive().dive();
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Message).exists()).toBe(false);
@@ -31,7 +30,7 @@ test('PasswordResetCallback displays form errors', async () => {
       'This password is too common.',
     ],
   });
-  const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive();
+  const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive().dive();
 
   await wrapper.instance().confirm();
   wrapper.update();
@@ -57,7 +56,7 @@ test('SignUp redirects to login after success', async () => {
   }).reply(200, {
     detail: 'Password has been reset with the new password.',
   });
-  const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive();
+  const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive().dive();
 
   wrapper.find(Form.Input).at(0).simulate('change', {
     target: {

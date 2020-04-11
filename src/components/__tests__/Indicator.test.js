@@ -32,7 +32,7 @@ describe('The Indicator component', () => {
         right: NOT_COVERED,
       },
     });
-    const wrapper = shallow(<Indicator store={store} />).dive();
+    const wrapper = shallow(<Indicator store={store} />).dive().dive();
 
     expect(wrapper.find('#leftIndicator').hasClass('covered')).toBe(true);
     expect(wrapper.find('#leftIndicator').hasClass('not-covered')).toBe(false);
@@ -47,7 +47,7 @@ describe('The Indicator component', () => {
         right: COVERED,
       },
     });
-    const wrapper = shallow(<Indicator store={store} />).dive();
+    const wrapper = shallow(<Indicator store={store} />).dive().dive();
 
     expect(wrapper.find('#leftIndicator').hasClass('covered')).toBe(false);
     expect(wrapper.find('#leftIndicator').hasClass('not-covered')).toBe(true);
@@ -62,7 +62,7 @@ describe('The Indicator component', () => {
         right: COVERED,
       },
     });
-    const wrapper = shallow(<Indicator store={store} />).dive();
+    const wrapper = shallow(<Indicator store={store} />).dive().dive();
 
     expect(wrapper.find('#leftIndicator').hasClass('covered')).toBe(true);
     expect(wrapper.find('#leftIndicator').hasClass('not-covered')).toBe(false);
@@ -77,7 +77,7 @@ describe('The Indicator component', () => {
         right: NOT_COVERED,
       },
     });
-    const wrapper = shallow(<Indicator store={store} />).dive();
+    const wrapper = shallow(<Indicator store={store} />).dive().dive();
 
     expect(wrapper.find('#leftIndicator').hasClass('covered')).toBe(false);
     expect(wrapper.find('#leftIndicator').hasClass('not-covered')).toBe(true);

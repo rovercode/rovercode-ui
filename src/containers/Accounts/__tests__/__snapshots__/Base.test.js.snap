@@ -18,12 +18,26 @@ exports[`Base renders on the page with no errors 1`] = `
     >
       <Switch>
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "WrappedComponent": [Function],
+              "displayName": "withCookies(injectIntl(Connect(Login)))",
+              "render": [Function],
+            }
+          }
           exact={true}
           path="/accounts/login"
         />
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "WrappedComponent": [Function],
+              "displayName": "withCookies(injectIntl(Connect(LoginCallback)))",
+              "render": [Function],
+            }
+          }
           exact={true}
           path="/accounts/login/callback/:service"
         />
@@ -38,7 +52,14 @@ exports[`Base renders on the page with no errors 1`] = `
           path="/accounts/reset/callback/:uid/:token"
         />
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "WrappedComponent": [Function],
+              "displayName": "withCookies(injectIntl(Connect(SignUp)))",
+              "render": [Function],
+            }
+          }
           exact={true}
           path="/accounts/signup"
         />

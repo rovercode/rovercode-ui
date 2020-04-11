@@ -38,17 +38,17 @@ export const EXECUTION_STOP = 3;
 export const EXECUTION_RESET = 4;
 
 // action creators
-export const updateJsCode = jsCode => ({
+export const updateJsCode = (jsCode) => ({
   type: UPDATE_JSCODE,
   payload: jsCode,
 });
 
-export const updateXmlCode = xmlCode => ({
+export const updateXmlCode = (xmlCode) => ({
   type: UPDATE_XMLCODE,
   payload: xmlCode,
 });
 
-export const changeExecutionState = state => ({
+export const changeExecutionState = (state) => ({
   type: CHANGE_EXECUTION_STATE,
   payload: state,
 });
@@ -63,7 +63,7 @@ export const changeName = (id, name, xhroptions) => ({
     )),
 });
 
-export const changeId = id => ({
+export const changeId = (id) => ({
   type: CHANGE_ID,
   payload: id,
 });
@@ -108,7 +108,7 @@ export const changeProgramTags = (id, tags, xhroptions) => ({
     )),
 });
 
-export const changeReadOnly = isReadOnly => ({
+export const changeReadOnly = (isReadOnly) => ({
   type: CHANGE_READ_ONLY,
   payload: isReadOnly,
 });

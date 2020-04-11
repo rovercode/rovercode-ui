@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import {
   Form,
@@ -8,7 +8,7 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
@@ -17,8 +17,8 @@ import axios from 'axios';
 
 import { updateUser as actionUpdateUser } from '@/actions/user';
 
-const mapDispatchToProps = dispatch => ({
-  updateUser: data => dispatch(actionUpdateUser({ ...data, isSocial: false })),
+const mapDispatchToProps = (dispatch) => ({
+  updateUser: (data) => dispatch(actionUpdateUser({ ...data, isSocial: false })),
 });
 
 class SignUp extends Component {
@@ -174,7 +174,7 @@ class SignUp extends Component {
     });
 
     return (
-      <Fragment>
+      <>
         {
           success ? (
             <Redirect to="/" />
@@ -228,7 +228,7 @@ class SignUp extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Fragment>
+      </>
     );
   }
 }
@@ -236,7 +236,9 @@ class SignUp extends Component {
 SignUp.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   updateUser: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default withCookies(injectIntl(connect(null, mapDispatchToProps)(SignUp)));

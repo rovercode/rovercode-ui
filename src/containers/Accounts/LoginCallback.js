@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { Loader } from 'semantic-ui-react';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import queryString from 'query-string';
@@ -12,9 +12,9 @@ import jwtDecode from 'jwt-decode';
 import { updateValidAuth as actionUpdateValidAuth } from '@/actions/auth';
 import { updateUser as actionUpdateUser } from '@/actions/user';
 
-const mapDispatchToProps = dispatch => ({
-  updateUser: data => dispatch(actionUpdateUser({ ...data, isSocial: true })),
-  updateValidAuth: isValidAuth => dispatch(actionUpdateValidAuth(isValidAuth)),
+const mapDispatchToProps = (dispatch) => ({
+  updateUser: (data) => dispatch(actionUpdateUser({ ...data, isSocial: true })),
+  updateValidAuth: (isValidAuth) => dispatch(actionUpdateValidAuth(isValidAuth)),
 });
 
 class LoginCallback extends Component {
@@ -89,9 +89,9 @@ class LoginCallback extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         { this.redirect() }
-      </Fragment>
+      </>
     );
   }
 }
@@ -108,7 +108,9 @@ LoginCallback.propTypes = {
   }).isRequired,
   updateUser: PropTypes.func.isRequired,
   updateValidAuth: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default withCookies(injectIntl(connect(null, mapDispatchToProps)(LoginCallback)));

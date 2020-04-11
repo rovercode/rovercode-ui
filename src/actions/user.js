@@ -17,7 +17,7 @@ export const FETCH_USER_LIST_FULFILLED = `${FETCH_USER_LIST}_FULFILLED`;
 export const FETCH_USER_LIST_REJECTED = `${FETCH_USER_LIST}_REJECTED`;
 
 // action creators
-export const updateUser = data => ({
+export const updateUser = (data) => ({
   type: UPDATE_USER,
   payload: data,
 });
@@ -41,7 +41,7 @@ export const editUserPassword = (password, xhrOptions) => ({
     )),
 });
 
-export const fetchUserList = xhrOptions => ({
+export const fetchUserList = (xhrOptions) => ({
   type: FETCH_USER_LIST,
   payload: axios.get('/api/v1/users/', xhrOptions)
     .then(({ data }) => (

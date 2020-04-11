@@ -9,7 +9,7 @@ export const FETCH_TAGS_FULFILLED = `${FETCH_TAGS}_FULFILLED`;
 export const FETCH_TAGS_REJECTED = `${FETCH_TAGS}_REJECTED`;
 
 // action creators
-export const fetchTags = xhrOptions => ({
+export const fetchTags = (xhrOptions) => ({
   type: FETCH_TAGS,
   payload: axios.get('/api/v1/tags/', xhrOptions)
     .then(({ data }) => (

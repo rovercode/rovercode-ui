@@ -1,6 +1,7 @@
 {
     "plugins": [
-        "react"
+        "react",
+        "formatjs"
     ],
     "parserOptions": {
         "ecmaVersion": 6,
@@ -18,6 +19,10 @@
         "node": true,
         "jest": true
     },
+    "globals": {
+        "shallowWithIntl": "readonly",
+        "mountWithIntl": "readonly"
+    },
     "parser": "babel-eslint",
     "extends": [
         "eslint:recommended",
@@ -30,7 +35,10 @@
         "linebreak-style": 0,
         "no-plusplus": ["error", {"allowForLoopAfterthoughts": true}],
         "import/no-named-default": 0,
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "react/jsx-props-no-spreading": "off",
+        "formatjs/enforce-description": "error",
+        "formatjs/enforce-default-message": "error"
     },
     "settings": {
         "import/resolver": {

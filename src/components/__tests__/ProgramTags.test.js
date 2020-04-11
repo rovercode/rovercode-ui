@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Dropdown } from 'semantic-ui-react';
-import { mountWithIntl, shallowWithIntl } from 'enzyme-react-intl';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
@@ -44,7 +43,11 @@ describe('The ProgramTags component', () => {
   test('displays tags', () => {
     const wrapper = shallowWithIntl(
       <ProgramTags store={store} />, { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     expect(wrapper.find(Dropdown).props().value).toStrictEqual(['tag1', 'tag2']);
     expect(wrapper.find(Dropdown).props().disabled).toBe(false);
@@ -61,7 +64,11 @@ describe('The ProgramTags component', () => {
     const wrapper = shallowWithIntl(
       <ProgramTags store={localStore} />,
       { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     expect(wrapper.find(Button).props().disabled).toBe(true);
     expect(wrapper.find(Dropdown).props().disabled).toBe(true);
@@ -70,7 +77,11 @@ describe('The ProgramTags component', () => {
   test('adds new options', () => {
     const wrapper = shallowWithIntl(
       <ProgramTags store={store} />, { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     expect(wrapper.find(Dropdown).props().options.length).toBe(3);
     wrapper.instance().addItem({}, {
@@ -83,7 +94,11 @@ describe('The ProgramTags component', () => {
   test('handles change', () => {
     const wrapper = shallowWithIntl(
       <ProgramTags store={store} />, { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     expect(wrapper.find(Button).props().disabled).toBe(true);
     wrapper.find(Dropdown).simulate('change', {}, {
@@ -100,7 +115,11 @@ describe('The ProgramTags component', () => {
   test('handles save', () => {
     const wrapper = shallowWithIntl(
       <ProgramTags store={store} />, { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     wrapper.find(Button).simulate('click');
     wrapper.update();
@@ -119,7 +138,9 @@ describe('The ProgramTags component', () => {
     store.dispatch.mockReturnValueOnce(Promise.reject(error));
     store.dispatch.mockReturnValue(Promise.resolve());
 
-    const wrapper = shallowWithIntl(<ProgramTags store={store} />, { context }).dive();
+    const wrapper = shallowWithIntl(<ProgramTags store={store} />, { context }).dive().dive().dive()
+      .dive()
+      .dive();
     wrapper.dive().props().changeProgramTags(1, ['tag1', 'tag2']).then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
       expect(store.dispatch).toHaveBeenCalledWith(
@@ -141,7 +162,9 @@ describe('The ProgramTags component', () => {
     };
     store.dispatch = jest.fn(() => Promise.reject(error));
 
-    const wrapper = shallowWithIntl(<ProgramTags store={store} />, { context }).dive();
+    const wrapper = shallowWithIntl(<ProgramTags store={store} />, { context }).dive().dive().dive()
+      .dive()
+      .dive();
     wrapper.dive().props().changeProgramTags(1, ['tag1', 'tag2']).catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(

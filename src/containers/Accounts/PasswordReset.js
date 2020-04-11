@@ -7,8 +7,9 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class PasswordReset extends Component {
   constructor(props) {
@@ -141,7 +142,9 @@ class PasswordReset extends Component {
 }
 
 PasswordReset.propTypes = {
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default injectIntl(PasswordReset);

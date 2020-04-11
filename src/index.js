@@ -6,9 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider as ReduxProvider } from 'react-redux';
-import { IntlProvider, addLocaleData } from 'react-intl';
-import en from 'react-intl/locale-data/en';
-import es from 'react-intl/locale-data/es';
+import { IntlProvider } from 'react-intl';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
@@ -28,8 +26,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 import enMessages from './translations/locales/en.json';
 import esMessages from './translations/locales/es.json';
-
-addLocaleData([...en, ...es]);
 
 const translations = {
   en: enMessages,

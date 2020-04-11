@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Popup } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
@@ -195,7 +195,9 @@ RoverConnection.propTypes = {
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default hot(module)(injectIntl(RoverConnection));

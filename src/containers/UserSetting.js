@@ -8,9 +8,9 @@ import UserSetting from '@/components/UserSetting';
 
 const mapStateToProps = ({ user }) => ({ user });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  editUserUsername: username => dispatch(editUserUsername(username, authHeader(cookies)))
+  editUserUsername: (username) => dispatch(editUserUsername(username, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
-  editUserPassword: password => dispatch(editUserPassword(password, authHeader(cookies)))
+  editUserPassword: (password) => dispatch(editUserPassword(password, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
 });
 

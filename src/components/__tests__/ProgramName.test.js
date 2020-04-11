@@ -1,6 +1,5 @@
 import React from 'react';
 import { Confirm, Input } from 'semantic-ui-react';
-import { mountWithIntl, shallowWithIntl } from 'enzyme-react-intl';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
@@ -35,7 +34,11 @@ describe('The ProgramName component', () => {
   test('displays name', () => {
     const wrapper = shallowWithIntl(
       <ProgramName store={store} />, { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     expect(wrapper.find(Confirm).prop('open')).toBe(false);
     expect(wrapper.find(Input).length).toBe(1);
@@ -53,7 +56,11 @@ describe('The ProgramName component', () => {
     const wrapper = shallowWithIntl(
       <ProgramName store={localStore} />,
       { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     expect(wrapper.find(Input).props().disabled).toBe(true);
   });
@@ -61,7 +68,11 @@ describe('The ProgramName component', () => {
   test('handles change', () => {
     const wrapper = shallowWithIntl(
       <ProgramName store={store} />, { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
     wrapper.update();
@@ -74,7 +85,11 @@ describe('The ProgramName component', () => {
   test('handles save cancel', () => {
     const wrapper = shallowWithIntl(
       <ProgramName store={store} />, { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
     wrapper.update();
@@ -96,7 +111,11 @@ describe('The ProgramName component', () => {
   test('handles save confirm', () => {
     const wrapper = shallowWithIntl(
       <ProgramName store={store} />, { context },
-    ).dive().dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     wrapper.find(Input).simulate('change', { target: { value: 'new name' } });
     wrapper.update();
@@ -126,18 +145,22 @@ describe('The ProgramName component', () => {
     store.dispatch.mockReturnValue(Promise.resolve());
 
     const wrapper = shallowWithIntl(<ProgramName store={store} />, { context }).dive();
-    wrapper.dive().props().changeName(1, 'testname').then(() => {
-      expect(store.dispatch.mock.calls.length).toBe(2);
-      expect(store.dispatch).toHaveBeenCalledWith(
-        changeName(1, 'testname', {
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
-      done();
-    });
+    wrapper.dive().dive().dive().dive()
+      .dive()
+      .props()
+      .changeName(1, 'testname')
+      .then(() => {
+        expect(store.dispatch.mock.calls.length).toBe(2);
+        expect(store.dispatch).toHaveBeenCalledWith(
+          changeName(1, 'testname', {
+            headers: {
+              Authorization: `JWT ${cookiesValues.auth_jwt}`,
+            },
+          }),
+        );
+        expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+        done();
+      });
   });
 
   test('handles other error', (done) => {
@@ -148,16 +171,20 @@ describe('The ProgramName component', () => {
     store.dispatch = jest.fn(() => Promise.reject(error));
 
     const wrapper = shallowWithIntl(<ProgramName store={store} />, { context }).dive();
-    wrapper.dive().props().changeName(1, 'testname').catch(() => {
-      expect(store.dispatch.mock.calls.length).toBe(1);
-      expect(store.dispatch).toHaveBeenCalledWith(
-        changeName(1, 'testname', {
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      done();
-    });
+    wrapper.dive().dive().dive().dive()
+      .dive()
+      .props()
+      .changeName(1, 'testname')
+      .catch(() => {
+        expect(store.dispatch.mock.calls.length).toBe(1);
+        expect(store.dispatch).toHaveBeenCalledWith(
+          changeName(1, 'testname', {
+            headers: {
+              Authorization: `JWT ${cookiesValues.auth_jwt}`,
+            },
+          }),
+        );
+        done();
+      });
   });
 });
