@@ -188,7 +188,7 @@ class Workspace extends Component {
 
     this.updateSensorStateCache(sensor.left, sensor.right);
 
-    if (currentRover.isSending && !nextRover.isSending) {
+    if (currentRover && currentRover.isSending && nextRover && !nextRover.isSending) {
       this.runCode();
     }
 

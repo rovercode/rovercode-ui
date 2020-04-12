@@ -189,7 +189,7 @@ describe('The Workspace component', () => {
   });
 
   test('runs code when done sending Bluetooth message to rover', () => {
-    store.getState().rover.isSending = false;
+    store.getState().rover.isSending = true;
     const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
@@ -203,7 +203,7 @@ describe('The Workspace component', () => {
     workspace.instance().runCode = jest.fn();
     workspace.setProps({
       rover: {
-        isSending: true,
+        isSending: false,
       },
     });
     workspace.update();
@@ -285,9 +285,6 @@ describe('The Workspace component', () => {
       sensor: {
         left: NOT_COVERED,
         right: NOT_COVERED,
-      },
-      rover: {
-        isSending: false,
       },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
@@ -662,9 +659,6 @@ describe('The Workspace component', () => {
         left: NOT_COVERED,
         right: NOT_COVERED,
       },
-      rover: {
-        isSending: false,
-      },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
     shallowWithIntl(
@@ -931,12 +925,6 @@ describe('The Workspace component', () => {
         left: NOT_COVERED,
         right: NOT_COVERED,
       },
-      rover: {
-        isSending: false,
-        transmitChannel: {
-          writeValue: jest.fn(),
-        },
-      },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
     const wrapper = shallowWithIntl(
@@ -964,9 +952,6 @@ describe('The Workspace component', () => {
       sensor: {
         left: NOT_COVERED,
         right: NOT_COVERED,
-      },
-      rover: {
-        isSending: false,
       },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
