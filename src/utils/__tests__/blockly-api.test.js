@@ -100,9 +100,8 @@ describe('Blockly API', () => {
     const result = stopMotorHandler({ data: 'RIGHT' });
 
     expect(result).toBe(false);
-    expect(sendToRover).toHaveBeenCalledTimes(2);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
     expect(sendToRover.mock.calls[0][0]).toBe('right-motor:0\n');
-    expect(sendToRover.mock.calls[1][0]).toBe('right-motor:0\n');
   });
 
   test('handles getSensorCovered', () => {
