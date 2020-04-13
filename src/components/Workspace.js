@@ -183,10 +183,14 @@ class Workspace extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { code: currentCode } = prevProps;
-    const { code: nextCode, sensor } = this.props;
+    const { code: currentCode, rover: currentRover } = prevProps;
+    const { code: nextCode, sensor, rover: nextRover } = this.props;
 
     this.updateSensorStateCache(sensor.left, sensor.right);
+
+    if (currentRover && currentRover.isSending && nextRover && !nextRover.isSending) {
+      this.runCode();
+    }
 
     // Ignore if execution state has not changed unless stepping
     if (nextCode.execution === currentCode.execution && nextCode.execution !== EXECUTION_STEP) {
@@ -341,15 +345,18 @@ class Workspace extends Component {
   }
 
   runCode = () => {
-    if (this.stepCode() && this.runningEnabled && !this.sleeping) {
+    const { rover } = this.props;
+
+    if (this.stepCode() && this.runningEnabled && !this.sleeping && !rover.isSending) {
       setTimeout(this.runCode, 10);
     }
   }
 
   stepCode = () => {
     const { interpreter, workspace } = this.state;
+    const { rover } = this.props;
 
-    if (this.sleeping) {
+    if (this.sleeping || rover.isSending) {
       return true;
     }
 
@@ -512,6 +519,7 @@ Workspace.propTypes = {
   }).isRequired,
   rover: PropTypes.shape({
     transmitChannel: PropTypes.object,
+    isSending: PropTypes.bool,
   }),
   updateJsCode: PropTypes.func.isRequired,
   updateXmlCode: PropTypes.func.isRequired,

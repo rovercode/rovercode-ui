@@ -69,9 +69,7 @@ class BlocklyApi {
 
     // Add stop motor API function
     wrapper = (motor) => {
-      /* Stop both forward and backward pins, just to be safe */
       this.sendMotorCommand(motor.data, 'FORWARD', 0);
-      this.sendMotorCommand(motor.data, 'BACKWARD', 0);
       return false;
     };
     interpreter.setProperty(scope, 'stopMotor',

@@ -188,6 +188,29 @@ describe('The Workspace component', () => {
     expect(workspace.instance().resetCode).toHaveBeenCalled();
   });
 
+  test('runs code when done sending Bluetooth message to rover', () => {
+    store.getState().rover.isSending = true;
+    const workspace = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    workspace.instance().runCode = jest.fn();
+    workspace.setProps({
+      rover: {
+        isSending: false,
+      },
+    });
+    workspace.update();
+
+    expect(workspace.instance().runCode).toHaveBeenCalled();
+  });
+
   test('does nothing on invalid state change', () => {
     const workspace = shallowWithIntl(
       <Workspace store={store}>
@@ -322,9 +345,10 @@ describe('The Workspace component', () => {
     expect(workspace.instance().runCode).not.toHaveBeenCalled();
   });
 
-  test('runs code when not at end, running, and not sleeping', () => {
+  test('runs code when not at end, running, and not sleeping or sending to rover', () => {
     jest.useFakeTimers();
 
+    store.getState().rover.isSending = false;
     const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
@@ -343,6 +367,30 @@ describe('The Workspace component', () => {
 
     expect(setTimeout).toHaveBeenCalled();
   });
+
+  test('doesn\'t run code when sending to rover', () => {
+    jest.useFakeTimers();
+
+    store.getState().rover.isSending = true;
+    const workspace = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    workspace.instance().stepCode = jest.fn(() => true);
+    workspace.instance().runningEnabled = true;
+    workspace.instance().sleeping = false;
+    workspace.update();
+    workspace.instance().runCode();
+
+    expect(setTimeout).not.toHaveBeenCalled();
+  });
+
 
   test('doesn\'t run code when at the end', () => {
     jest.useFakeTimers();
