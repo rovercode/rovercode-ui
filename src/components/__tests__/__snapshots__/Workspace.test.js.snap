@@ -427,6 +427,9 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           }
           rover={
             Object {
+              "rover": Object {
+                "name": "togaz",
+              },
               "transmitChannel": Object {
                 "writeValue": [MockFunction],
               },
@@ -545,7 +548,9 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                     }
                   }
                 >
-                  <div />
+                  <div
+                    isConnected={true}
+                  />
                 </div>
               </div>
             </div>

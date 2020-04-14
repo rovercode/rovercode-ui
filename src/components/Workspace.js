@@ -218,7 +218,7 @@ class Workspace extends Component {
   sendToRover = (command) => {
     const { rover, sendToRover } = this.props;
 
-    if (rover) {
+    if (rover.rover) {
       const encoder = new TextEncoder();
       sendToRover(rover.transmitChannel, encoder.encode(command));
     }
@@ -456,7 +456,7 @@ class Workspace extends Component {
   }
 
   render() {
-    const { children, code } = this.props;
+    const { children, code, rover } = this.props;
 
     return (
       <Container style={{ height: code.isReadOnly ? '70vh' : '80vh' }}>
@@ -493,7 +493,7 @@ class Workspace extends Component {
         }
         <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
           <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
-            { children }
+            { React.cloneElement(children, { isConnected: !!rover.rover }) }
           </div>
         </div>
       </Container>
@@ -502,7 +502,9 @@ class Workspace extends Component {
 }
 
 Workspace.defaultProps = {
-  rover: null,
+  rover: {
+    rover: null,
+  },
 };
 
 Workspace.propTypes = {
@@ -520,6 +522,7 @@ Workspace.propTypes = {
   rover: PropTypes.shape({
     transmitChannel: PropTypes.object,
     isSending: PropTypes.bool,
+    rover: PropTypes.object,
   }),
   updateJsCode: PropTypes.func.isRequired,
   updateXmlCode: PropTypes.func.isRequired,

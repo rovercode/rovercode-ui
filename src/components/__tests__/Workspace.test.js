@@ -50,6 +50,9 @@ describe('The Workspace component', () => {
         transmitChannel: {
           writeValue: jest.fn(),
         },
+        rover: {
+          name: 'togaz',
+        },
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
