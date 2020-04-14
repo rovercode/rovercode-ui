@@ -10,7 +10,7 @@ class Logger {
     this.logger = new SumoLogger(opts);
   }
 
-  log = message => this.logger.log(message)
+  log = (message) => this.logger.log(message)
 }
 
 export default new Logger();

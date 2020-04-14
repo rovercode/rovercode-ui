@@ -95,15 +95,12 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                         id="app.mission_control.tags"
                         values={Object {}}
                       >
-                        <span>
-                          Tags
-                        </span>
+                        Tags
                       </FormattedMessage>
                     </h2>
                   </Header>
-                  <withCookies(Component)>
-                    <InjectIntl(Connect(ProgramTags))
-                      allCookies={Object {}}
+                  <withCookies(injectIntl(Connect(ProgramTags)))>
+                    <withCookies(injectIntl(Connect(ProgramTags)))
                       cookies={
                         Cookies {
                           "HAS_DOCUMENT_COOKIE": true,
@@ -111,11 +108,11 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                             [Function],
                           ],
                           "cookies": Object {},
-                          "hooks": undefined,
                         }
                       }
+                      forwardedRef={null}
                     >
-                      <Connect(ProgramTags)
+                      <injectIntl(Connect(ProgramTags))
                         allCookies={Object {}}
                         cookies={
                           Cookies {
@@ -124,46 +121,11 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                               [Function],
                             ],
                             "cookies": Object {},
-                            "hooks": undefined,
-                          }
-                        }
-                        intl={
-                          Object {
-                            "defaultFormats": Object {},
-                            "defaultLocale": "en",
-                            "formatDate": [Function],
-                            "formatHTMLMessage": [Function],
-                            "formatMessage": [Function],
-                            "formatNumber": [Function],
-                            "formatPlural": [Function],
-                            "formatRelative": [Function],
-                            "formatTime": [Function],
-                            "formats": Object {},
-                            "formatters": Object {
-                              "getDateTimeFormat": [Function],
-                              "getMessageFormat": [Function],
-                              "getNumberFormat": [Function],
-                              "getPluralFormat": [Function],
-                              "getRelativeFormat": [Function],
-                            },
-                            "locale": "en",
-                            "messages": Object {},
-                            "now": [Function],
-                            "onError": [Function],
-                            "textComponent": "span",
-                            "timeZone": null,
                           }
                         }
                       >
-                        <ProgramTags
+                        <Connect(ProgramTags)
                           allCookies={Object {}}
-                          changeProgramTags={[Function]}
-                          code={
-                            Object {
-                              "jsCode": "testcode",
-                              "tags": Array [],
-                            }
-                          }
                           cookies={
                             Cookies {
                               "HAS_DOCUMENT_COOKIE": true,
@@ -171,130 +133,141 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                 [Function],
                               ],
                               "cookies": Object {},
-                              "hooks": undefined,
                             }
                           }
-                          fetchTags={[Function]}
                           intl={
                             Object {
                               "defaultFormats": Object {},
                               "defaultLocale": "en",
                               "formatDate": [Function],
+                              "formatDateToParts": [Function],
+                              "formatDisplayName": [Function],
                               "formatHTMLMessage": [Function],
+                              "formatList": [Function],
                               "formatMessage": [Function],
                               "formatNumber": [Function],
+                              "formatNumberToParts": [Function],
                               "formatPlural": [Function],
-                              "formatRelative": [Function],
+                              "formatRelativeTime": [Function],
                               "formatTime": [Function],
+                              "formatTimeToParts": [Function],
                               "formats": Object {},
                               "formatters": Object {
                                 "getDateTimeFormat": [Function],
+                                "getDisplayNames": [Function],
+                                "getListFormat": [Function],
                                 "getMessageFormat": [Function],
                                 "getNumberFormat": [Function],
-                                "getPluralFormat": [Function],
-                                "getRelativeFormat": [Function],
+                                "getPluralRules": [Function],
+                                "getRelativeTimeFormat": [Function],
                               },
                               "locale": "en",
                               "messages": Object {},
-                              "now": [Function],
                               "onError": [Function],
-                              "textComponent": "span",
-                              "timeZone": null,
-                            }
-                          }
-                          tag={
-                            Object {
-                              "error": null,
-                              "isFetching": false,
-                              "tags": Array [],
+                              "textComponent": Symbol(react.fragment),
+                              "timeZone": undefined,
                             }
                           }
                         >
-                          <Grid
-                            centered={true}
-                            container={true}
+                          <ProgramTags
+                            allCookies={Object {}}
+                            changeProgramTags={[Function]}
+                            code={
+                              Object {
+                                "jsCode": "testcode",
+                                "tags": Array [],
+                              }
+                            }
+                            cookies={
+                              Cookies {
+                                "HAS_DOCUMENT_COOKIE": true,
+                                "changeListeners": Array [
+                                  [Function],
+                                ],
+                                "cookies": Object {},
+                              }
+                            }
+                            fetchTags={[Function]}
+                            intl={
+                              Object {
+                                "defaultFormats": Object {},
+                                "defaultLocale": "en",
+                                "formatDate": [Function],
+                                "formatDateToParts": [Function],
+                                "formatDisplayName": [Function],
+                                "formatHTMLMessage": [Function],
+                                "formatList": [Function],
+                                "formatMessage": [Function],
+                                "formatNumber": [Function],
+                                "formatNumberToParts": [Function],
+                                "formatPlural": [Function],
+                                "formatRelativeTime": [Function],
+                                "formatTime": [Function],
+                                "formatTimeToParts": [Function],
+                                "formats": Object {},
+                                "formatters": Object {
+                                  "getDateTimeFormat": [Function],
+                                  "getDisplayNames": [Function],
+                                  "getListFormat": [Function],
+                                  "getMessageFormat": [Function],
+                                  "getNumberFormat": [Function],
+                                  "getPluralRules": [Function],
+                                  "getRelativeTimeFormat": [Function],
+                                },
+                                "locale": "en",
+                                "messages": Object {},
+                                "onError": [Function],
+                                "textComponent": Symbol(react.fragment),
+                                "timeZone": undefined,
+                              }
+                            }
+                            tag={
+                              Object {
+                                "error": null,
+                                "isFetching": false,
+                                "tags": Array [],
+                              }
+                            }
                           >
-                            <div
-                              className="ui centered container grid"
+                            <Grid
+                              centered={true}
+                              container={true}
                             >
-                              <GridRow>
-                                <div
-                                  className="row"
-                                >
-                                  <Dropdown
-                                    additionLabel="Add "
-                                    additionPosition="top"
-                                    allowAdditions={true}
-                                    closeOnBlur={true}
-                                    closeOnChange={true}
-                                    closeOnEscape={true}
-                                    deburr={false}
-                                    fluid={true}
-                                    icon="dropdown"
-                                    minCharacters={1}
-                                    multiple={true}
-                                    noResultsMessage="No results found."
-                                    onAddItem={[Function]}
-                                    onChange={[Function]}
-                                    openOnFocus={true}
-                                    options={Array []}
-                                    placeholder="Add tags..."
-                                    renderLabel={[Function]}
-                                    search={true}
-                                    searchInput="text"
-                                    selectOnBlur={true}
-                                    selectOnNavigation={true}
-                                    selection={true}
-                                    value={Array []}
-                                    wrapSelection={true}
+                              <div
+                                className="ui centered container grid"
+                              >
+                                <GridRow>
+                                  <div
+                                    className="row"
                                   >
-                                    <Ref
-                                      innerRef={
-                                        Object {
-                                          "current": <div
-                                            aria-expanded="false"
-                                            class="ui fluid multiple search selection dropdown"
-                                            role="combobox"
-                                          >
-                                            <input
-                                              aria-autocomplete="list"
-                                              autocomplete="off"
-                                              class="search"
-                                              tabindex="0"
-                                              type="text"
-                                              value=""
-                                            />
-                                            <span
-                                              class="sizer"
-                                            />
-                                            <div
-                                              aria-atomic="true"
-                                              aria-live="polite"
-                                              class="default text"
-                                              role="alert"
-                                            >
-                                              Add tags...
-                                            </div>
-                                            <i
-                                              aria-hidden="true"
-                                              class="dropdown icon"
-                                            />
-                                            <div
-                                              aria-multiselectable="true"
-                                              class="menu transition"
-                                              role="listbox"
-                                            >
-                                              <div
-                                                class="message"
-                                              >
-                                                No results found.
-                                              </div>
-                                            </div>
-                                          </div>,
-                                        }
-                                      }
+                                    <Dropdown
+                                      additionLabel="Add "
+                                      additionPosition="top"
+                                      allowAdditions={true}
+                                      closeOnBlur={true}
+                                      closeOnChange={true}
+                                      closeOnEscape={true}
+                                      deburr={false}
+                                      fluid={true}
+                                      icon="dropdown"
+                                      minCharacters={1}
+                                      multiple={true}
+                                      noResultsMessage="No results found."
+                                      onAddItem={[Function]}
+                                      onChange={[Function]}
+                                      openOnFocus={true}
+                                      options={Array []}
+                                      placeholder="Add tags..."
+                                      renderLabel={[Function]}
+                                      search={true}
+                                      searchInput="text"
+                                      selectOnBlur={true}
+                                      selectOnNavigation={true}
+                                      selection={true}
+                                      value={Array []}
+                                      wrapSelection={true}
                                     >
-                                      <RefFindNode
+                                      <Ref
                                         innerRef={
                                           Object {
                                             "current": <div
@@ -340,31 +313,63 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                           }
                                         }
                                       >
-                                        <div
-                                          aria-expanded={false}
-                                          className="ui fluid multiple search selection dropdown"
-                                          onBlur={[Function]}
-                                          onChange={[Function]}
-                                          onClick={[Function]}
-                                          onFocus={[Function]}
-                                          onMouseDown={[Function]}
-                                          role="combobox"
-                                        >
-                                          <Ref
-                                            innerRef={
-                                              Object {
-                                                "current": <input
+                                        <RefFindNode
+                                          innerRef={
+                                            Object {
+                                              "current": <div
+                                                aria-expanded="false"
+                                                class="ui fluid multiple search selection dropdown"
+                                                role="combobox"
+                                              >
+                                                <input
                                                   aria-autocomplete="list"
                                                   autocomplete="off"
                                                   class="search"
                                                   tabindex="0"
                                                   type="text"
                                                   value=""
-                                                />,
-                                              }
+                                                />
+                                                <span
+                                                  class="sizer"
+                                                />
+                                                <div
+                                                  aria-atomic="true"
+                                                  aria-live="polite"
+                                                  class="default text"
+                                                  role="alert"
+                                                >
+                                                  Add tags...
+                                                </div>
+                                                <i
+                                                  aria-hidden="true"
+                                                  class="dropdown icon"
+                                                />
+                                                <div
+                                                  aria-multiselectable="true"
+                                                  class="menu transition"
+                                                  role="listbox"
+                                                >
+                                                  <div
+                                                    class="message"
+                                                  >
+                                                    No results found.
+                                                  </div>
+                                                </div>
+                                              </div>,
                                             }
+                                          }
+                                        >
+                                          <div
+                                            aria-expanded={false}
+                                            className="ui fluid multiple search selection dropdown"
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onClick={[Function]}
+                                            onFocus={[Function]}
+                                            onMouseDown={[Function]}
+                                            role="combobox"
                                           >
-                                            <RefFindNode
+                                            <Ref
                                               innerRef={
                                                 Object {
                                                   "current": <input
@@ -378,23 +383,23 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                 }
                                               }
                                             >
-                                              <DropdownSearchInput
-                                                autoComplete="off"
-                                                key="text"
-                                                onChange={[Function]}
-                                                style={
+                                              <RefFindNode
+                                                innerRef={
                                                   Object {
-                                                    "width": undefined,
+                                                    "current": <input
+                                                      aria-autocomplete="list"
+                                                      autocomplete="off"
+                                                      class="search"
+                                                      tabindex="0"
+                                                      type="text"
+                                                      value=""
+                                                    />,
                                                   }
                                                 }
-                                                tabIndex={0}
-                                                type="text"
-                                                value=""
                                               >
-                                                <input
-                                                  aria-autocomplete="list"
+                                                <DropdownSearchInput
                                                   autoComplete="off"
-                                                  className="search"
+                                                  key="text"
                                                   onChange={[Function]}
                                                   style={
                                                     Object {
@@ -404,81 +409,80 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                   tabIndex={0}
                                                   type="text"
                                                   value=""
-                                                />
-                                              </DropdownSearchInput>
-                                            </RefFindNode>
-                                          </Ref>
-                                          <span
-                                            className="sizer"
-                                          />
-                                          <div
-                                            aria-atomic={true}
-                                            aria-live="polite"
-                                            className="default text"
-                                            role="alert"
-                                          >
-                                            Add tags...
-                                          </div>
-                                          <Icon
-                                            as="i"
-                                            className=""
-                                            name="dropdown"
-                                            onClick={[Function]}
-                                          >
-                                            <i
-                                              aria-hidden="true"
-                                              className="dropdown icon"
-                                              onClick={[Function]}
+                                                >
+                                                  <input
+                                                    aria-autocomplete="list"
+                                                    autoComplete="off"
+                                                    className="search"
+                                                    onChange={[Function]}
+                                                    style={
+                                                      Object {
+                                                        "width": undefined,
+                                                      }
+                                                    }
+                                                    tabIndex={0}
+                                                    type="text"
+                                                    value=""
+                                                  />
+                                                </DropdownSearchInput>
+                                              </RefFindNode>
+                                            </Ref>
+                                            <span
+                                              className="sizer"
                                             />
-                                          </Icon>
-                                          <DropdownMenu
-                                            aria-multiselectable={true}
-                                            role="listbox"
-                                          >
                                             <div
+                                              aria-atomic={true}
+                                              aria-live="polite"
+                                              className="default text"
+                                              role="alert"
+                                            >
+                                              Add tags...
+                                            </div>
+                                            <Icon
+                                              as="i"
+                                              className=""
+                                              name="dropdown"
+                                              onClick={[Function]}
+                                            >
+                                              <i
+                                                aria-hidden="true"
+                                                className="dropdown icon"
+                                                onClick={[Function]}
+                                              />
+                                            </Icon>
+                                            <DropdownMenu
                                               aria-multiselectable={true}
-                                              className="menu transition"
                                               role="listbox"
                                             >
                                               <div
-                                                className="message"
+                                                aria-multiselectable={true}
+                                                className="menu transition"
+                                                role="listbox"
                                               >
-                                                No results found.
+                                                <div
+                                                  className="message"
+                                                >
+                                                  No results found.
+                                                </div>
                                               </div>
-                                            </div>
-                                          </DropdownMenu>
-                                        </div>
-                                      </RefFindNode>
-                                    </Ref>
-                                  </Dropdown>
-                                </div>
-                              </GridRow>
-                              <GridRow>
-                                <div
-                                  className="row"
-                                >
-                                  <Button
-                                    as="button"
-                                    disabled={true}
-                                    onClick={[Function]}
-                                    primary={true}
+                                            </DropdownMenu>
+                                          </div>
+                                        </RefFindNode>
+                                      </Ref>
+                                    </Dropdown>
+                                  </div>
+                                </GridRow>
+                                <GridRow>
+                                  <div
+                                    className="row"
                                   >
-                                    <Ref
-                                      innerRef={
-                                        Object {
-                                          "current": <button
-                                            class="ui primary disabled button"
-                                            disabled=""
-                                            tabindex="-1"
-                                          >
-                                            <span>
-                                              Save
-                                            </span>
-                                          </button>,
-                                        }
-                                      }
+                                    <Button
+                                      as="button"
+                                      disabled={true}
+                                      onClick={[Function]}
+                                      primary={true}
                                     >
-                                      <RefFindNode
+                                      <Ref
                                         innerRef={
                                           Object {
                                             "current": <button
@@ -486,40 +490,50 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                               disabled=""
                                               tabindex="-1"
                                             >
-                                              <span>
-                                                Save
-                                              </span>
+                                              Save
                                             </button>,
                                           }
                                         }
                                       >
-                                        <button
-                                          className="ui primary disabled button"
-                                          disabled={true}
-                                          onClick={[Function]}
-                                          tabIndex={-1}
+                                        <RefFindNode
+                                          innerRef={
+                                            Object {
+                                              "current": <button
+                                                class="ui primary disabled button"
+                                                disabled=""
+                                                tabindex="-1"
+                                              >
+                                                Save
+                                              </button>,
+                                            }
+                                          }
                                         >
-                                          <FormattedMessage
-                                            defaultMessage="Save"
-                                            id="app.program_tags.save"
-                                            values={Object {}}
+                                          <button
+                                            className="ui primary disabled button"
+                                            disabled={true}
+                                            onClick={[Function]}
+                                            tabIndex={-1}
                                           >
-                                            <span>
+                                            <FormattedMessage
+                                              defaultMessage="Save"
+                                              id="app.program_tags.save"
+                                              values={Object {}}
+                                            >
                                               Save
-                                            </span>
-                                          </FormattedMessage>
-                                        </button>
-                                      </RefFindNode>
-                                    </Ref>
-                                  </Button>
-                                </div>
-                              </GridRow>
-                            </div>
-                          </Grid>
-                        </ProgramTags>
-                      </Connect(ProgramTags)>
-                    </InjectIntl(Connect(ProgramTags))>
-                  </withCookies(Component)>
+                                            </FormattedMessage>
+                                          </button>
+                                        </RefFindNode>
+                                      </Ref>
+                                    </Button>
+                                  </div>
+                                </GridRow>
+                              </div>
+                            </Grid>
+                          </ProgramTags>
+                        </Connect(ProgramTags)>
+                      </injectIntl(Connect(ProgramTags))>
+                    </withCookies(injectIntl(Connect(ProgramTags)))>
+                  </withCookies(injectIntl(Connect(ProgramTags)))>
                 </div>
               </GridRow>
               <Divider>
@@ -589,15 +603,14 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                     }
                   }
                 >
-                  <Connect(RoverConnection)>
-                    <RoverConnection
+                  <Connect(injectIntl(RoverConnection))>
+                    <injectIntl(RoverConnection)
                       changeLeftSensorState={[Function]}
                       changeRightSensorState={[Function]}
                       commands={Array []}
                       connectToRover={[Function]}
                       disconnectFromRover={[Function]}
                       isFetching={false}
-                      rover={null}
                       rovers={
                         Object {
                           "next": null,
@@ -606,58 +619,106 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                         }
                       }
                       scanForRover={[Function]}
+                      write={[Function]}
                     >
-                      <Button
-                        as="button"
-                        fluid={true}
-                        onClick={[Function]}
-                        primary={true}
-                      >
-                        <Ref
-                          innerRef={
-                            Object {
-                              "current": <button
-                                class="ui fluid primary button"
-                              >
-                                <span>
-                                  Connect to rover
-                                </span>
-                              </button>,
-                            }
+                      <RoverConnection
+                        changeLeftSensorState={[Function]}
+                        changeRightSensorState={[Function]}
+                        commands={Array []}
+                        connectToRover={[Function]}
+                        disconnectFromRover={[Function]}
+                        intl={
+                          Object {
+                            "defaultFormats": Object {},
+                            "defaultLocale": "en",
+                            "formatDate": [Function],
+                            "formatDateToParts": [Function],
+                            "formatDisplayName": [Function],
+                            "formatHTMLMessage": [Function],
+                            "formatList": [Function],
+                            "formatMessage": [Function],
+                            "formatNumber": [Function],
+                            "formatNumberToParts": [Function],
+                            "formatPlural": [Function],
+                            "formatRelativeTime": [Function],
+                            "formatTime": [Function],
+                            "formatTimeToParts": [Function],
+                            "formats": Object {},
+                            "formatters": Object {
+                              "getDateTimeFormat": [Function],
+                              "getDisplayNames": [Function],
+                              "getListFormat": [Function],
+                              "getMessageFormat": [Function],
+                              "getNumberFormat": [Function],
+                              "getPluralRules": [Function],
+                              "getRelativeTimeFormat": [Function],
+                            },
+                            "locale": "en",
+                            "messages": Object {},
+                            "onError": [Function],
+                            "textComponent": Symbol(react.fragment),
+                            "timeZone": undefined,
                           }
+                        }
+                        isFetching={false}
+                        rover={null}
+                        rovers={
+                          Object {
+                            "next": null,
+                            "previous": null,
+                            "results": Array [],
+                          }
+                        }
+                        scanForRover={[Function]}
+                        write={[Function]}
+                      >
+                        <Button
+                          as="button"
+                          disabled={false}
+                          fluid={true}
+                          onClick={[Function]}
+                          primary={true}
                         >
-                          <RefFindNode
+                          <Ref
                             innerRef={
                               Object {
                                 "current": <button
                                   class="ui fluid primary button"
                                 >
-                                  <span>
-                                    Connect to rover
-                                  </span>
+                                  Connect to rover
                                 </button>,
                               }
                             }
                           >
-                            <button
-                              className="ui fluid primary button"
-                              onClick={[Function]}
+                            <RefFindNode
+                              innerRef={
+                                Object {
+                                  "current": <button
+                                    class="ui fluid primary button"
+                                  >
+                                    Connect to rover
+                                  </button>,
+                                }
+                              }
                             >
-                              <FormattedMessage
-                                defaultMessage="Connect to rover"
-                                id="app.rover_list.connect"
-                                values={Object {}}
+                              <button
+                                className="ui fluid primary button"
+                                onClick={[Function]}
                               >
-                                <span>
+                                <FormattedMessage
+                                  defaultMessage="Connect to rover"
+                                  id="app.rover_connection.connect"
+                                  values={Object {}}
+                                >
                                   Connect to rover
-                                </span>
-                              </FormattedMessage>
-                            </button>
-                          </RefFindNode>
-                        </Ref>
-                      </Button>
-                    </RoverConnection>
-                  </Connect(RoverConnection)>
+                                </FormattedMessage>
+                              </button>
+                            </RefFindNode>
+                          </Ref>
+                        </Button>
+                      </RoverConnection>
+                    </injectIntl(RoverConnection)>
+                  </Connect(injectIntl(RoverConnection))>
                 </div>
               </GridRow>
               <Divider>
@@ -681,9 +742,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                         id="app.mission_control.sensors"
                         values={Object {}}
                       >
-                        <span>
-                          Sensors
-                        </span>
+                        Sensors
                       </FormattedMessage>
                     </h2>
                   </Header>
@@ -731,9 +790,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                         id="app.mission_control.console"
                         values={Object {}}
                       >
-                        <span>
-                          Debug Console
-                        </span>
+                        Debug Console
                       </FormattedMessage>
                     </h2>
                   </Header>

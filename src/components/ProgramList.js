@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
   Button,
   Confirm,
@@ -6,7 +6,7 @@ import {
   Loader,
   Segment,
 } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -47,7 +47,7 @@ class ProgramList extends Component {
     })).then(() => fetchTags());
   }
 
-  showConfirm = e => this.setState({
+  showConfirm = (e) => this.setState({
     confirmOpen: true,
     focusProgram: {
       id: e.target.parentNode.id || e.target.id,
@@ -190,7 +190,7 @@ class ProgramList extends Component {
     });
 
     return (
-      <Fragment>
+      <>
         <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10%' }}>
           <Icon name="plus" />
           <FormattedMessage
@@ -233,7 +233,7 @@ class ProgramList extends Component {
           cancelButton={cancelButtonText}
           confirmButton={confirmButtonText}
         />
-      </Fragment>
+      </>
     );
   }
 }
@@ -320,7 +320,9 @@ ProgramList.propTypes = {
       name: PropTypes.string,
     })),
   }),
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default injectIntl(ProgramList);

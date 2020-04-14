@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@ import { logout as actionLogout } from '@/actions/auth';
 import TopNav from './TopNav';
 
 const mapStateToProps = ({ auth, user }) => ({ auth, user });
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(actionLogout()),
 });
 
@@ -36,11 +36,11 @@ class ProtectedRoute extends Component {
   render() {
     const { component: Component, user, ...rest } = this.props;
     return (
-      <Fragment>
+      <>
         <TopNav userName={user.username} />
         <Route
           {...rest}
-          render={props => (
+          render={(props) => (
             this.isAuthenticated() ? (
               <Component {...props} />
             ) : (
@@ -87,7 +87,7 @@ class ProtectedRoute extends Component {
             />
           </p>
         </div>
-      </Fragment>
+      </>
     );
   }
 }

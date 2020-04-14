@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { shallow } from 'enzyme';
-import { mountWithIntl } from 'enzyme-react-intl';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 
@@ -28,12 +27,12 @@ describe('The Control component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = mountWithIntl(<Control store={store} />);
+    const wrapper = mountWithIntl(<Control store={store} isConnected />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   test('dispatches an action to change execution state', () => {
-    const wrapper = shallow(<Control store={store} />);
+    const wrapper = shallow(<Control store={store} />).dive();
 
     wrapper.props().changeExecutionState(EXECUTION_RUN);
 
@@ -42,7 +41,7 @@ describe('The Control component', () => {
 
   test('changes to run state on button press', () => {
     const mockPreventDefault = jest.fn();
-    const wrapper = shallow(<Control store={store} />);
+    const wrapper = shallow(<Control store={store} />).dive();
 
     wrapper.dive().find(Button).at(0).simulate('click');
     wrapper.dive().find(Button).at(0).simulate('mousedown', { preventDefault: mockPreventDefault });
@@ -53,7 +52,7 @@ describe('The Control component', () => {
 
   test('changes to step state on button press', () => {
     const mockPreventDefault = jest.fn();
-    const wrapper = shallow(<Control store={store} />);
+    const wrapper = shallow(<Control store={store} />).dive();
 
     wrapper.dive().find(Button).at(1).simulate('click');
     wrapper.dive().find(Button).at(1).simulate('mousedown', { preventDefault: mockPreventDefault });
@@ -64,7 +63,7 @@ describe('The Control component', () => {
 
   test('changes to reset state on button press', () => {
     const mockPreventDefault = jest.fn();
-    const wrapper = shallow(<Control store={store} />);
+    const wrapper = shallow(<Control store={store} />).dive();
 
     wrapper.dive().find(Button).at(2).simulate('click');
     wrapper.dive().find(Button).at(2).simulate('mousedown', { preventDefault: mockPreventDefault });
@@ -81,12 +80,20 @@ describe('The Control component', () => {
       },
     });
     runStore.dispatch = jest.fn();
-    const wrapper = shallow(<Control store={runStore} />).dive();
+    const wrapper = shallow(<Control store={runStore} />).dive().dive();
 
     wrapper.find(Button).at(0).simulate('click');
     wrapper.find(Button).at(0).simulate('mousedown', { preventDefault: mockPreventDefault });
 
     expect(runStore.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STOP));
     expect(mockPreventDefault).toHaveBeenCalled();
+  });
+
+  test('disables buttons when not connected', () => {
+    const wrapper = shallow(<Control store={store} />).dive().dive();
+
+    wrapper.find(Button).forEach((btn) => {
+      expect(btn.prop('disabled')).toBe(true);
+    });
   });
 });

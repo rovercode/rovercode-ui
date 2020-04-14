@@ -8,16 +8,11 @@ import {
 
 describe('Rover actions', () => {
   test('rover scan', () => {
-    const mockDevice = { name: 'Sparky' };
-    const mockBluetooth = {
-      requestDevice: jest.fn(() => mockDevice),
-    };
-    global.navigator.bluetooth = mockBluetooth;
     const action = scan();
     const { type, payload } = action;
 
     expect(type).toEqual('SCAN');
-    expect(payload).toEqual(mockDevice);
+    expect(payload.name).toEqual('Sparky');
   });
 
   test('connect rover', async () => {

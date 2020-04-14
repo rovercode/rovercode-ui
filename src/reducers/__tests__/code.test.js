@@ -4,21 +4,21 @@ import {
   EXECUTION_RUN,
   UPDATE_JSCODE,
   UPDATE_XMLCODE,
-  CHANGE_NAME,
+  CHANGE_NAME_PENDING,
   CHANGE_NAME_FULFILLED,
   CHANGE_NAME_REJECTED,
-  CHANGE_PROGRAM_TAGS,
+  CHANGE_PROGRAM_TAGS_PENDING,
   CHANGE_PROGRAM_TAGS_FULFILLED,
   CHANGE_PROGRAM_TAGS_REJECTED,
   CHANGE_ID,
   CHANGE_READ_ONLY,
-  FETCH_PROGRAM,
+  FETCH_PROGRAM_PENDING,
   FETCH_PROGRAM_FULFILLED,
   FETCH_PROGRAM_REJECTED,
-  SAVE_PROGRAM,
+  SAVE_PROGRAM_PENDING,
   SAVE_PROGRAM_FULFILLED,
   SAVE_PROGRAM_REJECTED,
-  CREATE_PROGRAM,
+  CREATE_PROGRAM_PENDING,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
   CLEAR_PROGRAM,
@@ -58,10 +58,10 @@ describe('The code reducer', () => {
     });
   });
 
-  test('should handle CHANGE_NAME', () => {
+  test('should handle CHANGE_NAME_PENDING', () => {
     expect(
       reducer({}, {
-        type: CHANGE_NAME,
+        type: CHANGE_NAME_PENDING,
       }),
     ).toEqual({
       isChangingName: true,
@@ -100,10 +100,10 @@ describe('The code reducer', () => {
     });
   });
 
-  test('should handle CHANGE_PROGRAM_TAGS', () => {
+  test('should handle CHANGE_PROGRAM_TAGS_PENDING', () => {
     expect(
       reducer({}, {
-        type: CHANGE_PROGRAM_TAGS,
+        type: CHANGE_PROGRAM_TAGS_PENDING,
       }),
     ).toEqual({
       isChangingProgramTags: true,
@@ -153,10 +153,10 @@ describe('The code reducer', () => {
     });
   });
 
-  test('should handle FETCH_PROGRAM', () => {
+  test('should handle FETCH_PROGRAM_PENDING', () => {
     expect(
       reducer({}, {
-        type: FETCH_PROGRAM,
+        type: FETCH_PROGRAM_PENDING,
       }),
     ).toEqual({
       isFetching: true,
@@ -201,10 +201,10 @@ describe('The code reducer', () => {
     });
   });
 
-  test('should handle SAVE_PROGRAM', () => {
+  test('should handle SAVE_PROGRAM_PENDING', () => {
     expect(
       reducer({}, {
-        type: SAVE_PROGRAM,
+        type: SAVE_PROGRAM_PENDING,
       }),
     ).toEqual({
       isSaving: true,
@@ -249,10 +249,10 @@ describe('The code reducer', () => {
     });
   });
 
-  test('should handle CREATE_PROGRAM', () => {
+  test('should handle CREATE_PROGRAM_PENDING', () => {
     expect(
       reducer({}, {
-        type: CREATE_PROGRAM,
+        type: CREATE_PROGRAM_PENDING,
       }),
     ).toEqual({
       isCreating: true,

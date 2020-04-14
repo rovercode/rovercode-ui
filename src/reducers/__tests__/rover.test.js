@@ -1,22 +1,22 @@
 import reducer from '../rover';
 import {
-  SCAN,
+  SCAN_PENDING,
   SCAN_FULFILLED,
   SCAN_REJECTED,
-  CONNECT_ROVER,
+  CONNECT_ROVER_PENDING,
   CONNECT_ROVER_FULFILLED,
   CONNECT_ROVER_REJECTED,
-  SEND_ROVER,
+  SEND_ROVER_PENDING,
   SEND_ROVER_FULFILLED,
   SEND_ROVER_REJECTED,
   DISCONNECT_ROVER,
 } from '../../actions/rover';
 
 describe('The rover reducer', () => {
-  test('should handle SCAN', () => {
+  test('should handle SCAN_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: SCAN,
+        type: SCAN_PENDING,
       }),
     ).toEqual({
       isConnecting: false,
@@ -54,10 +54,10 @@ describe('The rover reducer', () => {
     });
   });
 
-  test('should handle CONNECT_ROVER', () => {
+  test('should handle CONNECT_ROVER_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: CONNECT_ROVER,
+        type: CONNECT_ROVER_PENDING,
       }),
     ).toEqual({
       isConnecting: true,
@@ -96,10 +96,10 @@ describe('The rover reducer', () => {
     });
   });
 
-  test('should handle SEND_ROVER', () => {
+  test('should handle SEND_ROVER_PENDING', () => {
     expect(
       reducer(undefined, {
-        type: SEND_ROVER,
+        type: SEND_ROVER_PENDING,
       }),
     ).toEqual({
       isConnecting: false,

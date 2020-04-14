@@ -1,8 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import RoverConnection from '../RoverConnection';
 import { changeLeftSensorState, changeRightSensorState } from '@/actions/sensor';
+import { append } from '@/actions/console';
+import RoverConnection from '../RoverConnection';
 
 jest.mock('@/actions/rover');
 
@@ -19,7 +20,7 @@ describe('The RoverConnectionContainer', () => {
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
-    wrapper = shallow(<RoverConnection store={store} />);
+    wrapper = shallow(<RoverConnection store={store} />).dive();
   });
 
   test('dispatches an action to change left sensor state', () => {
@@ -53,5 +54,11 @@ describe('The RoverConnectionContainer', () => {
     wrapper.props().scanForRover();
 
     expect(store.dispatch).toHaveBeenCalledWith(scan());
+  });
+
+  test('dispatches an action to write', () => {
+    wrapper.props().write('Test message');
+
+    expect(store.dispatch).toHaveBeenCalledWith(append('Test message'));
   });
 });

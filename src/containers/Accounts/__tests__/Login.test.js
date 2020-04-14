@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { Form, Message, MessageHeader } from 'semantic-ui-react';
-import { shallowWithIntl } from 'enzyme-react-intl';
 import { Cookies } from 'react-cookie';
 import { FormattedMessage } from 'react-intl';
 import axios from 'axios';
@@ -31,7 +30,9 @@ test('Login renders on the page with no errors', () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
 
   expect(wrapper).toMatchSnapshot();
   expect(wrapper.find(Message).exists()).toBe(false);
@@ -41,6 +42,11 @@ test('Login redirects to social api on button click', async () => {
   const url = 'https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fsocial%2Fgoogle%2Fcallback';
   mock.reset();
   mock.onPost('/jwt/auth/social/google/auth-server/').reply(200, { url });
+  Object.defineProperty(window, 'location', {
+    value: {},
+    writable: true,
+  });
+
   window.location.assign = jest.fn();
 
   const element = {
@@ -56,7 +62,9 @@ test('Login redirects to social api on button click', async () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
 
   await wrapper.instance().redirectToSocial(element);
 
@@ -68,6 +76,10 @@ test('Login redirects to social api on button click', async () => {
 test('Login shows error message on api error', async () => {
   mock.reset();
   mock.onPost('/jwt/auth/social/google/auth-server/').timeout();
+  Object.defineProperty(window, 'location', {
+    value: {},
+    writable: true,
+  });
   window.location.assign = jest.fn();
 
   const element = {
@@ -83,7 +95,9 @@ test('Login shows error message on api error', async () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
 
   await wrapper.instance().redirectToSocial(element);
   wrapper.update();
@@ -107,7 +121,9 @@ test('Login shows error message on callback error', () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
 
   expect(wrapper.find(Message).exists()).toBe(true);
   expect(wrapper.find(MessageHeader).children().find(FormattedMessage).prop('defaultMessage')).toBe(
@@ -133,7 +149,9 @@ test('Login redirects to root after basic login success', async () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
 
   wrapper.find(Form.Input).first().simulate('change', {
     target: {
@@ -171,7 +189,9 @@ test('Login shows error message after basic login failure', async () => {
     context: { cookies },
   });
 
-  const wrapper = cookiesWrapper.dive().dive().dive();
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
 
   wrapper.find(Form.Input).first().simulate('change', {
     target: {

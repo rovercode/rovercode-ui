@@ -2,7 +2,6 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
-import { mountWithIntl, shallowWithIntl } from 'enzyme-react-intl';
 import ProgramCollection from '../ProgramCollection';
 import ProgramList from '../ProgramList';
 
@@ -34,7 +33,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
     wrapper.setState({
       focusProgram: {
         id: 1,
@@ -95,7 +94,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(3);
@@ -114,7 +113,7 @@ describe('The ProgramList component', () => {
         user={{ user_id: 1, username: 'testuser' }}
         programs={null}
       />,
-    ).dive();
+    ).dive().dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(2);
@@ -134,7 +133,7 @@ describe('The ProgramList component', () => {
         user={{ user_id: 1, username: 'testuser' }}
         userPrograms={null}
       />,
-    ).dive();
+    ).dive().dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(2);
@@ -154,7 +153,7 @@ describe('The ProgramList component', () => {
         user={{ user_id: 1, username: 'testuser' }}
         featuredPrograms={null}
       />,
-    ).dive();
+    ).dive().dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
     expect(wrapper.find(ProgramCollection).length).toBe(2);
@@ -173,7 +172,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.setState({
       programLoaded: true,
@@ -210,7 +209,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     await wrapper.instance().loadProgram({
       target: {
@@ -273,7 +272,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     await wrapper.instance().fetchUserPrograms({
       page: 2,
@@ -310,7 +309,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     await wrapper.instance().fetchFeaturedPrograms({
       page: 2,
@@ -347,7 +346,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     await wrapper.instance().fetchOtherPrograms({
       page: 2,
@@ -384,7 +383,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.instance().fetchUserPrograms({
       search: 'abc',
@@ -423,7 +422,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.instance().fetchFeaturedPrograms({
       search: 'abc',
@@ -463,7 +462,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.instance().fetchOtherPrograms({
       search: 'abc',
@@ -502,7 +501,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.setState({
       focusProgram: {
@@ -527,7 +526,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.instance().showConfirm({
       target: {
@@ -553,7 +552,7 @@ describe('The ProgramList component', () => {
         clearProgram={clearProgram}
         user={{ user_id: 1, username: 'testuser' }}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.instance().cancelRemove();
 

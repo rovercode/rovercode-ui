@@ -74,15 +74,34 @@ describe('Blockly API', () => {
     expect(sendToRover).toHaveBeenCalledWith('left-motor:100\n');
   });
 
+  test('handles setMotor with BOTH', () => {
+    const setMotorHandler = interpreter.createNativeFunction.mock.calls[2][0];
+
+    const result = setMotorHandler({ data: 'BOTH' }, { data: 'FORWARD' }, { data: 100 });
+
+    expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
+    expect(sendToRover).toHaveBeenCalledWith('both-motors:100\n');
+  });
+
+  test('handles setMotor with BACKWARD', () => {
+    const setMotorHandler = interpreter.createNativeFunction.mock.calls[2][0];
+
+    const result = setMotorHandler({ data: 'RIGHT' }, { data: 'BACKWARD' }, { data: -100 });
+
+    expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
+    expect(sendToRover).toHaveBeenCalledWith('right-motor:100\n');
+  });
+
   test('handles stopMotor', () => {
     const stopMotorHandler = interpreter.createNativeFunction.mock.calls[3][0];
 
     const result = stopMotorHandler({ data: 'RIGHT' });
 
     expect(result).toBe(false);
-    expect(sendToRover).toHaveBeenCalledTimes(2);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
     expect(sendToRover.mock.calls[0][0]).toBe('right-motor:0\n');
-    expect(sendToRover.mock.calls[1][0]).toBe('right-motor:0\n');
   });
 
   test('handles getSensorCovered', () => {

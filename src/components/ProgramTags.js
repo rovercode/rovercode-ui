@@ -3,7 +3,7 @@ import { Button, Dropdown, Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { checkAuthError, authHeader } from '@/actions/auth';
@@ -61,7 +61,7 @@ class ProgramTags extends Component {
       value: data.value,
     };
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       addOptions: [...prevState.addOptions, newOption],
     }));
   }
@@ -82,7 +82,7 @@ class ProgramTags extends Component {
       defaultMessage: 'Add',
     });
 
-    let options = tag.tags.map(globalTag => ({
+    let options = tag.tags.map((globalTag) => ({
       key: globalTag.name,
       text: globalTag.name,
       value: globalTag.name,
@@ -142,7 +142,9 @@ ProgramTags.propTypes = {
       name: PropTypes.string,
     })),
   }),
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
   changeProgramTags: PropTypes.func.isRequired,
   fetchTags: PropTypes.func.isRequired,
 };

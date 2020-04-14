@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import {
   Form,
@@ -9,7 +9,7 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 class UserSetting extends Component {
@@ -83,7 +83,7 @@ class UserSetting extends Component {
 
     return editUserUsername(username)
       .then(() => this.setState({ saveSuccess: true }))
-      .catch(error => this.setState({ usernameError: error.response.data.username }));
+      .catch((error) => this.setState({ usernameError: error.response.data.username }));
   }
 
   saveUserPassword = () => {
@@ -165,7 +165,7 @@ class UserSetting extends Component {
               ) : (null)
             }
             {
-              <Fragment>
+              <>
                 <Message info>
                   <FormattedMessage
                     id="app.user_setting.info"
@@ -251,7 +251,7 @@ class UserSetting extends Component {
                     </Grid.Row>
                   ) : (null)
                 }
-              </Fragment>
+              </>
             }
           </Grid.Column>
         </Grid.Row>
@@ -269,7 +269,9 @@ UserSetting.propTypes = {
     email: PropTypes.string.isRequired,
     isSocial: PropTypes.bool.isRequired,
   }).isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default injectIntl(UserSetting);

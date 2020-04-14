@@ -9,12 +9,12 @@ export const COVERED = 1;
 export const NOT_COVERED = 2;
 
 // action creators
-export const changeLeftSensorState = state => ({
+export const changeLeftSensorState = (state) => ({
   type: CHANGE_LEFT_SENSOR_STATE,
   payload: state,
 });
 
-export const changeRightSensorState = state => ({
+export const changeRightSensorState = (state) => ({
   type: CHANGE_RIGHT_SENSOR_STATE,
   payload: state,
 });

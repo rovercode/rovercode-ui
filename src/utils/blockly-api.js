@@ -8,7 +8,17 @@ class BlocklyApi {
   }
 
   sendMotorCommand = (blocklyMotor, blocklyDirection, speed) => {
-    const motor = blocklyMotor === 'LEFT' ? 'left-motor' : 'right-motor';
+    let motor;
+    switch (blocklyMotor) {
+      case 'LEFT':
+        motor = 'left-motor';
+        break;
+      case 'RIGHT':
+        motor = 'right-motor';
+        break;
+      default:
+        motor = 'both-motors';
+    }
     if (blocklyDirection === 'BACKWARD') {
       speed *= -1;
     }
@@ -59,9 +69,7 @@ class BlocklyApi {
 
     // Add stop motor API function
     wrapper = (motor) => {
-      /* Stop both forward and backward pins, just to be safe */
       this.sendMotorCommand(motor.data, 'FORWARD', 0);
-      this.sendMotorCommand(motor.data, 'BACKWARD', 0);
       return false;
     };
     interpreter.setProperty(scope, 'stopMotor',

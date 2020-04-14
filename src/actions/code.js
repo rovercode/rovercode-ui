@@ -4,12 +4,15 @@
 import axios from 'axios';
 
 export const FETCH_PROGRAM = 'FETCH_PROGRAM';
+export const FETCH_PROGRAM_PENDING = `${FETCH_PROGRAM}_PENDING`;
 export const FETCH_PROGRAM_FULFILLED = `${FETCH_PROGRAM}_FULFILLED`;
 export const FETCH_PROGRAM_REJECTED = `${FETCH_PROGRAM}_REJECTED`;
 export const SAVE_PROGRAM = 'SAVE_PROGRAM';
+export const SAVE_PROGRAM_PENDING = `${SAVE_PROGRAM}_PENDING`;
 export const SAVE_PROGRAM_FULFILLED = `${SAVE_PROGRAM}_FULFILLED`;
 export const SAVE_PROGRAM_REJECTED = `${SAVE_PROGRAM}_REJECTED`;
 export const CREATE_PROGRAM = 'CREATE_PROGRAM';
+export const CREATE_PROGRAM_PENDING = `${CREATE_PROGRAM}_PENDING`;
 export const CREATE_PROGRAM_FULFILLED = `${CREATE_PROGRAM}_FULFILLED`;
 export const CREATE_PROGRAM_REJECTED = `${CREATE_PROGRAM}_REJECTED`;
 
@@ -17,9 +20,11 @@ export const UPDATE_JSCODE = 'UPDATE_JSCODE';
 export const UPDATE_XMLCODE = 'UPDATE_XMLCODE';
 export const CHANGE_EXECUTION_STATE = 'CHANGE_EXECUTION_STATE';
 export const CHANGE_NAME = 'CHANGE_NAME';
+export const CHANGE_NAME_PENDING = `${CHANGE_NAME}_PENDING`;
 export const CHANGE_NAME_FULFILLED = `${CHANGE_NAME}_FULFILLED`;
 export const CHANGE_NAME_REJECTED = `${CHANGE_NAME}_REJECTED`;
 export const CHANGE_PROGRAM_TAGS = 'CHANGE_PROGRAM_TAGS';
+export const CHANGE_PROGRAM_TAGS_PENDING = `${CHANGE_PROGRAM_TAGS}_PENDING`;
 export const CHANGE_PROGRAM_TAGS_FULFILLED = `${CHANGE_PROGRAM_TAGS}_FULFILLED`;
 export const CHANGE_PROGRAM_TAGS_REJECTED = `${CHANGE_PROGRAM_TAGS}_REJECTED`;
 export const CHANGE_ID = 'CHANGE_ID';
@@ -33,17 +38,17 @@ export const EXECUTION_STOP = 3;
 export const EXECUTION_RESET = 4;
 
 // action creators
-export const updateJsCode = jsCode => ({
+export const updateJsCode = (jsCode) => ({
   type: UPDATE_JSCODE,
   payload: jsCode,
 });
 
-export const updateXmlCode = xmlCode => ({
+export const updateXmlCode = (xmlCode) => ({
   type: UPDATE_XMLCODE,
   payload: xmlCode,
 });
 
-export const changeExecutionState = state => ({
+export const changeExecutionState = (state) => ({
   type: CHANGE_EXECUTION_STATE,
   payload: state,
 });
@@ -58,7 +63,7 @@ export const changeName = (id, name, xhroptions) => ({
     )),
 });
 
-export const changeId = id => ({
+export const changeId = (id) => ({
   type: CHANGE_ID,
   payload: id,
 });
@@ -103,7 +108,7 @@ export const changeProgramTags = (id, tags, xhroptions) => ({
     )),
 });
 
-export const changeReadOnly = isReadOnly => ({
+export const changeReadOnly = (isReadOnly) => ({
   type: CHANGE_READ_ONLY,
   payload: isReadOnly,
 });

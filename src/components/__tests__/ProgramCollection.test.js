@@ -7,7 +7,6 @@ import {
   Input,
 } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import { shallowWithIntl } from 'enzyme-react-intl';
 import CustomPagination from '../CustomPagination';
 import ProgramCollection from '../ProgramCollection';
 
@@ -56,7 +55,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -90,7 +89,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
 
     expect(wrapper.find(Header).exists()).toBe(true);
     expect(wrapper.find(Card).length).toBe(2);
@@ -130,7 +129,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
 
     expect(wrapper.find(Header).exists()).toBe(true);
     expect(wrapper.find(Card).length).toBe(2);
@@ -162,7 +161,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find(Button).first().simulate('click', {
       target: {
@@ -200,7 +199,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find(Button).last().simulate('click', {
       target: {
@@ -245,7 +244,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find(CustomPagination).simulate('pageChange', null, {
       activePage: 2,
@@ -288,7 +287,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find(Input).simulate('change', {
       target: {
@@ -334,7 +333,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find({ name: 'name' }).simulate('click', null, {
       name: 'name',
@@ -405,7 +404,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find(Dropdown).last().simulate('change', {}, {
       value: [
