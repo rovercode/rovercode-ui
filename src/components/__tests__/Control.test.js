@@ -27,7 +27,7 @@ describe('The Control component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = mountWithIntl(<Control store={store} />);
+    const wrapper = mountWithIntl(<Control store={store} isConnected />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -87,5 +87,13 @@ describe('The Control component', () => {
 
     expect(runStore.dispatch).toHaveBeenCalledWith(changeExecutionState(EXECUTION_STOP));
     expect(mockPreventDefault).toHaveBeenCalled();
+  });
+
+  test('disables buttons when not connected', () => {
+    const wrapper = shallow(<Control store={store} />).dive().dive();
+
+    wrapper.find(Button).forEach((btn) => {
+      expect(btn.prop('disabled')).toBe(true);
+    });
   });
 });

@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeExecutionState: (state) => dispatch(actionChangeExecutionState(state)),
 });
 
-const Control = ({ code, changeExecutionState }) => (
+const Control = ({ code, changeExecutionState, isConnected }) => (
   <>
     {
       code.execution === EXECUTION_RUN ? (
@@ -36,7 +36,7 @@ const Control = ({ code, changeExecutionState }) => (
         </Button>
       ) : (
         <>
-          <Button color="green" size="huge" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RUN)} animated="vertical">
+          <Button color="green" size="huge" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RUN)} animated="vertical" disabled={!isConnected}>
             <Button.Content hidden>
               <FormattedMessage
                 id="app.control.run"
@@ -48,7 +48,7 @@ const Control = ({ code, changeExecutionState }) => (
               <Icon name="play" />
             </Button.Content>
           </Button>
-          <Button color="yellow" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STEP)} animated="vertical" style={{ verticalAlign: 'bottom' }}>
+          <Button color="yellow" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STEP)} animated="vertical" style={{ verticalAlign: 'bottom' }} disabled={!isConnected}>
             <Button.Content hidden>
               <FormattedMessage
                 id="app.control.step"
@@ -60,7 +60,7 @@ const Control = ({ code, changeExecutionState }) => (
               <Icon name="step forward" />
             </Button.Content>
           </Button>
-          <Button color="blue" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RESET)} animated="vertical" style={{ verticalAlign: 'bottom' }}>
+          <Button color="blue" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RESET)} animated="vertical" style={{ verticalAlign: 'bottom' }} disabled={!isConnected}>
             <Button.Content hidden>
               <FormattedMessage
                 id="app.control.reset"
@@ -78,10 +78,15 @@ const Control = ({ code, changeExecutionState }) => (
   </>
 );
 
+Control.defaultProps = {
+  isConnected: false,
+};
+
 Control.propTypes = {
   code: PropTypes.shape({
     execution: PropTypes.number,
   }).isRequired,
+  isConnected: PropTypes.bool,
   changeExecutionState: PropTypes.func.isRequired,
 };
 
