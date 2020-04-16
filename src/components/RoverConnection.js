@@ -92,8 +92,9 @@ class RoverConnection extends Component {
 
   handleMagneticForceSensor = (params) => {
     const { write } = this.props;
+    const [x, y, z] = params.split(',');
 
-    write(`Magnetic Force Sensor - ${params} uT`);
+    write(`Magnetic Force Sensor - X:${x} uT Y:${y} uT Z:${z} uT`);
   }
 
   handleBatterySensor = (params) => {

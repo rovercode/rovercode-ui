@@ -234,11 +234,11 @@ describe('The RoverConnection component', () => {
   test('outputs magnetic force sensor state on message', () => {
     wrapper.instance().onMessage({
       target: {
-        value: generateDataView(Buffer.from('mag-sens:80')),
+        value: generateDataView(Buffer.from('mag-sens:80,90,100')),
       },
     });
 
-    expect(write).toHaveBeenCalledWith('Magnetic Force Sensor - 80 uT');
+    expect(write).toHaveBeenCalledWith('Magnetic Force Sensor - X:80 uT Y:90 uT Z:100 uT');
   });
 
   test('outputs battery sensor state on message', () => {
