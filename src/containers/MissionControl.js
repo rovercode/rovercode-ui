@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
-import RoverConnectionList from '@/containers/RoverConnectionList';
+import RoverConnection from '@/containers/RoverConnection';
 
 import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
@@ -58,17 +58,8 @@ const MissionControl = ({ location }) => (
         </Workspace>
       </Grid.Column>
       <Grid.Column width={3}>
-        <Grid.Row>
-          <Header as="h2" textAlign="center">
-            <FormattedMessage
-              id="app.mission_control.rovers"
-              description="Header for list of the user's rovers"
-              defaultMessage="Rovers"
-            />
-          </Header>
-          <Segment raised style={{ overflow: 'auto', maxHeight: 200, margin: '10px' }}>
-            <RoverConnectionList />
-          </Segment>
+        <Grid.Row style={{ marginLeft: '20px', marginRight: '20px' }}>
+          <RoverConnection />
         </Grid.Row>
         <Divider />
         <Grid.Row>

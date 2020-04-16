@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { shallow } from 'enzyme';
-import { mountWithIntl } from 'enzyme-react-intl';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 
@@ -27,7 +26,7 @@ describe('The Console component', () => {
   });
 
   test('displays messages', () => {
-    const wrapper = shallow(<Console store={store} />).dive();
+    const wrapper = shallow(<Console store={store} />).dive().dive();
 
     expect(wrapper.find('p').length).toBe(2);
     expect(wrapper.find('p').at(0).text()).toBe('>> first');
@@ -35,7 +34,7 @@ describe('The Console component', () => {
   });
 
   test('clears messages', () => {
-    const wrapper = shallow(<Console store={store} />).dive();
+    const wrapper = shallow(<Console store={store} />).dive().dive();
 
     wrapper.find(Button).simulate('click');
 
@@ -44,7 +43,7 @@ describe('The Console component', () => {
 
   test('scrolls to the bottom', () => {
     const mockScroll = jest.fn();
-    const wrapper = shallow(<Console store={store} />).dive();
+    const wrapper = shallow(<Console store={store} />).dive().dive();
     wrapper.instance().bottomRef = {
       current: {
         scrollIntoView: mockScroll,

@@ -1,34 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The ProgramTags component renders on the page with no errors 1`] = `
-<withCookies(Component)
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "onError": [Function],
-      "textComponent": "span",
-      "timeZone": null,
-    }
-  }
+<withCookies(injectIntl(Connect(ProgramTags)))
   store={
     Object {
       "clearActions": [Function],
@@ -55,8 +28,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
     }
   }
 >
-  <InjectIntl(Connect(ProgramTags))
-    allCookies={Object {}}
+  <withCookies(injectIntl(Connect(ProgramTags)))
     cookies={
       Cookies {
         "HAS_DOCUMENT_COOKIE": true,
@@ -64,36 +36,9 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
           [Function],
         ],
         "cookies": Object {},
-        "hooks": undefined,
       }
     }
-    intl={
-      Object {
-        "defaultFormats": Object {},
-        "defaultLocale": "en",
-        "formatDate": [Function],
-        "formatHTMLMessage": [Function],
-        "formatMessage": [Function],
-        "formatNumber": [Function],
-        "formatPlural": [Function],
-        "formatRelative": [Function],
-        "formatTime": [Function],
-        "formats": Object {},
-        "formatters": Object {
-          "getDateTimeFormat": [Function],
-          "getMessageFormat": [Function],
-          "getNumberFormat": [Function],
-          "getPluralFormat": [Function],
-          "getRelativeFormat": [Function],
-        },
-        "locale": "en",
-        "messages": Object {},
-        "now": [Function],
-        "onError": [Function],
-        "textComponent": "span",
-        "timeZone": null,
-      }
-    }
+    forwardedRef={null}
     store={
       Object {
         "clearActions": [Function],
@@ -120,7 +65,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
       }
     }
   >
-    <Connect(ProgramTags)
+    <injectIntl(Connect(ProgramTags))
       allCookies={Object {}}
       cookies={
         Cookies {
@@ -129,34 +74,6 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
             [Function],
           ],
           "cookies": Object {},
-          "hooks": undefined,
-        }
-      }
-      intl={
-        Object {
-          "defaultFormats": Object {},
-          "defaultLocale": "en",
-          "formatDate": [Function],
-          "formatHTMLMessage": [Function],
-          "formatMessage": [Function],
-          "formatNumber": [Function],
-          "formatPlural": [Function],
-          "formatRelative": [Function],
-          "formatTime": [Function],
-          "formats": Object {},
-          "formatters": Object {
-            "getDateTimeFormat": [Function],
-            "getMessageFormat": [Function],
-            "getNumberFormat": [Function],
-            "getPluralFormat": [Function],
-            "getRelativeFormat": [Function],
-          },
-          "locale": "en",
-          "messages": Object {},
-          "now": [Function],
-          "onError": [Function],
-          "textComponent": "span",
-          "timeZone": null,
         }
       }
       store={
@@ -185,18 +102,8 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
         }
       }
     >
-      <ProgramTags
+      <Connect(ProgramTags)
         allCookies={Object {}}
-        changeProgramTags={[Function]}
-        code={
-          Object {
-            "isReadOnly": false,
-            "tags": Array [
-              "tag1",
-              "tag2",
-            ],
-          }
-        }
         cookies={
           Cookies {
             "HAS_DOCUMENT_COOKIE": true,
@@ -204,35 +111,39 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
               [Function],
             ],
             "cookies": Object {},
-            "hooks": undefined,
           }
         }
-        fetchTags={[Function]}
         intl={
           Object {
             "defaultFormats": Object {},
             "defaultLocale": "en",
             "formatDate": [Function],
+            "formatDateToParts": [Function],
+            "formatDisplayName": [Function],
             "formatHTMLMessage": [Function],
+            "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
+            "formatNumberToParts": [Function],
             "formatPlural": [Function],
-            "formatRelative": [Function],
+            "formatRelativeTime": [Function],
             "formatTime": [Function],
+            "formatTimeToParts": [Function],
             "formats": Object {},
             "formatters": Object {
               "getDateTimeFormat": [Function],
+              "getDisplayNames": [Function],
+              "getListFormat": [Function],
               "getMessageFormat": [Function],
               "getNumberFormat": [Function],
-              "getPluralFormat": [Function],
-              "getRelativeFormat": [Function],
+              "getPluralRules": [Function],
+              "getRelativeTimeFormat": [Function],
             },
             "locale": "en",
             "messages": Object {},
-            "now": [Function],
             "onError": [Function],
-            "textComponent": "span",
-            "timeZone": null,
+            "textComponent": Symbol(react.fragment),
+            "timeZone": undefined,
           }
         }
         store={
@@ -260,17 +171,64 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
             "subscribe": [Function],
           }
         }
-        storeSubscription={
-          Subscription {
-            "listeners": Object {
-              "clear": [Function],
-              "get": [Function],
-              "notify": [Function],
-              "subscribe": [Function],
-            },
-            "onStateChange": [Function],
-            "parentSub": undefined,
-            "store": Object {
+      >
+        <ProgramTags
+          allCookies={Object {}}
+          changeProgramTags={[Function]}
+          code={
+            Object {
+              "isReadOnly": false,
+              "tags": Array [
+                "tag1",
+                "tag2",
+              ],
+            }
+          }
+          cookies={
+            Cookies {
+              "HAS_DOCUMENT_COOKIE": true,
+              "changeListeners": Array [
+                [Function],
+              ],
+              "cookies": Object {},
+            }
+          }
+          fetchTags={[Function]}
+          intl={
+            Object {
+              "defaultFormats": Object {},
+              "defaultLocale": "en",
+              "formatDate": [Function],
+              "formatDateToParts": [Function],
+              "formatDisplayName": [Function],
+              "formatHTMLMessage": [Function],
+              "formatList": [Function],
+              "formatMessage": [Function],
+              "formatNumber": [Function],
+              "formatNumberToParts": [Function],
+              "formatPlural": [Function],
+              "formatRelativeTime": [Function],
+              "formatTime": [Function],
+              "formatTimeToParts": [Function],
+              "formats": Object {},
+              "formatters": Object {
+                "getDateTimeFormat": [Function],
+                "getDisplayNames": [Function],
+                "getListFormat": [Function],
+                "getMessageFormat": [Function],
+                "getNumberFormat": [Function],
+                "getPluralRules": [Function],
+                "getRelativeTimeFormat": [Function],
+              },
+              "locale": "en",
+              "messages": Object {},
+              "onError": [Function],
+              "textComponent": Symbol(react.fragment),
+              "timeZone": undefined,
+            }
+          }
+          store={
+            Object {
               "clearActions": [Function],
               "dispatch": [MockFunction] {
                 "calls": Array [
@@ -292,162 +250,87 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
               "getState": [Function],
               "replaceReducer": [Function],
               "subscribe": [Function],
-            },
-            "unsubscribe": [Function],
+            }
           }
-        }
-        tag={
-          Object {
-            "tags": Array [
-              Object {
-                "name": "tag1",
-              },
-              Object {
-                "name": "tag2",
-              },
-              Object {
-                "name": "tag3",
-              },
-            ],
+          tag={
+            Object {
+              "tags": Array [
+                Object {
+                  "name": "tag1",
+                },
+                Object {
+                  "name": "tag2",
+                },
+                Object {
+                  "name": "tag3",
+                },
+              ],
+            }
           }
-        }
-      >
-        <Grid
-          centered={true}
-          container={true}
         >
-          <div
-            className="ui centered container grid"
+          <Grid
+            centered={true}
+            container={true}
           >
-            <GridRow>
-              <div
-                className="row"
-              >
-                <Dropdown
-                  additionLabel="Add "
-                  additionPosition="top"
-                  allowAdditions={true}
-                  closeOnBlur={true}
-                  closeOnChange={true}
-                  closeOnEscape={true}
-                  deburr={false}
-                  disabled={false}
-                  fluid={true}
-                  icon="dropdown"
-                  minCharacters={1}
-                  multiple={true}
-                  noResultsMessage="No results found."
-                  onAddItem={[Function]}
-                  onChange={[Function]}
-                  openOnFocus={true}
-                  options={
-                    Array [
-                      Object {
-                        "key": "tag1",
-                        "text": "tag1",
-                        "value": "tag1",
-                      },
-                      Object {
-                        "key": "tag2",
-                        "text": "tag2",
-                        "value": "tag2",
-                      },
-                      Object {
-                        "key": "tag3",
-                        "text": "tag3",
-                        "value": "tag3",
-                      },
-                    ]
-                  }
-                  placeholder="Add tags..."
-                  renderLabel={[Function]}
-                  search={true}
-                  searchInput="text"
-                  selectOnBlur={true}
-                  selectOnNavigation={true}
-                  selection={true}
-                  value={
-                    Array [
-                      "tag1",
-                      "tag2",
-                    ]
-                  }
-                  wrapSelection={true}
+            <div
+              className="ui centered container grid"
+            >
+              <GridRow>
+                <div
+                  className="row"
                 >
-                  <Ref
-                    innerRef={
-                      Object {
-                        "current": <div
-                          aria-disabled="false"
-                          aria-expanded="false"
-                          class="ui fluid multiple search selection dropdown"
-                          role="combobox"
-                        >
-                          <a
-                            class="ui label"
-                            value="tag1"
-                          >
-                            tag1
-                            <i
-                              aria-hidden="true"
-                              class="delete icon"
-                            />
-                          </a>
-                          <a
-                            class="ui label"
-                            value="tag2"
-                          >
-                            tag2
-                            <i
-                              aria-hidden="true"
-                              class="delete icon"
-                            />
-                          </a>
-                          <input
-                            aria-autocomplete="list"
-                            autocomplete="off"
-                            class="search"
-                            tabindex="0"
-                            type="text"
-                            value=""
-                          />
-                          <span
-                            class="sizer"
-                          />
-                          <div
-                            aria-atomic="true"
-                            aria-live="polite"
-                            class="text"
-                            role="alert"
-                          />
-                          <i
-                            aria-hidden="true"
-                            class="dropdown icon"
-                          />
-                          <div
-                            aria-multiselectable="true"
-                            class="menu transition"
-                            role="listbox"
-                          >
-                            <div
-                              aria-checked="false"
-                              aria-selected="true"
-                              class="selected item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <span
-                                class="text"
-                              >
-                                tag3
-                              </span>
-                            </div>
-                          </div>
-                        </div>,
-                      }
+                  <Dropdown
+                    additionLabel="Add "
+                    additionPosition="top"
+                    allowAdditions={true}
+                    closeOnBlur={true}
+                    closeOnChange={true}
+                    closeOnEscape={true}
+                    deburr={false}
+                    disabled={false}
+                    fluid={true}
+                    icon="dropdown"
+                    minCharacters={1}
+                    multiple={true}
+                    noResultsMessage="No results found."
+                    onAddItem={[Function]}
+                    onChange={[Function]}
+                    openOnFocus={true}
+                    options={
+                      Array [
+                        Object {
+                          "key": "tag1",
+                          "text": "tag1",
+                          "value": "tag1",
+                        },
+                        Object {
+                          "key": "tag2",
+                          "text": "tag2",
+                          "value": "tag2",
+                        },
+                        Object {
+                          "key": "tag3",
+                          "text": "tag3",
+                          "value": "tag3",
+                        },
+                      ]
                     }
+                    placeholder="Add tags..."
+                    renderLabel={[Function]}
+                    search={true}
+                    searchInput="text"
+                    selectOnBlur={true}
+                    selectOnNavigation={true}
+                    selection={true}
+                    value={
+                      Array [
+                        "tag1",
+                        "tag2",
+                      ]
+                    }
+                    wrapSelection={true}
                   >
-                    <RefFindNode
+                    <Ref
                       innerRef={
                         Object {
                           "current": <div
@@ -520,88 +403,147 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                         }
                       }
                     >
-                      <div
-                        aria-disabled={false}
-                        aria-expanded={false}
-                        className="ui fluid multiple search selection dropdown"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onClick={[Function]}
-                        onFocus={[Function]}
-                        onMouseDown={[Function]}
-                        role="combobox"
-                      >
-                        <Label
-                          active={false}
-                          as="a"
-                          content="tag1"
-                          key="tag1"
-                          onClick={[Function]}
-                          onRemove={[Function]}
-                          value="tag1"
-                        >
-                          <a
-                            className="ui label"
-                            onClick={[Function]}
-                            value="tag1"
-                          >
-                            tag1
-                            <Icon
-                              as="i"
-                              name="delete"
-                              onClick={[Function]}
+                      <RefFindNode
+                        innerRef={
+                          Object {
+                            "current": <div
+                              aria-disabled="false"
+                              aria-expanded="false"
+                              class="ui fluid multiple search selection dropdown"
+                              role="combobox"
                             >
-                              <i
-                                aria-hidden="true"
-                                className="delete icon"
-                                onClick={[Function]}
-                              />
-                            </Icon>
-                          </a>
-                        </Label>
-                        <Label
-                          active={false}
-                          as="a"
-                          content="tag2"
-                          key="tag2"
-                          onClick={[Function]}
-                          onRemove={[Function]}
-                          value="tag2"
-                        >
-                          <a
-                            className="ui label"
-                            onClick={[Function]}
-                            value="tag2"
-                          >
-                            tag2
-                            <Icon
-                              as="i"
-                              name="delete"
-                              onClick={[Function]}
-                            >
-                              <i
-                                aria-hidden="true"
-                                className="delete icon"
-                                onClick={[Function]}
-                              />
-                            </Icon>
-                          </a>
-                        </Label>
-                        <Ref
-                          innerRef={
-                            Object {
-                              "current": <input
+                              <a
+                                class="ui label"
+                                value="tag1"
+                              >
+                                tag1
+                                <i
+                                  aria-hidden="true"
+                                  class="delete icon"
+                                />
+                              </a>
+                              <a
+                                class="ui label"
+                                value="tag2"
+                              >
+                                tag2
+                                <i
+                                  aria-hidden="true"
+                                  class="delete icon"
+                                />
+                              </a>
+                              <input
                                 aria-autocomplete="list"
                                 autocomplete="off"
                                 class="search"
                                 tabindex="0"
                                 type="text"
                                 value=""
-                              />,
-                            }
+                              />
+                              <span
+                                class="sizer"
+                              />
+                              <div
+                                aria-atomic="true"
+                                aria-live="polite"
+                                class="text"
+                                role="alert"
+                              />
+                              <i
+                                aria-hidden="true"
+                                class="dropdown icon"
+                              />
+                              <div
+                                aria-multiselectable="true"
+                                class="menu transition"
+                                role="listbox"
+                              >
+                                <div
+                                  aria-checked="false"
+                                  aria-selected="true"
+                                  class="selected item"
+                                  role="option"
+                                  style="pointer-events: all;"
+                                >
+                                  <span
+                                    class="text"
+                                  >
+                                    tag3
+                                  </span>
+                                </div>
+                              </div>
+                            </div>,
                           }
+                        }
+                      >
+                        <div
+                          aria-disabled={false}
+                          aria-expanded={false}
+                          className="ui fluid multiple search selection dropdown"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onMouseDown={[Function]}
+                          role="combobox"
                         >
-                          <RefFindNode
+                          <Label
+                            active={false}
+                            as="a"
+                            content="tag1"
+                            key="tag1"
+                            onClick={[Function]}
+                            onRemove={[Function]}
+                            value="tag1"
+                          >
+                            <a
+                              className="ui label"
+                              onClick={[Function]}
+                              value="tag1"
+                            >
+                              tag1
+                              <Icon
+                                as="i"
+                                name="delete"
+                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="delete icon"
+                                  onClick={[Function]}
+                                />
+                              </Icon>
+                            </a>
+                          </Label>
+                          <Label
+                            active={false}
+                            as="a"
+                            content="tag2"
+                            key="tag2"
+                            onClick={[Function]}
+                            onRemove={[Function]}
+                            value="tag2"
+                          >
+                            <a
+                              className="ui label"
+                              onClick={[Function]}
+                              value="tag2"
+                            >
+                              tag2
+                              <Icon
+                                as="i"
+                                name="delete"
+                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="delete icon"
+                                  onClick={[Function]}
+                                />
+                              </Icon>
+                            </a>
+                          </Label>
+                          <Ref
                             innerRef={
                               Object {
                                 "current": <input
@@ -615,23 +557,23 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                               }
                             }
                           >
-                            <DropdownSearchInput
-                              autoComplete="off"
-                              key="text"
-                              onChange={[Function]}
-                              style={
+                            <RefFindNode
+                              innerRef={
                                 Object {
-                                  "width": undefined,
+                                  "current": <input
+                                    aria-autocomplete="list"
+                                    autocomplete="off"
+                                    class="search"
+                                    tabindex="0"
+                                    type="text"
+                                    value=""
+                                  />,
                                 }
                               }
-                              tabIndex={0}
-                              type="text"
-                              value=""
                             >
-                              <input
-                                aria-autocomplete="list"
+                              <DropdownSearchInput
                                 autoComplete="off"
-                                className="search"
+                                key="text"
                                 onChange={[Function]}
                                 style={
                                   Object {
@@ -641,106 +583,105 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                 tabIndex={0}
                                 type="text"
                                 value=""
-                              />
-                            </DropdownSearchInput>
-                          </RefFindNode>
-                        </Ref>
-                        <span
-                          className="sizer"
-                        />
-                        <div
-                          aria-atomic={true}
-                          aria-live="polite"
-                          className="text"
-                          role="alert"
-                        />
-                        <Icon
-                          as="i"
-                          className=""
-                          name="dropdown"
-                          onClick={[Function]}
-                        >
-                          <i
-                            aria-hidden="true"
-                            className="dropdown icon"
-                            onClick={[Function]}
+                              >
+                                <input
+                                  aria-autocomplete="list"
+                                  autoComplete="off"
+                                  className="search"
+                                  onChange={[Function]}
+                                  style={
+                                    Object {
+                                      "width": undefined,
+                                    }
+                                  }
+                                  tabIndex={0}
+                                  type="text"
+                                  value=""
+                                />
+                              </DropdownSearchInput>
+                            </RefFindNode>
+                          </Ref>
+                          <span
+                            className="sizer"
                           />
-                        </Icon>
-                        <DropdownMenu
-                          aria-multiselectable={true}
-                          role="listbox"
-                        >
                           <div
+                            aria-atomic={true}
+                            aria-live="polite"
+                            className="text"
+                            role="alert"
+                          />
+                          <Icon
+                            as="i"
+                            className=""
+                            name="dropdown"
+                            onClick={[Function]}
+                          >
+                            <i
+                              aria-hidden="true"
+                              className="dropdown icon"
+                              onClick={[Function]}
+                            />
+                          </Icon>
+                          <DropdownMenu
                             aria-multiselectable={true}
-                            className="menu transition"
                             role="listbox"
                           >
-                            <DropdownItem
-                              active={false}
-                              key="tag3"
-                              onClick={[Function]}
-                              selected={true}
-                              style={
-                                Object {
-                                  "pointerEvents": "all",
-                                }
-                              }
-                              text="tag3"
-                              value="tag3"
+                            <div
+                              aria-multiselectable={true}
+                              className="menu transition"
+                              role="listbox"
                             >
-                              <div
-                                aria-checked={false}
-                                aria-selected={true}
-                                className="selected item"
+                              <DropdownItem
+                                active={false}
+                                key="tag3"
                                 onClick={[Function]}
-                                role="option"
+                                selected={true}
                                 style={
                                   Object {
                                     "pointerEvents": "all",
                                   }
                                 }
+                                text="tag3"
+                                value="tag3"
                               >
-                                <span
-                                  className="text"
+                                <div
+                                  aria-checked={false}
+                                  aria-selected={true}
+                                  className="selected item"
+                                  onClick={[Function]}
+                                  role="option"
+                                  style={
+                                    Object {
+                                      "pointerEvents": "all",
+                                    }
+                                  }
                                 >
-                                  tag3
-                                </span>
-                              </div>
-                            </DropdownItem>
-                          </div>
-                        </DropdownMenu>
-                      </div>
-                    </RefFindNode>
-                  </Ref>
-                </Dropdown>
-              </div>
-            </GridRow>
-            <GridRow>
-              <div
-                className="row"
-              >
-                <Button
-                  as="button"
-                  disabled={true}
-                  onClick={[Function]}
-                  primary={true}
+                                  <span
+                                    className="text"
+                                  >
+                                    tag3
+                                  </span>
+                                </div>
+                              </DropdownItem>
+                            </div>
+                          </DropdownMenu>
+                        </div>
+                      </RefFindNode>
+                    </Ref>
+                  </Dropdown>
+                </div>
+              </GridRow>
+              <GridRow>
+                <div
+                  className="row"
                 >
-                  <Ref
-                    innerRef={
-                      Object {
-                        "current": <button
-                          class="ui primary disabled button"
-                          disabled=""
-                          tabindex="-1"
-                        >
-                          <span>
-                            Save
-                          </span>
-                        </button>,
-                      }
-                    }
+                  <Button
+                    as="button"
+                    disabled={true}
+                    onClick={[Function]}
+                    primary={true}
                   >
-                    <RefFindNode
+                    <Ref
                       innerRef={
                         Object {
                           "current": <button
@@ -748,38 +689,48 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                             disabled=""
                             tabindex="-1"
                           >
-                            <span>
-                              Save
-                            </span>
+                            Save
                           </button>,
                         }
                       }
                     >
-                      <button
-                        className="ui primary disabled button"
-                        disabled={true}
-                        onClick={[Function]}
-                        tabIndex={-1}
+                      <RefFindNode
+                        innerRef={
+                          Object {
+                            "current": <button
+                              class="ui primary disabled button"
+                              disabled=""
+                              tabindex="-1"
+                            >
+                              Save
+                            </button>,
+                          }
+                        }
                       >
-                        <FormattedMessage
-                          defaultMessage="Save"
-                          id="app.program_tags.save"
-                          values={Object {}}
+                        <button
+                          className="ui primary disabled button"
+                          disabled={true}
+                          onClick={[Function]}
+                          tabIndex={-1}
                         >
-                          <span>
+                          <FormattedMessage
+                            defaultMessage="Save"
+                            id="app.program_tags.save"
+                            values={Object {}}
+                          >
                             Save
-                          </span>
-                        </FormattedMessage>
-                      </button>
-                    </RefFindNode>
-                  </Ref>
-                </Button>
-              </div>
-            </GridRow>
-          </div>
-        </Grid>
-      </ProgramTags>
-    </Connect(ProgramTags)>
-  </InjectIntl(Connect(ProgramTags))>
-</withCookies(Component)>
+                          </FormattedMessage>
+                        </button>
+                      </RefFindNode>
+                    </Ref>
+                  </Button>
+                </div>
+              </GridRow>
+            </div>
+          </Grid>
+        </ProgramTags>
+      </Connect(ProgramTags)>
+    </injectIntl(Connect(ProgramTags))>
+  </withCookies(injectIntl(Connect(ProgramTags)))>
+</withCookies(injectIntl(Connect(ProgramTags)))>
 `;

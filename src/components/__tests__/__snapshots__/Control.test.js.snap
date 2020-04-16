@@ -2,33 +2,7 @@
 
 exports[`The Control component renders on the page with no errors 1`] = `
 <Connect(Control)
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatHTMLMessage": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatPlural": [Function],
-      "formatRelative": [Function],
-      "formatTime": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralFormat": [Function],
-        "getRelativeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "now": [Function],
-      "onError": [Function],
-      "textComponent": "span",
-      "timeZone": null,
-    }
-  }
+  isConnected={true}
   store={
     Object {
       "clearActions": [Function],
@@ -47,33 +21,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
         "execution": 3,
       }
     }
-    intl={
-      Object {
-        "defaultFormats": Object {},
-        "defaultLocale": "en",
-        "formatDate": [Function],
-        "formatHTMLMessage": [Function],
-        "formatMessage": [Function],
-        "formatNumber": [Function],
-        "formatPlural": [Function],
-        "formatRelative": [Function],
-        "formatTime": [Function],
-        "formats": Object {},
-        "formatters": Object {
-          "getDateTimeFormat": [Function],
-          "getMessageFormat": [Function],
-          "getNumberFormat": [Function],
-          "getPluralFormat": [Function],
-          "getRelativeFormat": [Function],
-        },
-        "locale": "en",
-        "messages": Object {},
-        "now": [Function],
-        "onError": [Function],
-        "textComponent": "span",
-        "timeZone": null,
-      }
-    }
+    isConnected={true}
     store={
       Object {
         "clearActions": [Function],
@@ -84,32 +32,12 @@ exports[`The Control component renders on the page with no errors 1`] = `
         "subscribe": [Function],
       }
     }
-    storeSubscription={
-      Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [MockFunction],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": [Function],
-      }
-    }
   >
     <Button
       animated="vertical"
       as="button"
       color="green"
+      disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
       size="huge"
@@ -123,9 +51,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
               <div
                 class="hidden content"
               >
-                <span>
-                  Run
-                </span>
+                Run
               </div>
               <div
                 class="visible content"
@@ -148,9 +74,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
                 <div
                   class="hidden content"
                 >
-                  <span>
-                    Run
-                  </span>
+                  Run
                 </div>
                 <div
                   class="visible content"
@@ -180,9 +104,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
                   id="app.control.run"
                   values={Object {}}
                 >
-                  <span>
-                    Run
-                  </span>
+                  Run
                 </FormattedMessage>
               </div>
             </ButtonContent>
@@ -212,6 +134,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
       animated="vertical"
       as="button"
       color="yellow"
+      disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
       style={
@@ -230,9 +153,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
               <div
                 class="hidden content"
               >
-                <span>
-                  Step
-                </span>
+                Step
               </div>
               <div
                 class="visible content"
@@ -256,9 +177,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
                 <div
                   class="hidden content"
                 >
-                  <span>
-                    Step
-                  </span>
+                  Step
                 </div>
                 <div
                   class="visible content"
@@ -293,9 +212,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
                   id="app.control.step"
                   values={Object {}}
                 >
-                  <span>
-                    Step
-                  </span>
+                  Step
                 </FormattedMessage>
               </div>
             </ButtonContent>
@@ -325,6 +242,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
       animated="vertical"
       as="button"
       color="blue"
+      disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
       style={
@@ -343,9 +261,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
               <div
                 class="hidden content"
               >
-                <span>
-                  Reset
-                </span>
+                Reset
               </div>
               <div
                 class="visible content"
@@ -369,9 +285,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
                 <div
                   class="hidden content"
                 >
-                  <span>
-                    Reset
-                  </span>
+                  Reset
                 </div>
                 <div
                   class="visible content"
@@ -406,9 +320,7 @@ exports[`The Control component renders on the page with no errors 1`] = `
                   id="app.control.reset"
                   values={Object {}}
                 >
-                  <span>
-                    Reset
-                  </span>
+                  Reset
                 </FormattedMessage>
               </div>
             </ButtonContent>

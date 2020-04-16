@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import {
@@ -10,7 +10,7 @@ import {
   Icon,
   Input,
 } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import CustomPagination from './CustomPagination';
 
@@ -66,7 +66,7 @@ class ProgramCollection extends Component {
     page: activePage,
   }, () => this.update())
 
-  handleSearchChange = event => this.setState({
+  handleSearchChange = (event) => this.setState({
     searchQuery: event.target.value,
     page: 1,
   }, () => this.update())
@@ -110,7 +110,7 @@ class ProgramCollection extends Component {
     });
 
     return (
-      <Fragment>
+      <>
         <Grid>
           <Grid.Row>
             <Grid.Column width={2} />
@@ -162,7 +162,7 @@ class ProgramCollection extends Component {
                 scrolling
                 placeholder={tagFilterPlaceholder}
                 value={tagFilters}
-                options={tag.tags.map(t => ({
+                options={tag.tags.map((t) => ({
                   key: t.name,
                   text: t.name,
                   value: t.name,
@@ -174,7 +174,7 @@ class ProgramCollection extends Component {
         </Grid>
         <Card.Group centered>
           {
-            programs.results.map(program => (
+            programs.results.map((program) => (
               <Card key={program.id}>
                 <Card.Content>
                   <Card.Header>
@@ -250,7 +250,7 @@ class ProgramCollection extends Component {
             </Grid>
           ) : (null)
         }
-      </Fragment>
+      </>
     );
   }
 }
@@ -288,7 +288,9 @@ ProgramCollection.propTypes = {
   onProgramClick: PropTypes.func.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default hot(module)(injectIntl(ProgramCollection));

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
 import { hot } from 'react-hot-loader';
@@ -14,15 +14,15 @@ import {
 } from '@/actions/code';
 
 const mapStateToProps = ({ code }) => ({ code });
-const mapDispatchToProps = dispatch => ({
-  changeExecutionState: state => dispatch(actionChangeExecutionState(state)),
+const mapDispatchToProps = (dispatch) => ({
+  changeExecutionState: (state) => dispatch(actionChangeExecutionState(state)),
 });
 
-const Control = ({ code, changeExecutionState }) => (
-  <Fragment>
+const Control = ({ code, changeExecutionState, isConnected }) => (
+  <>
     {
       code.execution === EXECUTION_RUN ? (
-        <Button color="red" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STOP)} animated="vertical">
+        <Button color="red" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STOP)} animated="vertical">
           <Button.Content hidden>
             <FormattedMessage
               id="app.control.stop"
@@ -35,8 +35,8 @@ const Control = ({ code, changeExecutionState }) => (
           </Button.Content>
         </Button>
       ) : (
-        <Fragment>
-          <Button color="green" size="huge" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RUN)} animated="vertical">
+        <>
+          <Button color="green" size="huge" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RUN)} animated="vertical" disabled={!isConnected}>
             <Button.Content hidden>
               <FormattedMessage
                 id="app.control.run"
@@ -48,7 +48,7 @@ const Control = ({ code, changeExecutionState }) => (
               <Icon name="play" />
             </Button.Content>
           </Button>
-          <Button color="yellow" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STEP)} animated="vertical" style={{ verticalAlign: 'bottom' }}>
+          <Button color="yellow" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_STEP)} animated="vertical" style={{ verticalAlign: 'bottom' }} disabled={!isConnected}>
             <Button.Content hidden>
               <FormattedMessage
                 id="app.control.step"
@@ -60,7 +60,7 @@ const Control = ({ code, changeExecutionState }) => (
               <Icon name="step forward" />
             </Button.Content>
           </Button>
-          <Button color="blue" onMouseDown={e => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RESET)} animated="vertical" style={{ verticalAlign: 'bottom' }}>
+          <Button color="blue" onMouseDown={(e) => e.preventDefault()} onClick={() => changeExecutionState(EXECUTION_RESET)} animated="vertical" style={{ verticalAlign: 'bottom' }} disabled={!isConnected}>
             <Button.Content hidden>
               <FormattedMessage
                 id="app.control.reset"
@@ -72,16 +72,21 @@ const Control = ({ code, changeExecutionState }) => (
               <Icon name="repeat" />
             </Button.Content>
           </Button>
-        </Fragment>
+        </>
       )
     }
-  </Fragment>
+  </>
 );
+
+Control.defaultProps = {
+  isConnected: false,
+};
 
 Control.propTypes = {
   code: PropTypes.shape({
     execution: PropTypes.number,
   }).isRequired,
+  isConnected: PropTypes.bool,
   changeExecutionState: PropTypes.func.isRequired,
 };
 

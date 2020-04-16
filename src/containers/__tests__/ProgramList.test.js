@@ -14,11 +14,13 @@ const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
 
 describe('The ProgramListContainer', () => {
-  const mockStore = configureStore();
+  const context = { cookies };
   let store;
+  let authFailStore;
+  let otherFailStore;
   let wrapper;
   beforeEach(() => {
-    store = mockStore({
+    const defaultState = {
       program: {
         isFetching: false,
         programs: {
@@ -33,10 +35,31 @@ describe('The ProgramListContainer', () => {
       user: {
         user_id: 1,
       },
-    });
+    };
+
+    const mockStore = configureStore();
+    store = mockStore(defaultState);
     store.dispatch = jest.fn(() => Promise.resolve());
-    const context = { cookies };
-    wrapper = shallow(<ProgramList store={store} />, { context });
+
+    const mockAuthFailStore = configureStore();
+    const authError = new Error();
+    authError.response = {
+      status: 401,
+    };
+    authFailStore = mockAuthFailStore(defaultState);
+    authFailStore.dispatch = jest.fn();
+    authFailStore.dispatch.mockReturnValueOnce(Promise.reject(authError));
+    authFailStore.dispatch.mockReturnValue(Promise.resolve());
+
+    const mockOtherFailStore = configureStore();
+    const error = new Error();
+    error.response = {
+      status: 500,
+    };
+    otherFailStore = mockOtherFailStore(defaultState);
+    otherFailStore.dispatch = jest.fn(() => Promise.reject(error));
+
+    wrapper = shallow(<ProgramList store={store} />, { context }).dive().dive().dive();
   });
   test('dispatches an action to fetch programs', () => {
     const programs = {
@@ -159,107 +182,89 @@ describe('The ProgramListContainer', () => {
   });
 
   test('handles authentication error fetching programs', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 401,
-    };
-    store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    const localWrapper = shallow(
+      <ProgramList store={authFailStore} />, { context },
+    ).dive().dive().dive();
 
-    wrapper.dive().props().fetchPrograms().then(() => {
-      expect(store.dispatch.mock.calls.length).toBe(2);
-      expect(store.dispatch).toHaveBeenCalledWith(
+    localWrapper.dive().props().fetchPrograms().then(() => {
+      expect(authFailStore.dispatch.mock.calls.length).toBe(2);
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(
         fetchPrograms({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
         }),
       );
-      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
       done();
     });
   });
 
   test('handles authentication error fetching specific program', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 401,
-    };
-    store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    const localWrapper = shallow(
+      <ProgramList store={authFailStore} />, { context },
+    ).dive().dive().dive();
 
-    wrapper.dive().props().fetchProgram().then(() => {
-      expect(store.dispatch.mock.calls.length).toBe(2);
-      expect(store.dispatch).toHaveBeenCalledWith(
+    localWrapper.dive().props().fetchProgram().then(() => {
+      expect(authFailStore.dispatch.mock.calls.length).toBe(2);
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(
         fetchProgram({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
         }),
       );
-      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
       done();
     });
   });
 
   test('handles authentication error removing a program', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 401,
-    };
-    store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    const localWrapper = shallow(
+      <ProgramList store={authFailStore} />, { context },
+    ).dive().dive().dive();
 
-    wrapper.dive().props().removeProgram(1).then(() => {
-      expect(store.dispatch.mock.calls.length).toBe(2);
-      expect(store.dispatch).toHaveBeenCalledWith(
+    localWrapper.dive().props().removeProgram(1).then(() => {
+      expect(authFailStore.dispatch.mock.calls.length).toBe(2);
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(
         removeProgram(1, {
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
         }),
       );
-      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
       done();
     });
   });
 
   test('handles authentication error fetching tags', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 401,
-    };
-    store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    const localWrapper = shallow(
+      <ProgramList store={authFailStore} />, { context },
+    ).dive().dive().dive();
 
-    wrapper.dive().props().fetchTags().then(() => {
-      expect(store.dispatch.mock.calls.length).toBe(2);
-      expect(store.dispatch).toHaveBeenCalledWith(
+    localWrapper.dive().props().fetchTags().then(() => {
+      expect(authFailStore.dispatch.mock.calls.length).toBe(2);
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(
         fetchTags({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
         }),
       );
-      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
       done();
     });
   });
 
   test('handles other error fetching programs', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 500,
-    };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    const localWrapper = shallow(
+      <ProgramList store={otherFailStore} />, { context },
+    ).dive().dive().dive();
 
-    wrapper.dive().props().fetchPrograms().catch(() => {
-      expect(store.dispatch.mock.calls.length).toBe(1);
-      expect(store.dispatch).toHaveBeenCalledWith(
+    localWrapper.dive().props().fetchPrograms().catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
         fetchPrograms({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
@@ -271,15 +276,13 @@ describe('The ProgramListContainer', () => {
   });
 
   test('handles other error fetching specific program', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 500,
-    };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    const localWrapper = shallow(
+      <ProgramList store={otherFailStore} />, { context },
+    ).dive().dive().dive();
 
-    wrapper.dive().props().fetchProgram().catch(() => {
-      expect(store.dispatch.mock.calls.length).toBe(1);
-      expect(store.dispatch).toHaveBeenCalledWith(
+    localWrapper.dive().props().fetchProgram().catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
         fetchProgram({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
@@ -291,15 +294,13 @@ describe('The ProgramListContainer', () => {
   });
 
   test('handles other error removing a program', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 500,
-    };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    const localWrapper = shallow(
+      <ProgramList store={otherFailStore} />, { context },
+    ).dive().dive().dive();
 
-    wrapper.dive().props().removeProgram(1).catch(() => {
-      expect(store.dispatch.mock.calls.length).toBe(1);
-      expect(store.dispatch).toHaveBeenCalledWith(
+    localWrapper.dive().props().removeProgram(1).catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
         removeProgram(1, {
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
@@ -311,15 +312,13 @@ describe('The ProgramListContainer', () => {
   });
 
   test('handles other error fetching tags', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 500,
-    };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    const localWrapper = shallow(
+      <ProgramList store={otherFailStore} />, { context },
+    ).dive().dive().dive();
 
-    wrapper.dive().props().fetchTags().catch(() => {
-      expect(store.dispatch.mock.calls.length).toBe(1);
-      expect(store.dispatch).toHaveBeenCalledWith(
+    localWrapper.dive().props().fetchTags().catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
         fetchTags({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Form, Message } from 'semantic-ui-react';
-import { shallowWithIntl } from 'enzyme-react-intl';
 import UserSetting from '../UserSetting';
 
 let editUserPassword;
@@ -26,7 +25,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
       />,
-    ).dive();
+    ).dive().dive();
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find({ type: 'password' }).length).toBe(2);
   });
@@ -44,7 +43,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
       />,
-    ).dive();
+    ).dive().dive();
     expect(wrapper.find({ type: 'password' }).exists()).toBe(false);
   });
 
@@ -61,7 +60,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find(Form.Input).first().simulate('change', null, {
       name: 'username',
@@ -91,7 +90,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find(Form.Input).at(1).simulate('change', null, {
       name: 'password1',
@@ -126,7 +125,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
       />,
-    ).dive();
+    ).dive().dive();
 
     wrapper.find(Form.Input).at(1).simulate('change', null, {
       name: 'password1',
@@ -169,7 +168,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
       />,
-    ).dive();
+    ).dive().dive();
 
     await wrapper.instance().saveUserUsername();
 
@@ -204,7 +203,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
       />,
-    ).dive();
+    ).dive().dive();
 
     await wrapper.instance().saveUserPassword();
 

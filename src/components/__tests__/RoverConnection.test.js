@@ -1,423 +1,277 @@
 import React from 'react';
-import { Card, Icon } from 'semantic-ui-react';
+import { Button, Popup } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import { shallow } from 'enzyme';
-import { mountWithIntl } from 'enzyme-react-intl';
-import Websocket from 'react-websocket';
-import RoverConnection from '../RoverConnection';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
+import RoverConnection from '../RoverConnection';
 
-let changeActiveRover;
+
 let changeLeftSensorState;
 let changeRightSensorState;
-let mockWsSend;
-let popCommand;
+let connectToRover;
+let disconnectFromRover;
+let scanForRover;
+let write;
+let rover;
+let wrapper;
 
-global.WebSocket = jest.fn().mockImplementation(() => ({
-  send: mockWsSend,
-}));
+const generateDataView = (array) => {
+  const buffer = new ArrayBuffer(array.length);
+  const dataView = new DataView(buffer);
+  for (let i = 0; i < array.length; i++) {
+    dataView.setUint8(i, array[i]);
+  }
+
+  return dataView;
+};
 
 describe('The RoverConnection component', () => {
   beforeEach(() => {
-    changeActiveRover = jest.fn();
+    rover = {
+      name: 'BBC micro:bit [abcde]',
+      addEventListener: jest.fn(),
+    };
+
     changeLeftSensorState = jest.fn();
     changeRightSensorState = jest.fn();
-    mockWsSend = jest.fn();
-    popCommand = jest.fn();
+    connectToRover = jest.fn(() => Promise.resolve({}));
+    disconnectFromRover = jest.fn();
+    scanForRover = jest.fn(() => Promise.resolve({ value: rover }));
+    write = jest.fn();
+
+    wrapper = shallowWithIntl(
+      <RoverConnection
+        changeLeftSensorState={changeLeftSensorState}
+        changeRightSensorState={changeRightSensorState}
+        connectToRover={connectToRover}
+        disconnectFromRover={disconnectFromRover}
+        scanForRover={scanForRover}
+        write={write}
+        rover={rover}
+      />,
+    ).dive().dive();
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive
-      />,
-    );
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(FormattedMessage).prop('defaultMessage')).toEqual('Disconnect from');
+    expect(wrapper.find(Button).children().at(1).text()).toBe(' abcde');
   });
 
-  test('displays active rover', () => {
-    delete global.window.location;
-    global.window.location = {
-      protocol: 'http:',
-      hostname: 'example.com',
-    };
-    const wrapper = shallow(
+  test('renders connect button when not connected', () => {
+    wrapper = shallowWithIntl(
       <RoverConnection
-        changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive
+        connectToRover={connectToRover}
+        disconnectFromRover={disconnectFromRover}
+        scanForRover={scanForRover}
+        write={write}
       />,
-    );
+    ).dive().dive();
 
-    expect(wrapper.find(Card).length).toBe(1);
-    expect(wrapper.find(Card).first().hasClass('highlight')).toBe(true);
-    expect(wrapper.find(Card.Meta).first().children().find(FormattedMessage)
-      .prop('defaultMessage')).toBe('Active');
-    expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
-    expect(wrapper.find(Websocket).length).toBe(1);
-    expect(wrapper.find(Websocket).prop('url')).toBe('ws://example.com:8000/ws/realtime/1234/');
+    expect(wrapper.find(FormattedMessage).prop('defaultMessage')).toEqual('Connect to rover');
+    expect(wrapper.find(Button).prop('disabled')).toBe(false);
   });
 
-  test('displays inactive rover', () => {
-    delete global.window.location;
-    global.window.location = {
-      protocol: 'https:',
-      hostname: 'example.com',
-    };
-    const wrapper = shallow(
+  test('renders disabled connect button when on unsupported platform', () => {
+    wrapper = shallowWithIntl(
       <RoverConnection
-        changeActiveRover={changeActiveRover}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive={false}
+        connectToRover={connectToRover}
+        disconnectFromRover={disconnectFromRover}
+        scanForRover={scanForRover}
+        write={write}
       />,
-    );
+    ).dive().dive();
 
-    expect(wrapper.find(Card).length).toBe(1);
-    expect(wrapper.find(Card).first().hasClass('highlight')).toBe(false);
-    expect(wrapper.find(Card.Meta).first().children().find(FormattedMessage)
-      .prop('defaultMessage')).toBe('Inactive');
-    expect(wrapper.find(Card.Header).first().prop('children')).toBe('Sparky');
-    expect(wrapper.find(Websocket).length).toBe(1);
-    expect(wrapper.find(Websocket).prop('url')).toBe('wss://example.com:443/ws/realtime/1234/');
+    wrapper.instance().supportedPlatform = jest.fn(() => false);
+    wrapper.instance().forceUpdate();
+
+    expect(wrapper.find(Popup).exists()).toBe(true);
   });
 
-  test('displays online rover', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive
-      />,
-    );
-
-    wrapper.setState({
-      online: true,
+  test('changes light sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('light-sens:600,600')),
+      },
     });
-    wrapper.update();
 
-    expect(wrapper.find(Icon).first().prop('name')).toBe('circle');
-    expect(wrapper.find(Icon).first().prop('color')).toBe('green');
-  });
+    expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
+    expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
+    expect(write).toHaveBeenCalledWith('Light Sensor - L:600 R:600');
 
-  test('displays offline rover', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive
-      />,
-    );
+    changeRightSensorState.mockReset();
+    changeLeftSensorState.mockReset();
+    write.mockReset();
 
-    wrapper.setState({
-      online: false,
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('light-sens:100,600')),
+      },
     });
-    wrapper.update();
 
-    expect(wrapper.find(Icon).first().prop('name')).toBe('circle outline');
-    expect(wrapper.find(Icon).first().prop('color')).toBeUndefined();
+    expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
+    expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
+    expect(write).toHaveBeenCalledWith('Light Sensor - L:100 R:600');
+
+    changeRightSensorState.mockReset();
+    changeLeftSensorState.mockReset();
+    write.mockReset();
+
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('light-sens:100,100')),
+      },
+    });
+
+    expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
+    expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
+    expect(write).toHaveBeenCalledWith('Light Sensor - L:100 R:100');
+
+    changeRightSensorState.mockReset();
+    changeLeftSensorState.mockReset();
+    write.mockReset();
+
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('light-sens:600,100')),
+      },
+    });
+
+    expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
+    expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
+    expect(write).toHaveBeenCalledWith('Light Sensor - L:600 R:100');
   });
 
-  test('changes sensor state on message', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive
-      />,
-    );
+  test('outputs error on unknown message', () => {
+    const invalid = [
+      114, 105,
+    ];
 
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'ultrasonic-left',
-      'sensor-value': true,
-      unit: 'active-high',
-    }));
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(invalid),
+      },
+    });
 
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'ultrasonic-left',
-      'sensor-value': false,
-      unit: 'active-high',
-    }));
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'ultrasonic-right',
-      'sensor-value': true,
-      unit: 'active-high',
-    }));
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'ultrasonic-right',
-      'sensor-value': false,
-      unit: 'active-high',
-    }));
-
-    expect(changeLeftSensorState).toHaveBeenCalledTimes(2);
-    expect(changeLeftSensorState.mock.calls[0][0]).toBe(COVERED);
-    expect(changeLeftSensorState.mock.calls[1][0]).toBe(NOT_COVERED);
-    expect(changeRightSensorState).toHaveBeenCalledTimes(2);
-    expect(changeRightSensorState.mock.calls[0][0]).toBe(COVERED);
-    expect(changeRightSensorState.mock.calls[1][0]).toBe(NOT_COVERED);
-  });
-
-  test('ignores sensor sensor state on message with inactive', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive={false}
-      />,
-    );
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'ultrasonic-left',
-      'sensor-value': true,
-      unit: 'active-high',
-    }));
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'ultrasonic-left',
-      'sensor-value': false,
-      unit: 'active-high',
-    }));
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'ultrasonic-right',
-      'sensor-value': true,
-      unit: 'active-high',
-    }));
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'ultrasonic-right',
-      'sensor-value': false,
-      unit: 'active-high',
-    }));
-
-    expect(changeLeftSensorState).toHaveBeenCalledTimes(0);
-    expect(changeRightSensorState).toHaveBeenCalledTimes(0);
-  });
-
-  test('ignores unknown sensors', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive
-      />,
-    );
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'sensor-reading',
-      'sensor-type': 'distance',
-      'sensor-id': 'test-sensor',
-      'sensor-value': true,
-      unit: 'active-high',
-    }));
-
-    expect(changeLeftSensorState).not.toHaveBeenCalled();
     expect(changeRightSensorState).not.toHaveBeenCalled();
-  });
-
-  test('sets sensor online on message', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive
-      />,
-    );
-
-    expect(wrapper.state('online')).toBe(false);
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'heartbeat',
-    }));
-
-    expect(wrapper.state('online')).toBe(true);
     expect(changeLeftSensorState).not.toHaveBeenCalled();
-    expect(changeRightSensorState).not.toHaveBeenCalled();
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'heartbeat',
-    }));
-
-    expect(wrapper.state('online')).toBe(true);
+    expect(write).toHaveBeenCalledWith('Unknown rover message received.');
   });
 
-  test('ignores unknown message', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive
-      />,
-    );
-
-    wrapper.instance().onMessage(JSON.stringify({
-      type: 'test-type',
-    }));
-
-    expect(wrapper.state('online')).toBe(false);
-    expect(changeLeftSensorState).not.toHaveBeenCalled();
-    expect(changeRightSensorState).not.toHaveBeenCalled();
-  });
-
-  test('sets active on click', () => {
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive={false}
-      />,
-    );
-
-    wrapper.find(Card).simulate('click');
-
-    expect(changeActiveRover).toHaveBeenCalledWith('1234');
-  });
-
-  test('sets offline after timeout', () => {
-    jest.useFakeTimers();
-
-    const wrapper = shallow(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        isActive={false}
-      />,
-    );
-
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-
-    wrapper.setState({ online: true });
-
-    jest.runAllTimers();
-
-    expect(wrapper.state('online')).toBe(false);
-
-    wrapper.unmount();
-
-    expect(clearTimeout).toHaveBeenCalledTimes(1);
-  });
-
-  test('sends all commands when active', () => {
-    const wrapper = mountWithIntl(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        commands={['command1', 'command2', 'command3']}
-        isActive
-      />,
-    );
-
-    expect(mockWsSend).toHaveBeenCalledTimes(1);
-    expect(popCommand).toHaveBeenCalledTimes(1);
-
-    wrapper.setProps({
-      commands: ['command2', 'command3'],
+  test('outputs line sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('line-sens:100,200')),
+      },
     });
 
-    expect(mockWsSend).toHaveBeenCalledTimes(2);
-    expect(popCommand).toHaveBeenCalledTimes(2);
-
-    wrapper.setProps({
-      commands: ['command3'],
-    });
-
-    expect(mockWsSend).toHaveBeenCalledTimes(3);
-    expect(popCommand).toHaveBeenCalledTimes(3);
-
-    wrapper.setProps({
-      commands: [],
-    });
-
-    expect(mockWsSend).toHaveBeenCalledTimes(3);
-    expect(popCommand).toHaveBeenCalledTimes(3);
+    expect(write).toHaveBeenCalledWith('Line Sensor - L:100 R:200');
   });
 
-  test('does not send commands when inactive', () => {
-    mountWithIntl(
-      <RoverConnection
-        changeActiveRover={changeActiveRover}
-        changeLeftSensorState={changeLeftSensorState}
-        changeRightSensorState={changeRightSensorState}
-        popCommand={popCommand}
-        clientId="1234"
-        name="Sparky"
-        commands={['command1', 'command2', 'command3']}
-        isActive={false}
-      />,
-    );
+  test('outputs distance sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('dist-sens:123')),
+      },
+    });
 
-    expect(mockWsSend).toHaveBeenCalledTimes(0);
-    expect(popCommand).toHaveBeenCalledTimes(0);
+    expect(write).toHaveBeenCalledWith('Distance Sensor - 123 mm');
+  });
+
+  test('outputs uBit temperature sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('ub-temp-sens:24')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('uBit Temperature Sensor - 24 C');
+  });
+
+  test('outputs uBit light sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('ub-light-sens:127')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('uBit Light Sensor - 127');
+  });
+
+  test('outputs acceleration sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('accel:123,456,789')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Acceleration Sensor - X:123 mG Y:456 mG Z:789 mG');
+  });
+
+  test('outputs gyroscope sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('gyro:85,92')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Gryoscope Sensor - Pitch:85 degrees Roll:92 degrees');
+  });
+
+  test('outputs compass sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('compass-sens:100')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Compass Sensor - 100 degrees');
+  });
+
+  test('outputs magnetic force sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('mag-sens:80,90,100')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Magnetic Force Sensor - X:80 uT Y:90 uT Z:100 uT');
+  });
+
+  test('outputs battery sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('battery-sens:3300')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Battery Sensor - 3300 mV');
+  });
+
+  test('outputs dew point state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('dewpoint-sens:24')),
+      },
+    });
+
+    expect(write).toHaveBeenCalledWith('Dew Point Sensor - 24 C');
+  });
+
+  test('connects to rover', async () => {
+    await wrapper.instance().connect();
+
+    expect(scanForRover).toHaveBeenCalled();
+    expect(rover.addEventListener).toHaveBeenCalled();
+    expect(connectToRover).toHaveBeenCalledWith(rover, wrapper.instance().onMessage);
+  });
+
+  test('disconnects from rover', () => {
+    wrapper.find(Button).simulate('click');
+
+    expect(disconnectFromRover).toHaveBeenCalledWith(rover);
   });
 });

@@ -14,7 +14,7 @@ const mapStateToProps = ({
   code, ...program, tag, user,
 });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  fetchProgram: id => dispatch(fetchProgram(id, authHeader(cookies)))
+  fetchProgram: (id) => dispatch(fetchProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
   fetchPrograms: (params) => {
     const xhrOptions = authHeader(cookies);
@@ -23,9 +23,9 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
 
     return dispatch(fetchPrograms(xhrOptions)).catch(checkAuthError(dispatch));
   },
-  removeProgram: id => dispatch(removeProgram(id, authHeader(cookies)))
+  removeProgram: (id) => dispatch(removeProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
-  changeReadOnly: isReadOnly => dispatch(actionChangeReadOnly(isReadOnly)),
+  changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   fetchTags: () => dispatch(fetchTags(authHeader(cookies))).catch(checkAuthError(dispatch)),
   clearProgram: () => dispatch(clearProgram()),
 });

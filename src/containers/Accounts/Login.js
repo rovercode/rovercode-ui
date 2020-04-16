@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import {
   Button,
@@ -9,7 +9,7 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import axios from 'axios';
 import URL from 'url-parse';
 import queryString from 'query-string';
@@ -20,9 +20,9 @@ import jwtDecode from 'jwt-decode';
 import { updateValidAuth as actionUpdateValidAuth } from '@/actions/auth';
 import { updateUser as actionUpdateUser } from '@/actions/user';
 
-const mapDispatchToProps = dispatch => ({
-  updateUser: data => dispatch(actionUpdateUser({ ...data, isSocial: false })),
-  updateValidAuth: isValidAuth => dispatch(actionUpdateValidAuth(isValidAuth)),
+const mapDispatchToProps = (dispatch) => ({
+  updateUser: (data) => dispatch(actionUpdateUser({ ...data, isSocial: false })),
+  updateValidAuth: (isValidAuth) => dispatch(actionUpdateValidAuth(isValidAuth)),
 });
 
 class Login extends Component {
@@ -109,7 +109,7 @@ class Login extends Component {
     });
 
     return (
-      <Fragment>
+      <>
         {
           basicSuccess ? (
             <Redirect to="/" />
@@ -267,7 +267,7 @@ class Login extends Component {
             </p>
           </Grid.Row>
         </Grid>
-      </Fragment>
+      </>
     );
   }
 }
@@ -284,7 +284,9 @@ Login.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   updateUser: PropTypes.func.isRequired,
   updateValidAuth: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({
       callbackError: PropTypes.arrayOf(PropTypes.string),

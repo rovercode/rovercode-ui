@@ -1,152 +1,204 @@
-import React, { Component, Fragment } from 'react';
-import { Card, Label, Icon } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Button, Popup } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { hot } from 'react-hot-loader';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Websocket from 'react-websocket';
+
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
-
-import '@/css/card.css';
-
-const heartbeatTimeout = 8000; // milliseconds
 
 class RoverConnection extends Component {
   constructor(props) {
     super(props);
 
-    this.timeout = null;
-    this.state = {
-      online: false,
+    this.protocolMap = {
+      'light-sens': this.handleLightSensor,
+      'line-sens': this.handleLineSensor,
+      'dist-sens': this.handleDistanceSensor,
+      'ub-temp-sens': this.handleUBitTempSensor,
+      'ub-light-sens': this.handleUBitLightSensor,
+      accel: this.handleAccelerationSensor,
+      gyro: this.handleGyroscopeSensor,
+      'compass-sens': this.handleCompassSensor,
+      'mag-sens': this.handleMagneticForceSensor,
+      'battery-sens': this.handleBatterySensor,
+      'dewpoint-sens': this.handleDewPointSensor,
     };
   }
 
-  componentDidMount() {
-    this.startHeartbeatTimer();
-    this.sendCommand();
-  }
+  handleLightSensor = (params) => {
+    const { changeLeftSensorState, changeRightSensorState, write } = this.props;
 
-  componentDidUpdate() {
-    this.sendCommand();
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
-  }
-
-  startHeartbeatTimer = () => {
-    this.timeout = setTimeout(this.setOffline, heartbeatTimeout);
-  }
-
-  setActive = () => {
-    const { changeActiveRover, clientId } = this.props;
-
-    changeActiveRover(clientId);
-  }
-
-  setOffline = () => this.setState({ online: false })
-
-  setOnline = () => this.setState({ online: true })
-
-  onMessage = (data) => {
-    const { changeLeftSensorState, changeRightSensorState, isActive } = this.props;
-    const { online } = this.state;
-
-    const message = JSON.parse(data);
-
-    if (message.type === 'sensor-reading') {
-      if (isActive) {
-        const value = message['sensor-value'];
-        if (message['sensor-id'] === 'ultrasonic-left') {
-          changeLeftSensorState(value ? COVERED : NOT_COVERED);
-        } else if (message['sensor-id'] === 'ultrasonic-right') {
-          changeRightSensorState(value ? COVERED : NOT_COVERED);
-        }
-      }
-    } else if (message.type === 'heartbeat') {
-      clearTimeout(this.timeout);
-      this.startHeartbeatTimer();
-
-      if (!online) {
-        this.setOnline();
-      }
+    const [left, right] = params.split(',');
+    write(`Light Sensor - L:${left} R:${right}`);
+    if (parseInt(left, 10) > 500) {
+      changeLeftSensorState(COVERED);
+    } else {
+      changeLeftSensorState(NOT_COVERED);
+    }
+    if (parseInt(right, 10) > 500) {
+      changeRightSensorState(COVERED);
+    } else {
+      changeRightSensorState(NOT_COVERED);
     }
   }
 
-  sendCommand = () => {
-    const { commands, isActive, popCommand } = this.props;
+  handleLineSensor = (params) => {
+    const { write } = this.props;
 
-    if (commands.length && isActive) {
-      this.wsRef.sendMessage(commands[0]);
-      popCommand();
+    const [left, right] = params.split(',');
+
+    write(`Line Sensor - L:${left} R:${right}`);
+  }
+
+  handleDistanceSensor = (params) => {
+    const { write } = this.props;
+
+    write(`Distance Sensor - ${params} mm`);
+  }
+
+  handleUBitTempSensor = (params) => {
+    const { write } = this.props;
+
+    write(`uBit Temperature Sensor - ${params} C`);
+  }
+
+  handleUBitLightSensor = (params) => {
+    const { write } = this.props;
+
+    write(`uBit Light Sensor - ${params}`);
+  }
+
+  handleAccelerationSensor = (params) => {
+    const { write } = this.props;
+
+    const [x, y, z] = params.split(',');
+
+    write(`Acceleration Sensor - X:${x} mG Y:${y} mG Z:${z} mG`);
+  }
+
+  handleGyroscopeSensor = (params) => {
+    const { write } = this.props;
+
+    const [pitch, roll] = params.split(',');
+
+    write(`Gryoscope Sensor - Pitch:${pitch} degrees Roll:${roll} degrees`);
+  }
+
+  handleCompassSensor = (params) => {
+    const { write } = this.props;
+
+    write(`Compass Sensor - ${params} degrees`);
+  }
+
+  handleMagneticForceSensor = (params) => {
+    const { write } = this.props;
+    const [x, y, z] = params.split(',');
+
+    write(`Magnetic Force Sensor - X:${x} uT Y:${y} uT Z:${z} uT`);
+  }
+
+  handleBatterySensor = (params) => {
+    const { write } = this.props;
+
+    write(`Battery Sensor - ${params} mV`);
+  }
+
+  handleDewPointSensor = (params) => {
+    const { write } = this.props;
+
+    write(`Dew Point Sensor - ${params} C`);
+  }
+
+  connect = () => {
+    const { scanForRover, connectToRover } = this.props;
+
+    return scanForRover().then((rover) => {
+      rover.value.addEventListener('gattserverdisconnected', this.onDisconnected);
+      return connectToRover(rover.value, this.onMessage);
+    });
+  }
+
+  onMessage = (event) => {
+    const { write } = this.props;
+
+    const receivedData = [];
+    for (let i = 0; i < event.target.value.byteLength; i++) {
+      receivedData[i] = event.target.value.getUint8(i);
+    }
+
+    const receivedString = String.fromCharCode.apply(null, receivedData);
+
+    const [command, params] = receivedString.split(':');
+    try {
+      this.protocolMap[command](params);
+    } catch (e) {
+      write('Unknown rover message received.');
     }
   }
+
+  onDisconnected = () => {
+    const { disconnectFromRover, rover } = this.props;
+
+    disconnectFromRover(rover);
+  }
+
+  supportedPlatform = () => navigator && navigator.bluetooth
 
   render() {
-    const { clientId, isActive, name } = this.props;
-    const { online } = this.state;
+    const { intl, rover } = this.props;
 
-    const wsProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const wsPort = window.location.protocol === 'https:' ? '443' : '8000';
-    const wsUrl = `${wsProtocol}://${window.location.hostname}:${wsPort}/ws/realtime/${clientId}/`;
+    const popupText = intl.formatMessage({
+      id: 'app.rover_connection.unsupported_platform',
+      description: 'Popup text for unsupported platform',
+      defaultMessage: 'Please use a supported platform',
+    });
 
-    return (
-      <Fragment>
-        <Card className={isActive ? 'highlight' : null} onClick={this.setActive}>
-          <Card.Content>
-            <Label corner="right" style={{ borderColor: 'white' }}>
-              {
-                online ? (
-                  <Icon name="circle" color="green" />
-                ) : (
-                  <Icon name="circle outline" />
-                )
-              }
-            </Label>
-            <Card.Header>
-              { name }
-            </Card.Header>
-            <Card.Meta>
-              {
-                isActive ? (
-                  <FormattedMessage
-                    id="app.rover_connection.active"
-                    description="Label indicating the rover is connected"
-                    defaultMessage="Active"
-                  />
-                ) : (
-                  <FormattedMessage
-                    id="app.rover_connection.inactive"
-                    description="Label indicating the rover is not connected"
-                    defaultMessage="Inactive"
-                  />
-                )
-              }
-            </Card.Meta>
-          </Card.Content>
-        </Card>
-        <Websocket
-          url={wsUrl}
-          onMessage={this.onMessage}
-          ref={(ws) => { this.wsRef = ws; }}
+    if (rover) {
+      return (
+        <Button primary fluid onClick={this.onDisconnected}>
+          <FormattedMessage
+            id="app.rover_connection.disconnect"
+            description="Button label to disconnect from the rover"
+            defaultMessage="Disconnect from"
+          />
+          {` ${rover.name.slice(15, 20)}`}
+        </Button>
+      );
+    }
+
+    const button = (
+      <Button primary fluid disabled={!this.supportedPlatform()} onClick={this.connect}>
+        <FormattedMessage
+          id="app.rover_connection.connect"
+          description="Button label to connect to the rover"
+          defaultMessage="Connect to rover"
         />
-      </Fragment>
+      </Button>
+    );
+
+    return this.supportedPlatform() ? button : (
+      <Popup content={popupText} trigger={<span>{button}</span>} />
     );
   }
 }
 
 RoverConnection.defaultProps = {
-  commands: [],
+  rover: null,
 };
 
 RoverConnection.propTypes = {
-  isActive: PropTypes.bool.isRequired,
-  clientId: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  rover: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }),
+  connectToRover: PropTypes.func.isRequired,
+  disconnectFromRover: PropTypes.func.isRequired,
+  scanForRover: PropTypes.func.isRequired,
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
-  changeActiveRover: PropTypes.func.isRequired,
-  popCommand: PropTypes.func.isRequired,
-  commands: PropTypes.arrayOf(PropTypes.string),
+  write: PropTypes.func.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default hot(module)(RoverConnection);
+export default hot(module)(injectIntl(RoverConnection));

@@ -8,13 +8,21 @@ class BlocklyApi {
   }
 
   sendMotorCommand = (blocklyMotor, blocklyDirection, speed) => {
-    this.sendToRover(JSON.stringify({
-      type: 'motor-command',
-      'motor-id': blocklyMotor === 'LEFT' ? 'motor-left' : 'motor-right',
-      'motor-value': speed,
-      direction: blocklyDirection === 'FORWARD' ? 'forward' : 'backward',
-      unit: 'percent',
-    }));
+    let motor;
+    switch (blocklyMotor) {
+      case 'LEFT':
+        motor = 'left-motor';
+        break;
+      case 'RIGHT':
+        motor = 'right-motor';
+        break;
+      default:
+        motor = 'both-motors';
+    }
+    if (blocklyDirection === 'BACKWARD') {
+      speed *= -1;
+    }
+    this.sendToRover(`${motor}:${speed}\n`);
   }
 
   setChainableRgbLed = (blocklyLedId, blocklyColorHexString) => {
@@ -61,9 +69,7 @@ class BlocklyApi {
 
     // Add stop motor API function
     wrapper = (motor) => {
-      /* Stop both forward and backward pins, just to be safe */
       this.sendMotorCommand(motor.data, 'FORWARD', 0);
-      this.sendMotorCommand(motor.data, 'BACKWARD', 0);
       return false;
     };
     interpreter.setProperty(scope, 'stopMotor',

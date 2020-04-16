@@ -1,6 +1,5 @@
 import React from 'react';
 import { Message } from 'semantic-ui-react';
-import { mountWithIntl, shallowWithIntl } from 'enzyme-react-intl';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
@@ -16,7 +15,7 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
-import { pushCommand } from '@/actions/rover';
+import { send } from '@/actions/rover';
 
 jest.mock('node-blockly/browser');
 jest.mock('sumo-logger');
@@ -46,6 +45,14 @@ describe('The Workspace component', () => {
       sensor: {
         left: NOT_COVERED,
         right: NOT_COVERED,
+      },
+      rover: {
+        transmitChannel: {
+          writeValue: jest.fn(),
+        },
+        rover: {
+          name: 'togaz',
+        },
       },
     });
     store.dispatch = jest.fn(() => Promise.resolve());
@@ -85,21 +92,28 @@ describe('The Workspace component', () => {
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    wrapper.dive().dive().instance().updateJsCode();
+    wrapper.instance().updateJsCode();
     expect(Blockly.JavaScript.STATEMENT_PREFIX).toEqual('highlightBlock(%1);\n');
     expect(wrapper.find(Message).exists()).toBe(false);
   });
 
   test('goes to running state on state change', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().goToRunningState = jest.fn();
     workspace.setProps({
       code: {
@@ -112,13 +126,16 @@ describe('The Workspace component', () => {
   });
 
   test('steps on state change', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().stepCode = jest.fn();
     workspace.setProps({
       code: {
@@ -131,13 +148,16 @@ describe('The Workspace component', () => {
   });
 
   test('goes to stop state on state change', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().goToStopState = jest.fn();
     workspace.setProps({
       code: {
@@ -150,13 +170,16 @@ describe('The Workspace component', () => {
   });
 
   test('resets on state change', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().resetCode = jest.fn();
     workspace.setProps({
       code: {
@@ -168,14 +191,40 @@ describe('The Workspace component', () => {
     expect(workspace.instance().resetCode).toHaveBeenCalled();
   });
 
-  test('does nothing on invalid state change', () => {
-    const wrapper = shallowWithIntl(
+  test('runs code when done sending Bluetooth message to rover', () => {
+    store.getState().rover.isSending = true;
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
+    workspace.instance().runCode = jest.fn();
+    workspace.setProps({
+      rover: {
+        isSending: false,
+      },
+    });
+    workspace.update();
+
+    expect(workspace.instance().runCode).toHaveBeenCalled();
+  });
+
+  test('does nothing on invalid state change', () => {
+    const workspace = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
     workspace.instance().goToRunningState = jest.fn();
     workspace.instance().stepCode = jest.fn();
     workspace.instance().goToStopState = jest.fn();
@@ -194,26 +243,32 @@ describe('The Workspace component', () => {
   });
 
   test('exits sleep after specified time', (done) => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().endSleep = jest.fn(() => done());
     workspace.update();
     workspace.instance().beginSleep(0);
   });
 
   test('updates javascript code', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store} location={{}}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().updateJsCode = jest.fn();
     workspace.update();
     workspace.instance().updateCode();
@@ -236,13 +291,16 @@ describe('The Workspace component', () => {
       },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={localStore}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().updateJsCode = jest.fn();
     workspace.update();
     workspace.instance().updateCode();
@@ -253,13 +311,16 @@ describe('The Workspace component', () => {
   });
 
   test('runs code after waking if running', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().runCode = jest.fn();
     workspace.instance().runningEnabled = true;
     workspace.update();
@@ -269,13 +330,16 @@ describe('The Workspace component', () => {
   });
 
   test('doesn\'t run code after waking if not running', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().runCode = jest.fn();
     workspace.instance().runningEnabled = false;
     workspace.update();
@@ -284,16 +348,20 @@ describe('The Workspace component', () => {
     expect(workspace.instance().runCode).not.toHaveBeenCalled();
   });
 
-  test('runs code when not at end, running, and not sleeping', () => {
+  test('runs code when not at end, running, and not sleeping or sending to rover', () => {
     jest.useFakeTimers();
 
-    const wrapper = shallowWithIntl(
+    store.getState().rover.isSending = false;
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().stepCode = jest.fn(() => true);
     workspace.instance().runningEnabled = true;
     workspace.instance().sleeping = false;
@@ -303,16 +371,43 @@ describe('The Workspace component', () => {
     expect(setTimeout).toHaveBeenCalled();
   });
 
-  test('doesn\'t run code when at the end', () => {
+  test('doesn\'t run code when sending to rover', () => {
     jest.useFakeTimers();
 
-    const wrapper = shallowWithIntl(
+    store.getState().rover.isSending = true;
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
+    workspace.instance().stepCode = jest.fn(() => true);
+    workspace.instance().runningEnabled = true;
+    workspace.instance().sleeping = false;
+    workspace.update();
+    workspace.instance().runCode();
+
+    expect(setTimeout).not.toHaveBeenCalled();
+  });
+
+
+  test('doesn\'t run code when at the end', () => {
+    jest.useFakeTimers();
+
+    const workspace = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
     workspace.instance().stepCode = jest.fn(() => false);
     workspace.update();
     workspace.instance().runCode();
@@ -323,13 +418,16 @@ describe('The Workspace component', () => {
   test('doesn\'t run code when not running', () => {
     jest.useFakeTimers();
 
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().stepCode = jest.fn(() => true);
     workspace.instance().runningEnabled = false;
     workspace.update();
@@ -341,13 +439,16 @@ describe('The Workspace component', () => {
   test('doesn\'t run code when sleeping', () => {
     jest.useFakeTimers();
 
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().stepCode = jest.fn(() => true);
     workspace.instance().runningEnabled = true;
     workspace.instance().sleeping = true;
@@ -358,13 +459,16 @@ describe('The Workspace component', () => {
   });
 
   test('stops stepping when at the end', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.setState({
       interpreter: {
         step: jest.fn(() => false),
@@ -377,13 +481,16 @@ describe('The Workspace component', () => {
   });
 
   test('stops stepping when highlighted', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.setState({
       interpreter: {
         step: jest.fn(() => true),
@@ -399,16 +506,19 @@ describe('The Workspace component', () => {
   });
 
   test('stops stepping when sleeping', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     const mockInterpreter = {
       step: jest.fn(() => true),
     };
-    const workspace = wrapper.dive().dive();
     workspace.setState({
       interpreter: mockInterpreter,
     });
@@ -423,13 +533,16 @@ describe('The Workspace component', () => {
   test('continues stepping when not at the end', () => {
     const mockStep = jest.fn();
     mockStep.mockReturnValueOnce(true).mockReturnValueOnce(false);
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.setState({
       interpreter: {
         step: mockStep,
@@ -443,13 +556,16 @@ describe('The Workspace component', () => {
   });
 
   test('stops and updates code on reset', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().updateCode = jest.fn();
     workspace.update();
     workspace.instance().resetCode();
@@ -459,13 +575,16 @@ describe('The Workspace component', () => {
   });
 
   test('updates and runs code when going to running state', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().updateCode = jest.fn();
     workspace.instance().runCode = jest.fn();
     workspace.update();
@@ -477,15 +596,19 @@ describe('The Workspace component', () => {
   });
 
   test('halts execution when going to stop state', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
+    workspace.instance().api.sendMotorCommand = jest.fn();
     workspace.instance().goToStopState();
-
+    expect(workspace.instance().api.sendMotorCommand).toHaveBeenCalledWith('BOTH', 'FORWARD', 0);
     expect(workspace.instance().runningEnabled).toBe(false);
   });
 
@@ -493,13 +616,16 @@ describe('The Workspace component', () => {
     playground.getBlockById = jest.fn(() => ({
       getCommentText: () => 'highlightBlock(\'LkcrRd=UT=:*2QSbfwlK\');',
     }));
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().highlightBlock(1);
 
     expect(workspace.instance().highlightPause).toBe(true);
@@ -511,13 +637,16 @@ describe('The Workspace component', () => {
     playground.getBlockById = jest.fn(() => ({
       getCommentText: () => 'PASS',
     }));
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().highlightBlock(1);
 
     expect(workspace.instance().highlightPause).toBe(false);
@@ -535,13 +664,15 @@ describe('The Workspace component', () => {
       },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
-    const wrapper = shallowWithIntl(
+    shallowWithIntl(
       <Workspace store={localStore}>
         <div />
       </Workspace>, { context },
-    ).dive();
-
-    wrapper.dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     expect(playground.clear).toHaveBeenCalled();
     expect(Blockly.Xml.domToWorkspace).toHaveBeenCalled();
@@ -561,8 +692,11 @@ describe('The Workspace component', () => {
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
-    wrapper.dive().props().saveProgram(1, '<xml></xml>', 'test').then(() => {
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive();
+    wrapper.props().saveProgram(1, '<xml></xml>', 'test').then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
       expect(store.dispatch).toHaveBeenCalledWith(
         saveProgram(1, '<xml></xml>', 'test', {
@@ -587,8 +721,11 @@ describe('The Workspace component', () => {
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
-    wrapper.dive().props().saveProgram(1, '<xml></xml>', 'test').catch(() => {
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive();
+    wrapper.props().saveProgram(1, '<xml></xml>', 'test').catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         saveProgram(1, '<xml></xml>', 'test', {
@@ -614,8 +751,11 @@ describe('The Workspace component', () => {
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
-    wrapper.dive().props().createProgram('test').then(() => {
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive();
+    wrapper.props().createProgram('test').then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
       expect(store.dispatch).toHaveBeenCalledWith(
         createProgram('test', {
@@ -640,8 +780,11 @@ describe('The Workspace component', () => {
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
-    wrapper.dive().props().createProgram('test').catch(() => {
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive();
+    wrapper.props().createProgram('test').catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         createProgram('test', {
@@ -667,8 +810,11 @@ describe('The Workspace component', () => {
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
-    wrapper.dive().props().fetchProgram(1).then(() => {
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive();
+    wrapper.props().fetchProgram(1).then(() => {
       expect(store.dispatch.mock.calls.length).toBe(2);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchProgram(1, {
@@ -693,8 +839,11 @@ describe('The Workspace component', () => {
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
-    wrapper.dive().props().fetchProgram(1).catch(() => {
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive();
+    wrapper.props().fetchProgram(1).catch(() => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         fetchProgram(1, {
@@ -708,13 +857,15 @@ describe('The Workspace component', () => {
   });
 
   test('sets sensor cache correctly', () => {
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
-
-    const workspace = wrapper.dive().dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
     expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(false);
     expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(false);
@@ -755,11 +906,43 @@ describe('The Workspace component', () => {
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    wrapper.dive().props().sendToRover('command');
+    wrapper.instance().sendToRover('command');
 
-    expect(store.dispatch).toHaveBeenCalledWith(pushCommand('command'));
+    expect(store.dispatch).toHaveBeenCalledWith(send(store.getState().rover.transmitChannel, 'command'));
+  });
+
+  test('dispatches an action when sending to rover with no connected rover', () => {
+    const localStore = mockStore({
+      code: {
+        id: 1,
+        name: 'test program',
+        xmlCode: '<xml></xml>',
+      },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    localStore.dispatch = jest.fn(() => Promise.resolve());
+    const wrapper = shallowWithIntl(
+      <Workspace store={localStore}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    wrapper.instance().sendToRover('command');
+
+    expect(store.dispatch).not.toHaveBeenCalled();
   });
 
   test('Remixes a program', (done) => {
@@ -793,13 +976,16 @@ describe('The Workspace component', () => {
         name: 'test program',
       },
     }));
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={localStore}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.setProps({
       createProgram: mockCreateProgram,
       fetchProgram: mockFetchProgram,
@@ -823,13 +1009,16 @@ describe('The Workspace component', () => {
       mockElement,
       mockElement,
     ]));
-    const wrapper = shallowWithIntl(
+    const workspace = shallowWithIntl(
       <Workspace store={store}>
         <div />
       </Workspace>, { context },
-    ).dive();
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
 
-    const workspace = wrapper.dive().dive();
     workspace.instance().updateCode = jest.fn();
     workspace.setState({
       workspace: {},

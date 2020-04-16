@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
@@ -14,7 +14,7 @@ import { logout as actionLogout } from '@/actions/auth';
 
 import logoImage from '@/assets/images/rovercode_logo_magenta.png';
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(actionLogout()),
 });
 
@@ -41,7 +41,7 @@ class TopNav extends Component {
     const { redirectToLogin } = this.state;
 
     return (
-      <Fragment>
+      <>
         {
           redirectToLogin ? (
             <Redirect to="/accounts/login" />
@@ -56,13 +56,6 @@ class TopNav extends Component {
               id="app.top_nav.programs"
               description="Button label to go to programs"
               defaultMessage="Programs"
-            />
-          </Menu.Item>
-          <Menu.Item as={Link} to="/rovers">
-            <FormattedMessage
-              id="app.top_nav.rovers"
-              description="Button label to go to rovers"
-              defaultMessage="Rovers"
             />
           </Menu.Item>
           <Menu.Menu position="right">
@@ -87,7 +80,7 @@ class TopNav extends Component {
             </Dropdown>
           </Menu.Menu>
         </Menu>
-      </Fragment>
+      </>
     );
   }
 }

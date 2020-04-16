@@ -3,7 +3,6 @@ import { MemoryRouter, Route, Switch } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import PropTypes from 'prop-types';
 import configureStore from 'redux-mock-store';
-import { mountWithIntl } from 'enzyme-react-intl';
 import moment from 'moment';
 import MockDate from 'mockdate';
 import { Cookies } from 'react-cookie';

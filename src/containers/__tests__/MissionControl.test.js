@@ -2,7 +2,6 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 import { Provider as ReduxProvider } from 'react-redux';
 import { createStore } from 'redux';
-import { mountWithIntl } from 'enzyme-react-intl';
 import { Cookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 import rootReducer from '@/reducers/index';
