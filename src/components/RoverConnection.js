@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
+import { EXECUTION_STOP } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 
 class RoverConnection extends Component {
@@ -137,8 +138,9 @@ class RoverConnection extends Component {
   }
 
   onDisconnected = () => {
-    const { disconnectFromRover, rover } = this.props;
+    const { changeExecutionState, disconnectFromRover, rover } = this.props;
 
+    changeExecutionState(EXECUTION_STOP);
     disconnectFromRover(rover);
   }
 
@@ -193,6 +195,7 @@ RoverConnection.propTypes = {
   connectToRover: PropTypes.func.isRequired,
   disconnectFromRover: PropTypes.func.isRequired,
   scanForRover: PropTypes.func.isRequired,
+  changeExecutionState: PropTypes.func.isRequired,
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,

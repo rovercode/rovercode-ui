@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 
+import { changeExecutionState as actionChangeExecutionState } from '@/actions/code';
 import { append } from '@/actions/console';
 import {
   scan as roverScan,
@@ -15,6 +16,7 @@ import RoverConnection from '@/components/RoverConnection';
 
 const mapStateToProps = ({ rover }) => ({ ...rover });
 const mapDispatchToProps = (dispatch) => ({
+  changeExecutionState: (state) => dispatch(actionChangeExecutionState(state)),
   changeLeftSensorState: (state) => dispatch(actionChangeLeftSensorState(state)),
   changeRightSensorState: (state) => dispatch(actionChangeRightSensorState(state)),
   connectToRover: (rover, onMessage) => dispatch(roverConnect(rover, onMessage)),
