@@ -605,6 +605,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                 >
                   <Connect(injectIntl(RoverConnection))>
                     <injectIntl(RoverConnection)
+                      changeExecutionState={[Function]}
                       changeLeftSensorState={[Function]}
                       changeRightSensorState={[Function]}
                       commands={Array []}
@@ -622,6 +623,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                       write={[Function]}
                     >
                       <RoverConnection
+                        changeExecutionState={[Function]}
                         changeLeftSensorState={[Function]}
                         changeRightSensorState={[Function]}
                         commands={Array []}

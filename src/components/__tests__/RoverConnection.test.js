@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button, Popup } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import { EXECUTION_STOP } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import RoverConnection from '../RoverConnection';
 
 
+let changeExecutionState;
 let changeLeftSensorState;
 let changeRightSensorState;
 let connectToRover;
@@ -31,6 +33,7 @@ describe('The RoverConnection component', () => {
       addEventListener: jest.fn(),
     };
 
+    changeExecutionState = jest.fn();
     changeLeftSensorState = jest.fn();
     changeRightSensorState = jest.fn();
     connectToRover = jest.fn(() => Promise.resolve({}));
@@ -40,6 +43,7 @@ describe('The RoverConnection component', () => {
 
     wrapper = shallowWithIntl(
       <RoverConnection
+        changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         connectToRover={connectToRover}
@@ -60,6 +64,7 @@ describe('The RoverConnection component', () => {
   test('renders connect button when not connected', () => {
     wrapper = shallowWithIntl(
       <RoverConnection
+        changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         connectToRover={connectToRover}
@@ -76,6 +81,7 @@ describe('The RoverConnection component', () => {
   test('renders disabled connect button when on unsupported platform', () => {
     wrapper = shallowWithIntl(
       <RoverConnection
+        changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         connectToRover={connectToRover}
@@ -272,6 +278,7 @@ describe('The RoverConnection component', () => {
   test('disconnects from rover', () => {
     wrapper.find(Button).simulate('click');
 
+    expect(changeExecutionState).toHaveBeenCalledWith(EXECUTION_STOP);
     expect(disconnectFromRover).toHaveBeenCalledWith(rover);
   });
 });
