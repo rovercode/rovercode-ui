@@ -98,6 +98,9 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
+    wrapper.setState({
+      workspace: null,
+    });
     wrapper.instance().updateJsCode();
     expect(Blockly.JavaScript.STATEMENT_PREFIX).toEqual('highlightBlock(%1);\n');
     expect(wrapper.find(Message).exists()).toBe(false);
@@ -368,7 +371,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(2);
   });
 
   test('doesn\'t run code when sending to rover', () => {
@@ -391,7 +394,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).not.toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
 
@@ -412,7 +415,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).not.toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   test('doesn\'t run code when not running', () => {
@@ -433,7 +436,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).not.toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   test('doesn\'t run code when sleeping', () => {
@@ -455,7 +458,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).not.toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   test('stops stepping when at the end', () => {
@@ -1027,5 +1030,58 @@ describe('The Workspace component', () => {
 
     expect(document.getElementsByClassName).toHaveBeenCalledTimes(1);
     expect(mockElement.remove).toHaveBeenCalledTimes(2);
+  });
+
+  test('debounces save actions', () => {
+    jest.useFakeTimers();
+
+    shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+
+    jest.advanceTimersByTime(500);
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+
+    jest.advanceTimersByTime(500);
+
+    expect(store.dispatch).toHaveBeenCalledWith(saveProgram());
+  });
+
+  test('handles unset debounce time', () => {
+    jest.useFakeTimers();
+
+    const builtInParseInt = global.parseInt;
+    global.parseInt = () => NaN;
+
+    shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+
+    jest.advanceTimersByTime(2000);
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+
+    jest.advanceTimersByTime(5000);
+
+    expect(store.dispatch).toHaveBeenCalledWith(saveProgram());
+
+    global.parseInt = builtInParseInt;
   });
 });

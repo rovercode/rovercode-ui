@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
 import Interpreter from 'js-interpreter';
+import { debounce } from 'throttle-debounce';
 
 import { checkAuthError, authHeader } from '@/actions/auth';
 import {
@@ -276,7 +277,11 @@ class Workspace extends Component {
       scrollbars: true,
     });
 
-    workspace.addChangeListener(this.updateCode);
+    workspace.addChangeListener(
+      debounce(
+        parseInt(SAVE_DEBOUNCE_TIME, 10) || 5000, this.updateCode, // eslint-disable-line no-undef
+      ),
+    );
 
     this.updateSensorStateCache(sensor.left, sensor.right);
 
