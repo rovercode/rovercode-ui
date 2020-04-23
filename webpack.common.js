@@ -60,6 +60,7 @@ module.exports = {
     new webpack.DefinePlugin({
       SENTRY_DSN: JSON.stringify(process.env.FRONTEND_SENTRY_DSN),
       LOGGER_ENDPOINT: JSON.stringify(process.env.FRONTEND_LOGGER_ENDPOINT),
+      SAVE_DEBOUNCE_TIME: JSON.stringify(process.env.SAVE_DEBOUNCE_TIME),
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',

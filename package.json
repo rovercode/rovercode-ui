@@ -19,7 +19,8 @@
   },
   "jest": {
     "globals": {
-      "LOGGER_ENDPOINT": ""
+      "LOGGER_ENDPOINT": "",
+      "SAVE_DEBOUNCE_TIME": "1000"
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -111,6 +112,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.0",
     "sumo-logger": "^2.5.5",
+    "throttle-debounce": "^2.1.0",
     "url-parse": "^1.4.4"
   }
 }
