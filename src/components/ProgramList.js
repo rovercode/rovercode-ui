@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import Add from '@material-ui/icons/Add';
 import {
-  Button,
   Confirm,
   Icon,
   Loader,
@@ -191,8 +192,8 @@ class ProgramList extends Component {
 
     return (
       <>
-        <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10%' }}>
-          <Icon name="plus" />
+        <Button variant="contained" color="primary" href="/mission-control" style={{ marginLeft: '10%' }}>
+          <Add />
           <FormattedMessage
             id="app.program_list.new"
             description="Button label to create new program"
