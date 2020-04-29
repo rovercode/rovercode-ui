@@ -74,8 +74,12 @@ const toolbox = `
         <block type="motors_start"></block>
         <block type="motors_stop"></block>
       </category>
-      <category name="sensors" colour="160">
-        <block type="sensors_get_covered"></block>
+      <category name="sensors and buttons" colour="160">
+        <block type="light_sensor_value"></block>
+        <block type="button_press"></block>
+      </category>
+      <category name="display" colour="230">
+        <block type="display_message"></block>
       </category>
       <category name="lights" colour="20">
         <block type="chainable_rgb_led_set">
