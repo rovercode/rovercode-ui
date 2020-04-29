@@ -215,6 +215,7 @@ describe('The code reducer', () => {
     const name = 'mybd';
     const id = 1;
     const xmlCode = '<xml></xml>';
+    const lesson = 2;
 
     expect(
       reducer({}, {
@@ -223,6 +224,7 @@ describe('The code reducer', () => {
           name,
           id,
           content: xmlCode,
+          lesson,
         },
       }),
     ).toEqual({
@@ -230,6 +232,7 @@ describe('The code reducer', () => {
       name,
       id,
       xmlCode,
+      lesson,
     });
   });
 

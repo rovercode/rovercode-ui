@@ -43,8 +43,8 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   updateXmlCode: (xmlCode) => dispatch(actionUpdateXmlCode(xmlCode)),
   changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   sendToRover: (channel, message) => dispatch(send(channel, message)),
-  saveProgram: (id, content, name) => dispatch(
-    actionSaveProgram(id, content, name, authHeader(cookies)),
+  saveProgram: (id, content, name, lesson) => dispatch(
+    actionSaveProgram(id, content, name, lesson, authHeader(cookies)),
   ).catch(checkAuthError(dispatch)),
   createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
@@ -331,7 +331,7 @@ class Workspace extends Component {
     const xmlCode = this.updateXmlCode();
 
     if (!code.isReadOnly && code.id) {
-      saveProgram(code.id, xmlCode, code.name);
+      saveProgram(code.id, xmlCode, code.name, code.lesson);
     }
   }
 
@@ -452,7 +452,8 @@ class Workspace extends Component {
         logger.log(JSON.stringify({
           event: 'remix', userId: createData.user_id, sourceProgramId: code.id, newProgramId: createData.value.id,
         }));
-        return saveProgram(createData.value.id, fetchData.value.content, createData.value.name);
+        return saveProgram(createData.value.id, fetchData.value.content,
+          createData.value.name, fetchData.value.reference_of);
       })
       .then(() => {
         changeReadOnly(false);
@@ -519,6 +520,7 @@ Workspace.propTypes = {
     jsCode: PropTypes.string,
     xmlCode: PropTypes.string,
     isReadOnly: PropTypes.bool,
+    lesson: PropTypes.number,
   }).isRequired,
   sensor: PropTypes.shape({
     left: PropTypes.number.isRequired,
