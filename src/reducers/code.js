@@ -129,6 +129,7 @@ export default function code(
         xmlCode: action.payload.content,
         id: action.payload.id,
         name: action.payload.name,
+        lesson: action.payload.lesson,
       };
     case SAVE_PROGRAM_REJECTED:
       return {

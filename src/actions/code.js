@@ -76,11 +76,12 @@ export const fetchProgram = (id, xhroptions) => ({
     )),
 });
 
-export const saveProgram = (id, content, name, xhroptions) => ({
+export const saveProgram = (id, content, name, lesson, xhroptions) => ({
   type: SAVE_PROGRAM,
   payload: axios.put(`/api/v1/block-diagrams/${id}/`, {
     content,
     name,
+    lesson,
   }, xhroptions)
     .then(({ data }) => (
       data
