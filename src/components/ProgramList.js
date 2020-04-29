@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import Add from '@material-ui/icons/Add';
+import { Button } from '@material-ui/core';
+import { Add } from '@material-ui/icons';
 import {
   Confirm,
-  Icon,
   Loader,
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ProgramCollection from './ProgramCollection';
