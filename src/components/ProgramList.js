@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import { Button } from '@material-ui/core';
+import { Add } from '@material-ui/icons';
 import {
-  Button,
   Confirm,
-  Icon,
   Loader,
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ProgramCollection from './ProgramCollection';
@@ -191,8 +191,8 @@ class ProgramList extends Component {
 
     return (
       <>
-        <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10%' }}>
-          <Icon name="plus" />
+        <Button variant="contained" color="primary" href="/mission-control" style={{ marginLeft: '10%' }}>
+          <Add />
           <FormattedMessage
             id="app.program_list.new"
             description="Button label to create new program"
