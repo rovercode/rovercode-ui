@@ -100,14 +100,16 @@ describe('Code actions', () => {
       name: 'mybd',
       content: '<xml></xml>',
       user: 1,
+      lesson: 2,
     };
 
     mock.onPut('/api/v1/block-diagrams/1/', {
       name: program.name,
       content: program.content,
+      lesson: program.lesson,
     }).reply(200, program);
 
-    const action = saveProgram(1, program.content, program.name);
+    const action = saveProgram(1, program.content, program.name, program.lesson);
     const { type } = action;
     const payload = await action.payload;
 
