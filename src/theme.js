@@ -15,10 +15,10 @@ export default createMuiTheme({
       main: '#FEAD11', /* yellow */
     },
     info: {
-      main: '#00FDA3', /* light green */
+      main: '#00FDA3', /* lime green, cyan */
     },
     success: {
-      main: '#00FF00', /* TODO: some kind of green??? */
+      main: '#21BA45', /* green */
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,
