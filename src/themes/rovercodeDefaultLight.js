@@ -8,9 +8,6 @@ export default createMuiTheme({
     secondary: {
       main: '#FF0459', /* magenta */
     },
-    error: {
-      main: '#FF0000', /* TODO: some kind of red??? */
-    },
     warning: {
       main: '#FEAD11', /* yellow */
     },
@@ -20,6 +17,7 @@ export default createMuiTheme({
     success: {
       main: '#21BA45', /* green */
     },
+    /* Keep default error red */
     contrastThreshold: 3,
     tonalOffset: 0.2,
   },

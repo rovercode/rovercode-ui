@@ -13,7 +13,7 @@ import { createLogger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import createDebounce from 'redux-debounced';
 import * as Sentry from '@sentry/browser';
-import theme from '@/theme';
+import rovercodeDefaultLight from '@/themes/rovercodeDefaultLight';
 import appReducers from './reducers/index';
 import { USER_LOGOUT } from './actions/auth';
 import AuthApi from './utils/auth-api';
@@ -86,7 +86,7 @@ render(
     <ReduxProvider store={store}>
       <BrowserRouter>
         <CookiesProvider>
-          <ThemeProvider theme={responsiveFontSizes(theme)}>
+          <ThemeProvider theme={responsiveFontSizes(rovercodeDefaultLight)}>
             <Switch>
               <Route path="/accounts" component={Accounts} />
               <ProtectedRoute exact path="/" component={ProgramList} />
