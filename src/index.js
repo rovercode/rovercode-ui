@@ -1,5 +1,5 @@
 import 'semantic-ui-css/semantic.min.css';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -86,7 +86,7 @@ render(
     <ReduxProvider store={store}>
       <BrowserRouter>
         <CookiesProvider>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={responsiveFontSizes(theme)}>
             <Switch>
               <Route path="/accounts" component={Accounts} />
               <ProtectedRoute exact path="/" component={ProgramList} />

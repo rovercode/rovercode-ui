@@ -5,6 +5,8 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
   <WithStyles(ForwardRef(Button))
     color="primary"
     href="/mission-control"
+    size="large"
+    startIcon={<Memo(AddIcon) />}
     style={
       Object {
         "marginLeft": "10%",
@@ -12,7 +14,6 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
     }
     variant="contained"
   >
-    <AddIcon />
     <FormattedMessage
       defaultMessage="New Program"
       id="app.program_list.new"
