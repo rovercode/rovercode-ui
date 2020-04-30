@@ -1,4 +1,5 @@
 import 'semantic-ui-css/semantic.min.css';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -12,10 +13,10 @@ import { createLogger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import createDebounce from 'redux-debounced';
 import * as Sentry from '@sentry/browser';
+import theme from '@/theme';
 import appReducers from './reducers/index';
 import { USER_LOGOUT } from './actions/auth';
 import AuthApi from './utils/auth-api';
-
 
 import NotFound from './containers/Global/NotFound';
 import ProgramList from './containers/ProgramList';
@@ -85,14 +86,16 @@ render(
     <ReduxProvider store={store}>
       <BrowserRouter>
         <CookiesProvider>
-          <Switch>
-            <Route path="/accounts" component={Accounts} />
-            <ProtectedRoute exact path="/" component={ProgramList} />
-            <ProtectedRoute exact path="/programs" component={ProgramList} />
-            <ProtectedRoute exact path="/mission-control" component={MissionControl} />
-            <ProtectedRoute exact path="/user/settings" component={UserSetting} />
-            <Route component={NotFound} />
-          </Switch>
+          <ThemeProvider theme={theme}>
+            <Switch>
+              <Route path="/accounts" component={Accounts} />
+              <ProtectedRoute exact path="/" component={ProgramList} />
+              <ProtectedRoute exact path="/programs" component={ProgramList} />
+              <ProtectedRoute exact path="/mission-control" component={MissionControl} />
+              <ProtectedRoute exact path="/user/settings" component={UserSetting} />
+              <Route component={NotFound} />
+            </Switch>
+          </ThemeProvider>
         </CookiesProvider>
       </BrowserRouter>
     </ReduxProvider>
