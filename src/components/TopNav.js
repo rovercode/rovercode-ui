@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
+import { red } from '@material-ui/core/colors';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import {
-  Button,
+  makeStyles,
+  styled,
+  withStyles,
+} from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Grid from '@material-ui/core/Grid';
+import { Box } from '@material-ui/core';
+import {
   Dropdown,
   Image,
   Menu,
@@ -17,6 +29,19 @@ import logoImage from '@/assets/images/rovercode_logo_magenta.png';
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(actionLogout()),
 });
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
+
 
 class TopNav extends Component {
   constructor(props) {
@@ -40,6 +65,11 @@ class TopNav extends Component {
     const { userName } = this.props;
     const { redirectToLogin } = this.state;
 
+    const ConnectionButton = styled(Typography)({
+      textAlign: 'left',
+      fontWeight: 'bold',
+    });
+
     return (
       <>
         {
@@ -47,6 +77,95 @@ class TopNav extends Component {
             <Redirect to="/accounts/login" />
           ) : (null)
         }
+
+        <div>
+          <AppBar position="static" color="secondary">
+            <Toolbar>
+              <Grid item container direction="row" spacing={4}>
+                <Grid item xs={2}>
+                  <Box
+                    display="flex"
+                    justifyContent="left"
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                    >
+                      <Typography variant="h6">
+                        Logo/Connect
+                      </Typography>
+                    </Button>
+                  </Box>
+                </Grid>
+                <Grid item xs={2}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                    >
+                      <Typography variant="h6">
+                        My Programs
+                      </Typography>
+                    </Button>
+                  </Box>
+                </Grid>
+                <Grid item xs={2}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                    >
+                      <Typography variant="h6">
+                        Community Programs
+                      </Typography>
+                    </Button>
+                  </Box>
+                </Grid>
+                <Grid item xs={2}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                    >
+                      <Typography variant="h6">
+                        Courses
+                      </Typography>
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+              <Button
+                size="large"
+                variant="contained"
+                disableElevation
+                color="secondary"
+                endIcon={<ArrowDropDownIcon />}
+              >
+                <Typography variant="h6">
+                  {userName}
+                </Typography>
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </div>
+
         <Menu inverted color="black">
           <Menu.Item as={Link} to="/">
             <Image src={logoImage} size="mini" />
