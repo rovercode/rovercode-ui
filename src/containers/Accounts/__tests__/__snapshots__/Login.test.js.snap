@@ -451,11 +451,15 @@ exports[`Login mounts on the page with no errors 1`] = `
                   </ForwardRef(Grid)>
                 </WithStyles(ForwardRef(Grid))>
                 <WithStyles(ForwardRef(Grid))
+                  alignItems="center"
                   container={true}
                   direction="row"
                   item={true}
+                  justify="center"
+                  spacing={4}
                 >
                   <ForwardRef(Grid)
+                    alignItems="center"
                     classes={
                       Object {
                         "align-content-xs-center": "MuiGrid-align-content-xs-center",
@@ -566,13 +570,14 @@ exports[`Login mounts on the page with no errors 1`] = `
                     container={true}
                     direction="row"
                     item={true}
+                    justify="center"
+                    spacing={4}
                   >
                     <div
-                      className="MuiGrid-root MuiGrid-container MuiGrid-item"
+                      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
                     >
                       <WithStyles(ForwardRef(Grid))
                         item={true}
-                        xs={true}
                       >
                         <ForwardRef(Grid)
                           classes={
@@ -683,10 +688,9 @@ exports[`Login mounts on the page with no errors 1`] = `
                             }
                           }
                           item={true}
-                          xs={true}
                         >
                           <div
-                            className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+                            className="MuiGrid-root MuiGrid-item"
                           >
                             <WithStyles(WithStyles(ForwardRef(Button)))
                               id="google"
@@ -989,7 +993,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                       </WithStyles(ForwardRef(Grid))>
                       <WithStyles(ForwardRef(Grid))
                         item={true}
-                        xs={true}
                       >
                         <ForwardRef(Grid)
                           classes={
@@ -1100,10 +1103,9 @@ exports[`Login mounts on the page with no errors 1`] = `
                             }
                           }
                           item={true}
-                          xs={true}
                         >
                           <div
-                            className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"
+                            className="MuiGrid-root MuiGrid-item"
                           >
                             <WithStyles(WithStyles(ForwardRef(Button)))
                               id="github"
@@ -2945,13 +2947,15 @@ exports[`Login renders on the page with no errors 1`] = `
       </p>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
+      alignItems="center"
       container={true}
       direction="row"
       item={true}
+      justify="center"
+      spacing={4}
     >
       <WithStyles(ForwardRef(Grid))
         item={true}
-        xs={true}
       >
         <WithStyles(WithStyles(ForwardRef(Button)))
           id="google"
@@ -3000,7 +3004,6 @@ exports[`Login renders on the page with no errors 1`] = `
       </WithStyles(ForwardRef(Grid))>
       <WithStyles(ForwardRef(Grid))
         item={true}
-        xs={true}
       >
         <WithStyles(WithStyles(ForwardRef(Button)))
           id="github"

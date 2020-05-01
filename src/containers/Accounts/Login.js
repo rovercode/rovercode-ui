@@ -203,8 +203,8 @@ class Login extends Component {
               </Grid>
             ) : (null)
           }
-          <Grid item container direction="row">
-            <Grid item xs>
+          <Grid item container direction="row" justify="center" alignItems="center" spacing={4}>
+            <Grid item>
               <GoogleButton
                 id="google"
                 variant="contained"
@@ -218,7 +218,7 @@ class Login extends Component {
                 />
               </GoogleButton>
             </Grid>
-            <Grid item xs>
+            <Grid item>
               <GitHubButton
                 id="github"
                 variant="contained"
