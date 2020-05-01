@@ -191,8 +191,14 @@ class ProgramList extends Component {
 
     return (
       <>
-        <Button variant="contained" color="primary" href="/mission-control" style={{ marginLeft: '10%' }}>
-          <Add />
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          startIcon={<Add />}
+          href="/mission-control"
+          style={{ marginLeft: '10%' }}
+        >
           <FormattedMessage
             id="app.program_list.new"
             description="Button label to create new program"
