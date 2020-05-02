@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import { Form, List, Message } from 'semantic-ui-react';
+import { ListItemText, TextField } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -19,7 +20,7 @@ test('PasswordResetCallback renders on the page with no errors', () => {
   const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive().dive();
 
   expect(wrapper).toMatchSnapshot();
-  expect(wrapper.find(Message).exists()).toBe(false);
+  expect(wrapper.find(Alert).exists()).toBe(false);
 });
 
 test('PasswordResetCallback displays form errors', async () => {
@@ -32,15 +33,15 @@ test('PasswordResetCallback displays form errors', async () => {
   });
   const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive().dive();
 
-  await wrapper.instance().confirm();
+  await wrapper.instance().confirm({ preventDefault: jest.fn() });
   wrapper.update();
 
-  expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(List.Item).length).toBe(2);
-  expect(wrapper.find(List.Item).at(0).prop('children')).toBe('This password is too short. It must contain at least 8 characters.');
-  expect(wrapper.find(List.Item).at(1).prop('children')).toBe('This password is too common.');
-  expect(wrapper.find(Form.Input).at(0).prop('error')).toBeFalsy();
-  expect(wrapper.find(Form.Input).at(1).prop('error')).toBeTruthy();
+  expect(wrapper.find(Alert).exists()).toBe(true);
+  expect(wrapper.find(ListItemText).length).toBe(2);
+  expect(wrapper.find(ListItemText).at(0).prop('children')).toBe('- This password is too short. It must contain at least 8 characters.');
+  expect(wrapper.find(ListItemText).at(1).prop('children')).toBe('- This password is too common.');
+  expect(wrapper.find(TextField).at(0).prop('error')).toBeFalsy();
+  expect(wrapper.find(TextField).at(1).prop('error')).toBeTruthy();
 });
 
 test('SignUp redirects to login after success', async () => {
@@ -58,18 +59,18 @@ test('SignUp redirects to login after success', async () => {
   });
   const wrapper = shallowWithIntl(<PasswordResetCallback match={match} />).dive().dive();
 
-  wrapper.find(Form.Input).at(0).simulate('change', {
+  wrapper.find(TextField).at(0).simulate('change', {
     target: {
       value: password1,
     },
   });
-  wrapper.find(Form.Input).at(1).simulate('change', {
+  wrapper.find(TextField).at(1).simulate('change', {
     target: {
       value: password2,
     },
   });
 
-  await wrapper.instance().confirm();
+  await wrapper.instance().confirm({ preventDefault: jest.fn() });
   wrapper.update();
 
   expect(wrapper.find(Redirect).exists()).toBe(true);

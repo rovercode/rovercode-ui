@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginCallback renders on the page with no errors 1`] = `
-<Connect(LoginCallback)
+<LoginCallback
   allCookies={Object {}}
   cookies={
     Cookies {
@@ -10,39 +10,6 @@ exports[`LoginCallback renders on the page with no errors 1`] = `
         [Function],
       ],
       "cookies": Object {},
-    }
-  }
-  intl={
-    Object {
-      "defaultFormats": Object {},
-      "defaultLocale": "en",
-      "formatDate": [Function],
-      "formatDateToParts": [Function],
-      "formatDisplayName": [Function],
-      "formatHTMLMessage": [Function],
-      "formatList": [Function],
-      "formatMessage": [Function],
-      "formatNumber": [Function],
-      "formatNumberToParts": [Function],
-      "formatPlural": [Function],
-      "formatRelativeTime": [Function],
-      "formatTime": [Function],
-      "formatTimeToParts": [Function],
-      "formats": Object {},
-      "formatters": Object {
-        "getDateTimeFormat": [Function],
-        "getDisplayNames": [Function],
-        "getListFormat": [Function],
-        "getMessageFormat": [Function],
-        "getNumberFormat": [Function],
-        "getPluralRules": [Function],
-        "getRelativeTimeFormat": [Function],
-      },
-      "locale": "en",
-      "messages": Object {},
-      "onError": [Function],
-      "textComponent": Symbol(react.fragment),
-      "timeZone": undefined,
     }
   }
   location={
@@ -67,5 +34,7 @@ exports[`LoginCallback renders on the page with no errors 1`] = `
       "subscribe": [Function],
     }
   }
+  updateUser={[Function]}
+  updateValidAuth={[Function]}
 />
 `;

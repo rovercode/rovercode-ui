@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import { Form, List, Message } from 'semantic-ui-react';
+import { ListItemText, TextField } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -30,7 +31,7 @@ test('SignUp renders on the page with no errors', () => {
     .dive();
 
   expect(wrapper).toMatchSnapshot();
-  expect(wrapper.find(Message).exists()).toBe(false);
+  expect(wrapper.find(Alert).exists()).toBe(false);
 });
 
 test('SignUp displays form errors', async () => {
@@ -51,20 +52,20 @@ test('SignUp displays form errors', async () => {
   const wrapper = cookiesWrapper.dive().dive().dive().dive()
     .dive()
     .dive();
-  await wrapper.instance().signUp();
+  await wrapper.instance().signUp({ preventDefault: jest.fn() });
   wrapper.update();
 
-  expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(List.Item).length).toBe(5);
-  expect(wrapper.find(List.Item).at(0).prop('children')).toBe('A user with that username already exists.');
-  expect(wrapper.find(List.Item).at(1).prop('children')).toBe('Enter a valid email address.');
-  expect(wrapper.find(List.Item).at(2).prop('children')).toBe('This password is too short. It must contain at least 8 characters.');
-  expect(wrapper.find(List.Item).at(3).prop('children')).toBe('This password is too common.');
-  expect(wrapper.find(List.Item).at(4).prop('children')).toBe('This password is entirely numeric.');
-  expect(wrapper.find(Form.Input).at(0).prop('error')).toBeTruthy();
-  expect(wrapper.find(Form.Input).at(1).prop('error')).toBeTruthy();
-  expect(wrapper.find(Form.Input).at(2).prop('error')).toBeTruthy();
-  expect(wrapper.find(Form.Input).at(3).prop('error')).toBeFalsy();
+  expect(wrapper.find(Alert).exists()).toBe(true);
+  expect(wrapper.find(ListItemText).length).toBe(5);
+  expect(wrapper.find(ListItemText).at(0).prop('children')).toBe('- A user with that username already exists.');
+  expect(wrapper.find(ListItemText).at(1).prop('children')).toBe('- Enter a valid email address.');
+  expect(wrapper.find(ListItemText).at(2).prop('children')).toBe('- This password is too short. It must contain at least 8 characters.');
+  expect(wrapper.find(ListItemText).at(3).prop('children')).toBe('- This password is too common.');
+  expect(wrapper.find(ListItemText).at(4).prop('children')).toBe('- This password is entirely numeric.');
+  expect(wrapper.find(TextField).at(0).prop('error')).toBeTruthy();
+  expect(wrapper.find(TextField).at(1).prop('error')).toBeTruthy();
+  expect(wrapper.find(TextField).at(2).prop('error')).toBeTruthy();
+  expect(wrapper.find(TextField).at(3).prop('error')).toBeFalsy();
 });
 
 test('SignUp redirects to root after success', async () => {
@@ -91,28 +92,28 @@ test('SignUp redirects to root after success', async () => {
     .dive()
     .dive();
 
-  wrapper.find(Form.Input).at(0).simulate('change', {
+  wrapper.find(TextField).at(0).simulate('change', {
     target: {
       value: username,
     },
   });
-  wrapper.find(Form.Input).at(1).simulate('change', {
+  wrapper.find(TextField).at(1).simulate('change', {
     target: {
       value: email,
     },
   });
-  wrapper.find(Form.Input).at(2).simulate('change', {
+  wrapper.find(TextField).at(2).simulate('change', {
     target: {
       value: password1,
     },
   });
-  wrapper.find(Form.Input).at(3).simulate('change', {
+  wrapper.find(TextField).at(3).simulate('change', {
     target: {
       value: password2,
     },
   });
 
-  await wrapper.instance().signUp();
+  await wrapper.instance().signUp({ preventDefault: jest.fn() });
   wrapper.update();
 
   expect(cookies.get('auth_jwt')).toBe(token);

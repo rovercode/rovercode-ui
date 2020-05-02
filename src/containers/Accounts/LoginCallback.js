@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { Loader } from 'semantic-ui-react';
-import { injectIntl } from 'react-intl';
+import { CircularProgress, Grid, Typography } from '@material-ui/core';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import queryString from 'query-string';
@@ -61,17 +61,23 @@ class LoginCallback extends Component {
   }
 
   redirect = () => {
-    const { intl } = this.props;
     const { error, loading, loginSuccess } = this.state;
 
-    const loggingIn = intl.formatMessage({
-      id: 'app.login_callback.logging_in',
-      description: 'Shows the user that the application is logging in',
-      defaultMessage: 'Logging in...',
-    });
-
     if (loading) {
-      return <Loader content={loggingIn} />;
+      return (
+        <>
+          <Grid container direction="column" justify="center" alignItems="center">
+            <Typography variant="h4">
+              <FormattedMessage
+                id="app.login_callback.logging_in"
+                description="Shows the user that the application is logging in"
+                defaultMessage="Logging in..."
+              />
+            </Typography>
+            <CircularProgress />
+          </Grid>
+        </>
+      );
     }
 
     if (loginSuccess) {
@@ -108,9 +114,6 @@ LoginCallback.propTypes = {
   }).isRequired,
   updateUser: PropTypes.func.isRequired,
   updateValidAuth: PropTypes.func.isRequired,
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
-export default withCookies(injectIntl(connect(null, mapDispatchToProps)(LoginCallback)));
+export default withCookies(connect(null, mapDispatchToProps)(LoginCallback));
