@@ -2,111 +2,158 @@
 
 exports[`SignUp renders on the page with no errors 1`] = `
 <Fragment>
-  <Grid
-    centered={true}
-    columns={16}
+  <WithStyles(ForwardRef(Grid))
+    alignItems="center"
+    container={true}
+    direction="column"
+    justify="center"
+    spacing={4}
   >
-    <GridRow>
-      <Header
-        size="huge"
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="h4"
       >
         <FormattedMessage
           defaultMessage="Sign Up"
           id="app.signup.header"
           values={Object {}}
         />
-      </Header>
-    </GridRow>
-    <GridRow>
-      <p>
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <FormattedMessage
+        defaultMessage="Already have an account? Then please"
+        id="app.signup.check_1"
+        values={Object {}}
+      />
+       
+      <WithStyles(ForwardRef(Link))
+        href="/accounts/login"
+      >
         <FormattedMessage
-          defaultMessage="Already have an account? Then please"
-          id="app.signup.check_1"
+          defaultMessage="sign in."
+          id="app.signup.check_2"
           values={Object {}}
         />
-         
-        <a
-          href="/accounts/login"
-        >
-          <FormattedMessage
-            defaultMessage="sign in."
-            id="app.signup.check_2"
-            values={Object {}}
-          />
-        </a>
-      </p>
-    </GridRow>
-    <GridRow>
-      <GridColumn
-        width={4}
+      </WithStyles(ForwardRef(Link))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <form
+        onSubmit={[Function]}
       >
-        <Segment
-          raised={true}
-          secondary={true}
+        <WithStyles(ForwardRef(Grid))
+          item={true}
         >
-          <Form
-            as="form"
-            floated="left"
-            onSubmit={[Function]}
+          <WithStyles(ForwardRef(TextField))
+            InputProps={
+              Object {
+                "startAdornment": <WithStyles(ForwardRef(InputAdornment))
+                  position="start"
+                >
+                  <Memo(PersonIcon) />
+                </WithStyles(ForwardRef(InputAdornment))>,
+              }
+            }
+            error={false}
+            fullWidth={true}
+            margin="dense"
+            onChange={[Function]}
+            placeholder="Username"
+            required={true}
+            variant="outlined"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(TextField))
+            InputProps={
+              Object {
+                "startAdornment": <WithStyles(ForwardRef(InputAdornment))
+                  position="start"
+                >
+                  <Memo(MailIcon) />
+                </WithStyles(ForwardRef(InputAdornment))>,
+              }
+            }
+            error={false}
+            fullWidth={true}
+            margin="dense"
+            onChange={[Function]}
+            placeholder="Email"
+            required={true}
+            variant="outlined"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(TextField))
+            InputProps={
+              Object {
+                "startAdornment": <WithStyles(ForwardRef(InputAdornment))
+                  position="start"
+                >
+                  <Memo(LockIcon) />
+                </WithStyles(ForwardRef(InputAdornment))>,
+              }
+            }
+            error={false}
+            fullWidth={true}
+            margin="dense"
+            onChange={[Function]}
+            placeholder="Password"
+            required={true}
+            type="password"
+            variant="outlined"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(TextField))
+            InputProps={
+              Object {
+                "startAdornment": <WithStyles(ForwardRef(InputAdornment))
+                  position="start"
+                >
+                  <Memo(LockIcon) />
+                </WithStyles(ForwardRef(InputAdornment))>,
+              }
+            }
+            error={false}
+            fullWidth={true}
+            margin="dense"
+            onChange={[Function]}
+            placeholder="Password"
+            required={true}
+            type="password"
+            variant="outlined"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(Button))
+            color="primary"
+            type="submit"
+            variant="contained"
           >
-            <FormInput
-              as={[Function]}
-              control={[Function]}
-              error={null}
-              icon="user"
-              iconPosition="left"
-              onChange={[Function]}
-              placeholder="Username"
-              required={true}
+            <FormattedMessage
+              defaultMessage="Sign Up"
+              id="app.signup.signup"
+              values={Object {}}
             />
-            <FormInput
-              as={[Function]}
-              control={[Function]}
-              error={null}
-              icon="mail"
-              iconPosition="left"
-              onChange={[Function]}
-              placeholder="Email"
-              required={true}
-            />
-            <FormInput
-              as={[Function]}
-              control={[Function]}
-              error={null}
-              icon="lock"
-              iconPosition="left"
-              onChange={[Function]}
-              placeholder="Password"
-              required={true}
-              type="password"
-            />
-            <FormInput
-              as={[Function]}
-              control={[Function]}
-              error={null}
-              icon="lock"
-              iconPosition="left"
-              onChange={[Function]}
-              placeholder="Password"
-              required={true}
-              type="password"
-            />
-            <FormButton
-              as={[Function]}
-              control={[Function]}
-              primary={true}
-              type="submit"
-            >
-              <FormattedMessage
-                defaultMessage="Sign Up"
-                id="app.signup.signup"
-                values={Object {}}
-              />
-            </FormButton>
-          </Form>
-        </Segment>
-      </GridColumn>
-    </GridRow>
-  </Grid>
+          </WithStyles(ForwardRef(Button))>
+        </WithStyles(ForwardRef(Grid))>
+      </form>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
 </Fragment>
 `;

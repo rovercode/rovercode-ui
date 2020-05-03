@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, List, Message } from 'semantic-ui-react';
 import axios from 'axios';
+import { ListItemText, TextField } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import MockAdapter from 'axios-mock-adapter';
 
 import PasswordReset from '../PasswordReset';
@@ -11,7 +12,7 @@ test('PasswordReset renders on the page with no errors', () => {
   const wrapper = shallowWithIntl(<PasswordReset />).dive().dive();
 
   expect(wrapper).toMatchSnapshot();
-  expect(wrapper.find(Message).exists()).toBe(false);
+  expect(wrapper.find(Alert).exists()).toBe(false);
 });
 
 test('PasswordReset displays form errors', async () => {
@@ -23,13 +24,13 @@ test('PasswordReset displays form errors', async () => {
   });
   const wrapper = shallowWithIntl(<PasswordReset />).dive().dive();
 
-  await wrapper.instance().reset();
+  await wrapper.instance().reset({ preventDefault: jest.fn() });
   wrapper.update();
 
-  expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(List.Item).length).toBe(1);
-  expect(wrapper.find(List.Item).at(0).prop('children')).toBe('This field may not be blank.');
-  expect(wrapper.find(Form.Input).at(0).prop('error')).toBeTruthy();
+  expect(wrapper.find(Alert).exists()).toBe(true);
+  expect(wrapper.find(ListItemText).length).toBe(1);
+  expect(wrapper.find(ListItemText).at(0).prop('children')).toBe('- This field may not be blank.');
+  expect(wrapper.find(TextField).at(0).prop('error')).toBeTruthy();
 });
 
 test('PasswordReset displays success', async () => {
@@ -43,16 +44,16 @@ test('PasswordReset displays success', async () => {
   });
   const wrapper = shallowWithIntl(<PasswordReset />).dive().dive();
 
-  wrapper.find(Form.Input).at(0).simulate('change', {
+  wrapper.find(TextField).at(0).simulate('change', {
     target: {
       value: email,
     },
   });
 
-  await wrapper.instance().reset();
+  await wrapper.instance().reset({ preventDefault: jest.fn() });
   wrapper.update();
 
-  expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(Message).prop('children')).toBe('Password reset e-mail has been sent.');
-  expect(wrapper.find(Form.Input).at(0).prop('error')).toBeFalsy();
+  expect(wrapper.find(Alert).exists()).toBe(true);
+  expect(wrapper.find(Alert).prop('children')).toBe('Password reset e-mail has been sent.');
+  expect(wrapper.find(TextField).at(0).prop('error')).toBeFalsy();
 });

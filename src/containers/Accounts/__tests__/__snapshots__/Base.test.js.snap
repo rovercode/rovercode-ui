@@ -37,7 +37,7 @@ exports[`Base renders on the page with no errors 1`] = `
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "WrappedComponent": [Function],
-            "displayName": "withCookies(injectIntl(Connect(LoginCallback)))",
+            "displayName": "withCookies(Connect(LoginCallback))",
             "render": [Function],
           }
         }
