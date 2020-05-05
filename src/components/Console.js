@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { FormattedMessage } from 'react-intl';
@@ -32,6 +33,12 @@ class Console extends Component {
   render() {
     const { console } = this.props;
 
+    const ClearButton = withStyles(() => ({
+      root: {
+        marginTop: '10px',
+      },
+    }))(Button);
+
     /* eslint-disable react/no-array-index-key */
     return (
       <>
@@ -45,13 +52,13 @@ class Console extends Component {
           }
           <div ref={this.bottomRef} />
         </div>
-        <Button primary onClick={this.handleClear} style={{ marginTop: '10px' }}>
+        <ClearButton variant="contained" color="primary" onClick={this.handleClear}>
           <FormattedMessage
             id="app.console.clear"
             description="Button label to clear the console"
             defaultMessage="Clear"
           />
-        </Button>
+        </ClearButton>
       </>
     );
   }
