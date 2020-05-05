@@ -1,26 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NotFound renders on the page with no errors 1`] = `
-<Grid
-  centered={true}
+<WithStyles(ForwardRef(Grid))
+  alignItems="center"
+  container={true}
+  direction="column"
+  justify="center"
+  spacing={4}
 >
-  <GridRow>
-    <Image
-      as="img"
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+  >
+    <img
+      alt="Not Found"
       src={Object {}}
-      ui={true}
     />
-  </GridRow>
-  <GridRow>
-    <Header
-      size="huge"
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+  >
+    <WithStyles(ForwardRef(Typography))
+      variant="h4"
     >
       <FormattedMessage
         defaultMessage="Sorry, the page you're looking for doesn't exist."
         id="app.global.not_exist"
         values={Object {}}
       />
-    </Header>
-  </GridRow>
-</Grid>
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
 `;
