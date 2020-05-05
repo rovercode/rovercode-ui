@@ -21,11 +21,11 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
         values={Object {}}
       />
        
-      <a
+      <WithStyles(ForwardRef(Link))
         href="https://en.wikipedia.org/wiki/JavaScript"
       >
         JavaScript
-      </a>
+      </WithStyles(ForwardRef(Link))>
       :
     </WithStyles(ForwardRef(DialogTitle))>
     <WithStyles(ForwardRef(DialogContent))

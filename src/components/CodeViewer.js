@@ -4,6 +4,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  Link,
 } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -64,9 +65,9 @@ class CodeViewer extends Component {
               defaultMessage="Here is the code in"
             />
             {' '}
-            <a href="https://en.wikipedia.org/wiki/JavaScript">
+            <Link href="https://en.wikipedia.org/wiki/JavaScript">
               JavaScript
-            </a>
+            </Link>
             :
           </DialogTitle>
           <DialogContent dividers>
