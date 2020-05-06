@@ -3,16 +3,22 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import {
+  withStyles,
+} from '@material-ui/core/styles';
+import {
+  Box,
+  Grid,
   Button,
-  Dropdown,
-  Image,
+  Typography,
+  Toolbar,
+  AppBar,
   Menu,
-} from 'semantic-ui-react';
+  MenuItem,
+} from '@material-ui/core';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { FormattedMessage } from 'react-intl';
 import { withCookies, Cookies } from 'react-cookie';
 import { logout as actionLogout } from '@/actions/auth';
-
-import logoImage from '@/assets/images/rovercode_logo_magenta.png';
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(actionLogout()),
@@ -24,6 +30,7 @@ class TopNav extends Component {
 
     this.state = {
       redirectToLogin: false,
+      userMenuAnchorElement: null,
     };
   }
 
@@ -36,9 +43,27 @@ class TopNav extends Component {
     this.setState({ redirectToLogin: true });
   }
 
+  handleMenuOpen = (event) => {
+    this.setState({
+      userMenuAnchorElement: event.target,
+    });
+  };
+
+  handleMenuClose = () => {
+    this.setState({
+      userMenuAnchorElement: null,
+    });
+  };
+
   render() {
     const { userName } = this.props;
-    const { redirectToLogin } = this.state;
+    const { redirectToLogin, userMenuAnchorElement } = this.state;
+
+    const NavBarSpacer = withStyles((theme) => ({
+      root: {
+        marginBottom: theme.spacing(2),
+      },
+    }))(Box);
 
     return (
       <>
@@ -47,39 +72,150 @@ class TopNav extends Component {
             <Redirect to="/accounts/login" />
           ) : (null)
         }
-        <Menu inverted color="black">
-          <Menu.Item as={Link} to="/">
-            <Image src={logoImage} size="mini" />
-          </Menu.Item>
-          <Menu.Item as={Link} to="/programs">
-            <FormattedMessage
-              id="app.top_nav.programs"
-              description="Button label to go to programs"
-              defaultMessage="Programs"
-            />
-          </Menu.Item>
-          <Menu.Menu position="right">
-            <Dropdown item text={userName}>
-              <Dropdown.Menu>
-                <Dropdown.Item as={Link} to="/user/settings">
+
+        <div>
+          <AppBar position="static" color="secondary">
+            <Toolbar>
+              <Grid item container direction="row" spacing={4}>
+                <Grid item xs={2}>
+                  <Box
+                    display="flex"
+                    justifyContent="left"
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                      component={Link}
+                      to="/"
+                    >
+                      <Typography variant="h6">
+                        Logo/Connect
+                      </Typography>
+                    </Button>
+                  </Box>
+                </Grid>
+                <Grid item xs={2}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                      component={Link}
+                      to="/programs"
+                    >
+                      <Typography variant="h6">
+                        <FormattedMessage
+                          id="app.top_nav.my_programs"
+                          description="Button label to go to the user's own programs"
+                          defaultMessage="My Programs"
+                        />
+                      </Typography>
+                    </Button>
+                  </Box>
+                </Grid>
+                <Grid item xs={2}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                      component={Link}
+                      to="/programs"
+                    >
+                      <Typography variant="h6">
+                        <FormattedMessage
+                          id="app.top_nav.community_programs"
+                          description="Button label to go to the community programs"
+                          defaultMessage="Community Programs"
+                        />
+                      </Typography>
+                    </Button>
+                  </Box>
+                </Grid>
+                <Grid item xs={2}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                      component={Link}
+                      to="/programs"
+                    >
+                      <Typography variant="h6">
+                        <FormattedMessage
+                          id="app.top_nav.courses"
+                          description="Button label to go to the courses"
+                          defaultMessage="Courses"
+                        />
+                      </Typography>
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+              <Button
+                size="large"
+                variant="contained"
+                disableElevation
+                color="secondary"
+                endIcon={<ArrowDropDownIcon />}
+                aria-label="account of current user"
+                aria-controls="user-menu"
+                aria-haspopup="true"
+                onClick={this.handleMenuOpen}
+              >
+                <Typography variant="h6">
+                  {userName}
+                </Typography>
+              </Button>
+              <Menu
+                id="user-menu"
+                anchorEl={userMenuAnchorElement}
+                keepMounted
+                open={Boolean(userMenuAnchorElement)}
+                onClose={this.handleMenuClose}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+              >
+                <MenuItem component={Link} to="/user/settings">
                   <FormattedMessage
                     id="app.top_nav.settings"
                     description="Button label to go to settings"
                     defaultMessage="Settings"
                   />
-                </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item as={Button} onClick={this.signout}>
+                </MenuItem>
+                <MenuItem onClick={this.signout}>
                   <FormattedMessage
                     id="app.top_nav.sign_out"
                     description="Button label to sign out"
                     defaultMessage="Sign Out"
                   />
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Menu.Menu>
-        </Menu>
+                </MenuItem>
+              </Menu>
+            </Toolbar>
+          </AppBar>
+          <NavBarSpacer />
+        </div>
       </>
     );
   }
