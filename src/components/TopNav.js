@@ -5,15 +5,17 @@ import { Link, Redirect } from 'react-router-dom';
 import {
   withStyles,
 } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import {
+  Box,
+  Grid,
+  Button,
+  Typography,
+  Toolbar,
+  AppBar,
+  Menu,
+  MenuItem,
+} from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import Grid from '@material-ui/core/Grid';
-import { Box } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
 import { withCookies, Cookies } from 'react-cookie';
 import { logout as actionLogout } from '@/actions/auth';
