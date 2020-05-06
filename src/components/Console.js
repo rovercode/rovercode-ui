@@ -33,9 +33,9 @@ class Console extends Component {
   render() {
     const { console } = this.props;
 
-    const ClearButton = withStyles(() => ({
+    const ClearButton = withStyles((theme) => ({
       root: {
-        marginTop: '10px',
+        marginTop: theme.spacing(2),
       },
     }))(Button);
 
