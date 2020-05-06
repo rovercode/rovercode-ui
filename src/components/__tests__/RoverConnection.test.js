@@ -1,6 +1,4 @@
 import React from 'react';
-import { Button, Popup } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
 import { EXECUTION_STOP } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import RoverConnection from '../RoverConnection';
@@ -53,16 +51,33 @@ describe('The RoverConnection component', () => {
         rover={rover}
       />,
     ).dive().dive();
+    wrapper.setState({ supportedPlatform: true });
   });
 
-  test('renders on the page with no errors', () => {
+  test('renders disconnect button when connected', () => {
+    wrapper = mountWithIntl(
+      <RoverConnection
+        changeExecutionState={changeExecutionState}
+        changeLeftSensorState={changeLeftSensorState}
+        changeRightSensorState={changeRightSensorState}
+        connectToRover={connectToRover}
+        disconnectFromRover={disconnectFromRover}
+        scanForRover={scanForRover}
+        write={write}
+        rover={rover}
+      />,
+    );
+
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(FormattedMessage).prop('defaultMessage')).toEqual('Disconnect from');
-    expect(wrapper.find(Button).children().at(1).text()).toBe(' abcde');
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))')
+      .find('WithStyles(ForwardRef(Typography))').at(0).text()).toBe(' abcde');
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))')
+      .find('WithStyles(ForwardRef(Typography))').at(1).text()).toBe('Disconnect');
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))').prop('disabled')).toBe(undefined);
   });
 
   test('renders connect button when not connected', () => {
-    wrapper = shallowWithIntl(
+    wrapper = mountWithIntl(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -72,13 +87,41 @@ describe('The RoverConnection component', () => {
         scanForRover={scanForRover}
         write={write}
       />,
-    ).dive().dive();
+    );
 
-    expect(wrapper.find(FormattedMessage).prop('defaultMessage')).toEqual('Connect to rover');
-    expect(wrapper.find(Button).prop('disabled')).toBe(false);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))')
+      .find('WithStyles(ForwardRef(Typography))').at(0).text()).toBe('No Rover');
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))')
+      .find('WithStyles(ForwardRef(Typography))').at(1).text()).toBe('Connect');
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))').prop('disabled')).toBe(false);
   });
 
   test('renders disabled connect button when on unsupported platform', () => {
+    wrapper = mountWithIntl(
+      <RoverConnection
+        changeExecutionState={changeExecutionState}
+        changeLeftSensorState={changeLeftSensorState}
+        changeRightSensorState={changeRightSensorState}
+        connectToRover={connectToRover}
+        disconnectFromRover={disconnectFromRover}
+        scanForRover={scanForRover}
+        write={write}
+      />,
+    );
+    wrapper.find('RoverConnection').instance().setState({ supportedPlatform: false });
+    wrapper.update();
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))').prop('disabled')).toBe(true);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Popover)))').prop('open')).toBe(false);
+    wrapper.find('span').at(0).simulate('mouseEnter');
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Popover)))').prop('open')).toBe(true);
+    wrapper.find('span').at(0).simulate('mouseLeave');
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Popover)))').prop('open')).toBe(false);
+  });
+
+  test('should set and clear menu anchor element when menu is opening and closing', () => {
     wrapper = shallowWithIntl(
       <RoverConnection
         changeExecutionState={changeExecutionState}
@@ -91,10 +134,16 @@ describe('The RoverConnection component', () => {
       />,
     ).dive().dive();
 
-    wrapper.instance().supportedPlatform = jest.fn(() => false);
-    wrapper.instance().forceUpdate();
+    wrapper.setState({ supportedPlatform: false });
 
-    expect(wrapper.find(Popup).exists()).toBe(true);
+    expect(wrapper.instance().state.unsupportedPopoverAnchorElement).toBe(null);
+    expect(wrapper.find('span').prop('aria-owns')).toBe(undefined);
+    wrapper.instance().handlePopoverOpen({ target: 'element' });
+    expect(wrapper.instance().state.unsupportedPopoverAnchorElement).toBe('element');
+    expect(wrapper.find('span').prop('aria-owns')).toBe('mouse-over-popover');
+    wrapper.instance().handlePopoverClose();
+    expect(wrapper.instance().state.unsupportedPopoverAnchorElement).toBe(null);
+    expect(wrapper.find('span').prop('aria-owns')).toBe(undefined);
   });
 
   test('changes light sensor state on message', () => {
@@ -276,7 +325,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('disconnects from rover', () => {
-    wrapper.find(Button).simulate('click');
+    wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))').simulate('click');
 
     expect(changeExecutionState).toHaveBeenCalledWith(EXECUTION_STOP);
     expect(disconnectFromRover).toHaveBeenCalledWith(rover);

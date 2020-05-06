@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import { Button, Popup } from 'semantic-ui-react';
+import {
+  Button,
+  Typography,
+  Popover,
+} from '@material-ui/core';
+import { grey } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
 import { EXECUTION_STOP } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
+
+import LogoIcon from './LogoIcon';
 
 class RoverConnection extends Component {
   constructor(props) {
@@ -24,7 +32,24 @@ class RoverConnection extends Component {
       'battery-sens': this.handleBatterySensor,
       'dewpoint-sens': this.handleDewPointSensor,
     };
+
+    this.state = {
+      unsupportedPopoverAnchorElement: null,
+      supportedPlatform: navigator && navigator.bluetooth,
+    };
   }
+
+  handlePopoverOpen = (event) => {
+    this.setState({
+      unsupportedPopoverAnchorElement: event.target,
+    });
+  };
+
+  handlePopoverClose = () => {
+    this.setState({
+      unsupportedPopoverAnchorElement: null,
+    });
+  };
 
   handleLightSensor = (params) => {
     const { changeLeftSensorState, changeRightSensorState, write } = this.props;
@@ -144,42 +169,154 @@ class RoverConnection extends Component {
     disconnectFromRover(rover);
   }
 
-  supportedPlatform = () => navigator && navigator.bluetooth
-
   render() {
     const { intl, rover } = this.props;
+    const { unsupportedPopoverAnchorElement, supportedPlatform } = this.state;
 
     const popupText = intl.formatMessage({
       id: 'app.rover_connection.unsupported_platform',
       description: 'Popup text for unsupported platform',
-      defaultMessage: 'Please use a supported platform',
+      defaultMessage: 'This browser or device is not supported. '
+        + 'Try using Google Chrome or Microsoft Edge '
+        + 'on a PC, Macbook, or Android tablet. Also, '
+        + 'make sure Bluetooth is enabled.',
     });
+
+    const PopoverMessage = withStyles(() => ({
+      root: {
+        pointerEvents: 'none',
+      },
+    }))(Popover);
+
+    const ConnectionButton = withStyles(() => ({
+      root: {
+        backgroundColor: 'white',
+        '&:disabled': {
+          backgroundColor: grey[400],
+        },
+      },
+    }))(Button);
+
+    const NoRoverText = withStyles(() => ({
+      root: {
+        color: grey[600],
+      },
+    }))(Typography);
+
+    const ConnectText = withStyles(() => ({
+      root: {
+        textTransform: 'uppercase',
+      },
+    }))(Typography);
+
+    const DisconnectText = withStyles(() => ({
+      root: {
+        textTransform: 'uppercase',
+        color: grey[600],
+      },
+    }))(Typography);
+
+    const PopoverMessageText = withStyles((theme) => ({
+      root: {
+        padding: theme.spacing(2),
+        pointerEvents: 'none',
+      },
+    }))(Typography);
+
+    const NavBarLogo = withStyles((theme) => {
+      let color = grey[800];
+      if (!supportedPlatform) { color = theme.palette.warning.dark; }
+      if (rover) { color = theme.palette.primary.main; }
+      return {
+        root: { color },
+      };
+    })(LogoIcon);
 
     if (rover) {
       return (
-        <Button primary fluid onClick={this.onDisconnected}>
-          <FormattedMessage
-            id="app.rover_connection.disconnect"
-            description="Button label to disconnect from the rover"
-            defaultMessage="Disconnect from"
-          />
-          {` ${rover.name.slice(15, 20)}`}
-        </Button>
+        <ConnectionButton
+          size="large"
+          variant="contained"
+          disableElevation
+          startIcon={<NavBarLogo style={{ fontSize: 50 }} />}
+          onClick={this.onDisconnected}
+        >
+          <div>
+            <Typography variant="h6">
+              {` ${rover.name.slice(15, 20)}`}
+              <br />
+            </Typography>
+            <DisconnectText color="primary">
+              <FormattedMessage
+                id="app.rover_connection.disconnect"
+                description="Button label to disconnect from the rover"
+                defaultMessage="Disconnect"
+              />
+            </DisconnectText>
+          </div>
+        </ConnectionButton>
       );
     }
 
+    const popoverOpen = Boolean(unsupportedPopoverAnchorElement);
+
     const button = (
-      <Button primary fluid disabled={!this.supportedPlatform()} onClick={this.connect}>
-        <FormattedMessage
-          id="app.rover_connection.connect"
-          description="Button label to connect to the rover"
-          defaultMessage="Connect to rover"
-        />
-      </Button>
+      <ConnectionButton
+        size="large"
+        variant="contained"
+        disableElevation
+        onClick={this.connect}
+        startIcon={(<NavBarLogo style={{ fontSize: 50 }} />)}
+        disabled={!supportedPlatform}
+      >
+        <div>
+          <NoRoverText variant="h6">
+            <FormattedMessage
+              id="app.rover_connection.no_rover"
+              description="Label when no rover is connected"
+              defaultMessage="No Rover"
+            />
+            <br />
+          </NoRoverText>
+          <ConnectText color={supportedPlatform ? 'primary' : 'initial'}>
+            <FormattedMessage
+              id="app.rover_connection.connect"
+              description="Button label to connect to the rover"
+              defaultMessage="Connect"
+            />
+          </ConnectText>
+        </div>
+      </ConnectionButton>
     );
 
-    return this.supportedPlatform() ? button : (
-      <Popup content={popupText} trigger={<span>{button}</span>} />
+    return supportedPlatform ? button : (
+      <>
+        <span
+          aria-owns={popoverOpen ? 'mouse-over-popover' : undefined}
+          aria-haspopup="true"
+          onMouseEnter={this.handlePopoverOpen}
+          onMouseLeave={this.handlePopoverClose}
+        >
+          {button}
+        </span>
+        <PopoverMessage
+          id="mouse-over-popover"
+          open={popoverOpen}
+          anchorEl={unsupportedPopoverAnchorElement}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          onClose={this.handlePopoverClose}
+          disableRestoreFocus
+        >
+          <PopoverMessageText variant="h6">{popupText}</PopoverMessageText>
+        </PopoverMessage>
+      </>
     );
   }
 }

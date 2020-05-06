@@ -9,8 +9,6 @@ import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
-import RoverConnection from '@/containers/RoverConnection';
-
 import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
@@ -58,10 +56,6 @@ const MissionControl = ({ location }) => (
         </Workspace>
       </Grid.Column>
       <Grid.Column width={3}>
-        <Grid.Row style={{ marginLeft: '20px', marginRight: '20px' }}>
-          <RoverConnection />
-        </Grid.Row>
-        <Divider />
         <Grid.Row>
           <Header as="h2" textAlign="center">
             <FormattedMessage

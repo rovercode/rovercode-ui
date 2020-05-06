@@ -20,6 +20,8 @@ import { FormattedMessage } from 'react-intl';
 import { withCookies, Cookies } from 'react-cookie';
 import { logout as actionLogout } from '@/actions/auth';
 
+import RoverConnection from '@/containers/RoverConnection';
+
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(actionLogout()),
 });
@@ -65,6 +67,12 @@ class TopNav extends Component {
       },
     }))(Box);
 
+    const NavButtonBox = withStyles(() => ({
+      root: {
+        height: '100%',
+      },
+    }))(Box);
+
     return (
       <>
         {
@@ -82,22 +90,11 @@ class TopNav extends Component {
                     display="flex"
                     justifyContent="left"
                   >
-                    <Button
-                      size="large"
-                      variant="contained"
-                      disableElevation
-                      color="secondary"
-                      component={Link}
-                      to="/"
-                    >
-                      <Typography variant="h6">
-                        Logo/Connect
-                      </Typography>
-                    </Button>
+                    <RoverConnection />
                   </Box>
                 </Grid>
                 <Grid item xs={2}>
-                  <Box
+                  <NavButtonBox
                     display="flex"
                     justifyContent="center"
                   >
@@ -117,10 +114,10 @@ class TopNav extends Component {
                         />
                       </Typography>
                     </Button>
-                  </Box>
+                  </NavButtonBox>
                 </Grid>
                 <Grid item xs={2}>
-                  <Box
+                  <NavButtonBox
                     display="flex"
                     justifyContent="center"
                   >
@@ -140,10 +137,10 @@ class TopNav extends Component {
                         />
                       </Typography>
                     </Button>
-                  </Box>
+                  </NavButtonBox>
                 </Grid>
                 <Grid item xs={2}>
-                  <Box
+                  <NavButtonBox
                     display="flex"
                     justifyContent="center"
                   >
@@ -163,7 +160,7 @@ class TopNav extends Component {
                         />
                       </Typography>
                     </Button>
-                  </Box>
+                  </NavButtonBox>
                 </Grid>
               </Grid>
               <Button

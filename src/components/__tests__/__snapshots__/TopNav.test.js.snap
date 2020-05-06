@@ -22,40 +22,14 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
               display="flex"
               justifyContent="left"
             >
-              <WithStyles(ForwardRef(Button))
-                color="secondary"
-                component={
-                  Object {
-                    "$$typeof": Symbol(react.forward_ref),
-                    "displayName": "Link",
-                    "propTypes": Object {
-                      "innerRef": [Function],
-                      "onClick": [Function],
-                      "replace": [Function],
-                      "target": [Function],
-                      "to": [Function],
-                    },
-                    "render": [Function],
-                  }
-                }
-                disableElevation={true}
-                size="large"
-                to="/"
-                variant="contained"
-              >
-                <WithStyles(ForwardRef(Typography))
-                  variant="h6"
-                >
-                  Logo/Connect
-                </WithStyles(ForwardRef(Typography))>
-              </WithStyles(ForwardRef(Button))>
+              <Connect(injectIntl(RoverConnection)) />
             </Styled(MuiBox)>
           </WithStyles(ForwardRef(Grid))>
           <WithStyles(ForwardRef(Grid))
             item={true}
             xs={2}
           >
-            <Styled(MuiBox)
+            <WithStyles(Styled(MuiBox))
               display="flex"
               justifyContent="center"
             >
@@ -90,13 +64,13 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
                   />
                 </WithStyles(ForwardRef(Typography))>
               </WithStyles(ForwardRef(Button))>
-            </Styled(MuiBox)>
+            </WithStyles(Styled(MuiBox))>
           </WithStyles(ForwardRef(Grid))>
           <WithStyles(ForwardRef(Grid))
             item={true}
             xs={2}
           >
-            <Styled(MuiBox)
+            <WithStyles(Styled(MuiBox))
               display="flex"
               justifyContent="center"
             >
@@ -131,13 +105,13 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
                   />
                 </WithStyles(ForwardRef(Typography))>
               </WithStyles(ForwardRef(Button))>
-            </Styled(MuiBox)>
+            </WithStyles(Styled(MuiBox))>
           </WithStyles(ForwardRef(Grid))>
           <WithStyles(ForwardRef(Grid))
             item={true}
             xs={2}
           >
-            <Styled(MuiBox)
+            <WithStyles(Styled(MuiBox))
               display="flex"
               justifyContent="center"
             >
@@ -172,7 +146,7 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
                   />
                 </WithStyles(ForwardRef(Typography))>
               </WithStyles(ForwardRef(Button))>
-            </Styled(MuiBox)>
+            </WithStyles(Styled(MuiBox))>
           </WithStyles(ForwardRef(Grid))>
         </WithStyles(ForwardRef(Grid))>
         <WithStyles(ForwardRef(Button))
