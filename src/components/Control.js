@@ -55,13 +55,9 @@ const Control = ({
     defaultMessage: 'Reset',
   });
 
-  const RunButton = withStyles((theme) => ({
+  const RunButton = withStyles(() => ({
     root: {
       color: '#FFFFFF',
-      backgroundColor: theme.palette.primary.main,
-      '&:hover': {
-        backgroundColor: theme.palette.primary.main,
-      },
       width: '42px',
       height: '42px',
       minWidth: '0px',
@@ -76,7 +72,7 @@ const Control = ({
       color: '#FFFFFF',
       backgroundColor: theme.palette.warning.main,
       '&:hover': {
-        backgroundColor: theme.palette.warning.main,
+        backgroundColor: theme.palette.warning.dark,
       },
       width: '24px',
       height: '24px',
@@ -87,13 +83,9 @@ const Control = ({
     },
   }))(Button);
 
-  const ResetButton = withStyles((theme) => ({
+  const ResetButton = withStyles(() => ({
     root: {
       color: '#FFFFFF',
-      backgroundColor: theme.palette.secondary.main,
-      '&:hover': {
-        backgroundColor: theme.palette.secondary.main,
-      },
       width: '24px',
       height: '24px',
       minWidth: '0px',
@@ -108,7 +100,7 @@ const Control = ({
       color: '#FFFFFF',
       backgroundColor: theme.palette.error.main,
       '&:hover': {
-        backgroundColor: theme.palette.error.main,
+        backgroundColor: theme.palette.error.dark,
       },
       width: '42px',
       height: '42px',
@@ -140,6 +132,7 @@ const Control = ({
               <Tooltip title={resetTitle}>
                 <ResetButton
                   variant="contained"
+                  color="secondary"
                   onClick={() => changeExecutionState(EXECUTION_RESET)}
                   disabled={!isConnected}
                 >
@@ -151,6 +144,7 @@ const Control = ({
               <Tooltip title={runTitle}>
                 <RunButton
                   variant="contained"
+                  color="primary"
                   onClick={() => changeExecutionState(EXECUTION_RUN)}
                   disabled={!isConnected}
                 >

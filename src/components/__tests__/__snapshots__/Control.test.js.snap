@@ -1042,6 +1042,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                       <WithStyles(WithStyles(ForwardRef(Button)))
                         aria-describedby={null}
                         className=""
+                        color="secondary"
                         disabled={false}
                         onBlur={[Function]}
                         onClick={[Function]}
@@ -1061,6 +1062,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                               "root": "WithStyles(ForwardRef(Button))-root-115",
                             }
                           }
+                          color="secondary"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -1108,6 +1110,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                                 "textSizeSmall": "MuiButton-textSizeSmall",
                               }
                             }
+                            color="secondary"
                             disabled={false}
                             onBlur={[Function]}
                             onClick={[Function]}
@@ -1121,7 +1124,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                           >
                             <WithStyles(ForwardRef(ButtonBase))
                               aria-describedby={null}
-                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained"
+                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
                               component="button"
                               disabled={false}
                               focusRipple={true}
@@ -1138,7 +1141,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                             >
                               <ForwardRef(ButtonBase)
                                 aria-describedby={null}
-                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained"
+                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
                                 classes={
                                   Object {
                                     "disabled": "Mui-disabled",
@@ -1162,7 +1165,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                               >
                                 <button
                                   aria-describedby={null}
-                                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained"
+                                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
                                   disabled={false}
                                   onBlur={[Function]}
                                   onClick={[Function]}
@@ -1252,7 +1255,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                       <ForwardRef(Popper)
                         anchorEl={
                           <button
-                            class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained"
+                            class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
                             tabindex="0"
                             title="Reset"
                             type="button"
@@ -1437,6 +1440,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                       <WithStyles(WithStyles(ForwardRef(Button)))
                         aria-describedby={null}
                         className=""
+                        color="primary"
                         disabled={false}
                         onBlur={[Function]}
                         onClick={[Function]}
@@ -1456,6 +1460,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                               "root": "WithStyles(ForwardRef(Button))-root-157",
                             }
                           }
+                          color="primary"
                           disabled={false}
                           onBlur={[Function]}
                           onClick={[Function]}
@@ -1503,6 +1508,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                                 "textSizeSmall": "MuiButton-textSizeSmall",
                               }
                             }
+                            color="primary"
                             disabled={false}
                             onBlur={[Function]}
                             onClick={[Function]}
@@ -1516,7 +1522,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                           >
                             <WithStyles(ForwardRef(ButtonBase))
                               aria-describedby={null}
-                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained"
+                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
                               component="button"
                               disabled={false}
                               focusRipple={true}
@@ -1533,7 +1539,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                             >
                               <ForwardRef(ButtonBase)
                                 aria-describedby={null}
-                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained"
+                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
                                 classes={
                                   Object {
                                     "disabled": "Mui-disabled",
@@ -1557,7 +1563,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                               >
                                 <button
                                   aria-describedby={null}
-                                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained"
+                                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
                                   disabled={false}
                                   onBlur={[Function]}
                                   onClick={[Function]}
@@ -1647,7 +1653,7 @@ exports[`The Control component renders on the page with no errors in stop state 
                       <ForwardRef(Popper)
                         anchorEl={
                           <button
-                            class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained"
+                            class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
                             tabindex="0"
                             title="Run"
                             type="button"
