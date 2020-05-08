@@ -392,9 +392,9 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 <div
                   style={
                     Object {
-                      "bottom": 30,
+                      "bottom": 0,
                       "position": "absolute",
-                      "right": 100,
+                      "right": 0,
                     }
                   }
                 >

@@ -497,7 +497,7 @@ class Workspace extends Component {
           ) : (null)
         }
         <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
-          <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
+          <div style={{ position: 'absolute', bottom: 0, right: 0 }}>
             { React.cloneElement(children, { isConnected: !!rover.rover }) }
           </div>
         </div>
