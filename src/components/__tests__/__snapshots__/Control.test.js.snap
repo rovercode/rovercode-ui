@@ -1050,11 +1050,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                         onMouseOver={[Function]}
                         onTouchEnd={[Function]}
                         onTouchStart={[Function]}
-                        style={
-                          Object {
-                            "verticalAlign": "bottom",
-                          }
-                        }
                         title="Reset"
                         variant="contained"
                       >
@@ -1074,11 +1069,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                           onMouseOver={[Function]}
                           onTouchEnd={[Function]}
                           onTouchStart={[Function]}
-                          style={
-                            Object {
-                              "verticalAlign": "bottom",
-                            }
-                          }
                           title="Reset"
                           variant="contained"
                         >
@@ -1126,11 +1116,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                             onMouseOver={[Function]}
                             onTouchEnd={[Function]}
                             onTouchStart={[Function]}
-                            style={
-                              Object {
-                                "verticalAlign": "bottom",
-                              }
-                            }
                             title="Reset"
                             variant="contained"
                           >
@@ -1148,11 +1133,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                               onMouseOver={[Function]}
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
-                              style={
-                                Object {
-                                  "verticalAlign": "bottom",
-                                }
-                              }
                               title="Reset"
                               type="button"
                             >
@@ -1177,11 +1157,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                                 onMouseOver={[Function]}
                                 onTouchEnd={[Function]}
                                 onTouchStart={[Function]}
-                                style={
-                                  Object {
-                                    "verticalAlign": "bottom",
-                                  }
-                                }
                                 title="Reset"
                                 type="button"
                               >
@@ -1202,11 +1177,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                                   onTouchEnd={[Function]}
                                   onTouchMove={[Function]}
                                   onTouchStart={[Function]}
-                                  style={
-                                    Object {
-                                      "verticalAlign": "bottom",
-                                    }
-                                  }
                                   tabIndex={0}
                                   title="Reset"
                                   type="button"
@@ -1283,7 +1253,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                         anchorEl={
                           <button
                             class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained"
-                            style="vertical-align: bottom;"
                             tabindex="0"
                             title="Reset"
                             type="button"
@@ -1871,11 +1840,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                         onMouseOver={[Function]}
                         onTouchEnd={[Function]}
                         onTouchStart={[Function]}
-                        style={
-                          Object {
-                            "verticalAlign": "bottom",
-                          }
-                        }
                         title="Step"
                         variant="contained"
                       >
@@ -1895,11 +1859,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                           onMouseOver={[Function]}
                           onTouchEnd={[Function]}
                           onTouchStart={[Function]}
-                          style={
-                            Object {
-                              "verticalAlign": "bottom",
-                            }
-                          }
                           title="Step"
                           variant="contained"
                         >
@@ -1947,11 +1906,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                             onMouseOver={[Function]}
                             onTouchEnd={[Function]}
                             onTouchStart={[Function]}
-                            style={
-                              Object {
-                                "verticalAlign": "bottom",
-                              }
-                            }
                             title="Step"
                             variant="contained"
                           >
@@ -1969,11 +1923,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                               onMouseOver={[Function]}
                               onTouchEnd={[Function]}
                               onTouchStart={[Function]}
-                              style={
-                                Object {
-                                  "verticalAlign": "bottom",
-                                }
-                              }
                               title="Step"
                               type="button"
                             >
@@ -1998,11 +1947,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                                 onMouseOver={[Function]}
                                 onTouchEnd={[Function]}
                                 onTouchStart={[Function]}
-                                style={
-                                  Object {
-                                    "verticalAlign": "bottom",
-                                  }
-                                }
                                 title="Step"
                                 type="button"
                               >
@@ -2023,11 +1967,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                                   onTouchEnd={[Function]}
                                   onTouchMove={[Function]}
                                   onTouchStart={[Function]}
-                                  style={
-                                    Object {
-                                      "verticalAlign": "bottom",
-                                    }
-                                  }
                                   tabIndex={0}
                                   title="Step"
                                   type="button"
@@ -2104,7 +2043,6 @@ exports[`The Control component renders on the page with no errors in stop state 
                         anchorEl={
                           <button
                             class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
-                            style="vertical-align: bottom;"
                             tabindex="0"
                             title="Step"
                             type="button"

@@ -142,7 +142,6 @@ const Control = ({
                 <ResetButton
                   variant="contained"
                   onClick={() => changeExecutionState(EXECUTION_RESET)}
-                  style={{ verticalAlign: 'bottom' }}
                   disabled={!isConnected}
                 >
                   <Replay />
@@ -165,7 +164,6 @@ const Control = ({
                 <StepButton
                   variant="contained"
                   onClick={() => changeExecutionState(EXECUTION_STEP)}
-                  style={{ verticalAlign: 'bottom' }}
                   disabled={!isConnected}
                 >
                   <SkipNext />
