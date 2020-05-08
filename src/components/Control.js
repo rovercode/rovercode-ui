@@ -7,7 +7,6 @@ import {
   SkipNext,
   Stop,
 } from '@material-ui/icons';
-import { red } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
 import { hot } from 'react-hot-loader';
 import { injectIntl } from 'react-intl';
@@ -56,12 +55,12 @@ const Control = ({
     defaultMessage: 'Reset',
   });
 
-  const RunButton = withStyles(() => ({
+  const RunButton = withStyles((theme) => ({
     root: {
       color: '#FFFFFF',
-      backgroundColor: '#114BFD',
+      backgroundColor: theme.palette.primary.main,
       '&:hover': {
-        backgroundColor: '#114BFD',
+        backgroundColor: theme.palette.primary.main,
       },
       width: '42px',
       height: '42px',
@@ -72,12 +71,12 @@ const Control = ({
     },
   }))(Button);
 
-  const StepButton = withStyles(() => ({
+  const StepButton = withStyles((theme) => ({
     root: {
       color: '#FFFFFF',
-      backgroundColor: '#FFAD11',
+      backgroundColor: theme.palette.warning.main,
       '&:hover': {
-        backgroundColor: '#FFAD11',
+        backgroundColor: theme.palette.warning.main,
       },
       width: '24px',
       height: '24px',
@@ -88,12 +87,12 @@ const Control = ({
     },
   }))(Button);
 
-  const ResetButton = withStyles(() => ({
+  const ResetButton = withStyles((theme) => ({
     root: {
       color: '#FFFFFF',
-      backgroundColor: '#FF0459',
+      backgroundColor: theme.palette.secondary.main,
       '&:hover': {
-        backgroundColor: '#FF0459',
+        backgroundColor: theme.palette.secondary.main,
       },
       width: '24px',
       height: '24px',
@@ -104,12 +103,12 @@ const Control = ({
     },
   }))(Button);
 
-  const StopButton = withStyles(() => ({
+  const StopButton = withStyles((theme) => ({
     root: {
       color: '#FFFFFF',
-      backgroundColor: red[500],
+      backgroundColor: theme.palette.error.main,
       '&:hover': {
-        backgroundColor: red[500],
+        backgroundColor: theme.palette.error.main,
       },
       width: '42px',
       height: '42px',
