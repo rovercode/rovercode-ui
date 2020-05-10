@@ -10,9 +10,8 @@ import {
   Icon,
   Input,
 } from 'semantic-ui-react';
+import { Pagination } from '@material-ui/lab';
 import { FormattedMessage, injectIntl } from 'react-intl';
-
-import CustomPagination from './CustomPagination';
 
 class ProgramCollection extends Component {
   constructor(props) {
@@ -62,8 +61,8 @@ class ProgramCollection extends Component {
     return name;
   }
 
-  handlePageChange = (e, { activePage }) => this.setState({
-    page: activePage,
+  handlePageChange = (e, page) => this.setState({
+    page,
   }, () => this.update())
 
   handleSearchChange = (event) => this.setState({
@@ -241,10 +240,13 @@ class ProgramCollection extends Component {
           programs.total_pages > 1 ? (
             <Grid centered>
               <Grid.Row>
-                <CustomPagination
-                  defaultActivePage={1}
-                  totalPages={programs.total_pages}
-                  onPageChange={this.handlePageChange}
+                <Pagination
+                  defaultPage={1}
+                  count={programs.total_pages}
+                  showFirstButton
+                  showLastButton
+                  color="secondary"
+                  onChange={this.handlePageChange}
                 />
               </Grid.Row>
             </Grid>

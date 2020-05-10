@@ -6,8 +6,8 @@ import {
   Header,
   Input,
 } from 'semantic-ui-react';
+import { Pagination } from '@material-ui/lab';
 import { FormattedMessage } from 'react-intl';
-import CustomPagination from '../CustomPagination';
 import ProgramCollection from '../ProgramCollection';
 
 let onProgramClick;
@@ -246,9 +246,7 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find(CustomPagination).simulate('pageChange', null, {
-      activePage: 2,
-    });
+    wrapper.find(Pagination).simulate('change', null, 2);
 
     expect(onUpdate).toHaveBeenCalledWith({
       page: 2,
