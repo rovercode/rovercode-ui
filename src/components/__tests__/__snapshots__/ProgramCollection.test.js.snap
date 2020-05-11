@@ -187,10 +187,13 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
     centered={true}
   >
     <GridRow>
-      <CustomPagination
-        defaultActivePage={1}
-        onPageChange={[Function]}
-        totalPages={2}
+      <WithStyles(ForwardRef(Pagination))
+        color="secondary"
+        count={2}
+        defaultPage={1}
+        onChange={[Function]}
+        showFirstButton={true}
+        showLastButton={true}
       />
     </GridRow>
   </Grid>
