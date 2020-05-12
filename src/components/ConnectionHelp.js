@@ -15,7 +15,7 @@ import { HelpOutline } from '@material-ui/icons';
 import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 
-import RoverConnection from '@/containers/RoverConnection';
+import RoverConnection from '@/components/RoverConnection';
 import gigglebotImage from '@/assets/images/connection-help/gigglebot.png';
 import displayImage from '@/assets/images/connection-help/display.png';
 import flashingImage from '@/assets/images/connection-help/flashing.png';
