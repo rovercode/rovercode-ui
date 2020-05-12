@@ -16,17 +16,20 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
         >
           <WithStyles(ForwardRef(Grid))
             item={true}
-            xs={2}
+            xl={2}
+            xs={3}
           >
             <Styled(MuiBox)
               display="flex"
               justifyContent="left"
             >
               <Connect(injectIntl(RoverConnection)) />
+              <injectIntl(ConnectionHelp) />
             </Styled(MuiBox)>
           </WithStyles(ForwardRef(Grid))>
           <WithStyles(ForwardRef(Grid))
             item={true}
+            xl={2}
             xs={2}
           >
             <WithStyles(Styled(MuiBox))
@@ -68,7 +71,8 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
           </WithStyles(ForwardRef(Grid))>
           <WithStyles(ForwardRef(Grid))
             item={true}
-            xs={2}
+            xl={2}
+            xs={3}
           >
             <WithStyles(Styled(MuiBox))
               display="flex"
@@ -109,6 +113,7 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
           </WithStyles(ForwardRef(Grid))>
           <WithStyles(ForwardRef(Grid))
             item={true}
+            xl={2}
             xs={2}
           >
             <WithStyles(Styled(MuiBox))

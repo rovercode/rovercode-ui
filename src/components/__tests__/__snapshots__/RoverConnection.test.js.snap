@@ -57,7 +57,6 @@ exports[`The RoverConnection component renders connect button when not connected
       disableElevation={true}
       disabled={false}
       onClick={[Function]}
-      size="large"
       startIcon={
         <WithStyles(LogoIcon)
           style={
@@ -67,7 +66,7 @@ exports[`The RoverConnection component renders connect button when not connected
           }
         />
       }
-      variant="contained"
+      variant="outlined"
     >
       <WithStyles(ForwardRef(Button))
         classes={
@@ -78,7 +77,6 @@ exports[`The RoverConnection component renders connect button when not connected
         disableElevation={true}
         disabled={false}
         onClick={[Function]}
-        size="large"
         startIcon={
           <WithStyles(LogoIcon)
             style={
@@ -88,7 +86,7 @@ exports[`The RoverConnection component renders connect button when not connected
             }
           />
         }
-        variant="contained"
+        variant="outlined"
       >
         <ForwardRef(Button)
           classes={
@@ -127,7 +125,6 @@ exports[`The RoverConnection component renders connect button when not connected
           disableElevation={true}
           disabled={false}
           onClick={[Function]}
-          size="large"
           startIcon={
             <WithStyles(LogoIcon)
               style={
@@ -137,10 +134,10 @@ exports[`The RoverConnection component renders connect button when not connected
               }
             />
           }
-          variant="contained"
+          variant="outlined"
         >
           <WithStyles(ForwardRef(ButtonBase))
-            className="MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
+            className="MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-outlined MuiButton-disableElevation"
             component="button"
             disabled={false}
             focusRipple={true}
@@ -149,7 +146,7 @@ exports[`The RoverConnection component renders connect button when not connected
             type="button"
           >
             <ForwardRef(ButtonBase)
-              className="MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
+              className="MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-outlined MuiButton-disableElevation"
               classes={
                 Object {
                   "disabled": "Mui-disabled",
@@ -165,7 +162,7 @@ exports[`The RoverConnection component renders connect button when not connected
               type="button"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
+                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-outlined MuiButton-disableElevation"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -186,7 +183,7 @@ exports[`The RoverConnection component renders connect button when not connected
                   className="MuiButton-label"
                 >
                   <span
-                    className="MuiButton-startIcon MuiButton-iconSizeLarge"
+                    className="MuiButton-startIcon MuiButton-iconSizeMedium"
                   >
                     <WithStyles(LogoIcon)
                       style={
@@ -512,7 +509,6 @@ exports[`The RoverConnection component renders disabled connect button when on u
         disableElevation={true}
         disabled={true}
         onClick={[Function]}
-        size="large"
         startIcon={
           <WithStyles(LogoIcon)
             style={
@@ -522,7 +518,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
             }
           />
         }
-        variant="contained"
+        variant="outlined"
       >
         <WithStyles(ForwardRef(Button))
           classes={
@@ -533,7 +529,6 @@ exports[`The RoverConnection component renders disabled connect button when on u
           disableElevation={true}
           disabled={true}
           onClick={[Function]}
-          size="large"
           startIcon={
             <WithStyles(LogoIcon)
               style={
@@ -543,7 +538,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
               }
             />
           }
-          variant="contained"
+          variant="outlined"
         >
           <ForwardRef(Button)
             classes={
@@ -582,7 +577,6 @@ exports[`The RoverConnection component renders disabled connect button when on u
             disableElevation={true}
             disabled={true}
             onClick={[Function]}
-            size="large"
             startIcon={
               <WithStyles(LogoIcon)
                 style={
@@ -592,10 +586,10 @@ exports[`The RoverConnection component renders disabled connect button when on u
                 }
               />
             }
-            variant="contained"
+            variant="outlined"
           >
             <WithStyles(ForwardRef(ButtonBase))
-              className="MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation Mui-disabled"
+              className="MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
               component="button"
               disabled={true}
               focusRipple={true}
@@ -604,7 +598,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
               type="button"
             >
               <ForwardRef(ButtonBase)
-                className="MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation Mui-disabled"
+                className="MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
                 classes={
                   Object {
                     "disabled": "Mui-disabled",
@@ -620,7 +614,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                 type="button"
               >
                 <button
-                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation Mui-disabled Mui-disabled"
+                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-outlined MuiButton-disableElevation Mui-disabled Mui-disabled"
                   disabled={true}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -641,7 +635,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                     className="MuiButton-label"
                   >
                     <span
-                      className="MuiButton-startIcon MuiButton-iconSizeLarge"
+                      className="MuiButton-startIcon MuiButton-iconSizeMedium"
                     >
                       <WithStyles(LogoIcon)
                         style={
@@ -1038,7 +1032,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
           }
         />
       }
-      variant="contained"
+      variant="outlined"
     >
       <WithStyles(ForwardRef(Button))
         classes={
@@ -1058,7 +1052,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
             }
           />
         }
-        variant="contained"
+        variant="outlined"
       >
         <ForwardRef(Button)
           classes={
@@ -1106,10 +1100,10 @@ exports[`The RoverConnection component renders disconnect button when connected 
               }
             />
           }
-          variant="contained"
+          variant="outlined"
         >
           <WithStyles(ForwardRef(ButtonBase))
-            className="MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
+            className="MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-outlined MuiButton-outlinedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
             component="button"
             disabled={false}
             focusRipple={true}
@@ -1118,7 +1112,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
             type="button"
           >
             <ForwardRef(ButtonBase)
-              className="MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
+              className="MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-outlined MuiButton-outlinedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
               classes={
                 Object {
                   "disabled": "Mui-disabled",
@@ -1134,7 +1128,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
               type="button"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
+                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-outlined MuiButton-outlinedSizeLarge MuiButton-sizeLarge MuiButton-disableElevation"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}

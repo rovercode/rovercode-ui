@@ -188,9 +188,12 @@ class RoverConnection extends Component {
       },
     }))(Popover);
 
-    const ConnectionButton = withStyles(() => ({
+    const ConnectionButton = withStyles((theme) => ({
       root: {
-        backgroundColor: 'white',
+        backgroundColor: theme.palette.background.default,
+        '&:hover': {
+          backgroundColor: grey[300],
+        },
         '&:disabled': {
           backgroundColor: grey[400],
         },
@@ -236,7 +239,7 @@ class RoverConnection extends Component {
       return (
         <ConnectionButton
           size="large"
-          variant="contained"
+          variant="outlined"
           disableElevation
           startIcon={<NavBarLogo style={{ fontSize: 50 }} />}
           onClick={this.onDisconnected}
@@ -262,8 +265,7 @@ class RoverConnection extends Component {
 
     const button = (
       <ConnectionButton
-        size="large"
-        variant="contained"
+        variant="outlined"
         disableElevation
         onClick={this.connect}
         startIcon={(<NavBarLogo style={{ fontSize: 50 }} />)}
