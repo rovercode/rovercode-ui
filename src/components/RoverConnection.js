@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
@@ -170,17 +170,8 @@ class RoverConnection extends Component {
   }
 
   render() {
-    const { intl, rover } = this.props;
+    const { rover } = this.props;
     const { unsupportedPopoverAnchorElement, supportedPlatform } = this.state;
-
-    const popupText = intl.formatMessage({
-      id: 'app.rover_connection.unsupported_platform',
-      description: 'Popup text for unsupported platform',
-      defaultMessage: 'This browser or device is not supported. '
-        + 'Try using Google Chrome or Microsoft Edge '
-        + 'on a PC, Macbook, or Android tablet. Also, '
-        + 'make sure Bluetooth is enabled.',
-    });
 
     const PopoverMessage = withStyles(() => ({
       root: {
@@ -316,7 +307,16 @@ class RoverConnection extends Component {
           onClose={this.handlePopoverClose}
           disableRestoreFocus
         >
-          <PopoverMessageText variant="h6">{popupText}</PopoverMessageText>
+          <PopoverMessageText variant="h6">
+            <FormattedMessage
+              id="app.rover_connection.unsupported_platform"
+              description="Popup text for unsupported platform"
+              defaultMessage="This browser or device is not supported.
+                  'Try using Google Chrome or Microsoft Edge '
+                  'on a PC, Macbook, or Android tablet. Also, '
+                  'make sure Bluetooth is enabled."
+            />
+          </PopoverMessageText>
         </PopoverMessage>
       </>
     );
@@ -338,9 +338,6 @@ RoverConnection.propTypes = {
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
-export default hot(module)(injectIntl(RoverConnection));
+export default hot(module)(RoverConnection);

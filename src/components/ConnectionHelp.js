@@ -12,7 +12,7 @@ import {
   withStyles,
 } from '@material-ui/core/styles';
 import { HelpOutline } from '@material-ui/icons';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 
 import RoverConnection from '@/containers/RoverConnection';
@@ -229,4 +229,4 @@ class ConnectionHelp extends Component {
   }
 }
 
-export default hot(module)(injectIntl(ConnectionHelp));
+export default hot(module)(ConnectionHelp);

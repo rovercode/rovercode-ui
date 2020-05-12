@@ -1,11 +1,12 @@
 import React from 'react';
+import { mount, shallow } from 'enzyme';
 
 import ConnectionHelp from '../ConnectionHelp';
 
 describe('The ConnectionHelp component', () => {
 
   test('renders on the page with no errors', () => {
-    const wrapper = mountWithIntl(
+    const wrapper = mount(
       <ConnectionHelp />,
     );
     wrapper.find('ConnectionHelp').instance().setState({ open: true });
@@ -14,9 +15,9 @@ describe('The ConnectionHelp component', () => {
   });
 
   test('creates the correct pxt hex links', () => {
-    const wrapper = shallowWithIntl(
+    const wrapper = shallow(
       <ConnectionHelp />,
-    ).dive().dive();
+    );
 
     wrapper.setState({ host: 'alpha.rovercode.com' });
     wrapper.update();
@@ -45,9 +46,9 @@ describe('The ConnectionHelp component', () => {
 
 
   test('handles opening and closing dialog', () => {
-    const wrapper = shallowWithIntl(
+    const wrapper = shallow(
       <ConnectionHelp />,
-    ).dive().dive();
+    );
 
     expect(wrapper.state('open')).toBe(false);
 

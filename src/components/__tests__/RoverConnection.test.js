@@ -1,4 +1,5 @@
 import React from 'react';
+import { mount, shallow } from 'enzyme';
 import { EXECUTION_STOP } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import RoverConnection from '../RoverConnection';
@@ -39,7 +40,7 @@ describe('The RoverConnection component', () => {
     scanForRover = jest.fn(() => Promise.resolve({ value: rover }));
     write = jest.fn();
 
-    wrapper = shallowWithIntl(
+    wrapper = shallow(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -50,12 +51,12 @@ describe('The RoverConnection component', () => {
         write={write}
         rover={rover}
       />,
-    ).dive().dive();
+    );
     wrapper.setState({ supportedPlatform: true });
   });
 
   test('renders disconnect button when connected', () => {
-    wrapper = mountWithIntl(
+    wrapper = mount(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -77,7 +78,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('renders connect button when not connected', () => {
-    wrapper = mountWithIntl(
+    wrapper = mount(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -98,7 +99,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('renders disabled connect button when on unsupported platform', () => {
-    wrapper = mountWithIntl(
+    wrapper = mount(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -122,7 +123,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('should set and clear menu anchor element when menu is opening and closing', () => {
-    wrapper = shallowWithIntl(
+    wrapper = shallow(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -132,7 +133,7 @@ describe('The RoverConnection component', () => {
         scanForRover={scanForRover}
         write={write}
       />,
-    ).dive().dive();
+    );
 
     wrapper.setState({ supportedPlatform: false });
 

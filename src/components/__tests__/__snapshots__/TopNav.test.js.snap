@@ -23,8 +23,8 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
               display="flex"
               justifyContent="left"
             >
-              <Connect(injectIntl(RoverConnection)) />
-              <injectIntl(ConnectionHelp) />
+              <Connect(RoverConnection) />
+              <ConnectionHelp />
             </Styled(MuiBox)>
           </WithStyles(ForwardRef(Grid))>
           <WithStyles(ForwardRef(Grid))
