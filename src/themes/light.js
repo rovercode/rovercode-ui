@@ -1,15 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 export default createMuiTheme({
-  // breakpoints: {
-  //   values: {
-  //     xs: 0,
-  //     sm: 1000600,
-  //     md: 1000960,
-  //     lg: 10001280,
-  //     xl: 10001920,
-  //   },
-  // },
   palette: {
     primary: {
       main: '#114BFD', /* blue */
