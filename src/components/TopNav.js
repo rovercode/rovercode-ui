@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { green } from '@material-ui/core/colors';
 import {
   withStyles,
 } from '@material-ui/core/styles';
