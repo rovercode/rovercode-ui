@@ -66,15 +66,6 @@ class TopNav extends Component {
     const NavBarSpacer = withStyles((theme) => ({
       root: {
         marginBottom: theme.spacing(2),
-        [theme.breakpoints.down('sm')]: {
-          backgroundColor: theme.palette.secondary.main,
-        },
-        [theme.breakpoints.up('md')]: {
-          backgroundColor: theme.palette.primary.main,
-        },
-        [theme.breakpoints.up('lg')]: {
-          backgroundColor: green[500],
-        },
       },
     }))(Box);
 
