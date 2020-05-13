@@ -1,14 +1,24 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
 
 import ConnectionHelp from '../ConnectionHelp';
 
 describe('The ConnectionHelp component', () => {
+  const mockStore = configureStore();
+  const store = mockStore({
+    user: {
+      // showConnectionHelpOnLogin: false, // TODO
+    },
+  });
 
   test('renders on the page with no errors', () => {
-    const wrapper = mount(
-      <ConnectionHelp />,
-    );
+    const wrapper = mount((
+      <Provider store={store}>
+        <ConnectionHelp />
+      </Provider>
+    ));
     wrapper.find('ConnectionHelp').instance().setState({ open: true });
     wrapper.update();
     expect(wrapper).toMatchSnapshot();
@@ -16,8 +26,8 @@ describe('The ConnectionHelp component', () => {
 
   test('creates the correct pxt hex links', () => {
     const wrapper = shallow(
-      <ConnectionHelp />,
-    );
+      <ConnectionHelp store={store} />,
+    ).find('ConnectionHelp').dive();
 
     wrapper.setState({ host: 'alpha.rovercode.com' });
     wrapper.update();
@@ -47,8 +57,8 @@ describe('The ConnectionHelp component', () => {
 
   test('handles opening and closing dialog', () => {
     const wrapper = shallow(
-      <ConnectionHelp />,
-    );
+      <ConnectionHelp store={store} />,
+    ).find('ConnectionHelp').dive();
 
     expect(wrapper.state('open')).toBe(false);
 

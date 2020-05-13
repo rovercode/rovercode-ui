@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   IconButton,
   Dialog,
@@ -15,11 +17,14 @@ import { HelpOutline } from '@material-ui/icons';
 import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 
-import RoverConnection from '@/components/RoverConnection';
+import RoverConnection from '@/containers/RoverConnection';
 import gigglebotImage from '@/assets/images/connection-help/gigglebot.png';
 import displayImage from '@/assets/images/connection-help/display.png';
 import flashingImage from '@/assets/images/connection-help/flashing.png';
 import deviceWindowsImage from '@/assets/images/connection-help/device-windows.jpg';
+
+// TODO: Use a flag on user model to launch modal immediately
+const mapStateToProps = ({ user }) => ({ user });
 
 class ConnectionHelp extends Component {
   constructor(props) {
@@ -229,4 +234,10 @@ class ConnectionHelp extends Component {
   }
 }
 
-export default hot(module)(ConnectionHelp);
+ConnectionHelp.propTypes = {
+  user: PropTypes.shape({
+    // showConnectionHelpOnLogin: PropTypes.bool.isRequired, // TODO
+  }).isRequired,
+};
+
+export default hot(module)(connect(mapStateToProps)(ConnectionHelp));
