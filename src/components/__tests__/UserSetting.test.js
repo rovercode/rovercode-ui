@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Form, Message } from 'semantic-ui-react';
+import { TextField } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import UserSetting from '../UserSetting';
 
 let editUserPassword;
@@ -62,12 +63,14 @@ describe('The UserSetting component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find(Form.Input).first().simulate('change', null, {
-      name: 'username',
-      value: 'newuser',
+    wrapper.find(TextField).first().simulate('change', {
+      target: {
+        name: 'username',
+        value: 'newuser',
+      },
     });
     wrapper.update();
-    await wrapper.instance().saveUserUsername();
+    await wrapper.instance().saveUserUsername({ preventDefault: jest.fn() });
 
     expect(wrapper.state('saveSuccess')).toBe(true);
     expect(wrapper.state('usernameError')).toBeNull();
@@ -92,16 +95,20 @@ describe('The UserSetting component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find(Form.Input).at(1).simulate('change', null, {
-      name: 'password1',
-      value: 'password',
+    wrapper.find(TextField).at(1).simulate('change', {
+      target: {
+        name: 'password1',
+        value: 'password',
+      },
     });
-    wrapper.find(Form.Input).at(2).simulate('change', null, {
-      name: 'password2',
-      value: 'password',
+    wrapper.find(TextField).at(2).simulate('change', {
+      target: {
+        name: 'password2',
+        value: 'password',
+      },
     });
     wrapper.update();
-    await wrapper.instance().saveUserPassword();
+    await wrapper.instance().saveUserPassword({ preventDefault: jest.fn() });
 
     expect(wrapper.state('saveSuccess')).toBe(true);
     expect(wrapper.state('password1Error')).toBeNull();
@@ -127,22 +134,26 @@ describe('The UserSetting component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find(Form.Input).at(1).simulate('change', null, {
-      name: 'password1',
-      value: '1234',
+    wrapper.find(TextField).at(1).simulate('change', {
+      target: {
+        name: 'password1',
+        value: '1234',
+      },
     });
-    wrapper.find(Form.Input).at(2).simulate('change', null, {
-      name: 'password2',
-      value: '5678',
+    wrapper.find(TextField).at(2).simulate('change', {
+      target: {
+        name: 'password2',
+        value: '5678',
+      },
     });
     wrapper.update();
-    await wrapper.instance().saveUserPassword();
+    await wrapper.instance().saveUserPassword({ preventDefault: jest.fn() });
 
     expect(wrapper.state('saveSuccess')).toBe(false);
     expect(wrapper.state('password1Error')).toEqual(['Passwords must match']);
     expect(wrapper.state('password2Error')).toEqual(['Passwords must match']);
-    expect(wrapper.find(Message).exists()).toBe(true);
-    expect(wrapper.find(Message).last().prop('negative')).toBe(true);
+    expect(wrapper.find(Alert).exists()).toBe(true);
+    expect(wrapper.find(Alert).last().prop('severity')).toBe('error');
     expect(editUserUsername).not.toHaveBeenCalled();
     expect(editUserPassword).not.toHaveBeenCalled();
   });
@@ -170,15 +181,15 @@ describe('The UserSetting component', () => {
       />,
     ).dive().dive();
 
-    await wrapper.instance().saveUserUsername();
+    await wrapper.instance().saveUserUsername({ preventDefault: jest.fn() });
 
     expect(wrapper.state('saveSuccess')).toBe(false);
     expect(wrapper.state('usernameError')).toEqual(['Username taken']);
-    expect(wrapper.find(Message).exists()).toBe(true);
-    expect(wrapper.find(Message).last().prop('negative')).toBe(true);
-    expect(wrapper.find(Form.Input).first().prop('error')).not.toBeNull();
-    expect(wrapper.find(Form.Input).at(1).prop('error')).toBeNull();
-    expect(wrapper.find(Form.Input).at(2).prop('error')).toBeNull();
+    expect(wrapper.find(Alert).exists()).toBe(true);
+    expect(wrapper.find(Alert).last().prop('severity')).toBe('error');
+    expect(wrapper.find(TextField).first().prop('error')).toBe(true);
+    expect(wrapper.find(TextField).at(1).prop('error')).toBe(false);
+    expect(wrapper.find(TextField).at(2).prop('error')).toBe(false);
   });
 
   test('displays error on password save error', async () => {
@@ -205,15 +216,15 @@ describe('The UserSetting component', () => {
       />,
     ).dive().dive();
 
-    await wrapper.instance().saveUserPassword();
+    await wrapper.instance().saveUserPassword({ preventDefault: jest.fn() });
 
     expect(wrapper.state('saveSuccess')).toBe(false);
     expect(wrapper.state('password1Error')).toEqual(['Too short']);
     expect(wrapper.state('password2Error')).toEqual(['Too short']);
-    expect(wrapper.find(Message).exists()).toBe(true);
-    expect(wrapper.find(Message).last().prop('negative')).toBe(true);
-    expect(wrapper.find(Form.Input).first().prop('error')).toBeNull();
-    expect(wrapper.find(Form.Input).at(1).prop('error')).not.toBeNull();
-    expect(wrapper.find(Form.Input).at(2).prop('error')).not.toBeNull();
+    expect(wrapper.find(Alert).exists()).toBe(true);
+    expect(wrapper.find(Alert).last().prop('severity')).toBe('error');
+    expect(wrapper.find(TextField).first().prop('error')).toBe(false);
+    expect(wrapper.find(TextField).at(1).prop('error')).toBe(true);
+    expect(wrapper.find(TextField).at(2).prop('error')).toBe(true);
   });
 });
