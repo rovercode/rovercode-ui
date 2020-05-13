@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Confirm, Input } from 'semantic-ui-react';
+import { Save } from '@material-ui/icons';
+import {
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+} from '@material-ui/core';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
@@ -20,7 +26,6 @@ class ProgramName extends Component {
     super(props);
 
     this.state = {
-      confirmOpen: false,
       editingName: '',
       previousPropName: null, // eslint-disable-line react/no-unused-state
     };
@@ -40,10 +45,6 @@ class ProgramName extends Component {
     return null;
   }
 
-  closeConfirm = () => this.setState({ confirmOpen: false })
-
-  openConfirm = () => this.setState({ confirmOpen: true })
-
   handleChange = (e) => {
     this.setState({
       editingName: e.target.value,
@@ -55,19 +56,23 @@ class ProgramName extends Component {
     const { editingName } = this.state;
 
     changeName(code.id, editingName);
-    this.closeConfirm();
+  }
+
+  saveAdornment = () => {
+    const { editingName, previousPropName } = this.state;
+
+    return editingName !== previousPropName ? (
+      <InputAdornment position="end">
+        <IconButton color="secondary" onClick={this.handleSave}>
+          <Save />
+        </IconButton>
+      </InputAdornment>
+    ) : (null);
   }
 
   render() {
     const { code, intl } = this.props;
-    const { confirmOpen, editingName, previousPropName } = this.state;
-    let actionProp = {};
-
-    const saveAction = intl.formatMessage({
-      id: 'app.program_name.save',
-      description: 'Button label for saving new program name',
-      defaultMessage: 'Save',
-    });
+    const { editingName } = this.state;
 
     const nameLabel = intl.formatMessage({
       id: 'app.program_name.name',
@@ -75,37 +80,15 @@ class ProgramName extends Component {
       defaultMessage: 'Name:',
     });
 
-    const confirmText = intl.formatMessage({
-      id: 'app.program_name.confirm',
-      description: 'Confirmation of program name change',
-      defaultMessage: 'Are you sure that you want to change the name of this program?',
-    });
-
-    // Only show `Save` when the name has changed
-    if (editingName !== previousPropName) {
-      actionProp = {
-        action: {
-          content: saveAction,
-          onClick: this.openConfirm,
-        },
-      };
-    }
-
     return (
       <>
+        <InputLabel htmlFor="program-name">{nameLabel}</InputLabel>
         <Input
-          type="text"
-          label={nameLabel}
+          id="program-name"
           value={editingName}
           disabled={code.isReadOnly}
           onChange={this.handleChange}
-          {...actionProp}
-        />
-        <Confirm
-          content={confirmText}
-          open={confirmOpen}
-          onCancel={this.closeConfirm}
-          onConfirm={this.handleSave}
+          endAdornment={this.saveAdornment()}
         />
       </>
     );
