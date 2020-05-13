@@ -585,7 +585,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                 <span
                                   class="MuiButton-label"
                                 >
-                                  If you don't already have a Gigglebot, click here to order one.
+                                  If you don't already have a Gigglebot, click here to order one
                                 </span>
                                 <span
                                   class="MuiTouchRipple-root"
@@ -1302,11 +1302,11 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                         className="MuiButton-label"
                                                       >
                                                         <FormattedMessage
-                                                          defaultMessage="If you don't already have a Gigglebot, click here to order one."
+                                                          defaultMessage="If you don't already have a Gigglebot, click here to order one"
                                                           id="app.connection_help.gigglebot_link"
                                                           values={Object {}}
                                                         >
-                                                          If you don't already have a Gigglebot, click here to order one.
+                                                          If you don't already have a Gigglebot, click here to order one
                                                         </FormattedMessage>
                                                       </span>
                                                       <WithStyles(memo)

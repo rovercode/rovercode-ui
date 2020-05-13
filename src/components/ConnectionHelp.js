@@ -113,7 +113,7 @@ class ConnectionHelp extends Component {
                 <FormattedMessage
                   id="app.connection_help.gigglebot_link"
                   description="Links to Gigglebot kit"
-                  defaultMessage="If you don't already have a Gigglebot, click here to order one."
+                  defaultMessage="If you don't already have a Gigglebot, click here to order one"
                 />
               </Button>
             </PaddedBox>
@@ -128,7 +128,7 @@ class ConnectionHelp extends Component {
             <Typography gutterBottom>
               <FormattedMessage
                 id="app.connection_help.firmware_need"
-                description="Tells the user they need a Gigglebot."
+                description="Tells the user to check their micro:bit firmware"
                 defaultMessage="Plug the micro:bit into Gigglebot, and turn on
                 the power switch (on the front passenger side). If your micro:bit
                 doesn't display an R, you need to download and flash the Rovercode
@@ -182,7 +182,7 @@ class ConnectionHelp extends Component {
             <Typography gutterBottom>
               <FormattedMessage
                 id="app.connection_help.firmware_complete"
-                description="Tells the user how to save the firmware."
+                description="Tells the user how to see if the flash was successful"
                 defaultMessage="After a few seconds of a blinking light, you should see an R
                 displayed on the micro:bit's display."
               />
@@ -203,7 +203,7 @@ class ConnectionHelp extends Component {
             <Typography variant="h5" gutterBottom>
               <FormattedMessage
                 id="app.connection_help.connecting_title"
-                description="Points the user to the connection button"
+                description="Introduces the connection section"
                 defaultMessage="3. Connect to your Rover"
               />
             </Typography>
@@ -221,7 +221,7 @@ class ConnectionHelp extends Component {
             <Typography gutterBottom>
               <FormattedMessage
                 id="app.connection_help.done"
-                description="Points the user to the connection button"
+                description="tells the user how to select their micro:bit BLE device"
                 defaultMessage="Then, choose the BBC micro:bit device from the list and click Pair.
                 If the Rover icon turns blue, you're connected! Click outside this
                 window, and try the first lesson!"
