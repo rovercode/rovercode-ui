@@ -7,7 +7,7 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ProgramCollection from './ProgramCollection';
@@ -196,8 +196,9 @@ class ProgramList extends Component {
           color="primary"
           size="large"
           startIcon={<Add />}
-          href="/mission-control"
           style={{ marginLeft: '10%' }}
+          component={Link}
+          to="/mission-control"
         >
           <FormattedMessage
             id="app.program_list.new"
