@@ -2,15 +2,23 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import ConnectionHelp from '../ConnectionHelp';
 
 describe('The ConnectionHelp component', () => {
   const mockStore = configureStore();
-  const store = mockStore({
-    user: {
-      // showConnectionHelpOnLogin: false, // TODO
-    },
+  let store;
+
+  beforeEach(() => {
+    store = mockStore({
+      user: {
+        // showConnectionHelpOnLogin: false, // TODO
+      },
+      rover: {
+        rover: null,
+      },
+    });
   });
 
   test('renders on the page with no errors', () => {
@@ -29,14 +37,34 @@ describe('The ConnectionHelp component', () => {
       <ConnectionHelp store={store} />,
     ).find('ConnectionHelp').dive();
 
+    expect(wrapper.state('open')).toBe(true); // Starts open
+
+    wrapper.find('WithStyles(ForwardRef(Dialog))').simulate('close');
+
     expect(wrapper.state('open')).toBe(false);
 
     wrapper.find('WithStyles(ForwardRef(IconButton))').simulate('click');
 
     expect(wrapper.state('open')).toBe(true);
+  });
 
-    wrapper.find('WithStyles(ForwardRef(Dialog))').simulate('close');
-
+  test('handles redirect button', () => {
+    store = mockStore({
+      rover: {
+        rover: {
+          name: 'Jim',
+        },
+      },
+    });
+    const wrapper = shallow(
+      <ConnectionHelp store={store} />,
+    ).find('ConnectionHelp').dive();
+    expect(wrapper.find(Redirect).exists()).toBe(false);
+    wrapper.find('WithStyles(ForwardRef(Button))').at(2).simulate('click');
+    expect(wrapper.find(Redirect).exists()).toBe(true);
+    expect(wrapper.find(Redirect).at(0).prop('to')).toEqual({
+      pathname: '/programs',
+    });
     expect(wrapper.state('open')).toBe(false);
   });
 });
