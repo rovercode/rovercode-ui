@@ -16,11 +16,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
   <Connect(ConnectionHelp)>
     <ConnectionHelp
       dispatch={[Function]}
-      rover={
-        Object {
-          "rover": null,
-        }
-      }
+      rover={null}
       user={Object {}}
     >
       <WithStyles(ForwardRef(IconButton))

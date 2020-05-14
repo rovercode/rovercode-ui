@@ -28,7 +28,7 @@ import flashingImage from '@/assets/images/connection-help/flashing.png';
 import deviceWindowsImage from '@/assets/images/connection-help/device-windows.jpg';
 
 // TODO: Use a flag on user model to launch modal immediately
-const mapStateToProps = ({ user, rover }) => ({ user, rover });
+const mapStateToProps = ({ user, rover }) => ({ user, rover: rover.rover });
 
 class ConnectionHelp extends Component {
   constructor(props) {
@@ -61,8 +61,7 @@ class ConnectionHelp extends Component {
 
   render() {
     const { open, done } = this.state;
-    const { rover: roverState } = this.props;
-    const { rover } = roverState;
+    const { rover } = this.props;
 
     const PaddedBox = withStyles((theme) => ({
       root: {
@@ -285,7 +284,7 @@ class ConnectionHelp extends Component {
             {
               done ? (
                 <Redirect to={{
-                  pathname: '/programs',
+                  pathname: '/programs/mine',
                 }}
                 />
               ) : (null)

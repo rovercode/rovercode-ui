@@ -63,7 +63,7 @@ describe('The ConnectionHelp component', () => {
     wrapper.find('WithStyles(ForwardRef(Button))').at(2).simulate('click');
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).at(0).prop('to')).toEqual({
-      pathname: '/programs',
+      pathname: '/programs/mine',
     });
     expect(wrapper.state('open')).toBe(false);
   });
