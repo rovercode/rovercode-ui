@@ -6,6 +6,8 @@ class TextEncoder {
 }
 global.TextEncoder = TextEncoder;
 
+global.PXT_HEX_URL = 'https://some-url';
+
 const mockDevice = { name: 'Sparky' };
 const mockBluetooth = {
   requestDevice: jest.fn(() => mockDevice),

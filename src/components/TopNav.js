@@ -21,6 +21,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import { logout as actionLogout } from '@/actions/auth';
 
 import RoverConnection from '@/containers/RoverConnection';
+import ConnectionHelp from '@/components/ConnectionHelp';
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(actionLogout()),
@@ -85,15 +86,16 @@ class TopNav extends Component {
           <AppBar position="static" color="secondary">
             <Toolbar>
               <Grid item container direction="row" spacing={4}>
-                <Grid item xs={2}>
+                <Grid item xs={3} xl={2}>
                   <Box
                     display="flex"
                     justifyContent="left"
                   >
                     <RoverConnection />
+                    <ConnectionHelp />
                   </Box>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={2} xl={2}>
                   <NavButtonBox
                     display="flex"
                     justifyContent="center"
@@ -116,7 +118,7 @@ class TopNav extends Component {
                     </Button>
                   </NavButtonBox>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={3} xl={2}>
                   <NavButtonBox
                     display="flex"
                     justifyContent="center"
@@ -139,7 +141,7 @@ class TopNav extends Component {
                     </Button>
                   </NavButtonBox>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={2} xl={2}>
                   <NavButtonBox
                     display="flex"
                     justifyContent="center"

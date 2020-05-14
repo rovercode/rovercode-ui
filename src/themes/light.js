@@ -22,6 +22,7 @@ export default createMuiTheme({
     tonalOffset: 0.2,
   },
   typography: {
+    fontSize: 16,
     fontFamily: [
       'Lato', 'sans-serif',
     ].join(','),
