@@ -1,14 +1,9 @@
 import reducer from '../program';
 import {
+  CLEAR_PROGRAMS,
   FETCH_PROGRAMS_PENDING,
   FETCH_PROGRAMS_FULFILLED,
   FETCH_PROGRAMS_REJECTED,
-  FETCH_USER_PROGRAMS_PENDING,
-  FETCH_USER_PROGRAMS_FULFILLED,
-  FETCH_USER_PROGRAMS_REJECTED,
-  FETCH_FEATURED_PROGRAMS_PENDING,
-  FETCH_FEATURED_PROGRAMS_FULFILLED,
-  FETCH_FEATURED_PROGRAMS_REJECTED,
   REMOVE_PROGRAM_PENDING,
   REMOVE_PROGRAM_FULFILLED,
   REMOVE_PROGRAM_REJECTED,
@@ -24,12 +19,6 @@ describe('The program reducer', () => {
       programsIsFetching: true,
       programsError: null,
       programs: null,
-      userProgramsIsFetching: false,
-      userProgramsError: null,
-      userPrograms: null,
-      featuredProgramsIsFetching: false,
-      featuredProgramsError: null,
-      featuredPrograms: null,
       isRemoving: false,
     });
 
@@ -56,88 +45,6 @@ describe('The program reducer', () => {
       programsIsFetching: false,
     });
   });
-  test('should handle FETCH_USER_PROGRAMS_PENDING', () => {
-    expect(
-      reducer(undefined, {
-        type: FETCH_USER_PROGRAMS_PENDING,
-      }),
-    ).toEqual({
-      programsIsFetching: false,
-      programsError: null,
-      programs: null,
-      userProgramsIsFetching: true,
-      userProgramsError: null,
-      userPrograms: null,
-      featuredProgramsIsFetching: false,
-      featuredProgramsError: null,
-      featuredPrograms: null,
-      isRemoving: false,
-    });
-
-    const userPrograms = [];
-    expect(
-      reducer({}, {
-        type: FETCH_USER_PROGRAMS_FULFILLED,
-        payload: userPrograms,
-      }),
-    ).toEqual({
-      userPrograms,
-      userProgramsIsFetching: false,
-      userProgramsError: null,
-    });
-
-    const userProgramsError = 'woops';
-    expect(
-      reducer({}, {
-        type: FETCH_USER_PROGRAMS_REJECTED,
-        payload: userProgramsError,
-      }),
-    ).toEqual({
-      userProgramsError,
-      userProgramsIsFetching: false,
-    });
-  });
-  test('should handle FETCH_FEATURED_PROGRAMS_PENDING', () => {
-    expect(
-      reducer(undefined, {
-        type: FETCH_FEATURED_PROGRAMS_PENDING,
-      }),
-    ).toEqual({
-      programsIsFetching: false,
-      programsError: null,
-      programs: null,
-      userProgramsIsFetching: false,
-      userProgramsError: null,
-      userPrograms: null,
-      featuredProgramsIsFetching: true,
-      featuredProgramsError: null,
-      featuredPrograms: null,
-      isRemoving: false,
-    });
-
-    const featuredPrograms = [];
-    expect(
-      reducer({}, {
-        type: FETCH_FEATURED_PROGRAMS_FULFILLED,
-        payload: featuredPrograms,
-      }),
-    ).toEqual({
-      featuredPrograms,
-      featuredProgramsIsFetching: false,
-      featuredProgramsError: null,
-    });
-
-    const featuredProgramsError = 'woops';
-    expect(
-      reducer({}, {
-        type: FETCH_FEATURED_PROGRAMS_REJECTED,
-        payload: featuredProgramsError,
-      }),
-    ).toEqual({
-      featuredProgramsError,
-      featuredProgramsIsFetching: false,
-    });
-  });
   test('should handle REMOVE_PROGRAM_PENDING', () => {
     expect(
       reducer(undefined, {
@@ -147,12 +54,6 @@ describe('The program reducer', () => {
       programsIsFetching: false,
       programsError: null,
       programs: null,
-      userProgramsIsFetching: false,
-      userProgramsError: null,
-      userPrograms: null,
-      featuredProgramsIsFetching: false,
-      featuredProgramsError: null,
-      featuredPrograms: null,
       isRemoving: true,
     });
 
@@ -178,6 +79,17 @@ describe('The program reducer', () => {
       isRemoving: false,
     });
   });
+
+  test('should handle CLEAR_PROGRAMS', () => {
+    expect(
+      reducer({ programs: [{}, {}] }, {
+        type: CLEAR_PROGRAMS,
+      }),
+    ).toEqual({
+      programs: null,
+    });
+  });
+
   test('should return unmodified state for an unhandled action type', () => {
     const state = { hello: 'world' };
     expect(reducer(state, { type: 'FAKE_ACTION' })).toEqual(state);

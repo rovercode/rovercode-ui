@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
 import { changeReadOnly as actionChangeReadOnly, clearProgram, fetchProgram } from '../actions/code';
-import { fetchPrograms, removeProgram } from '../actions/program';
+import { clearPrograms, fetchPrograms, removeProgram } from '../actions/program';
 import { checkAuthError, authHeader } from '../actions/auth';
 import { fetchTags } from '../actions/tag';
 import ProgramList from '../components/ProgramList';
@@ -28,6 +28,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   fetchTags: () => dispatch(fetchTags(authHeader(cookies))).catch(checkAuthError(dispatch)),
   clearProgram: () => dispatch(clearProgram()),
+  clearProgramList: () => dispatch(clearPrograms()),
 });
 
 const ProgramListContainer = connect(
@@ -35,8 +36,13 @@ const ProgramListContainer = connect(
   mapDispatchToProps,
 )(ProgramList);
 
+ProgramListContainer.defaultProps = {
+  owned: false,
+};
+
 ProgramListContainer.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
+  owned: PropTypes.bool,
 };
 
 export default hot(module)(withCookies(ProgramListContainer));

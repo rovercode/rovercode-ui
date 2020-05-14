@@ -6,7 +6,7 @@ import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import ProgramList from '../ProgramList';
 import { changeReadOnly, clearProgram, fetchProgram } from '../../actions/code';
-import { fetchPrograms, removeProgram } from '../../actions/program';
+import { clearPrograms, fetchPrograms, removeProgram } from '../../actions/program';
 import { fetchTags } from '../../actions/tag';
 import { updateValidAuth } from '../../actions/auth';
 
@@ -342,6 +342,14 @@ describe('The ProgramListContainer', () => {
 
     expect(store.dispatch).toHaveBeenCalledWith(
       clearProgram(),
+    );
+  });
+
+  test('dispatches an action to clear program list', () => {
+    wrapper.dive().props().clearProgramList();
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      clearPrograms(),
     );
   });
 });
