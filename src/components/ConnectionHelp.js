@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import {
   IconButton,
@@ -24,14 +25,18 @@ import flashingImage from '@/assets/images/connection-help/flashing.png';
 import deviceWindowsImage from '@/assets/images/connection-help/device-windows.jpg';
 
 // TODO: Use a flag on user model to launch modal immediately
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ user, rover }) => ({ user, ...rover });
 
 class ConnectionHelp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       open: false,
+=======
+      open: true,
+>>>>>>> Use webpack global variable for pxt hex url
     };
   }
 
@@ -47,8 +52,18 @@ class ConnectionHelp extends Component {
     });
   }
 
+  handleFinishedClick = () => {
+    const { history } = this.props;
+    this.handleClose();
+    history.push('/programs');
+  }
+
   render() {
     const { open } = this.state;
+<<<<<<< HEAD
+=======
+    const { rover } = this.props;
+>>>>>>> Use webpack global variable for pxt hex url
 
     const PaddedBox = withStyles((theme) => ({
       root: {
@@ -205,15 +220,31 @@ class ConnectionHelp extends Component {
             <PaddedBox display="flex" justifyContent="center">
               <RoverConnection />
             </PaddedBox>
-            <Typography gutterBottom>
-              <FormattedMessage
-                id="app.connection_help.done"
-                description="tells the user how to select their micro:bit BLE device"
-                defaultMessage="Then, choose the BBC micro:bit device from the list and click Pair.
-                If the Rover icon turns blue, you're connected! Click outside this
-                window, and try the first lesson!"
-              />
-            </Typography>
+            {
+              rover ? (
+                <PaddedBox display="flex" justifyContent="center">
+                  <Button
+                    color="primary"
+                    variant="outlined"
+                    onClick={this.handleFinishedClick}
+                  >
+                    <FormattedMessage
+                      id="app.connection_help.to_courses"
+                      description="Links to courses"
+                      defaultMessage="Congrats, you're connected! Click here, and let's write some code."
+                    />
+                  </Button>
+                </PaddedBox>
+              ) : (
+                <Typography gutterBottom>
+                  <FormattedMessage
+                    id="app.connection_help.done"
+                    description="tells the user how to select their micro:bit BLE device"
+                    defaultMessage="Then, choose the BBC micro:bit device from the list and click Pair."
+                  />
+                </Typography>
+              )
+            }
           </DialogContent>
         </Dialog>
       </>
@@ -221,10 +252,18 @@ class ConnectionHelp extends Component {
   }
 }
 
+ConnectionHelp.defaultProps = {
+  rover: null,
+};
+
 ConnectionHelp.propTypes = {
   user: PropTypes.shape({
     // showConnectionHelpOnLogin: PropTypes.bool.isRequired, // TODO
   }).isRequired,
+  rover: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }),
+  history: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
 };
 
-export default hot(module)(connect(mapStateToProps)(ConnectionHelp));
+export default hot(module)(withRouter(connect(mapStateToProps)(ConnectionHelp)));
