@@ -24,37 +24,6 @@ describe('The ConnectionHelp component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('creates the correct pxt hex links', () => {
-    const wrapper = shallow(
-      <ConnectionHelp store={store} />,
-    ).find('ConnectionHelp').dive();
-
-    wrapper.setState({ host: 'alpha.rovercode.com' });
-    wrapper.update();
-    let downloadButtonHref = wrapper.find('WithStyles(ForwardRef(Button))').at(1).prop('href');
-    expect(downloadButtonHref)
-      .toBe('https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex');
-
-    wrapper.setState({ host: 'beta.rovercode.com' });
-    wrapper.update();
-    downloadButtonHref = wrapper.find('WithStyles(ForwardRef(Button))').at(1).prop('href');
-    expect(downloadButtonHref)
-      .toBe('https://rovercode-pxt.s3.us-east-2.amazonaws.com/beta/rovercode.hex');
-
-    wrapper.setState({ host: 'go.rovercode.com' });
-    wrapper.update();
-    downloadButtonHref = wrapper.find('WithStyles(ForwardRef(Button))').at(1).prop('href');
-    expect(downloadButtonHref)
-      .toBe('https://rovercode-pxt.s3.us-east-2.amazonaws.com/prod/rovercode.hex');
-
-    wrapper.setState({ host: 'localhost-or-something-else' });
-    wrapper.update();
-    downloadButtonHref = wrapper.find('WithStyles(ForwardRef(Button))').at(1).prop('href');
-    expect(downloadButtonHref)
-      .toBe('https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex');
-  });
-
-
   test('handles opening and closing dialog', () => {
     const wrapper = shallow(
       <ConnectionHelp store={store} />,

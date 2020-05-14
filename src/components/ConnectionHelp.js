@@ -31,7 +31,6 @@ class ConnectionHelp extends Component {
     super(props);
 
     this.state = {
-      host: window.location.host,
       open: false,
     };
   }
@@ -49,19 +48,7 @@ class ConnectionHelp extends Component {
   }
 
   render() {
-    const { open, host } = this.state;
-    let env;
-    switch (host) {
-      case 'beta.rovercode.com':
-        env = 'beta';
-        break;
-      case 'go.rovercode.com':
-        env = 'prod';
-        break;
-      case 'alpha.rovercode.com':
-      default:
-        env = 'alpha';
-    }
+    const { open } = this.state;
 
     const PaddedBox = withStyles((theme) => ({
       root: {
@@ -170,7 +157,7 @@ class ConnectionHelp extends Component {
               <Button
                 color="primary"
                 variant="outlined"
-                href={`https://rovercode-pxt.s3.us-east-2.amazonaws.com/${env}/rovercode.hex`}
+                href={`${PXT_HEX_URL}`} // eslint-disable-line no-undef
               >
                 <FormattedMessage
                   id="app.connection_help.firmware_hex_button"

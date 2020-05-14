@@ -655,7 +655,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                               <a
                                 aria-disabled="false"
                                 class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
-                                href="https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex"
+                                href="https://some-url"
                                 tabindex="0"
                               >
                                 <span
@@ -1767,7 +1767,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                           >
                                             <WithStyles(ForwardRef(Button))
                                               color="primary"
-                                              href="https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex"
+                                              href="https://some-url"
                                               variant="outlined"
                                             >
                                               <ForwardRef(Button)
@@ -1805,7 +1805,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                   }
                                                 }
                                                 color="primary"
-                                                href="https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex"
+                                                href="https://some-url"
                                                 variant="outlined"
                                               >
                                                 <WithStyles(ForwardRef(ButtonBase))
@@ -1814,7 +1814,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                   disabled={false}
                                                   focusRipple={true}
                                                   focusVisibleClassName="Mui-focusVisible"
-                                                  href="https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex"
+                                                  href="https://some-url"
                                                   type="button"
                                                 >
                                                   <ForwardRef(ButtonBase)
@@ -1830,13 +1830,13 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                     disabled={false}
                                                     focusRipple={true}
                                                     focusVisibleClassName="Mui-focusVisible"
-                                                    href="https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex"
+                                                    href="https://some-url"
                                                     type="button"
                                                   >
                                                     <a
                                                       aria-disabled={false}
                                                       className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
-                                                      href="https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex"
+                                                      href="https://some-url"
                                                       onBlur={[Function]}
                                                       onDragLeave={[Function]}
                                                       onFocus={[Function]}
