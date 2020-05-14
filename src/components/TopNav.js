@@ -106,7 +106,7 @@ class TopNav extends Component {
                       disableElevation
                       color="secondary"
                       component={Link}
-                      to="/programs"
+                      to="/programs/mine"
                     >
                       <Typography variant="h6">
                         <FormattedMessage
@@ -129,7 +129,7 @@ class TopNav extends Component {
                       disableElevation
                       color="secondary"
                       component={Link}
-                      to="/programs"
+                      to="/programs/community"
                     >
                       <Typography variant="h6">
                         <FormattedMessage
@@ -152,7 +152,7 @@ class TopNav extends Component {
                       disableElevation
                       color="secondary"
                       component={Link}
-                      to="/programs"
+                      to="/programs/community"
                     >
                       <Typography variant="h6">
                         <FormattedMessage

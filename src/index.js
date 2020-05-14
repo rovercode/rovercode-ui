@@ -90,7 +90,8 @@ render(
             <Switch>
               <Route path="/accounts" component={Accounts} />
               <ProtectedRoute exact path="/" component={ProgramList} />
-              <ProtectedRoute exact path="/programs" component={ProgramList} />
+              <ProtectedRoute exact path="/programs/community" component={ProgramList} />
+              <ProtectedRoute exact path="/programs/mine" component={() => <ProgramList owned />} />
               <ProtectedRoute exact path="/mission-control" component={MissionControl} />
               <ProtectedRoute exact path="/user/settings" component={UserSetting} />
               <Route component={NotFound} />
