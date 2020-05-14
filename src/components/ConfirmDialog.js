@@ -29,11 +29,11 @@ const ConfirmDialog = (props) => {
       <DialogTitle id="confirm-dialog">{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
-        <Button variant="contained" onClick={onCancel} color="secondary">
-          {cancelButton}
-        </Button>
-        <Button variant="contained" onClick={onConfirm} color="primary">
+        <Button variant="contained" onClick={onConfirm} color="default">
           {confirmButton}
+        </Button>
+        <Button variant="contained" onClick={onCancel} color="primary">
+          {cancelButton}
         </Button>
       </DialogActions>
     </Dialog>

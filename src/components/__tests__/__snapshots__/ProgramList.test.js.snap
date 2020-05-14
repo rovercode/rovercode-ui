@@ -81,8 +81,8 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
     </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(Grid))>
   <ConfirmDialog
-    cancelButton="No"
-    confirmButton="Yes"
+    cancelButton="No, don't remove program"
+    confirmButton="Yes, remove program"
     onCancel={[Function]}
     onConfirm={[Function]}
     open={false}

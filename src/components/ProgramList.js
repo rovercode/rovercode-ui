@@ -130,13 +130,13 @@ class ProgramList extends Component {
     const cancelButtonText = intl.formatMessage({
       id: 'app.program_list.cancel',
       description: 'Button label to cancel removing program',
-      defaultMessage: 'No',
+      defaultMessage: 'No, don\'t remove program',
     });
 
     const confirmButtonText = intl.formatMessage({
       id: 'app.program_list.confirm',
       description: 'Button label to confirm removing program',
-      defaultMessage: 'Yes',
+      defaultMessage: 'Yes, remove program',
     });
 
     const dialogHeader = intl.formatMessage({

@@ -16,18 +16,18 @@ exports[`The ConfirmDialog component renders on the page with no errors 1`] = `
   </WithStyles(ForwardRef(DialogContent))>
   <WithStyles(ForwardRef(DialogActions))>
     <WithStyles(ForwardRef(Button))
-      color="secondary"
+      color="default"
       onClick={[MockFunction]}
       variant="contained"
     >
-      No
+      Yes
     </WithStyles(ForwardRef(Button))>
     <WithStyles(ForwardRef(Button))
       color="primary"
       onClick={[MockFunction]}
       variant="contained"
     >
-      Yes
+      No
     </WithStyles(ForwardRef(Button))>
   </WithStyles(ForwardRef(DialogActions))>
 </WithStyles(ForwardRef(Dialog))>

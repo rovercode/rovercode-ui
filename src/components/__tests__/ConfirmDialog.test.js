@@ -32,7 +32,7 @@ describe('The ConfirmDialog component', () => {
   });
 
   test('calls cancel when cancelled', () => {
-    wrapper.find(Button).at(0).simulate('click');
+    wrapper.find(Button).at(1).simulate('click');
 
     expect(onCancel).toHaveBeenCalled();
     expect(onConfirm).not.toHaveBeenCalled();
@@ -46,7 +46,7 @@ describe('The ConfirmDialog component', () => {
   });
 
   test('calls confirm when confirmed', () => {
-    wrapper.find(Button).at(1).simulate('click');
+    wrapper.find(Button).at(0).simulate('click');
 
     expect(onCancel).not.toHaveBeenCalled();
     expect(onConfirm).toHaveBeenCalled();
