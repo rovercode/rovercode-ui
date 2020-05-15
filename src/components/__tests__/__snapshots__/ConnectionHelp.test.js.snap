@@ -16,6 +16,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
   <Connect(ConnectionHelp)>
     <ConnectionHelp
       dispatch={[Function]}
+      rover={null}
       user={Object {}}
     >
       <WithStyles(ForwardRef(IconButton))
@@ -561,7 +562,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                               The Rover is your robot. Rovercode works with the Gigglebot, which is a robot chassis with a micro:bit computer.
                             </p>
                             <div
-                              class="MuiBox-root MuiBox-root-111 Styled(MuiBox)-root-109"
+                              class="MuiBox-root MuiBox-root-176 Styled(MuiBox)-root-175"
                               classes="[object Object]"
                             >
                               <img
@@ -571,7 +572,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                               />
                             </div>
                             <div
-                              class="MuiBox-root MuiBox-root-112 Styled(MuiBox)-root-109"
+                              class="MuiBox-root MuiBox-root-177 Styled(MuiBox)-root-175"
                               classes="[object Object]"
                             >
                               <a
@@ -587,9 +588,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                 >
                                   If you don't already have a Gigglebot, click here to order one
                                 </span>
-                                <span
-                                  class="MuiTouchRipple-root"
-                                />
                               </a>
                             </div>
                             <h5
@@ -603,10 +601,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                             <p
                               class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
                             >
-                              Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side). If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware.
+                              Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side).
                             </p>
                             <div
-                              class="MuiBox-root MuiBox-root-142 Styled(MuiBox)-root-109"
+                              class="MuiBox-root MuiBox-root-178 Styled(MuiBox)-root-175"
                               classes="[object Object]"
                             >
                               <img
@@ -614,73 +612,169 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                 src="[object Object]"
                               />
                             </div>
-                            <p
-                              class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
-                            >
-                              Use a USB cable to connect the micro:bit to your computer.
-                            </p>
                             <div
-                              class="MuiBox-root MuiBox-root-143 Styled(MuiBox)-root-109"
+                              class="MuiBox-root MuiBox-root-179 Styled(MuiBox)-root-175"
                               classes="[object Object]"
                             >
-                              <img
-                                alt="Connecting the micro:bit to a computer"
-                                src="[object Object]"
-                                width="300px"
-                              />
-                            </div>
-                            <p
-                              class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
-                            >
-                              The micro:bit device should show up in your file browser.
-                            </p>
-                            <div
-                              class="MuiBox-root MuiBox-root-144 Styled(MuiBox)-root-109"
-                              classes="[object Object]"
-                            >
-                              <img
-                                alt="Connecting the micro:bit to a computer"
-                                src="[object Object]"
-                              />
-                            </div>
-                            <p
-                              class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
-                            >
-                              Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device.
-                            </p>
-                            <div
-                              class="MuiBox-root MuiBox-root-145 Styled(MuiBox)-root-109"
-                              classes="[object Object]"
-                            >
-                              <a
-                                aria-disabled="false"
-                                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
-                                href="https://some-url"
-                                tabindex="0"
+                              <div
+                                class="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
                               >
-                                <span
-                                  class="MuiButton-label"
+                                <div
+                                  aria-controls="panel1a-content"
+                                  aria-disabled="false"
+                                  aria-expanded="false"
+                                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                  id="panel1a-header"
+                                  role="button"
+                                  tabindex="0"
                                 >
-                                  Click here to download the firmware hex file
-                                </span>
-                                <span
-                                  class="MuiTouchRipple-root"
-                                />
-                              </a>
+                                  <div
+                                    class="MuiExpansionPanelSummary-content"
+                                  >
+                                    <p
+                                      class="MuiTypography-root MuiTypography-body1"
+                                    >
+                                      If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware. Click here to see how.
+                                    </p>
+                                  </div>
+                                  <div
+                                    aria-disabled="false"
+                                    aria-hidden="true"
+                                    class="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                  >
+                                    <span
+                                      class="MuiIconButton-label"
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </div>
+                                </div>
+                                <div
+                                  class="MuiCollapse-container MuiCollapse-hidden"
+                                  style="min-height: 0px;"
+                                >
+                                  <div
+                                    class="MuiCollapse-wrapper"
+                                  >
+                                    <div
+                                      class="MuiCollapse-wrapperInner"
+                                    >
+                                      <div
+                                        aria-labelledby="panel1a-header"
+                                        id="panel1a-content"
+                                        role="region"
+                                      >
+                                        <div
+                                          class="MuiExpansionPanelDetails-root"
+                                        >
+                                          <p
+                                            class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                          >
+                                            Use a USB cable to connect the micro:bit to your computer.
+                                          </p>
+                                        </div>
+                                        <div
+                                          class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180"
+                                        >
+                                          <div
+                                            class="MuiBox-root MuiBox-root-181 Styled(MuiBox)-root-175"
+                                            classes="[object Object]"
+                                          >
+                                            <img
+                                              alt="Connecting the micro:bit to a computer"
+                                              src="[object Object]"
+                                              width="300px"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div
+                                          class="MuiExpansionPanelDetails-root"
+                                        >
+                                          <p
+                                            class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                          >
+                                            The micro:bit device should show up in your file browser.
+                                          </p>
+                                        </div>
+                                        <div
+                                          class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180"
+                                        >
+                                          <div
+                                            class="MuiBox-root MuiBox-root-182 Styled(MuiBox)-root-175"
+                                            classes="[object Object]"
+                                          >
+                                            <img
+                                              alt="Connecting the micro:bit to a computer"
+                                              src="[object Object]"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div
+                                          class="MuiExpansionPanelDetails-root"
+                                        >
+                                          <p
+                                            class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                          >
+                                            Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device.
+                                          </p>
+                                        </div>
+                                        <div
+                                          class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180"
+                                        >
+                                          <div
+                                            class="MuiBox-root MuiBox-root-183 Styled(MuiBox)-root-175"
+                                            classes="[object Object]"
+                                          >
+                                            <a
+                                              aria-disabled="false"
+                                              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+                                              href="https://some-url"
+                                              tabindex="0"
+                                            >
+                                              <span
+                                                class="MuiButton-label"
+                                              >
+                                                Click here to download the firmware hex file
+                                              </span>
+                                            </a>
+                                          </div>
+                                        </div>
+                                        <div
+                                          class="MuiExpansionPanelDetails-root"
+                                        >
+                                          <p
+                                            class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                          >
+                                            After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display.
+                                          </p>
+                                        </div>
+                                        <div
+                                          class="MuiExpansionPanelDetails-root"
+                                        >
+                                          <a
+                                            class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body1 MuiTypography-colorPrimary"
+                                            href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
+                                            rel="noopener"
+                                            target="_blank"
+                                          >
+                                            More instructions can be found here.
+                                          </a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <p
-                              class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
-                            >
-                              After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display.
-                            </p>
-                            <a
-                              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body1 MuiTypography-colorPrimary"
-                              href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
-                              rel="noopener"
-                              target="_blank"
-                            >
-                              More instructions can be found here.
-                            </a>
                             <h5
                               class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
                             />
@@ -695,11 +789,11 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                               With your Rover powered on and displaying the R, push the connect button below.
                             </p>
                             <div
-                              class="MuiBox-root MuiBox-root-152 Styled(MuiBox)-root-109"
+                              class="MuiBox-root MuiBox-root-184 Styled(MuiBox)-root-175"
                               classes="[object Object]"
                             >
                               <button
-                                class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-153 MuiButton-outlined MuiButton-disableElevation"
+                                class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-185 MuiButton-outlined MuiButton-disableElevation"
                                 tabindex="0"
                                 type="button"
                               >
@@ -711,7 +805,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   >
                                     <svg
                                       aria-hidden="true"
-                                      class="MuiSvgIcon-root LogoIcon-root-154"
+                                      class="MuiSvgIcon-root LogoIcon-root-186"
                                       focusable="false"
                                       style="font-size: 50px;"
                                       viewBox="0 0 24 24"
@@ -748,27 +842,24 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   </span>
                                   <div>
                                     <h6
-                                      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-155 MuiTypography-h6"
+                                      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-187 MuiTypography-h6"
                                     >
                                       No Rover
                                       <br />
                                     </h6>
                                     <p
-                                      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-156 MuiTypography-body1 MuiTypography-colorPrimary"
+                                      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-188 MuiTypography-body1 MuiTypography-colorPrimary"
                                     >
                                       Connect
                                     </p>
                                   </div>
                                 </span>
-                                <span
-                                  class="MuiTouchRipple-root"
-                                />
                               </button>
                             </div>
                             <p
                               class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
                             >
-                              Then, choose the BBC micro:bit device from the list and click Pair. If the Rover icon turns blue, you're connected! Click outside this window, and try the first lesson!
+                              Then, choose the BBC micro:bit device from the list and click Pair.
                             </p>
                           </div>
                         </div>
@@ -1160,17 +1251,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                         <Styled(MuiBox)
                                           classes={
                                             Object {
-                                              "root": "Styled(MuiBox)-root-109",
+                                              "root": "Styled(MuiBox)-root-175",
                                             }
                                           }
                                           display="flex"
                                           justifyContent="center"
                                         >
                                           <div
-                                            className="MuiBox-root MuiBox-root-111 Styled(MuiBox)-root-109"
+                                            className="MuiBox-root MuiBox-root-176 Styled(MuiBox)-root-175"
                                             classes={
                                               Object {
-                                                "root": "Styled(MuiBox)-root-109",
+                                                "root": "Styled(MuiBox)-root-175",
                                               }
                                             }
                                           >
@@ -1189,17 +1280,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                         <Styled(MuiBox)
                                           classes={
                                             Object {
-                                              "root": "Styled(MuiBox)-root-109",
+                                              "root": "Styled(MuiBox)-root-175",
                                             }
                                           }
                                           display="flex"
                                           justifyContent="center"
                                         >
                                           <div
-                                            className="MuiBox-root MuiBox-root-112 Styled(MuiBox)-root-109"
+                                            className="MuiBox-root MuiBox-root-177 Styled(MuiBox)-root-175"
                                             classes={
                                               Object {
-                                                "root": "Styled(MuiBox)-root-109",
+                                                "root": "Styled(MuiBox)-root-175",
                                               }
                                             }
                                           >
@@ -1309,34 +1400,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                           If you don't already have a Gigglebot, click here to order one
                                                         </FormattedMessage>
                                                       </span>
-                                                      <WithStyles(memo)
-                                                        center={false}
-                                                      >
-                                                        <ForwardRef(TouchRipple)
-                                                          center={false}
-                                                          classes={
-                                                            Object {
-                                                              "child": "MuiTouchRipple-child",
-                                                              "childLeaving": "MuiTouchRipple-childLeaving",
-                                                              "childPulsate": "MuiTouchRipple-childPulsate",
-                                                              "ripple": "MuiTouchRipple-ripple",
-                                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                              "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                              "root": "MuiTouchRipple-root",
-                                                            }
-                                                          }
-                                                        >
-                                                          <span
-                                                            className="MuiTouchRipple-root"
-                                                          >
-                                                            <TransitionGroup
-                                                              childFactory={[Function]}
-                                                              component={null}
-                                                              exit={true}
-                                                            />
-                                                          </span>
-                                                        </ForwardRef(TouchRipple)>
-                                                      </WithStyles(memo)>
                                                     </a>
                                                   </ForwardRef(ButtonBase)>
                                                 </WithStyles(ForwardRef(ButtonBase))>
@@ -1491,11 +1554,11 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
                                           >
                                             <FormattedMessage
-                                              defaultMessage="Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side). If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware."
+                                              defaultMessage="Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side)."
                                               id="app.connection_help.firmware_need"
                                               values={Object {}}
                                             >
-                                              Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side). If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware.
+                                              Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side).
                                             </FormattedMessage>
                                           </p>
                                         </ForwardRef(Typography)>
@@ -1507,17 +1570,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                         <Styled(MuiBox)
                                           classes={
                                             Object {
-                                              "root": "Styled(MuiBox)-root-109",
+                                              "root": "Styled(MuiBox)-root-175",
                                             }
                                           }
                                           display="flex"
                                           justifyContent="center"
                                         >
                                           <div
-                                            className="MuiBox-root MuiBox-root-142 Styled(MuiBox)-root-109"
+                                            className="MuiBox-root MuiBox-root-178 Styled(MuiBox)-root-175"
                                             classes={
                                               Object {
-                                                "root": "Styled(MuiBox)-root-109",
+                                                "root": "Styled(MuiBox)-root-175",
                                               }
                                             }
                                           >
@@ -1528,526 +1591,1019 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                           </div>
                                         </Styled(MuiBox)>
                                       </WithStyles(Styled(MuiBox))>
-                                      <WithStyles(ForwardRef(Typography))
-                                        gutterBottom={true}
-                                      >
-                                        <ForwardRef(Typography)
-                                          classes={
-                                            Object {
-                                              "alignCenter": "MuiTypography-alignCenter",
-                                              "alignJustify": "MuiTypography-alignJustify",
-                                              "alignLeft": "MuiTypography-alignLeft",
-                                              "alignRight": "MuiTypography-alignRight",
-                                              "body1": "MuiTypography-body1",
-                                              "body2": "MuiTypography-body2",
-                                              "button": "MuiTypography-button",
-                                              "caption": "MuiTypography-caption",
-                                              "colorError": "MuiTypography-colorError",
-                                              "colorInherit": "MuiTypography-colorInherit",
-                                              "colorPrimary": "MuiTypography-colorPrimary",
-                                              "colorSecondary": "MuiTypography-colorSecondary",
-                                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                                              "displayBlock": "MuiTypography-displayBlock",
-                                              "displayInline": "MuiTypography-displayInline",
-                                              "gutterBottom": "MuiTypography-gutterBottom",
-                                              "h1": "MuiTypography-h1",
-                                              "h2": "MuiTypography-h2",
-                                              "h3": "MuiTypography-h3",
-                                              "h4": "MuiTypography-h4",
-                                              "h5": "MuiTypography-h5",
-                                              "h6": "MuiTypography-h6",
-                                              "noWrap": "MuiTypography-noWrap",
-                                              "overline": "MuiTypography-overline",
-                                              "paragraph": "MuiTypography-paragraph",
-                                              "root": "MuiTypography-root",
-                                              "srOnly": "MuiTypography-srOnly",
-                                              "subtitle1": "MuiTypography-subtitle1",
-                                              "subtitle2": "MuiTypography-subtitle2",
-                                            }
-                                          }
-                                          gutterBottom={true}
-                                        >
-                                          <p
-                                            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
-                                          >
-                                            <FormattedMessage
-                                              defaultMessage="Use a USB cable to connect the micro:bit to your computer."
-                                              id="app.connection_help.connect_microbit"
-                                              values={Object {}}
-                                            >
-                                              Use a USB cable to connect the micro:bit to your computer.
-                                            </FormattedMessage>
-                                          </p>
-                                        </ForwardRef(Typography)>
-                                      </WithStyles(ForwardRef(Typography))>
-                                      <WithStyles(Styled(MuiBox))
-                                        display="flex"
-                                        justifyContent="center"
-                                      >
+                                      <WithStyles(Styled(MuiBox))>
                                         <Styled(MuiBox)
                                           classes={
                                             Object {
-                                              "root": "Styled(MuiBox)-root-109",
+                                              "root": "Styled(MuiBox)-root-175",
                                             }
                                           }
-                                          display="flex"
-                                          justifyContent="center"
                                         >
                                           <div
-                                            className="MuiBox-root MuiBox-root-143 Styled(MuiBox)-root-109"
+                                            className="MuiBox-root MuiBox-root-179 Styled(MuiBox)-root-175"
                                             classes={
                                               Object {
-                                                "root": "Styled(MuiBox)-root-109",
+                                                "root": "Styled(MuiBox)-root-175",
                                               }
                                             }
                                           >
-                                            <img
-                                              alt="Connecting the micro:bit to a computer"
-                                              src={Object {}}
-                                              width="300px"
-                                            />
-                                          </div>
-                                        </Styled(MuiBox)>
-                                      </WithStyles(Styled(MuiBox))>
-                                      <WithStyles(ForwardRef(Typography))
-                                        gutterBottom={true}
-                                      >
-                                        <ForwardRef(Typography)
-                                          classes={
-                                            Object {
-                                              "alignCenter": "MuiTypography-alignCenter",
-                                              "alignJustify": "MuiTypography-alignJustify",
-                                              "alignLeft": "MuiTypography-alignLeft",
-                                              "alignRight": "MuiTypography-alignRight",
-                                              "body1": "MuiTypography-body1",
-                                              "body2": "MuiTypography-body2",
-                                              "button": "MuiTypography-button",
-                                              "caption": "MuiTypography-caption",
-                                              "colorError": "MuiTypography-colorError",
-                                              "colorInherit": "MuiTypography-colorInherit",
-                                              "colorPrimary": "MuiTypography-colorPrimary",
-                                              "colorSecondary": "MuiTypography-colorSecondary",
-                                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                                              "displayBlock": "MuiTypography-displayBlock",
-                                              "displayInline": "MuiTypography-displayInline",
-                                              "gutterBottom": "MuiTypography-gutterBottom",
-                                              "h1": "MuiTypography-h1",
-                                              "h2": "MuiTypography-h2",
-                                              "h3": "MuiTypography-h3",
-                                              "h4": "MuiTypography-h4",
-                                              "h5": "MuiTypography-h5",
-                                              "h6": "MuiTypography-h6",
-                                              "noWrap": "MuiTypography-noWrap",
-                                              "overline": "MuiTypography-overline",
-                                              "paragraph": "MuiTypography-paragraph",
-                                              "root": "MuiTypography-root",
-                                              "srOnly": "MuiTypography-srOnly",
-                                              "subtitle1": "MuiTypography-subtitle1",
-                                              "subtitle2": "MuiTypography-subtitle2",
-                                            }
-                                          }
-                                          gutterBottom={true}
-                                        >
-                                          <p
-                                            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
-                                          >
-                                            <FormattedMessage
-                                              defaultMessage="The micro:bit device should show up in your file browser."
-                                              id="app.connection_help.computer_device"
-                                              values={Object {}}
-                                            >
-                                              The micro:bit device should show up in your file browser.
-                                            </FormattedMessage>
-                                          </p>
-                                        </ForwardRef(Typography)>
-                                      </WithStyles(ForwardRef(Typography))>
-                                      <WithStyles(Styled(MuiBox))
-                                        display="flex"
-                                        justifyContent="center"
-                                      >
-                                        <Styled(MuiBox)
-                                          classes={
-                                            Object {
-                                              "root": "Styled(MuiBox)-root-109",
-                                            }
-                                          }
-                                          display="flex"
-                                          justifyContent="center"
-                                        >
-                                          <div
-                                            className="MuiBox-root MuiBox-root-144 Styled(MuiBox)-root-109"
-                                            classes={
-                                              Object {
-                                                "root": "Styled(MuiBox)-root-109",
-                                              }
-                                            }
-                                          >
-                                            <img
-                                              alt="Connecting the micro:bit to a computer"
-                                              src={Object {}}
-                                            />
-                                          </div>
-                                        </Styled(MuiBox)>
-                                      </WithStyles(Styled(MuiBox))>
-                                      <WithStyles(ForwardRef(Typography))
-                                        gutterBottom={true}
-                                      >
-                                        <ForwardRef(Typography)
-                                          classes={
-                                            Object {
-                                              "alignCenter": "MuiTypography-alignCenter",
-                                              "alignJustify": "MuiTypography-alignJustify",
-                                              "alignLeft": "MuiTypography-alignLeft",
-                                              "alignRight": "MuiTypography-alignRight",
-                                              "body1": "MuiTypography-body1",
-                                              "body2": "MuiTypography-body2",
-                                              "button": "MuiTypography-button",
-                                              "caption": "MuiTypography-caption",
-                                              "colorError": "MuiTypography-colorError",
-                                              "colorInherit": "MuiTypography-colorInherit",
-                                              "colorPrimary": "MuiTypography-colorPrimary",
-                                              "colorSecondary": "MuiTypography-colorSecondary",
-                                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                                              "displayBlock": "MuiTypography-displayBlock",
-                                              "displayInline": "MuiTypography-displayInline",
-                                              "gutterBottom": "MuiTypography-gutterBottom",
-                                              "h1": "MuiTypography-h1",
-                                              "h2": "MuiTypography-h2",
-                                              "h3": "MuiTypography-h3",
-                                              "h4": "MuiTypography-h4",
-                                              "h5": "MuiTypography-h5",
-                                              "h6": "MuiTypography-h6",
-                                              "noWrap": "MuiTypography-noWrap",
-                                              "overline": "MuiTypography-overline",
-                                              "paragraph": "MuiTypography-paragraph",
-                                              "root": "MuiTypography-root",
-                                              "srOnly": "MuiTypography-srOnly",
-                                              "subtitle1": "MuiTypography-subtitle1",
-                                              "subtitle2": "MuiTypography-subtitle2",
-                                            }
-                                          }
-                                          gutterBottom={true}
-                                        >
-                                          <p
-                                            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
-                                          >
-                                            <FormattedMessage
-                                              defaultMessage="Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device."
-                                              id="app.connection_help.firmware_save"
-                                              values={Object {}}
-                                            >
-                                              Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device.
-                                            </FormattedMessage>
-                                          </p>
-                                        </ForwardRef(Typography)>
-                                      </WithStyles(ForwardRef(Typography))>
-                                      <WithStyles(Styled(MuiBox))
-                                        display="flex"
-                                        justifyContent="center"
-                                      >
-                                        <Styled(MuiBox)
-                                          classes={
-                                            Object {
-                                              "root": "Styled(MuiBox)-root-109",
-                                            }
-                                          }
-                                          display="flex"
-                                          justifyContent="center"
-                                        >
-                                          <div
-                                            className="MuiBox-root MuiBox-root-145 Styled(MuiBox)-root-109"
-                                            classes={
-                                              Object {
-                                                "root": "Styled(MuiBox)-root-109",
-                                              }
-                                            }
-                                          >
-                                            <WithStyles(ForwardRef(Button))
-                                              color="primary"
-                                              href="https://some-url"
-                                              variant="outlined"
-                                            >
-                                              <ForwardRef(Button)
+                                            <WithStyles(ForwardRef(ExpansionPanel))>
+                                              <ForwardRef(ExpansionPanel)
                                                 classes={
                                                   Object {
-                                                    "colorInherit": "MuiButton-colorInherit",
-                                                    "contained": "MuiButton-contained",
-                                                    "containedPrimary": "MuiButton-containedPrimary",
-                                                    "containedSecondary": "MuiButton-containedSecondary",
-                                                    "containedSizeLarge": "MuiButton-containedSizeLarge",
-                                                    "containedSizeSmall": "MuiButton-containedSizeSmall",
-                                                    "disableElevation": "MuiButton-disableElevation",
                                                     "disabled": "Mui-disabled",
-                                                    "endIcon": "MuiButton-endIcon",
-                                                    "focusVisible": "Mui-focusVisible",
-                                                    "fullWidth": "MuiButton-fullWidth",
-                                                    "iconSizeLarge": "MuiButton-iconSizeLarge",
-                                                    "iconSizeMedium": "MuiButton-iconSizeMedium",
-                                                    "iconSizeSmall": "MuiButton-iconSizeSmall",
-                                                    "label": "MuiButton-label",
-                                                    "outlined": "MuiButton-outlined",
-                                                    "outlinedPrimary": "MuiButton-outlinedPrimary",
-                                                    "outlinedSecondary": "MuiButton-outlinedSecondary",
-                                                    "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
-                                                    "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                    "root": "MuiButton-root",
-                                                    "sizeLarge": "MuiButton-sizeLarge",
-                                                    "sizeSmall": "MuiButton-sizeSmall",
-                                                    "startIcon": "MuiButton-startIcon",
-                                                    "text": "MuiButton-text",
-                                                    "textPrimary": "MuiButton-textPrimary",
-                                                    "textSecondary": "MuiButton-textSecondary",
-                                                    "textSizeLarge": "MuiButton-textSizeLarge",
-                                                    "textSizeSmall": "MuiButton-textSizeSmall",
+                                                    "expanded": "Mui-expanded",
+                                                    "root": "MuiExpansionPanel-root",
+                                                    "rounded": "MuiExpansionPanel-rounded",
                                                   }
                                                 }
-                                                color="primary"
-                                                href="https://some-url"
-                                                variant="outlined"
                                               >
-                                                <WithStyles(ForwardRef(ButtonBase))
-                                                  className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
-                                                  component="button"
-                                                  disabled={false}
-                                                  focusRipple={true}
-                                                  focusVisibleClassName="Mui-focusVisible"
-                                                  href="https://some-url"
-                                                  type="button"
+                                                <WithStyles(ForwardRef(Paper))
+                                                  className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                                  square={false}
                                                 >
-                                                  <ForwardRef(ButtonBase)
-                                                    className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+                                                  <ForwardRef(Paper)
+                                                    className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
                                                     classes={
                                                       Object {
-                                                        "disabled": "Mui-disabled",
-                                                        "focusVisible": "Mui-focusVisible",
-                                                        "root": "MuiButtonBase-root",
+                                                        "elevation0": "MuiPaper-elevation0",
+                                                        "elevation1": "MuiPaper-elevation1",
+                                                        "elevation10": "MuiPaper-elevation10",
+                                                        "elevation11": "MuiPaper-elevation11",
+                                                        "elevation12": "MuiPaper-elevation12",
+                                                        "elevation13": "MuiPaper-elevation13",
+                                                        "elevation14": "MuiPaper-elevation14",
+                                                        "elevation15": "MuiPaper-elevation15",
+                                                        "elevation16": "MuiPaper-elevation16",
+                                                        "elevation17": "MuiPaper-elevation17",
+                                                        "elevation18": "MuiPaper-elevation18",
+                                                        "elevation19": "MuiPaper-elevation19",
+                                                        "elevation2": "MuiPaper-elevation2",
+                                                        "elevation20": "MuiPaper-elevation20",
+                                                        "elevation21": "MuiPaper-elevation21",
+                                                        "elevation22": "MuiPaper-elevation22",
+                                                        "elevation23": "MuiPaper-elevation23",
+                                                        "elevation24": "MuiPaper-elevation24",
+                                                        "elevation3": "MuiPaper-elevation3",
+                                                        "elevation4": "MuiPaper-elevation4",
+                                                        "elevation5": "MuiPaper-elevation5",
+                                                        "elevation6": "MuiPaper-elevation6",
+                                                        "elevation7": "MuiPaper-elevation7",
+                                                        "elevation8": "MuiPaper-elevation8",
+                                                        "elevation9": "MuiPaper-elevation9",
+                                                        "outlined": "MuiPaper-outlined",
+                                                        "root": "MuiPaper-root",
+                                                        "rounded": "MuiPaper-rounded",
                                                       }
                                                     }
-                                                    component="button"
-                                                    disabled={false}
-                                                    focusRipple={true}
-                                                    focusVisibleClassName="Mui-focusVisible"
-                                                    href="https://some-url"
-                                                    type="button"
+                                                    square={false}
                                                   >
-                                                    <a
-                                                      aria-disabled={false}
-                                                      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
-                                                      href="https://some-url"
-                                                      onBlur={[Function]}
-                                                      onDragLeave={[Function]}
-                                                      onFocus={[Function]}
-                                                      onKeyDown={[Function]}
-                                                      onKeyUp={[Function]}
-                                                      onMouseDown={[Function]}
-                                                      onMouseLeave={[Function]}
-                                                      onMouseUp={[Function]}
-                                                      onTouchEnd={[Function]}
-                                                      onTouchMove={[Function]}
-                                                      onTouchStart={[Function]}
-                                                      tabIndex={0}
+                                                    <div
+                                                      className="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                                     >
-                                                      <span
-                                                        className="MuiButton-label"
+                                                      <WithStyles(ForwardRef(ExpansionPanelSummary))
+                                                        aria-controls="panel1a-content"
+                                                        expandIcon={<Memo(ExpandMoreIcon) />}
+                                                        id="panel1a-header"
+                                                        key=".0"
                                                       >
-                                                        <FormattedMessage
-                                                          defaultMessage="Click here to download the firmware hex file"
-                                                          id="app.connection_help.firmware_hex_button"
-                                                          values={Object {}}
-                                                        >
-                                                          Click here to download the firmware hex file
-                                                        </FormattedMessage>
-                                                      </span>
-                                                      <WithStyles(memo)
-                                                        center={false}
-                                                      >
-                                                        <ForwardRef(TouchRipple)
-                                                          center={false}
+                                                        <ForwardRef(ExpansionPanelSummary)
+                                                          aria-controls="panel1a-content"
                                                           classes={
                                                             Object {
-                                                              "child": "MuiTouchRipple-child",
-                                                              "childLeaving": "MuiTouchRipple-childLeaving",
-                                                              "childPulsate": "MuiTouchRipple-childPulsate",
-                                                              "ripple": "MuiTouchRipple-ripple",
-                                                              "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                              "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                              "root": "MuiTouchRipple-root",
+                                                              "content": "MuiExpansionPanelSummary-content",
+                                                              "disabled": "Mui-disabled",
+                                                              "expandIcon": "MuiExpansionPanelSummary-expandIcon",
+                                                              "expanded": "Mui-expanded",
+                                                              "focused": "Mui-focused",
+                                                              "root": "MuiExpansionPanelSummary-root",
                                                             }
                                                           }
+                                                          expandIcon={<Memo(ExpandMoreIcon) />}
+                                                          id="panel1a-header"
                                                         >
-                                                          <span
-                                                            className="MuiTouchRipple-root"
+                                                          <WithStyles(ForwardRef(ButtonBase))
+                                                            aria-controls="panel1a-content"
+                                                            aria-expanded={false}
+                                                            className="MuiExpansionPanelSummary-root"
+                                                            component="div"
+                                                            disableRipple={true}
+                                                            disabled={false}
+                                                            focusRipple={false}
+                                                            id="panel1a-header"
+                                                            onBlur={[Function]}
+                                                            onClick={[Function]}
+                                                            onFocusVisible={[Function]}
                                                           >
-                                                            <TransitionGroup
-                                                              childFactory={[Function]}
-                                                              component={null}
-                                                              exit={true}
-                                                            />
-                                                          </span>
-                                                        </ForwardRef(TouchRipple)>
-                                                      </WithStyles(memo)>
-                                                    </a>
-                                                  </ForwardRef(ButtonBase)>
-                                                </WithStyles(ForwardRef(ButtonBase))>
-                                              </ForwardRef(Button)>
-                                            </WithStyles(ForwardRef(Button))>
+                                                            <ForwardRef(ButtonBase)
+                                                              aria-controls="panel1a-content"
+                                                              aria-expanded={false}
+                                                              className="MuiExpansionPanelSummary-root"
+                                                              classes={
+                                                                Object {
+                                                                  "disabled": "Mui-disabled",
+                                                                  "focusVisible": "Mui-focusVisible",
+                                                                  "root": "MuiButtonBase-root",
+                                                                }
+                                                              }
+                                                              component="div"
+                                                              disableRipple={true}
+                                                              disabled={false}
+                                                              focusRipple={false}
+                                                              id="panel1a-header"
+                                                              onBlur={[Function]}
+                                                              onClick={[Function]}
+                                                              onFocusVisible={[Function]}
+                                                            >
+                                                              <div
+                                                                aria-controls="panel1a-content"
+                                                                aria-disabled={false}
+                                                                aria-expanded={false}
+                                                                className="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                                                id="panel1a-header"
+                                                                onBlur={[Function]}
+                                                                onClick={[Function]}
+                                                                onDragLeave={[Function]}
+                                                                onFocus={[Function]}
+                                                                onKeyDown={[Function]}
+                                                                onKeyUp={[Function]}
+                                                                onMouseDown={[Function]}
+                                                                onMouseLeave={[Function]}
+                                                                onMouseUp={[Function]}
+                                                                onTouchEnd={[Function]}
+                                                                onTouchMove={[Function]}
+                                                                onTouchStart={[Function]}
+                                                                role="button"
+                                                                tabIndex={0}
+                                                              >
+                                                                <div
+                                                                  className="MuiExpansionPanelSummary-content"
+                                                                >
+                                                                  <WithStyles(ForwardRef(Typography))>
+                                                                    <ForwardRef(Typography)
+                                                                      classes={
+                                                                        Object {
+                                                                          "alignCenter": "MuiTypography-alignCenter",
+                                                                          "alignJustify": "MuiTypography-alignJustify",
+                                                                          "alignLeft": "MuiTypography-alignLeft",
+                                                                          "alignRight": "MuiTypography-alignRight",
+                                                                          "body1": "MuiTypography-body1",
+                                                                          "body2": "MuiTypography-body2",
+                                                                          "button": "MuiTypography-button",
+                                                                          "caption": "MuiTypography-caption",
+                                                                          "colorError": "MuiTypography-colorError",
+                                                                          "colorInherit": "MuiTypography-colorInherit",
+                                                                          "colorPrimary": "MuiTypography-colorPrimary",
+                                                                          "colorSecondary": "MuiTypography-colorSecondary",
+                                                                          "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                          "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                          "displayBlock": "MuiTypography-displayBlock",
+                                                                          "displayInline": "MuiTypography-displayInline",
+                                                                          "gutterBottom": "MuiTypography-gutterBottom",
+                                                                          "h1": "MuiTypography-h1",
+                                                                          "h2": "MuiTypography-h2",
+                                                                          "h3": "MuiTypography-h3",
+                                                                          "h4": "MuiTypography-h4",
+                                                                          "h5": "MuiTypography-h5",
+                                                                          "h6": "MuiTypography-h6",
+                                                                          "noWrap": "MuiTypography-noWrap",
+                                                                          "overline": "MuiTypography-overline",
+                                                                          "paragraph": "MuiTypography-paragraph",
+                                                                          "root": "MuiTypography-root",
+                                                                          "srOnly": "MuiTypography-srOnly",
+                                                                          "subtitle1": "MuiTypography-subtitle1",
+                                                                          "subtitle2": "MuiTypography-subtitle2",
+                                                                        }
+                                                                      }
+                                                                    >
+                                                                      <p
+                                                                        className="MuiTypography-root MuiTypography-body1"
+                                                                      >
+                                                                        <FormattedMessage
+                                                                          defaultMessage="If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware. Click here to see how."
+                                                                          id="app.connection_help.firmware_expansion_panel"
+                                                                          values={Object {}}
+                                                                        >
+                                                                          If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware. Click here to see how.
+                                                                        </FormattedMessage>
+                                                                      </p>
+                                                                    </ForwardRef(Typography)>
+                                                                  </WithStyles(ForwardRef(Typography))>
+                                                                </div>
+                                                                <WithStyles(ForwardRef(IconButton))
+                                                                  aria-hidden={true}
+                                                                  className="MuiExpansionPanelSummary-expandIcon"
+                                                                  component="div"
+                                                                  edge="end"
+                                                                  role={null}
+                                                                  tabIndex={null}
+                                                                >
+                                                                  <ForwardRef(IconButton)
+                                                                    aria-hidden={true}
+                                                                    className="MuiExpansionPanelSummary-expandIcon"
+                                                                    classes={
+                                                                      Object {
+                                                                        "colorInherit": "MuiIconButton-colorInherit",
+                                                                        "colorPrimary": "MuiIconButton-colorPrimary",
+                                                                        "colorSecondary": "MuiIconButton-colorSecondary",
+                                                                        "disabled": "Mui-disabled",
+                                                                        "edgeEnd": "MuiIconButton-edgeEnd",
+                                                                        "edgeStart": "MuiIconButton-edgeStart",
+                                                                        "label": "MuiIconButton-label",
+                                                                        "root": "MuiIconButton-root",
+                                                                        "sizeSmall": "MuiIconButton-sizeSmall",
+                                                                      }
+                                                                    }
+                                                                    component="div"
+                                                                    edge="end"
+                                                                    role={null}
+                                                                    tabIndex={null}
+                                                                  >
+                                                                    <WithStyles(ForwardRef(ButtonBase))
+                                                                      aria-hidden={true}
+                                                                      centerRipple={true}
+                                                                      className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                                      component="div"
+                                                                      disabled={false}
+                                                                      focusRipple={true}
+                                                                      role={null}
+                                                                      tabIndex={null}
+                                                                    >
+                                                                      <ForwardRef(ButtonBase)
+                                                                        aria-hidden={true}
+                                                                        centerRipple={true}
+                                                                        className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                                        classes={
+                                                                          Object {
+                                                                            "disabled": "Mui-disabled",
+                                                                            "focusVisible": "Mui-focusVisible",
+                                                                            "root": "MuiButtonBase-root",
+                                                                          }
+                                                                        }
+                                                                        component="div"
+                                                                        disabled={false}
+                                                                        focusRipple={true}
+                                                                        role={null}
+                                                                        tabIndex={null}
+                                                                      >
+                                                                        <div
+                                                                          aria-disabled={false}
+                                                                          aria-hidden={true}
+                                                                          className="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                                          onBlur={[Function]}
+                                                                          onDragLeave={[Function]}
+                                                                          onFocus={[Function]}
+                                                                          onKeyDown={[Function]}
+                                                                          onKeyUp={[Function]}
+                                                                          onMouseDown={[Function]}
+                                                                          onMouseLeave={[Function]}
+                                                                          onMouseUp={[Function]}
+                                                                          onTouchEnd={[Function]}
+                                                                          onTouchMove={[Function]}
+                                                                          onTouchStart={[Function]}
+                                                                          role={null}
+                                                                          tabIndex={null}
+                                                                        >
+                                                                          <span
+                                                                            className="MuiIconButton-label"
+                                                                          >
+                                                                            <ForwardRef>
+                                                                              <WithStyles(ForwardRef(SvgIcon))>
+                                                                                <ForwardRef(SvgIcon)
+                                                                                  classes={
+                                                                                    Object {
+                                                                                      "colorAction": "MuiSvgIcon-colorAction",
+                                                                                      "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                                                      "colorError": "MuiSvgIcon-colorError",
+                                                                                      "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                                                      "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                                                      "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                                                      "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                                                      "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                                                      "root": "MuiSvgIcon-root",
+                                                                                    }
+                                                                                  }
+                                                                                >
+                                                                                  <svg
+                                                                                    aria-hidden="true"
+                                                                                    className="MuiSvgIcon-root"
+                                                                                    focusable="false"
+                                                                                    viewBox="0 0 24 24"
+                                                                                  >
+                                                                                    <path
+                                                                                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                    />
+                                                                                  </svg>
+                                                                                </ForwardRef(SvgIcon)>
+                                                                              </WithStyles(ForwardRef(SvgIcon))>
+                                                                            </ForwardRef>
+                                                                          </span>
+                                                                        </div>
+                                                                      </ForwardRef(ButtonBase)>
+                                                                    </WithStyles(ForwardRef(ButtonBase))>
+                                                                  </ForwardRef(IconButton)>
+                                                                </WithStyles(ForwardRef(IconButton))>
+                                                              </div>
+                                                            </ForwardRef(ButtonBase)>
+                                                          </WithStyles(ForwardRef(ButtonBase))>
+                                                        </ForwardRef(ExpansionPanelSummary)>
+                                                      </WithStyles(ForwardRef(ExpansionPanelSummary))>
+                                                      <WithStyles(ForwardRef(Collapse))
+                                                        in={false}
+                                                        timeout="auto"
+                                                      >
+                                                        <ForwardRef(Collapse)
+                                                          classes={
+                                                            Object {
+                                                              "container": "MuiCollapse-container",
+                                                              "entered": "MuiCollapse-entered",
+                                                              "hidden": "MuiCollapse-hidden",
+                                                              "wrapper": "MuiCollapse-wrapper",
+                                                              "wrapperInner": "MuiCollapse-wrapperInner",
+                                                            }
+                                                          }
+                                                          in={false}
+                                                          timeout="auto"
+                                                        >
+                                                          <Transition
+                                                            addEndListener={[Function]}
+                                                            appear={false}
+                                                            enter={true}
+                                                            exit={true}
+                                                            in={false}
+                                                            mountOnEnter={false}
+                                                            onEnter={[Function]}
+                                                            onEntered={[Function]}
+                                                            onEntering={[Function]}
+                                                            onExit={[Function]}
+                                                            onExited={[Function]}
+                                                            onExiting={[Function]}
+                                                            timeout={null}
+                                                            unmountOnExit={false}
+                                                          >
+                                                            <div
+                                                              className="MuiCollapse-container MuiCollapse-hidden"
+                                                              style={
+                                                                Object {
+                                                                  "minHeight": "0px",
+                                                                }
+                                                              }
+                                                            >
+                                                              <div
+                                                                className="MuiCollapse-wrapper"
+                                                              >
+                                                                <div
+                                                                  className="MuiCollapse-wrapperInner"
+                                                                >
+                                                                  <div
+                                                                    aria-labelledby="panel1a-header"
+                                                                    id="panel1a-content"
+                                                                    role="region"
+                                                                  >
+                                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                      key=".1"
+                                                                    >
+                                                                      <ForwardRef(ExpansionPanelDetails)
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "MuiExpansionPanelDetails-root",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <div
+                                                                          className="MuiExpansionPanelDetails-root"
+                                                                        >
+                                                                          <WithStyles(ForwardRef(Typography))
+                                                                            gutterBottom={true}
+                                                                          >
+                                                                            <ForwardRef(Typography)
+                                                                              classes={
+                                                                                Object {
+                                                                                  "alignCenter": "MuiTypography-alignCenter",
+                                                                                  "alignJustify": "MuiTypography-alignJustify",
+                                                                                  "alignLeft": "MuiTypography-alignLeft",
+                                                                                  "alignRight": "MuiTypography-alignRight",
+                                                                                  "body1": "MuiTypography-body1",
+                                                                                  "body2": "MuiTypography-body2",
+                                                                                  "button": "MuiTypography-button",
+                                                                                  "caption": "MuiTypography-caption",
+                                                                                  "colorError": "MuiTypography-colorError",
+                                                                                  "colorInherit": "MuiTypography-colorInherit",
+                                                                                  "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                  "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                  "displayBlock": "MuiTypography-displayBlock",
+                                                                                  "displayInline": "MuiTypography-displayInline",
+                                                                                  "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                  "h1": "MuiTypography-h1",
+                                                                                  "h2": "MuiTypography-h2",
+                                                                                  "h3": "MuiTypography-h3",
+                                                                                  "h4": "MuiTypography-h4",
+                                                                                  "h5": "MuiTypography-h5",
+                                                                                  "h6": "MuiTypography-h6",
+                                                                                  "noWrap": "MuiTypography-noWrap",
+                                                                                  "overline": "MuiTypography-overline",
+                                                                                  "paragraph": "MuiTypography-paragraph",
+                                                                                  "root": "MuiTypography-root",
+                                                                                  "srOnly": "MuiTypography-srOnly",
+                                                                                  "subtitle1": "MuiTypography-subtitle1",
+                                                                                  "subtitle2": "MuiTypography-subtitle2",
+                                                                                }
+                                                                              }
+                                                                              gutterBottom={true}
+                                                                            >
+                                                                              <p
+                                                                                className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                                                              >
+                                                                                <FormattedMessage
+                                                                                  defaultMessage="Use a USB cable to connect the micro:bit to your computer."
+                                                                                  id="app.connection_help.connect_microbit"
+                                                                                  values={Object {}}
+                                                                                >
+                                                                                  Use a USB cable to connect the micro:bit to your computer.
+                                                                                </FormattedMessage>
+                                                                              </p>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </div>
+                                                                      </ForwardRef(ExpansionPanelDetails)>
+                                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                    <WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))
+                                                                      key=".2"
+                                                                    >
+                                                                      <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-180",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <ForwardRef(ExpansionPanelDetails)
+                                                                          classes={
+                                                                            Object {
+                                                                              "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180",
+                                                                            }
+                                                                          }
+                                                                        >
+                                                                          <div
+                                                                            className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180"
+                                                                          >
+                                                                            <WithStyles(Styled(MuiBox))>
+                                                                              <Styled(MuiBox)
+                                                                                classes={
+                                                                                  Object {
+                                                                                    "root": "Styled(MuiBox)-root-175",
+                                                                                  }
+                                                                                }
+                                                                              >
+                                                                                <div
+                                                                                  className="MuiBox-root MuiBox-root-181 Styled(MuiBox)-root-175"
+                                                                                  classes={
+                                                                                    Object {
+                                                                                      "root": "Styled(MuiBox)-root-175",
+                                                                                    }
+                                                                                  }
+                                                                                >
+                                                                                  <img
+                                                                                    alt="Connecting the micro:bit to a computer"
+                                                                                    src={Object {}}
+                                                                                    width="300px"
+                                                                                  />
+                                                                                </div>
+                                                                              </Styled(MuiBox)>
+                                                                            </WithStyles(Styled(MuiBox))>
+                                                                          </div>
+                                                                        </ForwardRef(ExpansionPanelDetails)>
+                                                                      </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                    </WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))>
+                                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                      key=".3"
+                                                                    >
+                                                                      <ForwardRef(ExpansionPanelDetails)
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "MuiExpansionPanelDetails-root",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <div
+                                                                          className="MuiExpansionPanelDetails-root"
+                                                                        >
+                                                                          <WithStyles(ForwardRef(Typography))
+                                                                            gutterBottom={true}
+                                                                          >
+                                                                            <ForwardRef(Typography)
+                                                                              classes={
+                                                                                Object {
+                                                                                  "alignCenter": "MuiTypography-alignCenter",
+                                                                                  "alignJustify": "MuiTypography-alignJustify",
+                                                                                  "alignLeft": "MuiTypography-alignLeft",
+                                                                                  "alignRight": "MuiTypography-alignRight",
+                                                                                  "body1": "MuiTypography-body1",
+                                                                                  "body2": "MuiTypography-body2",
+                                                                                  "button": "MuiTypography-button",
+                                                                                  "caption": "MuiTypography-caption",
+                                                                                  "colorError": "MuiTypography-colorError",
+                                                                                  "colorInherit": "MuiTypography-colorInherit",
+                                                                                  "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                  "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                  "displayBlock": "MuiTypography-displayBlock",
+                                                                                  "displayInline": "MuiTypography-displayInline",
+                                                                                  "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                  "h1": "MuiTypography-h1",
+                                                                                  "h2": "MuiTypography-h2",
+                                                                                  "h3": "MuiTypography-h3",
+                                                                                  "h4": "MuiTypography-h4",
+                                                                                  "h5": "MuiTypography-h5",
+                                                                                  "h6": "MuiTypography-h6",
+                                                                                  "noWrap": "MuiTypography-noWrap",
+                                                                                  "overline": "MuiTypography-overline",
+                                                                                  "paragraph": "MuiTypography-paragraph",
+                                                                                  "root": "MuiTypography-root",
+                                                                                  "srOnly": "MuiTypography-srOnly",
+                                                                                  "subtitle1": "MuiTypography-subtitle1",
+                                                                                  "subtitle2": "MuiTypography-subtitle2",
+                                                                                }
+                                                                              }
+                                                                              gutterBottom={true}
+                                                                            >
+                                                                              <p
+                                                                                className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                                                              >
+                                                                                <FormattedMessage
+                                                                                  defaultMessage="The micro:bit device should show up in your file browser."
+                                                                                  id="app.connection_help.computer_device"
+                                                                                  values={Object {}}
+                                                                                >
+                                                                                  The micro:bit device should show up in your file browser.
+                                                                                </FormattedMessage>
+                                                                              </p>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </div>
+                                                                      </ForwardRef(ExpansionPanelDetails)>
+                                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                    <WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))
+                                                                      key=".4"
+                                                                    >
+                                                                      <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-180",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <ForwardRef(ExpansionPanelDetails)
+                                                                          classes={
+                                                                            Object {
+                                                                              "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180",
+                                                                            }
+                                                                          }
+                                                                        >
+                                                                          <div
+                                                                            className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180"
+                                                                          >
+                                                                            <WithStyles(Styled(MuiBox))>
+                                                                              <Styled(MuiBox)
+                                                                                classes={
+                                                                                  Object {
+                                                                                    "root": "Styled(MuiBox)-root-175",
+                                                                                  }
+                                                                                }
+                                                                              >
+                                                                                <div
+                                                                                  className="MuiBox-root MuiBox-root-182 Styled(MuiBox)-root-175"
+                                                                                  classes={
+                                                                                    Object {
+                                                                                      "root": "Styled(MuiBox)-root-175",
+                                                                                    }
+                                                                                  }
+                                                                                >
+                                                                                  <img
+                                                                                    alt="Connecting the micro:bit to a computer"
+                                                                                    src={Object {}}
+                                                                                  />
+                                                                                </div>
+                                                                              </Styled(MuiBox)>
+                                                                            </WithStyles(Styled(MuiBox))>
+                                                                          </div>
+                                                                        </ForwardRef(ExpansionPanelDetails)>
+                                                                      </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                    </WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))>
+                                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                      key=".5"
+                                                                    >
+                                                                      <ForwardRef(ExpansionPanelDetails)
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "MuiExpansionPanelDetails-root",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <div
+                                                                          className="MuiExpansionPanelDetails-root"
+                                                                        >
+                                                                          <WithStyles(ForwardRef(Typography))
+                                                                            gutterBottom={true}
+                                                                          >
+                                                                            <ForwardRef(Typography)
+                                                                              classes={
+                                                                                Object {
+                                                                                  "alignCenter": "MuiTypography-alignCenter",
+                                                                                  "alignJustify": "MuiTypography-alignJustify",
+                                                                                  "alignLeft": "MuiTypography-alignLeft",
+                                                                                  "alignRight": "MuiTypography-alignRight",
+                                                                                  "body1": "MuiTypography-body1",
+                                                                                  "body2": "MuiTypography-body2",
+                                                                                  "button": "MuiTypography-button",
+                                                                                  "caption": "MuiTypography-caption",
+                                                                                  "colorError": "MuiTypography-colorError",
+                                                                                  "colorInherit": "MuiTypography-colorInherit",
+                                                                                  "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                  "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                  "displayBlock": "MuiTypography-displayBlock",
+                                                                                  "displayInline": "MuiTypography-displayInline",
+                                                                                  "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                  "h1": "MuiTypography-h1",
+                                                                                  "h2": "MuiTypography-h2",
+                                                                                  "h3": "MuiTypography-h3",
+                                                                                  "h4": "MuiTypography-h4",
+                                                                                  "h5": "MuiTypography-h5",
+                                                                                  "h6": "MuiTypography-h6",
+                                                                                  "noWrap": "MuiTypography-noWrap",
+                                                                                  "overline": "MuiTypography-overline",
+                                                                                  "paragraph": "MuiTypography-paragraph",
+                                                                                  "root": "MuiTypography-root",
+                                                                                  "srOnly": "MuiTypography-srOnly",
+                                                                                  "subtitle1": "MuiTypography-subtitle1",
+                                                                                  "subtitle2": "MuiTypography-subtitle2",
+                                                                                }
+                                                                              }
+                                                                              gutterBottom={true}
+                                                                            >
+                                                                              <p
+                                                                                className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                                                              >
+                                                                                <FormattedMessage
+                                                                                  defaultMessage="Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device."
+                                                                                  id="app.connection_help.firmware_save"
+                                                                                  values={Object {}}
+                                                                                >
+                                                                                  Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device.
+                                                                                </FormattedMessage>
+                                                                              </p>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </div>
+                                                                      </ForwardRef(ExpansionPanelDetails)>
+                                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                    <WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))
+                                                                      key=".6"
+                                                                    >
+                                                                      <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-180",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <ForwardRef(ExpansionPanelDetails)
+                                                                          classes={
+                                                                            Object {
+                                                                              "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180",
+                                                                            }
+                                                                          }
+                                                                        >
+                                                                          <div
+                                                                            className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-180"
+                                                                          >
+                                                                            <WithStyles(Styled(MuiBox))>
+                                                                              <Styled(MuiBox)
+                                                                                classes={
+                                                                                  Object {
+                                                                                    "root": "Styled(MuiBox)-root-175",
+                                                                                  }
+                                                                                }
+                                                                              >
+                                                                                <div
+                                                                                  className="MuiBox-root MuiBox-root-183 Styled(MuiBox)-root-175"
+                                                                                  classes={
+                                                                                    Object {
+                                                                                      "root": "Styled(MuiBox)-root-175",
+                                                                                    }
+                                                                                  }
+                                                                                >
+                                                                                  <WithStyles(ForwardRef(Button))
+                                                                                    color="primary"
+                                                                                    href="https://some-url"
+                                                                                    variant="outlined"
+                                                                                  >
+                                                                                    <ForwardRef(Button)
+                                                                                      classes={
+                                                                                        Object {
+                                                                                          "colorInherit": "MuiButton-colorInherit",
+                                                                                          "contained": "MuiButton-contained",
+                                                                                          "containedPrimary": "MuiButton-containedPrimary",
+                                                                                          "containedSecondary": "MuiButton-containedSecondary",
+                                                                                          "containedSizeLarge": "MuiButton-containedSizeLarge",
+                                                                                          "containedSizeSmall": "MuiButton-containedSizeSmall",
+                                                                                          "disableElevation": "MuiButton-disableElevation",
+                                                                                          "disabled": "Mui-disabled",
+                                                                                          "endIcon": "MuiButton-endIcon",
+                                                                                          "focusVisible": "Mui-focusVisible",
+                                                                                          "fullWidth": "MuiButton-fullWidth",
+                                                                                          "iconSizeLarge": "MuiButton-iconSizeLarge",
+                                                                                          "iconSizeMedium": "MuiButton-iconSizeMedium",
+                                                                                          "iconSizeSmall": "MuiButton-iconSizeSmall",
+                                                                                          "label": "MuiButton-label",
+                                                                                          "outlined": "MuiButton-outlined",
+                                                                                          "outlinedPrimary": "MuiButton-outlinedPrimary",
+                                                                                          "outlinedSecondary": "MuiButton-outlinedSecondary",
+                                                                                          "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
+                                                                                          "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
+                                                                                          "root": "MuiButton-root",
+                                                                                          "sizeLarge": "MuiButton-sizeLarge",
+                                                                                          "sizeSmall": "MuiButton-sizeSmall",
+                                                                                          "startIcon": "MuiButton-startIcon",
+                                                                                          "text": "MuiButton-text",
+                                                                                          "textPrimary": "MuiButton-textPrimary",
+                                                                                          "textSecondary": "MuiButton-textSecondary",
+                                                                                          "textSizeLarge": "MuiButton-textSizeLarge",
+                                                                                          "textSizeSmall": "MuiButton-textSizeSmall",
+                                                                                        }
+                                                                                      }
+                                                                                      color="primary"
+                                                                                      href="https://some-url"
+                                                                                      variant="outlined"
+                                                                                    >
+                                                                                      <WithStyles(ForwardRef(ButtonBase))
+                                                                                        className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+                                                                                        component="button"
+                                                                                        disabled={false}
+                                                                                        focusRipple={true}
+                                                                                        focusVisibleClassName="Mui-focusVisible"
+                                                                                        href="https://some-url"
+                                                                                        type="button"
+                                                                                      >
+                                                                                        <ForwardRef(ButtonBase)
+                                                                                          className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+                                                                                          classes={
+                                                                                            Object {
+                                                                                              "disabled": "Mui-disabled",
+                                                                                              "focusVisible": "Mui-focusVisible",
+                                                                                              "root": "MuiButtonBase-root",
+                                                                                            }
+                                                                                          }
+                                                                                          component="button"
+                                                                                          disabled={false}
+                                                                                          focusRipple={true}
+                                                                                          focusVisibleClassName="Mui-focusVisible"
+                                                                                          href="https://some-url"
+                                                                                          type="button"
+                                                                                        >
+                                                                                          <a
+                                                                                            aria-disabled={false}
+                                                                                            className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+                                                                                            href="https://some-url"
+                                                                                            onBlur={[Function]}
+                                                                                            onDragLeave={[Function]}
+                                                                                            onFocus={[Function]}
+                                                                                            onKeyDown={[Function]}
+                                                                                            onKeyUp={[Function]}
+                                                                                            onMouseDown={[Function]}
+                                                                                            onMouseLeave={[Function]}
+                                                                                            onMouseUp={[Function]}
+                                                                                            onTouchEnd={[Function]}
+                                                                                            onTouchMove={[Function]}
+                                                                                            onTouchStart={[Function]}
+                                                                                            tabIndex={0}
+                                                                                          >
+                                                                                            <span
+                                                                                              className="MuiButton-label"
+                                                                                            >
+                                                                                              <FormattedMessage
+                                                                                                defaultMessage="Click here to download the firmware hex file"
+                                                                                                id="app.connection_help.firmware_hex_button"
+                                                                                                values={Object {}}
+                                                                                              >
+                                                                                                Click here to download the firmware hex file
+                                                                                              </FormattedMessage>
+                                                                                            </span>
+                                                                                          </a>
+                                                                                        </ForwardRef(ButtonBase)>
+                                                                                      </WithStyles(ForwardRef(ButtonBase))>
+                                                                                    </ForwardRef(Button)>
+                                                                                  </WithStyles(ForwardRef(Button))>
+                                                                                </div>
+                                                                              </Styled(MuiBox)>
+                                                                            </WithStyles(Styled(MuiBox))>
+                                                                          </div>
+                                                                        </ForwardRef(ExpansionPanelDetails)>
+                                                                      </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                    </WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))>
+                                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                      key=".7"
+                                                                    >
+                                                                      <ForwardRef(ExpansionPanelDetails)
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "MuiExpansionPanelDetails-root",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <div
+                                                                          className="MuiExpansionPanelDetails-root"
+                                                                        >
+                                                                          <WithStyles(ForwardRef(Typography))
+                                                                            gutterBottom={true}
+                                                                          >
+                                                                            <ForwardRef(Typography)
+                                                                              classes={
+                                                                                Object {
+                                                                                  "alignCenter": "MuiTypography-alignCenter",
+                                                                                  "alignJustify": "MuiTypography-alignJustify",
+                                                                                  "alignLeft": "MuiTypography-alignLeft",
+                                                                                  "alignRight": "MuiTypography-alignRight",
+                                                                                  "body1": "MuiTypography-body1",
+                                                                                  "body2": "MuiTypography-body2",
+                                                                                  "button": "MuiTypography-button",
+                                                                                  "caption": "MuiTypography-caption",
+                                                                                  "colorError": "MuiTypography-colorError",
+                                                                                  "colorInherit": "MuiTypography-colorInherit",
+                                                                                  "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                  "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                  "displayBlock": "MuiTypography-displayBlock",
+                                                                                  "displayInline": "MuiTypography-displayInline",
+                                                                                  "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                  "h1": "MuiTypography-h1",
+                                                                                  "h2": "MuiTypography-h2",
+                                                                                  "h3": "MuiTypography-h3",
+                                                                                  "h4": "MuiTypography-h4",
+                                                                                  "h5": "MuiTypography-h5",
+                                                                                  "h6": "MuiTypography-h6",
+                                                                                  "noWrap": "MuiTypography-noWrap",
+                                                                                  "overline": "MuiTypography-overline",
+                                                                                  "paragraph": "MuiTypography-paragraph",
+                                                                                  "root": "MuiTypography-root",
+                                                                                  "srOnly": "MuiTypography-srOnly",
+                                                                                  "subtitle1": "MuiTypography-subtitle1",
+                                                                                  "subtitle2": "MuiTypography-subtitle2",
+                                                                                }
+                                                                              }
+                                                                              gutterBottom={true}
+                                                                            >
+                                                                              <p
+                                                                                className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                                                              >
+                                                                                <FormattedMessage
+                                                                                  defaultMessage="After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display."
+                                                                                  id="app.connection_help.firmware_complete"
+                                                                                  values={Object {}}
+                                                                                >
+                                                                                  After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display.
+                                                                                </FormattedMessage>
+                                                                              </p>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </div>
+                                                                      </ForwardRef(ExpansionPanelDetails)>
+                                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                      key=".8"
+                                                                    >
+                                                                      <ForwardRef(ExpansionPanelDetails)
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "MuiExpansionPanelDetails-root",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <div
+                                                                          className="MuiExpansionPanelDetails-root"
+                                                                        >
+                                                                          <WithStyles(ForwardRef(Link))
+                                                                            href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
+                                                                            rel="noopener"
+                                                                            target="_blank"
+                                                                            variant="body1"
+                                                                          >
+                                                                            <ForwardRef(Link)
+                                                                              classes={
+                                                                                Object {
+                                                                                  "button": "MuiLink-button",
+                                                                                  "focusVisible": "Mui-focusVisible",
+                                                                                  "root": "MuiLink-root",
+                                                                                  "underlineAlways": "MuiLink-underlineAlways",
+                                                                                  "underlineHover": "MuiLink-underlineHover",
+                                                                                  "underlineNone": "MuiLink-underlineNone",
+                                                                                }
+                                                                              }
+                                                                              href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
+                                                                              rel="noopener"
+                                                                              target="_blank"
+                                                                              variant="body1"
+                                                                            >
+                                                                              <WithStyles(ForwardRef(Typography))
+                                                                                className="MuiLink-root MuiLink-underlineHover"
+                                                                                color="primary"
+                                                                                component="a"
+                                                                                href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
+                                                                                onBlur={[Function]}
+                                                                                onFocus={[Function]}
+                                                                                rel="noopener"
+                                                                                target="_blank"
+                                                                                variant="body1"
+                                                                              >
+                                                                                <ForwardRef(Typography)
+                                                                                  className="MuiLink-root MuiLink-underlineHover"
+                                                                                  classes={
+                                                                                    Object {
+                                                                                      "alignCenter": "MuiTypography-alignCenter",
+                                                                                      "alignJustify": "MuiTypography-alignJustify",
+                                                                                      "alignLeft": "MuiTypography-alignLeft",
+                                                                                      "alignRight": "MuiTypography-alignRight",
+                                                                                      "body1": "MuiTypography-body1",
+                                                                                      "body2": "MuiTypography-body2",
+                                                                                      "button": "MuiTypography-button",
+                                                                                      "caption": "MuiTypography-caption",
+                                                                                      "colorError": "MuiTypography-colorError",
+                                                                                      "colorInherit": "MuiTypography-colorInherit",
+                                                                                      "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                      "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                      "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                      "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                      "displayBlock": "MuiTypography-displayBlock",
+                                                                                      "displayInline": "MuiTypography-displayInline",
+                                                                                      "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                      "h1": "MuiTypography-h1",
+                                                                                      "h2": "MuiTypography-h2",
+                                                                                      "h3": "MuiTypography-h3",
+                                                                                      "h4": "MuiTypography-h4",
+                                                                                      "h5": "MuiTypography-h5",
+                                                                                      "h6": "MuiTypography-h6",
+                                                                                      "noWrap": "MuiTypography-noWrap",
+                                                                                      "overline": "MuiTypography-overline",
+                                                                                      "paragraph": "MuiTypography-paragraph",
+                                                                                      "root": "MuiTypography-root",
+                                                                                      "srOnly": "MuiTypography-srOnly",
+                                                                                      "subtitle1": "MuiTypography-subtitle1",
+                                                                                      "subtitle2": "MuiTypography-subtitle2",
+                                                                                    }
+                                                                                  }
+                                                                                  color="primary"
+                                                                                  component="a"
+                                                                                  href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
+                                                                                  onBlur={[Function]}
+                                                                                  onFocus={[Function]}
+                                                                                  rel="noopener"
+                                                                                  target="_blank"
+                                                                                  variant="body1"
+                                                                                >
+                                                                                  <a
+                                                                                    className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body1 MuiTypography-colorPrimary"
+                                                                                    href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
+                                                                                    onBlur={[Function]}
+                                                                                    onFocus={[Function]}
+                                                                                    rel="noopener"
+                                                                                    target="_blank"
+                                                                                  >
+                                                                                    <FormattedMessage
+                                                                                      defaultMessage="More instructions can be found here."
+                                                                                      id="app.connection_help.firmware_flash_link"
+                                                                                      values={Object {}}
+                                                                                    >
+                                                                                      More instructions can be found here.
+                                                                                    </FormattedMessage>
+                                                                                  </a>
+                                                                                </ForwardRef(Typography)>
+                                                                              </WithStyles(ForwardRef(Typography))>
+                                                                            </ForwardRef(Link)>
+                                                                          </WithStyles(ForwardRef(Link))>
+                                                                        </div>
+                                                                      </ForwardRef(ExpansionPanelDetails)>
+                                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </Transition>
+                                                        </ForwardRef(Collapse)>
+                                                      </WithStyles(ForwardRef(Collapse))>
+                                                    </div>
+                                                  </ForwardRef(Paper)>
+                                                </WithStyles(ForwardRef(Paper))>
+                                              </ForwardRef(ExpansionPanel)>
+                                            </WithStyles(ForwardRef(ExpansionPanel))>
                                           </div>
                                         </Styled(MuiBox)>
                                       </WithStyles(Styled(MuiBox))>
-                                      <WithStyles(ForwardRef(Typography))
-                                        gutterBottom={true}
-                                      >
-                                        <ForwardRef(Typography)
-                                          classes={
-                                            Object {
-                                              "alignCenter": "MuiTypography-alignCenter",
-                                              "alignJustify": "MuiTypography-alignJustify",
-                                              "alignLeft": "MuiTypography-alignLeft",
-                                              "alignRight": "MuiTypography-alignRight",
-                                              "body1": "MuiTypography-body1",
-                                              "body2": "MuiTypography-body2",
-                                              "button": "MuiTypography-button",
-                                              "caption": "MuiTypography-caption",
-                                              "colorError": "MuiTypography-colorError",
-                                              "colorInherit": "MuiTypography-colorInherit",
-                                              "colorPrimary": "MuiTypography-colorPrimary",
-                                              "colorSecondary": "MuiTypography-colorSecondary",
-                                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                                              "displayBlock": "MuiTypography-displayBlock",
-                                              "displayInline": "MuiTypography-displayInline",
-                                              "gutterBottom": "MuiTypography-gutterBottom",
-                                              "h1": "MuiTypography-h1",
-                                              "h2": "MuiTypography-h2",
-                                              "h3": "MuiTypography-h3",
-                                              "h4": "MuiTypography-h4",
-                                              "h5": "MuiTypography-h5",
-                                              "h6": "MuiTypography-h6",
-                                              "noWrap": "MuiTypography-noWrap",
-                                              "overline": "MuiTypography-overline",
-                                              "paragraph": "MuiTypography-paragraph",
-                                              "root": "MuiTypography-root",
-                                              "srOnly": "MuiTypography-srOnly",
-                                              "subtitle1": "MuiTypography-subtitle1",
-                                              "subtitle2": "MuiTypography-subtitle2",
-                                            }
-                                          }
-                                          gutterBottom={true}
-                                        >
-                                          <p
-                                            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
-                                          >
-                                            <FormattedMessage
-                                              defaultMessage="After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display."
-                                              id="app.connection_help.firmware_complete"
-                                              values={Object {}}
-                                            >
-                                              After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display.
-                                            </FormattedMessage>
-                                          </p>
-                                        </ForwardRef(Typography)>
-                                      </WithStyles(ForwardRef(Typography))>
-                                      <WithStyles(ForwardRef(Link))
-                                        href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
-                                        rel="noopener"
-                                        target="_blank"
-                                        variant="body1"
-                                      >
-                                        <ForwardRef(Link)
-                                          classes={
-                                            Object {
-                                              "button": "MuiLink-button",
-                                              "focusVisible": "Mui-focusVisible",
-                                              "root": "MuiLink-root",
-                                              "underlineAlways": "MuiLink-underlineAlways",
-                                              "underlineHover": "MuiLink-underlineHover",
-                                              "underlineNone": "MuiLink-underlineNone",
-                                            }
-                                          }
-                                          href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
-                                          rel="noopener"
-                                          target="_blank"
-                                          variant="body1"
-                                        >
-                                          <WithStyles(ForwardRef(Typography))
-                                            className="MuiLink-root MuiLink-underlineHover"
-                                            color="primary"
-                                            component="a"
-                                            href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
-                                            onBlur={[Function]}
-                                            onFocus={[Function]}
-                                            rel="noopener"
-                                            target="_blank"
-                                            variant="body1"
-                                          >
-                                            <ForwardRef(Typography)
-                                              className="MuiLink-root MuiLink-underlineHover"
-                                              classes={
-                                                Object {
-                                                  "alignCenter": "MuiTypography-alignCenter",
-                                                  "alignJustify": "MuiTypography-alignJustify",
-                                                  "alignLeft": "MuiTypography-alignLeft",
-                                                  "alignRight": "MuiTypography-alignRight",
-                                                  "body1": "MuiTypography-body1",
-                                                  "body2": "MuiTypography-body2",
-                                                  "button": "MuiTypography-button",
-                                                  "caption": "MuiTypography-caption",
-                                                  "colorError": "MuiTypography-colorError",
-                                                  "colorInherit": "MuiTypography-colorInherit",
-                                                  "colorPrimary": "MuiTypography-colorPrimary",
-                                                  "colorSecondary": "MuiTypography-colorSecondary",
-                                                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                                                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                                                  "displayBlock": "MuiTypography-displayBlock",
-                                                  "displayInline": "MuiTypography-displayInline",
-                                                  "gutterBottom": "MuiTypography-gutterBottom",
-                                                  "h1": "MuiTypography-h1",
-                                                  "h2": "MuiTypography-h2",
-                                                  "h3": "MuiTypography-h3",
-                                                  "h4": "MuiTypography-h4",
-                                                  "h5": "MuiTypography-h5",
-                                                  "h6": "MuiTypography-h6",
-                                                  "noWrap": "MuiTypography-noWrap",
-                                                  "overline": "MuiTypography-overline",
-                                                  "paragraph": "MuiTypography-paragraph",
-                                                  "root": "MuiTypography-root",
-                                                  "srOnly": "MuiTypography-srOnly",
-                                                  "subtitle1": "MuiTypography-subtitle1",
-                                                  "subtitle2": "MuiTypography-subtitle2",
-                                                }
-                                              }
-                                              color="primary"
-                                              component="a"
-                                              href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
-                                              onBlur={[Function]}
-                                              onFocus={[Function]}
-                                              rel="noopener"
-                                              target="_blank"
-                                              variant="body1"
-                                            >
-                                              <a
-                                                className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body1 MuiTypography-colorPrimary"
-                                                href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
-                                                onBlur={[Function]}
-                                                onFocus={[Function]}
-                                                rel="noopener"
-                                                target="_blank"
-                                              >
-                                                <FormattedMessage
-                                                  defaultMessage="More instructions can be found here."
-                                                  id="app.connection_help.firmware_flash_link"
-                                                  values={Object {}}
-                                                >
-                                                  More instructions can be found here.
-                                                </FormattedMessage>
-                                              </a>
-                                            </ForwardRef(Typography)>
-                                          </WithStyles(ForwardRef(Typography))>
-                                        </ForwardRef(Link)>
-                                      </WithStyles(ForwardRef(Link))>
                                       <WithStyles(ForwardRef(Typography))
                                         gutterBottom={true}
                                         variant="h5"
@@ -2210,17 +2766,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                         <Styled(MuiBox)
                                           classes={
                                             Object {
-                                              "root": "Styled(MuiBox)-root-109",
+                                              "root": "Styled(MuiBox)-root-175",
                                             }
                                           }
                                           display="flex"
                                           justifyContent="center"
                                         >
                                           <div
-                                            className="MuiBox-root MuiBox-root-152 Styled(MuiBox)-root-109"
+                                            className="MuiBox-root MuiBox-root-184 Styled(MuiBox)-root-175"
                                             classes={
                                               Object {
-                                                "root": "Styled(MuiBox)-root-109",
+                                                "root": "Styled(MuiBox)-root-175",
                                               }
                                             }
                                           >
@@ -2253,7 +2809,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                   <WithStyles(ForwardRef(Button))
                                                     classes={
                                                       Object {
-                                                        "root": "WithStyles(ForwardRef(Button))-root-153",
+                                                        "root": "WithStyles(ForwardRef(Button))-root-185",
                                                       }
                                                     }
                                                     disableElevation={true}
@@ -2293,7 +2849,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                           "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                           "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                           "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                          "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-153",
+                                                          "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-185",
                                                           "sizeLarge": "MuiButton-sizeLarge",
                                                           "sizeSmall": "MuiButton-sizeSmall",
                                                           "startIcon": "MuiButton-startIcon",
@@ -2319,7 +2875,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                       variant="outlined"
                                                     >
                                                       <WithStyles(ForwardRef(ButtonBase))
-                                                        className="MuiButton-root WithStyles(ForwardRef(Button))-root-153 MuiButton-outlined MuiButton-disableElevation"
+                                                        className="MuiButton-root WithStyles(ForwardRef(Button))-root-185 MuiButton-outlined MuiButton-disableElevation"
                                                         component="button"
                                                         disabled={false}
                                                         focusRipple={true}
@@ -2328,7 +2884,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                         type="button"
                                                       >
                                                         <ForwardRef(ButtonBase)
-                                                          className="MuiButton-root WithStyles(ForwardRef(Button))-root-153 MuiButton-outlined MuiButton-disableElevation"
+                                                          className="MuiButton-root WithStyles(ForwardRef(Button))-root-185 MuiButton-outlined MuiButton-disableElevation"
                                                           classes={
                                                             Object {
                                                               "disabled": "Mui-disabled",
@@ -2344,7 +2900,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                           type="button"
                                                         >
                                                           <button
-                                                            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-153 MuiButton-outlined MuiButton-disableElevation"
+                                                            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-185 MuiButton-outlined MuiButton-disableElevation"
                                                             disabled={false}
                                                             onBlur={[Function]}
                                                             onClick={[Function]}
@@ -2377,7 +2933,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                   <LogoIcon
                                                                     classes={
                                                                       Object {
-                                                                        "root": "LogoIcon-root-154",
+                                                                        "root": "LogoIcon-root-186",
                                                                       }
                                                                     }
                                                                     style={
@@ -2389,7 +2945,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                     <WithStyles(ForwardRef(SvgIcon))
                                                                       classes={
                                                                         Object {
-                                                                          "root": "LogoIcon-root-154",
+                                                                          "root": "LogoIcon-root-186",
                                                                         }
                                                                       }
                                                                       style={
@@ -2409,7 +2965,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                             "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
                                                                             "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
                                                                             "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                                            "root": "MuiSvgIcon-root LogoIcon-root-154",
+                                                                            "root": "MuiSvgIcon-root LogoIcon-root-186",
                                                                           }
                                                                         }
                                                                         style={
@@ -2420,7 +2976,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                       >
                                                                         <svg
                                                                           aria-hidden="true"
-                                                                          className="MuiSvgIcon-root LogoIcon-root-154"
+                                                                          className="MuiSvgIcon-root LogoIcon-root-186"
                                                                           focusable="false"
                                                                           style={
                                                                             Object {
@@ -2470,7 +3026,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                   <WithStyles(ForwardRef(Typography))
                                                                     classes={
                                                                       Object {
-                                                                        "root": "WithStyles(ForwardRef(Typography))-root-155",
+                                                                        "root": "WithStyles(ForwardRef(Typography))-root-187",
                                                                       }
                                                                     }
                                                                     variant="h6"
@@ -2504,7 +3060,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           "noWrap": "MuiTypography-noWrap",
                                                                           "overline": "MuiTypography-overline",
                                                                           "paragraph": "MuiTypography-paragraph",
-                                                                          "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-155",
+                                                                          "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-187",
                                                                           "srOnly": "MuiTypography-srOnly",
                                                                           "subtitle1": "MuiTypography-subtitle1",
                                                                           "subtitle2": "MuiTypography-subtitle2",
@@ -2513,7 +3069,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                       variant="h6"
                                                                     >
                                                                       <h6
-                                                                        className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-155 MuiTypography-h6"
+                                                                        className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-187 MuiTypography-h6"
                                                                       >
                                                                         <FormattedMessage
                                                                           defaultMessage="No Rover"
@@ -2533,7 +3089,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                   <WithStyles(ForwardRef(Typography))
                                                                     classes={
                                                                       Object {
-                                                                        "root": "WithStyles(ForwardRef(Typography))-root-156",
+                                                                        "root": "WithStyles(ForwardRef(Typography))-root-188",
                                                                       }
                                                                     }
                                                                     color="primary"
@@ -2567,7 +3123,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           "noWrap": "MuiTypography-noWrap",
                                                                           "overline": "MuiTypography-overline",
                                                                           "paragraph": "MuiTypography-paragraph",
-                                                                          "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-156",
+                                                                          "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-188",
                                                                           "srOnly": "MuiTypography-srOnly",
                                                                           "subtitle1": "MuiTypography-subtitle1",
                                                                           "subtitle2": "MuiTypography-subtitle2",
@@ -2576,7 +3132,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                       color="primary"
                                                                     >
                                                                       <p
-                                                                        className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-156 MuiTypography-body1 MuiTypography-colorPrimary"
+                                                                        className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-188 MuiTypography-body1 MuiTypography-colorPrimary"
                                                                       >
                                                                         <FormattedMessage
                                                                           defaultMessage="Connect"
@@ -2591,34 +3147,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                 </WithStyles(WithStyles(ForwardRef(Typography)))>
                                                               </div>
                                                             </span>
-                                                            <WithStyles(memo)
-                                                              center={false}
-                                                            >
-                                                              <ForwardRef(TouchRipple)
-                                                                center={false}
-                                                                classes={
-                                                                  Object {
-                                                                    "child": "MuiTouchRipple-child",
-                                                                    "childLeaving": "MuiTouchRipple-childLeaving",
-                                                                    "childPulsate": "MuiTouchRipple-childPulsate",
-                                                                    "ripple": "MuiTouchRipple-ripple",
-                                                                    "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                                    "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                                    "root": "MuiTouchRipple-root",
-                                                                  }
-                                                                }
-                                                              >
-                                                                <span
-                                                                  className="MuiTouchRipple-root"
-                                                                >
-                                                                  <TransitionGroup
-                                                                    childFactory={[Function]}
-                                                                    component={null}
-                                                                    exit={true}
-                                                                  />
-                                                                </span>
-                                                              </ForwardRef(TouchRipple)>
-                                                            </WithStyles(memo)>
                                                           </button>
                                                         </ForwardRef(ButtonBase)>
                                                       </WithStyles(ForwardRef(ButtonBase))>
@@ -2674,11 +3202,11 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
                                           >
                                             <FormattedMessage
-                                              defaultMessage="Then, choose the BBC micro:bit device from the list and click Pair. If the Rover icon turns blue, you're connected! Click outside this window, and try the first lesson!"
+                                              defaultMessage="Then, choose the BBC micro:bit device from the list and click Pair."
                                               id="app.connection_help.done"
                                               values={Object {}}
                                             >
-                                              Then, choose the BBC micro:bit device from the list and click Pair. If the Rover icon turns blue, you're connected! Click outside this window, and try the first lesson!
+                                              Then, choose the BBC micro:bit device from the list and click Pair.
                                             </FormattedMessage>
                                           </p>
                                         </ForwardRef(Typography)>
