@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Dropdown } from 'semantic-ui-react';
+import { Button } from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
@@ -49,8 +50,8 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Dropdown).props().value).toStrictEqual(['tag1', 'tag2']);
-    expect(wrapper.find(Dropdown).props().disabled).toBe(false);
+    expect(wrapper.find(Autocomplete).props().value).toStrictEqual(['tag1', 'tag2']);
+    expect(wrapper.find(Autocomplete).props().disabled).toBe(false);
   });
 
   test('disabled when read only', () => {
@@ -58,6 +59,7 @@ describe('The ProgramTags component', () => {
       code: {
         name: 'test name',
         isReadOnly: true,
+        tags: [],
       },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
@@ -71,24 +73,7 @@ describe('The ProgramTags component', () => {
       .dive();
 
     expect(wrapper.find(Button).props().disabled).toBe(true);
-    expect(wrapper.find(Dropdown).props().disabled).toBe(true);
-  });
-
-  test('adds new options', () => {
-    const wrapper = shallowWithIntl(
-      <ProgramTags store={store} />, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    expect(wrapper.find(Dropdown).props().options.length).toBe(3);
-    wrapper.instance().addItem({}, {
-      value: 'new_option',
-    });
-    wrapper.update();
-    expect(wrapper.find(Dropdown).props().options.length).toBe(4);
+    expect(wrapper.find(Autocomplete).props().disabled).toBe(true);
   });
 
   test('handles change', () => {
@@ -101,14 +86,10 @@ describe('The ProgramTags component', () => {
       .dive();
 
     expect(wrapper.find(Button).props().disabled).toBe(true);
-    wrapper.find(Dropdown).simulate('change', {}, {
-      value: [
-        'tag3',
-      ],
-    });
+    wrapper.find(Autocomplete).simulate('change', {}, ['tag3']);
     wrapper.update();
 
-    expect(wrapper.find(Dropdown).props().value).toStrictEqual(['tag3']);
+    expect(wrapper.find(Autocomplete).props().value).toStrictEqual(['tag3']);
     expect(wrapper.find(Button).props().disabled).toBe(false);
   });
 

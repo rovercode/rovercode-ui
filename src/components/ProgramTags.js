@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Dropdown, Grid } from 'semantic-ui-react';
+import {
+  Button,
+  Chip,
+  Grid,
+  TextField,
+} from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
@@ -23,7 +29,6 @@ class ProgramTags extends Component {
 
     this.state = {
       localTags: [],
-      addOptions: [],
       changed: false,
     };
   }
@@ -38,9 +43,9 @@ class ProgramTags extends Component {
     });
   }
 
-  handleChange = (event, data) => {
+  handleChange = (event, value) => {
     this.setState({
-      localTags: data.value,
+      localTags: value,
       changed: true,
     });
   }
@@ -54,21 +59,9 @@ class ProgramTags extends Component {
     }));
   }
 
-  addItem = (event, data) => {
-    const newOption = {
-      key: data.value,
-      text: data.value,
-      value: data.value,
-    };
-
-    this.setState((prevState) => ({
-      addOptions: [...prevState.addOptions, newOption],
-    }));
-  }
-
   render() {
     const { code, tag, intl } = this.props;
-    const { addOptions, changed, localTags } = this.state;
+    const { changed, localTags } = this.state;
 
     const tagPlaceholder = intl.formatMessage({
       id: 'app.program_tags.placeholder',
@@ -76,50 +69,36 @@ class ProgramTags extends Component {
       defaultMessage: 'Add tags...',
     });
 
-    const additionLabel = intl.formatMessage({
-      id: 'app.program_tags.addition',
-      description: 'Label for adding a new tag',
-      defaultMessage: 'Add',
-    });
-
-    let options = tag.tags.map((globalTag) => ({
-      key: globalTag.name,
-      text: globalTag.name,
-      value: globalTag.name,
-    }));
-
-    if (addOptions.length) {
-      options = options.concat(addOptions);
-    }
-
     return (
-      <Grid centered container>
-        <Grid.Row>
-          <Dropdown
-            fluid
-            search
-            selection
+      <Grid container direction="column" justify="center" alignItems="stretch" spacing={1}>
+        <Grid item>
+          <Autocomplete
+            id="tag-select"
             multiple
-            allowAdditions
-            closeOnChange
-            additionLabel={`${additionLabel} `}
-            options={options}
-            disabled={code.isReadOnly}
-            value={localTags}
-            placeholder={tagPlaceholder}
+            freeSolo
+            filterSelectedOptions
+            size="small"
+            options={tag.tags.map((globalTag) => globalTag.name)}
             onChange={this.handleChange}
-            onAddItem={this.addItem}
+            value={localTags}
+            disabled={code.isReadOnly}
+            renderInput={(params) => (
+              <TextField {...params} variant="outlined" label={tagPlaceholder} />
+            )}
+            renderTags={(value, getTagProps) => value.map((option, index) => (
+              <Chip color="secondary" size="small" label={option} {...getTagProps({ index })} />
+            ))}
           />
-        </Grid.Row>
-        <Grid.Row>
-          <Button primary disabled={!changed} onClick={this.handleSave}>
+        </Grid>
+        <Grid item>
+          <Button color="primary" variant="contained" disabled={!changed} onClick={this.handleSave}>
             <FormattedMessage
               id="app.program_tags.save"
               description="Button label to save program tags"
               defaultMessage="Save"
             />
           </Button>
-        </Grid.Row>
+        </Grid>
       </Grid>
     );
   }
