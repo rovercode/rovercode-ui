@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Chip,
-  Grid,
-  TextField,
-} from '@material-ui/core';
+import { Chip, Grid, TextField } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { checkAuthError, authHeader } from '@/actions/auth';
@@ -29,7 +24,6 @@ class ProgramTags extends Component {
 
     this.state = {
       localTags: [],
-      changed: false,
     };
   }
 
@@ -46,22 +40,19 @@ class ProgramTags extends Component {
   handleChange = (event, value) => {
     this.setState({
       localTags: value,
-      changed: true,
-    });
+    }, () => this.handleSave());
   }
 
   handleSave = () => {
     const { changeProgramTags, code } = this.props;
     const { localTags } = this.state;
 
-    changeProgramTags(code.id, localTags).then(() => this.setState({
-      changed: false,
-    }));
+    changeProgramTags(code.id, localTags);
   }
 
   render() {
     const { code, tag, intl } = this.props;
-    const { changed, localTags } = this.state;
+    const { localTags } = this.state;
 
     const tagPlaceholder = intl.formatMessage({
       id: 'app.program_tags.placeholder',
@@ -89,15 +80,6 @@ class ProgramTags extends Component {
               <Chip color="secondary" size="small" label={option} {...getTagProps({ index })} />
             ))}
           />
-        </Grid>
-        <Grid item>
-          <Button color="primary" variant="contained" disabled={!changed} onClick={this.handleSave}>
-            <FormattedMessage
-              id="app.program_tags.save"
-              description="Button label to save program tags"
-              defaultMessage="Save"
-            />
-          </Button>
         </Grid>
       </Grid>
     );

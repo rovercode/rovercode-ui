@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
@@ -72,7 +71,6 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Button).props().disabled).toBe(true);
     expect(wrapper.find(Autocomplete).props().disabled).toBe(true);
   });
 
@@ -85,29 +83,12 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Button).props().disabled).toBe(true);
     wrapper.find(Autocomplete).simulate('change', {}, ['tag3']);
     wrapper.update();
 
     expect(wrapper.find(Autocomplete).props().value).toStrictEqual(['tag3']);
-    expect(wrapper.find(Button).props().disabled).toBe(false);
-  });
-
-  test('handles save', () => {
-    const wrapper = shallowWithIntl(
-      <ProgramTags store={store} />, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    wrapper.find(Button).simulate('click');
-    wrapper.update();
-
     expect(store.dispatch).toHaveBeenCalled();
-    expect(store.dispatch).toHaveBeenCalledWith(changeProgramTags(1, ['tag1', 'tag2']));
-    expect(wrapper.find(Button).props().disabled).toBe(true);
+    expect(store.dispatch).toHaveBeenCalledWith(changeProgramTags(1, ['tag3']));
   });
 
   test('handles authentication error', (done) => {
