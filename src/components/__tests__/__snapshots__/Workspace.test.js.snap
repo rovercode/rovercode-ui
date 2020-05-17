@@ -763,8 +763,8 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                                   <Styled(MuiBox)
                                     style={
                                       Object {
-                                        "bottom": "5%",
-                                        "left": "20%",
+                                        "bottom": "15%",
+                                        "left": "10%",
                                         "position": "absolute",
                                       }
                                     }
@@ -774,8 +774,8 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                                       className="MuiBox-root MuiBox-root-106"
                                       style={
                                         Object {
-                                          "bottom": "5%",
-                                          "left": "20%",
+                                          "bottom": "15%",
+                                          "left": "10%",
                                           "position": "absolute",
                                         }
                                       }

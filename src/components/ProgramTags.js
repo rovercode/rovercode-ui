@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Chip, Grid, TextField } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
@@ -60,10 +61,16 @@ class ProgramTags extends Component {
       defaultMessage: 'Add tags...',
     });
 
+    const RestrictedAutocomplete = withStyles(() => ({
+      root: {
+        maxWidth: '250px',
+      },
+    }))(Autocomplete);
+
     return (
       <Grid container direction="column" justify="center" alignItems="stretch" spacing={1}>
         <Grid item>
-          <Autocomplete
+          <RestrictedAutocomplete
             id="tag-select"
             multiple
             freeSolo
