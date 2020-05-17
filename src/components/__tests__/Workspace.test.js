@@ -1,5 +1,5 @@
 import React from 'react';
-import { Message } from 'semantic-ui-react';
+import { Alert } from '@material-ui/lab';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
@@ -103,7 +103,7 @@ describe('The Workspace component', () => {
     });
     wrapper.instance().updateJsCode();
     expect(Blockly.JavaScript.STATEMENT_PREFIX).toEqual('highlightBlock(%1);\n');
-    expect(wrapper.find(Message).exists()).toBe(false);
+    expect(wrapper.find(Alert).exists()).toBe(false);
   });
 
   test('goes to running state on state change', () => {
@@ -310,7 +310,7 @@ describe('The Workspace component', () => {
 
     expect(workspace.instance().updateJsCode).toHaveBeenCalled();
     expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
-    expect(workspace.find(Message).exists()).toBe(true);
+    expect(workspace.find(Alert).exists()).toBe(true);
   });
 
   test('runs code after waking if running', () => {
