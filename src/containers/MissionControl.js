@@ -66,9 +66,7 @@ const MissionControl = ({ location }) => {
             </ListSubheader>
           )}
         >
-          <ListItem>
-            <Divider />
-          </ListItem>
+          <Divider />
           <ListItem>
             <ProgramName location={location} />
           </ListItem>
