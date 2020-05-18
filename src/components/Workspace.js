@@ -496,7 +496,7 @@ class Workspace extends Component {
           <Grid item container direction="column" alignItems="stretch">
             <Grid item style={{ minHeight: code.isReadOnly ? '70vh' : '80vh', maxHeight: '1080px' }}>
               <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
-                <Box zIndex="modal" style={{ position: 'absolute', bottom: '5%', left: '20%' }}>
+                <Box zIndex="modal" style={{ position: 'absolute', bottom: '15%', left: '10%' }}>
                   { React.cloneElement(children, { isConnected: !!rover.rover }) }
                 </Box>
               </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Autocomplete } from '@material-ui/lab';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
@@ -49,8 +48,8 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Autocomplete).props().value).toStrictEqual(['tag1', 'tag2']);
-    expect(wrapper.find(Autocomplete).props().disabled).toBe(false);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().value).toStrictEqual(['tag1', 'tag2']);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().disabled).toBe(false);
   });
 
   test('disabled when read only', () => {
@@ -71,7 +70,7 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Autocomplete).props().disabled).toBe(true);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().disabled).toBe(true);
   });
 
   test('handles change', () => {
@@ -83,10 +82,10 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    wrapper.find(Autocomplete).simulate('change', {}, ['tag3']);
+    wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').simulate('change', {}, ['tag3']);
     wrapper.update();
 
-    expect(wrapper.find(Autocomplete).props().value).toStrictEqual(['tag3']);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().value).toStrictEqual(['tag3']);
     expect(store.dispatch).toHaveBeenCalled();
     expect(store.dispatch).toHaveBeenCalledWith(changeProgramTags(1, ['tag3']));
   });
