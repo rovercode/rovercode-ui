@@ -2,15 +2,31 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import {
-  Button,
-  Card,
-  Dropdown,
+  Box,
+  Container,
   Grid,
-  Header,
-  Icon,
-  Input,
-} from 'semantic-ui-react';
-import { Pagination } from '@material-ui/lab';
+  Button,
+  Typography,
+  Chip,
+  TextField,
+  InputAdornment,
+  Menu,
+  MenuItem,
+  Card,
+  CardContent,
+  CardHeader,
+  CardActionArea,
+  CardActions,
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import {
+  Add,
+  ArrowDownward,
+  ArrowUpward,
+  Search,
+} from '@material-ui/icons';
+import { Pagination, Autocomplete } from '@material-ui/lab';
+import { Link } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 class ProgramCollection extends Component {
@@ -22,6 +38,7 @@ class ProgramCollection extends Component {
       searchQuery: null,
       ordering: 'name',
       tagFilters: [],
+      sortMenuAnchorElement: null,
     };
   }
 
@@ -61,6 +78,14 @@ class ProgramCollection extends Component {
     return name;
   }
 
+  handleSortClick = (event) => this.setState({
+    sortMenuAnchorElement: event.currentTarget,
+  })
+
+  handleSortClose = () => this.setState({
+    sortMenuAnchorElement: null,
+  })
+
   handlePageChange = (e, page) => this.setState({
     page,
   }, () => this.update())
@@ -70,12 +95,12 @@ class ProgramCollection extends Component {
     page: 1,
   }, () => this.update())
 
-  handleOrderingChange = (e, { name }) => this.setState({
-    ordering: this.toggleOrdering(name),
+  handleNameOrderingChange = () => this.setState({
+    ordering: this.toggleOrdering('name'),
   }, () => this.update())
 
-  handleTagFilterChange = (event, data) => this.setState({
-    tagFilters: data.value,
+  handleTagFilterChange = (event, value) => this.setState({
+    tagFilters: value,
   }, () => this.update())
 
   render() {
@@ -88,7 +113,7 @@ class ProgramCollection extends Component {
       intl,
       tag,
     } = this.props;
-    const { ordering, tagFilters } = this.state;
+    const { ordering, tagFilters, sortMenuAnchorElement } = this.state;
 
     const searchPlaceholder = intl.formatMessage({
       id: 'app.program_collection.search',
@@ -108,151 +133,220 @@ class ProgramCollection extends Component {
       defaultMessage: 'Sort',
     });
 
+    const Title = withStyles(() => ({
+      root: {
+        fontWeight: 'bold',
+      },
+    }))(Typography);
+
+    const FixedWidthAutocomplete = withStyles(() => ({
+      root: {
+        width: '100%',
+      },
+    }))(Autocomplete);
+
+    const TitleArea = withStyles((theme) => ({
+      root: {
+        marginBottom: theme.spacing(4),
+      },
+    }))(Grid);
+
+    const PaddedBox = withStyles((theme) => ({
+      root: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+      },
+    }))(Box);
+
     return (
-      <>
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={2} />
-            <Grid.Column width={4}>
-              <Input
-                className="prompt"
-                icon="search"
-                placeholder={searchPlaceholder}
-                onChange={this.handleSearchChange}
+      <Container maxWidth="lg">
+        <TitleArea item container direction="row" justify="space-between">
+          <Grid item>
+            <Title variant="h4">
+              {label}
+            </Title>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              startIcon={<Add />}
+              component={Link}
+              to="/mission-control"
+            >
+              <FormattedMessage
+                id="app.program_list.new"
+                description="Button label to create new program"
+                defaultMessage="New Program"
               />
-            </Grid.Column>
-            <Grid.Column width={4}>
-              <Header as="h1" textAlign="center">
-                {label}
-              </Header>
-            </Grid.Column>
-            <Grid.Column width={1} />
-            <Grid.Column floated="right" width={2}>
-              <Dropdown
-                text={sortText}
-                icon="sort"
-                floating
-                labeled
-                button
-                className="icon"
-              >
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={this.handleOrderingChange} name="name">
-                    <FormattedMessage
-                      id="app.program_collection.name"
-                      description="Button label to sort by name"
-                      defaultMessage="Name"
-                    />
-                    {
-                      ordering === 'name' ? (
-                        <Icon name="caret down" />
-                      ) : (
-                        <Icon name="caret up" />
-                      )
-                    }
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Dropdown
-                multiple
-                selection
-                scrolling
-                placeholder={tagFilterPlaceholder}
-                value={tagFilters}
-                options={tag.tags.map((t) => ({
-                  key: t.name,
-                  text: t.name,
-                  value: t.name,
-                }))}
-                onChange={this.handleTagFilterChange}
-              />
-            </Grid.Column>
-          </Grid.Row>
+            </Button>
+          </Grid>
+        </TitleArea>
+        <Grid container spacing={2}>
+          <Grid item>
+            <TextField
+              variant="outlined"
+              size="small"
+              className="prompt"
+              icon="search"
+              placeholder={searchPlaceholder}
+              onChange={this.handleSearchChange}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <Button aria-controls="sort-menu" aria-haspopup="true" onClick={this.handleSortClick}>
+              {sortText}
+            </Button>
+            <Menu
+              id="sort-menu"
+              anchorEl={sortMenuAnchorElement}
+              keepMounted
+              open={Boolean(sortMenuAnchorElement)}
+              onClose={this.handleSortClose}
+              getContentAnchorEl={null}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+              }}
+            >
+              <MenuItem onClick={this.handleNameOrderingChange}>
+                <FormattedMessage
+                  id="app.program_collection.name"
+                  description="Button label to sort by name"
+                  defaultMessage="Name"
+                />
+                {
+                  ordering === 'name' ? (
+                    <>
+                      <ArrowDownward />
+                      a ... z
+                    </>
+                  ) : (
+                    <>
+                      <ArrowUpward />
+                      z ... a
+                    </>
+                  )
+                }
+              </MenuItem>
+            </Menu>
+          </Grid>
+          <Grid item xs={2}>
+            <FixedWidthAutocomplete
+              id="tag-select"
+              multiple
+              freeSolo
+              filterSelectedOptions
+              size="small"
+              options={tag.tags.map((t) => t.name)}
+              onChange={this.handleTagFilterChange}
+              value={tagFilters}
+              renderInput={(params) => (
+                <TextField {...params} variant="outlined" label={tagFilterPlaceholder} />
+              )}
+              renderTags={(value, getTagProps) => value.map((option, index) => (
+                <Chip color="secondary" size="small" label={option} {...getTagProps({ index })} />
+              ))}
+            />
+          </Grid>
         </Grid>
-        <Card.Group centered>
+        <Grid container spacing={3}>
           {
             programs.results.map((program) => (
-              <Card key={program.id}>
-                <Card.Content>
-                  <Card.Header>
-                    {program.name}
-                  </Card.Header>
-                  <Card.Meta>
+              <Grid item xs={12} md={6} lg={3}>
+                <Card key={program.id}>
+                  <CardHeader
+                    title={program.name}
+                    subheader={
+                        user.username === program.user.username ? (
+                          <FormattedMessage
+                            id="app.program_collection.mine"
+                            description="Label to indicate program owned by user"
+                            defaultMessage="Mine"
+                          />
+                        ) : program.user.username
+                      }
+                  />
+                  {/* <CardActionArea>
+                    <CardContent>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </CardContent>
+                  </CardActionArea> */}
+                  <CardActions>
+                    <Button
+                      id={program.id}
+                      data-owned={user.username === program.user.username}
+                      onClick={onProgramClick}
+                    >
+                      {
+                        user.username === program.user.username ? (
+                          <FormattedMessage
+                            id="app.program_collection.work"
+                            description="Button label to keep working on program"
+                            defaultMessage="Keep Working"
+                          />
+                        ) : (
+                          <FormattedMessage
+                            id="app.program_collection.view"
+                            description="Button label to view a program"
+                            defaultMessage="View"
+                          />
+                        )
+                      }
+                    </Button>
                     {
                       user.username === program.user.username ? (
-                        <FormattedMessage
-                          id="app.program_collection.mine"
-                          description="Label to indicate program owned by user"
-                          defaultMessage="Mine"
-                        />
-                      ) : program.user.username
+                        <Button
+                          id={program.id}
+                          name={program.name}
+                          onClick={onRemoveClick}
+                          floated="right"
+                        >
+                          <FormattedMessage
+                            id="app.program_collection.remove"
+                            description="Button label to remove a program"
+                            defaultMessage="Remove"
+                          />
+                        </Button>
+                      ) : (null)
                     }
-                  </Card.Meta>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button
-                    primary
-                    id={program.id}
-                    data-owned={user.username === program.user.username}
-                    onClick={onProgramClick}
-                  >
-                    {
-                      user.username === program.user.username ? (
-                        <FormattedMessage
-                          id="app.program_collection.work"
-                          description="Button label to keep working on program"
-                          defaultMessage="Keep Working"
-                        />
-                      ) : (
-                        <FormattedMessage
-                          id="app.program_collection.view"
-                          description="Button label to view a program"
-                          defaultMessage="View"
-                        />
-                      )
-                    }
-                  </Button>
-                  {
-                    user.username === program.user.username ? (
-                      <Button
-                        negative
-                        id={program.id}
-                        name={program.name}
-                        onClick={onRemoveClick}
-                        floated="right"
-                      >
-                        <FormattedMessage
-                          id="app.program_collection.remove"
-                          description="Button label to remove a program"
-                          defaultMessage="Remove"
-                        />
-                      </Button>
-                    ) : (null)
-                  }
-                </Card.Content>
-              </Card>
+                  </CardActions>
+                </Card>
+              </Grid>
             ))
           }
-        </Card.Group>
+        </Grid>
         {
           programs.total_pages > 1 ? (
-            <Grid centered>
-              <Grid.Row>
-                <Pagination
-                  defaultPage={1}
-                  count={programs.total_pages}
-                  showFirstButton
-                  showLastButton
-                  color="secondary"
-                  onChange={this.handlePageChange}
-                />
-              </Grid.Row>
-            </Grid>
+            <PaddedBox
+              display="flex"
+              justifyContent="center"
+            >
+              <Pagination
+                defaultPage={1}
+                count={programs.total_pages}
+                showFirstButton
+                showLastButton
+                color="secondary"
+                onChange={this.handlePageChange}
+              />
+            </PaddedBox>
           ) : (null)
         }
-      </>
+      </Container>
     );
   }
 }

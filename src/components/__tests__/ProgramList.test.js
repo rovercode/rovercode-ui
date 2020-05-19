@@ -47,7 +47,7 @@ describe('The ProgramList component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('fetches programs on mount', async () => {
+  test('fetches programs and tags on mount', async () => {
     await mountWithIntl(
       <MemoryRouter>
         <ProgramList
@@ -63,6 +63,7 @@ describe('The ProgramList component', () => {
         />
       </MemoryRouter>,
     );
+    expect(fetchTags.mock.calls.length).toBe(1);
     expect(fetchPrograms.mock.calls.length).toBe(1);
     expect(clearProgram.mock.calls.length).toBe(1);
   });

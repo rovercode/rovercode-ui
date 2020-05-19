@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Button,
-  Card,
-  Dropdown,
-  Header,
-  Input,
-} from 'semantic-ui-react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Pagination } from '@material-ui/lab';
 import { FormattedMessage } from 'react-intl';
 import ProgramCollection from '../ProgramCollection';
@@ -46,17 +40,46 @@ describe('The ProgramCollection component', () => {
         },
       }],
     };
+    const wrapper = mountWithIntl(
+      <Router>
+        <ProgramCollection
+          programs={programs}
+          label="My Programs"
+          user={adminUser}
+          onProgramClick={onProgramClick}
+          onRemoveClick={onRemoveClick}
+          onUpdate={onUpdate}
+        />
+      </Router>,
+    );
+    wrapper.find('ProgramCollection').instance().setState({ tagFilters: ['tag1', 'tag2'] });
+    wrapper.update();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('should set and clear sort menu anchor element when menu is opening and closing', () => {
+    const programs = {
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [],
+    };
     const wrapper = shallowWithIntl(
       <ProgramCollection
         programs={programs}
         label="My Programs"
-        user={adminUser}
+        user={testUser}
         onProgramClick={onProgramClick}
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
     ).dive().dive();
-    expect(wrapper).toMatchSnapshot();
+
+    expect(wrapper.instance().state.sortMenuAnchorElement).toBe(null);
+    wrapper.instance().handleSortClick({ currentTarget: 'element' });
+    expect(wrapper.instance().state.sortMenuAnchorElement).toBe('element');
+    wrapper.instance().handleSortClose();
+    expect(wrapper.instance().state.sortMenuAnchorElement).toBe(null);
   });
 
   test('shows the correct number of programs for the user', () => {
@@ -91,11 +114,12 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive();
 
-    expect(wrapper.find(Header).exists()).toBe(true);
-    expect(wrapper.find(Card).length).toBe(2);
-    expect(wrapper.find(Card.Meta).first().children().find(FormattedMessage)
-      .prop('defaultMessage')).toBe('Mine');
-    expect(wrapper.find(Button).first().children().find(FormattedMessage)
+    expect(wrapper.find('WithStyles(ForwardRef(Card))').length).toBe(2);
+    expect(wrapper.find('WithStyles(ForwardRef(CardHeader))').first().prop('subheader')
+      .props.defaultMessage).toBe('Mine');
+    expect(wrapper.find('WithStyles(ForwardRef(Card))').first()
+      .find('WithStyles(ForwardRef(Button))').first()
+      .find(FormattedMessage)
       .prop('defaultMessage')).toBe('Keep Working');
   });
 
@@ -131,10 +155,12 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive();
 
-    expect(wrapper.find(Header).exists()).toBe(true);
-    expect(wrapper.find(Card).length).toBe(2);
-    expect(wrapper.find(Card.Meta).first().prop('children')).toBe('testuser');
-    expect(wrapper.find(Button).first().children().find(FormattedMessage)
+    expect(wrapper.find('WithStyles(ForwardRef(Card))').length).toBe(2);
+    expect(wrapper.find('WithStyles(ForwardRef(CardHeader))').first().prop('subheader'))
+      .toBe('testuser');
+    expect(wrapper.find('WithStyles(ForwardRef(Card))').first()
+      .find('WithStyles(ForwardRef(Button))').first()
+      .find(FormattedMessage)
       .prop('defaultMessage')).toBe('View');
   });
 
@@ -163,7 +189,7 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find(Button).first().simulate('click', {
+    wrapper.find('WithStyles(ForwardRef(Button))').at(2).simulate('click', {
       target: {
         id: 33,
       },
@@ -200,8 +226,7 @@ describe('The ProgramCollection component', () => {
         onUpdate={onUpdate}
       />,
     ).dive().dive();
-
-    wrapper.find(Button).last().simulate('click', {
+    wrapper.find('WithStyles(ForwardRef(Button))').last().simulate('click', {
       target: {
         id: 33,
       },
@@ -287,7 +312,7 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find(Input).simulate('change', {
+    wrapper.find('WithStyles(ForwardRef(TextField))').simulate('change', {
       target: {
         value: 'abc',
       },
@@ -333,9 +358,7 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find({ name: 'name' }).simulate('click', null, {
-      name: 'name',
-    });
+    wrapper.find('WithStyles(ForwardRef(MenuItem))').simulate('click');
 
     expect(onUpdate).toHaveBeenCalledWith({
       page: 1,
@@ -343,9 +366,7 @@ describe('The ProgramCollection component', () => {
       tag: '',
     });
 
-    wrapper.find({ name: 'name' }).simulate('click', null, {
-      name: 'name',
-    });
+    wrapper.find('WithStyles(ForwardRef(MenuItem))').simulate('click');
 
     expect(onUpdate).toHaveBeenCalledWith({
       page: 1,
@@ -353,15 +374,8 @@ describe('The ProgramCollection component', () => {
       tag: '',
     });
 
-    wrapper.instance().handleOrderingChange(null, {
-      name: 'field_name',
-    });
-
-    expect(onUpdate).toHaveBeenCalledWith({
-      page: 1,
-      ordering: 'field_name',
-      tag: '',
-    });
+    const unexpectedSortingField = wrapper.instance().toggleOrdering('field_name');
+    expect(unexpectedSortingField).toBe('field_name');
   });
 
   test('callback when tag changes', () => {
@@ -404,13 +418,10 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find(Dropdown).last().simulate('change', {}, {
-      value: [
-        'tag1',
-        'tag2',
-      ],
-    });
+    wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').simulate('change', {}, ['tag1', 'tag2']);
+    wrapper.update();
 
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().value).toStrictEqual(['tag1', 'tag2']);
     expect(onUpdate).toHaveBeenCalledWith({
       page: 1,
       ordering: 'name',
