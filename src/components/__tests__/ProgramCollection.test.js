@@ -352,7 +352,7 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive().dive();
 
-    wrapper.find('WithStyles(ForwardRef(MenuItem))').simulate('click');
+    wrapper.find('WithStyles(ForwardRef(MenuItem))').simulate('click', { target: { id: 'name' } });
 
     expect(onUpdate).toHaveBeenCalledWith({
       page: 1,
@@ -360,7 +360,7 @@ describe('The ProgramCollection component', () => {
       tag: '',
     });
 
-    wrapper.find('WithStyles(ForwardRef(MenuItem))').simulate('click');
+    wrapper.find('WithStyles(ForwardRef(MenuItem))').simulate('click', { target: { id: 'name' } });
 
     expect(onUpdate).toHaveBeenCalledWith({
       page: 1,
@@ -368,8 +368,13 @@ describe('The ProgramCollection component', () => {
       tag: '',
     });
 
-    const unexpectedSortingField = wrapper.instance().toggleOrdering('field_name');
-    expect(unexpectedSortingField).toBe('field_name');
+    wrapper.find('WithStyles(ForwardRef(MenuItem))').simulate('click', { target: { id: 'other' } });
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      page: 1,
+      ordering: 'other',
+      tag: '',
+    });
   });
 
   test('callback when tag changes', () => {

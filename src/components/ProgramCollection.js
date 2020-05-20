@@ -120,8 +120,8 @@ class ProgramCollection extends Component {
     page: 1,
   }, () => this.update())
 
-  handleNameOrderingChange = () => this.setState({
-    ordering: this.toggleOrdering('name'),
+  handleOrderingChange = (e) => this.setState({
+    ordering: this.toggleOrdering(e.target.id),
   }, () => this.update())
 
   handleTagFilterChange = (event, value) => this.setState({
@@ -246,7 +246,7 @@ class ProgramCollection extends Component {
                     horizontal: 'center',
                   }}
                 >
-                  <MenuItem onClick={this.handleNameOrderingChange}>
+                  <MenuItem onClick={this.handleOrderingChange} id="name">
                     <FormattedMessage
                       id="app.program_collection.name"
                       description="Button label to sort by name"

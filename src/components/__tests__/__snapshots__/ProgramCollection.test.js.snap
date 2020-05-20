@@ -2125,6 +2125,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                 <li
                                                                   aria-disabled="false"
                                                                   class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                                                                  id="name"
                                                                   role="menuitem"
                                                                   tabindex="0"
                                                                 >
@@ -2326,6 +2327,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                             tabIndex={-1}
                                                                           >
                                                                             <WithStyles(ForwardRef(MenuItem))
+                                                                              id="name"
                                                                               key=".$.0"
                                                                               onClick={[Function]}
                                                                               tabIndex={0}
@@ -2339,6 +2341,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                                     "selected": "Mui-selected",
                                                                                   }
                                                                                 }
+                                                                                id="name"
                                                                                 onClick={[Function]}
                                                                                 tabIndex={0}
                                                                               >
@@ -2352,6 +2355,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                                   }
                                                                                   component="li"
                                                                                   disableGutters={false}
+                                                                                  id="name"
                                                                                   onClick={[Function]}
                                                                                   role="menuitem"
                                                                                   tabIndex={0}
@@ -2376,6 +2380,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                                     }
                                                                                     component="li"
                                                                                     disableGutters={false}
+                                                                                    id="name"
                                                                                     onClick={[Function]}
                                                                                     role="menuitem"
                                                                                     tabIndex={0}
@@ -2385,6 +2390,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                                       component="li"
                                                                                       disabled={false}
                                                                                       focusVisibleClassName="Mui-focusVisible"
+                                                                                      id="name"
                                                                                       onClick={[Function]}
                                                                                       role="menuitem"
                                                                                       tabIndex={0}
@@ -2401,6 +2407,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                                         component="li"
                                                                                         disabled={false}
                                                                                         focusVisibleClassName="Mui-focusVisible"
+                                                                                        id="name"
                                                                                         onClick={[Function]}
                                                                                         role="menuitem"
                                                                                         tabIndex={0}
@@ -2408,6 +2415,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                                         <li
                                                                                           aria-disabled={false}
                                                                                           className="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                                                                                          id="name"
                                                                                           onBlur={[Function]}
                                                                                           onClick={[Function]}
                                                                                           onDragLeave={[Function]}
