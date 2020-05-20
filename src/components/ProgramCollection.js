@@ -289,8 +289,9 @@ class ProgramCollection extends Component {
         </Grid>
         <Grid container spacing={3}>
           {
-            programs.results.map((program) => (
-              <Grid item xs={12} md={6} lg={3}>
+            /* eslint react/no-array-index-key: 0 */
+            programs.results.map((program, i) => (
+              <Grid item xs={12} md={6} lg={3} key={i}>
                 <Card key={program.id}>
                   <CardActionArea
                     id={program.id}
