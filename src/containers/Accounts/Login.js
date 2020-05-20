@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { GitHub, Lock, Person } from '@material-ui/icons';
@@ -11,6 +11,7 @@ import {
   InputAdornment,
   TextField,
   Typography,
+  Link,
 } from '@material-ui/core';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { grey, red } from '@material-ui/core/colors';
@@ -249,7 +250,7 @@ class Login extends Component {
               variant="contained"
               disableElevation
               color="primary"
-              component={Link}
+              component={RouterLink}
               to="/accounts/signup"
             >
               <FormattedMessage
@@ -332,7 +333,7 @@ class Login extends Component {
             </Container>
           </form>
           <Grid item>
-            <Link to="/accounts/reset">
+            <Link component={RouterLink} to="/accounts/reset">
               <Typography>
                 <FormattedMessage
                   id="app.login.forgot"

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { Lock, Mail, Person } from '@material-ui/icons';
 import {
   Button,
   Grid,
   InputAdornment,
+  Link,
   List,
   ListItem,
   ListItemText,
@@ -207,7 +208,7 @@ class SignUp extends Component {
                 defaultMessage="Already have an account? Then please"
               />
               {' '}
-              <Link to="/accounts/login">
+              <Link component={RouterLink} to="/accounts/login">
                 <FormattedMessage
                   id="app.signup.check_2"
                   description="Second part of Checking if the user already has an account"
