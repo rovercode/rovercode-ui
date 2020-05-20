@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, Dropdown } from 'semantic-ui-react';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
@@ -49,8 +48,8 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Dropdown).props().value).toStrictEqual(['tag1', 'tag2']);
-    expect(wrapper.find(Dropdown).props().disabled).toBe(false);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().value).toStrictEqual(['tag1', 'tag2']);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().disabled).toBe(false);
   });
 
   test('disabled when read only', () => {
@@ -58,6 +57,7 @@ describe('The ProgramTags component', () => {
       code: {
         name: 'test name',
         isReadOnly: true,
+        tags: [],
       },
     });
     localStore.dispatch = jest.fn(() => Promise.resolve());
@@ -70,25 +70,7 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Button).props().disabled).toBe(true);
-    expect(wrapper.find(Dropdown).props().disabled).toBe(true);
-  });
-
-  test('adds new options', () => {
-    const wrapper = shallowWithIntl(
-      <ProgramTags store={store} />, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    expect(wrapper.find(Dropdown).props().options.length).toBe(3);
-    wrapper.instance().addItem({}, {
-      value: 'new_option',
-    });
-    wrapper.update();
-    expect(wrapper.find(Dropdown).props().options.length).toBe(4);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().disabled).toBe(true);
   });
 
   test('handles change', () => {
@@ -100,33 +82,12 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Button).props().disabled).toBe(true);
-    wrapper.find(Dropdown).simulate('change', {}, {
-      value: [
-        'tag3',
-      ],
-    });
+    wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').simulate('change', {}, ['tag3']);
     wrapper.update();
 
-    expect(wrapper.find(Dropdown).props().value).toStrictEqual(['tag3']);
-    expect(wrapper.find(Button).props().disabled).toBe(false);
-  });
-
-  test('handles save', () => {
-    const wrapper = shallowWithIntl(
-      <ProgramTags store={store} />, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    wrapper.find(Button).simulate('click');
-    wrapper.update();
-
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().value).toStrictEqual(['tag3']);
     expect(store.dispatch).toHaveBeenCalled();
-    expect(store.dispatch).toHaveBeenCalledWith(changeProgramTags(1, ['tag1', 'tag2']));
-    expect(wrapper.find(Button).props().disabled).toBe(true);
+    expect(store.dispatch).toHaveBeenCalledWith(changeProgramTags(1, ['tag3']));
   });
 
   test('handles authentication error', (done) => {

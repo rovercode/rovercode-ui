@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Container,
-  Grid,
-  Message,
-} from 'semantic-ui-react';
+import { Box, Button, Grid } from '@material-ui/core';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
@@ -243,7 +239,7 @@ class Workspace extends Component {
     // https://developers.google.com/blockly/guides/configure/web/resizable
     const { workspace } = this.state;
 
-    const blocklyArea = document.getElementById('blocklyDiv').parentNode;
+    const blocklyArea = document.getElementById('blocklyDiv').parentNode.parentNode;
 
     // Position blocklyDiv over blocklyArea.
     if (this.editorDiv) {
@@ -469,44 +465,50 @@ class Workspace extends Component {
     const { children, code, rover } = this.props;
 
     return (
-      <Container style={{ height: code.isReadOnly ? '70vh' : '80vh' }}>
-        {
+      <Box m={1}>
+        <Grid container direction="column" justify="center" alignItems="center" spacing={1}>
+          {
           code.isReadOnly ? (
-            <Grid verticalAlign="middle">
-              <Grid.Column width={12}>
-                <Message info>
-                  <Message.Header>
+            <Grid item>
+              <Alert
+                severity="info"
+                action={(
+                  <Button color="primary" variant="contained" size="huge" onClick={this.remix}>
                     <FormattedMessage
-                      id="app.workspace.read_only_header"
-                      description="Header to indicate viewing in read only mode"
-                      defaultMessage="Read Only View"
+                      id="app.workspace.remix"
+                      description="Button label to copy other user's program for this user to edit"
+                      defaultMessage="Remix"
                     />
-                  </Message.Header>
+                  </Button>
+                )}
+              >
+                <AlertTitle>
                   <FormattedMessage
-                    id="app.workspace.read_only_content"
-                    description="Informs the user that this program is another user's and cannot be edited"
-                    defaultMessage="You are viewing another user's program in a read-only view."
+                    id="app.workspace.read_only_header"
+                    description="Header to indicate viewing in read only mode"
+                    defaultMessage="Read Only View"
                   />
-                </Message>
-              </Grid.Column>
-              <Grid.Column width={4}>
-                <Button primary size="huge" onClick={this.remix}>
-                  <FormattedMessage
-                    id="app.workspace.remix"
-                    description="Button label to copy other user's program for this user to edit"
-                    defaultMessage="Remix"
-                  />
-                </Button>
-              </Grid.Column>
+                </AlertTitle>
+                <FormattedMessage
+                  id="app.workspace.read_only_content"
+                  description="Informs the user that this program is another user's and cannot be edited"
+                  defaultMessage="You are viewing another user's program in a read-only view."
+                />
+              </Alert>
             </Grid>
           ) : (null)
         }
-        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
-          <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
-            { React.cloneElement(children, { isConnected: !!rover.rover }) }
-          </div>
-        </div>
-      </Container>
+          <Grid item container direction="column" alignItems="stretch">
+            <Grid item style={{ minHeight: code.isReadOnly ? '70vh' : '80vh', maxHeight: '1080px' }}>
+              <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
+                <Box zIndex="modal" style={{ position: 'absolute', bottom: '15%', left: '10%' }}>
+                  { React.cloneElement(children, { isConnected: !!rover.rover }) }
+                </Box>
+              </div>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
     );
   }
 }

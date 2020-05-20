@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import {
-  Button,
-  Confirm,
-  Icon,
-  Loader,
-  Segment,
-} from 'semantic-ui-react';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Link, Redirect } from 'react-router-dom';
+  Box,
+  CircularProgress,
+  Grid,
+} from '@material-ui/core';
+import { injectIntl } from 'react-intl';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import ConfirmDialog from './ConfirmDialog';
 import ProgramCollection from './ProgramCollection';
 
 const defaultState = {
@@ -29,22 +28,29 @@ class ProgramList extends Component {
   }
 
   componentDidMount() {
+    const { clearProgram, clearProgramList } = this.props;
+
+    clearProgramList();
+    clearProgram();
+
+    return this.fetch();
+  }
+
+  fetch = () => {
     const {
-      clearProgram,
       fetchPrograms,
       fetchTags,
+      owned,
       user,
     } = this.props;
 
-    clearProgram();
+    fetchTags();
 
-    return fetchPrograms({
+    return owned ? fetchPrograms({
       user: user.user_id,
-    }).then(() => fetchPrograms({
+    }) : fetchPrograms({
       user__not: user.user_id,
-    })).then(() => fetchPrograms({
-      admin_tags: 'featured',
-    })).then(() => fetchTags());
+    });
   }
 
   showConfirm = (e) => this.setState({
@@ -58,28 +64,19 @@ class ProgramList extends Component {
   cancelRemove = () => this.setState(defaultState)
 
   removeProgram = () => {
-    const { fetchPrograms, removeProgram, user } = this.props;
+    const { removeProgram } = this.props;
     const { focusProgram } = this.state;
 
     this.setState(defaultState);
 
-    return removeProgram(focusProgram.id)
-      .then(() => fetchPrograms({
-        user: user.user_id,
-      }))
-      .then(() => fetchPrograms({
-        user__not: user.user_id,
-      }))
-      .then(() => fetchPrograms({
-        admin_tags: 'featured',
-      }));
+    return removeProgram(focusProgram.id).then(this.fetch);
   }
 
   loadProgram = (e) => {
     const { changeReadOnly, fetchProgram } = this.props;
     let program = e.target;
-    if (e.target.parentNode.id) {
-      program = e.target.parentNode;
+    if (e.target.parentNode.parentNode.id) {
+      program = e.target.parentNode.parentNode;
     }
     const readOnly = program.dataset.owned === 'false';
 
@@ -100,15 +97,7 @@ class ProgramList extends Component {
     });
   }
 
-  fetchFeaturedPrograms = (params) => {
-    const { fetchPrograms } = this.props;
-    fetchPrograms({
-      admin_tags: 'featured',
-      ...params,
-    });
-  }
-
-  fetchOtherPrograms = (params) => {
+  fetchCommunityPrograms = (params) => {
     const { fetchPrograms, user } = this.props;
     fetchPrograms({
       user__not: user.user_id,
@@ -116,28 +105,13 @@ class ProgramList extends Component {
     });
   }
 
-  programSegment = (programs, user, tag, label, onUpdate) => (
-    <Segment raised style={{ margin: '10px 10% 10px 10%' }}>
-      <ProgramCollection
-        programs={programs}
-        user={user}
-        tag={tag}
-        label={label}
-        onProgramClick={this.loadProgram}
-        onRemoveClick={this.showConfirm}
-        onUpdate={onUpdate}
-      />
-    </Segment>
-  )
-
   render() {
     const {
       intl,
+      owned,
       programs,
       user,
       tag,
-      userPrograms,
-      featuredPrograms,
     } = this.props;
     const {
       confirmOpen,
@@ -151,28 +125,22 @@ class ProgramList extends Component {
       defaultMessage: 'My Programs',
     });
 
-    const featuredProgramsHeader = intl.formatMessage({
-      id: 'app.program_list.featured_programs',
-      description: 'Header for all featured programs',
-      defaultMessage: 'Featured Programs',
-    });
-
-    const otherProgramsHeader = intl.formatMessage({
-      id: 'app.program_list.other_programs',
-      description: 'Header for finding other user\'s programs',
-      defaultMessage: 'Find More',
+    const communityProgramsHeader = intl.formatMessage({
+      id: 'app.program_list.community_programs',
+      description: 'Header for all community programs',
+      defaultMessage: 'Community Programs',
     });
 
     const cancelButtonText = intl.formatMessage({
       id: 'app.program_list.cancel',
       description: 'Button label to cancel removing program',
-      defaultMessage: 'No',
+      defaultMessage: 'No, don\'t remove program',
     });
 
     const confirmButtonText = intl.formatMessage({
       id: 'app.program_list.confirm',
       description: 'Button label to confirm removing program',
-      defaultMessage: 'Yes',
+      defaultMessage: 'Yes, remove program',
     });
 
     const dialogHeader = intl.formatMessage({
@@ -191,14 +159,6 @@ class ProgramList extends Component {
 
     return (
       <>
-        <Button primary as={Link} to="/mission-control" style={{ marginLeft: '10%' }}>
-          <Icon name="plus" />
-          <FormattedMessage
-            id="app.program_list.new"
-            description="Button label to create new program"
-            defaultMessage="New Program"
-          />
-        </Button>
         {
           programLoaded ? (
             <Redirect to={{
@@ -207,32 +167,39 @@ class ProgramList extends Component {
             />
           ) : (null)
         }
-        {
-          userPrograms === null
-            ? (<Loader active />)
-            : this.programSegment(userPrograms, user, tag,
-              myProgramsHeader, this.fetchUserPrograms)
+        <Grid container direction="column" justify="center" alignItems="center">
+          {
+          programs === null ? (
+            <Grid item>
+              <CircularProgress />
+            </Grid>
+          ) : (
+            <Grid item>
+              <Box m={2}>
+                <ProgramCollection
+                  programs={programs}
+                  user={user}
+                  tag={tag}
+                  label={owned ? myProgramsHeader : communityProgramsHeader}
+                  onProgramClick={this.loadProgram}
+                  onRemoveClick={this.showConfirm}
+                  onUpdate={owned ? this.fetchUserPrograms : this.fetchCommunityPrograms}
+                />
+              </Box>
+            </Grid>
+          )
         }
-        {
-          featuredPrograms === null
-            ? (<Loader active />)
-            : this.programSegment(featuredPrograms, user, tag,
-              featuredProgramsHeader, this.fetchFeaturedPrograms)
-        }
-        {
-          programs === null
-            ? (<Loader active />)
-            : this.programSegment(programs, user, tag, otherProgramsHeader, this.fetchOtherPrograms)
-        }
-        <Confirm
-          header={dialogHeader}
-          content={dialogContent}
+        </Grid>
+        <ConfirmDialog
+          title={dialogHeader}
           open={confirmOpen}
           onConfirm={this.removeProgram}
           onCancel={this.cancelRemove}
           cancelButton={cancelButtonText}
           confirmButton={confirmButtonText}
-        />
+        >
+          {dialogContent}
+        </ConfirmDialog>
       </>
     );
   }
@@ -240,18 +207,6 @@ class ProgramList extends Component {
 
 ProgramList.defaultProps = {
   programs: {
-    next: null,
-    previous: null,
-    total_pages: 1,
-    results: [],
-  },
-  userPrograms: {
-    next: null,
-    previous: null,
-    total_pages: 1,
-    results: [],
-  },
-  featuredPrograms: {
     next: null,
     previous: null,
     total_pages: 1,
@@ -265,43 +220,17 @@ ProgramList.defaultProps = {
 ProgramList.propTypes = {
   fetchProgram: PropTypes.func.isRequired,
   fetchPrograms: PropTypes.func.isRequired,
-  removeProgram: PropTypes.func.isRequired,
-  changeReadOnly: PropTypes.func.isRequired,
   fetchTags: PropTypes.func.isRequired,
+  removeProgram: PropTypes.func.isRequired,
+  clearProgramList: PropTypes.func.isRequired,
+  changeReadOnly: PropTypes.func.isRequired,
   clearProgram: PropTypes.func.isRequired,
+  owned: PropTypes.bool.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
   }).isRequired,
   programs: PropTypes.shape({
-    next: PropTypes.string,
-    previous: PropTypes.string,
-    total_pages: PropTypes.number,
-    results: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        user: PropTypes.shape({
-          username: PropTypes.string.isRequired,
-        }).isRequired,
-      }),
-    ),
-  }),
-  userPrograms: PropTypes.shape({
-    next: PropTypes.string,
-    previous: PropTypes.string,
-    total_pages: PropTypes.number,
-    results: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        user: PropTypes.shape({
-          username: PropTypes.string.isRequired,
-        }).isRequired,
-      }),
-    ),
-  }),
-  featuredPrograms: PropTypes.shape({
     next: PropTypes.string,
     previous: PropTypes.string,
     total_pages: PropTypes.number,

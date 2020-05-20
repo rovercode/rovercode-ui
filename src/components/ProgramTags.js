@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Dropdown, Grid } from 'semantic-ui-react';
+import { Chip, Grid, TextField } from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { checkAuthError, authHeader } from '@/actions/auth';
@@ -23,8 +25,6 @@ class ProgramTags extends Component {
 
     this.state = {
       localTags: [],
-      addOptions: [],
-      changed: false,
     };
   }
 
@@ -38,37 +38,22 @@ class ProgramTags extends Component {
     });
   }
 
-  handleChange = (event, data) => {
+  handleChange = (event, value) => {
     this.setState({
-      localTags: data.value,
-      changed: true,
-    });
+      localTags: value,
+    }, () => this.handleSave());
   }
 
   handleSave = () => {
     const { changeProgramTags, code } = this.props;
     const { localTags } = this.state;
 
-    changeProgramTags(code.id, localTags).then(() => this.setState({
-      changed: false,
-    }));
-  }
-
-  addItem = (event, data) => {
-    const newOption = {
-      key: data.value,
-      text: data.value,
-      value: data.value,
-    };
-
-    this.setState((prevState) => ({
-      addOptions: [...prevState.addOptions, newOption],
-    }));
+    changeProgramTags(code.id, localTags);
   }
 
   render() {
     const { code, tag, intl } = this.props;
-    const { addOptions, changed, localTags } = this.state;
+    const { localTags } = this.state;
 
     const tagPlaceholder = intl.formatMessage({
       id: 'app.program_tags.placeholder',
@@ -76,50 +61,33 @@ class ProgramTags extends Component {
       defaultMessage: 'Add tags...',
     });
 
-    const additionLabel = intl.formatMessage({
-      id: 'app.program_tags.addition',
-      description: 'Label for adding a new tag',
-      defaultMessage: 'Add',
-    });
-
-    let options = tag.tags.map((globalTag) => ({
-      key: globalTag.name,
-      text: globalTag.name,
-      value: globalTag.name,
-    }));
-
-    if (addOptions.length) {
-      options = options.concat(addOptions);
-    }
+    const RestrictedAutocomplete = withStyles(() => ({
+      root: {
+        maxWidth: '250px',
+      },
+    }))(Autocomplete);
 
     return (
-      <Grid centered container>
-        <Grid.Row>
-          <Dropdown
-            fluid
-            search
-            selection
+      <Grid container direction="column" justify="center" alignItems="stretch" spacing={1}>
+        <Grid item>
+          <RestrictedAutocomplete
+            id="tag-select"
             multiple
-            allowAdditions
-            closeOnChange
-            additionLabel={`${additionLabel} `}
-            options={options}
-            disabled={code.isReadOnly}
-            value={localTags}
-            placeholder={tagPlaceholder}
+            freeSolo
+            filterSelectedOptions
+            size="small"
+            options={tag.tags.map((globalTag) => globalTag.name)}
             onChange={this.handleChange}
-            onAddItem={this.addItem}
+            value={localTags}
+            disabled={code.isReadOnly}
+            renderInput={(params) => (
+              <TextField {...params} variant="outlined" label={tagPlaceholder} />
+            )}
+            renderTags={(value, getTagProps) => value.map((option, index) => (
+              <Chip color="secondary" size="small" label={option} {...getTagProps({ index })} />
+            ))}
           />
-        </Grid.Row>
-        <Grid.Row>
-          <Button primary disabled={!changed} onClick={this.handleSave}>
-            <FormattedMessage
-              id="app.program_tags.save"
-              description="Button label to save program tags"
-              defaultMessage="Save"
-            />
-          </Button>
-        </Grid.Row>
+        </Grid>
       </Grid>
     );
   }

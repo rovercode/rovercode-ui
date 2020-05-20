@@ -42,4 +42,17 @@ describe('The TopNav component', () => {
     expect(cookies.get('auth_jwt', { path: '/' })).toBeUndefined();
     expect(store.dispatch).toHaveBeenCalledWith(logout());
   });
+
+  test('should set and clear menu anchor element when menu is opening and closing', () => {
+    const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
+      context: { cookies },
+    });
+    const wrapper = topNav.dive().dive().dive().dive();
+
+    expect(wrapper.instance().state.userMenuAnchorElement).toBe(null);
+    wrapper.instance().handleMenuOpen({ target: 'element' });
+    expect(wrapper.instance().state.userMenuAnchorElement).toBe('element');
+    wrapper.instance().handleMenuClose();
+    expect(wrapper.instance().state.userMenuAnchorElement).toBe(null);
+  });
 });

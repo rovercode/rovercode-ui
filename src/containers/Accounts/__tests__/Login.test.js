@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import { Form, Message, MessageHeader } from 'semantic-ui-react';
 import { Cookies } from 'react-cookie';
+import { TextField } from '@material-ui/core';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { FormattedMessage } from 'react-intl';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -35,7 +36,16 @@ test('Login renders on the page with no errors', () => {
     .dive();
 
   expect(wrapper).toMatchSnapshot();
-  expect(wrapper.find(Message).exists()).toBe(false);
+  expect(wrapper.find(Alert).exists()).toBe(false);
+});
+
+test('Login mounts on the page with no errors', () => {
+  const wrapper = mountWithIntl(<Login location={location} store={store} />, {
+    context: { cookies },
+  });
+  expect(wrapper).toMatchSnapshot();
+
+  expect(wrapper.find(Alert).exists()).toBe(false);
 });
 
 test('Login redirects to social api on button click', async () => {
@@ -102,8 +112,8 @@ test('Login shows error message on api error', async () => {
   await wrapper.instance().redirectToSocial(element);
   wrapper.update();
 
-  expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(MessageHeader).children().find(FormattedMessage).prop('defaultMessage')).toBe(
+  expect(wrapper.find(Alert).exists()).toBe(true);
+  expect(wrapper.find(AlertTitle).children().find(FormattedMessage).prop('defaultMessage')).toBe(
     'There was an error initiating social login.',
   );
   expect(window.location.assign).not.toBeCalled();
@@ -125,11 +135,11 @@ test('Login shows error message on callback error', () => {
     .dive()
     .dive();
 
-  expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(MessageHeader).children().find(FormattedMessage).prop('defaultMessage')).toBe(
+  expect(wrapper.find(Alert).exists()).toBe(true);
+  expect(wrapper.find(AlertTitle).children().find(FormattedMessage).prop('defaultMessage')).toBe(
     'There was an error creating an account using social provider.',
   );
-  expect(wrapper.find(Message).find('p').text()).toBe(localLocation.state.callbackError[0]);
+  expect(wrapper.find(Alert).find('p').text()).toBe(localLocation.state.callbackError[0]);
 });
 
 test('Login redirects to root after basic login success', async () => {
@@ -153,18 +163,18 @@ test('Login redirects to root after basic login success', async () => {
     .dive()
     .dive();
 
-  wrapper.find(Form.Input).first().simulate('change', {
+  wrapper.find(TextField).first().simulate('change', {
     target: {
       value: username,
     },
   });
-  wrapper.find(Form.Input).last().simulate('change', {
+  wrapper.find(TextField).last().simulate('change', {
     target: {
       value: password,
     },
   });
 
-  await wrapper.instance().basicLogin();
+  await wrapper.instance().basicLogin({ preventDefault: jest.fn() });
   wrapper.update();
 
   expect(cookies.get('auth_jwt')).toBe(token);
@@ -193,22 +203,22 @@ test('Login shows error message after basic login failure', async () => {
     .dive()
     .dive();
 
-  wrapper.find(Form.Input).first().simulate('change', {
+  wrapper.find(TextField).first().simulate('change', {
     target: {
       value: username,
     },
   });
-  wrapper.find(Form.Input).last().simulate('change', {
+  wrapper.find(TextField).last().simulate('change', {
     target: {
       value: password,
     },
   });
 
-  await wrapper.instance().basicLogin();
+  await wrapper.instance().basicLogin({ preventDefault: jest.fn() });
   wrapper.update();
 
-  expect(wrapper.find(Message).exists()).toBe(true);
-  expect(wrapper.find(MessageHeader).children().find(FormattedMessage).prop('defaultMessage')).toBe(
+  expect(wrapper.find(Alert).exists()).toBe(true);
+  expect(wrapper.find(AlertTitle).children().find(FormattedMessage).prop('defaultMessage')).toBe(
     'Invalid username or password.',
   );
   expect(cookies.get('auth_jwt')).toBeUndefined();

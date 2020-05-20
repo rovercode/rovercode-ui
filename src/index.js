@@ -1,4 +1,4 @@
-import 'semantic-ui-css/semantic.min.css';
+import { ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -16,13 +16,13 @@ import appReducers from './reducers/index';
 import { USER_LOGOUT } from './actions/auth';
 import AuthApi from './utils/auth-api';
 
-
 import NotFound from './containers/Global/NotFound';
 import ProgramList from './containers/ProgramList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 import UserSetting from './containers/UserSetting';
 import ProtectedRoute from './components/ProtectedRoute';
+import { light } from './themes';
 
 import enMessages from './translations/locales/en.json';
 import esMessages from './translations/locales/es.json';
@@ -85,14 +85,17 @@ render(
     <ReduxProvider store={store}>
       <BrowserRouter>
         <CookiesProvider>
-          <Switch>
-            <Route path="/accounts" component={Accounts} />
-            <ProtectedRoute exact path="/" component={ProgramList} />
-            <ProtectedRoute exact path="/programs" component={ProgramList} />
-            <ProtectedRoute exact path="/mission-control" component={MissionControl} />
-            <ProtectedRoute exact path="/user/settings" component={UserSetting} />
-            <Route component={NotFound} />
-          </Switch>
+          <ThemeProvider theme={responsiveFontSizes(light)}>
+            <Switch>
+              <Route path="/accounts" component={Accounts} />
+              <ProtectedRoute exact path="/" component={ProgramList} />
+              <ProtectedRoute exact path="/programs/community" component={ProgramList} />
+              <ProtectedRoute exact path="/programs/mine" component={() => <ProgramList owned />} />
+              <ProtectedRoute exact path="/mission-control" component={MissionControl} />
+              <ProtectedRoute exact path="/user/settings" component={UserSetting} />
+              <Route component={NotFound} />
+            </Switch>
+          </ThemeProvider>
         </CookiesProvider>
       </BrowserRouter>
     </ReduxProvider>

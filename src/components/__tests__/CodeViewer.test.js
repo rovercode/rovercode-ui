@@ -1,6 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
+import { Button, Dialog } from '@material-ui/core';
 
 import CodeViewer from '../CodeViewer';
 
@@ -13,11 +14,11 @@ describe('The CodeViewer component', () => {
         jsCode: 'test code',
       },
     });
-    const wrapper = mount(
+    const wrapper = shallow(
       <CodeViewer store={store}>
         Show Me The Code!
       </CodeViewer>,
-    );
+    ).dive().dive();
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -27,11 +28,20 @@ describe('The CodeViewer component', () => {
         jsCode: null,
       },
     });
-    const wrapper = mount(
+    const wrapper = shallow(
       <CodeViewer store={store}>
         Show Me The Code!
       </CodeViewer>,
-    );
-    expect(wrapper).toMatchSnapshot();
+    ).dive().dive();
+
+    expect(wrapper.state('open')).toBe(false);
+
+    wrapper.find(Button).simulate('click');
+
+    expect(wrapper.state('open')).toBe(true);
+
+    wrapper.find(Dialog).simulate('close');
+
+    expect(wrapper.state('open')).toBe(false);
   });
 });

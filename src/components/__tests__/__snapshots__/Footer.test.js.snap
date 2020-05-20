@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Footer component renders on the page with no errors 1`] = `
+<WithStyles(ForwardRef(Grid))
+  alignItems="center"
+  container={true}
+  direction="column"
+  justify="center"
+>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+  >
+    <WithStyles(ForwardRef(Typography))
+      variant="subtitle1"
+    >
+      <FormattedMessage
+        defaultMessage="All users must follow the "
+        id="app.protected_route.conduct_message"
+        values={Object {}}
+      />
+      <WithStyles(ForwardRef(Link))
+        href="https://docs.rovercode.com/conduct/code-of-conduct"
+      >
+        <FormattedMessage
+          defaultMessage="Rovercode Code of Conduct."
+          id="app.protected_route.conduct_link"
+          values={Object {}}
+        />
+      </WithStyles(ForwardRef(Link))>
+      <FormattedMessage
+        defaultMessage=" If you see inappropriate behavior or feel you are being harassed, please stop using Rovercode and tell your teacher"
+        id="app.protected_route.inappropriate_message"
+        values={Object {}}
+      />
+      <FormattedMessage
+        defaultMessage=" Teachers, visit "
+        id="app.protected_route.teachers_message"
+        values={Object {}}
+      />
+      <WithStyles(ForwardRef(Link))
+        href="https://docs.rovercode.com/conduct/report"
+      >
+        <FormattedMessage
+          defaultMessage="this page "
+          id="app.protected_route.teachers_link"
+          values={Object {}}
+        />
+      </WithStyles(ForwardRef(Link))>
+      <FormattedMessage
+        defaultMessage="to report the issue."
+        id="app.protected_route.teachers_secondmessage"
+        values={Object {}}
+      />
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;
