@@ -26,7 +26,7 @@ const CircleCovered = withStyles((theme) => ({
 
 const CircleNotCovered = withStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.paper,
   },
 }))(Circle);
 

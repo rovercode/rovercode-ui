@@ -181,7 +181,7 @@ class RoverConnection extends Component {
 
     const ConnectionButton = withStyles((theme) => ({
       root: {
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: theme.palette.background.paper,
         '&:hover': {
           backgroundColor: grey[300],
         },
