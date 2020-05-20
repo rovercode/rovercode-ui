@@ -201,7 +201,7 @@ class ProgramCollection extends Component {
               to="/mission-control"
             >
               <FormattedMessage
-                id="app.program_list.new"
+                id="app.program_collection.new"
                 description="Button label to create new program"
                 defaultMessage="New Program"
               />
