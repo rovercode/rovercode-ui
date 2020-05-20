@@ -73,7 +73,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     expect(wrapper.instance().state.sortMenuAnchorElement).toBe(null);
     wrapper.instance().handleSortClick({ currentTarget: 'element' });
@@ -112,7 +112,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     expect(wrapper.find('WithStyles(ForwardRef(Card))').length).toBe(2);
     expect(wrapper.find('WithStyles(ForwardRef(Card))').first()
@@ -150,7 +150,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     expect(wrapper.find('WithStyles(ForwardRef(Card))').length).toBe(2);
     expect(wrapper.find('WithStyles(ForwardRef(Card))').first()
@@ -181,7 +181,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find('WithStyles(ForwardRef(CardActionArea))').first().simulate('click', {
       target: {
@@ -219,7 +219,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
     wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))').first().simulate('click', {
       target: {
         id: 33,
@@ -263,7 +263,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find(Pagination).simulate('change', null, 2);
 
@@ -304,7 +304,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find('WithStyles(ForwardRef(TextField))').simulate('change', {
       target: {
@@ -350,7 +350,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find('WithStyles(ForwardRef(MenuItem))').simulate('click');
 
@@ -410,7 +410,7 @@ describe('The ProgramCollection component', () => {
         onRemoveClick={onRemoveClick}
         onUpdate={onUpdate}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').simulate('change', {}, ['tag1', 'tag2']);
     wrapper.update();

@@ -14,7 +14,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
       <Styled(MuiBox)
         m={2}
       >
-        <injectIntl(ProgramCollection)
+        <injectIntl(WithStyles(ProgramCollection))
           label="My Programs"
           onProgramClick={[Function]}
           onRemoveClick={[Function]}

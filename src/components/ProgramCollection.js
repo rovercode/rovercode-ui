@@ -30,6 +30,23 @@ import { Pagination, Autocomplete } from '@material-ui/lab';
 import { Link } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
+const styles = (theme) => ({
+  mainContainer: {
+    [theme.breakpoints.up('xs')]: {
+      minWidth: theme.breakpoints.values.xs,
+    },
+    [theme.breakpoints.up('sm')]: {
+      minWidth: theme.breakpoints.values.sm,
+    },
+    [theme.breakpoints.up('md')]: {
+      minWidth: theme.breakpoints.values.md,
+    },
+    [theme.breakpoints.up('lg')]: {
+      minWidth: theme.breakpoints.values.lg,
+    },
+  },
+});
+
 class ProgramCollection extends Component {
   constructor(props) {
     super(props);
@@ -113,6 +130,7 @@ class ProgramCollection extends Component {
       programs,
       intl,
       tag,
+      classes,
     } = this.props;
     const { ordering, tagFilters, sortMenuAnchorElement } = this.state;
 
@@ -140,23 +158,6 @@ class ProgramCollection extends Component {
       },
     }))(Typography);
 
-    const NonCollapsingContainer = withStyles((theme) => ({
-      root: {
-        [theme.breakpoints.up('xs')]: {
-          minWidth: theme.breakpoints.values.xs,
-        },
-        [theme.breakpoints.up('sm')]: {
-          minWidth: theme.breakpoints.values.sm,
-        },
-        [theme.breakpoints.up('md')]: {
-          minWidth: theme.breakpoints.values.md,
-        },
-        [theme.breakpoints.up('lg')]: {
-          minWidth: theme.breakpoints.values.lg,
-        },
-      },
-    }))(Container);
-
     const DeleteButton = withStyles(() => ({
       root: {
         color: grey[500],
@@ -183,7 +184,7 @@ class ProgramCollection extends Component {
     }))(Box);
 
     return (
-      <NonCollapsingContainer maxWidth="lg" fixed>
+      <Container className={classes.mainContainer}>
         <TitleArea item container direction="row" justify="space-between">
           <Grid item>
             <Title variant="h4">
@@ -354,7 +355,7 @@ class ProgramCollection extends Component {
             </PaddedBox>
           ) : (null)
         }
-      </NonCollapsingContainer>
+      </Container>
     );
   }
 }
@@ -366,6 +367,9 @@ ProgramCollection.defaultProps = {
 };
 
 ProgramCollection.propTypes = {
+  classes: PropTypes.shape({
+    mainContainer: PropTypes.object.isRequired,
+  }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
   }).isRequired,
@@ -397,4 +401,4 @@ ProgramCollection.propTypes = {
   }).isRequired,
 };
 
-export default hot(module)(injectIntl(ProgramCollection));
+export default hot(module)(injectIntl(withStyles(styles)(ProgramCollection)));

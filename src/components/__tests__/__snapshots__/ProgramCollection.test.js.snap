@@ -24,7 +24,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
       }
     }
   >
-    <injectIntl(ProgramCollection)
+    <injectIntl(WithStyles(ProgramCollection))
       label="My Programs"
       onProgramClick={[MockFunction]}
       onRemoveClick={[MockFunction]}
@@ -60,7 +60,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
         }
       }
     >
-      <ProgramCollection
+      <WithStyles(ProgramCollection)
         intl={
           Object {
             "defaultFormats": Object {},
@@ -123,31 +123,96 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
             "total_pages": 2,
           }
         }
-        tag={
-          Object {
-            "tags": Array [],
-          }
-        }
         user={
           Object {
             "username": "admin",
           }
         }
       >
-        <WithStyles(WithStyles(ForwardRef(Container)))
-          fixed={true}
-          maxWidth="lg"
+        <ProgramCollection
+          classes={
+            Object {
+              "mainContainer": "ProgramCollection-mainContainer-1",
+            }
+          }
+          intl={
+            Object {
+              "defaultFormats": Object {},
+              "defaultLocale": "en",
+              "formatDate": [Function],
+              "formatDateToParts": [Function],
+              "formatDisplayName": [Function],
+              "formatHTMLMessage": [Function],
+              "formatList": [Function],
+              "formatMessage": [Function],
+              "formatNumber": [Function],
+              "formatNumberToParts": [Function],
+              "formatPlural": [Function],
+              "formatRelativeTime": [Function],
+              "formatTime": [Function],
+              "formatTimeToParts": [Function],
+              "formats": Object {},
+              "formatters": Object {
+                "getDateTimeFormat": [Function],
+                "getDisplayNames": [Function],
+                "getListFormat": [Function],
+                "getMessageFormat": [Function],
+                "getNumberFormat": [Function],
+                "getPluralRules": [Function],
+                "getRelativeTimeFormat": [Function],
+              },
+              "locale": "en",
+              "messages": Object {},
+              "onError": [Function],
+              "textComponent": Symbol(react.fragment),
+              "timeZone": undefined,
+            }
+          }
+          label="My Programs"
+          onProgramClick={[MockFunction]}
+          onRemoveClick={[MockFunction]}
+          onUpdate={[MockFunction]}
+          programs={
+            Object {
+              "next": null,
+              "previous": null,
+              "results": Array [
+                Object {
+                  "content": "<xml><variables></variables></xml>",
+                  "id": 33,
+                  "name": "Unnamed_Design_3",
+                  "user": Object {
+                    "username": "admin",
+                  },
+                },
+                Object {
+                  "content": "<xml><variables></variables></xml>",
+                  "id": 5,
+                  "name": "Unnamed_Design_2",
+                  "user": Object {
+                    "username": "testuser",
+                  },
+                },
+              ],
+              "total_pages": 2,
+            }
+          }
+          tag={
+            Object {
+              "tags": Array [],
+            }
+          }
+          user={
+            Object {
+              "username": "admin",
+            }
+          }
         >
           <WithStyles(ForwardRef(Container))
-            classes={
-              Object {
-                "root": "WithStyles(ForwardRef(Container))-root-378",
-              }
-            }
-            fixed={true}
-            maxWidth="lg"
+            className="ProgramCollection-mainContainer-1"
           >
             <ForwardRef(Container)
+              className="ProgramCollection-mainContainer-1"
               classes={
                 Object {
                   "disableGutters": "MuiContainer-disableGutters",
@@ -157,14 +222,12 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                   "maxWidthSm": "MuiContainer-maxWidthSm",
                   "maxWidthXl": "MuiContainer-maxWidthXl",
                   "maxWidthXs": "MuiContainer-maxWidthXs",
-                  "root": "MuiContainer-root WithStyles(ForwardRef(Container))-root-378",
+                  "root": "MuiContainer-root",
                 }
               }
-              fixed={true}
-              maxWidth="lg"
             >
               <div
-                className="MuiContainer-root WithStyles(ForwardRef(Container))-root-378 MuiContainer-fixed MuiContainer-maxWidthLg"
+                className="MuiContainer-root ProgramCollection-mainContainer-1 MuiContainer-maxWidthLg"
               >
                 <WithStyles(WithStyles(ForwardRef(Grid)))
                   container={true}
@@ -175,7 +238,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                   <WithStyles(ForwardRef(Grid))
                     classes={
                       Object {
-                        "root": "WithStyles(ForwardRef(Grid))-root-379",
+                        "root": "WithStyles(ForwardRef(Grid))-root-378",
                       }
                     }
                     container={true}
@@ -275,7 +338,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                           "justify-xs-space-around": "MuiGrid-justify-xs-space-around",
                           "justify-xs-space-between": "MuiGrid-justify-xs-space-between",
                           "justify-xs-space-evenly": "MuiGrid-justify-xs-space-evenly",
-                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-379",
+                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-378",
                           "spacing-xs-1": "MuiGrid-spacing-xs-1",
                           "spacing-xs-10": "MuiGrid-spacing-xs-10",
                           "spacing-xs-2": "MuiGrid-spacing-xs-2",
@@ -297,7 +360,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                       justify="space-between"
                     >
                       <div
-                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-379 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
+                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-378 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
                       >
                         <WithStyles(ForwardRef(Grid))
                           item={true}
@@ -421,7 +484,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                 <WithStyles(ForwardRef(Typography))
                                   classes={
                                     Object {
-                                      "root": "WithStyles(ForwardRef(Typography))-root-380",
+                                      "root": "WithStyles(ForwardRef(Typography))-root-379",
                                     }
                                   }
                                   variant="h4"
@@ -455,7 +518,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                         "noWrap": "MuiTypography-noWrap",
                                         "overline": "MuiTypography-overline",
                                         "paragraph": "MuiTypography-paragraph",
-                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-380",
+                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-379",
                                         "srOnly": "MuiTypography-srOnly",
                                         "subtitle1": "MuiTypography-subtitle1",
                                         "subtitle2": "MuiTypography-subtitle2",
@@ -464,7 +527,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                     variant="h4"
                                   >
                                     <h4
-                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-380 MuiTypography-h4"
+                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-379 MuiTypography-h4"
                                     >
                                       My Programs
                                     </h4>
@@ -2591,7 +2654,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                           <WithStyles(ForwardRef(Autocomplete))
                                             classes={
                                               Object {
-                                                "root": "WithStyles(ForwardRef(Autocomplete))-root-381",
+                                                "root": "WithStyles(ForwardRef(Autocomplete))-root-380",
                                               }
                                             }
                                             filterSelectedOptions={true}
@@ -2634,7 +2697,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                   "popperDisablePortal": "MuiAutocomplete-popperDisablePortal",
                                                   "popupIndicator": "MuiAutocomplete-popupIndicator",
                                                   "popupIndicatorOpen": "MuiAutocomplete-popupIndicatorOpen",
-                                                  "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-381",
+                                                  "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-380",
                                                   "tag": "MuiAutocomplete-tag",
                                                   "tagSizeSmall": "MuiAutocomplete-tagSizeSmall",
                                                 }
@@ -2658,7 +2721,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                               <div
                                                 aria-expanded={false}
                                                 aria-owns={null}
-                                                className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-381 MuiAutocomplete-hasClearIcon"
+                                                className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-380 MuiAutocomplete-hasClearIcon"
                                                 onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 onMouseDown={[Function]}
@@ -4270,7 +4333,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                               <WithStyles(ForwardRef(Button))
                                                 classes={
                                                   Object {
-                                                    "root": "WithStyles(ForwardRef(Button))-root-412",
+                                                    "root": "WithStyles(ForwardRef(Button))-root-411",
                                                   }
                                                 }
                                                 id={33}
@@ -4302,7 +4365,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                       "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                       "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                       "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-412",
+                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-411",
                                                       "sizeLarge": "MuiButton-sizeLarge",
                                                       "sizeSmall": "MuiButton-sizeSmall",
                                                       "startIcon": "MuiButton-startIcon",
@@ -4320,7 +4383,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                   startIcon={<Memo(DeleteIcon) />}
                                                 >
                                                   <WithStyles(ForwardRef(ButtonBase))
-                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-412 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-411 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                     component="button"
                                                     disabled={false}
                                                     focusRipple={true}
@@ -4331,7 +4394,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                     type="button"
                                                   >
                                                     <ForwardRef(ButtonBase)
-                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-412 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-411 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                       classes={
                                                         Object {
                                                           "disabled": "Mui-disabled",
@@ -4349,7 +4412,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                       type="button"
                                                     >
                                                       <button
-                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-412 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-411 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                         disabled={false}
                                                         id={33}
                                                         name="Unnamed_Design_3"
@@ -4853,17 +4916,17 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                   <Styled(MuiBox)
                     classes={
                       Object {
-                        "root": "Styled(MuiBox)-root-413",
+                        "root": "Styled(MuiBox)-root-412",
                       }
                     }
                     display="flex"
                     justifyContent="center"
                   >
                     <div
-                      className="MuiBox-root MuiBox-root-414 Styled(MuiBox)-root-413"
+                      className="MuiBox-root MuiBox-root-413 Styled(MuiBox)-root-412"
                       classes={
                         Object {
-                          "root": "Styled(MuiBox)-root-413",
+                          "root": "Styled(MuiBox)-root-412",
                         }
                       }
                     >
@@ -5717,9 +5780,9 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
               </div>
             </ForwardRef(Container)>
           </WithStyles(ForwardRef(Container))>
-        </WithStyles(WithStyles(ForwardRef(Container)))>
-      </ProgramCollection>
-    </injectIntl(ProgramCollection)>
+        </ProgramCollection>
+      </WithStyles(ProgramCollection)>
+    </injectIntl(WithStyles(ProgramCollection))>
   </Router>
 </BrowserRouter>
 `;
