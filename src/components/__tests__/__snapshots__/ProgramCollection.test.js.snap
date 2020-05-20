@@ -2139,7 +2139,6 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                       d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
                                                                     />
                                                                   </svg>
-                                                                  a ... z
                                                                   <span
                                                                     class="MuiTouchRipple-root"
                                                                   />
@@ -2462,7 +2461,6 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                                               </ForwardRef(SvgIcon)>
                                                                                             </WithStyles(ForwardRef(SvgIcon))>
                                                                                           </ForwardRef>
-                                                                                          a ... z
                                                                                           <WithStyles(memo)
                                                                                             center={false}
                                                                                           >

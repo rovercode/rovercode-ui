@@ -256,12 +256,10 @@ class ProgramCollection extends Component {
                       ordering === 'name' ? (
                         <>
                           <ArrowDownward />
-                          a ... z
                         </>
                       ) : (
                         <>
                           <ArrowUpward />
-                          z ... a
                         </>
                       )
                     }
