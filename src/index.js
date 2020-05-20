@@ -1,4 +1,3 @@
-import 'semantic-ui-css/semantic.min.css';
 import { ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 
 import React from 'react';
