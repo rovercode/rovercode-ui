@@ -32,6 +32,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 const styles = (theme) => ({
   mainContainer: {
+    marginBottom: theme.spacing(8),
     [theme.breakpoints.up('xs')]: {
       minWidth: theme.breakpoints.values.xs,
     },
@@ -44,6 +45,12 @@ const styles = (theme) => ({
     [theme.breakpoints.up('lg')]: {
       minWidth: theme.breakpoints.values.lg,
     },
+  },
+  paginationPaddedBox: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
   },
 });
 
@@ -175,13 +182,6 @@ class ProgramCollection extends Component {
         marginBottom: theme.spacing(4),
       },
     }))(Grid);
-
-    const PaddedBox = withStyles((theme) => ({
-      root: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3),
-      },
-    }))(Box);
 
     return (
       <Container className={classes.mainContainer}>
@@ -340,9 +340,8 @@ class ProgramCollection extends Component {
         </Grid>
         {
           programs.total_pages > 1 ? (
-            <PaddedBox
-              display="flex"
-              justifyContent="center"
+            <Box
+              className={classes.paginationPaddedBox}
             >
               <Pagination
                 defaultPage={1}
@@ -352,7 +351,7 @@ class ProgramCollection extends Component {
                 color="secondary"
                 onChange={this.handlePageChange}
               />
-            </PaddedBox>
+            </Box>
           ) : (null)
         }
       </Container>
@@ -369,6 +368,7 @@ ProgramCollection.defaultProps = {
 ProgramCollection.propTypes = {
   classes: PropTypes.shape({
     mainContainer: PropTypes.object.isRequired,
+    paginationPaddedBox: PropTypes.object.isRequired,
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,

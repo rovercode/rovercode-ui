@@ -133,6 +133,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
           classes={
             Object {
               "mainContainer": "ProgramCollection-mainContainer-1",
+              "paginationPaddedBox": "ProgramCollection-paginationPaddedBox-2",
             }
           }
           intl={
@@ -1432,10 +1433,10 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                     className="MuiOutlinedInput-notchedOutline"
                                                     classes={
                                                       Object {
-                                                        "legend": "PrivateNotchedOutline-legend-232",
-                                                        "legendLabelled": "PrivateNotchedOutline-legendLabelled-233",
-                                                        "legendNotched": "PrivateNotchedOutline-legendNotched-234",
-                                                        "root": "PrivateNotchedOutline-root-231",
+                                                        "legend": "PrivateNotchedOutline-legend-233",
+                                                        "legendLabelled": "PrivateNotchedOutline-legendLabelled-234",
+                                                        "legendNotched": "PrivateNotchedOutline-legendNotched-235",
+                                                        "root": "PrivateNotchedOutline-root-232",
                                                       }
                                                     }
                                                     labelWidth={0}
@@ -1443,7 +1444,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                   >
                                                     <fieldset
                                                       aria-hidden={true}
-                                                      className="PrivateNotchedOutline-root-231 MuiOutlinedInput-notchedOutline"
+                                                      className="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
                                                       style={
                                                         Object {
                                                           "paddingLeft": 8,
@@ -1451,7 +1452,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                       }
                                                     >
                                                       <legend
-                                                        className="PrivateNotchedOutline-legend-232"
+                                                        className="PrivateNotchedOutline-legend-233"
                                                         style={
                                                           Object {
                                                             "width": 0.01,
@@ -3809,10 +3810,10 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                         className="MuiOutlinedInput-notchedOutline"
                                                                         classes={
                                                                           Object {
-                                                                            "legend": "PrivateNotchedOutline-legend-232",
-                                                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-233",
-                                                                            "legendNotched": "PrivateNotchedOutline-legendNotched-234",
-                                                                            "root": "PrivateNotchedOutline-root-231",
+                                                                            "legend": "PrivateNotchedOutline-legend-233",
+                                                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-234",
+                                                                            "legendNotched": "PrivateNotchedOutline-legendNotched-235",
+                                                                            "root": "PrivateNotchedOutline-root-232",
                                                                           }
                                                                         }
                                                                         label={
@@ -3825,10 +3826,10 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                                       >
                                                                         <fieldset
                                                                           aria-hidden={true}
-                                                                          className="PrivateNotchedOutline-root-231 MuiOutlinedInput-notchedOutline"
+                                                                          className="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
                                                                         >
                                                                           <legend
-                                                                            className="PrivateNotchedOutline-legendLabelled-233 PrivateNotchedOutline-legendNotched-234"
+                                                                            className="PrivateNotchedOutline-legendLabelled-234 PrivateNotchedOutline-legendNotched-235"
                                                                           >
                                                                             <span>
                                                                               Filter by tag
@@ -4909,28 +4910,27 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                     </div>
                   </ForwardRef(Grid)>
                 </WithStyles(ForwardRef(Grid))>
-                <WithStyles(Styled(MuiBox))
-                  display="flex"
-                  justifyContent="center"
+                <Styled(MuiBox)
+                  className="ProgramCollection-paginationPaddedBox-2"
                 >
-                  <Styled(MuiBox)
-                    classes={
-                      Object {
-                        "root": "Styled(MuiBox)-root-412",
-                      }
-                    }
-                    display="flex"
-                    justifyContent="center"
+                  <div
+                    className="MuiBox-root MuiBox-root-331 ProgramCollection-paginationPaddedBox-2"
                   >
-                    <div
-                      className="MuiBox-root MuiBox-root-413 Styled(MuiBox)-root-412"
-                      classes={
-                        Object {
-                          "root": "Styled(MuiBox)-root-412",
-                        }
-                      }
+                    <WithStyles(ForwardRef(Pagination))
+                      color="secondary"
+                      count={2}
+                      defaultPage={1}
+                      onChange={[Function]}
+                      showFirstButton={true}
+                      showLastButton={true}
                     >
-                      <WithStyles(ForwardRef(Pagination))
+                      <ForwardRef(Pagination)
+                        classes={
+                          Object {
+                            "root": "MuiPagination-root",
+                            "ul": "MuiPagination-ul",
+                          }
+                        }
                         color="secondary"
                         count={2}
                         defaultPage={1}
@@ -4938,32 +4938,49 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                         showFirstButton={true}
                         showLastButton={true}
                       >
-                        <ForwardRef(Pagination)
-                          classes={
-                            Object {
-                              "root": "MuiPagination-root",
-                              "ul": "MuiPagination-ul",
-                            }
-                          }
-                          color="secondary"
-                          count={2}
-                          defaultPage={1}
-                          onChange={[Function]}
-                          showFirstButton={true}
-                          showLastButton={true}
+                        <nav
+                          aria-label="pagination navigation"
+                          className="MuiPagination-root"
                         >
-                          <nav
-                            aria-label="pagination navigation"
-                            className="MuiPagination-root"
+                          <ul
+                            className="MuiPagination-ul"
                           >
-                            <ul
-                              className="MuiPagination-ul"
+                            <li
+                              key="0"
                             >
-                              <li
-                                key="0"
+                              <WithStyles(ForwardRef(PaginationItem))
+                                aria-label="Go to first page"
+                                color="secondary"
+                                disabled={true}
+                                onClick={[Function]}
+                                page={1}
+                                selected={false}
+                                shape="round"
+                                size="medium"
+                                type="first"
+                                variant="text"
                               >
-                                <WithStyles(ForwardRef(PaginationItem))
+                                <ForwardRef(PaginationItem)
                                   aria-label="Go to first page"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "ellipsis": "MuiPaginationItem-ellipsis",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "icon": "MuiPaginationItem-icon",
+                                      "outlined": "MuiPaginationItem-outlined",
+                                      "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
+                                      "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
+                                      "page": "MuiPaginationItem-page",
+                                      "root": "MuiPaginationItem-root",
+                                      "rounded": "MuiPaginationItem-rounded",
+                                      "selected": "Mui-selected",
+                                      "sizeLarge": "MuiPaginationItem-sizeLarge",
+                                      "sizeSmall": "MuiPaginationItem-sizeSmall",
+                                      "textPrimary": "MuiPaginationItem-textPrimary",
+                                      "textSecondary": "MuiPaginationItem-textSecondary",
+                                    }
+                                  }
                                   color="secondary"
                                   disabled={true}
                                   onClick={[Function]}
@@ -4974,123 +4991,123 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                   type="first"
                                   variant="text"
                                 >
-                                  <ForwardRef(PaginationItem)
+                                  <WithStyles(ForwardRef(ButtonBase))
                                     aria-label="Go to first page"
-                                    classes={
-                                      Object {
-                                        "disabled": "Mui-disabled",
-                                        "ellipsis": "MuiPaginationItem-ellipsis",
-                                        "focusVisible": "Mui-focusVisible",
-                                        "icon": "MuiPaginationItem-icon",
-                                        "outlined": "MuiPaginationItem-outlined",
-                                        "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
-                                        "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
-                                        "page": "MuiPaginationItem-page",
-                                        "root": "MuiPaginationItem-root",
-                                        "rounded": "MuiPaginationItem-rounded",
-                                        "selected": "Mui-selected",
-                                        "sizeLarge": "MuiPaginationItem-sizeLarge",
-                                        "sizeSmall": "MuiPaginationItem-sizeSmall",
-                                        "textPrimary": "MuiPaginationItem-textPrimary",
-                                        "textSecondary": "MuiPaginationItem-textSecondary",
-                                      }
-                                    }
-                                    color="secondary"
+                                    className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled"
                                     disabled={true}
+                                    focusVisibleClassName="Mui-focusVisible"
                                     onClick={[Function]}
-                                    page={1}
-                                    selected={false}
-                                    shape="round"
-                                    size="medium"
-                                    type="first"
-                                    variant="text"
                                   >
-                                    <WithStyles(ForwardRef(ButtonBase))
+                                    <ForwardRef(ButtonBase)
                                       aria-label="Go to first page"
                                       className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled"
+                                      classes={
+                                        Object {
+                                          "disabled": "Mui-disabled",
+                                          "focusVisible": "Mui-focusVisible",
+                                          "root": "MuiButtonBase-root",
+                                        }
+                                      }
                                       disabled={true}
                                       focusVisibleClassName="Mui-focusVisible"
                                       onClick={[Function]}
                                     >
-                                      <ForwardRef(ButtonBase)
+                                      <button
                                         aria-label="Go to first page"
-                                        className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled"
-                                        classes={
-                                          Object {
-                                            "disabled": "Mui-disabled",
-                                            "focusVisible": "Mui-focusVisible",
-                                            "root": "MuiButtonBase-root",
-                                          }
-                                        }
+                                        className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled Mui-disabled"
                                         disabled={true}
-                                        focusVisibleClassName="Mui-focusVisible"
+                                        onBlur={[Function]}
                                         onClick={[Function]}
+                                        onDragLeave={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex={-1}
+                                        type="button"
                                       >
-                                        <button
-                                          aria-label="Go to first page"
-                                          className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled Mui-disabled"
-                                          disabled={true}
-                                          onBlur={[Function]}
-                                          onClick={[Function]}
-                                          onDragLeave={[Function]}
-                                          onFocus={[Function]}
-                                          onKeyDown={[Function]}
-                                          onKeyUp={[Function]}
-                                          onMouseDown={[Function]}
-                                          onMouseLeave={[Function]}
-                                          onMouseUp={[Function]}
-                                          onTouchEnd={[Function]}
-                                          onTouchMove={[Function]}
-                                          onTouchStart={[Function]}
-                                          tabIndex={-1}
-                                          type="button"
+                                        <ForwardRef
+                                          className="MuiPaginationItem-icon"
                                         >
-                                          <ForwardRef
+                                          <WithStyles(ForwardRef(SvgIcon))
                                             className="MuiPaginationItem-icon"
                                           >
-                                            <WithStyles(ForwardRef(SvgIcon))
+                                            <ForwardRef(SvgIcon)
                                               className="MuiPaginationItem-icon"
-                                            >
-                                              <ForwardRef(SvgIcon)
-                                                className="MuiPaginationItem-icon"
-                                                classes={
-                                                  Object {
-                                                    "colorAction": "MuiSvgIcon-colorAction",
-                                                    "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                                    "colorError": "MuiSvgIcon-colorError",
-                                                    "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                                    "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                                    "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                                    "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                                    "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                    "root": "MuiSvgIcon-root",
-                                                  }
+                                              classes={
+                                                Object {
+                                                  "colorAction": "MuiSvgIcon-colorAction",
+                                                  "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                  "colorError": "MuiSvgIcon-colorError",
+                                                  "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                  "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                  "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                  "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                  "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                  "root": "MuiSvgIcon-root",
                                                 }
+                                              }
+                                            >
+                                              <svg
+                                                aria-hidden="true"
+                                                className="MuiSvgIcon-root MuiPaginationItem-icon"
+                                                focusable="false"
+                                                viewBox="0 0 24 24"
                                               >
-                                                <svg
-                                                  aria-hidden="true"
-                                                  className="MuiSvgIcon-root MuiPaginationItem-icon"
-                                                  focusable="false"
-                                                  viewBox="0 0 24 24"
-                                                >
-                                                  <path
-                                                    d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-                                                  />
-                                                </svg>
-                                              </ForwardRef(SvgIcon)>
-                                            </WithStyles(ForwardRef(SvgIcon))>
-                                          </ForwardRef>
-                                        </button>
-                                      </ForwardRef(ButtonBase)>
-                                    </WithStyles(ForwardRef(ButtonBase))>
-                                  </ForwardRef(PaginationItem)>
-                                </WithStyles(ForwardRef(PaginationItem))>
-                              </li>
-                              <li
-                                key="1"
+                                                <path
+                                                  d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+                                                />
+                                              </svg>
+                                            </ForwardRef(SvgIcon)>
+                                          </WithStyles(ForwardRef(SvgIcon))>
+                                        </ForwardRef>
+                                      </button>
+                                    </ForwardRef(ButtonBase)>
+                                  </WithStyles(ForwardRef(ButtonBase))>
+                                </ForwardRef(PaginationItem)>
+                              </WithStyles(ForwardRef(PaginationItem))>
+                            </li>
+                            <li
+                              key="1"
+                            >
+                              <WithStyles(ForwardRef(PaginationItem))
+                                aria-label="Go to previous page"
+                                color="secondary"
+                                disabled={true}
+                                onClick={[Function]}
+                                page={0}
+                                selected={false}
+                                shape="round"
+                                size="medium"
+                                type="previous"
+                                variant="text"
                               >
-                                <WithStyles(ForwardRef(PaginationItem))
+                                <ForwardRef(PaginationItem)
                                   aria-label="Go to previous page"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "ellipsis": "MuiPaginationItem-ellipsis",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "icon": "MuiPaginationItem-icon",
+                                      "outlined": "MuiPaginationItem-outlined",
+                                      "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
+                                      "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
+                                      "page": "MuiPaginationItem-page",
+                                      "root": "MuiPaginationItem-root",
+                                      "rounded": "MuiPaginationItem-rounded",
+                                      "selected": "Mui-selected",
+                                      "sizeLarge": "MuiPaginationItem-sizeLarge",
+                                      "sizeSmall": "MuiPaginationItem-sizeSmall",
+                                      "textPrimary": "MuiPaginationItem-textPrimary",
+                                      "textSecondary": "MuiPaginationItem-textSecondary",
+                                    }
+                                  }
                                   color="secondary"
                                   disabled={true}
                                   onClick={[Function]}
@@ -5101,124 +5118,125 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                   type="previous"
                                   variant="text"
                                 >
-                                  <ForwardRef(PaginationItem)
+                                  <WithStyles(ForwardRef(ButtonBase))
                                     aria-label="Go to previous page"
-                                    classes={
-                                      Object {
-                                        "disabled": "Mui-disabled",
-                                        "ellipsis": "MuiPaginationItem-ellipsis",
-                                        "focusVisible": "Mui-focusVisible",
-                                        "icon": "MuiPaginationItem-icon",
-                                        "outlined": "MuiPaginationItem-outlined",
-                                        "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
-                                        "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
-                                        "page": "MuiPaginationItem-page",
-                                        "root": "MuiPaginationItem-root",
-                                        "rounded": "MuiPaginationItem-rounded",
-                                        "selected": "Mui-selected",
-                                        "sizeLarge": "MuiPaginationItem-sizeLarge",
-                                        "sizeSmall": "MuiPaginationItem-sizeSmall",
-                                        "textPrimary": "MuiPaginationItem-textPrimary",
-                                        "textSecondary": "MuiPaginationItem-textSecondary",
-                                      }
-                                    }
-                                    color="secondary"
+                                    className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled"
                                     disabled={true}
+                                    focusVisibleClassName="Mui-focusVisible"
                                     onClick={[Function]}
-                                    page={0}
-                                    selected={false}
-                                    shape="round"
-                                    size="medium"
-                                    type="previous"
-                                    variant="text"
                                   >
-                                    <WithStyles(ForwardRef(ButtonBase))
+                                    <ForwardRef(ButtonBase)
                                       aria-label="Go to previous page"
                                       className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled"
+                                      classes={
+                                        Object {
+                                          "disabled": "Mui-disabled",
+                                          "focusVisible": "Mui-focusVisible",
+                                          "root": "MuiButtonBase-root",
+                                        }
+                                      }
                                       disabled={true}
                                       focusVisibleClassName="Mui-focusVisible"
                                       onClick={[Function]}
                                     >
-                                      <ForwardRef(ButtonBase)
+                                      <button
                                         aria-label="Go to previous page"
-                                        className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled"
-                                        classes={
-                                          Object {
-                                            "disabled": "Mui-disabled",
-                                            "focusVisible": "Mui-focusVisible",
-                                            "root": "MuiButtonBase-root",
-                                          }
-                                        }
+                                        className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled Mui-disabled"
                                         disabled={true}
-                                        focusVisibleClassName="Mui-focusVisible"
+                                        onBlur={[Function]}
                                         onClick={[Function]}
+                                        onDragLeave={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex={-1}
+                                        type="button"
                                       >
-                                        <button
-                                          aria-label="Go to previous page"
-                                          className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-disabled Mui-disabled"
-                                          disabled={true}
-                                          onBlur={[Function]}
-                                          onClick={[Function]}
-                                          onDragLeave={[Function]}
-                                          onFocus={[Function]}
-                                          onKeyDown={[Function]}
-                                          onKeyUp={[Function]}
-                                          onMouseDown={[Function]}
-                                          onMouseLeave={[Function]}
-                                          onMouseUp={[Function]}
-                                          onTouchEnd={[Function]}
-                                          onTouchMove={[Function]}
-                                          onTouchStart={[Function]}
-                                          tabIndex={-1}
-                                          type="button"
+                                        <ForwardRef
+                                          className="MuiPaginationItem-icon"
                                         >
-                                          <ForwardRef
+                                          <WithStyles(ForwardRef(SvgIcon))
                                             className="MuiPaginationItem-icon"
                                           >
-                                            <WithStyles(ForwardRef(SvgIcon))
+                                            <ForwardRef(SvgIcon)
                                               className="MuiPaginationItem-icon"
-                                            >
-                                              <ForwardRef(SvgIcon)
-                                                className="MuiPaginationItem-icon"
-                                                classes={
-                                                  Object {
-                                                    "colorAction": "MuiSvgIcon-colorAction",
-                                                    "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                                    "colorError": "MuiSvgIcon-colorError",
-                                                    "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                                    "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                                    "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                                    "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                                    "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                    "root": "MuiSvgIcon-root",
-                                                  }
+                                              classes={
+                                                Object {
+                                                  "colorAction": "MuiSvgIcon-colorAction",
+                                                  "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                  "colorError": "MuiSvgIcon-colorError",
+                                                  "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                  "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                  "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                  "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                  "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                  "root": "MuiSvgIcon-root",
                                                 }
+                                              }
+                                            >
+                                              <svg
+                                                aria-hidden="true"
+                                                className="MuiSvgIcon-root MuiPaginationItem-icon"
+                                                focusable="false"
+                                                viewBox="0 0 24 24"
                                               >
-                                                <svg
-                                                  aria-hidden="true"
-                                                  className="MuiSvgIcon-root MuiPaginationItem-icon"
-                                                  focusable="false"
-                                                  viewBox="0 0 24 24"
-                                                >
-                                                  <path
-                                                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-                                                  />
-                                                </svg>
-                                              </ForwardRef(SvgIcon)>
-                                            </WithStyles(ForwardRef(SvgIcon))>
-                                          </ForwardRef>
-                                        </button>
-                                      </ForwardRef(ButtonBase)>
-                                    </WithStyles(ForwardRef(ButtonBase))>
-                                  </ForwardRef(PaginationItem)>
-                                </WithStyles(ForwardRef(PaginationItem))>
-                              </li>
-                              <li
-                                key="2"
+                                                <path
+                                                  d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                                                />
+                                              </svg>
+                                            </ForwardRef(SvgIcon)>
+                                          </WithStyles(ForwardRef(SvgIcon))>
+                                        </ForwardRef>
+                                      </button>
+                                    </ForwardRef(ButtonBase)>
+                                  </WithStyles(ForwardRef(ButtonBase))>
+                                </ForwardRef(PaginationItem)>
+                              </WithStyles(ForwardRef(PaginationItem))>
+                            </li>
+                            <li
+                              key="2"
+                            >
+                              <WithStyles(ForwardRef(PaginationItem))
+                                aria-current="true"
+                                aria-label="page 1"
+                                color="secondary"
+                                disabled={false}
+                                onClick={[Function]}
+                                page={1}
+                                selected={true}
+                                shape="round"
+                                size="medium"
+                                type="page"
+                                variant="text"
                               >
-                                <WithStyles(ForwardRef(PaginationItem))
+                                <ForwardRef(PaginationItem)
                                   aria-current="true"
                                   aria-label="page 1"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "ellipsis": "MuiPaginationItem-ellipsis",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "icon": "MuiPaginationItem-icon",
+                                      "outlined": "MuiPaginationItem-outlined",
+                                      "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
+                                      "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
+                                      "page": "MuiPaginationItem-page",
+                                      "root": "MuiPaginationItem-root",
+                                      "rounded": "MuiPaginationItem-rounded",
+                                      "selected": "Mui-selected",
+                                      "sizeLarge": "MuiPaginationItem-sizeLarge",
+                                      "sizeSmall": "MuiPaginationItem-sizeSmall",
+                                      "textPrimary": "MuiPaginationItem-textPrimary",
+                                      "textSecondary": "MuiPaginationItem-textSecondary",
+                                    }
+                                  }
                                   color="secondary"
                                   disabled={false}
                                   onClick={[Function]}
@@ -5229,121 +5247,120 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                   type="page"
                                   variant="text"
                                 >
-                                  <ForwardRef(PaginationItem)
+                                  <WithStyles(ForwardRef(ButtonBase))
                                     aria-current="true"
                                     aria-label="page 1"
-                                    classes={
-                                      Object {
-                                        "disabled": "Mui-disabled",
-                                        "ellipsis": "MuiPaginationItem-ellipsis",
-                                        "focusVisible": "Mui-focusVisible",
-                                        "icon": "MuiPaginationItem-icon",
-                                        "outlined": "MuiPaginationItem-outlined",
-                                        "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
-                                        "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
-                                        "page": "MuiPaginationItem-page",
-                                        "root": "MuiPaginationItem-root",
-                                        "rounded": "MuiPaginationItem-rounded",
-                                        "selected": "Mui-selected",
-                                        "sizeLarge": "MuiPaginationItem-sizeLarge",
-                                        "sizeSmall": "MuiPaginationItem-sizeSmall",
-                                        "textPrimary": "MuiPaginationItem-textPrimary",
-                                        "textSecondary": "MuiPaginationItem-textSecondary",
-                                      }
-                                    }
-                                    color="secondary"
+                                    className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-selected"
                                     disabled={false}
+                                    focusVisibleClassName="Mui-focusVisible"
                                     onClick={[Function]}
-                                    page={1}
-                                    selected={true}
-                                    shape="round"
-                                    size="medium"
-                                    type="page"
-                                    variant="text"
                                   >
-                                    <WithStyles(ForwardRef(ButtonBase))
+                                    <ForwardRef(ButtonBase)
                                       aria-current="true"
                                       aria-label="page 1"
                                       className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-selected"
+                                      classes={
+                                        Object {
+                                          "disabled": "Mui-disabled",
+                                          "focusVisible": "Mui-focusVisible",
+                                          "root": "MuiButtonBase-root",
+                                        }
+                                      }
                                       disabled={false}
                                       focusVisibleClassName="Mui-focusVisible"
                                       onClick={[Function]}
                                     >
-                                      <ForwardRef(ButtonBase)
+                                      <button
                                         aria-current="true"
                                         aria-label="page 1"
-                                        className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-selected"
-                                        classes={
-                                          Object {
-                                            "disabled": "Mui-disabled",
-                                            "focusVisible": "Mui-focusVisible",
-                                            "root": "MuiButtonBase-root",
-                                          }
-                                        }
+                                        className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-selected"
                                         disabled={false}
-                                        focusVisibleClassName="Mui-focusVisible"
+                                        onBlur={[Function]}
                                         onClick={[Function]}
+                                        onDragLeave={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex={0}
+                                        type="button"
                                       >
-                                        <button
-                                          aria-current="true"
-                                          aria-label="page 1"
-                                          className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary Mui-selected"
-                                          disabled={false}
-                                          onBlur={[Function]}
-                                          onClick={[Function]}
-                                          onDragLeave={[Function]}
-                                          onFocus={[Function]}
-                                          onKeyDown={[Function]}
-                                          onKeyUp={[Function]}
-                                          onMouseDown={[Function]}
-                                          onMouseLeave={[Function]}
-                                          onMouseUp={[Function]}
-                                          onTouchEnd={[Function]}
-                                          onTouchMove={[Function]}
-                                          onTouchStart={[Function]}
-                                          tabIndex={0}
-                                          type="button"
+                                        1
+                                        <WithStyles(memo)
+                                          center={false}
                                         >
-                                          1
-                                          <WithStyles(memo)
+                                          <ForwardRef(TouchRipple)
                                             center={false}
-                                          >
-                                            <ForwardRef(TouchRipple)
-                                              center={false}
-                                              classes={
-                                                Object {
-                                                  "child": "MuiTouchRipple-child",
-                                                  "childLeaving": "MuiTouchRipple-childLeaving",
-                                                  "childPulsate": "MuiTouchRipple-childPulsate",
-                                                  "ripple": "MuiTouchRipple-ripple",
-                                                  "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                  "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                  "root": "MuiTouchRipple-root",
-                                                }
+                                            classes={
+                                              Object {
+                                                "child": "MuiTouchRipple-child",
+                                                "childLeaving": "MuiTouchRipple-childLeaving",
+                                                "childPulsate": "MuiTouchRipple-childPulsate",
+                                                "ripple": "MuiTouchRipple-ripple",
+                                                "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                "root": "MuiTouchRipple-root",
                                               }
+                                            }
+                                          >
+                                            <span
+                                              className="MuiTouchRipple-root"
                                             >
-                                              <span
-                                                className="MuiTouchRipple-root"
-                                              >
-                                                <TransitionGroup
-                                                  childFactory={[Function]}
-                                                  component={null}
-                                                  exit={true}
-                                                />
-                                              </span>
-                                            </ForwardRef(TouchRipple)>
-                                          </WithStyles(memo)>
-                                        </button>
-                                      </ForwardRef(ButtonBase)>
-                                    </WithStyles(ForwardRef(ButtonBase))>
-                                  </ForwardRef(PaginationItem)>
-                                </WithStyles(ForwardRef(PaginationItem))>
-                              </li>
-                              <li
-                                key="3"
+                                              <TransitionGroup
+                                                childFactory={[Function]}
+                                                component={null}
+                                                exit={true}
+                                              />
+                                            </span>
+                                          </ForwardRef(TouchRipple)>
+                                        </WithStyles(memo)>
+                                      </button>
+                                    </ForwardRef(ButtonBase)>
+                                  </WithStyles(ForwardRef(ButtonBase))>
+                                </ForwardRef(PaginationItem)>
+                              </WithStyles(ForwardRef(PaginationItem))>
+                            </li>
+                            <li
+                              key="3"
+                            >
+                              <WithStyles(ForwardRef(PaginationItem))
+                                aria-label="Go to page 2"
+                                color="secondary"
+                                disabled={false}
+                                onClick={[Function]}
+                                page={2}
+                                selected={false}
+                                shape="round"
+                                size="medium"
+                                type="page"
+                                variant="text"
                               >
-                                <WithStyles(ForwardRef(PaginationItem))
+                                <ForwardRef(PaginationItem)
                                   aria-label="Go to page 2"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "ellipsis": "MuiPaginationItem-ellipsis",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "icon": "MuiPaginationItem-icon",
+                                      "outlined": "MuiPaginationItem-outlined",
+                                      "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
+                                      "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
+                                      "page": "MuiPaginationItem-page",
+                                      "root": "MuiPaginationItem-root",
+                                      "rounded": "MuiPaginationItem-rounded",
+                                      "selected": "Mui-selected",
+                                      "sizeLarge": "MuiPaginationItem-sizeLarge",
+                                      "sizeSmall": "MuiPaginationItem-sizeSmall",
+                                      "textPrimary": "MuiPaginationItem-textPrimary",
+                                      "textSecondary": "MuiPaginationItem-textSecondary",
+                                    }
+                                  }
                                   color="secondary"
                                   disabled={false}
                                   onClick={[Function]}
@@ -5354,117 +5371,117 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                   type="page"
                                   variant="text"
                                 >
-                                  <ForwardRef(PaginationItem)
+                                  <WithStyles(ForwardRef(ButtonBase))
                                     aria-label="Go to page 2"
-                                    classes={
-                                      Object {
-                                        "disabled": "Mui-disabled",
-                                        "ellipsis": "MuiPaginationItem-ellipsis",
-                                        "focusVisible": "Mui-focusVisible",
-                                        "icon": "MuiPaginationItem-icon",
-                                        "outlined": "MuiPaginationItem-outlined",
-                                        "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
-                                        "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
-                                        "page": "MuiPaginationItem-page",
-                                        "root": "MuiPaginationItem-root",
-                                        "rounded": "MuiPaginationItem-rounded",
-                                        "selected": "Mui-selected",
-                                        "sizeLarge": "MuiPaginationItem-sizeLarge",
-                                        "sizeSmall": "MuiPaginationItem-sizeSmall",
-                                        "textPrimary": "MuiPaginationItem-textPrimary",
-                                        "textSecondary": "MuiPaginationItem-textSecondary",
-                                      }
-                                    }
-                                    color="secondary"
+                                    className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
                                     disabled={false}
+                                    focusVisibleClassName="Mui-focusVisible"
                                     onClick={[Function]}
-                                    page={2}
-                                    selected={false}
-                                    shape="round"
-                                    size="medium"
-                                    type="page"
-                                    variant="text"
                                   >
-                                    <WithStyles(ForwardRef(ButtonBase))
+                                    <ForwardRef(ButtonBase)
                                       aria-label="Go to page 2"
                                       className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
+                                      classes={
+                                        Object {
+                                          "disabled": "Mui-disabled",
+                                          "focusVisible": "Mui-focusVisible",
+                                          "root": "MuiButtonBase-root",
+                                        }
+                                      }
                                       disabled={false}
                                       focusVisibleClassName="Mui-focusVisible"
                                       onClick={[Function]}
                                     >
-                                      <ForwardRef(ButtonBase)
+                                      <button
                                         aria-label="Go to page 2"
-                                        className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
-                                        classes={
-                                          Object {
-                                            "disabled": "Mui-disabled",
-                                            "focusVisible": "Mui-focusVisible",
-                                            "root": "MuiButtonBase-root",
-                                          }
-                                        }
+                                        className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
                                         disabled={false}
-                                        focusVisibleClassName="Mui-focusVisible"
+                                        onBlur={[Function]}
                                         onClick={[Function]}
+                                        onDragLeave={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex={0}
+                                        type="button"
                                       >
-                                        <button
-                                          aria-label="Go to page 2"
-                                          className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
-                                          disabled={false}
-                                          onBlur={[Function]}
-                                          onClick={[Function]}
-                                          onDragLeave={[Function]}
-                                          onFocus={[Function]}
-                                          onKeyDown={[Function]}
-                                          onKeyUp={[Function]}
-                                          onMouseDown={[Function]}
-                                          onMouseLeave={[Function]}
-                                          onMouseUp={[Function]}
-                                          onTouchEnd={[Function]}
-                                          onTouchMove={[Function]}
-                                          onTouchStart={[Function]}
-                                          tabIndex={0}
-                                          type="button"
+                                        2
+                                        <WithStyles(memo)
+                                          center={false}
                                         >
-                                          2
-                                          <WithStyles(memo)
+                                          <ForwardRef(TouchRipple)
                                             center={false}
-                                          >
-                                            <ForwardRef(TouchRipple)
-                                              center={false}
-                                              classes={
-                                                Object {
-                                                  "child": "MuiTouchRipple-child",
-                                                  "childLeaving": "MuiTouchRipple-childLeaving",
-                                                  "childPulsate": "MuiTouchRipple-childPulsate",
-                                                  "ripple": "MuiTouchRipple-ripple",
-                                                  "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                  "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                  "root": "MuiTouchRipple-root",
-                                                }
+                                            classes={
+                                              Object {
+                                                "child": "MuiTouchRipple-child",
+                                                "childLeaving": "MuiTouchRipple-childLeaving",
+                                                "childPulsate": "MuiTouchRipple-childPulsate",
+                                                "ripple": "MuiTouchRipple-ripple",
+                                                "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                "root": "MuiTouchRipple-root",
                                               }
+                                            }
+                                          >
+                                            <span
+                                              className="MuiTouchRipple-root"
                                             >
-                                              <span
-                                                className="MuiTouchRipple-root"
-                                              >
-                                                <TransitionGroup
-                                                  childFactory={[Function]}
-                                                  component={null}
-                                                  exit={true}
-                                                />
-                                              </span>
-                                            </ForwardRef(TouchRipple)>
-                                          </WithStyles(memo)>
-                                        </button>
-                                      </ForwardRef(ButtonBase)>
-                                    </WithStyles(ForwardRef(ButtonBase))>
-                                  </ForwardRef(PaginationItem)>
-                                </WithStyles(ForwardRef(PaginationItem))>
-                              </li>
-                              <li
-                                key="4"
+                                              <TransitionGroup
+                                                childFactory={[Function]}
+                                                component={null}
+                                                exit={true}
+                                              />
+                                            </span>
+                                          </ForwardRef(TouchRipple)>
+                                        </WithStyles(memo)>
+                                      </button>
+                                    </ForwardRef(ButtonBase)>
+                                  </WithStyles(ForwardRef(ButtonBase))>
+                                </ForwardRef(PaginationItem)>
+                              </WithStyles(ForwardRef(PaginationItem))>
+                            </li>
+                            <li
+                              key="4"
+                            >
+                              <WithStyles(ForwardRef(PaginationItem))
+                                aria-label="Go to next page"
+                                color="secondary"
+                                disabled={false}
+                                onClick={[Function]}
+                                page={2}
+                                selected={false}
+                                shape="round"
+                                size="medium"
+                                type="next"
+                                variant="text"
                               >
-                                <WithStyles(ForwardRef(PaginationItem))
+                                <ForwardRef(PaginationItem)
                                   aria-label="Go to next page"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "ellipsis": "MuiPaginationItem-ellipsis",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "icon": "MuiPaginationItem-icon",
+                                      "outlined": "MuiPaginationItem-outlined",
+                                      "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
+                                      "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
+                                      "page": "MuiPaginationItem-page",
+                                      "root": "MuiPaginationItem-root",
+                                      "rounded": "MuiPaginationItem-rounded",
+                                      "selected": "Mui-selected",
+                                      "sizeLarge": "MuiPaginationItem-sizeLarge",
+                                      "sizeSmall": "MuiPaginationItem-sizeSmall",
+                                      "textPrimary": "MuiPaginationItem-textPrimary",
+                                      "textSecondary": "MuiPaginationItem-textSecondary",
+                                    }
+                                  }
                                   color="secondary"
                                   disabled={false}
                                   onClick={[Function]}
@@ -5475,151 +5492,151 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                   type="next"
                                   variant="text"
                                 >
-                                  <ForwardRef(PaginationItem)
+                                  <WithStyles(ForwardRef(ButtonBase))
                                     aria-label="Go to next page"
-                                    classes={
-                                      Object {
-                                        "disabled": "Mui-disabled",
-                                        "ellipsis": "MuiPaginationItem-ellipsis",
-                                        "focusVisible": "Mui-focusVisible",
-                                        "icon": "MuiPaginationItem-icon",
-                                        "outlined": "MuiPaginationItem-outlined",
-                                        "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
-                                        "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
-                                        "page": "MuiPaginationItem-page",
-                                        "root": "MuiPaginationItem-root",
-                                        "rounded": "MuiPaginationItem-rounded",
-                                        "selected": "Mui-selected",
-                                        "sizeLarge": "MuiPaginationItem-sizeLarge",
-                                        "sizeSmall": "MuiPaginationItem-sizeSmall",
-                                        "textPrimary": "MuiPaginationItem-textPrimary",
-                                        "textSecondary": "MuiPaginationItem-textSecondary",
-                                      }
-                                    }
-                                    color="secondary"
+                                    className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
                                     disabled={false}
+                                    focusVisibleClassName="Mui-focusVisible"
                                     onClick={[Function]}
-                                    page={2}
-                                    selected={false}
-                                    shape="round"
-                                    size="medium"
-                                    type="next"
-                                    variant="text"
                                   >
-                                    <WithStyles(ForwardRef(ButtonBase))
+                                    <ForwardRef(ButtonBase)
                                       aria-label="Go to next page"
                                       className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
+                                      classes={
+                                        Object {
+                                          "disabled": "Mui-disabled",
+                                          "focusVisible": "Mui-focusVisible",
+                                          "root": "MuiButtonBase-root",
+                                        }
+                                      }
                                       disabled={false}
                                       focusVisibleClassName="Mui-focusVisible"
                                       onClick={[Function]}
                                     >
-                                      <ForwardRef(ButtonBase)
+                                      <button
                                         aria-label="Go to next page"
-                                        className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
-                                        classes={
-                                          Object {
-                                            "disabled": "Mui-disabled",
-                                            "focusVisible": "Mui-focusVisible",
-                                            "root": "MuiButtonBase-root",
-                                          }
-                                        }
+                                        className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
                                         disabled={false}
-                                        focusVisibleClassName="Mui-focusVisible"
+                                        onBlur={[Function]}
                                         onClick={[Function]}
+                                        onDragLeave={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex={0}
+                                        type="button"
                                       >
-                                        <button
-                                          aria-label="Go to next page"
-                                          className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
-                                          disabled={false}
-                                          onBlur={[Function]}
-                                          onClick={[Function]}
-                                          onDragLeave={[Function]}
-                                          onFocus={[Function]}
-                                          onKeyDown={[Function]}
-                                          onKeyUp={[Function]}
-                                          onMouseDown={[Function]}
-                                          onMouseLeave={[Function]}
-                                          onMouseUp={[Function]}
-                                          onTouchEnd={[Function]}
-                                          onTouchMove={[Function]}
-                                          onTouchStart={[Function]}
-                                          tabIndex={0}
-                                          type="button"
+                                        <ForwardRef
+                                          className="MuiPaginationItem-icon"
                                         >
-                                          <ForwardRef
+                                          <WithStyles(ForwardRef(SvgIcon))
                                             className="MuiPaginationItem-icon"
                                           >
-                                            <WithStyles(ForwardRef(SvgIcon))
+                                            <ForwardRef(SvgIcon)
                                               className="MuiPaginationItem-icon"
-                                            >
-                                              <ForwardRef(SvgIcon)
-                                                className="MuiPaginationItem-icon"
-                                                classes={
-                                                  Object {
-                                                    "colorAction": "MuiSvgIcon-colorAction",
-                                                    "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                                    "colorError": "MuiSvgIcon-colorError",
-                                                    "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                                    "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                                    "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                                    "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                                    "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                    "root": "MuiSvgIcon-root",
-                                                  }
-                                                }
-                                              >
-                                                <svg
-                                                  aria-hidden="true"
-                                                  className="MuiSvgIcon-root MuiPaginationItem-icon"
-                                                  focusable="false"
-                                                  viewBox="0 0 24 24"
-                                                >
-                                                  <path
-                                                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                                                  />
-                                                </svg>
-                                              </ForwardRef(SvgIcon)>
-                                            </WithStyles(ForwardRef(SvgIcon))>
-                                          </ForwardRef>
-                                          <WithStyles(memo)
-                                            center={false}
-                                          >
-                                            <ForwardRef(TouchRipple)
-                                              center={false}
                                               classes={
                                                 Object {
-                                                  "child": "MuiTouchRipple-child",
-                                                  "childLeaving": "MuiTouchRipple-childLeaving",
-                                                  "childPulsate": "MuiTouchRipple-childPulsate",
-                                                  "ripple": "MuiTouchRipple-ripple",
-                                                  "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                  "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                  "root": "MuiTouchRipple-root",
+                                                  "colorAction": "MuiSvgIcon-colorAction",
+                                                  "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                  "colorError": "MuiSvgIcon-colorError",
+                                                  "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                  "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                  "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                  "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                  "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                  "root": "MuiSvgIcon-root",
                                                 }
                                               }
                                             >
-                                              <span
-                                                className="MuiTouchRipple-root"
+                                              <svg
+                                                aria-hidden="true"
+                                                className="MuiSvgIcon-root MuiPaginationItem-icon"
+                                                focusable="false"
+                                                viewBox="0 0 24 24"
                                               >
-                                                <TransitionGroup
-                                                  childFactory={[Function]}
-                                                  component={null}
-                                                  exit={true}
+                                                <path
+                                                  d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
                                                 />
-                                              </span>
-                                            </ForwardRef(TouchRipple)>
-                                          </WithStyles(memo)>
-                                        </button>
-                                      </ForwardRef(ButtonBase)>
-                                    </WithStyles(ForwardRef(ButtonBase))>
-                                  </ForwardRef(PaginationItem)>
-                                </WithStyles(ForwardRef(PaginationItem))>
-                              </li>
-                              <li
-                                key="5"
+                                              </svg>
+                                            </ForwardRef(SvgIcon)>
+                                          </WithStyles(ForwardRef(SvgIcon))>
+                                        </ForwardRef>
+                                        <WithStyles(memo)
+                                          center={false}
+                                        >
+                                          <ForwardRef(TouchRipple)
+                                            center={false}
+                                            classes={
+                                              Object {
+                                                "child": "MuiTouchRipple-child",
+                                                "childLeaving": "MuiTouchRipple-childLeaving",
+                                                "childPulsate": "MuiTouchRipple-childPulsate",
+                                                "ripple": "MuiTouchRipple-ripple",
+                                                "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                "root": "MuiTouchRipple-root",
+                                              }
+                                            }
+                                          >
+                                            <span
+                                              className="MuiTouchRipple-root"
+                                            >
+                                              <TransitionGroup
+                                                childFactory={[Function]}
+                                                component={null}
+                                                exit={true}
+                                              />
+                                            </span>
+                                          </ForwardRef(TouchRipple)>
+                                        </WithStyles(memo)>
+                                      </button>
+                                    </ForwardRef(ButtonBase)>
+                                  </WithStyles(ForwardRef(ButtonBase))>
+                                </ForwardRef(PaginationItem)>
+                              </WithStyles(ForwardRef(PaginationItem))>
+                            </li>
+                            <li
+                              key="5"
+                            >
+                              <WithStyles(ForwardRef(PaginationItem))
+                                aria-label="Go to last page"
+                                color="secondary"
+                                disabled={false}
+                                onClick={[Function]}
+                                page={2}
+                                selected={false}
+                                shape="round"
+                                size="medium"
+                                type="last"
+                                variant="text"
                               >
-                                <WithStyles(ForwardRef(PaginationItem))
+                                <ForwardRef(PaginationItem)
                                   aria-label="Go to last page"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "ellipsis": "MuiPaginationItem-ellipsis",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "icon": "MuiPaginationItem-icon",
+                                      "outlined": "MuiPaginationItem-outlined",
+                                      "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
+                                      "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
+                                      "page": "MuiPaginationItem-page",
+                                      "root": "MuiPaginationItem-root",
+                                      "rounded": "MuiPaginationItem-rounded",
+                                      "selected": "Mui-selected",
+                                      "sizeLarge": "MuiPaginationItem-sizeLarge",
+                                      "sizeSmall": "MuiPaginationItem-sizeSmall",
+                                      "textPrimary": "MuiPaginationItem-textPrimary",
+                                      "textSecondary": "MuiPaginationItem-textSecondary",
+                                    }
+                                  }
                                   color="secondary"
                                   disabled={false}
                                   onClick={[Function]}
@@ -5630,153 +5647,121 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                   type="last"
                                   variant="text"
                                 >
-                                  <ForwardRef(PaginationItem)
+                                  <WithStyles(ForwardRef(ButtonBase))
                                     aria-label="Go to last page"
-                                    classes={
-                                      Object {
-                                        "disabled": "Mui-disabled",
-                                        "ellipsis": "MuiPaginationItem-ellipsis",
-                                        "focusVisible": "Mui-focusVisible",
-                                        "icon": "MuiPaginationItem-icon",
-                                        "outlined": "MuiPaginationItem-outlined",
-                                        "outlinedPrimary": "MuiPaginationItem-outlinedPrimary",
-                                        "outlinedSecondary": "MuiPaginationItem-outlinedSecondary",
-                                        "page": "MuiPaginationItem-page",
-                                        "root": "MuiPaginationItem-root",
-                                        "rounded": "MuiPaginationItem-rounded",
-                                        "selected": "Mui-selected",
-                                        "sizeLarge": "MuiPaginationItem-sizeLarge",
-                                        "sizeSmall": "MuiPaginationItem-sizeSmall",
-                                        "textPrimary": "MuiPaginationItem-textPrimary",
-                                        "textSecondary": "MuiPaginationItem-textSecondary",
-                                      }
-                                    }
-                                    color="secondary"
+                                    className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
                                     disabled={false}
+                                    focusVisibleClassName="Mui-focusVisible"
                                     onClick={[Function]}
-                                    page={2}
-                                    selected={false}
-                                    shape="round"
-                                    size="medium"
-                                    type="last"
-                                    variant="text"
                                   >
-                                    <WithStyles(ForwardRef(ButtonBase))
+                                    <ForwardRef(ButtonBase)
                                       aria-label="Go to last page"
                                       className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
+                                      classes={
+                                        Object {
+                                          "disabled": "Mui-disabled",
+                                          "focusVisible": "Mui-focusVisible",
+                                          "root": "MuiButtonBase-root",
+                                        }
+                                      }
                                       disabled={false}
                                       focusVisibleClassName="Mui-focusVisible"
                                       onClick={[Function]}
                                     >
-                                      <ForwardRef(ButtonBase)
+                                      <button
                                         aria-label="Go to last page"
-                                        className="MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
-                                        classes={
-                                          Object {
-                                            "disabled": "Mui-disabled",
-                                            "focusVisible": "Mui-focusVisible",
-                                            "root": "MuiButtonBase-root",
-                                          }
-                                        }
+                                        className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
                                         disabled={false}
-                                        focusVisibleClassName="Mui-focusVisible"
+                                        onBlur={[Function]}
                                         onClick={[Function]}
+                                        onDragLeave={[Function]}
+                                        onFocus={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseLeave={[Function]}
+                                        onMouseUp={[Function]}
+                                        onTouchEnd={[Function]}
+                                        onTouchMove={[Function]}
+                                        onTouchStart={[Function]}
+                                        tabIndex={0}
+                                        type="button"
                                       >
-                                        <button
-                                          aria-label="Go to last page"
-                                          className="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-textSecondary"
-                                          disabled={false}
-                                          onBlur={[Function]}
-                                          onClick={[Function]}
-                                          onDragLeave={[Function]}
-                                          onFocus={[Function]}
-                                          onKeyDown={[Function]}
-                                          onKeyUp={[Function]}
-                                          onMouseDown={[Function]}
-                                          onMouseLeave={[Function]}
-                                          onMouseUp={[Function]}
-                                          onTouchEnd={[Function]}
-                                          onTouchMove={[Function]}
-                                          onTouchStart={[Function]}
-                                          tabIndex={0}
-                                          type="button"
+                                        <ForwardRef
+                                          className="MuiPaginationItem-icon"
                                         >
-                                          <ForwardRef
+                                          <WithStyles(ForwardRef(SvgIcon))
                                             className="MuiPaginationItem-icon"
                                           >
-                                            <WithStyles(ForwardRef(SvgIcon))
+                                            <ForwardRef(SvgIcon)
                                               className="MuiPaginationItem-icon"
-                                            >
-                                              <ForwardRef(SvgIcon)
-                                                className="MuiPaginationItem-icon"
-                                                classes={
-                                                  Object {
-                                                    "colorAction": "MuiSvgIcon-colorAction",
-                                                    "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                                    "colorError": "MuiSvgIcon-colorError",
-                                                    "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                                    "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                                    "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                                    "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                                    "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                    "root": "MuiSvgIcon-root",
-                                                  }
-                                                }
-                                              >
-                                                <svg
-                                                  aria-hidden="true"
-                                                  className="MuiSvgIcon-root MuiPaginationItem-icon"
-                                                  focusable="false"
-                                                  viewBox="0 0 24 24"
-                                                >
-                                                  <path
-                                                    d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-                                                  />
-                                                </svg>
-                                              </ForwardRef(SvgIcon)>
-                                            </WithStyles(ForwardRef(SvgIcon))>
-                                          </ForwardRef>
-                                          <WithStyles(memo)
-                                            center={false}
-                                          >
-                                            <ForwardRef(TouchRipple)
-                                              center={false}
                                               classes={
                                                 Object {
-                                                  "child": "MuiTouchRipple-child",
-                                                  "childLeaving": "MuiTouchRipple-childLeaving",
-                                                  "childPulsate": "MuiTouchRipple-childPulsate",
-                                                  "ripple": "MuiTouchRipple-ripple",
-                                                  "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                  "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                  "root": "MuiTouchRipple-root",
+                                                  "colorAction": "MuiSvgIcon-colorAction",
+                                                  "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                  "colorError": "MuiSvgIcon-colorError",
+                                                  "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                  "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                  "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                  "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                  "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                  "root": "MuiSvgIcon-root",
                                                 }
                                               }
                                             >
-                                              <span
-                                                className="MuiTouchRipple-root"
+                                              <svg
+                                                aria-hidden="true"
+                                                className="MuiSvgIcon-root MuiPaginationItem-icon"
+                                                focusable="false"
+                                                viewBox="0 0 24 24"
                                               >
-                                                <TransitionGroup
-                                                  childFactory={[Function]}
-                                                  component={null}
-                                                  exit={true}
+                                                <path
+                                                  d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
                                                 />
-                                              </span>
-                                            </ForwardRef(TouchRipple)>
-                                          </WithStyles(memo)>
-                                        </button>
-                                      </ForwardRef(ButtonBase)>
-                                    </WithStyles(ForwardRef(ButtonBase))>
-                                  </ForwardRef(PaginationItem)>
-                                </WithStyles(ForwardRef(PaginationItem))>
-                              </li>
-                            </ul>
-                          </nav>
-                        </ForwardRef(Pagination)>
-                      </WithStyles(ForwardRef(Pagination))>
-                    </div>
-                  </Styled(MuiBox)>
-                </WithStyles(Styled(MuiBox))>
+                                              </svg>
+                                            </ForwardRef(SvgIcon)>
+                                          </WithStyles(ForwardRef(SvgIcon))>
+                                        </ForwardRef>
+                                        <WithStyles(memo)
+                                          center={false}
+                                        >
+                                          <ForwardRef(TouchRipple)
+                                            center={false}
+                                            classes={
+                                              Object {
+                                                "child": "MuiTouchRipple-child",
+                                                "childLeaving": "MuiTouchRipple-childLeaving",
+                                                "childPulsate": "MuiTouchRipple-childPulsate",
+                                                "ripple": "MuiTouchRipple-ripple",
+                                                "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                "root": "MuiTouchRipple-root",
+                                              }
+                                            }
+                                          >
+                                            <span
+                                              className="MuiTouchRipple-root"
+                                            >
+                                              <TransitionGroup
+                                                childFactory={[Function]}
+                                                component={null}
+                                                exit={true}
+                                              />
+                                            </span>
+                                          </ForwardRef(TouchRipple)>
+                                        </WithStyles(memo)>
+                                      </button>
+                                    </ForwardRef(ButtonBase)>
+                                  </WithStyles(ForwardRef(ButtonBase))>
+                                </ForwardRef(PaginationItem)>
+                              </WithStyles(ForwardRef(PaginationItem))>
+                            </li>
+                          </ul>
+                        </nav>
+                      </ForwardRef(Pagination)>
+                    </WithStyles(ForwardRef(Pagination))>
+                  </div>
+                </Styled(MuiBox)>
               </div>
             </ForwardRef(Container)>
           </WithStyles(ForwardRef(Container))>
