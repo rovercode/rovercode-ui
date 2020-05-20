@@ -191,7 +191,7 @@ class ProgramCollection extends Component {
           </Grid>
         </TitleArea>
         <Grid container spacing={2}>
-          <Grid item>
+          <Grid item xs={4}>
             <TextField
               variant="outlined"
               size="small"
@@ -208,65 +208,69 @@ class ProgramCollection extends Component {
               }}
             />
           </Grid>
-          <Grid item>
-            <Button aria-controls="sort-menu" aria-haspopup="true" onClick={this.handleSortClick}>
-              {sortText}
-            </Button>
-            <Menu
-              id="sort-menu"
-              anchorEl={sortMenuAnchorElement}
-              keepMounted
-              open={Boolean(sortMenuAnchorElement)}
-              onClose={this.handleSortClose}
-              getContentAnchorEl={null}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-            >
-              <MenuItem onClick={this.handleNameOrderingChange}>
-                <FormattedMessage
-                  id="app.program_collection.name"
-                  description="Button label to sort by name"
-                  defaultMessage="Name"
+          <Grid item xs={8}>
+            <Grid container justify="flex-end" spacing={2}>
+              <Grid item>
+                <Button aria-controls="sort-menu" aria-haspopup="true" onClick={this.handleSortClick}>
+                  {sortText}
+                </Button>
+                <Menu
+                  id="sort-menu"
+                  anchorEl={sortMenuAnchorElement}
+                  keepMounted
+                  open={Boolean(sortMenuAnchorElement)}
+                  onClose={this.handleSortClose}
+                  getContentAnchorEl={null}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                  }}
+                >
+                  <MenuItem onClick={this.handleNameOrderingChange}>
+                    <FormattedMessage
+                      id="app.program_collection.name"
+                      description="Button label to sort by name"
+                      defaultMessage="Name"
+                    />
+                    {
+                      ordering === 'name' ? (
+                        <>
+                          <ArrowDownward />
+                          a ... z
+                        </>
+                      ) : (
+                        <>
+                          <ArrowUpward />
+                          z ... a
+                        </>
+                      )
+                    }
+                  </MenuItem>
+                </Menu>
+              </Grid>
+              <Grid item xs={2}>
+                <FixedWidthAutocomplete
+                  id="tag-select"
+                  multiple
+                  freeSolo
+                  filterSelectedOptions
+                  size="small"
+                  options={tag.tags.map((t) => t.name)}
+                  onChange={this.handleTagFilterChange}
+                  value={tagFilters}
+                  renderInput={(params) => (
+                    <TextField {...params} variant="outlined" label={tagFilterPlaceholder} />
+                  )}
+                  renderTags={(value, getTagProps) => value.map((option, index) => (
+                    <Chip color="secondary" size="small" label={option} {...getTagProps({ index })} />
+                  ))}
                 />
-                {
-                  ordering === 'name' ? (
-                    <>
-                      <ArrowDownward />
-                      a ... z
-                    </>
-                  ) : (
-                    <>
-                      <ArrowUpward />
-                      z ... a
-                    </>
-                  )
-                }
-              </MenuItem>
-            </Menu>
-          </Grid>
-          <Grid item xs={2}>
-            <FixedWidthAutocomplete
-              id="tag-select"
-              multiple
-              freeSolo
-              filterSelectedOptions
-              size="small"
-              options={tag.tags.map((t) => t.name)}
-              onChange={this.handleTagFilterChange}
-              value={tagFilters}
-              renderInput={(params) => (
-                <TextField {...params} variant="outlined" label={tagFilterPlaceholder} />
-              )}
-              renderTags={(value, getTagProps) => value.map((option, index) => (
-                <Chip color="secondary" size="small" label={option} {...getTagProps({ index })} />
-              ))}
-            />
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
         <Grid container spacing={3}>
