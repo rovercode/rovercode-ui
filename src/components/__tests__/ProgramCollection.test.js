@@ -115,12 +115,9 @@ describe('The ProgramCollection component', () => {
     ).dive().dive();
 
     expect(wrapper.find('WithStyles(ForwardRef(Card))').length).toBe(2);
-    expect(wrapper.find('WithStyles(ForwardRef(CardHeader))').first().prop('subheader')
-      .props.defaultMessage).toBe('Mine');
     expect(wrapper.find('WithStyles(ForwardRef(Card))').first()
-      .find('WithStyles(ForwardRef(Button))').first()
-      .find(FormattedMessage)
-      .prop('defaultMessage')).toBe('Keep Working');
+      .find('WithStyles(WithStyles(ForwardRef(Button)))').find(FormattedMessage)
+      .prop('defaultMessage')).toBe('Delete');
   });
 
   test('shows the correct number of programs for other users', () => {
@@ -156,12 +153,9 @@ describe('The ProgramCollection component', () => {
     ).dive().dive();
 
     expect(wrapper.find('WithStyles(ForwardRef(Card))').length).toBe(2);
-    expect(wrapper.find('WithStyles(ForwardRef(CardHeader))').first().prop('subheader'))
-      .toBe('testuser');
     expect(wrapper.find('WithStyles(ForwardRef(Card))').first()
-      .find('WithStyles(ForwardRef(Button))').first()
-      .find(FormattedMessage)
-      .prop('defaultMessage')).toBe('View');
+      .find('WithStyles(ForwardRef(Typography))').at(1)
+      .text()).toBe('testuser');
   });
 
   test('callback when program click', () => {
@@ -189,7 +183,7 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive();
 
-    wrapper.find('WithStyles(ForwardRef(Button))').at(2).simulate('click', {
+    wrapper.find('WithStyles(ForwardRef(CardActionArea))').first().simulate('click', {
       target: {
         id: 33,
       },
@@ -226,7 +220,7 @@ describe('The ProgramCollection component', () => {
         onUpdate={onUpdate}
       />,
     ).dive().dive();
-    wrapper.find('WithStyles(ForwardRef(Button))').last().simulate('click', {
+    wrapper.find('WithStyles(WithStyles(ForwardRef(Button)))').first().simulate('click', {
       target: {
         id: 33,
       },

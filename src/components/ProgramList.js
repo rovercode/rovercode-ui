@@ -75,8 +75,8 @@ class ProgramList extends Component {
   loadProgram = (e) => {
     const { changeReadOnly, fetchProgram } = this.props;
     let program = e.target;
-    if (e.target.parentNode.id) {
-      program = e.target.parentNode;
+    if (e.target.parentNode.parentNode.id) {
+      program = e.target.parentNode.parentNode;
     }
     const readOnly = program.dataset.owned === 'false';
 

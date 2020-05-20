@@ -14,16 +14,17 @@ import {
   MenuItem,
   Card,
   CardContent,
-  CardHeader,
   CardActionArea,
   CardActions,
 } from '@material-ui/core';
+import { grey } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
 import {
   Add,
   ArrowDownward,
   ArrowUpward,
   Search,
+  Delete,
 } from '@material-ui/icons';
 import { Pagination, Autocomplete } from '@material-ui/lab';
 import { Link } from 'react-router-dom';
@@ -138,6 +139,12 @@ class ProgramCollection extends Component {
         fontWeight: 'bold',
       },
     }))(Typography);
+
+    const DeleteButton = withStyles(() => ({
+      root: {
+        color: grey[500],
+      },
+    }))(Button);
 
     const FixedWidthAutocomplete = withStyles(() => ({
       root: {
@@ -267,63 +274,43 @@ class ProgramCollection extends Component {
             programs.results.map((program) => (
               <Grid item xs={12} md={6} lg={3}>
                 <Card key={program.id}>
-                  <CardHeader
-                    title={program.name}
-                    subheader={
-                        user.username === program.user.username ? (
-                          <FormattedMessage
-                            id="app.program_collection.mine"
-                            description="Label to indicate program owned by user"
-                            defaultMessage="Mine"
-                          />
-                        ) : program.user.username
-                      }
-                  />
-                  {/* <CardActionArea>
+                  <CardActionArea
+                    id={program.id}
+                    data-owned={user.username === program.user.username}
+                    onClick={onProgramClick}
+                  >
                     <CardContent>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </CardContent>
-                  </CardActionArea> */}
-                  <CardActions>
-                    <Button
-                      id={program.id}
-                      data-owned={user.username === program.user.username}
-                      onClick={onProgramClick}
-                    >
+                      <Typography variant="h6">
+                        {program.name}
+                      </Typography>
                       {
-                        user.username === program.user.username ? (
-                          <FormattedMessage
-                            id="app.program_collection.work"
-                            description="Button label to keep working on program"
-                            defaultMessage="Keep Working"
-                          />
-                        ) : (
-                          <FormattedMessage
-                            id="app.program_collection.view"
-                            description="Button label to view a program"
-                            defaultMessage="View"
-                          />
+                        user.username === program.user.username ? null : (
+                          <Typography variant="subtitle2">
+                            {program.user.username}
+                          </Typography>
                         )
                       }
-                    </Button>
-                    {
-                      user.username === program.user.username ? (
-                        <Button
+                    </CardContent>
+                  </CardActionArea>
+                  {
+                    user.username === program.user.username ? (
+                      <CardActions>
+                        <DeleteButton
                           id={program.id}
                           name={program.name}
                           onClick={onRemoveClick}
-                          floated="right"
+                          size="small"
+                          startIcon={<Delete />}
                         >
                           <FormattedMessage
                             id="app.program_collection.remove"
                             description="Button label to remove a program"
-                            defaultMessage="Remove"
+                            defaultMessage="Delete"
                           />
-                        </Button>
-                      ) : (null)
-                    }
-                  </CardActions>
+                        </DeleteButton>
+                      </CardActions>
+                    ) : (null)
+                  }
                 </Card>
               </Grid>
             ))
