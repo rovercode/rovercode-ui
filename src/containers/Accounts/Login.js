@@ -171,9 +171,9 @@ class Login extends Component {
                       defaultMessage="Contact"
                     />
                     {' '}
-                    <a href="mailto:support@rovercode.com">
+                    <Link href="mailto:support@rovercode.com">
                       support@rovercode.com
-                    </a>
+                    </Link>
                     {' '}
                     <FormattedMessage
                       id="app.login.social_contact_2"
@@ -241,13 +241,13 @@ class Login extends Component {
                 defaultMessage="Don't have any of those accounts?"
               />
               {' '}
-              <a href="/accounts/signup">
+              <Link href="/accounts/signup">
                 <FormattedMessage
                   id="app.login.create"
                   description="Directs the user to create an account"
                   defaultMessage="Create a rovercode account."
                 />
-              </a>
+              </Link>
             </p>
           </Grid>
           <Grid item>

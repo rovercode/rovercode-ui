@@ -3996,6 +3996,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                     >
                       <WithStyles(ForwardRef(Grid))
                         item={true}
+                        key="33"
                         lg={3}
                         md={6}
                         xs={12}
@@ -4536,6 +4537,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                       </WithStyles(ForwardRef(Grid))>
                       <WithStyles(ForwardRef(Grid))
                         item={true}
+                        key="5"
                         lg={3}
                         md={6}
                         xs={12}

@@ -290,7 +290,7 @@ class ProgramCollection extends Component {
         <Grid container spacing={3}>
           {
             programs.results.map((program) => (
-              <Grid item xs={12} md={6} lg={3}>
+              <Grid item xs={12} md={6} lg={3} key={program.id}>
                 <Card key={program.id}>
                   <CardActionArea
                     id={program.id}
@@ -363,8 +363,8 @@ ProgramCollection.defaultProps = {
 
 ProgramCollection.propTypes = {
   classes: PropTypes.shape({
-    mainContainer: PropTypes.object.isRequired,
-    paginationPaddedBox: PropTypes.object.isRequired,
+    mainContainer: PropTypes.string.isRequired,
+    paginationPaddedBox: PropTypes.string.isRequired,
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,

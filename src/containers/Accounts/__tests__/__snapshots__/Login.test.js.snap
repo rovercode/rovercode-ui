@@ -1419,17 +1419,92 @@ exports[`Login mounts on the page with no errors 1`] = `
                           Don't have any of those accounts?
                         </FormattedMessage>
                          
-                        <a
+                        <WithStyles(ForwardRef(Link))
                           href="/accounts/signup"
                         >
-                          <FormattedMessage
-                            defaultMessage="Create a rovercode account."
-                            id="app.login.create"
-                            values={Object {}}
+                          <ForwardRef(Link)
+                            classes={
+                              Object {
+                                "button": "MuiLink-button",
+                                "focusVisible": "Mui-focusVisible",
+                                "root": "MuiLink-root",
+                                "underlineAlways": "MuiLink-underlineAlways",
+                                "underlineHover": "MuiLink-underlineHover",
+                                "underlineNone": "MuiLink-underlineNone",
+                              }
+                            }
+                            href="/accounts/signup"
                           >
-                            Create a rovercode account.
-                          </FormattedMessage>
-                        </a>
+                            <WithStyles(ForwardRef(Typography))
+                              className="MuiLink-root MuiLink-underlineHover"
+                              color="primary"
+                              component="a"
+                              href="/accounts/signup"
+                              onBlur={[Function]}
+                              onFocus={[Function]}
+                              variant="inherit"
+                            >
+                              <ForwardRef(Typography)
+                                className="MuiLink-root MuiLink-underlineHover"
+                                classes={
+                                  Object {
+                                    "alignCenter": "MuiTypography-alignCenter",
+                                    "alignJustify": "MuiTypography-alignJustify",
+                                    "alignLeft": "MuiTypography-alignLeft",
+                                    "alignRight": "MuiTypography-alignRight",
+                                    "body1": "MuiTypography-body1",
+                                    "body2": "MuiTypography-body2",
+                                    "button": "MuiTypography-button",
+                                    "caption": "MuiTypography-caption",
+                                    "colorError": "MuiTypography-colorError",
+                                    "colorInherit": "MuiTypography-colorInherit",
+                                    "colorPrimary": "MuiTypography-colorPrimary",
+                                    "colorSecondary": "MuiTypography-colorSecondary",
+                                    "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                    "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                    "displayBlock": "MuiTypography-displayBlock",
+                                    "displayInline": "MuiTypography-displayInline",
+                                    "gutterBottom": "MuiTypography-gutterBottom",
+                                    "h1": "MuiTypography-h1",
+                                    "h2": "MuiTypography-h2",
+                                    "h3": "MuiTypography-h3",
+                                    "h4": "MuiTypography-h4",
+                                    "h5": "MuiTypography-h5",
+                                    "h6": "MuiTypography-h6",
+                                    "noWrap": "MuiTypography-noWrap",
+                                    "overline": "MuiTypography-overline",
+                                    "paragraph": "MuiTypography-paragraph",
+                                    "root": "MuiTypography-root",
+                                    "srOnly": "MuiTypography-srOnly",
+                                    "subtitle1": "MuiTypography-subtitle1",
+                                    "subtitle2": "MuiTypography-subtitle2",
+                                  }
+                                }
+                                color="primary"
+                                component="a"
+                                href="/accounts/signup"
+                                onBlur={[Function]}
+                                onFocus={[Function]}
+                                variant="inherit"
+                              >
+                                <a
+                                  className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                                  href="/accounts/signup"
+                                  onBlur={[Function]}
+                                  onFocus={[Function]}
+                                >
+                                  <FormattedMessage
+                                    defaultMessage="Create a rovercode account."
+                                    id="app.login.create"
+                                    values={Object {}}
+                                  >
+                                    Create a rovercode account.
+                                  </FormattedMessage>
+                                </a>
+                              </ForwardRef(Typography)>
+                            </WithStyles(ForwardRef(Typography))>
+                          </ForwardRef(Link)>
+                        </WithStyles(ForwardRef(Link))>
                       </p>
                     </div>
                   </ForwardRef(Grid)>
@@ -1970,10 +2045,10 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                       className="MuiOutlinedInput-notchedOutline"
                                                       classes={
                                                         Object {
-                                                          "legend": "PrivateNotchedOutline-legend-201",
-                                                          "legendLabelled": "PrivateNotchedOutline-legendLabelled-202",
-                                                          "legendNotched": "PrivateNotchedOutline-legendNotched-203",
-                                                          "root": "PrivateNotchedOutline-root-200",
+                                                          "legend": "PrivateNotchedOutline-legend-237",
+                                                          "legendLabelled": "PrivateNotchedOutline-legendLabelled-238",
+                                                          "legendNotched": "PrivateNotchedOutline-legendNotched-239",
+                                                          "root": "PrivateNotchedOutline-root-236",
                                                         }
                                                       }
                                                       labelWidth={0}
@@ -1981,7 +2056,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                     >
                                                       <fieldset
                                                         aria-hidden={true}
-                                                        className="PrivateNotchedOutline-root-200 MuiOutlinedInput-notchedOutline"
+                                                        className="PrivateNotchedOutline-root-236 MuiOutlinedInput-notchedOutline"
                                                         style={
                                                           Object {
                                                             "paddingLeft": 8,
@@ -1989,7 +2064,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                         }
                                                       >
                                                         <legend
-                                                          className="PrivateNotchedOutline-legend-201"
+                                                          className="PrivateNotchedOutline-legend-237"
                                                           style={
                                                             Object {
                                                               "width": 0.01,
@@ -2411,10 +2486,10 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                       className="MuiOutlinedInput-notchedOutline"
                                                       classes={
                                                         Object {
-                                                          "legend": "PrivateNotchedOutline-legend-201",
-                                                          "legendLabelled": "PrivateNotchedOutline-legendLabelled-202",
-                                                          "legendNotched": "PrivateNotchedOutline-legendNotched-203",
-                                                          "root": "PrivateNotchedOutline-root-200",
+                                                          "legend": "PrivateNotchedOutline-legend-237",
+                                                          "legendLabelled": "PrivateNotchedOutline-legendLabelled-238",
+                                                          "legendNotched": "PrivateNotchedOutline-legendNotched-239",
+                                                          "root": "PrivateNotchedOutline-root-236",
                                                         }
                                                       }
                                                       labelWidth={0}
@@ -2422,7 +2497,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                     >
                                                       <fieldset
                                                         aria-hidden={true}
-                                                        className="PrivateNotchedOutline-root-200 MuiOutlinedInput-notchedOutline"
+                                                        className="PrivateNotchedOutline-root-236 MuiOutlinedInput-notchedOutline"
                                                         style={
                                                           Object {
                                                             "paddingLeft": 8,
@@ -2430,7 +2505,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                         }
                                                       >
                                                         <legend
-                                                          className="PrivateNotchedOutline-legend-201"
+                                                          className="PrivateNotchedOutline-legend-237"
                                                           style={
                                                             Object {
                                                               "width": 0.01,
@@ -3029,7 +3104,7 @@ exports[`Login renders on the page with no errors 1`] = `
           values={Object {}}
         />
          
-        <a
+        <WithStyles(ForwardRef(Link))
           href="/accounts/signup"
         >
           <FormattedMessage
@@ -3037,7 +3112,7 @@ exports[`Login renders on the page with no errors 1`] = `
             id="app.login.create"
             values={Object {}}
           />
-        </a>
+        </WithStyles(ForwardRef(Link))>
       </p>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
