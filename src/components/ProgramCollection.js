@@ -363,8 +363,8 @@ ProgramCollection.defaultProps = {
 
 ProgramCollection.propTypes = {
   classes: PropTypes.shape({
-    mainContainer: PropTypes.object.isRequired,
-    paginationPaddedBox: PropTypes.object.isRequired,
+    mainContainer: PropTypes.string.isRequired,
+    paginationPaddedBox: PropTypes.string.isRequired,
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
