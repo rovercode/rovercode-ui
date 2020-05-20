@@ -875,7 +875,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                               </span>
                                               <FormattedMessage
                                                 defaultMessage="New Program"
-                                                id="app.program_list.new"
+                                                id="app.program_collection.new"
                                                 values={Object {}}
                                               >
                                                 New Program
@@ -1932,7 +1932,13 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                   <span
                                                     className="MuiButton-label"
                                                   >
-                                                    Sort
+                                                    <FormattedMessage
+                                                      defaultMessage="Sort"
+                                                      id="app.program_collection.sort"
+                                                      values={Object {}}
+                                                    >
+                                                      Sort
+                                                    </FormattedMessage>
                                                   </span>
                                                   <WithStyles(memo)
                                                     center={false}

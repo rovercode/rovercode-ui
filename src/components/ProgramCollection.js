@@ -153,12 +153,6 @@ class ProgramCollection extends Component {
       defaultMessage: 'Filter by tag',
     });
 
-    const sortText = intl.formatMessage({
-      id: 'app.program_collection.sort',
-      description: 'Button label for sort options',
-      defaultMessage: 'Sort',
-    });
-
     const Title = withStyles(() => ({
       root: {
         fontWeight: 'bold',
@@ -230,7 +224,11 @@ class ProgramCollection extends Component {
             <Grid container justify="flex-end" spacing={2}>
               <Grid item>
                 <Button aria-controls="sort-menu" aria-haspopup="true" onClick={this.handleSortClick}>
-                  {sortText}
+                  <FormattedMessage
+                    id="app.program_collection.sort"
+                    description="Button label for sort options"
+                    defaultMessage="Sort"
+                  />
                 </Button>
                 <Menu
                   id="sort-menu"
