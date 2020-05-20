@@ -1095,7 +1095,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                             className="prompt"
                             icon="search"
                             onChange={[Function]}
-                            placeholder="Search..."
+                            placeholder="Search programs"
                             size="small"
                             variant="outlined"
                           >
@@ -1117,7 +1117,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                               }
                               icon="search"
                               onChange={[Function]}
-                              placeholder="Search..."
+                              placeholder="Search programs"
                               size="small"
                               variant="outlined"
                             >
@@ -1167,7 +1167,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                       fullWidth={false}
                                       multiline={false}
                                       onChange={[Function]}
-                                      placeholder="Search..."
+                                      placeholder="Search programs"
                                     >
                                       <ForwardRef(OutlinedInput)
                                         autoFocus={false}
@@ -1200,7 +1200,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                         fullWidth={false}
                                         multiline={false}
                                         onChange={[Function]}
-                                        placeholder="Search..."
+                                        placeholder="Search programs"
                                       >
                                         <WithStyles(ForwardRef(InputBase))
                                           autoFocus={false}
@@ -1234,7 +1234,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                           inputComponent="input"
                                           multiline={false}
                                           onChange={[Function]}
-                                          placeholder="Search..."
+                                          placeholder="Search programs"
                                           renderSuffix={[Function]}
                                           type="text"
                                         >
@@ -1273,7 +1273,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                             inputComponent="input"
                                             multiline={false}
                                             onChange={[Function]}
-                                            placeholder="Search..."
+                                            placeholder="Search programs"
                                             renderSuffix={[Function]}
                                             type="text"
                                           >
@@ -1290,7 +1290,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                 onBlur={[Function]}
                                                 onChange={[Function]}
                                                 onFocus={[Function]}
-                                                placeholder="Search..."
+                                                placeholder="Search programs"
                                                 required={false}
                                                 type="text"
                                               />
@@ -2497,7 +2497,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                         "value": "",
                                       }
                                     }
-                                    label="Tag filters..."
+                                    label="Filter by tag"
                                     size="small"
                                     variant="outlined"
                                   >
@@ -2590,7 +2590,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                           "value": "",
                                         }
                                       }
-                                      label="Tag filters..."
+                                      label="Filter by tag"
                                       size="small"
                                       variant="outlined"
                                     >
@@ -2688,7 +2688,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                       htmlFor="tag-select"
                                                       id="tag-select-label"
                                                     >
-                                                      Tag filters...
+                                                      Filter by tag
                                                     </label>
                                                   </ForwardRef(FormLabel)>
                                                 </WithStyles(ForwardRef(FormLabel))>
@@ -2749,7 +2749,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                               }
                                               label={
                                                 <React.Fragment>
-                                                  Tag filters...
+                                                  Filter by tag
                                                 </React.Fragment>
                                               }
                                               multiline={false}
@@ -2852,7 +2852,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                 }
                                                 label={
                                                   <React.Fragment>
-                                                    Tag filters...
+                                                    Filter by tag
                                                   </React.Fragment>
                                                 }
                                                 multiline={false}
@@ -3485,7 +3485,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                         className="MuiOutlinedInput-notchedOutline"
                                                         label={
                                                           <React.Fragment>
-                                                            Tag filters...
+                                                            Filter by tag
                                                           </React.Fragment>
                                                         }
                                                         labelWidth={0}
@@ -3503,7 +3503,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                           }
                                                           label={
                                                             <React.Fragment>
-                                                              Tag filters...
+                                                              Filter by tag
                                                             </React.Fragment>
                                                           }
                                                           labelWidth={0}
@@ -3517,7 +3517,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
                                                               className="PrivateNotchedOutline-legendLabelled-232 PrivateNotchedOutline-legendNotched-233"
                                                             >
                                                               <span>
-                                                                Tag filters...
+                                                                Filter by tag
                                                               </span>
                                                             </legend>
                                                           </fieldset>

@@ -119,13 +119,13 @@ class ProgramCollection extends Component {
     const searchPlaceholder = intl.formatMessage({
       id: 'app.program_collection.search',
       description: 'Placeholder for search entry',
-      defaultMessage: 'Search...',
+      defaultMessage: 'Search programs',
     });
 
     const tagFilterPlaceholder = intl.formatMessage({
       id: 'app.program_collection.filter',
       description: 'Placeholder for selecting tags used to filter',
-      defaultMessage: 'Tag filters...',
+      defaultMessage: 'Filter by tag',
     });
 
     const sortText = intl.formatMessage({
