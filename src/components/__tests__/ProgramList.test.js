@@ -47,7 +47,7 @@ describe('The ProgramList component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('fetches programs on mount', async () => {
+  test('fetches programs and tags on mount', async () => {
     await mountWithIntl(
       <MemoryRouter>
         <ProgramList
@@ -63,6 +63,7 @@ describe('The ProgramList component', () => {
         />
       </MemoryRouter>,
     );
+    expect(fetchTags.mock.calls.length).toBe(1);
     expect(fetchPrograms.mock.calls.length).toBe(1);
     expect(clearProgram.mock.calls.length).toBe(1);
   });
@@ -186,7 +187,9 @@ describe('The ProgramList component', () => {
     await wrapper.instance().loadProgram({
       target: {
         parentNode: {
-          id: undefined,
+          parentNode: {
+            id: undefined,
+          },
         },
         id: 33,
         dataset: {
@@ -206,9 +209,11 @@ describe('The ProgramList component', () => {
     await wrapper.instance().loadProgram({
       target: {
         parentNode: {
-          id: 55,
-          dataset: {
-            owned: 'true',
+          parentNode: {
+            id: 55,
+            dataset: {
+              owned: 'true',
+            },
           },
         },
       },
@@ -438,7 +443,9 @@ describe('The ProgramList component', () => {
     wrapper.instance().showConfirm({
       target: {
         parentNode: {
-          id: undefined,
+          parentNode: {
+            id: undefined,
+          },
         },
         id: 33,
         name: 'Unnamed_Design_3',

@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import {
   Box,
-  Button,
   CircularProgress,
   Grid,
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { Add } from '@material-ui/icons';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Redirect, Link } from 'react-router-dom';
+import { injectIntl } from 'react-intl';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ConfirmDialog from './ConfirmDialog';
@@ -40,7 +37,14 @@ class ProgramList extends Component {
   }
 
   fetch = () => {
-    const { fetchPrograms, owned, user } = this.props;
+    const {
+      fetchPrograms,
+      fetchTags,
+      owned,
+      user,
+    } = this.props;
+
+    fetchTags();
 
     return owned ? fetchPrograms({
       user: user.user_id,
@@ -71,8 +75,8 @@ class ProgramList extends Component {
   loadProgram = (e) => {
     const { changeReadOnly, fetchProgram } = this.props;
     let program = e.target;
-    if (e.target.parentNode.id) {
-      program = e.target.parentNode;
+    if (e.target.parentNode.parentNode.id) {
+      program = e.target.parentNode.parentNode;
     }
     const readOnly = program.dataset.owned === 'false';
 
@@ -153,12 +157,6 @@ class ProgramList extends Component {
       name: focusProgram.name,
     });
 
-    const NewButton = withStyles((theme) => ({
-      root: {
-        marginRight: theme.spacing(5),
-      },
-    }))(Button);
-
     return (
       <>
         {
@@ -170,24 +168,6 @@ class ProgramList extends Component {
           ) : (null)
         }
         <Grid container direction="column" justify="center" alignItems="center">
-          <Grid item container direction="row" justify="flex-end">
-            <Grid item>
-              <NewButton
-                variant="contained"
-                color="primary"
-                size="large"
-                startIcon={<Add />}
-                component={Link}
-                to="/mission-control"
-              >
-                <FormattedMessage
-                  id="app.program_list.new"
-                  description="Button label to create new program"
-                  defaultMessage="New Program"
-                />
-              </NewButton>
-            </Grid>
-          </Grid>
           {
           programs === null ? (
             <Grid item>
@@ -240,6 +220,7 @@ ProgramList.defaultProps = {
 ProgramList.propTypes = {
   fetchProgram: PropTypes.func.isRequired,
   fetchPrograms: PropTypes.func.isRequired,
+  fetchTags: PropTypes.func.isRequired,
   removeProgram: PropTypes.func.isRequired,
   clearProgramList: PropTypes.func.isRequired,
   changeReadOnly: PropTypes.func.isRequired,
