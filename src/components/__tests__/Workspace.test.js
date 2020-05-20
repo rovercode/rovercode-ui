@@ -41,6 +41,7 @@ describe('The Workspace component', () => {
         execution: null,
         name: 'test program',
         id: 1,
+        lesson: null,
       },
       sensor: {
         left: NOT_COVERED,
@@ -948,7 +949,7 @@ describe('The Workspace component', () => {
     expect(store.dispatch).not.toHaveBeenCalled();
   });
 
-  test('Remixes a program', (done) => {
+  test('Remixes a lesson reference program', (done) => {
     const localStore = mockStore({
       code: {
         id: 1,
@@ -963,8 +964,9 @@ describe('The Workspace component', () => {
     localStore.dispatch = jest.fn(() => Promise.resolve());
     const mockCreateProgram = jest.fn(() => Promise.resolve({
       value: {
-        id: 1,
+        id: 2,
         name: 'test program',
+        lesson: 50,
       },
     }));
     const mockFetchProgram = jest.fn(() => Promise.resolve({
@@ -972,6 +974,7 @@ describe('The Workspace component', () => {
         id: 1,
         name: 'test program',
         content: '<xml></xml>',
+        reference_of: 50,
       },
     }));
     const mockSaveProgram = jest.fn(() => Promise.resolve({
@@ -996,10 +999,68 @@ describe('The Workspace component', () => {
     });
 
     workspace.instance().remix().then(() => {
-      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
       expect(mockFetchProgram).toHaveBeenCalledWith(1);
-      expect(mockSaveProgram).toHaveBeenCalledWith(1, '<xml></xml>', 'test program');
-      expect(SumoLogger.mock.instances[0].log).toHaveBeenCalledWith('{"event":"remix","sourceProgramId":1,"newProgramId":1}');
+      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
+      expect(mockSaveProgram).toHaveBeenCalledWith(2, '<xml></xml>', 'test program', 50);
+      expect(SumoLogger.mock.instances[0].log).toHaveBeenCalledWith('{"event":"remix","sourceProgramId":1,"newProgramId":2}');
+      done();
+    });
+  });
+
+  test('Remixes a program', (done) => {
+    const localStore = mockStore({
+      code: {
+        id: 1,
+        name: 'test program',
+        xmlCode: '<xml></xml>',
+      },
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    localStore.dispatch = jest.fn(() => Promise.resolve());
+    const mockCreateProgram = jest.fn(() => Promise.resolve({
+      value: {
+        id: 2,
+        name: 'test program',
+        lesson: null,
+      },
+    }));
+    const mockFetchProgram = jest.fn(() => Promise.resolve({
+      value: {
+        id: 1,
+        name: 'test program',
+        content: '<xml></xml>',
+        reference_of: null,
+      },
+    }));
+    const mockSaveProgram = jest.fn(() => Promise.resolve({
+      value: {
+        name: 'test program',
+      },
+    }));
+    const workspace = shallowWithIntl(
+      <Workspace store={localStore}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    workspace.setProps({
+      createProgram: mockCreateProgram,
+      fetchProgram: mockFetchProgram,
+      saveProgram: mockSaveProgram,
+    });
+
+    workspace.instance().remix().then(() => {
+      expect(mockFetchProgram).toHaveBeenCalledWith(1);
+      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
+      expect(mockSaveProgram).toHaveBeenCalledWith(2, '<xml></xml>', 'test program', null);
+      expect(SumoLogger.mock.instances[0].log).toHaveBeenCalledWith('{"event":"remix","sourceProgramId":1,"newProgramId":2}');
       done();
     });
   });

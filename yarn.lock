@@ -7145,9 +7145,9 @@ node-abi@^2.7.0:
   dependencies:
     semver "^5.4.1"
 
-"node-blockly@git+https://github.com/rovercode/node-blockly.git#548f57a48f0e918f2f4a98074852927c8ebfd6a5":
+"node-blockly@git+https://github.com/rovercode/node-blockly.git#f7b9c912d65c8cfb925c7b954f42a3b2bf8a7d5c":
   version "1.2.4"
-  resolved "git+https://github.com/rovercode/node-blockly.git#548f57a48f0e918f2f4a98074852927c8ebfd6a5"
+  resolved "git+https://github.com/rovercode/node-blockly.git#f7b9c912d65c8cfb925c7b954f42a3b2bf8a7d5c"
   dependencies:
     jsdom "^15.1.1"
     xmlshim "^0.2.6"
