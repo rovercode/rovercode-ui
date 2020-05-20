@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { GitHub, Lock, Person } from '@material-ui/icons';
@@ -8,8 +9,8 @@ import {
   Container,
   Grid,
   InputAdornment,
-  Link,
   TextField,
+  Typography,
 } from '@material-ui/core';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { grey, red } from '@material-ui/core/colors';
@@ -128,10 +129,10 @@ class Login extends Component {
 
     const GitHubButton = withStyles((theme) => ({
       root: {
-        color: theme.palette.getContrastText(grey[500]),
-        backgroundColor: grey[500],
+        color: theme.palette.getContrastText(grey[300]),
+        backgroundColor: grey[300],
         '&:hover': {
-          backgroundColor: grey[700],
+          backgroundColor: grey[500],
         },
       },
     }))(Button);
@@ -145,13 +146,13 @@ class Login extends Component {
         }
         <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
           <Grid item>
-            <p>
+            <Typography variant="h6">
               <FormattedMessage
-                id="app.login.social"
-                description="Notifies the user of third-party account access"
-                defaultMessage="You can sign up / sign in with one of your existing third-party accounts."
+                id="app.login.login"
+                description="Explains the need for making an account"
+                defaultMessage="Welcome! To use Rovercode, you need an account for saving and sharing your work."
               />
-            </p>
+            </Typography>
           </Grid>
           {
             socialError ? (
@@ -164,7 +165,7 @@ class Login extends Component {
                       defaultMessage="There was an error initiating social login."
                     />
                   </AlertTitle>
-                  <p>
+                  <Typography>
                     <FormattedMessage
                       id="app.login.social_contact_1"
                       description="First part of instructions for contacting support"
@@ -180,7 +181,7 @@ class Login extends Component {
                       description="Second part of instructions for contacting support"
                       defaultMessage="for help with this issue."
                     />
-                  </p>
+                  </Typography>
                 </Alert>
               </Grid>
             ) : (null)
@@ -196,9 +197,9 @@ class Login extends Component {
                       defaultMessage="There was an error creating an account using social provider."
                     />
                   </AlertTitle>
-                  <p>
+                  <Typography>
                     {location.state.callbackError}
-                  </p>
+                  </Typography>
                 </Alert>
               </Grid>
             ) : (null)
@@ -214,7 +215,7 @@ class Login extends Component {
                 <FormattedMessage
                   id="app.login.button_google"
                   description="Button label for Google sign in"
-                  defaultMessage="Sign in with Google"
+                  defaultMessage="Sign up or sign in with Google"
                 />
               </GoogleButton>
             </Grid>
@@ -228,36 +229,44 @@ class Login extends Component {
                 <FormattedMessage
                   id="app.login.button_github"
                   description="Button label for GitHub sign in"
-                  defaultMessage="Sign in with GitHub"
+                  defaultMessage="Sign up or sign in with GitHub"
                 />
               </GitHubButton>
             </Grid>
           </Grid>
           <Grid item>
-            <p>
+            <Typography>
               <FormattedMessage
                 id="app.login.social_question"
                 description="Asks the user if he/she has a social account for sign in"
                 defaultMessage="Don't have any of those accounts?"
               />
-              {' '}
-              <Link href="/accounts/signup">
-                <FormattedMessage
-                  id="app.login.create"
-                  description="Directs the user to create an account"
-                  defaultMessage="Create a rovercode account."
-                />
-              </Link>
-            </p>
+            </Typography>
           </Grid>
           <Grid item>
-            <p>
+            <Button
+              size="large"
+              variant="contained"
+              disableElevation
+              color="primary"
+              component={Link}
+              to="/accounts/signup"
+            >
+              <FormattedMessage
+                id="app.login.create"
+                description="Directs the user to create an account"
+                defaultMessage="Create a Rovercode account"
+              />
+            </Button>
+          </Grid>
+          <Grid item>
+            <Typography>
               <FormattedMessage
                 id="app.login.account_question"
                 description="Asks the user if he/she has an account"
-                defaultMessage="Already have a rovercode account? Sign in here:"
+                defaultMessage="Already have a Rovercode account? Sign in here:"
               />
-            </p>
+            </Typography>
           </Grid>
           {
             basicError ? (
@@ -323,12 +332,14 @@ class Login extends Component {
             </Container>
           </form>
           <Grid item>
-            <Link href="/accounts/reset">
-              <FormattedMessage
-                id="app.login.forgot"
-                description="Button label for initiating forgot password"
-                defaultMessage="Forgot Password?"
-              />
+            <Link to="/accounts/reset">
+              <Typography>
+                <FormattedMessage
+                  id="app.login.forgot"
+                  description="Button label for initiating forgot password"
+                  defaultMessage="Forgot Password?"
+                />
+              </Typography>
             </Link>
           </Grid>
         </Grid>

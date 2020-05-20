@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Lock, Mail, Person } from '@material-ui/icons';
 import {
   Button,
   Grid,
   InputAdornment,
-  Link,
   List,
   ListItem,
   ListItemText,
@@ -200,19 +200,21 @@ class SignUp extends Component {
             </Typography>
           </Grid>
           <Grid item>
-            <FormattedMessage
-              id="app.signup.check_1"
-              description="First part of Checking if the user already has an account"
-              defaultMessage="Already have an account? Then please"
-            />
-            {' '}
-            <Link href="/accounts/login">
+            <Typography>
               <FormattedMessage
-                id="app.signup.check_2"
-                description="Second part of Checking if the user already has an account"
-                defaultMessage="sign in."
+                id="app.signup.check_1"
+                description="First part of Checking if the user already has an account"
+                defaultMessage="Already have an account? Then please"
               />
-            </Link>
+              {' '}
+              <Link to="/accounts/login">
+                <FormattedMessage
+                  id="app.signup.check_2"
+                  description="Second part of Checking if the user already has an account"
+                  defaultMessage="sign in."
+                />
+              </Link>
+            </Typography>
           </Grid>
           {this.errorMessage()}
           <Grid item>

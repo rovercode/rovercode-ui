@@ -14,9 +14,9 @@ import SignUp from './SignUp';
 
 
 const Base = ({ match }) => (
-  <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
+  <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
     <Grid item>
-      <img alt="Rovercode" src={logoImage} />
+      <img alt="Rovercode" width="300px" src={logoImage} />
     </Grid>
     <Grid item>
       <Switch>
