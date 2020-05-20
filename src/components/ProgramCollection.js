@@ -140,6 +140,23 @@ class ProgramCollection extends Component {
       },
     }))(Typography);
 
+    const NonCollapsingContainer = withStyles((theme) => ({
+      root: {
+        [theme.breakpoints.up('xs')]: {
+          minWidth: theme.breakpoints.values.xs,
+        },
+        [theme.breakpoints.up('sm')]: {
+          minWidth: theme.breakpoints.values.sm,
+        },
+        [theme.breakpoints.up('md')]: {
+          minWidth: theme.breakpoints.values.md,
+        },
+        [theme.breakpoints.up('lg')]: {
+          minWidth: theme.breakpoints.values.lg,
+        },
+      },
+    }))(Container);
+
     const DeleteButton = withStyles(() => ({
       root: {
         color: grey[500],
@@ -166,7 +183,7 @@ class ProgramCollection extends Component {
     }))(Box);
 
     return (
-      <Container maxWidth="lg">
+      <NonCollapsingContainer maxWidth="lg" fixed>
         <TitleArea item container direction="row" justify="space-between">
           <Grid item>
             <Title variant="h4">
@@ -337,7 +354,7 @@ class ProgramCollection extends Component {
             </PaddedBox>
           ) : (null)
         }
-      </Container>
+      </NonCollapsingContainer>
     );
   }
 }
