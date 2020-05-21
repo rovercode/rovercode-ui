@@ -32,7 +32,6 @@ import Workspace from '@/components/Workspace';
 const mapStateToProps = ({ code }) => ({ code });
 
 const MissionControl = ({ location, code }) => {
-
   const [state, setState] = React.useState({
     open: false,
   });
@@ -162,9 +161,6 @@ MissionControl.defaultProps = {
       readOnly: false,
     },
   },
-  code: {
-    name: "",
-  }
 };
 
 MissionControl.propTypes = {
