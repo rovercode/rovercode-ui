@@ -6,7 +6,7 @@ exports[`Base renders on the page with no errors 1`] = `
   container={true}
   direction="column"
   justify="center"
-  spacing={3}
+  spacing={4}
 >
   <WithStyles(ForwardRef(Grid))
     item={true}
@@ -14,6 +14,7 @@ exports[`Base renders on the page with no errors 1`] = `
     <img
       alt="Rovercode"
       src={Object {}}
+      width="300px"
     />
   </WithStyles(ForwardRef(Grid))>
   <WithStyles(ForwardRef(Grid))

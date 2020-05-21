@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import { Cookies } from 'react-cookie';
 import { TextField } from '@material-ui/core';
@@ -40,7 +41,7 @@ test('Login renders on the page with no errors', () => {
 });
 
 test('Login mounts on the page with no errors', () => {
-  const wrapper = mountWithIntl(<Login location={location} store={store} />, {
+  const wrapper = mountWithIntl(<Router><Login location={location} store={store} /></Router>, {
     context: { cookies },
   });
   expect(wrapper).toMatchSnapshot();
@@ -139,7 +140,7 @@ test('Login shows error message on callback error', () => {
   expect(wrapper.find(AlertTitle).children().find(FormattedMessage).prop('defaultMessage')).toBe(
     'There was an error creating an account using social provider.',
   );
-  expect(wrapper.find(Alert).find('p').text()).toBe(localLocation.state.callbackError[0]);
+  expect(wrapper.find(Alert).find('WithStyles(ForwardRef(Typography))').text()).toBe(localLocation.state.callbackError[0]);
 });
 
 test('Login redirects to root after basic login success', async () => {
