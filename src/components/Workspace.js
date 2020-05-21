@@ -466,7 +466,7 @@ class Workspace extends Component {
 
     return (
       <Box m={1}>
-        <Grid container direction="column" justify="center" alignItems="center" spacing={0}>
+        <Grid container direction="column" justify="center" alignItems="center">
           {
           code.isReadOnly ? (
             <Grid item>
