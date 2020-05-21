@@ -27,7 +27,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "airbnb/hooks"
     ],
     "rules": {
         "react/jsx-filename-extension": 0,
