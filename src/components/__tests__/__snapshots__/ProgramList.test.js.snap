@@ -52,5 +52,7 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
   >
     Are you sure you want to remove Test Program?
   </ConfirmDialog>
+  <WithStyles(ForwardRef(Divider)) />
+  <Footer />
 </Fragment>
 `;

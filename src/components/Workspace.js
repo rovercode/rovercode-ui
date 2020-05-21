@@ -466,7 +466,7 @@ class Workspace extends Component {
 
     return (
       <Box m={1}>
-        <Grid container direction="column" justify="center" alignItems="center" spacing={1}>
+        <Grid container direction="column" justify="center" alignItems="center" spacing={0}>
           {
           code.isReadOnly ? (
             <Grid item>
@@ -499,7 +499,7 @@ class Workspace extends Component {
           ) : (null)
         }
           <Grid item container direction="column" alignItems="stretch">
-            <Grid item style={{ minHeight: code.isReadOnly ? '70vh' : '80vh', maxHeight: '1080px' }}>
+            <Grid item style={{ minHeight: code.isReadOnly ? '65vh' : '75vh', maxHeight: '1080px' }}>
               <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
                 <Box zIndex="modal" style={{ position: 'absolute', bottom: '15%', left: '10%' }}>
                   { React.cloneElement(children, { isConnected: !!rover.rover }) }

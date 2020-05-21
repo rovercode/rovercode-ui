@@ -7,7 +7,7 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
     onClick={[Function]}
     variant="contained"
   >
-    Show Me The Code!
+    View JavaScript
   </WithStyles(ForwardRef(Button))>
   <WithStyles(ForwardRef(Dialog))
     maxWidth="md"

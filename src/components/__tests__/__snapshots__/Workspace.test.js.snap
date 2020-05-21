@@ -383,7 +383,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 container={true}
                 direction="column"
                 justify="center"
-                spacing={1}
+                spacing={0}
               >
                 <ForwardRef(Grid)
                   alignItems="center"
@@ -497,10 +497,10 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                   container={true}
                   direction="column"
                   justify="center"
-                  spacing={1}
+                  spacing={0}
                 >
                   <div
-                    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+                    className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
                   >
                     <WithStyles(ForwardRef(Grid))
                       alignItems="stretch"
@@ -629,7 +629,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                             style={
                               Object {
                                 "maxHeight": "1080px",
-                                "minHeight": "80vh",
+                                "minHeight": "75vh",
                               }
                             }
                           >
@@ -745,7 +745,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                               style={
                                 Object {
                                   "maxHeight": "1080px",
-                                  "minHeight": "80vh",
+                                  "minHeight": "75vh",
                                 }
                               }
                             >
@@ -754,7 +754,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                                 style={
                                   Object {
                                     "maxHeight": "1080px",
-                                    "minHeight": "80vh",
+                                    "minHeight": "75vh",
                                   }
                                 }
                               >

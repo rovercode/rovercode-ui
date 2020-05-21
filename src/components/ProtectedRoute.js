@@ -3,9 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Divider } from '@material-ui/core';
 import { logout as actionLogout } from '@/actions/auth';
-import Footer from './Footer';
 import TopNav from './TopNav';
 
 const mapStateToProps = ({ auth, user }) => ({ auth, user });
@@ -48,8 +46,6 @@ class ProtectedRoute extends Component {
             )
           )}
         />
-        <Divider />
-        <Footer />
       </>
     );
   }

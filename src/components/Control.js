@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Grid, Tooltip } from '@material-ui/core';
+import { IconButton, Button, Grid, Tooltip } from '@material-ui/core';
 import {
   PlayArrow,
   Replay,
@@ -75,7 +75,7 @@ const Control = ({
         backgroundColor: theme.palette.warning.dark,
       },
       width: '24px',
-      height: '24px',
+      height: '34px',
       minWidth: '0px',
       boxShadow: '0px 1px 3px #00000057',
       borderRadius: '4px',
@@ -83,11 +83,11 @@ const Control = ({
     },
   }))(Button);
 
-  const ResetButton = withStyles(() => ({
+  const ResetButton = withStyles((theme) => ({
     root: {
       color: '#FFFFFF',
       width: '24px',
-      height: '24px',
+      height: '34px',
       minWidth: '0px',
       boxShadow: '0px 1px 3px #00000057',
       borderRadius: '4px',
