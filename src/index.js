@@ -1,4 +1,5 @@
 import { ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
+import { CssBaseline } from '@material-ui/core';
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -86,6 +87,7 @@ render(
       <BrowserRouter>
         <CookiesProvider>
           <ThemeProvider theme={responsiveFontSizes(light)}>
+            <CssBaseline />
             <Switch>
               <Route path="/accounts" component={Accounts} />
               <ProtectedRoute exact path="/" component={ProgramList} />

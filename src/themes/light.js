@@ -17,6 +17,10 @@ export default createMuiTheme({
     success: {
       main: '#21BA45', /* green */
     },
+    background: {
+      default: '#F9F9F9',
+      paper: '#FFFFFF',
+    },
     /* Keep default error red */
     contrastThreshold: 3,
     tonalOffset: 0.2,
