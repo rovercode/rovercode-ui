@@ -17,6 +17,7 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 import { ExpandMore, Close } from '@material-ui/icons';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
@@ -28,7 +29,9 @@ import ProgramName from '@/components/ProgramName';
 import ProgramTags from '@/components/ProgramTags';
 import Workspace from '@/components/Workspace';
 
-const MissionControl = ({ location }) => {
+const mapStateToProps = ({ code }) => ({ code });
+
+const MissionControl = ({ location, code }) => {
   const [state, setState] = React.useState({
     open: false,
   });
@@ -76,9 +79,16 @@ const MissionControl = ({ location }) => {
         </List>
       </Drawer>
 
-      <Grid container direction="row" justify="space-evenly" alignItems="flex-start" spacing={2}>
-        <Grid item container xs={10} direction="column" justify="center" alignItems="stretch">
-          <Grid item container direction="row" justify="flex-end">
+      <Grid container direction="row" justify="space-evenly" alignItems="flex-start" spacing={0}>
+        <Grid item container xs={10} direction="column" justify="center" alignItems="stretch" spacing={2}>
+          <Grid item container direction="row" justify="space-between">
+            <Grid item>
+              <Box m={1}>
+                <Typography variant="h6">
+                  {code.name}
+                </Typography>
+              </Box>
+            </Grid>
             <Grid item>
               <Button color="default" onClick={() => setState({ ...state, open: true })}>
                 <FormattedMessage
@@ -135,7 +145,7 @@ const MissionControl = ({ location }) => {
               <FormattedMessage
                 id="app.mission_control.show_code"
                 description="Button label for displaying user's code"
-                defaultMessage="Show Me The Code!"
+                defaultMessage="View JavaScript"
               />
             </CodeViewer>
           </Grid>
@@ -159,6 +169,9 @@ MissionControl.propTypes = {
       readOnly: PropTypes.bool,
     }),
   }),
+  code: PropTypes.shape({
+    name: PropTypes.string,
+  }).isRequired,
 };
 
-export default hot(module)(MissionControl);
+export default hot(module)(connect(mapStateToProps)(MissionControl));

@@ -70,6 +70,8 @@ describe('The MissionControl container', () => {
       },
     ).dive().dive().dive()
       .dive()
+      .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find(Drawer).prop('open')).toBe(false);

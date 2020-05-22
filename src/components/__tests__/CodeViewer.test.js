@@ -16,7 +16,7 @@ describe('The CodeViewer component', () => {
     });
     const wrapper = shallow(
       <CodeViewer store={store}>
-        Show Me The Code!
+        View JavaScript
       </CodeViewer>,
     ).dive().dive();
     expect(wrapper).toMatchSnapshot();
@@ -30,7 +30,7 @@ describe('The CodeViewer component', () => {
     });
     const wrapper = shallow(
       <CodeViewer store={store}>
-        Show Me The Code!
+        View JavaScript
       </CodeViewer>,
     ).dive().dive();
 

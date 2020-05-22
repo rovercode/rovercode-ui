@@ -3,12 +3,14 @@ import {
   Box,
   CircularProgress,
   Grid,
+  Divider,
 } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ConfirmDialog from './ConfirmDialog';
+import Footer from './Footer';
 import ProgramCollection from './ProgramCollection';
 
 const defaultState = {
@@ -200,6 +202,8 @@ class ProgramList extends Component {
         >
           {dialogContent}
         </ConfirmDialog>
+        <Divider />
+        <Footer />
       </>
     );
   }

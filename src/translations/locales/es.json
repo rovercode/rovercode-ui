@@ -44,7 +44,7 @@
   "app.mission_control.details": "Project Details",
   "app.mission_control.edit": "Edit Project",
   "app.mission_control.sensors": "Sensores",
-  "app.mission_control.show_code": "Mostrame el Codigo!",
+  "app.mission_control.show_code": "Mostrame el JavaScript",
   "app.password_reset.email": "Introduzca su dirección de correo electrónico y le enviaremos un mensaje que le permitirá restablecerla.",
   "app.password_reset.email_placeholder": "Correo electrónico",
   "app.password_reset.header": "Recuperación de la cuenta",
