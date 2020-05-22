@@ -4,7 +4,17 @@ import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import { updateValidAuth } from '@/actions/auth';
-import {
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
+import Workspace from '../Workspace'; // eslint-disable-line import/order
+
+jest.mock('node-blockly/browser');
+jest.mock('sumo-logger');
+jest.mock('@/actions/code');
+jest.mock('@/actions/rover');
+
+import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first, import/order
+import SumoLogger from 'sumo-logger'; // eslint-disable-line import/first, import/order
+import { // eslint-disable-line import/first
   changeExecutionState,
   createProgram,
   fetchProgram,
@@ -13,17 +23,8 @@ import {
   EXECUTION_STEP,
   EXECUTION_STOP,
   EXECUTION_RESET,
-} from '@/actions/code';
-import { COVERED, NOT_COVERED } from '@/actions/sensor';
-import { send } from '@/actions/rover';
-
-jest.mock('node-blockly/browser');
-jest.mock('sumo-logger');
-
-import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first, import/order
-import SumoLogger from 'sumo-logger'; // eslint-disable-line import/first, import/order
-import Workspace from '../Workspace'; // eslint-disable-line import/first, import/order
-
+} from '@/actions/code'; // eslint-disable-line import/order
+import { send } from '@/actions/rover'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -56,7 +57,7 @@ describe('The Workspace component', () => {
         },
       },
     });
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
     playground = {
       addChangeListener: jest.fn((cb) => { cb(); }),
       highlightBlock: jest.fn(),
@@ -294,7 +295,7 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     const workspace = shallowWithIntl(
       <Workspace store={localStore}>
         <div />
@@ -667,7 +668,7 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     shallowWithIntl(
       <Workspace store={localStore}>
         <div />
@@ -689,8 +690,8 @@ describe('The Workspace component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -719,7 +720,7 @@ describe('The Workspace component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -748,8 +749,8 @@ describe('The Workspace component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -778,7 +779,7 @@ describe('The Workspace component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -807,8 +808,8 @@ describe('The Workspace component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -837,7 +838,7 @@ describe('The Workspace component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -933,7 +934,7 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     const wrapper = shallowWithIntl(
       <Workspace store={localStore}>
         <div />
@@ -961,27 +962,27 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
-    const mockCreateProgram = jest.fn(() => Promise.resolve({
+    localStore.dispatch = jest.fn().mockResolvedValue();
+    const mockCreateProgram = jest.fn().mockResolvedValue({
       value: {
         id: 2,
         name: 'test program',
         lesson: 50,
       },
-    }));
-    const mockFetchProgram = jest.fn(() => Promise.resolve({
+    });
+    const mockFetchProgram = jest.fn().mockResolvedValue({
       value: {
         id: 1,
         name: 'test program',
         content: '<xml></xml>',
         reference_of: 50,
       },
-    }));
-    const mockSaveProgram = jest.fn(() => Promise.resolve({
+    });
+    const mockSaveProgram = jest.fn().mockResolvedValue({
       value: {
         name: 'test program',
       },
-    }));
+    });
     const workspace = shallowWithIntl(
       <Workspace store={localStore}>
         <div />
@@ -1019,27 +1020,27 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
-    const mockCreateProgram = jest.fn(() => Promise.resolve({
+    localStore.dispatch = jest.fn().mockResolvedValue();
+    const mockCreateProgram = jest.fn().mockResolvedValue({
       value: {
         id: 2,
         name: 'test program',
         lesson: null,
       },
-    }));
-    const mockFetchProgram = jest.fn(() => Promise.resolve({
+    });
+    const mockFetchProgram = jest.fn().mockResolvedValue({
       value: {
         id: 1,
         name: 'test program',
         content: '<xml></xml>',
         reference_of: null,
       },
-    }));
-    const mockSaveProgram = jest.fn(() => Promise.resolve({
+    });
+    const mockSaveProgram = jest.fn().mockResolvedValue({
       value: {
         name: 'test program',
       },
-    }));
+    });
     const workspace = shallowWithIntl(
       <Workspace store={localStore}>
         <div />
@@ -1106,6 +1107,8 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
+    store.dispatch.mockClear();
+
     expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
 
     jest.advanceTimersByTime(500);
@@ -1132,6 +1135,8 @@ describe('The Workspace component', () => {
       .dive()
       .dive()
       .dive();
+
+    store.dispatch.mockClear();
 
     expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
 

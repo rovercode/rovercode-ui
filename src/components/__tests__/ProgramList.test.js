@@ -16,10 +16,10 @@ let clearProgramList;
 describe('The ProgramList component', () => {
   beforeEach(() => {
     changeReadOnly = jest.fn();
-    fetchProgram = jest.fn(() => Promise.resolve({}));
-    fetchPrograms = jest.fn(() => Promise.resolve({}));
-    removeProgram = jest.fn(() => Promise.resolve({}));
-    fetchTags = jest.fn(() => Promise.resolve({}));
+    fetchProgram = jest.fn().mockResolvedValue();
+    fetchPrograms = jest.fn().mockResolvedValue();
+    removeProgram = jest.fn().mockResolvedValue();
+    fetchTags = jest.fn().mockResolvedValue();
     clearProgram = jest.fn();
     clearProgramList = jest.fn();
   });
@@ -68,7 +68,7 @@ describe('The ProgramList component', () => {
     expect(clearProgram.mock.calls.length).toBe(1);
   });
 
-  test('shows the correct number of programs for the user', async () => {
+  test('shows the correct number of programs for the user', () => {
     const programs = {
       next: null,
       previous: null,
@@ -155,7 +155,7 @@ describe('The ProgramList component', () => {
     });
   });
 
-  test('loads a program', async () => {
+  test('loads a program', (done) => {
     const programs = {
       next: null,
       previous: null,
@@ -184,7 +184,7 @@ describe('The ProgramList component', () => {
       />,
     ).dive().dive();
 
-    await wrapper.instance().loadProgram({
+    wrapper.instance().loadProgram({
       target: {
         parentNode: {
           parentNode: {
@@ -196,35 +196,36 @@ describe('The ProgramList component', () => {
           owned: 'false',
         },
       },
-    });
+    }).then(() => {
+      expect(changeReadOnly).toHaveBeenCalledWith(true);
+      expect(fetchProgram).toHaveBeenCalledWith(33);
+      expect(wrapper.state('programLoaded')).toBe(true);
 
-    expect(changeReadOnly).toHaveBeenCalledWith(true);
-    expect(fetchProgram).toHaveBeenCalledWith(33);
-    expect(wrapper.state('programLoaded')).toBe(true);
+      wrapper.setState({
+        programLoaded: false,
+      });
 
-    wrapper.setState({
-      programLoaded: false,
-    });
-
-    await wrapper.instance().loadProgram({
-      target: {
-        parentNode: {
+      wrapper.instance().loadProgram({
+        target: {
           parentNode: {
-            id: 55,
-            dataset: {
-              owned: 'true',
+            parentNode: {
+              id: 55,
+              dataset: {
+                owned: 'true',
+              },
             },
           },
         },
-      },
+      }).then(() => {
+        expect(changeReadOnly).toHaveBeenCalledWith(false);
+        expect(fetchProgram).toHaveBeenCalledWith(33);
+        expect(wrapper.state('programLoaded')).toBe(true);
+        done();
+      });
     });
-
-    expect(changeReadOnly).toHaveBeenCalledWith(false);
-    expect(fetchProgram).toHaveBeenCalledWith(33);
-    expect(wrapper.state('programLoaded')).toBe(true);
   });
 
-  test('fetches user programs after page change', async () => {
+  test('fetches user programs after page change', () => {
     const programs = {
       next: null,
       previous: null,
@@ -253,7 +254,7 @@ describe('The ProgramList component', () => {
       />,
     ).dive().dive();
 
-    await wrapper.instance().fetchUserPrograms({
+    wrapper.instance().fetchUserPrograms({
       page: 2,
     }, true);
 
@@ -263,7 +264,7 @@ describe('The ProgramList component', () => {
     });
   });
 
-  test('fetches community programs after page change', async () => {
+  test('fetches community programs after page change', () => {
     const programs = {
       next: null,
       previous: null,
@@ -292,7 +293,7 @@ describe('The ProgramList component', () => {
       />,
     ).dive().dive();
 
-    await wrapper.instance().fetchCommunityPrograms({
+    wrapper.instance().fetchCommunityPrograms({
       page: 2,
     }, false);
 
@@ -384,7 +385,7 @@ describe('The ProgramList component', () => {
     });
   });
 
-  test('removes a program and reloads the program list', async () => {
+  test('removes a program and reloads the program list', (done) => {
     const programs = {
       next: null,
       previous: null,
@@ -419,10 +420,11 @@ describe('The ProgramList component', () => {
         name: 'Unnamed_Design_3',
       },
     });
-    await wrapper.instance().removeProgram();
-
-    expect(fetchPrograms).toHaveBeenCalledTimes(2);
-    expect(removeProgram).toHaveBeenCalledWith(33);
+    wrapper.instance().removeProgram().then(() => {
+      expect(fetchPrograms).toHaveBeenCalledTimes(2);
+      expect(removeProgram).toHaveBeenCalledWith(33);
+      done();
+    });
   });
 
   test('shows confirm dialog', () => {

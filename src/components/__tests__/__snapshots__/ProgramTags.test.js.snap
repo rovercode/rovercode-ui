@@ -8,10 +8,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
       "dispatch": [MockFunction] {
         "calls": Array [
           Array [
-            Object {
-              "payload": Promise {},
-              "type": "FETCH_TAGS",
-            },
+            undefined,
           ],
         ],
         "results": Array [
@@ -45,10 +42,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
         "dispatch": [MockFunction] {
           "calls": Array [
             Array [
-              Object {
-                "payload": Promise {},
-                "type": "FETCH_TAGS",
-              },
+              undefined,
             ],
           ],
           "results": Array [
@@ -82,10 +76,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
           "dispatch": [MockFunction] {
             "calls": Array [
               Array [
-                Object {
-                  "payload": Promise {},
-                  "type": "FETCH_TAGS",
-                },
+                undefined,
               ],
             ],
             "results": Array [
@@ -152,10 +143,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
             "dispatch": [MockFunction] {
               "calls": Array [
                 Array [
-                  Object {
-                    "payload": Promise {},
-                    "type": "FETCH_TAGS",
-                  },
+                  undefined,
                 ],
               ],
               "results": Array [
@@ -233,10 +221,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
               "dispatch": [MockFunction] {
                 "calls": Array [
                   Array [
-                    Object {
-                      "payload": Promise {},
-                      "type": "FETCH_TAGS",
-                    },
+                    undefined,
                   ],
                 ],
                 "results": Array [

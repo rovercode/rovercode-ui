@@ -4,7 +4,7 @@ import { clearPrograms, fetchPrograms, removeProgram } from '../program';
 
 
 describe('Program actions', () => {
-  test('fetch all programs', async () => {
+  test('fetch all programs', (done) => {
     const mock = new MockAdapter(axios);
     const programs = [{
       id: 33,
@@ -17,24 +17,26 @@ describe('Program actions', () => {
 
     const action = fetchPrograms();
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('FETCH_PROGRAMS');
-    expect(payload).toEqual(programs);
-    mock.restore();
+    action.payload.then((result) => {
+      expect(result).toEqual(programs);
+      mock.restore();
+      done();
+    });
   });
 
-  test('remove program', async () => {
+  test('remove program', (done) => {
     const mock = new MockAdapter(axios);
 
     mock.onDelete('/api/v1/block-diagrams/1/').reply(204);
 
     const action = removeProgram(1);
     const { type } = action;
-    await action.payload;
-
     expect(type).toEqual('REMOVE_PROGRAM');
-    mock.restore();
+    action.payload.then(() => {
+      mock.restore();
+      done();
+    });
   });
 
   test('clear programs', () => {

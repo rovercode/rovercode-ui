@@ -41,7 +41,7 @@ describe('Code actions', () => {
     expect(payload).toEqual(EXECUTION_RUN);
   });
 
-  test('changeName', async () => {
+  test('changeName', (done) => {
     const mock = new MockAdapter(axios);
     const program = {
       id: 1,
@@ -57,12 +57,12 @@ describe('Code actions', () => {
 
     const action = changeName(1, 'test name');
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('CHANGE_NAME');
-    expect(payload).toEqual(program);
-
-    mock.restore();
+    action.payload.then((result) => {
+      expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
   });
 
   test('changeId', () => {
@@ -73,7 +73,7 @@ describe('Code actions', () => {
     expect(payload).toEqual(123);
   });
 
-  test('fetch program', async () => {
+  test('fetch program', (done) => {
     const mock = new MockAdapter(axios);
     const program = {
       id: 1,
@@ -86,14 +86,15 @@ describe('Code actions', () => {
 
     const action = fetchProgram(1);
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('FETCH_PROGRAM');
-    expect(payload).toEqual(program);
-    mock.restore();
+    action.payload.then((result) => {
+      expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
   });
 
-  test('save program', async () => {
+  test('save program', (done) => {
     const mock = new MockAdapter(axios);
     const program = {
       id: 1,
@@ -111,14 +112,15 @@ describe('Code actions', () => {
 
     const action = saveProgram(1, program.content, program.name, program.lesson);
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('SAVE_PROGRAM');
-    expect(payload).toEqual(program);
-    mock.restore();
+    action.payload.then((result) => {
+      expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
   });
 
-  test('create program', async () => {
+  test('create program', (done) => {
     const mock = new MockAdapter(axios);
     const program = {
       name: 'mybd',
@@ -131,14 +133,15 @@ describe('Code actions', () => {
 
     const action = createProgram(program.name);
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('CREATE_PROGRAM');
-    expect(payload).toEqual(program);
-    mock.restore();
+    action.payload.then((result) => {
+      expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
   });
 
-  test('change program tags', async () => {
+  test('change program tags', (done) => {
     const mock = new MockAdapter(axios);
     const program = {
       owner_tags: ['tag1', 'tag2'],
@@ -148,11 +151,12 @@ describe('Code actions', () => {
 
     const action = changeProgramTags(1, program.owner_tags);
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('CHANGE_PROGRAM_TAGS');
-    expect(payload).toEqual(program);
-    mock.restore();
+    action.payload.then((result) => {
+      expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
   });
 
   test('changeReadOnly', () => {

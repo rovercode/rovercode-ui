@@ -4,8 +4,12 @@ import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
 
 import { updateValidAuth } from '@/actions/auth';
-import { changeProgramTags } from '@/actions/code';
 import ProgramTags from '../ProgramTags';
+
+jest.mock('@/actions/code');
+jest.mock('@/actions/tag');
+
+import { changeProgramTags } from '@/actions/code'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -31,7 +35,7 @@ describe('The ProgramTags component', () => {
         }],
       },
     });
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
   });
 
   test('renders on the page with no errors', () => {
@@ -60,7 +64,7 @@ describe('The ProgramTags component', () => {
         tags: [],
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     const wrapper = shallowWithIntl(
       <ProgramTags store={localStore} />,
       { context },
@@ -96,8 +100,8 @@ describe('The ProgramTags component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(<ProgramTags store={store} />, { context }).dive().dive().dive()
       .dive()
@@ -121,7 +125,7 @@ describe('The ProgramTags component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(<ProgramTags store={store} />, { context }).dive().dive().dive()
       .dive()

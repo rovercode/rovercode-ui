@@ -3,8 +3,11 @@ import { Redirect } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
-import { logout } from '@/actions/auth';
 import TopNav from '../TopNav';
+
+jest.mock('@/actions/auth');
+
+import { logout } from '@/actions/auth'; // eslint-disable-line import/first, import/order
 
 const cookies = new Cookies();
 const mockStore = configureStore();

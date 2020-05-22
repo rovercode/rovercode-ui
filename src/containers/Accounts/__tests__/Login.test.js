@@ -10,10 +10,13 @@ import MockAdapter from 'axios-mock-adapter';
 import configureStore from 'redux-mock-store';
 import jwtDecode from 'jwt-decode';
 
-import { updateValidAuth } from '@/actions/auth';
-import { updateUser } from '@/actions/user';
+import Login from '../Login'; // eslint-disable-line import/order
 
-import Login from '../Login';
+jest.mock('@/actions/auth');
+jest.mock('@/actions/user');
+
+import { updateValidAuth } from '@/actions/auth'; // eslint-disable-line import/first, import/order
+import { updateUser } from '@/actions/user'; // eslint-disable-line import/first, import/order
 
 const mockStore = configureStore();
 const store = mockStore();
@@ -49,7 +52,7 @@ test('Login mounts on the page with no errors', () => {
   expect(wrapper.find(Alert).exists()).toBe(false);
 });
 
-test('Login redirects to social api on button click', async () => {
+test('Login redirects to social api on button click', (done) => {
   const url = 'https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fsocial%2Fgoogle%2Fcallback';
   mock.reset();
   mock.onPost('/jwt/auth/social/google/auth-server/').reply(200, { url });
@@ -77,14 +80,15 @@ test('Login redirects to social api on button click', async () => {
     .dive()
     .dive();
 
-  await wrapper.instance().redirectToSocial(element);
-
-  expect(window.location.assign).toBeCalledWith(
-    'https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Faccounts%2Flogin%2Fcallback%2Fgoogle',
-  );
+  wrapper.instance().redirectToSocial(element).then(() => {
+    expect(window.location.assign).toBeCalledWith(
+      'https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Faccounts%2Flogin%2Fcallback%2Fgoogle',
+    );
+    done();
+  });
 });
 
-test('Login shows error message on api error', async () => {
+test('Login shows error message on api error', (done) => {
   mock.reset();
   mock.onPost('/jwt/auth/social/google/auth-server/').timeout();
   Object.defineProperty(window, 'location', {
@@ -110,14 +114,16 @@ test('Login shows error message on api error', async () => {
     .dive()
     .dive();
 
-  await wrapper.instance().redirectToSocial(element);
-  wrapper.update();
+  wrapper.instance().redirectToSocial(element).then(() => {
+    wrapper.update();
 
-  expect(wrapper.find(Alert).exists()).toBe(true);
-  expect(wrapper.find(AlertTitle).children().find(FormattedMessage).prop('defaultMessage')).toBe(
-    'There was an error initiating social login.',
-  );
-  expect(window.location.assign).not.toBeCalled();
+    expect(wrapper.find(Alert).exists()).toBe(true);
+    expect(wrapper.find(AlertTitle).children().find(FormattedMessage).prop('defaultMessage')).toBe(
+      'There was an error initiating social login.',
+    );
+    expect(window.location.assign).not.toBeCalled();
+    done();
+  });
 });
 
 test('Login shows error message on callback error', () => {
@@ -143,7 +149,7 @@ test('Login shows error message on callback error', () => {
   expect(wrapper.find(Alert).find('WithStyles(ForwardRef(Typography))').text()).toBe(localLocation.state.callbackError[0]);
 });
 
-test('Login redirects to root after basic login success', async () => {
+test('Login redirects to root after basic login success', (done) => {
   const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
   const username = 'admin';
   const password = 'password';
@@ -175,18 +181,22 @@ test('Login redirects to root after basic login success', async () => {
     },
   });
 
-  await wrapper.instance().basicLogin({ preventDefault: jest.fn() });
-  wrapper.update();
+  wrapper.instance().basicLogin({ preventDefault: jest.fn() }).then(() => {
+    wrapper.update();
 
-  expect(cookies.get('auth_jwt')).toBe(token);
-  expect(wrapper.find(Redirect).exists()).toBe(true);
-  expect(store.dispatch).toHaveBeenCalledWith(updateUser({ ...jwtDecode(token), isSocial: false }));
-  expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
+    expect(cookies.get('auth_jwt')).toBe(token);
+    expect(wrapper.find(Redirect).exists()).toBe(true);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      updateUser({ ...jwtDecode(token), isSocial: false }),
+    );
+    expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
 
-  cookies.remove('auth_jwt');
+    cookies.remove('auth_jwt');
+    done();
+  });
 });
 
-test('Login shows error message after basic login failure', async () => {
+test('Login shows error message after basic login failure', (done) => {
   const username = 'admin';
   const password = 'password';
 
@@ -215,12 +225,14 @@ test('Login shows error message after basic login failure', async () => {
     },
   });
 
-  await wrapper.instance().basicLogin({ preventDefault: jest.fn() });
-  wrapper.update();
+  wrapper.instance().basicLogin({ preventDefault: jest.fn() }).then(() => {
+    wrapper.update();
 
-  expect(wrapper.find(Alert).exists()).toBe(true);
-  expect(wrapper.find(AlertTitle).children().find(FormattedMessage).prop('defaultMessage')).toBe(
-    'Invalid username or password.',
-  );
-  expect(cookies.get('auth_jwt')).toBeUndefined();
+    expect(wrapper.find(Alert).exists()).toBe(true);
+    expect(wrapper.find(AlertTitle).children().find(FormattedMessage).prop('defaultMessage')).toBe(
+      'Invalid username or password.',
+    );
+    expect(cookies.get('auth_jwt')).toBeUndefined();
+    done();
+  });
 });

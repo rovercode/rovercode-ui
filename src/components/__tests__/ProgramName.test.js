@@ -5,8 +5,11 @@ import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
 
 import { updateValidAuth } from '@/actions/auth';
-import { changeName } from '@/actions/code';
 import ProgramName from '../ProgramName';
+
+jest.mock('@/actions/code');
+
+import { changeName } from '@/actions/code'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -23,7 +26,7 @@ describe('The ProgramName component', () => {
         isReadOnly: false,
       },
     });
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
   });
 
   test('renders on the page with no errors', () => {
@@ -105,8 +108,8 @@ describe('The ProgramName component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(<ProgramName store={store} />, { context }).dive();
     wrapper.dive().dive().dive().dive()
@@ -132,7 +135,7 @@ describe('The ProgramName component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(<ProgramName store={store} />, { context }).dive();
     wrapper.dive().dive().dive().dive()

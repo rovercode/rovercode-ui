@@ -49,7 +49,7 @@ class LoginCallback extends Component {
       })
       .catch((error) => {
         let errorMessage = null;
-        if (error.response) {
+        if (error.response && error.response.data) {
           errorMessage = error.response.data.non_field_errors;
         }
         this.setState({

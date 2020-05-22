@@ -7,10 +7,13 @@ import MockAdapter from 'axios-mock-adapter';
 import configureStore from 'redux-mock-store';
 import jwtDecode from 'jwt-decode';
 
-import { updateValidAuth } from '@/actions/auth';
-import { updateUser } from '@/actions/user';
+import LoginCallback from '../LoginCallback'; // eslint-disable-line import/order
 
-import LoginCallback from '../LoginCallback';
+jest.mock('@/actions/auth');
+jest.mock('@/actions/user');
+
+import { updateValidAuth } from '@/actions/auth'; // eslint-disable-line import/first, import/order
+import { updateUser } from '@/actions/user'; // eslint-disable-line import/first, import/order
 
 const mockStore = configureStore();
 const store = mockStore();
@@ -55,9 +58,11 @@ test('LoginCallback displays loader while loading', () => {
   expect(wrapper.find(Redirect).exists()).toBe(false);
 });
 
-test('LoginCallback redirects to login after failure', async () => {
+test('LoginCallback redirects to login after failure', (done) => {
   mock.reset();
-  mock.onPost('/jwt/auth/social/google/login/').timeout();
+  mock.onPost('/jwt/auth/social/google/login/').reply(503, {
+    non_field_errors: 'Service Unavailable',
+  });
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
   const cookiesWrapper = shallowWithIntl(
@@ -69,20 +74,22 @@ test('LoginCallback redirects to login after failure', async () => {
   const wrapper = cookiesWrapper.dive().dive().dive()
     .dive();
 
-  await wrapper.instance().componentDidMount();
-  wrapper.update();
+  wrapper.instance().componentDidMount().then(() => {
+    wrapper.update();
 
-  const redirect = wrapper.find(Redirect);
-  expect(redirect.exists()).toBe(true);
-  expect(redirect.prop('to')).toStrictEqual({
-    pathname: '/accounts/login',
-    state: { callbackError: null },
+    const redirect = wrapper.find(Redirect);
+    expect(redirect.exists()).toBe(true);
+    expect(redirect.prop('to')).toStrictEqual({
+      pathname: '/accounts/login',
+      state: { callbackError: 'Service Unavailable' },
+    });
+    expect(wrapper.find(CircularProgress).exists()).toBe(false);
+    expect(cookies.get('auth_jwt')).toBeUndefined();
+    done();
   });
-  expect(wrapper.find(CircularProgress).exists()).toBe(false);
-  expect(cookies.get('auth_jwt')).toBeUndefined();
 });
 
-test('LoginCallback redirects to root after success', async () => {
+test('LoginCallback redirects to root after success', (done) => {
   const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
   mock.reset();
   mock.onPost('/jwt/auth/social/google/login/').reply(200, {
@@ -98,14 +105,18 @@ test('LoginCallback redirects to root after success', async () => {
 
   const wrapper = cookiesWrapper.dive().dive().dive().dive();
 
-  await wrapper.instance().componentDidMount();
-  wrapper.update();
+  wrapper.instance().componentDidMount().then(() => {
+    wrapper.update();
 
-  const redirect = wrapper.find(Redirect);
-  expect(redirect.exists()).toBe(true);
-  expect(redirect.prop('to')).toBe('/');
-  expect(wrapper.find(CircularProgress).exists()).toBe(false);
-  expect(cookies.get('auth_jwt')).toBe(token);
-  expect(store.dispatch).toHaveBeenCalledWith(updateUser({ ...jwtDecode(token), isSocial: true }));
-  expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
+    const redirect = wrapper.find(Redirect);
+    expect(redirect.exists()).toBe(true);
+    expect(redirect.prop('to')).toBe('/');
+    expect(wrapper.find(CircularProgress).exists()).toBe(false);
+    expect(cookies.get('auth_jwt')).toBe(token);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      updateUser({ ...jwtDecode(token), isSocial: true }),
+    );
+    expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
+    done();
+  });
 });

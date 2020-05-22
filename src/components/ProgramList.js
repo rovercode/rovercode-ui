@@ -83,7 +83,7 @@ class ProgramList extends Component {
     const readOnly = program.dataset.owned === 'false';
 
 
-    fetchProgram(program.id).then(() => {
+    return fetchProgram(program.id).then(() => {
       changeReadOnly(readOnly);
       this.setState({
         programLoaded: true,
