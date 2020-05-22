@@ -239,7 +239,6 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         <Workspace
           allCookies={Object {}}
           changeExecutionState={[Function]}
-          changeReadOnly={[Function]}
           clearConsole={[Function]}
           code={
             Object {
@@ -357,9 +356,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           updateXmlCode={[Function]}
           writeToConsole={[Function]}
         >
-          <Styled(MuiBox)
-            m={1}
-          >
+          <Styled(MuiBox)>
             <div
               className="MuiBox-root MuiBox-root-2"
             >
@@ -612,7 +609,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                             style={
                               Object {
                                 "maxHeight": "1080px",
-                                "minHeight": "75vh",
+                                "minHeight": "80vh",
                               }
                             }
                           >
@@ -728,7 +725,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                               style={
                                 Object {
                                   "maxHeight": "1080px",
-                                  "minHeight": "75vh",
+                                  "minHeight": "80vh",
                                 }
                               }
                             >
@@ -737,7 +734,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                                 style={
                                   Object {
                                     "maxHeight": "1080px",
-                                    "minHeight": "75vh",
+                                    "minHeight": "80vh",
                                   }
                                 }
                               >
@@ -748,7 +745,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                                     style={
                                       Object {
                                         "bottom": "15%",
-                                        "left": "10%",
+                                        "left": "15%",
                                         "position": "absolute",
                                       }
                                     }
@@ -759,7 +756,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                                       style={
                                         Object {
                                           "bottom": "15%",
-                                          "left": "10%",
+                                          "left": "15%",
                                           "position": "absolute",
                                         }
                                       }
