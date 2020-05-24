@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -22,7 +21,7 @@ describe('The ConnectionHelp component', () => {
   });
 
   test('renders on the page with no errors', () => {
-    const wrapper = mount((
+    const wrapper = mountWithIntl((
       <Provider store={store}>
         <ConnectionHelp />
       </Provider>
@@ -33,7 +32,7 @@ describe('The ConnectionHelp component', () => {
   });
 
   test('handles opening and closing dialog', () => {
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ConnectionHelp store={store} />,
     ).find('ConnectionHelp').dive();
 
@@ -50,13 +49,16 @@ describe('The ConnectionHelp component', () => {
 
   test('handles redirect button', () => {
     store = mockStore({
+      user: {
+        // showConnectionHelpOnLogin: false, // TODO
+      },
       rover: {
         rover: {
           name: 'Jim',
         },
       },
     });
-    const wrapper = shallow(
+    const wrapper = shallowWithIntl(
       <ConnectionHelp store={store} />,
     ).find('ConnectionHelp').dive();
     expect(wrapper.find(Redirect).exists()).toBe(false);

@@ -15,7 +15,7 @@ test('PasswordReset renders on the page with no errors', () => {
   expect(wrapper.find(Alert).exists()).toBe(false);
 });
 
-test('PasswordReset displays form errors', async () => {
+test('PasswordReset displays form errors', (done) => {
   mock.reset();
   mock.onPost('/jwt/auth/password/reset/').reply(400, {
     email: [
@@ -24,16 +24,18 @@ test('PasswordReset displays form errors', async () => {
   });
   const wrapper = shallowWithIntl(<PasswordReset />).dive().dive();
 
-  await wrapper.instance().reset({ preventDefault: jest.fn() });
-  wrapper.update();
+  wrapper.instance().reset({ preventDefault: jest.fn() }).then(() => {
+    wrapper.update();
 
-  expect(wrapper.find(Alert).exists()).toBe(true);
-  expect(wrapper.find(ListItemText).length).toBe(1);
-  expect(wrapper.find(ListItemText).at(0).prop('children')).toBe('- This field may not be blank.');
-  expect(wrapper.find(TextField).at(0).prop('error')).toBeTruthy();
+    expect(wrapper.find(Alert).exists()).toBe(true);
+    expect(wrapper.find(ListItemText).length).toBe(1);
+    expect(wrapper.find(ListItemText).at(0).prop('children')).toBe('- This field may not be blank.');
+    expect(wrapper.find(TextField).at(0).prop('error')).toBeTruthy();
+    done();
+  });
 });
 
-test('PasswordReset displays success', async () => {
+test('PasswordReset displays success', (done) => {
   const email = 'admin@example.com';
 
   mock.reset();
@@ -50,10 +52,12 @@ test('PasswordReset displays success', async () => {
     },
   });
 
-  await wrapper.instance().reset({ preventDefault: jest.fn() });
-  wrapper.update();
+  wrapper.instance().reset({ preventDefault: jest.fn() }).then(() => {
+    wrapper.update();
 
-  expect(wrapper.find(Alert).exists()).toBe(true);
-  expect(wrapper.find(Alert).prop('children')).toBe('Password reset e-mail has been sent.');
-  expect(wrapper.find(TextField).at(0).prop('error')).toBeFalsy();
+    expect(wrapper.find(Alert).exists()).toBe(true);
+    expect(wrapper.find(Alert).prop('children')).toBe('Password reset e-mail has been sent.');
+    expect(wrapper.find(TextField).at(0).prop('error')).toBeFalsy();
+    done();
+  });
 });

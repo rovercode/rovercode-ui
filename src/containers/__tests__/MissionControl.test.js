@@ -37,7 +37,7 @@ describe('The MissionControl container', () => {
         commands: [],
       },
     });
-    store.dispatch = jest.fn(() => Promise.resolve({}));
+    store.dispatch = jest.fn().mockResolvedValue();
   });
 
   test('renders on the page with no errors', () => {

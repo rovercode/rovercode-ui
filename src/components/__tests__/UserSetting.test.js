@@ -9,8 +9,8 @@ let editUserUsername;
 
 describe('The UserSetting component', () => {
   beforeEach(() => {
-    editUserPassword = jest.fn(() => Promise.resolve({}));
-    editUserUsername = jest.fn(() => Promise.resolve({}));
+    editUserPassword = jest.fn().mockResolvedValue();
+    editUserUsername = jest.fn().mockResolvedValue();
   });
 
   test('renders on the page with no errors', () => {
@@ -48,7 +48,7 @@ describe('The UserSetting component', () => {
     expect(wrapper.find({ type: 'password' }).exists()).toBe(false);
   });
 
-  test('saves user username', async () => {
+  test('saves user username', (done) => {
     const user = {
       user_id: 1,
       username: 'testuser',
@@ -70,17 +70,18 @@ describe('The UserSetting component', () => {
       },
     });
     wrapper.update();
-    await wrapper.instance().saveUserUsername({ preventDefault: jest.fn() });
-
-    expect(wrapper.state('saveSuccess')).toBe(true);
-    expect(wrapper.state('usernameError')).toBeNull();
-    expect(wrapper.find(Redirect).exists()).toBe(true);
-    expect(wrapper.find(Redirect).prop('to')).toBe('/accounts/login');
-    expect(editUserPassword).not.toHaveBeenCalled();
-    expect(editUserUsername).toHaveBeenCalledWith('newuser');
+    wrapper.instance().saveUserUsername({ preventDefault: jest.fn() }).then(() => {
+      expect(wrapper.state('saveSuccess')).toBe(true);
+      expect(wrapper.state('usernameError')).toBeNull();
+      expect(wrapper.find(Redirect).exists()).toBe(true);
+      expect(wrapper.find(Redirect).prop('to')).toBe('/accounts/login');
+      expect(editUserPassword).not.toHaveBeenCalled();
+      expect(editUserUsername).toHaveBeenCalledWith('newuser');
+      done();
+    });
   });
 
-  test('saves user password', async () => {
+  test('saves user password', (done) => {
     const user = {
       user_id: 1,
       username: 'testuser',
@@ -108,18 +109,19 @@ describe('The UserSetting component', () => {
       },
     });
     wrapper.update();
-    await wrapper.instance().saveUserPassword({ preventDefault: jest.fn() });
-
-    expect(wrapper.state('saveSuccess')).toBe(true);
-    expect(wrapper.state('password1Error')).toBeNull();
-    expect(wrapper.state('password2Error')).toBeNull();
-    expect(wrapper.find(Redirect).exists()).toBe(true);
-    expect(wrapper.find(Redirect).prop('to')).toBe('/accounts/login');
-    expect(editUserUsername).not.toHaveBeenCalled();
-    expect(editUserPassword).toHaveBeenCalledWith('password');
+    wrapper.instance().saveUserPassword({ preventDefault: jest.fn() }).then(() => {
+      expect(wrapper.state('saveSuccess')).toBe(true);
+      expect(wrapper.state('password1Error')).toBeNull();
+      expect(wrapper.state('password2Error')).toBeNull();
+      expect(wrapper.find(Redirect).exists()).toBe(true);
+      expect(wrapper.find(Redirect).prop('to')).toBe('/accounts/login');
+      expect(editUserUsername).not.toHaveBeenCalled();
+      expect(editUserPassword).toHaveBeenCalledWith('password');
+      done();
+    });
   });
 
-  test('errors on password mismatch', async () => {
+  test('errors on password mismatch', () => {
     const user = {
       user_id: 1,
       username: 'testuser',
@@ -147,7 +149,7 @@ describe('The UserSetting component', () => {
       },
     });
     wrapper.update();
-    await wrapper.instance().saveUserPassword({ preventDefault: jest.fn() });
+    wrapper.instance().saveUserPassword({ preventDefault: jest.fn() });
 
     expect(wrapper.state('saveSuccess')).toBe(false);
     expect(wrapper.state('password1Error')).toEqual(['Passwords must match']);
@@ -158,7 +160,7 @@ describe('The UserSetting component', () => {
     expect(editUserPassword).not.toHaveBeenCalled();
   });
 
-  test('displays error on username save error', async () => {
+  test('displays error on username save error', (done) => {
     const user = {
       user_id: 1,
       username: 'testuser',
@@ -172,7 +174,7 @@ describe('The UserSetting component', () => {
         username: ['Username taken'],
       },
     };
-    editUserUsername = jest.fn(() => Promise.reject(error));
+    editUserUsername = jest.fn().mockRejectedValue(error);
     const wrapper = shallowWithIntl(
       <UserSetting
         user={user}
@@ -181,18 +183,19 @@ describe('The UserSetting component', () => {
       />,
     ).dive().dive();
 
-    await wrapper.instance().saveUserUsername({ preventDefault: jest.fn() });
-
-    expect(wrapper.state('saveSuccess')).toBe(false);
-    expect(wrapper.state('usernameError')).toEqual(['Username taken']);
-    expect(wrapper.find(Alert).exists()).toBe(true);
-    expect(wrapper.find(Alert).last().prop('severity')).toBe('error');
-    expect(wrapper.find(TextField).first().prop('error')).toBe(true);
-    expect(wrapper.find(TextField).at(1).prop('error')).toBe(false);
-    expect(wrapper.find(TextField).at(2).prop('error')).toBe(false);
+    wrapper.instance().saveUserUsername({ preventDefault: jest.fn() }).then(() => {
+      expect(wrapper.state('saveSuccess')).toBe(false);
+      expect(wrapper.state('usernameError')).toEqual(['Username taken']);
+      expect(wrapper.find(Alert).exists()).toBe(true);
+      expect(wrapper.find(Alert).last().prop('severity')).toBe('error');
+      expect(wrapper.find(TextField).first().prop('error')).toBe(true);
+      expect(wrapper.find(TextField).at(1).prop('error')).toBe(false);
+      expect(wrapper.find(TextField).at(2).prop('error')).toBe(false);
+      done();
+    });
   });
 
-  test('displays error on password save error', async () => {
+  test('displays error on password save error', (done) => {
     const user = {
       user_id: 1,
       username: 'testuser',
@@ -207,7 +210,7 @@ describe('The UserSetting component', () => {
         new_password2: ['Too short'],
       },
     };
-    editUserPassword = jest.fn(() => Promise.reject(error));
+    editUserPassword = jest.fn().mockRejectedValue(error);
     const wrapper = shallowWithIntl(
       <UserSetting
         user={user}
@@ -216,15 +219,16 @@ describe('The UserSetting component', () => {
       />,
     ).dive().dive();
 
-    await wrapper.instance().saveUserPassword({ preventDefault: jest.fn() });
-
-    expect(wrapper.state('saveSuccess')).toBe(false);
-    expect(wrapper.state('password1Error')).toEqual(['Too short']);
-    expect(wrapper.state('password2Error')).toEqual(['Too short']);
-    expect(wrapper.find(Alert).exists()).toBe(true);
-    expect(wrapper.find(Alert).last().prop('severity')).toBe('error');
-    expect(wrapper.find(TextField).first().prop('error')).toBe(false);
-    expect(wrapper.find(TextField).at(1).prop('error')).toBe(true);
-    expect(wrapper.find(TextField).at(2).prop('error')).toBe(true);
+    wrapper.instance().saveUserPassword({ preventDefault: jest.fn() }).then(() => {
+      expect(wrapper.state('saveSuccess')).toBe(false);
+      expect(wrapper.state('password1Error')).toEqual(['Too short']);
+      expect(wrapper.state('password2Error')).toEqual(['Too short']);
+      expect(wrapper.find(Alert).exists()).toBe(true);
+      expect(wrapper.find(Alert).last().prop('severity')).toBe('error');
+      expect(wrapper.find(TextField).first().prop('error')).toBe(false);
+      expect(wrapper.find(TextField).at(1).prop('error')).toBe(true);
+      expect(wrapper.find(TextField).at(2).prop('error')).toBe(true);
+      done();
+    });
   });
 });

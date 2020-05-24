@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
 import { EXECUTION_STOP } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import RoverConnection from '../RoverConnection';
@@ -35,12 +34,12 @@ describe('The RoverConnection component', () => {
     changeExecutionState = jest.fn();
     changeLeftSensorState = jest.fn();
     changeRightSensorState = jest.fn();
-    connectToRover = jest.fn(() => Promise.resolve({}));
+    connectToRover = jest.fn().mockResolvedValue();
     disconnectFromRover = jest.fn();
-    scanForRover = jest.fn(() => Promise.resolve({ value: rover }));
+    scanForRover = jest.fn().mockResolvedValue({ value: rover });
     write = jest.fn();
 
-    wrapper = shallow(
+    wrapper = shallowWithIntl(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -56,7 +55,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('renders disconnect button when connected', () => {
-    wrapper = mount(
+    wrapper = mountWithIntl(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -78,7 +77,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('renders connect button when not connected', () => {
-    wrapper = mount(
+    wrapper = mountWithIntl(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -99,7 +98,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('renders disabled connect button when on unsupported platform', () => {
-    wrapper = mount(
+    wrapper = mountWithIntl(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -123,7 +122,7 @@ describe('The RoverConnection component', () => {
   });
 
   test('should set and clear menu anchor element when menu is opening and closing', () => {
-    wrapper = shallow(
+    wrapper = shallowWithIntl(
       <RoverConnection
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
@@ -317,12 +316,13 @@ describe('The RoverConnection component', () => {
     expect(write).toHaveBeenCalledWith('Dew Point Sensor - 24 C');
   });
 
-  test('connects to rover', async () => {
-    await wrapper.instance().connect();
-
-    expect(scanForRover).toHaveBeenCalled();
-    expect(rover.addEventListener).toHaveBeenCalled();
-    expect(connectToRover).toHaveBeenCalledWith(rover, wrapper.instance().onMessage);
+  test('connects to rover', (done) => {
+    wrapper.instance().connect().then(() => {
+      expect(scanForRover).toHaveBeenCalled();
+      expect(rover.addEventListener).toHaveBeenCalled();
+      expect(connectToRover).toHaveBeenCalledWith(rover, wrapper.instance().onMessage);
+      done();
+    });
   });
 
   test('disconnects from rover', () => {

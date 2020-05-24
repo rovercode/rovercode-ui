@@ -20,7 +20,7 @@ describe('The RoverConnectionContainer', () => {
         name: 'Sparky',
       },
     });
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
     wrapper = shallow(<RoverConnection store={store} />).dive();
   });
 
