@@ -8,6 +8,8 @@ global.TextEncoder = TextEncoder;
 
 global.PXT_HEX_URL = 'https://some-url';
 
+global.LOGGER_ENDPOINT = 'https://some-sumo-url/rovercode';
+
 const mockDevice = { name: 'Sparky' };
 const mockBluetooth = {
   requestDevice: jest.fn(() => mockDevice),

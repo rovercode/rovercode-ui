@@ -1,16 +1,20 @@
 import SumoLogger from 'sumo-logger';
 
-const opts = {
-  endpoint: LOGGER_ENDPOINT, // eslint-disable-line no-undef
-  returnPromise: true,
-};
 
-class Logger {
-  constructor() {
+export class Logger {
+  constructor(endpoint) {
+    if (!endpoint) {
+      this.logger = null;
+      return;
+    }
+    const opts = {
+      endpoint,
+      returnPromise: true,
+    };
     this.logger = new SumoLogger(opts);
   }
 
-  log = (message) => this.logger.log(message)
+  log = (message) => (this.logger ? this.logger.log(message) : null);
 }
 
-export default new Logger();
+export default new Logger(LOGGER_ENDPOINT); // eslint-disable-line no-undef
