@@ -161,7 +161,7 @@ class MissionControl extends Component {
                         action={(
                           <Button color="primary" variant="contained" size="huge" onClick={this.remix}>
                             <FormattedMessage
-                              id="app.workspace.remix"
+                              id="app.mission_control.remix"
                               description="Button label to copy other user's program for this user to edit"
                               defaultMessage="Remix"
                             />
@@ -172,7 +172,7 @@ class MissionControl extends Component {
                           {`${readOnlyTitle} ${code.ownerName}.`}
                         </AlertTitle>
                         <FormattedMessage
-                          id="app.workspace.read_only_content"
+                          id="app.mission_control.read_only_content"
                           description="Informs the user that this program is another user's and cannot be edited"
                           defaultMessage="Remix it to make your own copy."
                         />

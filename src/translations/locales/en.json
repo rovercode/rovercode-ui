@@ -32,7 +32,6 @@
   "app.login.login": "Welcome! To use Rovercode, you need an account for saving and sharing your work.",
   "app.login.password": "Password",
   "app.login.sign_in": "Sign In",
-  "app.login.social": "You can sign up / sign in with one of your existing third-party accounts.",
   "app.login.social_callback_error": "There was an error creating an account using social provider.",
   "app.login.social_contact_1": "Contact",
   "app.login.social_contact_2": "for help with this issue.",
@@ -42,9 +41,11 @@
   "app.login_callback.logging_in": "Logging in...",
   "app.mission_control.console": "Debug Console",
   "app.mission_control.details": "Project Details",
-  "app.mission_control.edit": "Edit Project",
+  "app.mission_control.edit_details": "Edit Project Details",
+  "app.mission_control.remix": "This program is by ",
   "app.mission_control.sensors": "Sensors",
   "app.mission_control.show_code": "View JavaScript",
+  "app.mission_control.view_details": "View Project Details",
   "app.password_reset.email": "Enter your e-mail address below, and well send you an e-mail allowing you to reset it.",
   "app.password_reset.email_placeholder": "Email",
   "app.password_reset.header": "Password Reset",
@@ -102,6 +103,5 @@
   "app.user_setting.verify": "Verify:",
   "app.workspace.console": "console started",
   "app.workspace.read_only_content": "Remix it to make your own copy.",
-  "app.workspace.read_only_header": "This program is by ",
   "app.workspace.remix": "Remix"
 }
