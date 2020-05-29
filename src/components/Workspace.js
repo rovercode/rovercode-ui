@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Box, Button, Grid } from '@material-ui/core';
-import { Alert, AlertTitle } from '@material-ui/lab';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { Box, Grid } from '@material-ui/core';
+import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
@@ -17,7 +16,6 @@ import {
   changeExecutionState as actionChangeExecutionState,
   saveProgram as actionSaveProgram,
   createProgram as actionCreateProgram,
-  changeReadOnly as actionChangeReadOnly,
   fetchProgram as actionFetchProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
@@ -28,7 +26,6 @@ import { append, clear } from '@/actions/console';
 import { send } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
-import logger from '@/utils/logger';
 
 const mapStateToProps = ({ code, rover, sensor }) => ({ code, rover, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -37,7 +34,6 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   writeToConsole: (message) => dispatch(append(message)),
   clearConsole: () => dispatch(clear()),
   updateXmlCode: (xmlCode) => dispatch(actionUpdateXmlCode(xmlCode)),
-  changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   sendToRover: (channel, message) => dispatch(send(channel, message)),
   saveProgram: (id, content, name, lesson) => dispatch(
     actionSaveProgram(id, content, name, lesson, authHeader(cookies)),
@@ -188,6 +184,10 @@ class Workspace extends Component {
     const { code: nextCode, sensor, rover: nextRover } = this.props;
 
     this.updateSensorStateCache(sensor.left, sensor.right);
+
+    if (currentCode && currentCode.isReadOnly && nextCode && !nextCode.isReadOnly) {
+      this.createWorkspace();
+    }
 
     if (currentRover && currentRover.isSending && nextRover && !nextRover.isSending) {
       this.runCode();
@@ -437,71 +437,20 @@ class Workspace extends Component {
     this.updateCode();
   }
 
-  remix = () => {
-    const {
-      code,
-      changeReadOnly,
-      createProgram,
-      fetchProgram,
-      saveProgram,
-    } = this.props;
-
-    // Need to fetch the program again since the current code has editable="false" tags
-    return Promise.all([fetchProgram(code.id), createProgram(code.name)])
-      .then(([fetchData, createData]) => {
-        logger.log(JSON.stringify({
-          event: 'remix', userId: createData.user_id, sourceProgramId: code.id, newProgramId: createData.value.id,
-        }));
-        return saveProgram(createData.value.id, fetchData.value.content,
-          createData.value.name, fetchData.value.reference_of);
-      })
-      .then(() => {
-        changeReadOnly(false);
-        this.createWorkspace();
-      });
-  }
 
   render() {
     const { children, code, rover } = this.props;
 
     return (
-      <Box m={1}>
+      <Box>
         <Grid container direction="column" justify="center" alignItems="center">
-          {
-          code.isReadOnly ? (
-            <Grid item>
-              <Alert
-                severity="info"
-                action={(
-                  <Button color="primary" variant="contained" size="huge" onClick={this.remix}>
-                    <FormattedMessage
-                      id="app.workspace.remix"
-                      description="Button label to copy other user's program for this user to edit"
-                      defaultMessage="Remix"
-                    />
-                  </Button>
-                )}
-              >
-                <AlertTitle>
-                  <FormattedMessage
-                    id="app.workspace.read_only_header"
-                    description="Header to indicate viewing in read only mode"
-                    defaultMessage="Read Only View"
-                  />
-                </AlertTitle>
-                <FormattedMessage
-                  id="app.workspace.read_only_content"
-                  description="Informs the user that this program is another user's and cannot be edited"
-                  defaultMessage="You are viewing another user's program in a read-only view."
-                />
-              </Alert>
-            </Grid>
-          ) : (null)
-        }
           <Grid item container direction="column" alignItems="stretch">
-            <Grid item style={{ minHeight: code.isReadOnly ? '65vh' : '75vh', maxHeight: '1080px' }}>
+            <Grid item style={{ minHeight: code.isReadOnly ? '76vh' : '80vh', maxHeight: '1080px' }}>
               <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
-                <Box zIndex="modal" style={{ position: 'absolute', bottom: '15%', left: '10%' }}>
+                <Box
+                  zIndex="modal"
+                  style={{ position: 'absolute', bottom: '15%', left: code.isReadOnly ? '5%' : '15%' }}
+                >
                   {
                     React.Children.map(children, (child) => React.cloneElement(child, {
                       isConnected: !!rover.rover,
@@ -550,8 +499,6 @@ Workspace.propTypes = {
   createProgram: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   sendToRover: PropTypes.func.isRequired,
-  changeReadOnly: PropTypes.func.isRequired,
-  fetchProgram: PropTypes.func.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,

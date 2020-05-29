@@ -1,5 +1,4 @@
 import React from 'react';
-import { Alert } from '@material-ui/lab';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
@@ -13,7 +12,6 @@ jest.mock('@/actions/code');
 jest.mock('@/actions/rover');
 
 import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first, import/order
-import SumoLogger from 'sumo-logger'; // eslint-disable-line import/first, import/order
 import { // eslint-disable-line import/first
   changeExecutionState,
   createProgram,
@@ -105,7 +103,6 @@ describe('The Workspace component', () => {
     });
     wrapper.instance().updateJsCode();
     expect(Blockly.JavaScript.STATEMENT_PREFIX).toEqual('highlightBlock(%1);\n');
-    expect(wrapper.find(Alert).exists()).toBe(false);
   });
 
   test('goes to running state on state change', () => {
@@ -282,6 +279,29 @@ describe('The Workspace component', () => {
     expect(store.dispatch).toHaveBeenCalledWith(saveProgram());
   });
 
+  test('recreates workspace when no longer read-only', () => {
+    store.getState().code.isReadOnly = true;
+    const workspace = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    workspace.instance().createWorkspace = jest.fn();
+    workspace.setProps({
+      code: {
+        isReadOnly: false,
+      },
+    });
+    workspace.update();
+
+    expect(workspace.instance().createWorkspace).toHaveBeenCalled();
+  });
+
   test('updates javascript code when read only', () => {
     const localStore = mockStore({
       code: {
@@ -312,7 +332,6 @@ describe('The Workspace component', () => {
 
     expect(workspace.instance().updateJsCode).toHaveBeenCalled();
     expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
-    expect(workspace.find(Alert).exists()).toBe(true);
   });
 
   test('runs code after waking if running', () => {
@@ -948,122 +967,6 @@ describe('The Workspace component', () => {
     wrapper.instance().sendToRover('command');
 
     expect(store.dispatch).not.toHaveBeenCalled();
-  });
-
-  test('Remixes a lesson reference program', (done) => {
-    const localStore = mockStore({
-      code: {
-        id: 1,
-        name: 'test program',
-        xmlCode: '<xml></xml>',
-      },
-      sensor: {
-        left: NOT_COVERED,
-        right: NOT_COVERED,
-      },
-    });
-    localStore.dispatch = jest.fn().mockResolvedValue();
-    const mockCreateProgram = jest.fn().mockResolvedValue({
-      value: {
-        id: 2,
-        name: 'test program',
-        lesson: 50,
-      },
-    });
-    const mockFetchProgram = jest.fn().mockResolvedValue({
-      value: {
-        id: 1,
-        name: 'test program',
-        content: '<xml></xml>',
-        reference_of: 50,
-      },
-    });
-    const mockSaveProgram = jest.fn().mockResolvedValue({
-      value: {
-        name: 'test program',
-      },
-    });
-    const workspace = shallowWithIntl(
-      <Workspace store={localStore}>
-        <div />
-      </Workspace>, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    workspace.setProps({
-      createProgram: mockCreateProgram,
-      fetchProgram: mockFetchProgram,
-      saveProgram: mockSaveProgram,
-    });
-
-    workspace.instance().remix().then(() => {
-      expect(mockFetchProgram).toHaveBeenCalledWith(1);
-      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
-      expect(mockSaveProgram).toHaveBeenCalledWith(2, '<xml></xml>', 'test program', 50);
-      expect(SumoLogger.mock.instances[0].log).toHaveBeenCalledWith('{"event":"remix","sourceProgramId":1,"newProgramId":2}');
-      done();
-    });
-  });
-
-  test('Remixes a program', (done) => {
-    const localStore = mockStore({
-      code: {
-        id: 1,
-        name: 'test program',
-        xmlCode: '<xml></xml>',
-      },
-      sensor: {
-        left: NOT_COVERED,
-        right: NOT_COVERED,
-      },
-    });
-    localStore.dispatch = jest.fn().mockResolvedValue();
-    const mockCreateProgram = jest.fn().mockResolvedValue({
-      value: {
-        id: 2,
-        name: 'test program',
-        lesson: null,
-      },
-    });
-    const mockFetchProgram = jest.fn().mockResolvedValue({
-      value: {
-        id: 1,
-        name: 'test program',
-        content: '<xml></xml>',
-        reference_of: null,
-      },
-    });
-    const mockSaveProgram = jest.fn().mockResolvedValue({
-      value: {
-        name: 'test program',
-      },
-    });
-    const workspace = shallowWithIntl(
-      <Workspace store={localStore}>
-        <div />
-      </Workspace>, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    workspace.setProps({
-      createProgram: mockCreateProgram,
-      fetchProgram: mockFetchProgram,
-      saveProgram: mockSaveProgram,
-    });
-
-    workspace.instance().remix().then(() => {
-      expect(mockFetchProgram).toHaveBeenCalledWith(1);
-      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
-      expect(mockSaveProgram).toHaveBeenCalledWith(2, '<xml></xml>', 'test program', null);
-      expect(SumoLogger.mock.instances[0].log).toHaveBeenCalledWith('{"event":"remix","sourceProgramId":1,"newProgramId":2}');
-      done();
-    });
   });
 
   test('Replaces blockly if exists', () => {
