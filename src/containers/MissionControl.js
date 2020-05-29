@@ -96,7 +96,7 @@ class MissionControl extends Component {
     } = this.state;
 
     const readOnlyTitle = intl.formatMessage({
-      id: 'app.mission_control.remix',
+      id: 'app.mission_control.program_owner',
       description: 'Label when naming program\'s author',
       defaultMessage: 'This program is by ',
     });

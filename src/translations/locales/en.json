@@ -42,6 +42,8 @@
   "app.mission_control.console": "Debug Console",
   "app.mission_control.details": "Project Details",
   "app.mission_control.edit_details": "Edit Project Details",
+  "app.mission_control.program_owner": "This program is by ",
+  "app.mission_control.read_only_content": "Remix it to make your own copy.",
   "app.mission_control.remix": "This program is by ",
   "app.mission_control.sensors": "Sensors",
   "app.mission_control.show_code": "View JavaScript",
@@ -101,7 +103,5 @@
   "app.user_setting.username": "Username:",
   "app.user_setting.username_header": "Change Username",
   "app.user_setting.verify": "Verify:",
-  "app.workspace.console": "console started",
-  "app.workspace.read_only_content": "Remix it to make your own copy.",
-  "app.workspace.remix": "Remix"
+  "app.workspace.console": "console started"
 }
