@@ -19,6 +19,7 @@ import AuthApi from './utils/auth-api';
 
 import NotFound from './containers/Global/NotFound';
 import ProgramList from './containers/ProgramList';
+import CourseList from './containers/CourseList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 import UserSetting from './containers/UserSetting';
@@ -93,6 +94,7 @@ render(
               <ProtectedRoute exact path="/" component={ProgramList} />
               <ProtectedRoute exact path="/programs/community" component={ProgramList} />
               <ProtectedRoute exact path="/programs/mine" component={() => <ProgramList owned />} />
+              <ProtectedRoute exact path="/courses" component={CourseList} />
               <ProtectedRoute exact path="/mission-control" component={MissionControl} />
               <ProtectedRoute exact path="/user/settings" component={UserSetting} />
               <Route component={NotFound} />

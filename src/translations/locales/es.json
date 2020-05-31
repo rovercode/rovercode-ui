@@ -22,6 +22,8 @@
   "app.control.run": "Ejecutar",
   "app.control.step": "Avanzar",
   "app.control.stop": "Parar",
+  "app.course_list.search": "Search courses",
+  "app.course_list.title": "Courses",
   "app.global.not_exist": "Perdón, la página que estás buscando no existe..",
   "app.login.account_question": "Ya tienes cuenta de Rovercode? Iniciar sesión aquí:",
   "app.login.button_github": "Iniciar sesión con GitHub",
