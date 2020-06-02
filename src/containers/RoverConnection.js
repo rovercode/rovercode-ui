@@ -11,6 +11,7 @@ import {
 import {
   changeLeftSensorState as actionChangeLeftSensorState,
   changeRightSensorState as actionChangeRightSensorState,
+  changeLightSensorReadings as actionChangeLightSensorReadings,
 } from '@/actions/sensor';
 import RoverConnection from '@/components/RoverConnection';
 
@@ -19,6 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
   changeExecutionState: (state) => dispatch(actionChangeExecutionState(state)),
   changeLeftSensorState: (state) => dispatch(actionChangeLeftSensorState(state)),
   changeRightSensorState: (state) => dispatch(actionChangeRightSensorState(state)),
+  changeLightSensorReadings: (leftReading, rightReading) => dispatch(
+    actionChangeLightSensorReadings(leftReading, rightReading),
+  ),
   connectToRover: (rover, onMessage) => dispatch(roverConnect(rover, onMessage)),
   disconnectFromRover: (rover) => dispatch(roverDisconnect(rover)),
   scanForRover: () => dispatch(roverScan()),

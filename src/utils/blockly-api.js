@@ -83,6 +83,14 @@ class BlocklyApi {
     interpreter.setProperty(scope, 'getSensorCovered',
       interpreter.createNativeFunction(wrapper));
 
+    // Add get light sensor API function
+    wrapper = (sensor) => {
+      const sensorReading = this.sensorStateCache[`${sensor}_LIGHT`];
+      return interpreter.createPrimitive(sensorReading);
+    };
+    interpreter.setProperty(scope, 'getLightSensorValue',
+      interpreter.createNativeFunction(wrapper));
+
     // Add continue API function
     wrapper = (lengthInMs) => {
       this.beginSleep(lengthInMs);

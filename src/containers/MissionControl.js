@@ -27,13 +27,14 @@ import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
 import Indicator from '@/components/Indicator';
+import NumericSensorReadout from '@/components/NumericSensorReadout';
 import ProgramName from '@/components/ProgramName';
 import ProgramTags from '@/components/ProgramTags';
 import Workspace from '@/components/Workspace';
 import { checkAuthError, authHeader } from '@/actions/auth';
 import { changeReadOnly as actionChangeReadOnly, remixProgram as actionRemixProgram } from '@/actions/code';
 
-const mapStateToProps = ({ code }) => ({ code });
+const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   remixProgram: (id) => dispatch(actionRemixProgram(id, authHeader(cookies)))
@@ -68,6 +69,7 @@ class MissionControl extends Component {
       intl,
       location,
       code,
+      sensor,
     } = this.props;
 
     const {
@@ -170,12 +172,12 @@ class MissionControl extends Component {
                         defaultMessage="View Project Details"
                       />
                     ) : (
-                      <FormattedMessage
-                        id="app.mission_control.edit_details"
-                        description="Button to edit the project details"
-                        defaultMessage="Edit Project Details"
-                      />
-                    )
+                        <FormattedMessage
+                          id="app.mission_control.edit_details"
+                          description="Button to edit the project details"
+                          defaultMessage="Edit Project Details"
+                        />
+                      )
                   }
                 </Button>
               </Grid>
@@ -202,6 +204,20 @@ class MissionControl extends Component {
                   <WideBox p={2} border={1} borderRadius="borderRadius" borderColor="grey.500">
                     <Indicator />
                   </WideBox>
+                </ExpansionPanelDetails>
+                <ExpansionPanelDetails>
+                  <NumericSensorReadout
+                    title="Left Light Sensor"
+                    reading={sensor.leftLightSensorReading}
+                    maxReading="1023"
+                  />
+                </ExpansionPanelDetails>
+                <ExpansionPanelDetails>
+                  <NumericSensorReadout
+                    title="Right Light Sensor"
+                    reading={sensor.rightLightSensorReading}
+                    maxReading="1023"
+                  />
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             </Grid>
@@ -256,6 +272,10 @@ MissionControl.propTypes = {
     name: PropTypes.string,
     isReadOnly: PropTypes.bool,
     ownerName: PropTypes.string,
+  }).isRequired,
+  sensor: PropTypes.shape({
+    leftLightSensorReading: PropTypes.number,
+    rightLightSensorReading: PropTypes.number,
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,
