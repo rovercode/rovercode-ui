@@ -14,6 +14,7 @@ jest.mock('@/components/CodeViewer', () => () => <div />);
 jest.mock('@/components/Console', () => () => <div />);
 jest.mock('@/components/Control', () => () => <div />);
 jest.mock('@/components/Indicator', () => () => <div />);
+jest.mock('@/components/NumericSensorReadout', () => () => <div />);
 jest.mock('@/components/ProgramName', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
 jest.mock('@/actions/code');
@@ -37,6 +38,10 @@ describe('The MissionControl container', () => {
         id: 123,
         name: 'Some Program',
         tags: [],
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
       },
       rover: {
         isFetching: false,
@@ -97,6 +102,10 @@ describe('The MissionControl container', () => {
         ownerName: 'phil',
         isReadOnly: false,
       },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
     wrapper = shallowWithIntl(
@@ -130,6 +139,10 @@ describe('The MissionControl container', () => {
         name: 'test program',
         ownerName: 'phil',
         isReadOnly: true,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
       },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
@@ -199,6 +212,10 @@ describe('The MissionControl container', () => {
         xmlCode: '<xml></xml>',
         isReadOnly: true,
       },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
     const mockChangeReadOnly = jest.fn();
@@ -248,6 +265,10 @@ describe('The MissionControl container', () => {
         ownerName: 'phil',
         xmlCode: '<xml></xml>',
         isReadOnly: true,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
       },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();

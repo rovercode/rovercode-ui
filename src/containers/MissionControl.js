@@ -172,12 +172,12 @@ class MissionControl extends Component {
                         defaultMessage="View Project Details"
                       />
                     ) : (
-                        <FormattedMessage
-                          id="app.mission_control.edit_details"
-                          description="Button to edit the project details"
-                          defaultMessage="Edit Project Details"
-                        />
-                      )
+                      <FormattedMessage
+                        id="app.mission_control.edit_details"
+                        description="Button to edit the project details"
+                        defaultMessage="Edit Project Details"
+                      />
+                    )
                   }
                 </Button>
               </Grid>
@@ -209,14 +209,14 @@ class MissionControl extends Component {
                   <NumericSensorReadout
                     title="Left Light Sensor"
                     reading={sensor.leftLightSensorReading}
-                    maxReading="1023"
+                    maxReading={1023}
                   />
                 </ExpansionPanelDetails>
                 <ExpansionPanelDetails>
                   <NumericSensorReadout
                     title="Right Light Sensor"
                     reading={sensor.rightLightSensorReading}
-                    maxReading="1023"
+                    maxReading={1023}
                   />
                 </ExpansionPanelDetails>
               </ExpansionPanel>

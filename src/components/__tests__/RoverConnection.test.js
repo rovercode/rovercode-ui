@@ -7,6 +7,7 @@ import RoverConnection from '../RoverConnection';
 let changeExecutionState;
 let changeLeftSensorState;
 let changeRightSensorState;
+let changeLightSensorReadings;
 let connectToRover;
 let disconnectFromRover;
 let scanForRover;
@@ -34,6 +35,7 @@ describe('The RoverConnection component', () => {
     changeExecutionState = jest.fn();
     changeLeftSensorState = jest.fn();
     changeRightSensorState = jest.fn();
+    changeLightSensorReadings = jest.fn();
     connectToRover = jest.fn().mockResolvedValue();
     disconnectFromRover = jest.fn();
     scanForRover = jest.fn().mockResolvedValue({ value: rover });
@@ -44,6 +46,7 @@ describe('The RoverConnection component', () => {
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        changeLightSensorReadings={changeLightSensorReadings}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -60,6 +63,7 @@ describe('The RoverConnection component', () => {
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        changeLightSensorReadings={changeLightSensorReadings}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -82,6 +86,7 @@ describe('The RoverConnection component', () => {
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        changeLightSensorReadings={changeLightSensorReadings}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -103,6 +108,7 @@ describe('The RoverConnection component', () => {
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        changeLightSensorReadings={changeLightSensorReadings}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -127,6 +133,7 @@ describe('The RoverConnection component', () => {
         changeExecutionState={changeExecutionState}
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
+        changeLightSensorReadings={changeLightSensorReadings}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -155,11 +162,9 @@ describe('The RoverConnection component', () => {
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
-    expect(write).toHaveBeenCalledWith('Light Sensor - L:600 R:600');
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
-    write.mockReset();
 
     wrapper.instance().onMessage({
       target: {
@@ -169,11 +174,9 @@ describe('The RoverConnection component', () => {
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
-    expect(write).toHaveBeenCalledWith('Light Sensor - L:100 R:600');
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
-    write.mockReset();
 
     wrapper.instance().onMessage({
       target: {
@@ -183,11 +186,9 @@ describe('The RoverConnection component', () => {
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
-    expect(write).toHaveBeenCalledWith('Light Sensor - L:100 R:100');
 
     changeRightSensorState.mockReset();
     changeLeftSensorState.mockReset();
-    write.mockReset();
 
     wrapper.instance().onMessage({
       target: {
@@ -197,7 +198,6 @@ describe('The RoverConnection component', () => {
 
     expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
-    expect(write).toHaveBeenCalledWith('Light Sensor - L:600 R:100');
   });
 
   test('outputs error on unknown message', () => {

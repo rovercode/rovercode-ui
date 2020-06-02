@@ -4,6 +4,7 @@ exports[`The RoverConnection component renders connect button when not connected
 <RoverConnection
   changeExecutionState={[MockFunction]}
   changeLeftSensorState={[MockFunction]}
+  changeLightSensorReadings={[MockFunction]}
   changeRightSensorState={[MockFunction]}
   connectToRover={[MockFunction]}
   disconnectFromRover={[MockFunction]}
@@ -408,6 +409,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
 <RoverConnection
   changeExecutionState={[MockFunction]}
   changeLeftSensorState={[MockFunction]}
+  changeLightSensorReadings={[MockFunction]}
   changeRightSensorState={[MockFunction]}
   connectToRover={[MockFunction]}
   disconnectFromRover={[MockFunction]}
@@ -873,6 +875,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
 <RoverConnection
   changeExecutionState={[MockFunction]}
   changeLeftSensorState={[MockFunction]}
+  changeLightSensorReadings={[MockFunction]}
   changeRightSensorState={[MockFunction]}
   connectToRover={[MockFunction]}
   disconnectFromRover={[MockFunction]}

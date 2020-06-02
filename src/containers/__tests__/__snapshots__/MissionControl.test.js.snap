@@ -170,7 +170,17 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
               },
             }
           }
+<<<<<<< HEAD
           remixProgram={[Function]}
+=======
+          saveProgram={[Function]}
+          sensor={
+            Object {
+              "leftLightSensorReading": -1,
+              "rightLIghtSensorReading": -2,
+            }
+          }
+>>>>>>> Connect light sensors
           store={
             Object {
               "dispatch": [MockFunction],
@@ -2121,6 +2131,51 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                               </div>
                                                             </Styled(MuiBox)>
                                                           </WithStyles(Styled(MuiBox))>
+                                                        </div>
+                                                      </ForwardRef(ExpansionPanelDetails)>
+                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                      key=".2"
+                                                    >
+                                                      <ForwardRef(ExpansionPanelDetails)
+                                                        classes={
+                                                          Object {
+                                                            "root": "MuiExpansionPanelDetails-root",
+                                                          }
+                                                        }
+                                                      >
+                                                        <div
+                                                          className="MuiExpansionPanelDetails-root"
+                                                        >
+                                                          <Component
+                                                            maxReading={1023}
+                                                            reading={-1}
+                                                            title="Left Light Sensor"
+                                                          >
+                                                            <div />
+                                                          </Component>
+                                                        </div>
+                                                      </ForwardRef(ExpansionPanelDetails)>
+                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                      key=".3"
+                                                    >
+                                                      <ForwardRef(ExpansionPanelDetails)
+                                                        classes={
+                                                          Object {
+                                                            "root": "MuiExpansionPanelDetails-root",
+                                                          }
+                                                        }
+                                                      >
+                                                        <div
+                                                          className="MuiExpansionPanelDetails-root"
+                                                        >
+                                                          <Component
+                                                            maxReading={1023}
+                                                            title="Right Light Sensor"
+                                                          >
+                                                            <div />
+                                                          </Component>
                                                         </div>
                                                       </ForwardRef(ExpansionPanelDetails)>
                                                     </WithStyles(ForwardRef(ExpansionPanelDetails))>

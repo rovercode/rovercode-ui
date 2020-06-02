@@ -226,7 +226,12 @@ class Workspace extends Component {
     }
   }
 
-  updateSensorStateCache = (leftState, rightState, leftLightSensorReading, rightLightSensorReading) => {
+  updateSensorStateCache = (
+    leftState,
+    rightState,
+    leftLightSensorReading,
+    rightLightSensorReading,
+  ) => {
     this.sensorStateCache.SENSORS_leftIr = leftState === COVERED;
     this.sensorStateCache.SENSORS_rightIr = rightState === COVERED;
     this.sensorStateCache.LEFT_LIGHT = leftLightSensorReading;

@@ -56,14 +56,12 @@ class RoverConnection extends Component {
       changeLeftSensorState,
       changeRightSensorState,
       changeLightSensorReadings,
-      write,
     } = this.props;
 
     const [left, right] = params.split(',');
     const leftReading = parseInt(left, 10);
     const rightReading = parseInt(right, 10);
     changeLightSensorReadings(leftReading, rightReading);
-    // write(`${left}, ${right}`);
     if (leftReading > 500) {
       changeLeftSensorState(COVERED);
     } else {
@@ -81,25 +79,25 @@ class RoverConnection extends Component {
 
     const [left, right] = params.split(',');
 
-    // write(`Line Sensor - L:${left} R:${right}`);
+    write(`Line Sensor - L:${left} R:${right}`);
   }
 
   handleDistanceSensor = (params) => {
     const { write } = this.props;
 
-    // write(`Distance Sensor - ${params} mm`);
+    write(`Distance Sensor - ${params} mm`);
   }
 
   handleUBitTempSensor = (params) => {
     const { write } = this.props;
 
-    // write(`uBit Temperature Sensor - ${params} C`);
+    write(`uBit Temperature Sensor - ${params} C`);
   }
 
   handleUBitLightSensor = (params) => {
     const { write } = this.props;
 
-    // write(`uBit Light Sensor - ${params}`);
+    write(`uBit Light Sensor - ${params}`);
   }
 
   handleAccelerationSensor = (params) => {
@@ -107,7 +105,7 @@ class RoverConnection extends Component {
 
     const [x, y, z] = params.split(',');
 
-    // write(`Acceleration Sensor - X:${x} mG Y:${y} mG Z:${z} mG`);
+    write(`Acceleration Sensor - X:${x} mG Y:${y} mG Z:${z} mG`);
   }
 
   handleGyroscopeSensor = (params) => {
@@ -115,32 +113,32 @@ class RoverConnection extends Component {
 
     const [pitch, roll] = params.split(',');
 
-    // write(`Gryoscope Sensor - Pitch:${pitch} degrees Roll:${roll} degrees`);
+    write(`Gryoscope Sensor - Pitch:${pitch} degrees Roll:${roll} degrees`);
   }
 
   handleCompassSensor = (params) => {
     const { write } = this.props;
 
-    // write(`Compass Sensor - ${params} degrees`);
+    write(`Compass Sensor - ${params} degrees`);
   }
 
   handleMagneticForceSensor = (params) => {
     const { write } = this.props;
     const [x, y, z] = params.split(',');
 
-    // write(`Magnetic Force Sensor - X:${x} uT Y:${y} uT Z:${z} uT`);
+    write(`Magnetic Force Sensor - X:${x} uT Y:${y} uT Z:${z} uT`);
   }
 
   handleBatterySensor = (params) => {
     const { write } = this.props;
 
-    // write(`Battery Sensor - ${params} mV`);
+    write(`Battery Sensor - ${params} mV`);
   }
 
   handleDewPointSensor = (params) => {
     const { write } = this.props;
 
-    // write(`Dew Point Sensor - ${params} C`);
+    write(`Dew Point Sensor - ${params} C`);
   }
 
   connect = () => {
@@ -163,12 +161,11 @@ class RoverConnection extends Component {
     const receivedString = String.fromCharCode.apply(null, receivedData);
 
     const [command, params] = receivedString.split(':');
-    this.protocolMap[command](params);
-    // try {
-    //   this.protocolMap[command](params);
-    // } catch (e) {
-    //   write('Unknown rover message received.');
-    // }
+    try {
+      this.protocolMap[command](params);
+    } catch (e) {
+      write('Unknown rover message received.');
+    }
   }
 
   onDisconnected = () => {
