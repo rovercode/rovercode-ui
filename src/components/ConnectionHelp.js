@@ -284,7 +284,7 @@ class ConnectionHelp extends Component {
             {
               done ? (
                 <Redirect to={{
-                  pathname: '/programs/mine',
+                  pathname: '/courses',
                 }}
                 />
               ) : (null)
