@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { Loader } from 'semantic-ui-react';
+import { CircularProgress } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import ProgramCollection from '../ProgramCollection';
 import ProgramList from '../ProgramList';
@@ -11,15 +11,17 @@ let fetchPrograms;
 let removeProgram;
 let fetchTags;
 let clearProgram;
+let clearProgramList;
 
 describe('The ProgramList component', () => {
   beforeEach(() => {
     changeReadOnly = jest.fn();
-    fetchProgram = jest.fn(() => Promise.resolve({}));
-    fetchPrograms = jest.fn(() => Promise.resolve({}));
-    removeProgram = jest.fn(() => Promise.resolve({}));
-    fetchTags = jest.fn(() => Promise.resolve({}));
+    fetchProgram = jest.fn().mockResolvedValue();
+    fetchPrograms = jest.fn().mockResolvedValue();
+    removeProgram = jest.fn().mockResolvedValue();
+    fetchTags = jest.fn().mockResolvedValue();
     clearProgram = jest.fn();
+    clearProgramList = jest.fn();
   });
 
   test('renders on the page with no errors', () => {
@@ -31,7 +33,9 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
     wrapper.setState({
@@ -43,7 +47,7 @@ describe('The ProgramList component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('fetches programs on mount', async () => {
+  test('fetches programs and tags on mount', async () => {
     await mountWithIntl(
       <MemoryRouter>
         <ProgramList
@@ -53,15 +57,18 @@ describe('The ProgramList component', () => {
           removeProgram={removeProgram}
           fetchTags={fetchTags}
           clearProgram={clearProgram}
+          clearProgramList={clearProgramList}
           user={{ user_id: 1, username: 'testuser' }}
+          owned
         />
       </MemoryRouter>,
     );
-    expect(fetchPrograms.mock.calls.length).toBe(2);
+    expect(fetchTags.mock.calls.length).toBe(1);
+    expect(fetchPrograms.mock.calls.length).toBe(1);
     expect(clearProgram.mock.calls.length).toBe(1);
   });
 
-  test('shows the correct number of programs for the user', async () => {
+  test('shows the correct number of programs for the user', () => {
     const programs = {
       next: null,
       previous: null,
@@ -92,13 +99,14 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
 
     expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(3);
-    expect(wrapper.find(Loader).exists()).toBe(false);
+    expect(wrapper.find(CircularProgress).exists()).toBe(false);
   });
 
   test('shows loading when programs fetching', () => {
@@ -110,55 +118,16 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
         programs={null}
+        owned
       />,
     ).dive().dive();
 
-    expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(2);
-    expect(wrapper.find(Loader).exists()).toBe(true);
-    expect(wrapper.find(Loader).length).toBe(1);
-  });
-
-  test('shows loading when user programs fetching', () => {
-    const wrapper = shallowWithIntl(
-      <ProgramList
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
-        fetchPrograms={fetchPrograms}
-        removeProgram={removeProgram}
-        fetchTags={fetchTags}
-        clearProgram={clearProgram}
-        user={{ user_id: 1, username: 'testuser' }}
-        userPrograms={null}
-      />,
-    ).dive().dive();
-
-    expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(2);
-    expect(wrapper.find(Loader).exists()).toBe(true);
-    expect(wrapper.find(Loader).length).toBe(1);
-  });
-
-  test('shows loading when featured programs fetching', () => {
-    const wrapper = shallowWithIntl(
-      <ProgramList
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
-        fetchPrograms={fetchPrograms}
-        removeProgram={removeProgram}
-        fetchTags={fetchTags}
-        clearProgram={clearProgram}
-        user={{ user_id: 1, username: 'testuser' }}
-        featuredPrograms={null}
-      />,
-    ).dive().dive();
-
-    expect(wrapper.find(ProgramCollection).exists()).toBe(true);
-    expect(wrapper.find(ProgramCollection).length).toBe(2);
-    expect(wrapper.find(Loader).exists()).toBe(true);
-    expect(wrapper.find(Loader).length).toBe(1);
+    expect(wrapper.find(ProgramCollection).exists()).toBe(false);
+    expect(wrapper.find(CircularProgress).exists()).toBe(true);
+    expect(wrapper.find(CircularProgress).length).toBe(1);
   });
 
   test('redirects to mission control when program loads', () => {
@@ -170,7 +139,9 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
 
@@ -184,7 +155,7 @@ describe('The ProgramList component', () => {
     });
   });
 
-  test('loads a program', async () => {
+  test('loads a program', (done) => {
     const programs = {
       next: null,
       previous: null,
@@ -207,47 +178,54 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
 
-    await wrapper.instance().loadProgram({
+    wrapper.instance().loadProgram({
       target: {
         parentNode: {
-          id: undefined,
+          parentNode: {
+            id: undefined,
+          },
         },
         id: 33,
         dataset: {
           owned: 'false',
         },
       },
-    });
+    }).then(() => {
+      expect(changeReadOnly).toHaveBeenCalledWith(true);
+      expect(fetchProgram).toHaveBeenCalledWith(33);
+      expect(wrapper.state('programLoaded')).toBe(true);
 
-    expect(changeReadOnly).toHaveBeenCalledWith(true);
-    expect(fetchProgram).toHaveBeenCalledWith(33);
-    expect(wrapper.state('programLoaded')).toBe(true);
+      wrapper.setState({
+        programLoaded: false,
+      });
 
-    wrapper.setState({
-      programLoaded: false,
-    });
-
-    await wrapper.instance().loadProgram({
-      target: {
-        parentNode: {
-          id: 55,
-          dataset: {
-            owned: 'true',
+      wrapper.instance().loadProgram({
+        target: {
+          parentNode: {
+            parentNode: {
+              id: 55,
+              dataset: {
+                owned: 'true',
+              },
+            },
           },
         },
-      },
+      }).then(() => {
+        expect(changeReadOnly).toHaveBeenCalledWith(false);
+        expect(fetchProgram).toHaveBeenCalledWith(33);
+        expect(wrapper.state('programLoaded')).toBe(true);
+        done();
+      });
     });
-
-    expect(changeReadOnly).toHaveBeenCalledWith(false);
-    expect(fetchProgram).toHaveBeenCalledWith(33);
-    expect(wrapper.state('programLoaded')).toBe(true);
   });
 
-  test('fetches user programs after page change', async () => {
+  test('fetches user programs after page change', () => {
     const programs = {
       next: null,
       previous: null,
@@ -270,11 +248,13 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
 
-    await wrapper.instance().fetchUserPrograms({
+    wrapper.instance().fetchUserPrograms({
       page: 2,
     }, true);
 
@@ -284,7 +264,7 @@ describe('The ProgramList component', () => {
     });
   });
 
-  test('fetches featured programs after page change', async () => {
+  test('fetches community programs after page change', () => {
     const programs = {
       next: null,
       previous: null,
@@ -307,48 +287,13 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned={false}
       />,
     ).dive().dive();
 
-    await wrapper.instance().fetchFeaturedPrograms({
-      page: 2,
-    }, false);
-
-    expect(fetchPrograms).toHaveBeenCalledWith({
-      admin_tags: 'featured',
-      page: 2,
-    });
-  });
-
-  test('fetches other programs after page change', async () => {
-    const programs = {
-      next: null,
-      previous: null,
-      total_pages: 1,
-      results: [{
-        id: 33,
-        name: 'Unnamed_Design_3',
-        content: '<xml><variables></variables></xml>',
-        user: {
-          username: 'admin',
-        },
-      }],
-    };
-    const wrapper = shallowWithIntl(
-      <ProgramList
-        programs={programs}
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
-        fetchPrograms={fetchPrograms}
-        removeProgram={removeProgram}
-        fetchTags={fetchTags}
-        clearProgram={clearProgram}
-        user={{ user_id: 1, username: 'testuser' }}
-      />,
-    ).dive().dive();
-
-    await wrapper.instance().fetchOtherPrograms({
+    wrapper.instance().fetchCommunityPrograms({
       page: 2,
     }, false);
 
@@ -381,7 +326,9 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
 
@@ -396,46 +343,6 @@ describe('The ProgramList component', () => {
       search: 'abc',
     });
   });
-
-  test('fetches featured programs after search change', () => {
-    const programs = {
-      next: null,
-      previous: null,
-      total_pages: 1,
-      results: [{
-        id: 33,
-        name: 'Unnamed_Design_3',
-        content: '<xml><variables></variables></xml>',
-        user: {
-          username: 'admin',
-        },
-      }],
-    };
-    const wrapper = shallowWithIntl(
-      <ProgramList
-        programs={programs}
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
-        fetchPrograms={fetchPrograms}
-        removeProgram={removeProgram}
-        fetchTags={fetchTags}
-        clearProgram={clearProgram}
-        user={{ user_id: 1, username: 'testuser' }}
-      />,
-    ).dive().dive();
-
-    wrapper.instance().fetchFeaturedPrograms({
-      search: 'abc',
-      page: 1,
-    }, false);
-
-    expect(fetchPrograms).toHaveBeenCalledWith({
-      admin_tags: 'featured',
-      page: 1,
-      search: 'abc',
-    });
-  });
-
 
   test('fetches other programs after search change', () => {
     const programs = {
@@ -460,11 +367,13 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned={false}
       />,
     ).dive().dive();
 
-    wrapper.instance().fetchOtherPrograms({
+    wrapper.instance().fetchCommunityPrograms({
       search: 'abc',
       page: 1,
     }, false);
@@ -476,7 +385,7 @@ describe('The ProgramList component', () => {
     });
   });
 
-  test('removes a program and reloads the program list', async () => {
+  test('removes a program and reloads the program list', (done) => {
     const programs = {
       next: null,
       previous: null,
@@ -499,7 +408,9 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
 
@@ -509,10 +420,11 @@ describe('The ProgramList component', () => {
         name: 'Unnamed_Design_3',
       },
     });
-    await wrapper.instance().removeProgram();
-
-    expect(fetchPrograms).toHaveBeenCalledTimes(6);
-    expect(removeProgram).toHaveBeenCalledWith(33);
+    wrapper.instance().removeProgram().then(() => {
+      expect(fetchPrograms).toHaveBeenCalledTimes(2);
+      expect(removeProgram).toHaveBeenCalledWith(33);
+      done();
+    });
   });
 
   test('shows confirm dialog', () => {
@@ -524,14 +436,18 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
 
     wrapper.instance().showConfirm({
       target: {
         parentNode: {
-          id: undefined,
+          parentNode: {
+            id: undefined,
+          },
         },
         id: 33,
         name: 'Unnamed_Design_3',
@@ -550,7 +466,9 @@ describe('The ProgramList component', () => {
         removeProgram={removeProgram}
         fetchTags={fetchTags}
         clearProgram={clearProgram}
+        clearProgramList={clearProgramList}
         user={{ user_id: 1, username: 'testuser' }}
+        owned
       />,
     ).dive().dive();
 

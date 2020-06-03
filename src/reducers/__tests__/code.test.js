@@ -165,6 +165,7 @@ describe('The code reducer', () => {
 
   test('should handle FETCH_PROGRAM_FULFILLED', () => {
     const name = 'mybd';
+    const ownerName = 'phil';
     const id = 1;
     const xmlCode = '<xml></xml>';
 
@@ -174,6 +175,9 @@ describe('The code reducer', () => {
         payload: {
           name,
           id,
+          user: {
+            username: ownerName,
+          },
           content: xmlCode,
         },
       }),
@@ -181,6 +185,7 @@ describe('The code reducer', () => {
       isFetching: false,
       name,
       id,
+      ownerName,
       xmlCode,
     });
   });
@@ -215,6 +220,7 @@ describe('The code reducer', () => {
     const name = 'mybd';
     const id = 1;
     const xmlCode = '<xml></xml>';
+    const lesson = 2;
 
     expect(
       reducer({}, {
@@ -223,6 +229,7 @@ describe('The code reducer', () => {
           name,
           id,
           content: xmlCode,
+          lesson,
         },
       }),
     ).toEqual({
@@ -230,6 +237,7 @@ describe('The code reducer', () => {
       name,
       id,
       xmlCode,
+      lesson,
     });
   });
 
@@ -318,6 +326,7 @@ describe('The code reducer', () => {
       jsCode: null,
       xmlCode: null,
       execution: null,
+      ownerName: null,
       name: null,
       id: null,
       tags: [],

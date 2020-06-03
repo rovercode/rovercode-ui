@@ -36,6 +36,7 @@ const defaultState = {
   isChangingProgramTags: false,
   error: null,
   isReadOnly: false,
+  ownerName: null,
 };
 
 export default function code(
@@ -110,6 +111,7 @@ export default function code(
         id: action.payload.id,
         name: action.payload.name,
         tags: action.payload.owner_tags,
+        ownerName: action.payload.user.username,
       };
     case FETCH_PROGRAM_REJECTED:
       return {
@@ -129,6 +131,7 @@ export default function code(
         xmlCode: action.payload.content,
         id: action.payload.id,
         name: action.payload.name,
+        lesson: action.payload.lesson,
       };
     case SAVE_PROGRAM_REJECTED:
       return {

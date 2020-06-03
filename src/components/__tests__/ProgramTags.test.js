@@ -1,12 +1,15 @@
 import React from 'react';
-import { Button, Dropdown } from 'semantic-ui-react';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import { Cookies } from 'react-cookie';
 
 import { updateValidAuth } from '@/actions/auth';
-import { changeProgramTags } from '@/actions/code';
 import ProgramTags from '../ProgramTags';
+
+jest.mock('@/actions/code');
+jest.mock('@/actions/tag');
+
+import { changeProgramTags } from '@/actions/code'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -32,7 +35,7 @@ describe('The ProgramTags component', () => {
         }],
       },
     });
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
   });
 
   test('renders on the page with no errors', () => {
@@ -49,8 +52,8 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Dropdown).props().value).toStrictEqual(['tag1', 'tag2']);
-    expect(wrapper.find(Dropdown).props().disabled).toBe(false);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().value).toStrictEqual(['tag1', 'tag2']);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().disabled).toBe(false);
   });
 
   test('disabled when read only', () => {
@@ -58,9 +61,10 @@ describe('The ProgramTags component', () => {
       code: {
         name: 'test name',
         isReadOnly: true,
+        tags: [],
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     const wrapper = shallowWithIntl(
       <ProgramTags store={localStore} />,
       { context },
@@ -70,25 +74,7 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Button).props().disabled).toBe(true);
-    expect(wrapper.find(Dropdown).props().disabled).toBe(true);
-  });
-
-  test('adds new options', () => {
-    const wrapper = shallowWithIntl(
-      <ProgramTags store={store} />, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    expect(wrapper.find(Dropdown).props().options.length).toBe(3);
-    wrapper.instance().addItem({}, {
-      value: 'new_option',
-    });
-    wrapper.update();
-    expect(wrapper.find(Dropdown).props().options.length).toBe(4);
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().disabled).toBe(true);
   });
 
   test('handles change', () => {
@@ -100,33 +86,12 @@ describe('The ProgramTags component', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find(Button).props().disabled).toBe(true);
-    wrapper.find(Dropdown).simulate('change', {}, {
-      value: [
-        'tag3',
-      ],
-    });
+    wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').simulate('change', {}, ['tag3']);
     wrapper.update();
 
-    expect(wrapper.find(Dropdown).props().value).toStrictEqual(['tag3']);
-    expect(wrapper.find(Button).props().disabled).toBe(false);
-  });
-
-  test('handles save', () => {
-    const wrapper = shallowWithIntl(
-      <ProgramTags store={store} />, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    wrapper.find(Button).simulate('click');
-    wrapper.update();
-
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Autocomplete)))').props().value).toStrictEqual(['tag3']);
     expect(store.dispatch).toHaveBeenCalled();
-    expect(store.dispatch).toHaveBeenCalledWith(changeProgramTags(1, ['tag1', 'tag2']));
-    expect(wrapper.find(Button).props().disabled).toBe(true);
+    expect(store.dispatch).toHaveBeenCalledWith(changeProgramTags(1, ['tag3']));
   });
 
   test('handles authentication error', (done) => {
@@ -135,8 +100,8 @@ describe('The ProgramTags component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(<ProgramTags store={store} />, { context }).dive().dive().dive()
       .dive()
@@ -160,7 +125,7 @@ describe('The ProgramTags component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(<ProgramTags store={store} />, { context }).dive().dive().dive()
       .dive()

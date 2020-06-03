@@ -4,7 +4,7 @@ import { fetchTags } from '../tag';
 
 
 describe('Tag actions', () => {
-  test('fetch all tags', async () => {
+  test('fetch all tags', (done) => {
     const mock = new MockAdapter(axios);
     const tags = [{
       name: 'tag1',
@@ -16,10 +16,11 @@ describe('Tag actions', () => {
 
     const action = fetchTags();
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('FETCH_TAGS');
-    expect(payload).toEqual(tags);
-    mock.restore();
+    action.payload.then((result) => {
+      expect(result).toEqual(tags);
+      mock.restore();
+      done();
+    });
   });
 });

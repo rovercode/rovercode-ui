@@ -22,7 +22,7 @@ describe('User actions', () => {
     expect(type).toEqual('UPDATE_USER');
     expect(payload).toEqual(user);
   });
-  test('editUserUsername', async () => {
+  test('editUserUsername', (done) => {
     const mock = new MockAdapter(axios);
     const username = 'test_username';
     const user = {
@@ -37,12 +37,13 @@ describe('User actions', () => {
 
     const action = editUserUsername(username);
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('EDIT_USER_USERNAME');
-    expect(payload).toEqual(user);
+    action.payload.then((result) => {
+      expect(result).toEqual(user);
+      done();
+    });
   });
-  test('editUserPassword', async () => {
+  test('editUserPassword', (done) => {
     const mock = new MockAdapter(axios);
     const password = 'password123';
 
@@ -53,12 +54,13 @@ describe('User actions', () => {
 
     const action = editUserPassword(password);
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('EDIT_USER_PASSWORD');
-    expect(payload).toEqual('Password changed');
+    action.payload.then((result) => {
+      expect(result).toEqual('Password changed');
+      done();
+    });
   });
-  test('fetchUserList', async () => {
+  test('fetchUserList', (done) => {
     const mock = new MockAdapter(axios);
     const userList = [
       {
@@ -73,9 +75,10 @@ describe('User actions', () => {
 
     const action = fetchUserList();
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('FETCH_USER_LIST');
-    expect(payload).toEqual(userList);
+    action.payload.then((result) => {
+      expect(result).toEqual(userList);
+      done();
+    });
   });
 });

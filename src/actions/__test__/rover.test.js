@@ -15,32 +15,34 @@ describe('Rover actions', () => {
     expect(payload.name).toEqual('Sparky');
   });
 
-  test('connect rover', async () => {
+  test('connect rover', (done) => {
     const characteristic = {
       startNotifications: jest.fn(),
       addEventListener: jest.fn(),
     };
     const service = {
-      getCharacteristic: () => Promise.resolve(characteristic),
+      getCharacteristic: jest.fn().mockResolvedValue(characteristic),
     };
     const server = {
-      getPrimaryService: () => Promise.resolve(service),
+      getPrimaryService: jest.fn().mockResolvedValue(service),
     };
-    const action = connect({ gatt: { connect: () => Promise.resolve(server) } });
+    const action = connect({ gatt: { connect: jest.fn().mockResolvedValue(server) } });
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('CONNECT_ROVER');
-    expect(payload).toEqual([characteristic, characteristic]);
+    action.payload.then((result) => {
+      expect(result).toEqual([characteristic, characteristic]);
+      done();
+    });
   });
 
-  test('rover send', async () => {
-    const action = send({ writeValue: () => Promise.resolve(null) });
+  test('rover send', (done) => {
+    const action = send({ writeValue: jest.fn().mockResolvedValue(null) });
     const { type } = action;
-    const payload = await action.payload;
-
     expect(type).toEqual('SEND_ROVER');
-    expect(payload).toEqual(null);
+    action.payload.then((result) => {
+      expect(result).toEqual(null);
+      done();
+    });
   });
 
   test('disconnect rover', () => {

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import { Mail } from '@material-ui/icons';
 import {
-  Form,
+  Button,
   Grid,
-  Header,
+  InputAdornment,
   List,
-  Message,
-  Segment,
-} from 'semantic-ui-react';
+  ListItem,
+  ListItemText,
+  TextField,
+  Typography,
+} from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -37,24 +41,28 @@ class PasswordReset extends Component {
 
     /* eslint react/no-array-index-key: 0 */
     return (
-      <Grid.Row>
-        <Message negative>
-          <List bulleted>
+      <Grid item>
+        <Alert variant="outlined" severity="error">
+          <List dense>
             {
               emailError.map((error, i) => (
-                <List.Item key={i}>
-                  {error}
-                </List.Item>
+                <ListItem key={i}>
+                  <ListItemText>
+                    {`- ${error}`}
+                  </ListItemText>
+                </ListItem>
               ))
             }
           </List>
-        </Message>
-      </Grid.Row>
+        </Alert>
+      </Grid>
     );
   }
 
-  reset = () => {
+  reset = (e) => {
     const { email } = this.state;
+
+    e.preventDefault();
 
     return axios.post('/jwt/auth/password/reset/', {
       email,
@@ -84,58 +92,69 @@ class PasswordReset extends Component {
     });
 
     return (
-      <Grid centered columns={16}>
-        <Grid.Row>
-          <Header size="huge">
+      <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
+        <Grid item>
+          <Typography variant="h4">
             <FormattedMessage
               id="app.password_reset.header"
               description="Header for password reset"
               defaultMessage="Password Reset"
             />
-          </Header>
-        </Grid.Row>
-        <Grid.Row>
-          <p>
-            <FormattedMessage
-              id="app.password_reset.verify"
-              description="Verifies that the user has forgotten password"
-              defaultMessage="Forgotten your password?"
-            />
-          </p>
-        </Grid.Row>
-        <Grid.Row>
-          <p>
-            <FormattedMessage
-              id="app.password_reset.email"
-              description="Directs the user to enter e-mail for password reset"
-              defaultMessage="Enter your e-mail address below, and well send you an e-mail allowing you to reset it."
-            />
-          </p>
-        </Grid.Row>
+          </Typography>
+        </Grid>
+        <Grid item>
+          <FormattedMessage
+            id="app.password_reset.verify"
+            description="Verifies that the user has forgotten password"
+            defaultMessage="Forgotten your password?"
+          />
+        </Grid>
+        <Grid item>
+          <FormattedMessage
+            id="app.password_reset.email"
+            description="Directs the user to enter e-mail for password reset"
+            defaultMessage="Enter your e-mail address below, and well send you an e-mail allowing you to reset it."
+          />
+        </Grid>
         {
           success ? (
-            <Message positive>
+            <Alert variant="outlined" severity="success">
               { success }
-            </Message>
+            </Alert>
           ) : (null)
         }
         {this.errorMessage()}
-        <Grid.Row>
-          <Grid.Column width={4}>
-            <Segment raised secondary>
-              <Form floated="left" onSubmit={this.reset}>
-                <Form.Input required icon="mail" iconPosition="left" placeholder={emailPlaceholder} onChange={this.handleEmailChange} error={emailError} />
-                <Form.Button primary type="submit">
-                  <FormattedMessage
-                    id="app.password_reset.reset"
-                    description="Button label for initiating reset password"
-                    defaultMessage="Reset Password"
-                  />
-                </Form.Button>
-              </Form>
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
+        <Grid item>
+          <form onSubmit={this.reset}>
+            <Grid item>
+              <TextField
+                variant="outlined"
+                margin="dense"
+                fullWidth
+                required
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Mail />
+                    </InputAdornment>
+                  ),
+                }}
+                placeholder={emailPlaceholder}
+                onChange={this.handleEmailChange}
+                error={!!emailError}
+              />
+            </Grid>
+            <Grid item>
+              <Button variant="contained" color="primary" type="submit">
+                <FormattedMessage
+                  id="app.password_reset.reset"
+                  description="Button label for initiating reset password"
+                  defaultMessage="Reset Password"
+                />
+              </Button>
+            </Grid>
+          </form>
+        </Grid>
       </Grid>
     );
   }

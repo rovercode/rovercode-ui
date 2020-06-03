@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { GitHub, Lock, Person } from '@material-ui/icons';
 import {
   Button,
-  Form,
+  Container,
   Grid,
-  Icon,
-  Message,
-  Segment,
-} from 'semantic-ui-react';
+  InputAdornment,
+  TextField,
+  Typography,
+  Link,
+} from '@material-ui/core';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import { grey, red } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import axios from 'axios';
@@ -38,9 +46,11 @@ class Login extends Component {
     };
   }
 
-  basicLogin = () => {
+  basicLogin = (e) => {
     const { cookies, updateUser, updateValidAuth } = this.props;
     const { username, password } = this.state;
+
+    e.preventDefault();
 
     return axios.post('/api/api-token-auth/', {
       username,
@@ -108,6 +118,26 @@ class Login extends Component {
       defaultMessage: 'Password',
     });
 
+    const GoogleButton = withStyles((theme) => ({
+      root: {
+        color: theme.palette.getContrastText(red[500]),
+        backgroundColor: red[500],
+        '&:hover': {
+          backgroundColor: red[700],
+        },
+      },
+    }))(Button);
+
+    const GitHubButton = withStyles((theme) => ({
+      root: {
+        color: theme.palette.getContrastText(grey[300]),
+        backgroundColor: grey[300],
+        '&:hover': {
+          backgroundColor: grey[500],
+        },
+      },
+    }))(Button);
+
     return (
       <>
         {
@@ -115,157 +145,204 @@ class Login extends Component {
             <Redirect to="/" />
           ) : (null)
         }
-        <Grid centered columns={16}>
-          <Grid.Row>
-            <p>
+        <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
+          <Grid item>
+            <Typography variant="h6">
               <FormattedMessage
-                id="app.login.social"
-                description="Notifies the user of third-party account access"
-                defaultMessage="You can sign up / sign in with one of your existing third-party accounts."
+                id="app.login.login"
+                description="Explains the need for making an account"
+                defaultMessage="Welcome! To use Rovercode, you need an account for saving and sharing your work."
               />
-            </p>
-          </Grid.Row>
+            </Typography>
+          </Grid>
           {
             socialError ? (
-              <Grid.Row>
-                <Message negative>
-                  <Message.Header>
+              <Grid item>
+                <Alert variant="outlined" severity="error">
+                  <AlertTitle>
                     <FormattedMessage
                       id="app.login.social_error"
                       description="Notifies the user of an error in third-party authentication"
                       defaultMessage="There was an error initiating social login."
                     />
-                  </Message.Header>
-                  <p>
+                  </AlertTitle>
+                  <Typography>
                     <FormattedMessage
                       id="app.login.social_contact_1"
                       description="First part of instructions for contacting support"
                       defaultMessage="Contact"
                     />
                     {' '}
-                    <a href="mailto:support@rovercode.com">
+                    <Link href="mailto:support@rovercode.com">
                       support@rovercode.com
-                    </a>
+                    </Link>
                     {' '}
                     <FormattedMessage
                       id="app.login.social_contact_2"
                       description="Second part of instructions for contacting support"
                       defaultMessage="for help with this issue."
                     />
-                  </p>
-                </Message>
-              </Grid.Row>
+                  </Typography>
+                </Alert>
+              </Grid>
             ) : (null)
           }
           {
             location && location.state && location.state.callbackError ? (
-              <Grid.Row>
-                <Message negative>
-                  <Message.Header>
+              <Grid item>
+                <Alert variant="outlined" severity="error">
+                  <AlertTitle>
                     <FormattedMessage
                       id="app.login.social_callback_error"
                       description="Notifies the user of an error in third-party registration"
                       defaultMessage="There was an error creating an account using social provider."
                     />
-                  </Message.Header>
-                  <p>
+                  </AlertTitle>
+                  <Typography>
                     {location.state.callbackError}
-                  </p>
-                </Message>
-              </Grid.Row>
+                  </Typography>
+                </Alert>
+              </Grid>
             ) : (null)
           }
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <Button id="google" floated="right" color="red" onClick={this.redirectToSocial}>
-                <Icon name="google" />
+          <Grid item container direction="row" justify="center" alignItems="center" spacing={4}>
+            <Grid item>
+              <GoogleButton
+                id="google"
+                variant="contained"
+                startIcon={<FontAwesomeIcon icon={faGoogle} />}
+                onClick={this.redirectToSocial}
+              >
                 <FormattedMessage
                   id="app.login.button_google"
                   description="Button label for Google sign in"
-                  defaultMessage="Sign in with Google"
+                  defaultMessage="Sign up or sign in with Google"
                 />
-              </Button>
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <Button id="github" floated="left" color="black" onClick={this.redirectToSocial}>
-                <Icon name="github" />
+              </GoogleButton>
+            </Grid>
+            <Grid item>
+              <GitHubButton
+                id="github"
+                variant="contained"
+                startIcon={<GitHub />}
+                onClick={this.redirectToSocial}
+              >
                 <FormattedMessage
                   id="app.login.button_github"
                   description="Button label for GitHub sign in"
-                  defaultMessage="Sign in with GitHub"
+                  defaultMessage="Sign up or sign in with GitHub"
                 />
-              </Button>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <p>
+              </GitHubButton>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Typography>
               <FormattedMessage
                 id="app.login.social_question"
                 description="Asks the user if he/she has a social account for sign in"
                 defaultMessage="Don't have any of those accounts?"
               />
-              {' '}
-              <a href="/accounts/signup">
-                <FormattedMessage
-                  id="app.login.create"
-                  description="Directs the user to create an account"
-                  defaultMessage="Create a rovercode account."
-                />
-              </a>
-            </p>
-          </Grid.Row>
-          <Grid.Row>
-            <p>
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Button
+              size="large"
+              variant="contained"
+              disableElevation
+              color="primary"
+              component={RouterLink}
+              to="/accounts/signup"
+            >
+              <FormattedMessage
+                id="app.login.create"
+                description="Directs the user to create an account"
+                defaultMessage="Create a Rovercode account"
+              />
+            </Button>
+          </Grid>
+          <Grid item>
+            <Typography>
               <FormattedMessage
                 id="app.login.account_question"
                 description="Asks the user if he/she has an account"
-                defaultMessage="Already have a rovercode account? Sign in here:"
+                defaultMessage="Already have a Rovercode account? Sign in here:"
               />
-            </p>
-          </Grid.Row>
+            </Typography>
+          </Grid>
           {
             basicError ? (
-              <Grid.Row>
-                <Message negative>
-                  <Message.Header>
+              <Grid item>
+                <Alert variant="outlined" severity="error">
+                  <AlertTitle>
                     <FormattedMessage
                       id="app.login.invalid"
                       description="Indicates that the username or password is incorrect"
                       defaultMessage="Invalid username or password."
                     />
-                  </Message.Header>
-                </Message>
-              </Grid.Row>
+                  </AlertTitle>
+                </Alert>
+              </Grid>
             ) : (null)
           }
-          <Grid.Row>
-            <Grid.Column width={4}>
-              <Segment raised secondary>
-                <Form floated="left" onSubmit={this.basicLogin}>
-                  <Form.Input required icon="user" iconPosition="left" placeholder={usernamePlaceholder} onChange={this.handleUsernameChange} />
-                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder={passwordPlaceholder} onChange={this.handlePasswordChange} />
-                  <Form.Button primary type="submit">
-                    <FormattedMessage
-                      id="app.login.sign_in"
-                      description="Button label for initiating sign in"
-                      defaultMessage="Sign In"
-                    />
-                  </Form.Button>
-                </Form>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <p>
-              <a href="/accounts/reset">
+          <form onSubmit={this.basicLogin}>
+            <Container>
+              <Grid item>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  required
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Person />
+                      </InputAdornment>
+                    ),
+                  }}
+                  placeholder={usernamePlaceholder}
+                  onChange={this.handleUsernameChange}
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  required
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Lock />
+                      </InputAdornment>
+                    ),
+                  }}
+                  type="password"
+                  placeholder={passwordPlaceholder}
+                  onChange={this.handlePasswordChange}
+                />
+              </Grid>
+              <Grid item>
+                <Button variant="contained" color="primary" type="submit">
+                  <FormattedMessage
+                    id="app.login.sign_in"
+                    description="Button label for initiating sign in"
+                    defaultMessage="Sign In"
+                  />
+                </Button>
+              </Grid>
+            </Container>
+          </form>
+          <Grid item>
+            <Link component={RouterLink} to="/accounts/reset">
+              <Typography>
                 <FormattedMessage
                   id="app.login.forgot"
                   description="Button label for initiating forgot password"
                   defaultMessage="Forgot Password?"
                 />
-              </a>
-            </p>
-          </Grid.Row>
+              </Typography>
+            </Link>
+          </Grid>
         </Grid>
       </>
     );

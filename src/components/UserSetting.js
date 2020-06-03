@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { Lock, Person, Settings } from '@material-ui/icons';
 import {
-  Form,
+  Box,
+  Button,
   Grid,
-  Header,
-  Icon,
   List,
-  Message,
-  Segment,
-} from 'semantic-ui-react';
+  ListItem,
+  ListItemText,
+  TextField,
+  Typography,
+} from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -61,34 +64,40 @@ class UserSetting extends Component {
 
     /* eslint react/no-array-index-key: 0 */
     return (
-      <Grid.Row>
-        <Message negative>
-          <List bulleted>
+      <Grid item>
+        <Alert variant="outlined" severity="error">
+          <List dense>
             {
               messages.map((message, i) => (
-                <List.Item key={i}>
-                  {message}
-                </List.Item>
+                <ListItem key={i}>
+                  <ListItemText>
+                    {`- ${message}`}
+                  </ListItemText>
+                </ListItem>
               ))
             }
           </List>
-        </Message>
-      </Grid.Row>
+        </Alert>
+      </Grid>
     );
   }
 
-  saveUserUsername = () => {
+  saveUserUsername = (e) => {
     const { editUserUsername } = this.props;
     const { username } = this.state;
+
+    e.preventDefault();
 
     return editUserUsername(username)
       .then(() => this.setState({ saveSuccess: true }))
       .catch((error) => this.setState({ usernameError: error.response.data.username }));
   }
 
-  saveUserPassword = () => {
+  saveUserPassword = (e) => {
     const { editUserPassword, intl } = this.props;
     const { password1, password2 } = this.state;
+
+    e.preventDefault();
 
     const passwordMatch = intl.formatMessage({
       id: 'app.user_setting.match',
@@ -114,7 +123,7 @@ class UserSetting extends Component {
       });
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (event) => this.setState({ [event.target.name]: event.target.value })
 
   render() {
     const { intl, user } = this.props;
@@ -144,117 +153,138 @@ class UserSetting extends Component {
     });
 
     return (
-      <Grid centered divided="vertically" columns={16}>
-        <Grid.Row>
-          <Header as="h1">
-            <Icon name="settings" />
-            <Header.Content>
+      <Grid container direction="column" justify="center" alignItems="center" spacing={2}>
+        {
+          saveSuccess ? (
+            <Redirect to="/accounts/login" />
+          ) : (null)
+        }
+        <Grid item container direction="row" justify="center" alignItems="center" spacing={2}>
+          <Grid item>
+            <Settings fontSize="large" />
+          </Grid>
+          <Grid item>
+            <Typography variant="h3">
               <FormattedMessage
                 id="app.user_setting.header"
                 description="Header for the user's settings"
                 defaultMessage="My Settings"
               />
-            </Header.Content>
-          </Header>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={5}>
-            {
-              saveSuccess ? (
-                <Redirect to="/accounts/login" />
-              ) : (null)
-            }
-            {
-              <>
-                <Message info>
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid item>
+          <Alert severity="info">
+            <FormattedMessage
+              id="app.user_setting.info"
+              description="Notifies the user that changing settings requires signing back in"
+              defaultMessage="Changing any of these settings requires signing back in."
+            />
+          </Alert>
+        </Grid>
+        {this.errorMessage()}
+        <Grid item>
+          <Box p={3} border={1} borderRadius="borderRadius" boxShadow={3} borderColor="grey.500">
+            <Grid item container direction="row" justify="center" alignItems="center" spacing={1}>
+              <Grid item>
+                <Person fontSize="large" />
+              </Grid>
+              <Grid item>
+                <Typography variant="h5">
                   <FormattedMessage
-                    id="app.user_setting.info"
-                    description="Notifies the user that changing settings requires signing back in"
-                    defaultMessage="Changing any of these settings requires signing back in."
+                    id="app.user_setting.username_header"
+                    description="Header for changing username"
+                    defaultMessage="Change Username"
                   />
-                </Message>
-                {this.errorMessage()}
-                <Grid.Row style={{ paddingBottom: '10px', paddingTop: '10px' }}>
-                  <Segment raised>
-                    <Header dividing>
-                      <Icon name="user" />
-                      <Header.Content>
+                </Typography>
+              </Grid>
+            </Grid>
+            <form key={user.user_id} onSubmit={this.saveUserUsername}>
+              <Grid item>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  label={usernameLabel}
+                  name="username"
+                  error={!!usernameError}
+                  defaultValue={user.username}
+                  onChange={this.handleChange}
+                  required
+                />
+              </Grid>
+              <Grid item>
+                <Button variant="contained" color="primary" type="submit">
+                  <FormattedMessage
+                    id="app.user_setting.save_username"
+                    description="Button label to save username settings"
+                    defaultMessage="Save"
+                  />
+                </Button>
+              </Grid>
+            </form>
+          </Box>
+        </Grid>
+        {
+          !user.isSocial ? (
+            <>
+              <Grid item>
+                <Box p={3} border={1} borderRadius="borderRadius" boxShadow={3} borderColor="grey.500">
+                  <Grid item container direction="row" justify="center" alignItems="center" spacing={1}>
+                    <Grid item>
+                      <Lock fontSize="large" />
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="h5">
                         <FormattedMessage
-                          id="app.user_setting.username_header"
-                          description="Header for changing username"
-                          defaultMessage="Change Username"
+                          id="app.user_setting.password_header"
+                          description="Header for changing password"
+                          defaultMessage="Change Password"
                         />
-                      </Header.Content>
-                    </Header>
-                    <Form key={user.user_id} onSubmit={this.saveUserUsername}>
-                      <Form.Input
-                        inline
-                        label={usernameLabel}
-                        name="username"
-                        error={usernameError}
-                        defaultValue={user.username}
-                        onChange={this.handleChange}
-                        required
-                      />
-                      <Form.Button primary>
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                  <form key={user.user_id} onSubmit={this.saveUserPassword}>
+                    <Grid item container direction="row" spacing={1}>
+                      <Grid item>
+                        <TextField
+                          variant="outlined"
+                          margin="dense"
+                          label={passwordLabel}
+                          name="password1"
+                          error={!!password1Error}
+                          onChange={this.handleChange}
+                          type="password"
+                          required
+                        />
+                      </Grid>
+                      <Grid item>
+                        <TextField
+                          variant="outlined"
+                          margin="dense"
+                          label={verifyLabel}
+                          name="password2"
+                          error={!!password2Error}
+                          onChange={this.handleChange}
+                          type="password"
+                          required
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid item>
+                      <Button variant="contained" color="primary" type="submit">
                         <FormattedMessage
-                          id="app.user_setting.save_username"
-                          description="Button label to save username settings"
+                          id="app.user_setting.save_password"
+                          description="Button label to save password settings"
                           defaultMessage="Save"
                         />
-                      </Form.Button>
-                    </Form>
-                  </Segment>
-                </Grid.Row>
-                {
-                  !user.isSocial ? (
-                    <Grid.Row>
-                      <Segment raised>
-                        <Header dividing>
-                          <Icon name="lock" />
-                          <Header.Content>
-                            <FormattedMessage
-                              id="app.user_setting.password_header"
-                              description="Header for changing password"
-                              defaultMessage="Change Password"
-                            />
-                          </Header.Content>
-                        </Header>
-                        <Form key={user.user_id} onSubmit={this.saveUserPassword}>
-                          <Form.Group widths="equal">
-                            <Form.Input
-                              label={passwordLabel}
-                              name="password1"
-                              error={password1Error}
-                              onChange={this.handleChange}
-                              type="password"
-                              required
-                            />
-                            <Form.Input
-                              label={verifyLabel}
-                              name="password2"
-                              error={password2Error}
-                              onChange={this.handleChange}
-                              type="password"
-                              required
-                            />
-                          </Form.Group>
-                          <Form.Button primary>
-                            <FormattedMessage
-                              id="app.user_setting.save_password"
-                              description="Button label to save password settings"
-                              defaultMessage="Save"
-                            />
-                          </Form.Button>
-                        </Form>
-                      </Segment>
-                    </Grid.Row>
-                  ) : (null)
-                }
-              </>
-            }
-          </Grid.Column>
-        </Grid.Row>
+                      </Button>
+                    </Grid>
+                  </form>
+                </Box>
+              </Grid>
+            </>
+          ) : (null)
+        }
       </Grid>
     );
   }

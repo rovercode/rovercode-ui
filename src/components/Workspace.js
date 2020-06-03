@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Container,
-  Grid,
-  Message,
-} from 'semantic-ui-react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { Box, Grid } from '@material-ui/core';
+import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import Blockly from 'node-blockly/browser';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
 import Interpreter from 'js-interpreter';
+import { debounce } from 'throttle-debounce';
 
 import { checkAuthError, authHeader } from '@/actions/auth';
 import {
@@ -20,7 +16,6 @@ import {
   changeExecutionState as actionChangeExecutionState,
   saveProgram as actionSaveProgram,
   createProgram as actionCreateProgram,
-  changeReadOnly as actionChangeReadOnly,
   fetchProgram as actionFetchProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
@@ -31,7 +26,6 @@ import { append, clear } from '@/actions/console';
 import { send } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
-import logger from '@/utils/logger';
 
 const mapStateToProps = ({ code, rover, sensor }) => ({ code, rover, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -40,10 +34,9 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   writeToConsole: (message) => dispatch(append(message)),
   clearConsole: () => dispatch(clear()),
   updateXmlCode: (xmlCode) => dispatch(actionUpdateXmlCode(xmlCode)),
-  changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   sendToRover: (channel, message) => dispatch(send(channel, message)),
-  saveProgram: (id, content, name) => dispatch(
-    actionSaveProgram(id, content, name, authHeader(cookies)),
+  saveProgram: (id, content, name, lesson) => dispatch(
+    actionSaveProgram(id, content, name, lesson, authHeader(cookies)),
   ).catch(checkAuthError(dispatch)),
   createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
@@ -73,8 +66,12 @@ const toolbox = `
         <block type="motors_start"></block>
         <block type="motors_stop"></block>
       </category>
-      <category name="sensors" colour="160">
-        <block type="sensors_get_covered"></block>
+      <category name="sensors and buttons" colour="160">
+        <block type="light_sensor_value"></block>
+        <block type="button_press"></block>
+      </category>
+      <category name="display" colour="230">
+        <block type="display_message"></block>
       </category>
       <category name="lights" colour="20">
         <block type="chainable_rgb_led_set">
@@ -188,6 +185,10 @@ class Workspace extends Component {
 
     this.updateSensorStateCache(sensor.left, sensor.right);
 
+    if (currentCode && currentCode.isReadOnly && nextCode && !nextCode.isReadOnly) {
+      this.createWorkspace();
+    }
+
     if (currentRover && currentRover.isSending && nextRover && !nextRover.isSending) {
       this.runCode();
     }
@@ -238,7 +239,7 @@ class Workspace extends Component {
     // https://developers.google.com/blockly/guides/configure/web/resizable
     const { workspace } = this.state;
 
-    const blocklyArea = document.getElementById('blocklyDiv').parentNode;
+    const blocklyArea = document.getElementById('blocklyDiv').parentNode.parentNode;
 
     // Position blocklyDiv over blocklyArea.
     if (this.editorDiv) {
@@ -276,7 +277,11 @@ class Workspace extends Component {
       scrollbars: true,
     });
 
-    workspace.addChangeListener(this.updateCode);
+    workspace.addChangeListener(
+      debounce(
+        parseInt(SAVE_DEBOUNCE_TIME, 10) || 5000, this.updateCode, // eslint-disable-line no-undef
+      ),
+    );
 
     this.updateSensorStateCache(sensor.left, sensor.right);
 
@@ -326,7 +331,7 @@ class Workspace extends Component {
     const xmlCode = this.updateXmlCode();
 
     if (!code.isReadOnly && code.id) {
-      saveProgram(code.id, xmlCode, code.name);
+      saveProgram(code.id, xmlCode, code.name, code.lesson);
     }
   }
 
@@ -432,71 +437,31 @@ class Workspace extends Component {
     this.updateCode();
   }
 
-  remix = () => {
-    const {
-      code,
-      changeReadOnly,
-      createProgram,
-      fetchProgram,
-      saveProgram,
-    } = this.props;
-
-    // Need to fetch the program again since the current code has editable="false" tags
-    return Promise.all([fetchProgram(code.id), createProgram(code.name)])
-      .then(([fetchData, createData]) => {
-        logger.log(JSON.stringify({
-          event: 'remix', userId: createData.user_id, sourceProgramId: code.id, newProgramId: createData.value.id,
-        }));
-        return saveProgram(createData.value.id, fetchData.value.content, createData.value.name);
-      })
-      .then(() => {
-        changeReadOnly(false);
-        this.createWorkspace();
-      });
-  }
 
   render() {
     const { children, code, rover } = this.props;
 
     return (
-      <Container style={{ height: code.isReadOnly ? '70vh' : '80vh' }}>
-        {
-          code.isReadOnly ? (
-            <Grid verticalAlign="middle">
-              <Grid.Column width={12}>
-                <Message info>
-                  <Message.Header>
-                    <FormattedMessage
-                      id="app.workspace.read_only_header"
-                      description="Header to indicate viewing in read only mode"
-                      defaultMessage="Read Only View"
-                    />
-                  </Message.Header>
-                  <FormattedMessage
-                    id="app.workspace.read_only_content"
-                    description="Informs the user that this program is another user's and cannot be edited"
-                    defaultMessage="You are viewing another user's program in a read-only view."
-                  />
-                </Message>
-              </Grid.Column>
-              <Grid.Column width={4}>
-                <Button primary size="huge" onClick={this.remix}>
-                  <FormattedMessage
-                    id="app.workspace.remix"
-                    description="Button label to copy other user's program for this user to edit"
-                    defaultMessage="Remix"
-                  />
-                </Button>
-              </Grid.Column>
+      <Box>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Grid item container direction="column" alignItems="stretch">
+            <Grid item style={{ minHeight: code.isReadOnly ? '76vh' : '80vh', maxHeight: '1080px' }}>
+              <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
+                <Box
+                  zIndex="modal"
+                  style={{ position: 'absolute', bottom: '15%', left: code.isReadOnly ? '5%' : '15%' }}
+                >
+                  {
+                    React.Children.map(children, (child) => React.cloneElement(child, {
+                      isConnected: !!rover.rover,
+                    }))
+                  }
+                </Box>
+              </div>
             </Grid>
-          ) : (null)
-        }
-        <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
-          <div style={{ position: 'absolute', bottom: 30, right: 100 }}>
-            { React.cloneElement(children, { isConnected: !!rover.rover }) }
-          </div>
-        </div>
-      </Container>
+          </Grid>
+        </Grid>
+      </Box>
     );
   }
 }
@@ -514,6 +479,7 @@ Workspace.propTypes = {
     jsCode: PropTypes.string,
     xmlCode: PropTypes.string,
     isReadOnly: PropTypes.bool,
+    lesson: PropTypes.number,
   }).isRequired,
   sensor: PropTypes.shape({
     left: PropTypes.number.isRequired,
@@ -533,8 +499,6 @@ Workspace.propTypes = {
   createProgram: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   sendToRover: PropTypes.func.isRequired,
-  changeReadOnly: PropTypes.func.isRequired,
-  fetchProgram: PropTypes.func.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,

@@ -10,17 +10,13 @@ describe('The Indicator component', () => {
   const mockStore = configureStore();
   let store;
 
-  beforeEach(() => {
+  test('renders on the page with no errors', () => {
     store = mockStore({
       sensor: {
-        left: NOT_COVERED,
+        left: COVERED,
         right: NOT_COVERED,
       },
     });
-    store.dispatch = jest.fn();
-  });
-
-  test('renders on the page with no errors', () => {
     const wrapper = mount(<Indicator store={store} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -34,10 +30,8 @@ describe('The Indicator component', () => {
     });
     const wrapper = shallow(<Indicator store={store} />).dive().dive();
 
-    expect(wrapper.find('#leftIndicator').hasClass('covered')).toBe(true);
-    expect(wrapper.find('#leftIndicator').hasClass('not-covered')).toBe(false);
-    expect(wrapper.find('#rightIndicator').hasClass('covered')).toBe(false);
-    expect(wrapper.find('#rightIndicator').hasClass('not-covered')).toBe(true);
+    expect(wrapper.find('#covered-0').exists()).toBe(true);
+    expect(wrapper.find('#not-covered-1').exists()).toBe(true);
   });
 
   test('displays right covered', () => {
@@ -49,10 +43,8 @@ describe('The Indicator component', () => {
     });
     const wrapper = shallow(<Indicator store={store} />).dive().dive();
 
-    expect(wrapper.find('#leftIndicator').hasClass('covered')).toBe(false);
-    expect(wrapper.find('#leftIndicator').hasClass('not-covered')).toBe(true);
-    expect(wrapper.find('#rightIndicator').hasClass('covered')).toBe(true);
-    expect(wrapper.find('#rightIndicator').hasClass('not-covered')).toBe(false);
+    expect(wrapper.find('#not-covered-0').exists()).toBe(true);
+    expect(wrapper.find('#covered-1').exists()).toBe(true);
   });
 
   test('displays both covered', () => {
@@ -64,10 +56,8 @@ describe('The Indicator component', () => {
     });
     const wrapper = shallow(<Indicator store={store} />).dive().dive();
 
-    expect(wrapper.find('#leftIndicator').hasClass('covered')).toBe(true);
-    expect(wrapper.find('#leftIndicator').hasClass('not-covered')).toBe(false);
-    expect(wrapper.find('#rightIndicator').hasClass('covered')).toBe(true);
-    expect(wrapper.find('#rightIndicator').hasClass('not-covered')).toBe(false);
+    expect(wrapper.find('#covered-0').exists()).toBe(true);
+    expect(wrapper.find('#covered-1').exists()).toBe(true);
   });
 
   test('displays neither covered', () => {
@@ -79,9 +69,7 @@ describe('The Indicator component', () => {
     });
     const wrapper = shallow(<Indicator store={store} />).dive().dive();
 
-    expect(wrapper.find('#leftIndicator').hasClass('covered')).toBe(false);
-    expect(wrapper.find('#leftIndicator').hasClass('not-covered')).toBe(true);
-    expect(wrapper.find('#rightIndicator').hasClass('covered')).toBe(false);
-    expect(wrapper.find('#rightIndicator').hasClass('not-covered')).toBe(true);
+    expect(wrapper.find('#not-covered-0').exists()).toBe(true);
+    expect(wrapper.find('#not-covered-1').exists()).toBe(true);
   });
 });
