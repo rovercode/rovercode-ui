@@ -1,10 +1,18 @@
 import React from 'react';
-import { Message } from 'semantic-ui-react';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import { updateValidAuth } from '@/actions/auth';
-import {
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
+import Workspace from '../Workspace'; // eslint-disable-line import/order
+
+jest.mock('node-blockly/browser');
+jest.mock('sumo-logger');
+jest.mock('@/actions/code');
+jest.mock('@/actions/rover');
+
+import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first, import/order
+import { // eslint-disable-line import/first
   changeExecutionState,
   createProgram,
   fetchProgram,
@@ -13,17 +21,8 @@ import {
   EXECUTION_STEP,
   EXECUTION_STOP,
   EXECUTION_RESET,
-} from '@/actions/code';
-import { COVERED, NOT_COVERED } from '@/actions/sensor';
-import { send } from '@/actions/rover';
-
-jest.mock('node-blockly/browser');
-jest.mock('sumo-logger');
-
-import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first, import/order
-import SumoLogger from 'sumo-logger'; // eslint-disable-line import/first, import/order
-import Workspace from '../Workspace'; // eslint-disable-line import/first, import/order
-
+} from '@/actions/code'; // eslint-disable-line import/order
+import { send } from '@/actions/rover'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -41,6 +40,7 @@ describe('The Workspace component', () => {
         execution: null,
         name: 'test program',
         id: 1,
+        lesson: null,
       },
       sensor: {
         left: NOT_COVERED,
@@ -55,7 +55,7 @@ describe('The Workspace component', () => {
         },
       },
     });
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
     playground = {
       addChangeListener: jest.fn((cb) => { cb(); }),
       highlightBlock: jest.fn(),
@@ -98,9 +98,11 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
+    wrapper.setState({
+      workspace: null,
+    });
     wrapper.instance().updateJsCode();
     expect(Blockly.JavaScript.STATEMENT_PREFIX).toEqual('highlightBlock(%1);\n');
-    expect(wrapper.find(Message).exists()).toBe(false);
   });
 
   test('goes to running state on state change', () => {
@@ -277,6 +279,29 @@ describe('The Workspace component', () => {
     expect(store.dispatch).toHaveBeenCalledWith(saveProgram());
   });
 
+  test('recreates workspace when no longer read-only', () => {
+    store.getState().code.isReadOnly = true;
+    const workspace = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    workspace.instance().createWorkspace = jest.fn();
+    workspace.setProps({
+      code: {
+        isReadOnly: false,
+      },
+    });
+    workspace.update();
+
+    expect(workspace.instance().createWorkspace).toHaveBeenCalled();
+  });
+
   test('updates javascript code when read only', () => {
     const localStore = mockStore({
       code: {
@@ -290,7 +315,7 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     const workspace = shallowWithIntl(
       <Workspace store={localStore}>
         <div />
@@ -307,7 +332,6 @@ describe('The Workspace component', () => {
 
     expect(workspace.instance().updateJsCode).toHaveBeenCalled();
     expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
-    expect(workspace.find(Message).exists()).toBe(true);
   });
 
   test('runs code after waking if running', () => {
@@ -368,7 +392,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(2);
   });
 
   test('doesn\'t run code when sending to rover', () => {
@@ -391,7 +415,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).not.toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
 
@@ -412,7 +436,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).not.toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   test('doesn\'t run code when not running', () => {
@@ -433,7 +457,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).not.toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   test('doesn\'t run code when sleeping', () => {
@@ -455,7 +479,7 @@ describe('The Workspace component', () => {
     workspace.update();
     workspace.instance().runCode();
 
-    expect(setTimeout).not.toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   test('stops stepping when at the end', () => {
@@ -663,7 +687,7 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     shallowWithIntl(
       <Workspace store={localStore}>
         <div />
@@ -685,8 +709,8 @@ describe('The Workspace component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -715,7 +739,7 @@ describe('The Workspace component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -744,8 +768,8 @@ describe('The Workspace component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -774,7 +798,7 @@ describe('The Workspace component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -803,8 +827,8 @@ describe('The Workspace component', () => {
       status: 401,
     };
     store.dispatch = jest.fn();
-    store.dispatch.mockReturnValueOnce(Promise.reject(error));
-    store.dispatch.mockReturnValue(Promise.resolve());
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -833,7 +857,7 @@ describe('The Workspace component', () => {
     error.response = {
       status: 500,
     };
-    store.dispatch = jest.fn(() => Promise.reject(error));
+    store.dispatch = jest.fn().mockRejectedValue(error);
 
     const wrapper = shallowWithIntl(
       <Workspace store={store}>
@@ -929,7 +953,7 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     const wrapper = shallowWithIntl(
       <Workspace store={localStore}>
         <div />
@@ -943,62 +967,6 @@ describe('The Workspace component', () => {
     wrapper.instance().sendToRover('command');
 
     expect(store.dispatch).not.toHaveBeenCalled();
-  });
-
-  test('Remixes a program', (done) => {
-    const localStore = mockStore({
-      code: {
-        id: 1,
-        name: 'test program',
-        xmlCode: '<xml></xml>',
-      },
-      sensor: {
-        left: NOT_COVERED,
-        right: NOT_COVERED,
-      },
-    });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
-    const mockCreateProgram = jest.fn(() => Promise.resolve({
-      value: {
-        id: 1,
-        name: 'test program',
-      },
-    }));
-    const mockFetchProgram = jest.fn(() => Promise.resolve({
-      value: {
-        id: 1,
-        name: 'test program',
-        content: '<xml></xml>',
-      },
-    }));
-    const mockSaveProgram = jest.fn(() => Promise.resolve({
-      value: {
-        name: 'test program',
-      },
-    }));
-    const workspace = shallowWithIntl(
-      <Workspace store={localStore}>
-        <div />
-      </Workspace>, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    workspace.setProps({
-      createProgram: mockCreateProgram,
-      fetchProgram: mockFetchProgram,
-      saveProgram: mockSaveProgram,
-    });
-
-    workspace.instance().remix().then(() => {
-      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
-      expect(mockFetchProgram).toHaveBeenCalledWith(1);
-      expect(mockSaveProgram).toHaveBeenCalledWith(1, '<xml></xml>', 'test program');
-      expect(SumoLogger.mock.instances[0].log).toHaveBeenCalledWith('{"event":"remix","sourceProgramId":1,"newProgramId":1}');
-      done();
-    });
   });
 
   test('Replaces blockly if exists', () => {
@@ -1027,5 +995,62 @@ describe('The Workspace component', () => {
 
     expect(document.getElementsByClassName).toHaveBeenCalledTimes(1);
     expect(mockElement.remove).toHaveBeenCalledTimes(2);
+  });
+
+  test('debounces save actions', () => {
+    jest.useFakeTimers();
+
+    shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    store.dispatch.mockClear();
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+
+    jest.advanceTimersByTime(500);
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+
+    jest.advanceTimersByTime(500);
+
+    expect(store.dispatch).toHaveBeenCalledWith(saveProgram());
+  });
+
+  test('handles unset debounce time', () => {
+    jest.useFakeTimers();
+
+    const builtInParseInt = global.parseInt;
+    global.parseInt = () => NaN;
+
+    shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    store.dispatch.mockClear();
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+
+    jest.advanceTimersByTime(2000);
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(saveProgram());
+
+    jest.advanceTimersByTime(5000);
+
+    expect(store.dispatch).toHaveBeenCalledWith(saveProgram());
+
+    global.parseInt = builtInParseInt;
   });
 });

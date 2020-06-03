@@ -2,150 +2,57 @@
 
 exports[`The ProgramList component renders on the page with no errors 1`] = `
 <Fragment>
-  <Button
-    as={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "displayName": "Link",
-        "propTypes": Object {
-          "innerRef": [Function],
-          "onClick": [Function],
-          "replace": [Function],
-          "target": [Function],
-          "to": [Function],
-        },
-        "render": [Function],
-      }
-    }
-    primary={true}
-    style={
-      Object {
-        "marginLeft": "10%",
-      }
-    }
-    to="/mission-control"
+  <WithStyles(ForwardRef(Grid))
+    alignItems="center"
+    container={true}
+    direction="column"
+    justify="center"
   >
-    <Icon
-      as="i"
-      name="plus"
-    />
-    <FormattedMessage
-      defaultMessage="New Program"
-      id="app.program_list.new"
-      values={Object {}}
-    />
-  </Button>
-  <Segment
-    raised={true}
-    style={
-      Object {
-        "margin": "10px 10% 10px 10%",
-      }
-    }
-  >
-    <injectIntl(ProgramCollection)
-      label="My Programs"
-      onProgramClick={[Function]}
-      onRemoveClick={[Function]}
-      onUpdate={[Function]}
-      programs={
-        Object {
-          "next": null,
-          "previous": null,
-          "results": Array [],
-          "total_pages": 1,
-        }
-      }
-      tag={
-        Object {
-          "tags": Array [],
-        }
-      }
-      user={
-        Object {
-          "user_id": 1,
-          "username": "testuser",
-        }
-      }
-    />
-  </Segment>
-  <Segment
-    raised={true}
-    style={
-      Object {
-        "margin": "10px 10% 10px 10%",
-      }
-    }
-  >
-    <injectIntl(ProgramCollection)
-      label="Featured Programs"
-      onProgramClick={[Function]}
-      onRemoveClick={[Function]}
-      onUpdate={[Function]}
-      programs={
-        Object {
-          "next": null,
-          "previous": null,
-          "results": Array [],
-          "total_pages": 1,
-        }
-      }
-      tag={
-        Object {
-          "tags": Array [],
-        }
-      }
-      user={
-        Object {
-          "user_id": 1,
-          "username": "testuser",
-        }
-      }
-    />
-  </Segment>
-  <Segment
-    raised={true}
-    style={
-      Object {
-        "margin": "10px 10% 10px 10%",
-      }
-    }
-  >
-    <injectIntl(ProgramCollection)
-      label="Find More"
-      onProgramClick={[Function]}
-      onRemoveClick={[Function]}
-      onUpdate={[Function]}
-      programs={
-        Object {
-          "next": null,
-          "previous": null,
-          "results": Array [],
-          "total_pages": 1,
-        }
-      }
-      tag={
-        Object {
-          "tags": Array [],
-        }
-      }
-      user={
-        Object {
-          "user_id": 1,
-          "username": "testuser",
-        }
-      }
-    />
-  </Segment>
-  <Confirm
-    cancelButton="No"
-    confirmButton="Yes"
-    content="Are you sure you want to remove Test Program?"
-    header="Remove Program"
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <Styled(MuiBox)
+        m={2}
+      >
+        <injectIntl(WithStyles(ProgramCollection))
+          label="My Programs"
+          onProgramClick={[Function]}
+          onRemoveClick={[Function]}
+          onUpdate={[Function]}
+          programs={
+            Object {
+              "next": null,
+              "previous": null,
+              "results": Array [],
+              "total_pages": 1,
+            }
+          }
+          tag={
+            Object {
+              "tags": Array [],
+            }
+          }
+          user={
+            Object {
+              "user_id": 1,
+              "username": "testuser",
+            }
+          }
+        />
+      </Styled(MuiBox)>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+  <ConfirmDialog
+    cancelButton="No, don't remove program"
+    confirmButton="Yes, remove program"
     onCancel={[Function]}
     onConfirm={[Function]}
     open={false}
-    size="small"
-  />
+    title="Remove Program"
+  >
+    Are you sure you want to remove Test Program?
+  </ConfirmDialog>
+  <WithStyles(ForwardRef(Divider)) />
+  <Footer />
 </Fragment>
 `;

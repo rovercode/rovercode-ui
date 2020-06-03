@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { FormattedMessage } from 'react-intl';
@@ -32,27 +33,37 @@ class Console extends Component {
   render() {
     const { console } = this.props;
 
+    const ClearButton = withStyles((theme) => ({
+      root: {
+        marginTop: theme.spacing(2),
+      },
+    }))(Button);
+
     /* eslint-disable react/no-array-index-key */
     return (
-      <>
-        <div style={{ height: '200px', overflow: 'scroll' }}>
-          {
-            console.messages.map((message, index) => (
-              <p key={index}>
-                {`>> ${message}`}
-              </p>
-            ))
-          }
-          <div ref={this.bottomRef} />
-        </div>
-        <Button primary onClick={this.handleClear} style={{ marginTop: '10px' }}>
-          <FormattedMessage
-            id="app.console.clear"
-            description="Button label to clear the console"
-            defaultMessage="Clear"
-          />
-        </Button>
-      </>
+      <Grid container direction="column">
+        <Grid item>
+          <div style={{ height: '200px', overflow: 'scroll' }}>
+            {
+              console.messages.map((message, index) => (
+                <p key={index}>
+                  {`>> ${message}`}
+                </p>
+              ))
+            }
+            <div ref={this.bottomRef} />
+          </div>
+        </Grid>
+        <Grid item>
+          <ClearButton variant="contained" color="primary" onClick={this.handleClear}>
+            <FormattedMessage
+              id="app.console.clear"
+              description="Button label to clear the console"
+              defaultMessage="Clear"
+            />
+          </ClearButton>
+        </Grid>
+      </Grid>
     );
   }
 }

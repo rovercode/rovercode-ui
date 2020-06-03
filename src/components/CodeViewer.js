@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Modal } from 'semantic-ui-react';
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Link,
+} from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
@@ -7,11 +13,19 @@ import PropTypes from 'prop-types';
 
 import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
-import 'brace/theme/monokai';
+import 'brace/theme/github';
 
 const mapStateToProps = ({ code }) => ({ code });
 
 class CodeViewer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false,
+    };
+  }
+
   stripCode = () => {
     const { code } = this.props;
 
@@ -22,44 +36,53 @@ class CodeViewer extends Component {
     return '';
   }
 
+  handleOpen = () => {
+    this.setState({
+      open: true,
+    });
+  }
+
+  handleClose = () => {
+    this.setState({
+      open: false,
+    });
+  }
+
   render() {
     const { children } = this.props;
+    const { open } = this.state;
 
     return (
-      <Modal
-        basic
-        closeIcon
-        dimmer="blurring"
-        trigger={(
-          <Button primary>
-            { children }
-          </Button>
-        )}
-      >
-        <Modal.Header>
-          <FormattedMessage
-            id="app.code_viewer.description"
-            description="Describes the programming language in the code viewer"
-            defaultMessage="Here is the code in"
-          />
-          {' '}
-          <a href="https://en.wikipedia.org/wiki/JavaScript">
-            JavaScript
-          </a>
-          :
-        </Modal.Header>
-        <Modal.Content>
-          <AceEditor
-            mode="javascript"
-            theme="monokai"
-            readOnly
-            fontSize={14}
-            width="100%"
-            value={this.stripCode()}
-            editorProps={{ $blockScrolling: true }}
-          />
-        </Modal.Content>
-      </Modal>
+      <>
+        <Button variant="contained" color="primary" onClick={this.handleOpen}>
+          { children }
+        </Button>
+        <Dialog maxWidth="md" open={open} onClose={this.handleClose}>
+          <DialogTitle>
+            <FormattedMessage
+              id="app.code_viewer.description"
+              description="Describes the programming language in the code viewer"
+              defaultMessage="Here is the code in"
+            />
+            {' '}
+            <Link href="https://en.wikipedia.org/wiki/JavaScript">
+              JavaScript
+            </Link>
+            :
+          </DialogTitle>
+          <DialogContent dividers>
+            <AceEditor
+              mode="javascript"
+              theme="github"
+              readOnly
+              fontSize={14}
+              width="750px"
+              value={this.stripCode()}
+              editorProps={{ $blockScrolling: true }}
+            />
+          </DialogContent>
+        </Dialog>
+      </>
     );
   }
 }

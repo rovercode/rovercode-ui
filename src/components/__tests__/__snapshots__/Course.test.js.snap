@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Course component renders on the page with no errors 1`] = `
+<WithStyles(ForwardRef(ExpansionPanel))>
+  <WithStyles(ForwardRef(ExpansionPanelSummary))
+    expandIcon={<Memo(ExpandMoreIcon) />}
+  >
+    <WithStyles(ForwardRef(Typography))>
+      Test
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(ExpansionPanelSummary))>
+  <WithStyles(ForwardRef(ExpansionPanelDetails))>
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+      direction="row"
+      spacing={2}
+    >
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        key="2"
+        lg={3}
+        md={6}
+        xs={12}
+      >
+        <LessonCard
+          lesson={
+            Object {
+              "active_bd": 2,
+              "active_bd_owned": true,
+              "description": "The first lesson",
+              "id": 2,
+              "reference": "Lesson2",
+              "sequence_number": 1,
+              "state": Object {
+                "progress": "AVAILABLE",
+              },
+            }
+          }
+          onClick={[MockFunction]}
+        />
+      </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        key="1"
+        lg={3}
+        md={6}
+        xs={12}
+      >
+        <LessonCard
+          lesson={
+            Object {
+              "active_bd": 1,
+              "active_bd_owned": false,
+              "description": "The second lesson",
+              "id": 1,
+              "reference": "Lesson1",
+              "sequence_number": 2,
+              "state": Object {
+                "progress": "IN_PROGRESS",
+              },
+            }
+          }
+          onClick={[MockFunction]}
+        />
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(ExpansionPanelDetails))>
+</WithStyles(ForwardRef(ExpansionPanel))>
+`;

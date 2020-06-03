@@ -1,14 +1,17 @@
 import React from 'react';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
-import ProgramList from '../ProgramList';
-import { changeReadOnly, clearProgram, fetchProgram } from '../../actions/code';
-import { fetchPrograms, removeProgram } from '../../actions/program';
-import { fetchTags } from '../../actions/tag';
-import { updateValidAuth } from '../../actions/auth';
+import { updateValidAuth } from '@/actions/auth';
+import ProgramList from '../ProgramList'; // eslint-disable-line import/order
+
+jest.mock('@/actions/code');
+jest.mock('@/actions/program');
+jest.mock('@/actions/tag');
+
+import { changeReadOnly, clearProgram, fetchProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
+import { clearPrograms, fetchPrograms, removeProgram } from '@/actions/program'; // eslint-disable-line import/first, import/order
+import { fetchTags } from '@/actions/tag'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -39,7 +42,7 @@ describe('The ProgramListContainer', () => {
 
     const mockStore = configureStore();
     store = mockStore(defaultState);
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
 
     const mockAuthFailStore = configureStore();
     const authError = new Error();
@@ -48,8 +51,8 @@ describe('The ProgramListContainer', () => {
     };
     authFailStore = mockAuthFailStore(defaultState);
     authFailStore.dispatch = jest.fn();
-    authFailStore.dispatch.mockReturnValueOnce(Promise.reject(authError));
-    authFailStore.dispatch.mockReturnValue(Promise.resolve());
+    authFailStore.dispatch.mockRejectedValueOnce(authError);
+    authFailStore.dispatch.mockResolvedValue();
 
     const mockOtherFailStore = configureStore();
     const error = new Error();
@@ -57,23 +60,11 @@ describe('The ProgramListContainer', () => {
       status: 500,
     };
     otherFailStore = mockOtherFailStore(defaultState);
-    otherFailStore.dispatch = jest.fn(() => Promise.reject(error));
+    otherFailStore.dispatch = jest.fn().mockRejectedValue(error);
 
     wrapper = shallow(<ProgramList store={store} />, { context }).dive().dive().dive();
   });
   test('dispatches an action to fetch programs', () => {
-    const programs = {
-      total_pages: 1,
-      results: [{
-        id: 33,
-        name: 'Unnamed_Design_3',
-        content: '<xml><variables></variables></xml>',
-        user: 10,
-      }],
-    };
-    const mockAxios = new MockAdapter(axios);
-
-    mockAxios.onGet('/api/v1/block-diagrams/').reply(200, programs);
     wrapper.dive().props().fetchPrograms({
       user__not: 10,
     }, 2);
@@ -85,27 +76,9 @@ describe('The ProgramListContainer', () => {
         },
       }),
     );
-
-    mockAxios.restore();
   });
 
   test('dispatches an action to fetch programs for a user', () => {
-    const programs = {
-      total_pages: 1,
-      results: [{
-        id: 33,
-        name: 'Unnamed_Design_3',
-        content: '<xml><variables></variables></xml>',
-        user: 10,
-      }],
-    };
-    const mockAxios = new MockAdapter(axios);
-
-    mockAxios.onGet('/api/v1/block-diagrams/', {
-      params: {
-        user: 10,
-      },
-    }).reply(200, programs);
     wrapper.dive().props().fetchPrograms({
       user: 10,
     });
@@ -120,20 +93,9 @@ describe('The ProgramListContainer', () => {
         },
       }),
     );
-
-    mockAxios.restore();
   });
 
   test('dispatches an action to fetch specific program', () => {
-    const program = {
-      id: 33,
-      name: 'Unnamed_Design_3',
-      content: '<xml><variables></variables></xml>',
-      user: 10,
-    };
-    const mockAxios = new MockAdapter(axios);
-
-    mockAxios.onGet('/api/v1/block-diagrams/1/').reply(200, program);
     wrapper.dive().props().fetchProgram(1);
 
     expect(store.dispatch).toHaveBeenCalledWith(
@@ -143,14 +105,9 @@ describe('The ProgramListContainer', () => {
         },
       }),
     );
-
-    mockAxios.restore();
   });
 
   test('dispatches an action to remove a program', () => {
-    const mockAxios = new MockAdapter(axios);
-
-    mockAxios.onDelete('/api/v1/block-diagrams/1/').reply(204);
     wrapper.dive().props().removeProgram(1);
 
     expect(store.dispatch).toHaveBeenCalledWith(
@@ -160,14 +117,9 @@ describe('The ProgramListContainer', () => {
         },
       }),
     );
-
-    mockAxios.restore();
   });
 
   test('dispatches an action to fetch tags', () => {
-    const mockAxios = new MockAdapter(axios);
-
-    mockAxios.onGet('/api/v1/tags/').reply(200);
     wrapper.dive().props().fetchTags();
 
     expect(store.dispatch).toHaveBeenCalledWith(
@@ -177,8 +129,6 @@ describe('The ProgramListContainer', () => {
         },
       }),
     );
-
-    mockAxios.restore();
   });
 
   test('handles authentication error fetching programs', (done) => {
@@ -342,6 +292,14 @@ describe('The ProgramListContainer', () => {
 
     expect(store.dispatch).toHaveBeenCalledWith(
       clearProgram(),
+    );
+  });
+
+  test('dispatches an action to clear program list', () => {
+    wrapper.dive().props().clearProgramList();
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      clearPrograms(),
     );
   });
 });

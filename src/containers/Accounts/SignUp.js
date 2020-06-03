@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
+import { Lock, Mail, Person } from '@material-ui/icons';
 import {
-  Form,
+  Button,
   Grid,
-  Header,
+  InputAdornment,
+  Link,
   List,
-  Message,
-  Segment,
-} from 'semantic-ui-react';
+  ListItem,
+  ListItemText,
+  TextField,
+  Typography,
+} from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -96,23 +102,25 @@ class SignUp extends Component {
 
     /* eslint react/no-array-index-key: 0 */
     return (
-      <Grid.Row>
-        <Message negative>
-          <List bulleted>
+      <Grid item>
+        <Alert variant="outlined" severity="error">
+          <List dense>
             {
               messages.map((message, i) => (
-                <List.Item key={i}>
-                  {message}
-                </List.Item>
+                <ListItem key={i}>
+                  <ListItemText>
+                    {`- ${message}`}
+                  </ListItemText>
+                </ListItem>
               ))
             }
           </List>
-        </Message>
-      </Grid.Row>
+        </Alert>
+      </Grid>
     );
   }
 
-  signUp = () => {
+  signUp = (e) => {
     const { cookies, updateUser } = this.props;
     const {
       username,
@@ -120,6 +128,8 @@ class SignUp extends Component {
       password1,
       password2,
     } = this.state;
+
+    e.preventDefault();
 
     return axios.post('/jwt/auth/registration/', {
       username,
@@ -180,53 +190,121 @@ class SignUp extends Component {
             <Redirect to="/" />
           ) : (null)
         }
-        <Grid centered columns={16}>
-          <Grid.Row>
-            <Header size="huge">
+        <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
+          <Grid item>
+            <Typography variant="h4">
               <FormattedMessage
                 id="app.signup.header"
                 description="Header for sign up"
                 defaultMessage="Sign Up"
               />
-            </Header>
-          </Grid.Row>
-          <Grid.Row>
-            <p>
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography>
               <FormattedMessage
                 id="app.signup.check_1"
                 description="First part of Checking if the user already has an account"
                 defaultMessage="Already have an account? Then please"
               />
               {' '}
-              <a href="/accounts/login">
+              <Link component={RouterLink} to="/accounts/login">
                 <FormattedMessage
                   id="app.signup.check_2"
                   description="Second part of Checking if the user already has an account"
                   defaultMessage="sign in."
                 />
-              </a>
-            </p>
-          </Grid.Row>
+              </Link>
+            </Typography>
+          </Grid>
           {this.errorMessage()}
-          <Grid.Row>
-            <Grid.Column width={4}>
-              <Segment raised secondary>
-                <Form floated="left" onSubmit={this.signUp}>
-                  <Form.Input required icon="user" iconPosition="left" placeholder={usernamePlaceholder} onChange={this.handleUsernameChange} error={usernameError} />
-                  <Form.Input required icon="mail" iconPosition="left" placeholder={emailPlaceholder} onChange={this.handleEmailChange} error={emailError} />
-                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder={passwordPlaceholder} onChange={this.handlePassword1Change} error={password1Error} />
-                  <Form.Input required icon="lock" iconPosition="left" type="password" placeholder={passwordPlaceholder} onChange={this.handlePassword2Change} error={password2Error} />
-                  <Form.Button primary type="submit">
-                    <FormattedMessage
-                      id="app.signup.signup"
-                      description="Button label for initiating sign up"
-                      defaultMessage="Sign Up"
-                    />
-                  </Form.Button>
-                </Form>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
+          <Grid item>
+            <form onSubmit={this.signUp}>
+              <Grid item>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  required
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Person />
+                      </InputAdornment>
+                    ),
+                  }}
+                  placeholder={usernamePlaceholder}
+                  onChange={this.handleUsernameChange}
+                  error={!!usernameError}
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  required
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Mail />
+                      </InputAdornment>
+                    ),
+                  }}
+                  placeholder={emailPlaceholder}
+                  onChange={this.handleEmailChange}
+                  error={!!emailError}
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  required
+                  type="password"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Lock />
+                      </InputAdornment>
+                    ),
+                  }}
+                  placeholder={passwordPlaceholder}
+                  onChange={this.handlePassword1Change}
+                  error={!!password1Error}
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  variant="outlined"
+                  margin="dense"
+                  fullWidth
+                  required
+                  type="password"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Lock />
+                      </InputAdornment>
+                    ),
+                  }}
+                  placeholder={passwordPlaceholder}
+                  onChange={this.handlePassword2Change}
+                  error={!!password2Error}
+                />
+              </Grid>
+              <Grid item>
+                <Button variant="contained" color="primary" type="submit">
+                  <FormattedMessage
+                    id="app.signup.signup"
+                    description="Button label for initiating sign up"
+                    defaultMessage="Sign Up"
+                  />
+                </Button>
+              </Grid>
+            </form>
+          </Grid>
         </Grid>
       </>
     );

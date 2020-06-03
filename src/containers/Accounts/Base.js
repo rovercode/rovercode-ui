@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import NotFound from '@/containers/Global/NotFound';
@@ -14,22 +14,20 @@ import SignUp from './SignUp';
 
 
 const Base = ({ match }) => (
-  <Grid centered columns={16}>
-    <Grid.Row>
-      <Image src={logoImage} />
-    </Grid.Row>
-    <Grid.Row>
-      <Grid.Column width={16}>
-        <Switch>
-          <Route exact path={`${match.path}/login`} component={Login} />
-          <Route exact path={`${match.path}/login/callback/:service`} component={LoginCallback} />
-          <Route exact path={`${match.path}/reset`} component={PasswordReset} />
-          <Route exact path={`${match.path}/reset/callback/:uid/:token`} component={PasswordResetCallback} />
-          <Route exact path={`${match.path}/signup`} component={SignUp} />
-          <Route component={NotFound} />
-        </Switch>
-      </Grid.Column>
-    </Grid.Row>
+  <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
+    <Grid item>
+      <img alt="Rovercode" width="300px" src={logoImage} />
+    </Grid>
+    <Grid item>
+      <Switch>
+        <Route exact path={`${match.path}/login`} component={Login} />
+        <Route exact path={`${match.path}/login/callback/:service`} component={LoginCallback} />
+        <Route exact path={`${match.path}/reset`} component={PasswordReset} />
+        <Route exact path={`${match.path}/reset/callback/:uid/:token`} component={PasswordResetCallback} />
+        <Route exact path={`${match.path}/signup`} component={SignUp} />
+        <Route component={NotFound} />
+      </Switch>
+    </Grid>
   </Grid>
 );
 

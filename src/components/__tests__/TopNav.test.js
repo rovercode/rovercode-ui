@@ -3,8 +3,11 @@ import { Redirect } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
-import { logout } from '@/actions/auth';
 import TopNav from '../TopNav';
+
+jest.mock('@/actions/auth');
+
+import { logout } from '@/actions/auth'; // eslint-disable-line import/first, import/order
 
 const cookies = new Cookies();
 const mockStore = configureStore();
@@ -41,5 +44,18 @@ describe('The TopNav component', () => {
     expect(wrapper.find(Redirect).prop('to')).toBe('/accounts/login');
     expect(cookies.get('auth_jwt', { path: '/' })).toBeUndefined();
     expect(store.dispatch).toHaveBeenCalledWith(logout());
+  });
+
+  test('should set and clear menu anchor element when menu is opening and closing', () => {
+    const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
+      context: { cookies },
+    });
+    const wrapper = topNav.dive().dive().dive().dive();
+
+    expect(wrapper.instance().state.userMenuAnchorElement).toBe(null);
+    wrapper.instance().handleMenuOpen({ target: 'element' });
+    expect(wrapper.instance().state.userMenuAnchorElement).toBe('element');
+    wrapper.instance().handleMenuClose();
+    expect(wrapper.instance().state.userMenuAnchorElement).toBe(null);
   });
 });

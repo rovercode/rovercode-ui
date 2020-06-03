@@ -1,12 +1,13 @@
 import React from 'react';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 import { shallow } from 'enzyme';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
-import UserSetting from '../UserSetting';
-import { editUserUsername, editUserPassword } from '../../actions/user';
-import { updateValidAuth } from '../../actions/auth';
+import { updateValidAuth } from '@/actions/auth';
+import UserSetting from '../UserSetting'; // eslint-disable-line import/order
+
+jest.mock('@/actions/user');
+
+import { editUserUsername, editUserPassword } from '@/actions/user'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -28,7 +29,7 @@ describe('The UserSettingContainer', () => {
 
     const mockStore = configureStore();
     store = mockStore(defaultState);
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
 
     const mockAuthFailStore = configureStore();
     const authError = new Error();
@@ -37,8 +38,8 @@ describe('The UserSettingContainer', () => {
     };
     authFailStore = mockAuthFailStore(defaultState);
     authFailStore.dispatch = jest.fn();
-    authFailStore.dispatch.mockReturnValueOnce(Promise.reject(authError));
-    authFailStore.dispatch.mockReturnValue(Promise.resolve());
+    authFailStore.dispatch.mockRejectedValueOnce(authError);
+    authFailStore.dispatch.mockResolvedValue();
 
     const mockOtherFailStore = configureStore();
     const error = new Error();
@@ -46,22 +47,13 @@ describe('The UserSettingContainer', () => {
       status: 500,
     };
     otherFailStore = mockOtherFailStore(defaultState);
-    otherFailStore.dispatch = jest.fn(() => Promise.reject(error));
+    otherFailStore.dispatch = jest.fn().mockRejectedValue(error);
 
     wrapper = shallow(<UserSetting store={store} />, { context }).dive().dive().dive();
   });
+
   test('dispatches an action to edit user username', () => {
     const username = 'testuser';
-    const user = {
-      pk: 1,
-      username,
-      email: 'test@example.com',
-    };
-    const mockAxios = new MockAdapter(axios);
-
-    mockAxios.onPut('/jwt/auth/user/', {
-      username,
-    }).reply(200, user);
     wrapper.dive().props().editUserUsername(username);
 
     expect(store.dispatch).toHaveBeenCalledWith(
@@ -71,18 +63,10 @@ describe('The UserSettingContainer', () => {
         },
       }),
     );
-
-    mockAxios.restore();
   });
 
   test('dispatches an action to edit user password', () => {
     const password = 'password123';
-    const mockAxios = new MockAdapter(axios);
-
-    mockAxios.onPost('/jwt/auth/password/change/', {
-      new_password1: password,
-      new_password2: password,
-    }).reply(200, 'Password changed');
     wrapper.dive().props().editUserPassword(password);
 
     expect(store.dispatch).toHaveBeenCalledWith(
@@ -92,8 +76,6 @@ describe('The UserSettingContainer', () => {
         },
       }),
     );
-
-    mockAxios.restore();
   });
 
   test('handles authentication error editing user username', (done) => {

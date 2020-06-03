@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button } from '@material-ui/core';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
@@ -34,7 +34,7 @@ describe('The Console component', () => {
   });
 
   test('clears messages', () => {
-    const wrapper = shallow(<Console store={store} />).dive().dive();
+    const wrapper = mountWithIntl(<Console store={store} />);
 
     wrapper.find(Button).simulate('click');
 

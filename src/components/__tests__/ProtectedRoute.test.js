@@ -29,6 +29,9 @@ describe('The ProtectedRoute component', () => {
       auth: {
         isValidAuth: true,
       },
+      rover: {
+        rover: null,
+      },
     });
     store.dispatch = jest.fn();
   });
@@ -88,6 +91,9 @@ describe('The ProtectedRoute component', () => {
       auth: {
         isValidAuth: true,
       },
+      rover: {
+        rover: null,
+      },
     });
     const wrapper = mountWithIntl(
       <ReduxProvider store={store}>
@@ -118,6 +124,9 @@ describe('The ProtectedRoute component', () => {
       },
       auth: {
         isValidAuth: false,
+      },
+      rover: {
+        rover: null,
       },
     });
     store.dispatch = jest.fn();

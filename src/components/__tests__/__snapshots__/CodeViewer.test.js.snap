@@ -1,251 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The CodeViewer component handles blank code with no errors 1`] = `
-<Connect(CodeViewer)
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <CodeViewer
-    code={
-      Object {
-        "jsCode": null,
-      }
-    }
-    dispatch={[Function]}
-    store={
-      Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
-  >
-    <Modal
-      basic={true}
-      centered={true}
-      closeIcon={true}
-      closeOnDimmerClick={true}
-      closeOnDocumentClick={false}
-      dimmer="blurring"
-      eventPool="Modal"
-      trigger={
-        <Button
-          as="button"
-          primary={true}
-        >
-          Show Me The Code!
-        </Button>
-      }
-    >
-      <Portal
-        closeOnDocumentClick={false}
-        closeOnEscape={true}
-        eventPool="Modal"
-        mountNode={<body />}
-        onClose={[Function]}
-        onMount={[Function]}
-        onOpen={[Function]}
-        onUnmount={[Function]}
-        openOnTriggerClick={true}
-        trigger={
-          <Button
-            as="button"
-            primary={true}
-          >
-            Show Me The Code!
-          </Button>
-        }
-      >
-        <Ref
-          innerRef={[Function]}
-        >
-          <RefFindNode
-            innerRef={[Function]}
-          >
-            <Button
-              as="button"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              primary={true}
-            >
-              <Ref
-                innerRef={
-                  Object {
-                    "current": <button
-                      class="ui primary button"
-                    >
-                      Show Me The Code!
-                    </button>,
-                  }
-                }
-              >
-                <RefFindNode
-                  innerRef={
-                    Object {
-                      "current": <button
-                        class="ui primary button"
-                      >
-                        Show Me The Code!
-                      </button>,
-                    }
-                  }
-                >
-                  <button
-                    className="ui primary button"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                  >
-                    Show Me The Code!
-                  </button>
-                </RefFindNode>
-              </Ref>
-            </Button>
-          </RefFindNode>
-        </Ref>
-      </Portal>
-    </Modal>
-  </CodeViewer>
-</Connect(CodeViewer)>
-`;
-
 exports[`The CodeViewer component renders on the page with no errors 1`] = `
-<Connect(CodeViewer)
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <CodeViewer
-    code={
-      Object {
-        "jsCode": "test code",
-      }
-    }
-    dispatch={[Function]}
-    store={
-      Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
+<Fragment>
+  <WithStyles(ForwardRef(Button))
+    color="primary"
+    onClick={[Function]}
+    variant="contained"
   >
-    <Modal
-      basic={true}
-      centered={true}
-      closeIcon={true}
-      closeOnDimmerClick={true}
-      closeOnDocumentClick={false}
-      dimmer="blurring"
-      eventPool="Modal"
-      trigger={
-        <Button
-          as="button"
-          primary={true}
-        >
-          Show Me The Code!
-        </Button>
-      }
-    >
-      <Portal
-        closeOnDocumentClick={false}
-        closeOnEscape={true}
-        eventPool="Modal"
-        mountNode={<body />}
-        onClose={[Function]}
-        onMount={[Function]}
-        onOpen={[Function]}
-        onUnmount={[Function]}
-        openOnTriggerClick={true}
-        trigger={
-          <Button
-            as="button"
-            primary={true}
-          >
-            Show Me The Code!
-          </Button>
-        }
+    View JavaScript
+  </WithStyles(ForwardRef(Button))>
+  <WithStyles(ForwardRef(Dialog))
+    maxWidth="md"
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(ForwardRef(DialogTitle))>
+      <FormattedMessage
+        defaultMessage="Here is the code in"
+        id="app.code_viewer.description"
+        values={Object {}}
+      />
+       
+      <WithStyles(ForwardRef(Link))
+        href="https://en.wikipedia.org/wiki/JavaScript"
       >
-        <Ref
-          innerRef={[Function]}
-        >
-          <RefFindNode
-            innerRef={[Function]}
-          >
-            <Button
-              as="button"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              primary={true}
-            >
-              <Ref
-                innerRef={
-                  Object {
-                    "current": <button
-                      class="ui primary button"
-                    >
-                      Show Me The Code!
-                    </button>,
-                  }
-                }
-              >
-                <RefFindNode
-                  innerRef={
-                    Object {
-                      "current": <button
-                        class="ui primary button"
-                      >
-                        Show Me The Code!
-                      </button>,
-                    }
-                  }
-                >
-                  <button
-                    className="ui primary button"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                  >
-                    Show Me The Code!
-                  </button>
-                </RefFindNode>
-              </Ref>
-            </Button>
-          </RefFindNode>
-        </Ref>
-      </Portal>
-    </Modal>
-  </CodeViewer>
-</Connect(CodeViewer)>
+        JavaScript
+      </WithStyles(ForwardRef(Link))>
+      :
+    </WithStyles(ForwardRef(DialogTitle))>
+    <WithStyles(ForwardRef(DialogContent))
+      dividers={true}
+    >
+      <ReactAce
+        cursorStart={1}
+        editorProps={
+          Object {
+            "$blockScrolling": true,
+          }
+        }
+        enableBasicAutocompletion={false}
+        enableLiveAutocompletion={false}
+        enableSnippets={false}
+        focus={false}
+        fontSize={14}
+        height="500px"
+        highlightActiveLine={true}
+        maxLines={null}
+        minLines={null}
+        mode="javascript"
+        name="ace-editor"
+        navigateToFileEnd={true}
+        onChange={null}
+        onLoad={null}
+        onPaste={null}
+        onScroll={null}
+        placeholder={null}
+        readOnly={true}
+        scrollMargin={
+          Array [
+            0,
+            0,
+            0,
+            0,
+          ]
+        }
+        setOptions={Object {}}
+        showGutter={true}
+        showPrintMargin={true}
+        style={Object {}}
+        tabSize={4}
+        theme="github"
+        value="test code"
+        width="750px"
+        wrapEnabled={false}
+      />
+    </WithStyles(ForwardRef(DialogContent))>
+  </WithStyles(ForwardRef(Dialog))>
+</Fragment>
 `;
