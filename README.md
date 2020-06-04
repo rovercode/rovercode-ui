@@ -1,5 +1,6 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Chat](https://img.shields.io/badge/chat-developer-brightgreen.svg?style=flat)](https://rovercode.zulipchat.com)
-[![Zenhub Board](https://img.shields.io/badge/board-zenhub-purple.svg?style=flat)](https://app.zenhub.com/workspaces/rovercode-development-5c7e819df524621425116d03/boards)
+[![Build Status](https://travis-ci.com/rovercode/rovercode-ui.svg?branch=alpha)](https://travis-ci.com/rovercode/rovercode-ui)
 
 Rovercode User Interface
 ========================
