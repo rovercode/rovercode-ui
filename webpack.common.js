@@ -61,7 +61,6 @@ module.exports = {
       SENTRY_DSN: JSON.stringify(process.env.FRONTEND_SENTRY_DSN),
       PXT_HEX_URL: JSON.stringify(process.env.PXT_HEX_URL
         || 'https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex'),
-      LOGGER_ENDPOINT: JSON.stringify(process.env.FRONTEND_LOGGER_ENDPOINT),
       SAVE_DEBOUNCE_TIME: JSON.stringify(process.env.SAVE_DEBOUNCE_TIME),
     }),
     new HtmlWebPackPlugin({

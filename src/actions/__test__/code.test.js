@@ -12,6 +12,7 @@ import {
   saveProgram,
   createProgram,
   clearProgram,
+  remixProgram,
   EXECUTION_RUN,
 } from '../code';
 
@@ -152,6 +153,28 @@ describe('Code actions', () => {
     const action = changeProgramTags(1, program.owner_tags);
     const { type } = action;
     expect(type).toEqual('CHANGE_PROGRAM_TAGS');
+    action.payload.then((result) => {
+      expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
+  });
+
+  test('remix program', (done) => {
+    const mock = new MockAdapter(axios);
+    const program = {
+      id: 1,
+      name: 'mybd',
+      content: '<xml></xml>',
+      user: 1,
+      lesson: 2,
+    };
+
+    mock.onPost('/api/v1/block-diagrams/1/remix/').reply(200, program);
+
+    const action = remixProgram(1);
+    const { type } = action;
+    expect(type).toEqual('REMIX_PROGRAM');
     action.payload.then((result) => {
       expect(result).toEqual(program);
       mock.restore();

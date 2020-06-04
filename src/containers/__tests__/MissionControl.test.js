@@ -8,23 +8,17 @@ import { Cookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 import rootReducer from '@/reducers/index';
 import configureStore from 'redux-mock-store';
-import {
-  createProgram,
-  fetchProgram,
-  saveProgram,
-  changeReadOnly,
-} from '@/actions/code';
-import MissionControl from '../MissionControl';
+import MissionControl from '../MissionControl'; // eslint-disable-line import/order
 
-jest.mock('sumo-logger');
 jest.mock('@/components/CodeViewer', () => () => <div />);
 jest.mock('@/components/Console', () => () => <div />);
 jest.mock('@/components/Control', () => () => <div />);
 jest.mock('@/components/Indicator', () => () => <div />);
 jest.mock('@/components/ProgramName', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
+jest.mock('@/actions/code');
 
-import SumoLogger from 'sumo-logger'; // eslint-disable-line import/first, import/order
+import { changeReadOnly, remixProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -74,7 +68,7 @@ describe('The MissionControl container', () => {
   });
 
   test('maps dispatches correctly', (done) => {
-    store.dispatch = jest.fn(() => Promise.resolve());
+    store.dispatch = jest.fn().mockResolvedValue();
     wrapper = shallowWithIntl(
       <MissionControl store={store}>
         <div />
@@ -85,14 +79,10 @@ describe('The MissionControl container', () => {
       .dive()
       .dive();
 
-    const fetchPromise = wrapper.instance().props.fetchProgram(1);
-    const savePromise = wrapper.instance().props.saveProgram(2, '<xml></xml>', 'test program', 50);
-    const createPromise = wrapper.instance().props.createProgram('program name');
+    const remixPromise = wrapper.instance().props.remixProgram(1);
     const changeReadOnlyPromise = wrapper.instance().props.changeReadOnly(true);
-    Promise.all([fetchPromise, savePromise, createPromise, changeReadOnlyPromise]).then(() => {
-      expect(store.dispatch).toHaveBeenCalledWith(fetchProgram(1));
-      expect(store.dispatch).toHaveBeenCalledWith(saveProgram(2, '<xml></xml>', 'test program', 50));
-      expect(store.dispatch).toHaveBeenCalledWith(createProgram('program name'));
+    Promise.all([remixPromise, changeReadOnlyPromise]).then(() => {
+      expect(store.dispatch).toHaveBeenCalledWith(remixProgram(1));
       expect(store.dispatch).toHaveBeenCalledWith(changeReadOnly(true));
       done();
     });
@@ -108,7 +98,7 @@ describe('The MissionControl container', () => {
         isReadOnly: false,
       },
     });
-    localStore.dispatch = jest.fn(() => Promise.resolve());
+    localStore.dispatch = jest.fn().mockResolvedValue();
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
@@ -212,26 +202,13 @@ describe('The MissionControl container', () => {
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
     const mockChangeReadOnly = jest.fn();
-    const mockCreateProgram = jest.fn(() => Promise.resolve({
+    const mockRemixProgram = jest.fn().mockResolvedValue({
       value: {
         id: 2,
         name: 'test program',
         lesson: 50,
       },
-    }));
-    const mockFetchProgram = jest.fn(() => Promise.resolve({
-      value: {
-        id: 1,
-        name: 'test program',
-        content: '<xml></xml>',
-        reference_of: 50,
-      },
-    }));
-    const mockSaveProgram = jest.fn(() => Promise.resolve({
-      value: {
-        name: 'test program',
-      },
-    }));
+    });
     const missionControl = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
@@ -252,18 +229,13 @@ describe('The MissionControl container', () => {
       .dive();
 
     missionControl.setProps({
-      createProgram: mockCreateProgram,
-      fetchProgram: mockFetchProgram,
-      saveProgram: mockSaveProgram,
+      remixProgram: mockRemixProgram,
       changeReadOnly: mockChangeReadOnly,
     });
 
     missionControl.instance().remix().then(() => {
-      expect(mockFetchProgram).toHaveBeenCalledWith(1);
-      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
-      expect(mockSaveProgram).toHaveBeenCalledWith(2, '<xml></xml>', 'test program', 50);
+      expect(mockRemixProgram).toHaveBeenCalledWith(1);
       expect(mockChangeReadOnly).toHaveBeenCalledWith(false);
-      expect(SumoLogger.mock.instances[0].log).toHaveBeenCalledWith('{"event":"remix","sourceProgramId":1,"newProgramId":2}');
       done();
     });
   });
@@ -280,26 +252,14 @@ describe('The MissionControl container', () => {
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
     const mockChangeReadOnly = jest.fn();
-    const mockCreateProgram = jest.fn(() => Promise.resolve({
-      value: {
-        id: 2,
-        name: 'test program',
-        lesson: null,
-      },
-    }));
-    const mockFetchProgram = jest.fn(() => Promise.resolve({
+    const mockRemixProgram = jest.fn().mockResolvedValue({
       value: {
         id: 1,
         name: 'test program',
         content: '<xml></xml>',
         reference_of: null,
       },
-    }));
-    const mockSaveProgram = jest.fn(() => Promise.resolve({
-      value: {
-        name: 'test program',
-      },
-    }));
+    });
 
     const missionControl = shallowWithIntl(
       <ReduxProvider store={store}>
@@ -321,17 +281,12 @@ describe('The MissionControl container', () => {
       .dive();
 
     missionControl.setProps({
-      createProgram: mockCreateProgram,
-      fetchProgram: mockFetchProgram,
-      saveProgram: mockSaveProgram,
+      remixProgram: mockRemixProgram,
       changeReadOnly: mockChangeReadOnly,
     });
 
     missionControl.instance().remix().then(() => {
-      expect(mockFetchProgram).toHaveBeenCalledWith(1);
-      expect(mockCreateProgram).toHaveBeenCalledWith('test program');
-      expect(mockSaveProgram).toHaveBeenCalledWith(2, '<xml></xml>', 'test program', null);
-      expect(SumoLogger.mock.instances[0].log).toHaveBeenCalledWith('{"event":"remix","sourceProgramId":1,"newProgramId":2}');
+      expect(mockRemixProgram).toHaveBeenCalledWith(1);
       done();
     });
   });

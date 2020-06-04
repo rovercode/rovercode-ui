@@ -116,7 +116,7 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
         item={true}
       >
         <Styled(MuiBox)
-          m={2}
+          className="CourseList-listContainer-2"
         >
           <Course
             course={
@@ -157,7 +157,7 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
       </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>
     <Styled(MuiBox)
-      className="CourseList-paginationPaddedBox-2"
+      className="CourseList-paginationPaddedBox-3"
     >
       <WithStyles(ForwardRef(Pagination))
         color="secondary"
