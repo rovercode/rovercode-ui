@@ -130,8 +130,6 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
               "cookies": Object {},
             }
           }
-          createProgram={[Function]}
-          fetchProgram={[Function]}
           intl={
             Object {
               "defaultFormats": Object {},
@@ -172,7 +170,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
               },
             }
           }
-          saveProgram={[Function]}
+          remixProgram={[Function]}
           store={
             Object {
               "dispatch": [MockFunction],
