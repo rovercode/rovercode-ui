@@ -43,6 +43,9 @@ const styles = (theme) => ({
       minWidth: theme.breakpoints.values.lg,
     },
   },
+  listContainer: {
+    marginTop: theme.spacing(2),
+  },
   paginationPaddedBox: {
     display: 'flex',
     justifyContent: 'center',
@@ -266,7 +269,9 @@ class CourseList extends Component {
               </Grid>
             ) : (
               <Grid item>
-                <Box m={2}>
+                <Box
+                  className={classes.listContainer}
+                >
                   {
                     courses.results.map((course) => (
                       <Course key={course.id} course={course} onLessonClick={this.loadProgram} />
@@ -321,6 +326,7 @@ CourseList.defaultProps = {
 CourseList.propTypes = {
   classes: PropTypes.shape({
     mainContainer: PropTypes.string.isRequired,
+    listContainer: PropTypes.string.isRequired,
     paginationPaddedBox: PropTypes.string.isRequired,
   }).isRequired,
   fetchCourses: PropTypes.func.isRequired,

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Course component renders on the page with no errors 1`] = `
-<WithStyles(ForwardRef(ExpansionPanel))>
+<WithStyles(ForwardRef(ExpansionPanel))
+  expanded={true}
+>
   <WithStyles(ForwardRef(ExpansionPanelSummary))
     expandIcon={<Memo(ExpandMoreIcon) />}
   >
