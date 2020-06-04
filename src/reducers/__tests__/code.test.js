@@ -21,6 +21,9 @@ import {
   CREATE_PROGRAM_PENDING,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
+  REMIX_PROGRAM_PENDING,
+  REMIX_PROGRAM_FULFILLED,
+  REMIX_PROGRAM_REJECTED,
   CLEAR_PROGRAM,
 } from '../../actions/code';
 
@@ -305,6 +308,57 @@ describe('The code reducer', () => {
     });
   });
 
+  test('should handle REMIX_PROGRAM_PENDING', () => {
+    expect(
+      reducer({}, {
+        type: REMIX_PROGRAM_PENDING,
+      }),
+    ).toEqual({
+      isRemixing: true,
+    });
+  });
+
+  test('should handle REMIX_PROGRAM_FULFILLED', () => {
+    const name = 'mybd';
+    const id = 1;
+    const xmlCode = '<xml></xml>';
+    const lesson = 2;
+
+    expect(
+      reducer({}, {
+        type: REMIX_PROGRAM_FULFILLED,
+        payload: {
+          name,
+          id,
+          content: xmlCode,
+          lesson,
+        },
+      }),
+    ).toEqual({
+      isRemixing: false,
+      name,
+      id,
+      xmlCode,
+      lesson,
+    });
+  });
+
+  test('should handle REMIX_PROGRAM_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: REMIX_PROGRAM_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isRemixing: false,
+      error: { detail },
+    });
+  });
+
   test('should handle CHANGE_READ_ONLY', () => {
     expect(
       reducer({}, {
@@ -335,6 +389,7 @@ describe('The code reducer', () => {
       isCreating: false,
       isChangingName: false,
       isChangingProgramTags: false,
+      isRemixing: false,
       error: null,
       isReadOnly: false,
     });
