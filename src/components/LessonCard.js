@@ -6,7 +6,7 @@ import {
   CardActionArea,
   SvgIcon,
 } from '@material-ui/core';
-import { CheckCircle, Help, Lens } from '@material-ui/icons';
+import { CheckCircle, Lens } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 import PropTypes from 'prop-types';
@@ -31,10 +31,6 @@ const LessonCard = ({ lesson, onClick }) => {
 
   const progressIcon = () => {
     switch (progress) {
-      case 'AVAILABLE':
-      case 'UNAVAILABLE':
-        return (null);
-
       case 'IN_PROGRESS':
         return (<Lens className={classes.inProgress} />);
 
@@ -42,7 +38,7 @@ const LessonCard = ({ lesson, onClick }) => {
         return (<CheckCircle className={classes.complete} />);
 
       default:
-        return (<Help />);
+        return (null);
     }
   };
 
