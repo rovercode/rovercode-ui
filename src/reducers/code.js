@@ -19,6 +19,9 @@ import {
   CREATE_PROGRAM_PENDING,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
+  REMIX_PROGRAM_PENDING,
+  REMIX_PROGRAM_FULFILLED,
+  REMIX_PROGRAM_REJECTED,
   CLEAR_PROGRAM,
 } from '../actions/code';
 
@@ -34,6 +37,7 @@ const defaultState = {
   isCreating: false,
   isChangingName: false,
   isChangingProgramTags: false,
+  isRemixing: false,
   error: null,
   isReadOnly: false,
   ownerName: null,
@@ -156,6 +160,26 @@ export default function code(
       return {
         ...state,
         isCreating: false,
+        error: action.payload,
+      };
+    case REMIX_PROGRAM_PENDING:
+      return {
+        ...state,
+        isRemixing: true,
+      };
+    case REMIX_PROGRAM_FULFILLED:
+      return {
+        ...state,
+        isRemixing: false,
+        xmlCode: action.payload.content,
+        id: action.payload.id,
+        name: action.payload.name,
+        lesson: action.payload.lesson,
+      };
+    case REMIX_PROGRAM_REJECTED:
+      return {
+        ...state,
+        isRemixing: false,
         error: action.payload,
       };
     case CHANGE_READ_ONLY:

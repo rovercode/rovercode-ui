@@ -7,7 +7,6 @@ import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import Workspace from '../Workspace'; // eslint-disable-line import/order
 
 jest.mock('node-blockly/browser');
-jest.mock('sumo-logger');
 jest.mock('@/actions/code');
 jest.mock('@/actions/rover');
 

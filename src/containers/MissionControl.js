@@ -30,24 +30,13 @@ import Indicator from '@/components/Indicator';
 import ProgramName from '@/components/ProgramName';
 import ProgramTags from '@/components/ProgramTags';
 import Workspace from '@/components/Workspace';
-import logger from '@/utils/logger';
 import { checkAuthError, authHeader } from '@/actions/auth';
-import {
-  saveProgram as actionSaveProgram,
-  createProgram as actionCreateProgram,
-  changeReadOnly as actionChangeReadOnly,
-  fetchProgram as actionFetchProgram,
-} from '@/actions/code';
+import { changeReadOnly as actionChangeReadOnly, remixProgram as actionRemixProgram } from '@/actions/code';
 
 const mapStateToProps = ({ code }) => ({ code });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
-  saveProgram: (id, content, name, lesson) => dispatch(
-    actionSaveProgram(id, content, name, lesson, authHeader(cookies)),
-  ).catch(checkAuthError(dispatch)),
-  createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
-    .catch(checkAuthError(dispatch)),
-  fetchProgram: (id) => dispatch(actionFetchProgram(id, authHeader(cookies)))
+  remixProgram: (id) => dispatch(actionRemixProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
 });
 
@@ -62,26 +51,16 @@ class MissionControl extends Component {
 
   handleOnClose = () => this.setState({ open: false });
 
-  // Need to fetch the program again since the current code has editable="false" tags
   remix = () => {
     const {
-      fetchProgram,
-      createProgram,
-      saveProgram,
       changeReadOnly,
       code,
+      remixProgram,
     } = this.props;
-    return Promise.all([fetchProgram(code.id), createProgram(code.name)])
-      .then(([fetchData, createData]) => {
-        logger.log(JSON.stringify({
-          event: 'remix', userId: createData.user_id, sourceProgramId: code.id, newProgramId: createData.value.id,
-        }));
-        return saveProgram(createData.value.id, fetchData.value.content,
-          createData.value.name, fetchData.value.reference_of);
-      })
-      .then(() => {
-        changeReadOnly(false);
-      });
+
+    return remixProgram(code.id).then(() => {
+      changeReadOnly(false);
+    });
   }
 
   render() {
@@ -279,9 +258,7 @@ MissionControl.propTypes = {
     ownerName: PropTypes.string,
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,
-  fetchProgram: PropTypes.func.isRequired,
-  saveProgram: PropTypes.func.isRequired,
-  createProgram: PropTypes.func.isRequired,
+  remixProgram: PropTypes.func.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,
