@@ -53,6 +53,6 @@ describe('The LessonCard component', () => {
     const wrapper = shallow(<LessonCard lesson={lesson} onClick={onClick} />);
 
     expect(wrapper.find(CardActionArea).prop('disabled')).toBe(false);
-    expect(wrapper.find(CardHeader).prop('action').props.children.type.displayName).toBe('HelpIcon');
+    expect(wrapper.find(CardHeader).prop('action').props.children).toBeNull();
   });
 });

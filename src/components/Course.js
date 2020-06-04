@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import LessonCard from './LessonCard';
 
 const Course = ({ course, onLessonClick }) => (
-  <ExpansionPanel>
+  <ExpansionPanel defaultExpanded>
     <ExpansionPanelSummary expandIcon={<ExpandMore />}>
       <Typography>
         { course.name }
