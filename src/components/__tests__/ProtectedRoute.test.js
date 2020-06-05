@@ -21,10 +21,11 @@ describe('The ProtectedRoute component', () => {
   beforeEach(() => {
     store = mockStore({
       user: {
-        id: 1,
+        user_id: 1,
         username: 'testuser',
         email: 'testuser@example.com',
         exp: 1540341529,
+        showGuide: true,
       },
       auth: {
         isValidAuth: true,
@@ -117,10 +118,11 @@ describe('The ProtectedRoute component', () => {
   test('renders redirect when invalid auth', () => {
     store = mockStore({
       user: {
-        id: 1,
+        user_id: 1,
         username: 'testuser',
         email: 'testuser@example.com',
         exp: 1540341529,
+        showGuide: true,
       },
       auth: {
         isValidAuth: false,

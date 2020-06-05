@@ -1,23 +1,34 @@
 import React from 'react';
+import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import ConnectionHelp from '../ConnectionHelp';
+import ConnectionHelp from '../ConnectionHelp'; // eslint-disable-line import/order
+
+jest.mock('@/actions/user');
+
+import { editUserShowGuide } from '@/actions/user'; // eslint-disable-line import/first, import/order
+
+const cookiesValues = { auth_jwt: '1234' };
+const cookies = new Cookies(cookiesValues);
 
 describe('The ConnectionHelp component', () => {
   const mockStore = configureStore();
+  const context = { cookies };
   let store;
 
   beforeEach(() => {
     store = mockStore({
       user: {
-        // showConnectionHelpOnLogin: false, // TODO
+        user_id: 1,
+        showGuide: true,
       },
       rover: {
         rover: null,
       },
     });
+    store.dispatch = jest.fn().mockResolvedValue();
   });
 
   test('renders on the page with no errors', () => {
@@ -33,8 +44,10 @@ describe('The ConnectionHelp component', () => {
 
   test('handles opening and closing dialog', () => {
     const wrapper = shallowWithIntl(
-      <ConnectionHelp store={store} />,
-    ).find('ConnectionHelp').dive();
+      <ConnectionHelp store={store} />, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive();
 
     expect(wrapper.state('open')).toBe(true); // Starts open
 
@@ -50,7 +63,8 @@ describe('The ConnectionHelp component', () => {
   test('handles redirect button', () => {
     store = mockStore({
       user: {
-        // showConnectionHelpOnLogin: false, // TODO
+        user_id: 1,
+        showGuide: true,
       },
       rover: {
         rover: {
@@ -59,8 +73,10 @@ describe('The ConnectionHelp component', () => {
       },
     });
     const wrapper = shallowWithIntl(
-      <ConnectionHelp store={store} />,
-    ).find('ConnectionHelp').dive();
+      <ConnectionHelp store={store} />, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive();
     expect(wrapper.find(Redirect).exists()).toBe(false);
     wrapper.find('WithStyles(ForwardRef(Button))').at(2).simulate('click');
     expect(wrapper.find(Redirect).exists()).toBe(true);
@@ -68,5 +84,21 @@ describe('The ConnectionHelp component', () => {
       pathname: '/courses',
     });
     expect(wrapper.state('open')).toBe(false);
+  });
+
+  test('handles changing show guide', () => {
+    const wrapper = shallowWithIntl(
+      <ConnectionHelp store={store} />, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive();
+
+    wrapper.instance().handleShowChange({
+      target: {
+        checked: true,
+      },
+    });
+
+    expect(store.dispatch).toHaveBeenCalledWith(editUserShowGuide(1, false));
   });
 });
