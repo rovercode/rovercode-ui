@@ -11,6 +11,10 @@ export const EDIT_USER_PASSWORD = 'EDIT_USER_PASSWORD';
 export const EDIT_USER_PASSWORD_PENDING = `${EDIT_USER_PASSWORD}_PENDING`;
 export const EDIT_USER_PASSWORD_FULFILLED = `${EDIT_USER_PASSWORD}_FULFILLED`;
 export const EDIT_USER_PASSWORD_REJECTED = `${EDIT_USER_PASSWORD}_REJECTED`;
+export const EDIT_USER_SHOW_GUIDE = 'EDIT_USER_SHOW_GUIDE';
+export const EDIT_USER_SHOW_GUIDE_PENDING = `${EDIT_USER_SHOW_GUIDE}_PENDING`;
+export const EDIT_USER_SHOW_GUIDE_FULFILLED = `${EDIT_USER_SHOW_GUIDE}_FULFILLED`;
+export const EDIT_USER_SHOW_GUIDE_REJECTED = `${EDIT_USER_SHOW_GUIDE}_REJECTED`;
 export const FETCH_USER_LIST = 'FETCH_USER_LIST';
 export const FETCH_USER_LIST_PENDING = `${FETCH_USER_LIST}_PENDING`;
 export const FETCH_USER_LIST_FULFILLED = `${FETCH_USER_LIST}_FULFILLED`;
@@ -44,6 +48,14 @@ export const editUserPassword = (password, xhrOptions) => ({
 export const fetchUserList = (xhrOptions) => ({
   type: FETCH_USER_LIST,
   payload: axios.get('/api/v1/users/', xhrOptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const editUserShowGuide = (id, show, xhrOptions) => ({
+  type: EDIT_USER_SHOW_GUIDE,
+  payload: axios.patch(`/api/v1/users/${id}/`, { show_guide: show }, xhrOptions)
     .then(({ data }) => (
       data
     )),
