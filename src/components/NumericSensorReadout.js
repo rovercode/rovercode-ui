@@ -1,9 +1,23 @@
 import React from 'react';
 import { Typography, ExpansionPanelDetails } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
-const NumericSensorReadout = ({ title, readings, unit }) => (
+const styles = (theme) => ({
+  expansionPanelSubDetails: {
+    color: theme.palette.text.secondary,
+    paddingTop: theme.spacing(0),
+    paddingBottom: theme.spacing(1),
+  },
+});
+
+const NumericSensorReadout = ({
+  title,
+  readings,
+  unit,
+  classes,
+}) => (
   <>
     <ExpansionPanelDetails>
       <Typography>
@@ -12,11 +26,11 @@ const NumericSensorReadout = ({ title, readings, unit }) => (
     </ExpansionPanelDetails>
     {
       readings.map((reading) => (
-        <ExpansionPanelDetails>
+        <ExpansionPanelDetails className={classes.expansionPanelSubDetails}>
           <Typography variant="body2">
             {
               reading.reading === null ? (
-                'Not connected'
+                `${reading.label}: ? / ${reading.maxReading} ${unit}`
               ) : (
                 `${reading.label}: ${reading.reading} / ${reading.maxReading} ${unit}`
               )
@@ -33,6 +47,9 @@ NumericSensorReadout.defaultProps = {
 };
 
 NumericSensorReadout.propTypes = {
+  classes: PropTypes.shape({
+    expansionPanelSubDetails: PropTypes.string.isRequired,
+  }).isRequired,
   title: PropTypes.string.isRequired,
   readings: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
@@ -42,4 +59,4 @@ NumericSensorReadout.propTypes = {
   unit: PropTypes.string,
 };
 
-export default hot(module)(NumericSensorReadout);
+export default hot(module)(withStyles(styles)(NumericSensorReadout));

@@ -213,15 +213,22 @@ class MissionControl extends Component {
                     />
                   </Typography>
                 </ExpansionPanelSummary>
+                <Divider />
+                <ExpansionPanelDetails>
+                  <Typography>
+                    Buttons
+                  </Typography>
+                </ExpansionPanelDetails>
                 <ExpansionPanelDetails>
                   <WideBox p={2} border={1} borderRadius="borderRadius" borderColor="grey.500">
                     <Indicator />
                   </WideBox>
                 </ExpansionPanelDetails>
+                <Divider />
                 <NumericSensorReadout
                   title="Light Sensors"
                   readings={lightSensorReadings}
-                  unit="Lux"
+                  unit="units"
                 />
               </ExpansionPanel>
             </Grid>

@@ -2083,8 +2083,89 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                   <div
                                                     role="region"
                                                   >
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                    <WithStyles(ForwardRef(Divider))
                                                       key=".1"
+                                                    >
+                                                      <ForwardRef(Divider)
+                                                        classes={
+                                                          Object {
+                                                            "absolute": "MuiDivider-absolute",
+                                                            "flexItem": "MuiDivider-flexItem",
+                                                            "inset": "MuiDivider-inset",
+                                                            "light": "MuiDivider-light",
+                                                            "middle": "MuiDivider-middle",
+                                                            "root": "MuiDivider-root",
+                                                            "vertical": "MuiDivider-vertical",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root"
+                                                        />
+                                                      </ForwardRef(Divider)>
+                                                    </WithStyles(ForwardRef(Divider))>
+                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                      key=".2"
+                                                    >
+                                                      <ForwardRef(ExpansionPanelDetails)
+                                                        classes={
+                                                          Object {
+                                                            "root": "MuiExpansionPanelDetails-root",
+                                                          }
+                                                        }
+                                                      >
+                                                        <div
+                                                          className="MuiExpansionPanelDetails-root"
+                                                        >
+                                                          <WithStyles(ForwardRef(Typography))>
+                                                            <ForwardRef(Typography)
+                                                              classes={
+                                                                Object {
+                                                                  "alignCenter": "MuiTypography-alignCenter",
+                                                                  "alignJustify": "MuiTypography-alignJustify",
+                                                                  "alignLeft": "MuiTypography-alignLeft",
+                                                                  "alignRight": "MuiTypography-alignRight",
+                                                                  "body1": "MuiTypography-body1",
+                                                                  "body2": "MuiTypography-body2",
+                                                                  "button": "MuiTypography-button",
+                                                                  "caption": "MuiTypography-caption",
+                                                                  "colorError": "MuiTypography-colorError",
+                                                                  "colorInherit": "MuiTypography-colorInherit",
+                                                                  "colorPrimary": "MuiTypography-colorPrimary",
+                                                                  "colorSecondary": "MuiTypography-colorSecondary",
+                                                                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                  "displayBlock": "MuiTypography-displayBlock",
+                                                                  "displayInline": "MuiTypography-displayInline",
+                                                                  "gutterBottom": "MuiTypography-gutterBottom",
+                                                                  "h1": "MuiTypography-h1",
+                                                                  "h2": "MuiTypography-h2",
+                                                                  "h3": "MuiTypography-h3",
+                                                                  "h4": "MuiTypography-h4",
+                                                                  "h5": "MuiTypography-h5",
+                                                                  "h6": "MuiTypography-h6",
+                                                                  "noWrap": "MuiTypography-noWrap",
+                                                                  "overline": "MuiTypography-overline",
+                                                                  "paragraph": "MuiTypography-paragraph",
+                                                                  "root": "MuiTypography-root",
+                                                                  "srOnly": "MuiTypography-srOnly",
+                                                                  "subtitle1": "MuiTypography-subtitle1",
+                                                                  "subtitle2": "MuiTypography-subtitle2",
+                                                                }
+                                                              }
+                                                            >
+                                                              <p
+                                                                className="MuiTypography-root MuiTypography-body1"
+                                                              >
+                                                                Buttons
+                                                              </p>
+                                                            </ForwardRef(Typography)>
+                                                          </WithStyles(ForwardRef(Typography))>
+                                                        </div>
+                                                      </ForwardRef(ExpansionPanelDetails)>
+                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                      key=".3"
                                                     >
                                                       <ForwardRef(ExpansionPanelDetails)
                                                         classes={
@@ -2108,16 +2189,16 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                               borderRadius="borderRadius"
                                                               classes={
                                                                 Object {
-                                                                  "root": "Styled(MuiBox)-root-242",
+                                                                  "root": "Styled(MuiBox)-root-249",
                                                                 }
                                                               }
                                                               p={2}
                                                             >
                                                               <div
-                                                                className="MuiBox-root MuiBox-root-243 Styled(MuiBox)-root-242"
+                                                                className="MuiBox-root MuiBox-root-250 Styled(MuiBox)-root-249"
                                                                 classes={
                                                                   Object {
-                                                                    "root": "Styled(MuiBox)-root-242",
+                                                                    "root": "Styled(MuiBox)-root-249",
                                                                   }
                                                                 }
                                                               >
@@ -2130,8 +2211,29 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                         </div>
                                                       </ForwardRef(ExpansionPanelDetails)>
                                                     </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                    <WithStyles(ForwardRef(Divider))
+                                                      key=".4"
+                                                    >
+                                                      <ForwardRef(Divider)
+                                                        classes={
+                                                          Object {
+                                                            "absolute": "MuiDivider-absolute",
+                                                            "flexItem": "MuiDivider-flexItem",
+                                                            "inset": "MuiDivider-inset",
+                                                            "light": "MuiDivider-light",
+                                                            "middle": "MuiDivider-middle",
+                                                            "root": "MuiDivider-root",
+                                                            "vertical": "MuiDivider-vertical",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root"
+                                                        />
+                                                      </ForwardRef(Divider)>
+                                                    </WithStyles(ForwardRef(Divider))>
                                                     <Component
-                                                      key=".2"
+                                                      key=".5"
                                                       readings={
                                                         Array [
                                                           Object {
@@ -2147,7 +2249,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                         ]
                                                       }
                                                       title="Light Sensors"
-                                                      unit="Lux"
+                                                      unit="units"
                                                     >
                                                       <div />
                                                     </Component>

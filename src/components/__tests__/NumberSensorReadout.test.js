@@ -42,6 +42,6 @@ describe('The NumericSensorReadout component', () => {
       />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.find('p').last().text()).toEqual('Not connected');
+    expect(wrapper.find('p').last().text()).toEqual('A: ? / 1023 Weber');
   });
 });

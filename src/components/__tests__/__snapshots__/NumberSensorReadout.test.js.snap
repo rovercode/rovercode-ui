@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The NumericSensorReadout component renders on the page with no errors when no values 1`] = `
-<NumericSensorReadout
+<WithStyles(NumericSensorReadout)
   readings={
     Array [
       Object {
@@ -14,130 +14,152 @@ exports[`The NumericSensorReadout component renders on the page with no errors w
   title="Flux Sensors"
   unit="Weber"
 >
-  <WithStyles(ForwardRef(ExpansionPanelDetails))>
-    <ForwardRef(ExpansionPanelDetails)
-      classes={
-        Object {
-          "root": "MuiExpansionPanelDetails-root",
-        }
+  <NumericSensorReadout
+    classes={
+      Object {
+        "expansionPanelSubDetails": "NumericSensorReadout-expansionPanelSubDetails-1",
       }
-    >
-      <div
-        className="MuiExpansionPanelDetails-root"
-      >
-        <WithStyles(ForwardRef(Typography))>
-          <ForwardRef(Typography)
-            classes={
-              Object {
-                "alignCenter": "MuiTypography-alignCenter",
-                "alignJustify": "MuiTypography-alignJustify",
-                "alignLeft": "MuiTypography-alignLeft",
-                "alignRight": "MuiTypography-alignRight",
-                "body1": "MuiTypography-body1",
-                "body2": "MuiTypography-body2",
-                "button": "MuiTypography-button",
-                "caption": "MuiTypography-caption",
-                "colorError": "MuiTypography-colorError",
-                "colorInherit": "MuiTypography-colorInherit",
-                "colorPrimary": "MuiTypography-colorPrimary",
-                "colorSecondary": "MuiTypography-colorSecondary",
-                "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                "displayBlock": "MuiTypography-displayBlock",
-                "displayInline": "MuiTypography-displayInline",
-                "gutterBottom": "MuiTypography-gutterBottom",
-                "h1": "MuiTypography-h1",
-                "h2": "MuiTypography-h2",
-                "h3": "MuiTypography-h3",
-                "h4": "MuiTypography-h4",
-                "h5": "MuiTypography-h5",
-                "h6": "MuiTypography-h6",
-                "noWrap": "MuiTypography-noWrap",
-                "overline": "MuiTypography-overline",
-                "paragraph": "MuiTypography-paragraph",
-                "root": "MuiTypography-root",
-                "srOnly": "MuiTypography-srOnly",
-                "subtitle1": "MuiTypography-subtitle1",
-                "subtitle2": "MuiTypography-subtitle2",
-              }
-            }
-          >
-            <p
-              className="MuiTypography-root MuiTypography-body1"
-            >
-              Flux Sensors
-            </p>
-          </ForwardRef(Typography)>
-        </WithStyles(ForwardRef(Typography))>
-      </div>
-    </ForwardRef(ExpansionPanelDetails)>
-  </WithStyles(ForwardRef(ExpansionPanelDetails))>
-  <WithStyles(ForwardRef(ExpansionPanelDetails))>
-    <ForwardRef(ExpansionPanelDetails)
-      classes={
+    }
+    readings={
+      Array [
         Object {
-          "root": "MuiExpansionPanelDetails-root",
+          "label": "A",
+          "maxReading": 1023,
+          "reading": null,
+        },
+      ]
+    }
+    title="Flux Sensors"
+    unit="Weber"
+  >
+    <WithStyles(ForwardRef(ExpansionPanelDetails))>
+      <ForwardRef(ExpansionPanelDetails)
+        classes={
+          Object {
+            "root": "MuiExpansionPanelDetails-root",
+          }
         }
-      }
-    >
-      <div
-        className="MuiExpansionPanelDetails-root"
       >
-        <WithStyles(ForwardRef(Typography))
-          variant="body2"
+        <div
+          className="MuiExpansionPanelDetails-root"
         >
-          <ForwardRef(Typography)
-            classes={
-              Object {
-                "alignCenter": "MuiTypography-alignCenter",
-                "alignJustify": "MuiTypography-alignJustify",
-                "alignLeft": "MuiTypography-alignLeft",
-                "alignRight": "MuiTypography-alignRight",
-                "body1": "MuiTypography-body1",
-                "body2": "MuiTypography-body2",
-                "button": "MuiTypography-button",
-                "caption": "MuiTypography-caption",
-                "colorError": "MuiTypography-colorError",
-                "colorInherit": "MuiTypography-colorInherit",
-                "colorPrimary": "MuiTypography-colorPrimary",
-                "colorSecondary": "MuiTypography-colorSecondary",
-                "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                "displayBlock": "MuiTypography-displayBlock",
-                "displayInline": "MuiTypography-displayInline",
-                "gutterBottom": "MuiTypography-gutterBottom",
-                "h1": "MuiTypography-h1",
-                "h2": "MuiTypography-h2",
-                "h3": "MuiTypography-h3",
-                "h4": "MuiTypography-h4",
-                "h5": "MuiTypography-h5",
-                "h6": "MuiTypography-h6",
-                "noWrap": "MuiTypography-noWrap",
-                "overline": "MuiTypography-overline",
-                "paragraph": "MuiTypography-paragraph",
-                "root": "MuiTypography-root",
-                "srOnly": "MuiTypography-srOnly",
-                "subtitle1": "MuiTypography-subtitle1",
-                "subtitle2": "MuiTypography-subtitle2",
+          <WithStyles(ForwardRef(Typography))>
+            <ForwardRef(Typography)
+              classes={
+                Object {
+                  "alignCenter": "MuiTypography-alignCenter",
+                  "alignJustify": "MuiTypography-alignJustify",
+                  "alignLeft": "MuiTypography-alignLeft",
+                  "alignRight": "MuiTypography-alignRight",
+                  "body1": "MuiTypography-body1",
+                  "body2": "MuiTypography-body2",
+                  "button": "MuiTypography-button",
+                  "caption": "MuiTypography-caption",
+                  "colorError": "MuiTypography-colorError",
+                  "colorInherit": "MuiTypography-colorInherit",
+                  "colorPrimary": "MuiTypography-colorPrimary",
+                  "colorSecondary": "MuiTypography-colorSecondary",
+                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                  "displayBlock": "MuiTypography-displayBlock",
+                  "displayInline": "MuiTypography-displayInline",
+                  "gutterBottom": "MuiTypography-gutterBottom",
+                  "h1": "MuiTypography-h1",
+                  "h2": "MuiTypography-h2",
+                  "h3": "MuiTypography-h3",
+                  "h4": "MuiTypography-h4",
+                  "h5": "MuiTypography-h5",
+                  "h6": "MuiTypography-h6",
+                  "noWrap": "MuiTypography-noWrap",
+                  "overline": "MuiTypography-overline",
+                  "paragraph": "MuiTypography-paragraph",
+                  "root": "MuiTypography-root",
+                  "srOnly": "MuiTypography-srOnly",
+                  "subtitle1": "MuiTypography-subtitle1",
+                  "subtitle2": "MuiTypography-subtitle2",
+                }
               }
-            }
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Flux Sensors
+              </p>
+            </ForwardRef(Typography)>
+          </WithStyles(ForwardRef(Typography))>
+        </div>
+      </ForwardRef(ExpansionPanelDetails)>
+    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+    <WithStyles(ForwardRef(ExpansionPanelDetails))
+      className="NumericSensorReadout-expansionPanelSubDetails-1"
+    >
+      <ForwardRef(ExpansionPanelDetails)
+        className="NumericSensorReadout-expansionPanelSubDetails-1"
+        classes={
+          Object {
+            "root": "MuiExpansionPanelDetails-root",
+          }
+        }
+      >
+        <div
+          className="MuiExpansionPanelDetails-root NumericSensorReadout-expansionPanelSubDetails-1"
+        >
+          <WithStyles(ForwardRef(Typography))
             variant="body2"
           >
-            <p
-              className="MuiTypography-root MuiTypography-body2"
+            <ForwardRef(Typography)
+              classes={
+                Object {
+                  "alignCenter": "MuiTypography-alignCenter",
+                  "alignJustify": "MuiTypography-alignJustify",
+                  "alignLeft": "MuiTypography-alignLeft",
+                  "alignRight": "MuiTypography-alignRight",
+                  "body1": "MuiTypography-body1",
+                  "body2": "MuiTypography-body2",
+                  "button": "MuiTypography-button",
+                  "caption": "MuiTypography-caption",
+                  "colorError": "MuiTypography-colorError",
+                  "colorInherit": "MuiTypography-colorInherit",
+                  "colorPrimary": "MuiTypography-colorPrimary",
+                  "colorSecondary": "MuiTypography-colorSecondary",
+                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                  "displayBlock": "MuiTypography-displayBlock",
+                  "displayInline": "MuiTypography-displayInline",
+                  "gutterBottom": "MuiTypography-gutterBottom",
+                  "h1": "MuiTypography-h1",
+                  "h2": "MuiTypography-h2",
+                  "h3": "MuiTypography-h3",
+                  "h4": "MuiTypography-h4",
+                  "h5": "MuiTypography-h5",
+                  "h6": "MuiTypography-h6",
+                  "noWrap": "MuiTypography-noWrap",
+                  "overline": "MuiTypography-overline",
+                  "paragraph": "MuiTypography-paragraph",
+                  "root": "MuiTypography-root",
+                  "srOnly": "MuiTypography-srOnly",
+                  "subtitle1": "MuiTypography-subtitle1",
+                  "subtitle2": "MuiTypography-subtitle2",
+                }
+              }
+              variant="body2"
             >
-              Not connected
-            </p>
-          </ForwardRef(Typography)>
-        </WithStyles(ForwardRef(Typography))>
-      </div>
-    </ForwardRef(ExpansionPanelDetails)>
-  </WithStyles(ForwardRef(ExpansionPanelDetails))>
-</NumericSensorReadout>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                A: ? / 1023 Weber
+              </p>
+            </ForwardRef(Typography)>
+          </WithStyles(ForwardRef(Typography))>
+        </div>
+      </ForwardRef(ExpansionPanelDetails)>
+    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+  </NumericSensorReadout>
+</WithStyles(NumericSensorReadout)>
 `;
 
 exports[`The NumericSensorReadout component renders values on the page with no erros when values present 1`] = `
-<NumericSensorReadout
+<WithStyles(NumericSensorReadout)
   readings={
     Array [
       Object {
@@ -150,124 +172,146 @@ exports[`The NumericSensorReadout component renders values on the page with no e
   title="Flux Sensors"
   unit="Weber"
 >
-  <WithStyles(ForwardRef(ExpansionPanelDetails))>
-    <ForwardRef(ExpansionPanelDetails)
-      classes={
-        Object {
-          "root": "MuiExpansionPanelDetails-root",
-        }
+  <NumericSensorReadout
+    classes={
+      Object {
+        "expansionPanelSubDetails": "NumericSensorReadout-expansionPanelSubDetails-1",
       }
-    >
-      <div
-        className="MuiExpansionPanelDetails-root"
-      >
-        <WithStyles(ForwardRef(Typography))>
-          <ForwardRef(Typography)
-            classes={
-              Object {
-                "alignCenter": "MuiTypography-alignCenter",
-                "alignJustify": "MuiTypography-alignJustify",
-                "alignLeft": "MuiTypography-alignLeft",
-                "alignRight": "MuiTypography-alignRight",
-                "body1": "MuiTypography-body1",
-                "body2": "MuiTypography-body2",
-                "button": "MuiTypography-button",
-                "caption": "MuiTypography-caption",
-                "colorError": "MuiTypography-colorError",
-                "colorInherit": "MuiTypography-colorInherit",
-                "colorPrimary": "MuiTypography-colorPrimary",
-                "colorSecondary": "MuiTypography-colorSecondary",
-                "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                "displayBlock": "MuiTypography-displayBlock",
-                "displayInline": "MuiTypography-displayInline",
-                "gutterBottom": "MuiTypography-gutterBottom",
-                "h1": "MuiTypography-h1",
-                "h2": "MuiTypography-h2",
-                "h3": "MuiTypography-h3",
-                "h4": "MuiTypography-h4",
-                "h5": "MuiTypography-h5",
-                "h6": "MuiTypography-h6",
-                "noWrap": "MuiTypography-noWrap",
-                "overline": "MuiTypography-overline",
-                "paragraph": "MuiTypography-paragraph",
-                "root": "MuiTypography-root",
-                "srOnly": "MuiTypography-srOnly",
-                "subtitle1": "MuiTypography-subtitle1",
-                "subtitle2": "MuiTypography-subtitle2",
-              }
-            }
-          >
-            <p
-              className="MuiTypography-root MuiTypography-body1"
-            >
-              Flux Sensors
-            </p>
-          </ForwardRef(Typography)>
-        </WithStyles(ForwardRef(Typography))>
-      </div>
-    </ForwardRef(ExpansionPanelDetails)>
-  </WithStyles(ForwardRef(ExpansionPanelDetails))>
-  <WithStyles(ForwardRef(ExpansionPanelDetails))>
-    <ForwardRef(ExpansionPanelDetails)
-      classes={
+    }
+    readings={
+      Array [
         Object {
-          "root": "MuiExpansionPanelDetails-root",
+          "label": "A",
+          "maxReading": 1023,
+          "reading": 42,
+        },
+      ]
+    }
+    title="Flux Sensors"
+    unit="Weber"
+  >
+    <WithStyles(ForwardRef(ExpansionPanelDetails))>
+      <ForwardRef(ExpansionPanelDetails)
+        classes={
+          Object {
+            "root": "MuiExpansionPanelDetails-root",
+          }
         }
-      }
-    >
-      <div
-        className="MuiExpansionPanelDetails-root"
       >
-        <WithStyles(ForwardRef(Typography))
-          variant="body2"
+        <div
+          className="MuiExpansionPanelDetails-root"
         >
-          <ForwardRef(Typography)
-            classes={
-              Object {
-                "alignCenter": "MuiTypography-alignCenter",
-                "alignJustify": "MuiTypography-alignJustify",
-                "alignLeft": "MuiTypography-alignLeft",
-                "alignRight": "MuiTypography-alignRight",
-                "body1": "MuiTypography-body1",
-                "body2": "MuiTypography-body2",
-                "button": "MuiTypography-button",
-                "caption": "MuiTypography-caption",
-                "colorError": "MuiTypography-colorError",
-                "colorInherit": "MuiTypography-colorInherit",
-                "colorPrimary": "MuiTypography-colorPrimary",
-                "colorSecondary": "MuiTypography-colorSecondary",
-                "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                "displayBlock": "MuiTypography-displayBlock",
-                "displayInline": "MuiTypography-displayInline",
-                "gutterBottom": "MuiTypography-gutterBottom",
-                "h1": "MuiTypography-h1",
-                "h2": "MuiTypography-h2",
-                "h3": "MuiTypography-h3",
-                "h4": "MuiTypography-h4",
-                "h5": "MuiTypography-h5",
-                "h6": "MuiTypography-h6",
-                "noWrap": "MuiTypography-noWrap",
-                "overline": "MuiTypography-overline",
-                "paragraph": "MuiTypography-paragraph",
-                "root": "MuiTypography-root",
-                "srOnly": "MuiTypography-srOnly",
-                "subtitle1": "MuiTypography-subtitle1",
-                "subtitle2": "MuiTypography-subtitle2",
+          <WithStyles(ForwardRef(Typography))>
+            <ForwardRef(Typography)
+              classes={
+                Object {
+                  "alignCenter": "MuiTypography-alignCenter",
+                  "alignJustify": "MuiTypography-alignJustify",
+                  "alignLeft": "MuiTypography-alignLeft",
+                  "alignRight": "MuiTypography-alignRight",
+                  "body1": "MuiTypography-body1",
+                  "body2": "MuiTypography-body2",
+                  "button": "MuiTypography-button",
+                  "caption": "MuiTypography-caption",
+                  "colorError": "MuiTypography-colorError",
+                  "colorInherit": "MuiTypography-colorInherit",
+                  "colorPrimary": "MuiTypography-colorPrimary",
+                  "colorSecondary": "MuiTypography-colorSecondary",
+                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                  "displayBlock": "MuiTypography-displayBlock",
+                  "displayInline": "MuiTypography-displayInline",
+                  "gutterBottom": "MuiTypography-gutterBottom",
+                  "h1": "MuiTypography-h1",
+                  "h2": "MuiTypography-h2",
+                  "h3": "MuiTypography-h3",
+                  "h4": "MuiTypography-h4",
+                  "h5": "MuiTypography-h5",
+                  "h6": "MuiTypography-h6",
+                  "noWrap": "MuiTypography-noWrap",
+                  "overline": "MuiTypography-overline",
+                  "paragraph": "MuiTypography-paragraph",
+                  "root": "MuiTypography-root",
+                  "srOnly": "MuiTypography-srOnly",
+                  "subtitle1": "MuiTypography-subtitle1",
+                  "subtitle2": "MuiTypography-subtitle2",
+                }
               }
-            }
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                Flux Sensors
+              </p>
+            </ForwardRef(Typography)>
+          </WithStyles(ForwardRef(Typography))>
+        </div>
+      </ForwardRef(ExpansionPanelDetails)>
+    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+    <WithStyles(ForwardRef(ExpansionPanelDetails))
+      className="NumericSensorReadout-expansionPanelSubDetails-1"
+    >
+      <ForwardRef(ExpansionPanelDetails)
+        className="NumericSensorReadout-expansionPanelSubDetails-1"
+        classes={
+          Object {
+            "root": "MuiExpansionPanelDetails-root",
+          }
+        }
+      >
+        <div
+          className="MuiExpansionPanelDetails-root NumericSensorReadout-expansionPanelSubDetails-1"
+        >
+          <WithStyles(ForwardRef(Typography))
             variant="body2"
           >
-            <p
-              className="MuiTypography-root MuiTypography-body2"
+            <ForwardRef(Typography)
+              classes={
+                Object {
+                  "alignCenter": "MuiTypography-alignCenter",
+                  "alignJustify": "MuiTypography-alignJustify",
+                  "alignLeft": "MuiTypography-alignLeft",
+                  "alignRight": "MuiTypography-alignRight",
+                  "body1": "MuiTypography-body1",
+                  "body2": "MuiTypography-body2",
+                  "button": "MuiTypography-button",
+                  "caption": "MuiTypography-caption",
+                  "colorError": "MuiTypography-colorError",
+                  "colorInherit": "MuiTypography-colorInherit",
+                  "colorPrimary": "MuiTypography-colorPrimary",
+                  "colorSecondary": "MuiTypography-colorSecondary",
+                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                  "displayBlock": "MuiTypography-displayBlock",
+                  "displayInline": "MuiTypography-displayInline",
+                  "gutterBottom": "MuiTypography-gutterBottom",
+                  "h1": "MuiTypography-h1",
+                  "h2": "MuiTypography-h2",
+                  "h3": "MuiTypography-h3",
+                  "h4": "MuiTypography-h4",
+                  "h5": "MuiTypography-h5",
+                  "h6": "MuiTypography-h6",
+                  "noWrap": "MuiTypography-noWrap",
+                  "overline": "MuiTypography-overline",
+                  "paragraph": "MuiTypography-paragraph",
+                  "root": "MuiTypography-root",
+                  "srOnly": "MuiTypography-srOnly",
+                  "subtitle1": "MuiTypography-subtitle1",
+                  "subtitle2": "MuiTypography-subtitle2",
+                }
+              }
+              variant="body2"
             >
-              A: 42 / 1023 Weber
-            </p>
-          </ForwardRef(Typography)>
-        </WithStyles(ForwardRef(Typography))>
-      </div>
-    </ForwardRef(ExpansionPanelDetails)>
-  </WithStyles(ForwardRef(ExpansionPanelDetails))>
-</NumericSensorReadout>
+              <p
+                className="MuiTypography-root MuiTypography-body2"
+              >
+                A: 42 / 1023 Weber
+              </p>
+            </ForwardRef(Typography)>
+          </WithStyles(ForwardRef(Typography))>
+        </div>
+      </ForwardRef(ExpansionPanelDetails)>
+    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+  </NumericSensorReadout>
+</WithStyles(NumericSensorReadout)>
 `;
