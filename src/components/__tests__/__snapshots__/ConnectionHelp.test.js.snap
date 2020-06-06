@@ -601,7 +601,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   The Rover is your robot. Rovercode works with the Gigglebot, which is a robot chassis with a micro:bit computer.
                                 </p>
                                 <div
-                                  class="MuiBox-root MuiBox-root-195 Styled(MuiBox)-root-194"
+                                  class="MuiBox-root MuiBox-root-196 Styled(MuiBox)-root-195"
                                   classes="[object Object]"
                                 >
                                   <img
@@ -611,7 +611,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   />
                                 </div>
                                 <div
-                                  class="MuiBox-root MuiBox-root-196 Styled(MuiBox)-root-194"
+                                  class="MuiBox-root MuiBox-root-197 Styled(MuiBox)-root-195"
                                   classes="[object Object]"
                                 >
                                   <a
@@ -643,7 +643,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side).
                                 </p>
                                 <div
-                                  class="MuiBox-root MuiBox-root-197 Styled(MuiBox)-root-194"
+                                  class="MuiBox-root MuiBox-root-198 Styled(MuiBox)-root-195"
                                   classes="[object Object]"
                                 >
                                   <img
@@ -652,7 +652,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   />
                                 </div>
                                 <div
-                                  class="MuiBox-root MuiBox-root-198 Styled(MuiBox)-root-194"
+                                  class="MuiBox-root MuiBox-root-199 Styled(MuiBox)-root-195"
                                   classes="[object Object]"
                                 >
                                   <div
@@ -722,10 +722,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </p>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199"
+                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
                                             >
                                               <div
-                                                class="MuiBox-root MuiBox-root-200 Styled(MuiBox)-root-194"
+                                                class="MuiBox-root MuiBox-root-201 Styled(MuiBox)-root-195"
                                                 classes="[object Object]"
                                               >
                                                 <img
@@ -745,10 +745,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </p>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199"
+                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
                                             >
                                               <div
-                                                class="MuiBox-root MuiBox-root-201 Styled(MuiBox)-root-194"
+                                                class="MuiBox-root MuiBox-root-202 Styled(MuiBox)-root-195"
                                                 classes="[object Object]"
                                               >
                                                 <img
@@ -767,10 +767,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </p>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199"
+                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
                                             >
                                               <div
-                                                class="MuiBox-root MuiBox-root-202 Styled(MuiBox)-root-194"
+                                                class="MuiBox-root MuiBox-root-203 Styled(MuiBox)-root-195"
                                                 classes="[object Object]"
                                               >
                                                 <a
@@ -828,11 +828,11 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   With your Rover powered on and displaying the R, push the connect button below.
                                 </p>
                                 <div
-                                  class="MuiBox-root MuiBox-root-203 Styled(MuiBox)-root-194"
+                                  class="MuiBox-root MuiBox-root-204 Styled(MuiBox)-root-195"
                                   classes="[object Object]"
                                 >
                                   <button
-                                    class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-204 MuiButton-outlined MuiButton-disableElevation"
+                                    class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-205 MuiButton-outlined MuiButton-disableElevation"
                                     tabindex="0"
                                     type="button"
                                   >
@@ -844,7 +844,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          class="MuiSvgIcon-root LogoIcon-root-205"
+                                          class="MuiSvgIcon-root LogoIcon-root-206"
                                           focusable="false"
                                           style="font-size: 50px;"
                                           viewBox="0 0 24 24"
@@ -881,13 +881,13 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                       </span>
                                       <div>
                                         <h6
-                                          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-206 MuiTypography-h6"
+                                          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-207 MuiTypography-h6"
                                         >
                                           No Rover
                                           <br />
                                         </h6>
                                         <p
-                                          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-207 MuiTypography-body1 MuiTypography-colorPrimary"
+                                          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-208 MuiTypography-body1 MuiTypography-colorPrimary"
                                         >
                                           Connect
                                         </p>
@@ -900,48 +900,51 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                 >
                                   Then, choose the BBC micro:bit device from the list and click Pair.
                                 </p>
+                              </div>
+                              <div
+                                class="MuiDialogActions-root MuiDialogActions-spacing"
+                              >
                                 <div
-                                  class="MuiBox-root MuiBox-root-208 Styled(MuiBox)-root-194"
-                                  classes="[object Object]"
+                                  class="MuiFormGroup-root MuiFormGroup-row"
                                 >
-                                  <div
-                                    class="MuiFormGroup-root MuiFormGroup-row"
+                                  <label
+                                    class="MuiFormControlLabel-root"
                                   >
-                                    <label
-                                      class="MuiFormControlLabel-root"
+                                    <span
+                                      aria-disabled="false"
+                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked MuiIconButton-colorSecondary"
                                     >
                                       <span
-                                        aria-disabled="false"
-                                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-190 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                                        class="MuiIconButton-label"
                                       >
-                                        <span
-                                          class="MuiIconButton-label"
+                                        <input
+                                          checked=""
+                                          class="PrivateSwitchBase-input-194"
+                                          data-indeterminate="false"
+                                          type="checkbox"
+                                          value=""
+                                        />
+                                        <svg
+                                          aria-hidden="true"
+                                          class="MuiSvgIcon-root"
+                                          focusable="false"
+                                          viewBox="0 0 24 24"
                                         >
-                                          <input
-                                            class="PrivateSwitchBase-input-193"
-                                            data-indeterminate="false"
-                                            type="checkbox"
-                                            value=""
+                                          <path
+                                            d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
                                           />
-                                          <svg
-                                            aria-hidden="true"
-                                            class="MuiSvgIcon-root"
-                                            focusable="false"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                                            />
-                                          </svg>
-                                        </span>
+                                        </svg>
                                       </span>
                                       <span
-                                        class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-                                      >
-                                        Don't show this again
-                                      </span>
-                                    </label>
-                                  </div>
+                                        class="MuiTouchRipple-root"
+                                      />
+                                    </span>
+                                    <span
+                                      class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                                    >
+                                      Show this guide each time I log in
+                                    </span>
+                                  </label>
                                 </div>
                               </div>
                             </div>
@@ -1333,17 +1336,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-194",
+                                                  "root": "Styled(MuiBox)-root-195",
                                                 }
                                               }
                                               display="flex"
                                               justifyContent="center"
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-195 Styled(MuiBox)-root-194"
+                                                className="MuiBox-root MuiBox-root-196 Styled(MuiBox)-root-195"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-194",
+                                                    "root": "Styled(MuiBox)-root-195",
                                                   }
                                                 }
                                               >
@@ -1362,17 +1365,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-194",
+                                                  "root": "Styled(MuiBox)-root-195",
                                                 }
                                               }
                                               display="flex"
                                               justifyContent="center"
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-196 Styled(MuiBox)-root-194"
+                                                className="MuiBox-root MuiBox-root-197 Styled(MuiBox)-root-195"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-194",
+                                                    "root": "Styled(MuiBox)-root-195",
                                                   }
                                                 }
                                               >
@@ -1652,17 +1655,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-194",
+                                                  "root": "Styled(MuiBox)-root-195",
                                                 }
                                               }
                                               display="flex"
                                               justifyContent="center"
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-197 Styled(MuiBox)-root-194"
+                                                className="MuiBox-root MuiBox-root-198 Styled(MuiBox)-root-195"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-194",
+                                                    "root": "Styled(MuiBox)-root-195",
                                                   }
                                                 }
                                               >
@@ -1677,15 +1680,15 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-194",
+                                                  "root": "Styled(MuiBox)-root-195",
                                                 }
                                               }
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-198 Styled(MuiBox)-root-194"
+                                                className="MuiBox-root MuiBox-root-199 Styled(MuiBox)-root-195"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-194",
+                                                    "root": "Styled(MuiBox)-root-195",
                                                   }
                                                 }
                                               >
@@ -2117,33 +2120,33 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           <WithStyles(ForwardRef(ExpansionPanelDetails))
                                                                             classes={
                                                                               Object {
-                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-199",
+                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
                                                                               }
                                                                             }
                                                                           >
                                                                             <ForwardRef(ExpansionPanelDetails)
                                                                               classes={
                                                                                 Object {
-                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199",
+                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
                                                                                 }
                                                                               }
                                                                             >
                                                                               <div
-                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199"
+                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
                                                                               >
                                                                                 <WithStyles(Styled(MuiBox))>
                                                                                   <Styled(MuiBox)
                                                                                     classes={
                                                                                       Object {
-                                                                                        "root": "Styled(MuiBox)-root-194",
+                                                                                        "root": "Styled(MuiBox)-root-195",
                                                                                       }
                                                                                     }
                                                                                   >
                                                                                     <div
-                                                                                      className="MuiBox-root MuiBox-root-200 Styled(MuiBox)-root-194"
+                                                                                      className="MuiBox-root MuiBox-root-201 Styled(MuiBox)-root-195"
                                                                                       classes={
                                                                                         Object {
-                                                                                          "root": "Styled(MuiBox)-root-194",
+                                                                                          "root": "Styled(MuiBox)-root-195",
                                                                                         }
                                                                                       }
                                                                                     >
@@ -2234,33 +2237,33 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           <WithStyles(ForwardRef(ExpansionPanelDetails))
                                                                             classes={
                                                                               Object {
-                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-199",
+                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
                                                                               }
                                                                             }
                                                                           >
                                                                             <ForwardRef(ExpansionPanelDetails)
                                                                               classes={
                                                                                 Object {
-                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199",
+                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
                                                                                 }
                                                                               }
                                                                             >
                                                                               <div
-                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199"
+                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
                                                                               >
                                                                                 <WithStyles(Styled(MuiBox))>
                                                                                   <Styled(MuiBox)
                                                                                     classes={
                                                                                       Object {
-                                                                                        "root": "Styled(MuiBox)-root-194",
+                                                                                        "root": "Styled(MuiBox)-root-195",
                                                                                       }
                                                                                     }
                                                                                   >
                                                                                     <div
-                                                                                      className="MuiBox-root MuiBox-root-201 Styled(MuiBox)-root-194"
+                                                                                      className="MuiBox-root MuiBox-root-202 Styled(MuiBox)-root-195"
                                                                                       classes={
                                                                                         Object {
-                                                                                          "root": "Styled(MuiBox)-root-194",
+                                                                                          "root": "Styled(MuiBox)-root-195",
                                                                                         }
                                                                                       }
                                                                                     >
@@ -2350,33 +2353,33 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           <WithStyles(ForwardRef(ExpansionPanelDetails))
                                                                             classes={
                                                                               Object {
-                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-199",
+                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
                                                                               }
                                                                             }
                                                                           >
                                                                             <ForwardRef(ExpansionPanelDetails)
                                                                               classes={
                                                                                 Object {
-                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199",
+                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
                                                                                 }
                                                                               }
                                                                             >
                                                                               <div
-                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-199"
+                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
                                                                               >
                                                                                 <WithStyles(Styled(MuiBox))>
                                                                                   <Styled(MuiBox)
                                                                                     classes={
                                                                                       Object {
-                                                                                        "root": "Styled(MuiBox)-root-194",
+                                                                                        "root": "Styled(MuiBox)-root-195",
                                                                                       }
                                                                                     }
                                                                                   >
                                                                                     <div
-                                                                                      className="MuiBox-root MuiBox-root-202 Styled(MuiBox)-root-194"
+                                                                                      className="MuiBox-root MuiBox-root-203 Styled(MuiBox)-root-195"
                                                                                       classes={
                                                                                         Object {
-                                                                                          "root": "Styled(MuiBox)-root-194",
+                                                                                          "root": "Styled(MuiBox)-root-195",
                                                                                         }
                                                                                       }
                                                                                     >
@@ -2848,17 +2851,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-194",
+                                                  "root": "Styled(MuiBox)-root-195",
                                                 }
                                               }
                                               display="flex"
                                               justifyContent="center"
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-203 Styled(MuiBox)-root-194"
+                                                className="MuiBox-root MuiBox-root-204 Styled(MuiBox)-root-195"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-194",
+                                                    "root": "Styled(MuiBox)-root-195",
                                                   }
                                                 }
                                               >
@@ -2891,7 +2894,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                       <WithStyles(ForwardRef(Button))
                                                         classes={
                                                           Object {
-                                                            "root": "WithStyles(ForwardRef(Button))-root-204",
+                                                            "root": "WithStyles(ForwardRef(Button))-root-205",
                                                           }
                                                         }
                                                         disableElevation={true}
@@ -2931,7 +2934,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                               "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                               "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                               "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                              "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-204",
+                                                              "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-205",
                                                               "sizeLarge": "MuiButton-sizeLarge",
                                                               "sizeSmall": "MuiButton-sizeSmall",
                                                               "startIcon": "MuiButton-startIcon",
@@ -2957,7 +2960,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                           variant="outlined"
                                                         >
                                                           <WithStyles(ForwardRef(ButtonBase))
-                                                            className="MuiButton-root WithStyles(ForwardRef(Button))-root-204 MuiButton-outlined MuiButton-disableElevation"
+                                                            className="MuiButton-root WithStyles(ForwardRef(Button))-root-205 MuiButton-outlined MuiButton-disableElevation"
                                                             component="button"
                                                             disabled={false}
                                                             focusRipple={true}
@@ -2966,7 +2969,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                             type="button"
                                                           >
                                                             <ForwardRef(ButtonBase)
-                                                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-204 MuiButton-outlined MuiButton-disableElevation"
+                                                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-205 MuiButton-outlined MuiButton-disableElevation"
                                                               classes={
                                                                 Object {
                                                                   "disabled": "Mui-disabled",
@@ -2982,7 +2985,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                               type="button"
                                                             >
                                                               <button
-                                                                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-204 MuiButton-outlined MuiButton-disableElevation"
+                                                                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-205 MuiButton-outlined MuiButton-disableElevation"
                                                                 disabled={false}
                                                                 onBlur={[Function]}
                                                                 onClick={[Function]}
@@ -3015,7 +3018,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                       <LogoIcon
                                                                         classes={
                                                                           Object {
-                                                                            "root": "LogoIcon-root-205",
+                                                                            "root": "LogoIcon-root-206",
                                                                           }
                                                                         }
                                                                         style={
@@ -3027,7 +3030,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                         <WithStyles(ForwardRef(SvgIcon))
                                                                           classes={
                                                                             Object {
-                                                                              "root": "LogoIcon-root-205",
+                                                                              "root": "LogoIcon-root-206",
                                                                             }
                                                                           }
                                                                           style={
@@ -3047,7 +3050,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                 "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
                                                                                 "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
                                                                                 "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                                                "root": "MuiSvgIcon-root LogoIcon-root-205",
+                                                                                "root": "MuiSvgIcon-root LogoIcon-root-206",
                                                                               }
                                                                             }
                                                                             style={
@@ -3058,7 +3061,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           >
                                                                             <svg
                                                                               aria-hidden="true"
-                                                                              className="MuiSvgIcon-root LogoIcon-root-205"
+                                                                              className="MuiSvgIcon-root LogoIcon-root-206"
                                                                               focusable="false"
                                                                               style={
                                                                                 Object {
@@ -3108,73 +3111,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                       <WithStyles(ForwardRef(Typography))
                                                                         classes={
                                                                           Object {
-                                                                            "root": "WithStyles(ForwardRef(Typography))-root-206",
-                                                                          }
-                                                                        }
-                                                                        variant="h6"
-                                                                      >
-                                                                        <ForwardRef(Typography)
-                                                                          classes={
-                                                                            Object {
-                                                                              "alignCenter": "MuiTypography-alignCenter",
-                                                                              "alignJustify": "MuiTypography-alignJustify",
-                                                                              "alignLeft": "MuiTypography-alignLeft",
-                                                                              "alignRight": "MuiTypography-alignRight",
-                                                                              "body1": "MuiTypography-body1",
-                                                                              "body2": "MuiTypography-body2",
-                                                                              "button": "MuiTypography-button",
-                                                                              "caption": "MuiTypography-caption",
-                                                                              "colorError": "MuiTypography-colorError",
-                                                                              "colorInherit": "MuiTypography-colorInherit",
-                                                                              "colorPrimary": "MuiTypography-colorPrimary",
-                                                                              "colorSecondary": "MuiTypography-colorSecondary",
-                                                                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                                                                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                                                                              "displayBlock": "MuiTypography-displayBlock",
-                                                                              "displayInline": "MuiTypography-displayInline",
-                                                                              "gutterBottom": "MuiTypography-gutterBottom",
-                                                                              "h1": "MuiTypography-h1",
-                                                                              "h2": "MuiTypography-h2",
-                                                                              "h3": "MuiTypography-h3",
-                                                                              "h4": "MuiTypography-h4",
-                                                                              "h5": "MuiTypography-h5",
-                                                                              "h6": "MuiTypography-h6",
-                                                                              "noWrap": "MuiTypography-noWrap",
-                                                                              "overline": "MuiTypography-overline",
-                                                                              "paragraph": "MuiTypography-paragraph",
-                                                                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-206",
-                                                                              "srOnly": "MuiTypography-srOnly",
-                                                                              "subtitle1": "MuiTypography-subtitle1",
-                                                                              "subtitle2": "MuiTypography-subtitle2",
-                                                                            }
-                                                                          }
-                                                                          variant="h6"
-                                                                        >
-                                                                          <h6
-                                                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-206 MuiTypography-h6"
-                                                                          >
-                                                                            <FormattedMessage
-                                                                              defaultMessage="No Rover"
-                                                                              id="app.rover_connection.no_rover"
-                                                                              values={Object {}}
-                                                                            >
-                                                                              No Rover
-                                                                            </FormattedMessage>
-                                                                            <br />
-                                                                          </h6>
-                                                                        </ForwardRef(Typography)>
-                                                                      </WithStyles(ForwardRef(Typography))>
-                                                                    </WithStyles(WithStyles(ForwardRef(Typography)))>
-                                                                    <WithStyles(WithStyles(ForwardRef(Typography)))
-                                                                      color="primary"
-                                                                    >
-                                                                      <WithStyles(ForwardRef(Typography))
-                                                                        classes={
-                                                                          Object {
                                                                             "root": "WithStyles(ForwardRef(Typography))-root-207",
                                                                           }
                                                                         }
-                                                                        color="primary"
+                                                                        variant="h6"
                                                                       >
                                                                         <ForwardRef(Typography)
                                                                           classes={
@@ -3211,10 +3151,73 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                               "subtitle2": "MuiTypography-subtitle2",
                                                                             }
                                                                           }
+                                                                          variant="h6"
+                                                                        >
+                                                                          <h6
+                                                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-207 MuiTypography-h6"
+                                                                          >
+                                                                            <FormattedMessage
+                                                                              defaultMessage="No Rover"
+                                                                              id="app.rover_connection.no_rover"
+                                                                              values={Object {}}
+                                                                            >
+                                                                              No Rover
+                                                                            </FormattedMessage>
+                                                                            <br />
+                                                                          </h6>
+                                                                        </ForwardRef(Typography)>
+                                                                      </WithStyles(ForwardRef(Typography))>
+                                                                    </WithStyles(WithStyles(ForwardRef(Typography)))>
+                                                                    <WithStyles(WithStyles(ForwardRef(Typography)))
+                                                                      color="primary"
+                                                                    >
+                                                                      <WithStyles(ForwardRef(Typography))
+                                                                        classes={
+                                                                          Object {
+                                                                            "root": "WithStyles(ForwardRef(Typography))-root-208",
+                                                                          }
+                                                                        }
+                                                                        color="primary"
+                                                                      >
+                                                                        <ForwardRef(Typography)
+                                                                          classes={
+                                                                            Object {
+                                                                              "alignCenter": "MuiTypography-alignCenter",
+                                                                              "alignJustify": "MuiTypography-alignJustify",
+                                                                              "alignLeft": "MuiTypography-alignLeft",
+                                                                              "alignRight": "MuiTypography-alignRight",
+                                                                              "body1": "MuiTypography-body1",
+                                                                              "body2": "MuiTypography-body2",
+                                                                              "button": "MuiTypography-button",
+                                                                              "caption": "MuiTypography-caption",
+                                                                              "colorError": "MuiTypography-colorError",
+                                                                              "colorInherit": "MuiTypography-colorInherit",
+                                                                              "colorPrimary": "MuiTypography-colorPrimary",
+                                                                              "colorSecondary": "MuiTypography-colorSecondary",
+                                                                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                              "displayBlock": "MuiTypography-displayBlock",
+                                                                              "displayInline": "MuiTypography-displayInline",
+                                                                              "gutterBottom": "MuiTypography-gutterBottom",
+                                                                              "h1": "MuiTypography-h1",
+                                                                              "h2": "MuiTypography-h2",
+                                                                              "h3": "MuiTypography-h3",
+                                                                              "h4": "MuiTypography-h4",
+                                                                              "h5": "MuiTypography-h5",
+                                                                              "h6": "MuiTypography-h6",
+                                                                              "noWrap": "MuiTypography-noWrap",
+                                                                              "overline": "MuiTypography-overline",
+                                                                              "paragraph": "MuiTypography-paragraph",
+                                                                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-208",
+                                                                              "srOnly": "MuiTypography-srOnly",
+                                                                              "subtitle1": "MuiTypography-subtitle1",
+                                                                              "subtitle2": "MuiTypography-subtitle2",
+                                                                            }
+                                                                          }
                                                                           color="primary"
                                                                         >
                                                                           <p
-                                                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-207 MuiTypography-body1 MuiTypography-colorPrimary"
+                                                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-208 MuiTypography-body1 MuiTypography-colorPrimary"
                                                                           >
                                                                             <FormattedMessage
                                                                               defaultMessage="Connect"
@@ -3293,354 +3296,373 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </p>
                                             </ForwardRef(Typography)>
                                           </WithStyles(ForwardRef(Typography))>
-                                          <WithStyles(Styled(MuiBox))
-                                            display="flex"
-                                            justifyContent="center"
+                                        </div>
+                                      </ForwardRef(DialogContent)>
+                                    </WithStyles(ForwardRef(DialogContent))>
+                                    <WithStyles(ForwardRef(DialogActions))>
+                                      <ForwardRef(DialogActions)
+                                        classes={
+                                          Object {
+                                            "root": "MuiDialogActions-root",
+                                            "spacing": "MuiDialogActions-spacing",
+                                          }
+                                        }
+                                      >
+                                        <div
+                                          className="MuiDialogActions-root MuiDialogActions-spacing"
+                                        >
+                                          <WithStyles(ForwardRef(FormGroup))
+                                            row={true}
                                           >
-                                            <Styled(MuiBox)
+                                            <ForwardRef(FormGroup)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-194",
+                                                  "root": "MuiFormGroup-root",
+                                                  "row": "MuiFormGroup-row",
                                                 }
                                               }
-                                              display="flex"
-                                              justifyContent="center"
+                                              row={true}
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-208 Styled(MuiBox)-root-194"
-                                                classes={
-                                                  Object {
-                                                    "root": "Styled(MuiBox)-root-194",
-                                                  }
-                                                }
+                                                className="MuiFormGroup-root MuiFormGroup-row"
                                               >
-                                                <WithStyles(ForwardRef(FormGroup))
-                                                  row={true}
+                                                <WithStyles(ForwardRef(FormControlLabel))
+                                                  control={
+                                                    <WithStyles(ForwardRef(Checkbox))
+                                                      checked={true}
+                                                      onChange={[Function]}
+                                                    />
+                                                  }
+                                                  label={
+                                                    <FormattedMessage
+                                                      defaultMessage="Show this guide each time I log in"
+                                                      id="app.connection_help.show"
+                                                      values={Object {}}
+                                                    />
+                                                  }
                                                 >
-                                                  <ForwardRef(FormGroup)
+                                                  <ForwardRef(FormControlLabel)
                                                     classes={
                                                       Object {
-                                                        "root": "MuiFormGroup-root",
-                                                        "row": "MuiFormGroup-row",
+                                                        "disabled": "Mui-disabled",
+                                                        "label": "MuiFormControlLabel-label",
+                                                        "labelPlacementBottom": "MuiFormControlLabel-labelPlacementBottom",
+                                                        "labelPlacementStart": "MuiFormControlLabel-labelPlacementStart",
+                                                        "labelPlacementTop": "MuiFormControlLabel-labelPlacementTop",
+                                                        "root": "MuiFormControlLabel-root",
                                                       }
                                                     }
-                                                    row={true}
+                                                    control={
+                                                      <WithStyles(ForwardRef(Checkbox))
+                                                        checked={true}
+                                                        onChange={[Function]}
+                                                      />
+                                                    }
+                                                    label={
+                                                      <FormattedMessage
+                                                        defaultMessage="Show this guide each time I log in"
+                                                        id="app.connection_help.show"
+                                                        values={Object {}}
+                                                      />
+                                                    }
                                                   >
-                                                    <div
-                                                      className="MuiFormGroup-root MuiFormGroup-row"
+                                                    <label
+                                                      className="MuiFormControlLabel-root"
                                                     >
-                                                      <WithStyles(ForwardRef(FormControlLabel))
-                                                        control={
-                                                          <WithStyles(ForwardRef(Checkbox))
-                                                            checked={false}
-                                                            onChange={[Function]}
-                                                          />
-                                                        }
-                                                        label={
-                                                          <FormattedMessage
-                                                            defaultMessage="Don't show this again"
-                                                            id="app.connection_help.show"
-                                                            values={Object {}}
-                                                          />
-                                                        }
+                                                      <WithStyles(ForwardRef(Checkbox))
+                                                        checked={true}
+                                                        onChange={[Function]}
                                                       >
-                                                        <ForwardRef(FormControlLabel)
+                                                        <ForwardRef(Checkbox)
+                                                          checked={true}
                                                           classes={
                                                             Object {
+                                                              "checked": "Mui-checked",
+                                                              "colorPrimary": "MuiCheckbox-colorPrimary",
+                                                              "colorSecondary": "MuiCheckbox-colorSecondary",
                                                               "disabled": "Mui-disabled",
-                                                              "label": "MuiFormControlLabel-label",
-                                                              "labelPlacementBottom": "MuiFormControlLabel-labelPlacementBottom",
-                                                              "labelPlacementStart": "MuiFormControlLabel-labelPlacementStart",
-                                                              "labelPlacementTop": "MuiFormControlLabel-labelPlacementTop",
-                                                              "root": "MuiFormControlLabel-root",
+                                                              "indeterminate": "MuiCheckbox-indeterminate",
+                                                              "root": "MuiCheckbox-root",
                                                             }
                                                           }
-                                                          control={
-                                                            <WithStyles(ForwardRef(Checkbox))
-                                                              checked={false}
-                                                              onChange={[Function]}
-                                                            />
-                                                          }
-                                                          label={
-                                                            <FormattedMessage
-                                                              defaultMessage="Don't show this again"
-                                                              id="app.connection_help.show"
-                                                              values={Object {}}
-                                                            />
-                                                          }
+                                                          onChange={[Function]}
                                                         >
-                                                          <label
-                                                            className="MuiFormControlLabel-root"
+                                                          <WithStyles(ForwardRef(SwitchBase))
+                                                            checked={true}
+                                                            checkedIcon={
+                                                              <Memo(CheckBoxIcon)
+                                                                fontSize="default"
+                                                              />
+                                                            }
+                                                            classes={
+                                                              Object {
+                                                                "checked": "Mui-checked",
+                                                                "disabled": "Mui-disabled",
+                                                                "root": "MuiCheckbox-root MuiCheckbox-colorSecondary",
+                                                              }
+                                                            }
+                                                            color="secondary"
+                                                            icon={
+                                                              <Memo(CheckBoxOutlineBlankIcon)
+                                                                fontSize="default"
+                                                              />
+                                                            }
+                                                            inputProps={
+                                                              Object {
+                                                                "data-indeterminate": false,
+                                                              }
+                                                            }
+                                                            onChange={[Function]}
+                                                            type="checkbox"
                                                           >
-                                                            <WithStyles(ForwardRef(Checkbox))
-                                                              checked={false}
-                                                              onChange={[Function]}
-                                                            >
-                                                              <ForwardRef(Checkbox)
-                                                                checked={false}
-                                                                classes={
-                                                                  Object {
-                                                                    "checked": "Mui-checked",
-                                                                    "colorPrimary": "MuiCheckbox-colorPrimary",
-                                                                    "colorSecondary": "MuiCheckbox-colorSecondary",
-                                                                    "disabled": "Mui-disabled",
-                                                                    "indeterminate": "MuiCheckbox-indeterminate",
-                                                                    "root": "MuiCheckbox-root",
-                                                                  }
+                                                            <ForwardRef(SwitchBase)
+                                                              checked={true}
+                                                              checkedIcon={
+                                                                <Memo(CheckBoxIcon)
+                                                                  fontSize="default"
+                                                                />
+                                                              }
+                                                              classes={
+                                                                Object {
+                                                                  "checked": "PrivateSwitchBase-checked-192 Mui-checked",
+                                                                  "disabled": "PrivateSwitchBase-disabled-193 Mui-disabled",
+                                                                  "input": "PrivateSwitchBase-input-194",
+                                                                  "root": "PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary",
                                                                 }
-                                                                onChange={[Function]}
+                                                              }
+                                                              color="secondary"
+                                                              icon={
+                                                                <Memo(CheckBoxOutlineBlankIcon)
+                                                                  fontSize="default"
+                                                                />
+                                                              }
+                                                              inputProps={
+                                                                Object {
+                                                                  "data-indeterminate": false,
+                                                                }
+                                                              }
+                                                              onChange={[Function]}
+                                                              type="checkbox"
+                                                            >
+                                                              <WithStyles(ForwardRef(IconButton))
+                                                                className="PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked"
+                                                                color="secondary"
+                                                                component="span"
+                                                                onBlur={[Function]}
+                                                                onFocus={[Function]}
+                                                                tabIndex={null}
                                                               >
-                                                                <WithStyles(ForwardRef(SwitchBase))
-                                                                  checked={false}
-                                                                  checkedIcon={
-                                                                    <Memo(CheckBoxIcon)
-                                                                      fontSize="default"
-                                                                    />
-                                                                  }
+                                                                <ForwardRef(IconButton)
+                                                                  className="PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked"
                                                                   classes={
                                                                     Object {
-                                                                      "checked": "Mui-checked",
+                                                                      "colorInherit": "MuiIconButton-colorInherit",
+                                                                      "colorPrimary": "MuiIconButton-colorPrimary",
+                                                                      "colorSecondary": "MuiIconButton-colorSecondary",
                                                                       "disabled": "Mui-disabled",
-                                                                      "root": "MuiCheckbox-root MuiCheckbox-colorSecondary",
+                                                                      "edgeEnd": "MuiIconButton-edgeEnd",
+                                                                      "edgeStart": "MuiIconButton-edgeStart",
+                                                                      "label": "MuiIconButton-label",
+                                                                      "root": "MuiIconButton-root",
+                                                                      "sizeSmall": "MuiIconButton-sizeSmall",
                                                                     }
                                                                   }
                                                                   color="secondary"
-                                                                  icon={
-                                                                    <Memo(CheckBoxOutlineBlankIcon)
-                                                                      fontSize="default"
-                                                                    />
-                                                                  }
-                                                                  inputProps={
-                                                                    Object {
-                                                                      "data-indeterminate": false,
-                                                                    }
-                                                                  }
-                                                                  onChange={[Function]}
-                                                                  type="checkbox"
+                                                                  component="span"
+                                                                  onBlur={[Function]}
+                                                                  onFocus={[Function]}
+                                                                  tabIndex={null}
                                                                 >
-                                                                  <ForwardRef(SwitchBase)
-                                                                    checked={false}
-                                                                    checkedIcon={
-                                                                      <Memo(CheckBoxIcon)
-                                                                        fontSize="default"
-                                                                      />
-                                                                    }
-                                                                    classes={
-                                                                      Object {
-                                                                        "checked": "PrivateSwitchBase-checked-191 Mui-checked",
-                                                                        "disabled": "PrivateSwitchBase-disabled-192 Mui-disabled",
-                                                                        "input": "PrivateSwitchBase-input-193",
-                                                                        "root": "PrivateSwitchBase-root-190 MuiCheckbox-root MuiCheckbox-colorSecondary",
-                                                                      }
-                                                                    }
-                                                                    color="secondary"
-                                                                    icon={
-                                                                      <Memo(CheckBoxOutlineBlankIcon)
-                                                                        fontSize="default"
-                                                                      />
-                                                                    }
-                                                                    inputProps={
-                                                                      Object {
-                                                                        "data-indeterminate": false,
-                                                                      }
-                                                                    }
-                                                                    onChange={[Function]}
-                                                                    type="checkbox"
+                                                                  <WithStyles(ForwardRef(ButtonBase))
+                                                                    centerRipple={true}
+                                                                    className="MuiIconButton-root PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked MuiIconButton-colorSecondary"
+                                                                    component="span"
+                                                                    disabled={false}
+                                                                    focusRipple={true}
+                                                                    onBlur={[Function]}
+                                                                    onFocus={[Function]}
+                                                                    tabIndex={null}
                                                                   >
-                                                                    <WithStyles(ForwardRef(IconButton))
-                                                                      className="PrivateSwitchBase-root-190 MuiCheckbox-root MuiCheckbox-colorSecondary"
-                                                                      color="secondary"
+                                                                    <ForwardRef(ButtonBase)
+                                                                      centerRipple={true}
+                                                                      className="MuiIconButton-root PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked MuiIconButton-colorSecondary"
+                                                                      classes={
+                                                                        Object {
+                                                                          "disabled": "Mui-disabled",
+                                                                          "focusVisible": "Mui-focusVisible",
+                                                                          "root": "MuiButtonBase-root",
+                                                                        }
+                                                                      }
                                                                       component="span"
+                                                                      disabled={false}
+                                                                      focusRipple={true}
                                                                       onBlur={[Function]}
                                                                       onFocus={[Function]}
                                                                       tabIndex={null}
                                                                     >
-                                                                      <ForwardRef(IconButton)
-                                                                        className="PrivateSwitchBase-root-190 MuiCheckbox-root MuiCheckbox-colorSecondary"
-                                                                        classes={
-                                                                          Object {
-                                                                            "colorInherit": "MuiIconButton-colorInherit",
-                                                                            "colorPrimary": "MuiIconButton-colorPrimary",
-                                                                            "colorSecondary": "MuiIconButton-colorSecondary",
-                                                                            "disabled": "Mui-disabled",
-                                                                            "edgeEnd": "MuiIconButton-edgeEnd",
-                                                                            "edgeStart": "MuiIconButton-edgeStart",
-                                                                            "label": "MuiIconButton-label",
-                                                                            "root": "MuiIconButton-root",
-                                                                            "sizeSmall": "MuiIconButton-sizeSmall",
-                                                                          }
-                                                                        }
-                                                                        color="secondary"
-                                                                        component="span"
+                                                                      <span
+                                                                        aria-disabled={false}
+                                                                        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked MuiIconButton-colorSecondary"
                                                                         onBlur={[Function]}
+                                                                        onDragLeave={[Function]}
                                                                         onFocus={[Function]}
+                                                                        onKeyDown={[Function]}
+                                                                        onKeyUp={[Function]}
+                                                                        onMouseDown={[Function]}
+                                                                        onMouseLeave={[Function]}
+                                                                        onMouseUp={[Function]}
+                                                                        onTouchEnd={[Function]}
+                                                                        onTouchMove={[Function]}
+                                                                        onTouchStart={[Function]}
                                                                         tabIndex={null}
                                                                       >
-                                                                        <WithStyles(ForwardRef(ButtonBase))
-                                                                          centerRipple={true}
-                                                                          className="MuiIconButton-root PrivateSwitchBase-root-190 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
-                                                                          component="span"
-                                                                          disabled={false}
-                                                                          focusRipple={true}
-                                                                          onBlur={[Function]}
-                                                                          onFocus={[Function]}
-                                                                          tabIndex={null}
+                                                                        <span
+                                                                          className="MuiIconButton-label"
                                                                         >
-                                                                          <ForwardRef(ButtonBase)
-                                                                            centerRipple={true}
-                                                                            className="MuiIconButton-root PrivateSwitchBase-root-190 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                                                                          <input
+                                                                            checked={true}
+                                                                            className="PrivateSwitchBase-input-194"
+                                                                            data-indeterminate={false}
+                                                                            onChange={[Function]}
+                                                                            type="checkbox"
+                                                                          />
+                                                                          <ForwardRef
+                                                                            fontSize="default"
+                                                                          >
+                                                                            <WithStyles(ForwardRef(SvgIcon))
+                                                                              fontSize="default"
+                                                                            >
+                                                                              <ForwardRef(SvgIcon)
+                                                                                classes={
+                                                                                  Object {
+                                                                                    "colorAction": "MuiSvgIcon-colorAction",
+                                                                                    "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                                                    "colorError": "MuiSvgIcon-colorError",
+                                                                                    "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                                                    "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                                                    "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                                                    "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                                                    "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                                                    "root": "MuiSvgIcon-root",
+                                                                                  }
+                                                                                }
+                                                                                fontSize="default"
+                                                                              >
+                                                                                <svg
+                                                                                  aria-hidden="true"
+                                                                                  className="MuiSvgIcon-root"
+                                                                                  focusable="false"
+                                                                                  viewBox="0 0 24 24"
+                                                                                >
+                                                                                  <path
+                                                                                    d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                                                                  />
+                                                                                </svg>
+                                                                              </ForwardRef(SvgIcon)>
+                                                                            </WithStyles(ForwardRef(SvgIcon))>
+                                                                          </ForwardRef>
+                                                                        </span>
+                                                                        <WithStyles(memo)
+                                                                          center={true}
+                                                                        >
+                                                                          <ForwardRef(TouchRipple)
+                                                                            center={true}
                                                                             classes={
                                                                               Object {
-                                                                                "disabled": "Mui-disabled",
-                                                                                "focusVisible": "Mui-focusVisible",
-                                                                                "root": "MuiButtonBase-root",
+                                                                                "child": "MuiTouchRipple-child",
+                                                                                "childLeaving": "MuiTouchRipple-childLeaving",
+                                                                                "childPulsate": "MuiTouchRipple-childPulsate",
+                                                                                "ripple": "MuiTouchRipple-ripple",
+                                                                                "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                                                "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                                                "root": "MuiTouchRipple-root",
                                                                               }
                                                                             }
-                                                                            component="span"
-                                                                            disabled={false}
-                                                                            focusRipple={true}
-                                                                            onBlur={[Function]}
-                                                                            onFocus={[Function]}
-                                                                            tabIndex={null}
                                                                           >
                                                                             <span
-                                                                              aria-disabled={false}
-                                                                              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-190 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
-                                                                              onBlur={[Function]}
-                                                                              onDragLeave={[Function]}
-                                                                              onFocus={[Function]}
-                                                                              onKeyDown={[Function]}
-                                                                              onKeyUp={[Function]}
-                                                                              onMouseDown={[Function]}
-                                                                              onMouseLeave={[Function]}
-                                                                              onMouseUp={[Function]}
-                                                                              onTouchEnd={[Function]}
-                                                                              onTouchMove={[Function]}
-                                                                              onTouchStart={[Function]}
-                                                                              tabIndex={null}
+                                                                              className="MuiTouchRipple-root"
                                                                             >
-                                                                              <span
-                                                                                className="MuiIconButton-label"
-                                                                              >
-                                                                                <input
-                                                                                  checked={false}
-                                                                                  className="PrivateSwitchBase-input-193"
-                                                                                  data-indeterminate={false}
-                                                                                  onChange={[Function]}
-                                                                                  type="checkbox"
-                                                                                />
-                                                                                <ForwardRef
-                                                                                  fontSize="default"
-                                                                                >
-                                                                                  <WithStyles(ForwardRef(SvgIcon))
-                                                                                    fontSize="default"
-                                                                                  >
-                                                                                    <ForwardRef(SvgIcon)
-                                                                                      classes={
-                                                                                        Object {
-                                                                                          "colorAction": "MuiSvgIcon-colorAction",
-                                                                                          "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                                                                          "colorError": "MuiSvgIcon-colorError",
-                                                                                          "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                                                                          "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                                                                          "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                                                                          "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                                                                          "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                                                          "root": "MuiSvgIcon-root",
-                                                                                        }
-                                                                                      }
-                                                                                      fontSize="default"
-                                                                                    >
-                                                                                      <svg
-                                                                                        aria-hidden="true"
-                                                                                        className="MuiSvgIcon-root"
-                                                                                        focusable="false"
-                                                                                        viewBox="0 0 24 24"
-                                                                                      >
-                                                                                        <path
-                                                                                          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                                                                                        />
-                                                                                      </svg>
-                                                                                    </ForwardRef(SvgIcon)>
-                                                                                  </WithStyles(ForwardRef(SvgIcon))>
-                                                                                </ForwardRef>
-                                                                              </span>
+                                                                              <TransitionGroup
+                                                                                childFactory={[Function]}
+                                                                                component={null}
+                                                                                exit={true}
+                                                                              />
                                                                             </span>
-                                                                          </ForwardRef(ButtonBase)>
-                                                                        </WithStyles(ForwardRef(ButtonBase))>
-                                                                      </ForwardRef(IconButton)>
-                                                                    </WithStyles(ForwardRef(IconButton))>
-                                                                  </ForwardRef(SwitchBase)>
-                                                                </WithStyles(ForwardRef(SwitchBase))>
-                                                              </ForwardRef(Checkbox)>
-                                                            </WithStyles(ForwardRef(Checkbox))>
-                                                            <WithStyles(ForwardRef(Typography))
-                                                              className="MuiFormControlLabel-label"
-                                                              component="span"
+                                                                          </ForwardRef(TouchRipple)>
+                                                                        </WithStyles(memo)>
+                                                                      </span>
+                                                                    </ForwardRef(ButtonBase)>
+                                                                  </WithStyles(ForwardRef(ButtonBase))>
+                                                                </ForwardRef(IconButton)>
+                                                              </WithStyles(ForwardRef(IconButton))>
+                                                            </ForwardRef(SwitchBase)>
+                                                          </WithStyles(ForwardRef(SwitchBase))>
+                                                        </ForwardRef(Checkbox)>
+                                                      </WithStyles(ForwardRef(Checkbox))>
+                                                      <WithStyles(ForwardRef(Typography))
+                                                        className="MuiFormControlLabel-label"
+                                                        component="span"
+                                                      >
+                                                        <ForwardRef(Typography)
+                                                          className="MuiFormControlLabel-label"
+                                                          classes={
+                                                            Object {
+                                                              "alignCenter": "MuiTypography-alignCenter",
+                                                              "alignJustify": "MuiTypography-alignJustify",
+                                                              "alignLeft": "MuiTypography-alignLeft",
+                                                              "alignRight": "MuiTypography-alignRight",
+                                                              "body1": "MuiTypography-body1",
+                                                              "body2": "MuiTypography-body2",
+                                                              "button": "MuiTypography-button",
+                                                              "caption": "MuiTypography-caption",
+                                                              "colorError": "MuiTypography-colorError",
+                                                              "colorInherit": "MuiTypography-colorInherit",
+                                                              "colorPrimary": "MuiTypography-colorPrimary",
+                                                              "colorSecondary": "MuiTypography-colorSecondary",
+                                                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                              "displayBlock": "MuiTypography-displayBlock",
+                                                              "displayInline": "MuiTypography-displayInline",
+                                                              "gutterBottom": "MuiTypography-gutterBottom",
+                                                              "h1": "MuiTypography-h1",
+                                                              "h2": "MuiTypography-h2",
+                                                              "h3": "MuiTypography-h3",
+                                                              "h4": "MuiTypography-h4",
+                                                              "h5": "MuiTypography-h5",
+                                                              "h6": "MuiTypography-h6",
+                                                              "noWrap": "MuiTypography-noWrap",
+                                                              "overline": "MuiTypography-overline",
+                                                              "paragraph": "MuiTypography-paragraph",
+                                                              "root": "MuiTypography-root",
+                                                              "srOnly": "MuiTypography-srOnly",
+                                                              "subtitle1": "MuiTypography-subtitle1",
+                                                              "subtitle2": "MuiTypography-subtitle2",
+                                                            }
+                                                          }
+                                                          component="span"
+                                                        >
+                                                          <span
+                                                            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                                                          >
+                                                            <FormattedMessage
+                                                              defaultMessage="Show this guide each time I log in"
+                                                              id="app.connection_help.show"
+                                                              values={Object {}}
                                                             >
-                                                              <ForwardRef(Typography)
-                                                                className="MuiFormControlLabel-label"
-                                                                classes={
-                                                                  Object {
-                                                                    "alignCenter": "MuiTypography-alignCenter",
-                                                                    "alignJustify": "MuiTypography-alignJustify",
-                                                                    "alignLeft": "MuiTypography-alignLeft",
-                                                                    "alignRight": "MuiTypography-alignRight",
-                                                                    "body1": "MuiTypography-body1",
-                                                                    "body2": "MuiTypography-body2",
-                                                                    "button": "MuiTypography-button",
-                                                                    "caption": "MuiTypography-caption",
-                                                                    "colorError": "MuiTypography-colorError",
-                                                                    "colorInherit": "MuiTypography-colorInherit",
-                                                                    "colorPrimary": "MuiTypography-colorPrimary",
-                                                                    "colorSecondary": "MuiTypography-colorSecondary",
-                                                                    "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                                                                    "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                                                                    "displayBlock": "MuiTypography-displayBlock",
-                                                                    "displayInline": "MuiTypography-displayInline",
-                                                                    "gutterBottom": "MuiTypography-gutterBottom",
-                                                                    "h1": "MuiTypography-h1",
-                                                                    "h2": "MuiTypography-h2",
-                                                                    "h3": "MuiTypography-h3",
-                                                                    "h4": "MuiTypography-h4",
-                                                                    "h5": "MuiTypography-h5",
-                                                                    "h6": "MuiTypography-h6",
-                                                                    "noWrap": "MuiTypography-noWrap",
-                                                                    "overline": "MuiTypography-overline",
-                                                                    "paragraph": "MuiTypography-paragraph",
-                                                                    "root": "MuiTypography-root",
-                                                                    "srOnly": "MuiTypography-srOnly",
-                                                                    "subtitle1": "MuiTypography-subtitle1",
-                                                                    "subtitle2": "MuiTypography-subtitle2",
-                                                                  }
-                                                                }
-                                                                component="span"
-                                                              >
-                                                                <span
-                                                                  className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-                                                                >
-                                                                  <FormattedMessage
-                                                                    defaultMessage="Don't show this again"
-                                                                    id="app.connection_help.show"
-                                                                    values={Object {}}
-                                                                  >
-                                                                    Don't show this again
-                                                                  </FormattedMessage>
-                                                                </span>
-                                                              </ForwardRef(Typography)>
-                                                            </WithStyles(ForwardRef(Typography))>
-                                                          </label>
-                                                        </ForwardRef(FormControlLabel)>
-                                                      </WithStyles(ForwardRef(FormControlLabel))>
-                                                    </div>
-                                                  </ForwardRef(FormGroup)>
-                                                </WithStyles(ForwardRef(FormGroup))>
+                                                              Show this guide each time I log in
+                                                            </FormattedMessage>
+                                                          </span>
+                                                        </ForwardRef(Typography)>
+                                                      </WithStyles(ForwardRef(Typography))>
+                                                    </label>
+                                                  </ForwardRef(FormControlLabel)>
+                                                </WithStyles(ForwardRef(FormControlLabel))>
                                               </div>
-                                            </Styled(MuiBox)>
-                                          </WithStyles(Styled(MuiBox))>
+                                            </ForwardRef(FormGroup)>
+                                          </WithStyles(ForwardRef(FormGroup))>
                                         </div>
-                                      </ForwardRef(DialogContent)>
-                                    </WithStyles(ForwardRef(DialogContent))>
+                                      </ForwardRef(DialogActions)>
+                                    </WithStyles(ForwardRef(DialogActions))>
                                   </div>
                                 </ForwardRef(Paper)>
                               </WithStyles(ForwardRef(Paper))>

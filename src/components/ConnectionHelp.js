@@ -6,6 +6,7 @@ import {
   Button,
   Checkbox,
   Dialog,
+  DialogActions,
   DialogContent,
   ExpansionPanel,
   ExpansionPanelSummary,
@@ -73,7 +74,7 @@ class ConnectionHelp extends Component {
   handleShowChange = (event) => {
     const { editUserShowGuide, user } = this.props;
 
-    editUserShowGuide(user.user_id, !event.target.checked);
+    editUserShowGuide(user.user_id, event.target.checked);
   }
 
   render() {
@@ -306,26 +307,26 @@ class ConnectionHelp extends Component {
                 />
               ) : (null)
             }
-            <PaddedBox display="flex" justifyContent="center">
-              <FormGroup row>
-                <FormControlLabel
-                  control={(
-                    <Checkbox
-                      checked={!user.showGuide}
-                      onChange={this.handleShowChange}
-                    />
-                  )}
-                  label={(
-                    <FormattedMessage
-                      id="app.connection_help.show"
-                      description="Asks the user whether to show dialog again"
-                      defaultMessage="Don't show this again"
-                    />
-                  )}
-                />
-              </FormGroup>
-            </PaddedBox>
           </DialogContent>
+          <DialogActions>
+            <FormGroup row>
+              <FormControlLabel
+                control={(
+                  <Checkbox
+                    checked={user.showGuide}
+                    onChange={this.handleShowChange}
+                  />
+                )}
+                label={(
+                  <FormattedMessage
+                    id="app.connection_help.show"
+                    description="Checkbox label for whether to show this guide"
+                    defaultMessage="Show this guide each time I log in"
+                  />
+                )}
+              />
+            </FormGroup>
+          </DialogActions>
         </Dialog>
       </>
     );

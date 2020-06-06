@@ -50,6 +50,7 @@ describe('The ConnectionHelp component', () => {
       .dive();
 
     expect(wrapper.state('open')).toBe(true); // Starts open
+    expect(wrapper.find('WithStyles(ForwardRef(FormControlLabel))').prop('control').props.checked).toBe(true);
 
     wrapper.find('WithStyles(ForwardRef(Dialog))').simulate('close');
 
@@ -64,7 +65,7 @@ describe('The ConnectionHelp component', () => {
     store = mockStore({
       user: {
         user_id: 1,
-        showGuide: true,
+        showGuide: false,
       },
       rover: {
         rover: {
@@ -78,6 +79,7 @@ describe('The ConnectionHelp component', () => {
       .dive()
       .dive();
     expect(wrapper.find(Redirect).exists()).toBe(false);
+    expect(wrapper.find('WithStyles(ForwardRef(FormControlLabel))').prop('control').props.checked).toBe(false);
     wrapper.find('WithStyles(ForwardRef(Button))').at(2).simulate('click');
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).at(0).prop('to')).toEqual({
@@ -99,6 +101,6 @@ describe('The ConnectionHelp component', () => {
       },
     });
 
-    expect(store.dispatch).toHaveBeenCalledWith(editUserShowGuide(1, false));
+    expect(store.dispatch).toHaveBeenCalledWith(editUserShowGuide(1, true));
   });
 });
