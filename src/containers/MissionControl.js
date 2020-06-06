@@ -88,6 +88,19 @@ class MissionControl extends Component {
       },
     }))(Box);
 
+    const lightSensorReadings = [
+      {
+        label: 'Left',
+        reading: sensor.leftLightSensorReading,
+        maxReading: 1023,
+      },
+      {
+        label: 'Right',
+        reading: sensor.rightLightSensorReading,
+        maxReading: 1023,
+      },
+    ];
+
     return (
       <>
         <Drawer anchor="left" open={open} onClose={this.handleOnClose}>
@@ -205,20 +218,11 @@ class MissionControl extends Component {
                     <Indicator />
                   </WideBox>
                 </ExpansionPanelDetails>
-                <ExpansionPanelDetails>
-                  <NumericSensorReadout
-                    title="Left Light Sensor"
-                    reading={sensor.leftLightSensorReading}
-                    maxReading={1023}
-                  />
-                </ExpansionPanelDetails>
-                <ExpansionPanelDetails>
-                  <NumericSensorReadout
-                    title="Right Light Sensor"
-                    reading={sensor.rightLightSensorReading}
-                    maxReading={1023}
-                  />
-                </ExpansionPanelDetails>
+                <NumericSensorReadout
+                  title="Light Sensors"
+                  readings={lightSensorReadings}
+                  unit="Lux"
+                />
               </ExpansionPanel>
             </Grid>
             <Grid item>

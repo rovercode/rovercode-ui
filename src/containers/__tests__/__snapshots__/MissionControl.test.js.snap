@@ -170,17 +170,13 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
               },
             }
           }
-<<<<<<< HEAD
           remixProgram={[Function]}
-=======
-          saveProgram={[Function]}
           sensor={
             Object {
               "leftLightSensorReading": -1,
               "rightLIghtSensorReading": -2,
             }
           }
->>>>>>> Connect light sensors
           store={
             Object {
               "dispatch": [MockFunction],
@@ -2134,51 +2130,27 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                         </div>
                                                       </ForwardRef(ExpansionPanelDetails)>
                                                     </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                    <Component
                                                       key=".2"
-                                                    >
-                                                      <ForwardRef(ExpansionPanelDetails)
-                                                        classes={
+                                                      readings={
+                                                        Array [
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
-                                                          }
-                                                        }
-                                                      >
-                                                        <div
-                                                          className="MuiExpansionPanelDetails-root"
-                                                        >
-                                                          <Component
-                                                            maxReading={1023}
-                                                            reading={-1}
-                                                            title="Left Light Sensor"
-                                                          >
-                                                            <div />
-                                                          </Component>
-                                                        </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
-                                                      key=".3"
-                                                    >
-                                                      <ForwardRef(ExpansionPanelDetails)
-                                                        classes={
+                                                            "label": "Left",
+                                                            "maxReading": 1023,
+                                                            "reading": -1,
+                                                          },
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
-                                                          }
-                                                        }
-                                                      >
-                                                        <div
-                                                          className="MuiExpansionPanelDetails-root"
-                                                        >
-                                                          <Component
-                                                            maxReading={1023}
-                                                            title="Right Light Sensor"
-                                                          >
-                                                            <div />
-                                                          </Component>
-                                                        </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                            "label": "Right",
+                                                            "maxReading": 1023,
+                                                            "reading": undefined,
+                                                          },
+                                                        ]
+                                                      }
+                                                      title="Light Sensors"
+                                                      unit="Lux"
+                                                    >
+                                                      <div />
+                                                    </Component>
                                                   </div>
                                                 </div>
                                               </div>

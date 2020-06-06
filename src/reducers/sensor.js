@@ -9,8 +9,8 @@ export default function sensor(
   state = {
     left: NOT_COVERED,
     right: NOT_COVERED,
-    leftLightSensorReading: -1,
-    rightLightSensorReading: -1,
+    leftLightSensorReading: null,
+    rightLightSensorReading: null,
   },
   action,
 ) {
