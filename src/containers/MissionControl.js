@@ -266,7 +266,11 @@ class MissionControl extends Component {
                 <Divider />
                 <ExpansionPanelDetails>
                   <Typography>
-                    Buttons
+                    <FormattedMessage
+                      id="app.mission_control.buttons"
+                      description="Describes the buttons sensor section"
+                      defaultMessage="Buttons"
+                    />
                   </Typography>
                 </ExpansionPanelDetails>
                 <ExpansionPanelDetails>

@@ -42,6 +42,7 @@
   "app.login.username": "Nombre de Usuario",
   "app.login_callback.logging_in": "Iniciando sesión...",
   "app.mission_control.battery": "Battery",
+  "app.mission_control.buttons": "Buttons",
   "app.mission_control.console": "Depurar Consola",
   "app.mission_control.details": "Project Details",
   "app.mission_control.edit_details": "Edit Project Details",

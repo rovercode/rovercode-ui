@@ -2157,7 +2157,13 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                               <p
                                                                 className="MuiTypography-root MuiTypography-body1"
                                                               >
-                                                                Buttons
+                                                                <FormattedMessage
+                                                                  defaultMessage="Buttons"
+                                                                  id="app.mission_control.buttons"
+                                                                  values={Object {}}
+                                                                >
+                                                                  Buttons
+                                                                </FormattedMessage>
                                                               </p>
                                                             </ForwardRef(Typography)>
                                                           </WithStyles(ForwardRef(Typography))>
