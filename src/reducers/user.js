@@ -6,6 +6,9 @@ import {
   EDIT_USER_PASSWORD_PENDING,
   EDIT_USER_PASSWORD_FULFILLED,
   EDIT_USER_PASSWORD_REJECTED,
+  EDIT_USER_SHOW_GUIDE_PENDING,
+  EDIT_USER_SHOW_GUIDE_FULFILLED,
+  EDIT_USER_SHOW_GUIDE_REJECTED,
   FETCH_USER_LIST_PENDING,
   FETCH_USER_LIST_FULFILLED,
   FETCH_USER_LIST_REJECTED,
@@ -17,13 +20,16 @@ export default function user(
     username: null,
     email: null,
     exp: null,
+    showGuide: true,
     isSocial: false,
     userList: [],
     isEditingUsername: false,
     isEditingPassword: false,
+    isEditingShowGuide: false,
     isFetchingUserList: false,
     editUsernameError: null,
     editPasswordError: null,
+    editShowGuideError: null,
     fetchUserListError: null,
   },
   action,
@@ -36,6 +42,7 @@ export default function user(
         username: action.payload.username,
         email: action.payload.email,
         exp: action.payload.exp,
+        showGuide: action.payload.show_guide,
         isSocial: action.payload.isSocial,
       };
     case EDIT_USER_USERNAME_PENDING:
@@ -71,6 +78,23 @@ export default function user(
         ...state,
         isEditingPassword: false,
         editPasswordError: action.payload,
+      };
+    case EDIT_USER_SHOW_GUIDE_PENDING:
+      return {
+        ...state,
+        isEditingShowGuide: true,
+      };
+    case EDIT_USER_SHOW_GUIDE_FULFILLED:
+      return {
+        ...state,
+        isEditingShowGuide: false,
+        showGuide: action.payload.show_guide,
+      };
+    case EDIT_USER_SHOW_GUIDE_REJECTED:
+      return {
+        ...state,
+        isEditingShowGuide: false,
+        editShowGuideError: action.payload,
       };
     case FETCH_USER_LIST_PENDING:
       return {

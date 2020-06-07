@@ -7,6 +7,9 @@ import {
   EDIT_USER_PASSWORD_PENDING,
   EDIT_USER_PASSWORD_FULFILLED,
   EDIT_USER_PASSWORD_REJECTED,
+  EDIT_USER_SHOW_GUIDE_PENDING,
+  EDIT_USER_SHOW_GUIDE_FULFILLED,
+  EDIT_USER_SHOW_GUIDE_REJECTED,
   FETCH_USER_LIST_PENDING,
   FETCH_USER_LIST_FULFILLED,
   FETCH_USER_LIST_REJECTED,
@@ -45,13 +48,16 @@ describe('The user reducer', () => {
       username: null,
       email: null,
       exp: null,
+      showGuide: true,
       isSocial: false,
       userList: [],
       isEditingUsername: true,
       isEditingPassword: false,
+      isEditingShowGuide: false,
       isFetchingUserList: false,
       editUsernameError: null,
       editPasswordError: null,
+      editShowGuideError: null,
       fetchUserListError: null,
     });
   });
@@ -97,13 +103,16 @@ describe('The user reducer', () => {
       username: null,
       email: null,
       exp: null,
+      showGuide: true,
       isSocial: false,
       userList: [],
       isEditingUsername: false,
       isEditingPassword: true,
+      isEditingShowGuide: false,
       isFetchingUserList: false,
       editUsernameError: null,
       editPasswordError: null,
+      editShowGuideError: null,
       fetchUserListError: null,
     });
   });
@@ -137,6 +146,58 @@ describe('The user reducer', () => {
     });
   });
 
+  test('should handle EDIT_USER_SHOW_GUIDE_PENDING', () => {
+    expect(
+      reducer(undefined, {
+        type: EDIT_USER_SHOW_GUIDE_PENDING,
+      }),
+    ).toEqual({
+      user_id: null,
+      username: null,
+      email: null,
+      exp: null,
+      showGuide: true,
+      isSocial: false,
+      userList: [],
+      isEditingUsername: false,
+      isEditingPassword: false,
+      isEditingShowGuide: true,
+      isFetchingUserList: false,
+      editUsernameError: null,
+      editPasswordError: null,
+      editShowGuideError: null,
+      fetchUserListError: null,
+    });
+  });
+
+  test('should handle EDIT_USER_SHOW_GUIDE_FULFILLED', () => {
+    const payload = {
+      show_guide: false,
+    };
+    expect(
+      reducer({}, {
+        type: EDIT_USER_SHOW_GUIDE_FULFILLED,
+        payload,
+      }),
+    ).toEqual({
+      showGuide: false,
+      isEditingShowGuide: false,
+    });
+  });
+
+  test('should handle EDIT_USER_SHOW_GUIDE_REJECTED', () => {
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: EDIT_USER_SHOW_GUIDE_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      isEditingShowGuide: false,
+      editShowGuideError: error,
+    });
+  });
+
   test('should handle FETCH_USER_LIST_PENDING', () => {
     expect(
       reducer(undefined, {
@@ -147,13 +208,16 @@ describe('The user reducer', () => {
       username: null,
       email: null,
       exp: null,
+      showGuide: true,
       isSocial: false,
       userList: [],
       isEditingUsername: false,
       isEditingPassword: false,
+      isEditingShowGuide: false,
       isFetchingUserList: true,
       editUsernameError: null,
       editPasswordError: null,
+      editShowGuideError: null,
       fetchUserListError: null,
     });
   });

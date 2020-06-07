@@ -15,6 +15,7 @@
   "app.connection_help.gigglebot_link": "If you don't already have a Gigglebot, click here to order one",
   "app.connection_help.gigglebot_ordering": "The Rover is your robot. Rovercode works with the Gigglebot,\n                which is a robot chassis with a micro:bit computer.",
   "app.connection_help.gigglebot_title": "1. Get your Rover",
+  "app.connection_help.show": "Show this guide each time I log in",
   "app.connection_help.to_courses": "Congrats, you're connected! Click here, and let's write some code.",
   "app.connection_help.welcome": "Welcome! Let's get set up.",
   "app.console.clear": "Clear",
