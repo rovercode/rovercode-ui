@@ -92,6 +92,7 @@ exports[`The NumericSensorReadout component renders on the page with no errors w
     </WithStyles(ForwardRef(ExpansionPanelDetails))>
     <WithStyles(ForwardRef(ExpansionPanelDetails))
       className="NumericSensorReadout-expansionPanelSubDetails-1"
+      key="A"
     >
       <ForwardRef(ExpansionPanelDetails)
         className="NumericSensorReadout-expansionPanelSubDetails-1"
@@ -250,6 +251,7 @@ exports[`The NumericSensorReadout component renders values on the page with no e
     </WithStyles(ForwardRef(ExpansionPanelDetails))>
     <WithStyles(ForwardRef(ExpansionPanelDetails))
       className="NumericSensorReadout-expansionPanelSubDetails-1"
+      key="A"
     >
       <ForwardRef(ExpansionPanelDetails)
         className="NumericSensorReadout-expansionPanelSubDetails-1"

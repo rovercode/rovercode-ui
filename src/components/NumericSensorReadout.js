@@ -26,7 +26,7 @@ const NumericSensorReadout = ({
     </ExpansionPanelDetails>
     {
       readings.map((reading) => (
-        <ExpansionPanelDetails className={classes.expansionPanelSubDetails}>
+        <ExpansionPanelDetails key={reading.label} className={classes.expansionPanelSubDetails}>
           <Typography variant="body2">
             {
               reading.reading === null ? (

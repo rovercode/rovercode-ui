@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
     actionChangeLightSensorReadings(leftReading, rightReading),
   ),
   changeBatteryVoltageReading: (voltageReading) => dispatch(
-    actionChangeBatteryVoltageReading(voltageReading)
+    actionChangeBatteryVoltageReading(voltageReading),
   ),
   connectToRover: (rover, onMessage) => dispatch(roverConnect(rover, onMessage)),
   disconnectFromRover: (rover) => dispatch(roverDisconnect(rover)),
