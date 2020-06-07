@@ -1,6 +1,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Chat](https://img.shields.io/badge/chat-developer-brightgreen.svg?style=flat)](https://rovercode.zulipchat.com)
 [![Build Status](https://travis-ci.com/rovercode/rovercode-ui.svg?branch=alpha)](https://travis-ci.com/rovercode/rovercode-ui)
+[![Coverage Status](https://coveralls.io/repos/github/rovercode/rovercode-ui/badge.svg?branch=alpha)](https://coveralls.io/github/rovercode/rovercode-ui?branch=alpha)
 
 Rovercode User Interface
 ========================
