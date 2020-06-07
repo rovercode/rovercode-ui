@@ -82,6 +82,48 @@ class MissionControl extends Component {
       defaultMessage: 'This program is by ',
     });
 
+    const batteryTitle = intl.formatMessage({
+      id: 'app.mission_control.battery',
+      description: 'Describes the battery sensor section',
+      defaultMessage: 'Battery',
+    });
+
+    const lightSensorsTitle = intl.formatMessage({
+      id: 'app.mission_control.light_sensors',
+      description: 'Describes the light sensors section',
+      defaultMessage: 'Light Sensors',
+    });
+
+    const unitsLabel = intl.formatMessage({
+      id: 'app.mission_control.units',
+      description: 'Describes a value in units',
+      defaultMessage: 'units',
+    });
+
+    const milliVoltsLabel = intl.formatMessage({
+      id: 'app.mission_control.milliVolts',
+      description: 'The unit milliVolts',
+      defaultMessage: 'milliVolts',
+    });
+
+    const leftLabel = intl.formatMessage({
+      id: 'app.mission_control.left',
+      description: 'Labels the left sensor reading',
+      defaultMessage: 'Left',
+    });
+
+    const rightLabel = intl.formatMessage({
+      id: 'app.mission_control.right',
+      description: 'Labels the right sensor reading',
+      defaultMessage: 'Right',
+    });
+
+    const voltageLabel = intl.formatMessage({
+      id: 'app.mission_control.voltage',
+      description: 'Labels the voltage reading',
+      defaultMessage: 'Voltage',
+    });
+
     const WideBox = withStyles(() => ({
       root: {
         width: '100%',
@@ -90,14 +132,22 @@ class MissionControl extends Component {
 
     const lightSensorReadings = [
       {
-        label: 'Left',
+        label: leftLabel,
         reading: sensor.leftLightSensorReading,
         maxReading: 1023,
       },
       {
-        label: 'Right',
+        label: rightLabel,
         reading: sensor.rightLightSensorReading,
         maxReading: 1023,
+      },
+    ];
+
+    const batteryVoltageReading = [
+      {
+        label: voltageLabel,
+        reading: sensor.batteryVoltageReading,
+        maxReading: 4500,
       },
     ];
 
@@ -226,9 +276,15 @@ class MissionControl extends Component {
                 </ExpansionPanelDetails>
                 <Divider />
                 <NumericSensorReadout
-                  title="Light Sensors"
+                  title={lightSensorsTitle}
                   readings={lightSensorReadings}
-                  unit="units"
+                  unit={unitsLabel}
+                />
+                <Divider />
+                <NumericSensorReadout
+                  title={batteryTitle}
+                  readings={batteryVoltageReading}
+                  unit={milliVoltsLabel}
                 />
               </ExpansionPanel>
             </Grid>
@@ -287,6 +343,7 @@ MissionControl.propTypes = {
   sensor: PropTypes.shape({
     leftLightSensorReading: PropTypes.number,
     rightLightSensorReading: PropTypes.number,
+    batteryVoltageReading: PropTypes.number,
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,

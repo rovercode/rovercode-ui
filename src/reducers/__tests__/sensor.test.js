@@ -3,6 +3,7 @@ import {
   CHANGE_LEFT_SENSOR_STATE,
   CHANGE_RIGHT_SENSOR_STATE,
   CHANGE_LIGHT_SENSOR_READINGS,
+  CHANGE_BATTERY_VOLTAGE_READING,
   COVERED,
   NOT_COVERED,
 } from '../../actions/sensor';
@@ -39,6 +40,17 @@ describe('The sensor reducer', () => {
     ).toEqual({
       leftLightSensorReading: 1,
       rightLightSensorReading: 2,
+    });
+  });
+
+  test('should handle CHANGE_BATTERY_VOLTAGE_READING', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_BATTERY_VOLTAGE_READING,
+        payload: 42,
+      }),
+    ).toEqual({
+      batteryVoltageReading: 42,
     });
   });
 

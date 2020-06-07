@@ -130,9 +130,9 @@ class RoverConnection extends Component {
   }
 
   handleBatterySensor = (params) => {
-    const { write } = this.props;
+    const { changeBatteryVoltageReading } = this.props;
 
-    write(`Battery Sensor - ${params} mV`);
+    changeBatteryVoltageReading(parseInt(params, 10));
   }
 
   handleDewPointSensor = (params) => {
@@ -344,6 +344,7 @@ RoverConnection.propTypes = {
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
   changeLightSensorReadings: PropTypes.func.isRequired,
+  changeBatteryVoltageReading: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
 };
 

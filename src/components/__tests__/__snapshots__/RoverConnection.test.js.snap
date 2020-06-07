@@ -2,6 +2,7 @@
 
 exports[`The RoverConnection component renders connect button when not connected 1`] = `
 <RoverConnection
+  changeBatteryVoltageReading={[MockFunction]}
   changeExecutionState={[MockFunction]}
   changeLeftSensorState={[MockFunction]}
   changeLightSensorReadings={[MockFunction]}
@@ -407,6 +408,7 @@ exports[`The RoverConnection component renders connect button when not connected
 
 exports[`The RoverConnection component renders disabled connect button when on unsupported platform 1`] = `
 <RoverConnection
+  changeBatteryVoltageReading={[MockFunction]}
   changeExecutionState={[MockFunction]}
   changeLeftSensorState={[MockFunction]}
   changeLightSensorReadings={[MockFunction]}
@@ -873,6 +875,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
 
 exports[`The RoverConnection component renders disconnect button when connected 1`] = `
 <RoverConnection
+  changeBatteryVoltageReading={[MockFunction]}
   changeExecutionState={[MockFunction]}
   changeLeftSensorState={[MockFunction]}
   changeLightSensorReadings={[MockFunction]}

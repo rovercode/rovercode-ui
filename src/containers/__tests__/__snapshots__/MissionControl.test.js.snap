@@ -2253,6 +2253,43 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                     >
                                                       <div />
                                                     </Component>
+                                                    <WithStyles(ForwardRef(Divider))
+                                                      key=".6"
+                                                    >
+                                                      <ForwardRef(Divider)
+                                                        classes={
+                                                          Object {
+                                                            "absolute": "MuiDivider-absolute",
+                                                            "flexItem": "MuiDivider-flexItem",
+                                                            "inset": "MuiDivider-inset",
+                                                            "light": "MuiDivider-light",
+                                                            "middle": "MuiDivider-middle",
+                                                            "root": "MuiDivider-root",
+                                                            "vertical": "MuiDivider-vertical",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root"
+                                                        />
+                                                      </ForwardRef(Divider)>
+                                                    </WithStyles(ForwardRef(Divider))>
+                                                    <Component
+                                                      key=".7"
+                                                      readings={
+                                                        Array [
+                                                          Object {
+                                                            "label": "Voltage",
+                                                            "maxReading": 4500,
+                                                            "reading": undefined,
+                                                          },
+                                                        ]
+                                                      }
+                                                      title="Battery"
+                                                      unit="milliVolts"
+                                                    >
+                                                      <div />
+                                                    </Component>
                                                   </div>
                                                 </div>
                                               </div>

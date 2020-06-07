@@ -5,6 +5,7 @@ import {
   changeLeftSensorState,
   changeRightSensorState,
   changeLightSensorReadings,
+  changeBatteryVoltageReading,
 } from '@/actions/sensor';
 import { changeExecutionState, EXECUTION_STOP } from '@/actions/code';
 import { append } from '@/actions/console';
@@ -50,6 +51,12 @@ describe('The RoverConnectionContainer', () => {
     wrapper.props().changeLightSensorReadings(1, 2);
 
     expect(store.dispatch).toHaveBeenCalledWith(changeLightSensorReadings(1, 2));
+  });
+
+  test('dispatches an action to change battery voltage reading', () => {
+    wrapper.props().changeBatteryVoltageReading(42);
+
+    expect(store.dispatch).toHaveBeenCalledWith(changeBatteryVoltageReading(42));
   });
 
   test('dispatches an action to connect', () => {

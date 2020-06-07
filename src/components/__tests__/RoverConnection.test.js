@@ -8,6 +8,7 @@ let changeExecutionState;
 let changeLeftSensorState;
 let changeRightSensorState;
 let changeLightSensorReadings;
+let changeBatteryVoltageReading;
 let connectToRover;
 let disconnectFromRover;
 let scanForRover;
@@ -36,6 +37,7 @@ describe('The RoverConnection component', () => {
     changeLeftSensorState = jest.fn();
     changeRightSensorState = jest.fn();
     changeLightSensorReadings = jest.fn();
+    changeBatteryVoltageReading = jest.fn();
     connectToRover = jest.fn().mockResolvedValue();
     disconnectFromRover = jest.fn();
     scanForRover = jest.fn().mockResolvedValue({ value: rover });
@@ -47,6 +49,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -64,6 +67,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -87,6 +91,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -109,6 +114,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -134,6 +140,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
@@ -160,6 +167,8 @@ describe('The RoverConnection component', () => {
       },
     });
 
+    expect(changeLightSensorReadings).toHaveBeenCalledWith(600, 600);
+    // TODO: Remove these sensor state changes
     expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
 
@@ -172,6 +181,8 @@ describe('The RoverConnection component', () => {
       },
     });
 
+    expect(changeLightSensorReadings).toHaveBeenCalledWith(100, 600);
+    // TODO: End this test here once the state changes are removed.
     expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
 
@@ -184,6 +195,7 @@ describe('The RoverConnection component', () => {
       },
     });
 
+    expect(changeLightSensorReadings).toHaveBeenCalledWith(100, 100);
     expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
 
@@ -196,6 +208,7 @@ describe('The RoverConnection component', () => {
       },
     });
 
+    expect(changeLightSensorReadings).toHaveBeenCalledWith(600, 100);
     expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
     expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
   });
@@ -303,7 +316,7 @@ describe('The RoverConnection component', () => {
       },
     });
 
-    expect(write).toHaveBeenCalledWith('Battery Sensor - 3300 mV');
+    expect(changeBatteryVoltageReading).toHaveBeenCalledWith(3300);
   });
 
   test('outputs dew point state on message', () => {
