@@ -3,6 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {
   editUserUsername,
   editUserPassword,
+  editUserShowGuide,
   fetchUserList,
   updateUser,
 } from '../user';
@@ -78,6 +79,22 @@ describe('User actions', () => {
     expect(type).toEqual('FETCH_USER_LIST');
     action.payload.then((result) => {
       expect(result).toEqual(userList);
+      done();
+    });
+  });
+  test('editUserShowGuide', (done) => {
+    const mock = new MockAdapter(axios);
+    const data = {
+      show_guide: false,
+    };
+
+    mock.onPatch('/api/v1/users/1/', data).reply(200, data);
+
+    const action = editUserShowGuide(1, false);
+    const { type } = action;
+    expect(type).toEqual('EDIT_USER_SHOW_GUIDE');
+    action.payload.then((result) => {
+      expect(result).toEqual(data);
       done();
     });
   });
