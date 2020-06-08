@@ -177,5 +177,8 @@ describe('Blockly API', () => {
     expect(result).toBe(false);
     expect(sendToRover).toHaveBeenCalledTimes(1);
     expect(sendToRover).toHaveBeenCalledWith('disp:hello world\n');
+    expect(beginSleep).toHaveBeenCalled();
+    // 11 characters in 'hello world' times 1500 ms each
+    expect(beginSleep).toHaveBeenCalledWith(16500);
   });
 });

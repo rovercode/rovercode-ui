@@ -27,6 +27,8 @@ class BlocklyApi {
 
   sendDisplayCommand = (message) => {
     this.sendToRover(`disp:${message}\n`);
+    // Give 1.5 seconds per letter to display
+    this.beginSleep(message.length * 1500);
   }
 
   setChainableRgbLed = (blocklyLedId, blocklyColorHexString) => {

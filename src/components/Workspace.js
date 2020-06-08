@@ -361,7 +361,7 @@ class Workspace extends Component {
     const { rover } = this.props;
 
     if (this.stepCode() && this.runningEnabled && !this.sleeping && !rover.isSending) {
-      setTimeout(this.runCode, 10);
+      setTimeout(this.runCode, 20);
     }
   }
 
