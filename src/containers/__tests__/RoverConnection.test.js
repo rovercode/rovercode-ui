@@ -1,7 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { changeLeftSensorState, changeRightSensorState } from '@/actions/sensor';
+import {
+  changeLeftSensorState,
+  changeRightSensorState,
+  changeLightSensorReadings,
+  changeBatteryVoltageReading,
+} from '@/actions/sensor';
 import { changeExecutionState, EXECUTION_STOP } from '@/actions/code';
 import { append } from '@/actions/console';
 import RoverConnection from '../RoverConnection';
@@ -40,6 +45,18 @@ describe('The RoverConnectionContainer', () => {
     wrapper.props().changeRightSensorState(true);
 
     expect(store.dispatch).toHaveBeenCalledWith(changeRightSensorState(true));
+  });
+
+  test('dispatches an action to change light sensor readings', () => {
+    wrapper.props().changeLightSensorReadings(1, 2);
+
+    expect(store.dispatch).toHaveBeenCalledWith(changeLightSensorReadings(1, 2));
+  });
+
+  test('dispatches an action to change battery voltage reading', () => {
+    wrapper.props().changeBatteryVoltageReading(42);
+
+    expect(store.dispatch).toHaveBeenCalledWith(changeBatteryVoltageReading(42));
   });
 
   test('dispatches an action to connect', () => {

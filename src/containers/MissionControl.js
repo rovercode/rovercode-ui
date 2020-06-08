@@ -27,13 +27,14 @@ import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
 import Indicator from '@/components/Indicator';
+import NumericSensorReadout from '@/components/NumericSensorReadout';
 import ProgramName from '@/components/ProgramName';
 import ProgramTags from '@/components/ProgramTags';
 import Workspace from '@/components/Workspace';
 import { checkAuthError, authHeader } from '@/actions/auth';
 import { changeReadOnly as actionChangeReadOnly, remixProgram as actionRemixProgram } from '@/actions/code';
 
-const mapStateToProps = ({ code }) => ({ code });
+const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   remixProgram: (id) => dispatch(actionRemixProgram(id, authHeader(cookies)))
@@ -68,6 +69,7 @@ class MissionControl extends Component {
       intl,
       location,
       code,
+      sensor,
     } = this.props;
 
     const {
@@ -80,11 +82,74 @@ class MissionControl extends Component {
       defaultMessage: 'This program is by ',
     });
 
+    const batteryTitle = intl.formatMessage({
+      id: 'app.mission_control.battery',
+      description: 'Describes the battery sensor section',
+      defaultMessage: 'Battery',
+    });
+
+    const lightSensorsTitle = intl.formatMessage({
+      id: 'app.mission_control.light_sensors',
+      description: 'Describes the light sensors section',
+      defaultMessage: 'Light Sensors',
+    });
+
+    const unitsLabel = intl.formatMessage({
+      id: 'app.mission_control.units',
+      description: 'Describes a value in units',
+      defaultMessage: 'units',
+    });
+
+    const milliVoltsLabel = intl.formatMessage({
+      id: 'app.mission_control.milliVolts',
+      description: 'The unit milliVolts',
+      defaultMessage: 'milliVolts',
+    });
+
+    const leftLabel = intl.formatMessage({
+      id: 'app.mission_control.left',
+      description: 'Labels the left sensor reading',
+      defaultMessage: 'Left',
+    });
+
+    const rightLabel = intl.formatMessage({
+      id: 'app.mission_control.right',
+      description: 'Labels the right sensor reading',
+      defaultMessage: 'Right',
+    });
+
+    const voltageLabel = intl.formatMessage({
+      id: 'app.mission_control.voltage',
+      description: 'Labels the voltage reading',
+      defaultMessage: 'Voltage',
+    });
+
     const WideBox = withStyles(() => ({
       root: {
         width: '100%',
       },
     }))(Box);
+
+    const lightSensorReadings = [
+      {
+        label: leftLabel,
+        reading: sensor.leftLightSensorReading,
+        maxReading: 1023,
+      },
+      {
+        label: rightLabel,
+        reading: sensor.rightLightSensorReading,
+        maxReading: 1023,
+      },
+    ];
+
+    const batteryVoltageReading = [
+      {
+        label: voltageLabel,
+        reading: sensor.batteryVoltageReading,
+        maxReading: 4500,
+      },
+    ];
 
     return (
       <>
@@ -198,11 +263,33 @@ class MissionControl extends Component {
                     />
                   </Typography>
                 </ExpansionPanelSummary>
+                <Divider />
+                <ExpansionPanelDetails>
+                  <Typography>
+                    <FormattedMessage
+                      id="app.mission_control.buttons"
+                      description="Describes the buttons sensor section"
+                      defaultMessage="Buttons"
+                    />
+                  </Typography>
+                </ExpansionPanelDetails>
                 <ExpansionPanelDetails>
                   <WideBox p={2} border={1} borderRadius="borderRadius" borderColor="grey.500">
                     <Indicator />
                   </WideBox>
                 </ExpansionPanelDetails>
+                <Divider />
+                <NumericSensorReadout
+                  title={lightSensorsTitle}
+                  readings={lightSensorReadings}
+                  unit={unitsLabel}
+                />
+                <Divider />
+                <NumericSensorReadout
+                  title={batteryTitle}
+                  readings={batteryVoltageReading}
+                  unit={milliVoltsLabel}
+                />
               </ExpansionPanel>
             </Grid>
             <Grid item>
@@ -256,6 +343,11 @@ MissionControl.propTypes = {
     name: PropTypes.string,
     isReadOnly: PropTypes.bool,
     ownerName: PropTypes.string,
+  }).isRequired,
+  sensor: PropTypes.shape({
+    leftLightSensorReading: PropTypes.number,
+    rightLightSensorReading: PropTypes.number,
+    batteryVoltageReading: PropTypes.number,
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,

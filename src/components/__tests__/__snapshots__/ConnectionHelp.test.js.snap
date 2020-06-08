@@ -2867,8 +2867,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               >
                                                 <Connect(RoverConnection)>
                                                   <RoverConnection
+                                                    changeBatteryVoltageReading={[Function]}
                                                     changeExecutionState={[Function]}
                                                     changeLeftSensorState={[Function]}
+                                                    changeLightSensorReadings={[Function]}
                                                     changeRightSensorState={[Function]}
                                                     connectToRover={[Function]}
                                                     disconnectFromRover={[Function]}
