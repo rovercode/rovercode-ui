@@ -53,7 +53,7 @@ NumericSensorReadout.propTypes = {
   title: PropTypes.string.isRequired,
   readings: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
-    reading: PropTypes.number.isRequired,
+    reading: PropTypes.number,
     maxReading: PropTypes.number.isRequired,
   })).isRequired,
   unit: PropTypes.string,
