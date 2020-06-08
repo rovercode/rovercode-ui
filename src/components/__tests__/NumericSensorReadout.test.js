@@ -5,7 +5,7 @@ import toJson from 'enzyme-to-json';
 import NumericSensorReadout from '../NumericSensorReadout';
 
 describe('The NumericSensorReadout component', () => {
-  test('renders values on the page with no erros when values present', () => {
+  test('renders values on the page with no errors when values present', () => {
     const readings = [
       {
         label: 'A',

@@ -159,7 +159,7 @@ exports[`The NumericSensorReadout component renders on the page with no errors w
 </WithStyles(NumericSensorReadout)>
 `;
 
-exports[`The NumericSensorReadout component renders values on the page with no erros when values present 1`] = `
+exports[`The NumericSensorReadout component renders values on the page with no errors when values present 1`] = `
 <WithStyles(NumericSensorReadout)
   readings={
     Array [
