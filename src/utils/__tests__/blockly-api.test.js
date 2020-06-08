@@ -161,11 +161,24 @@ describe('Blockly API', () => {
   });
 
   test('handles setChainableRgbLed missing color', () => {
-    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[6][0];
+    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[7][0];
 
     const result = setChainableRgbLedHandler({ data: 0 }, { data: null });
 
     expect(result).toBe(false);
     expect(sendToRover).toHaveBeenCalledTimes(0);
+  });
+
+  test('handles displayMessage', () => {
+    const displayMessageHandler = interpreter.createNativeFunction.mock.calls[8][0];
+
+    const result = displayMessageHandler({ data: 'hello world' });
+
+    expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
+    expect(sendToRover).toHaveBeenCalledWith('disp:hello world\n');
+    expect(beginSleep).toHaveBeenCalled();
+    // 11 characters in 'hello world' times 1500 ms each
+    expect(beginSleep).toHaveBeenCalledWith(16500);
   });
 });
