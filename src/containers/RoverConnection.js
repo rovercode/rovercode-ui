@@ -16,7 +16,7 @@ import {
 } from '@/actions/sensor';
 import RoverConnection from '@/components/RoverConnection';
 
-const mapStateToProps = ({ rover }) => ({ ...rover });
+const mapStateToProps = ({ rover, sensor }) => ({ ...rover, sensor });
 const mapDispatchToProps = (dispatch) => ({
   changeExecutionState: (state) => dispatch(actionChangeExecutionState(state)),
   changeLeftSensorState: (state) => dispatch(actionChangeLeftSensorState(state)),

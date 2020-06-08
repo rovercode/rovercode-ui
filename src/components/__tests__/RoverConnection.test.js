@@ -14,6 +14,7 @@ let disconnectFromRover;
 let scanForRover;
 let write;
 let rover;
+let sensor;
 let wrapper;
 
 const generateDataView = (array) => {
@@ -31,6 +32,10 @@ describe('The RoverConnection component', () => {
     rover = {
       name: 'BBC micro:bit [abcde]',
       addEventListener: jest.fn(),
+    };
+    sensor = {
+      left: COVERED,
+      right: NOT_COVERED,
     };
 
     changeExecutionState = jest.fn();
@@ -55,6 +60,7 @@ describe('The RoverConnection component', () => {
         scanForRover={scanForRover}
         write={write}
         rover={rover}
+        sensor={sensor}
       />,
     );
     wrapper.setState({ supportedPlatform: true });
@@ -73,6 +79,7 @@ describe('The RoverConnection component', () => {
         scanForRover={scanForRover}
         write={write}
         rover={rover}
+        sensor={sensor}
       />,
     );
 
@@ -96,6 +103,7 @@ describe('The RoverConnection component', () => {
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
         write={write}
+        sensor={sensor}
       />,
     );
 
@@ -119,6 +127,7 @@ describe('The RoverConnection component', () => {
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
         write={write}
+        sensor={sensor}
       />,
     );
     wrapper.find('RoverConnection').instance().setState({ supportedPlatform: false });
@@ -145,6 +154,7 @@ describe('The RoverConnection component', () => {
         disconnectFromRover={disconnectFromRover}
         scanForRover={scanForRover}
         write={write}
+        sensor={sensor}
       />,
     );
 
@@ -168,12 +178,6 @@ describe('The RoverConnection component', () => {
     });
 
     expect(changeLightSensorReadings).toHaveBeenCalledWith(600, 600);
-    // TODO: Remove these sensor state changes
-    expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
-    expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
-
-    changeRightSensorState.mockReset();
-    changeLeftSensorState.mockReset();
 
     wrapper.instance().onMessage({
       target: {
@@ -182,12 +186,6 @@ describe('The RoverConnection component', () => {
     });
 
     expect(changeLightSensorReadings).toHaveBeenCalledWith(100, 600);
-    // TODO: End this test here once the state changes are removed.
-    expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
-    expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
-
-    changeRightSensorState.mockReset();
-    changeLeftSensorState.mockReset();
 
     wrapper.instance().onMessage({
       target: {
@@ -196,11 +194,6 @@ describe('The RoverConnection component', () => {
     });
 
     expect(changeLightSensorReadings).toHaveBeenCalledWith(100, 100);
-    expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
-    expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
-
-    changeRightSensorState.mockReset();
-    changeLeftSensorState.mockReset();
 
     wrapper.instance().onMessage({
       target: {
@@ -209,8 +202,95 @@ describe('The RoverConnection component', () => {
     });
 
     expect(changeLightSensorReadings).toHaveBeenCalledWith(600, 100);
+  });
+
+  test('changes button state on message', () => {
+    wrapper.setProps({
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('button:a')),
+      },
+    });
+
     expect(changeLeftSensorState).toHaveBeenCalledWith(COVERED);
+    expect(changeRightSensorState).not.toHaveBeenCalled();
+
+    changeRightSensorState.mockReset();
+    changeLeftSensorState.mockReset();
+
+    wrapper.setProps({
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('button:b')),
+      },
+    });
+
+    expect(changeLeftSensorState).not.toHaveBeenCalled();
+    expect(changeRightSensorState).toHaveBeenCalledWith(COVERED);
+
+    changeRightSensorState.mockReset();
+    changeLeftSensorState.mockReset();
+
+    wrapper.setProps({
+      sensor: {
+        left: COVERED,
+        right: COVERED,
+      },
+    });
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('button:a')),
+      },
+    });
+
+    expect(changeLeftSensorState).toHaveBeenCalledWith(NOT_COVERED);
+    expect(changeRightSensorState).not.toHaveBeenCalled();
+
+    changeRightSensorState.mockReset();
+    changeLeftSensorState.mockReset();
+
+    wrapper.setProps({
+      sensor: {
+        left: NOT_COVERED,
+        right: COVERED,
+      },
+    });
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('button:b')),
+      },
+    });
+
+    expect(changeLeftSensorState).not.toHaveBeenCalled();
     expect(changeRightSensorState).toHaveBeenCalledWith(NOT_COVERED);
+
+    changeRightSensorState.mockReset();
+    changeLeftSensorState.mockReset();
+
+    wrapper.setProps({
+      sensor: {
+        left: NOT_COVERED,
+        right: NOT_COVERED,
+      },
+    });
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('button:x')),
+      },
+    });
+
+    expect(changeLeftSensorState).not.toHaveBeenCalled();
+    expect(changeRightSensorState).not.toHaveBeenCalled();
   });
 
   test('outputs error on unknown message', () => {

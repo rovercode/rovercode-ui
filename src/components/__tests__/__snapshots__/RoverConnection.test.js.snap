@@ -11,6 +11,12 @@ exports[`The RoverConnection component renders connect button when not connected
   disconnectFromRover={[MockFunction]}
   rover={null}
   scanForRover={[MockFunction]}
+  sensor={
+    Object {
+      "left": 1,
+      "right": 2,
+    }
+  }
   write={[MockFunction]}
 >
   <WithStyles(WithStyles(ForwardRef(Button)))
@@ -417,6 +423,12 @@ exports[`The RoverConnection component renders disabled connect button when on u
   disconnectFromRover={[MockFunction]}
   rover={null}
   scanForRover={[MockFunction]}
+  sensor={
+    Object {
+      "left": 1,
+      "right": 2,
+    }
+  }
   write={[MockFunction]}
 >
   <span
@@ -889,6 +901,12 @@ exports[`The RoverConnection component renders disconnect button when connected 
     }
   }
   scanForRover={[MockFunction]}
+  sensor={
+    Object {
+      "left": 1,
+      "right": 2,
+    }
+  }
   write={[MockFunction]}
 >
   <WithStyles(WithStyles(ForwardRef(Button)))

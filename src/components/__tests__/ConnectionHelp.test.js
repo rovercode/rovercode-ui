@@ -3,6 +3,7 @@ import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
 
 import ConnectionHelp from '../ConnectionHelp'; // eslint-disable-line import/order
 
@@ -26,6 +27,10 @@ describe('The ConnectionHelp component', () => {
       },
       rover: {
         rover: null,
+      },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
       },
     });
     store.dispatch = jest.fn().mockResolvedValue();

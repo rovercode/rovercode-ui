@@ -8,6 +8,7 @@ import MockDate from 'mockdate';
 import { Cookies } from 'react-cookie';
 
 import { logout } from '@/actions/auth';
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import ProtectedRoute from '../ProtectedRoute';
 
 const cookiesValues = { };
@@ -32,6 +33,10 @@ describe('The ProtectedRoute component', () => {
       },
       rover: {
         rover: null,
+      },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
       },
     });
     store.dispatch = jest.fn();
@@ -95,6 +100,10 @@ describe('The ProtectedRoute component', () => {
       rover: {
         rover: null,
       },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
+      },
     });
     const wrapper = mountWithIntl(
       <ReduxProvider store={store}>
@@ -129,6 +138,10 @@ describe('The ProtectedRoute component', () => {
       },
       rover: {
         rover: null,
+      },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
       },
     });
     store.dispatch = jest.fn();
