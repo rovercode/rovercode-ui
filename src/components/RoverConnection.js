@@ -52,16 +52,22 @@ class RoverConnection extends Component {
   };
 
   handleLightSensor = (params) => {
-    const { changeLeftSensorState, changeRightSensorState, write } = this.props;
+    const {
+      changeLeftSensorState,
+      changeRightSensorState,
+      changeLightSensorReadings,
+    } = this.props;
 
     const [left, right] = params.split(',');
-    write(`Light Sensor - L:${left} R:${right}`);
-    if (parseInt(left, 10) > 500) {
+    const leftReading = parseInt(left, 10);
+    const rightReading = parseInt(right, 10);
+    changeLightSensorReadings(leftReading, rightReading);
+    if (leftReading > 500) {
       changeLeftSensorState(COVERED);
     } else {
       changeLeftSensorState(NOT_COVERED);
     }
-    if (parseInt(right, 10) > 500) {
+    if (rightReading > 500) {
       changeRightSensorState(COVERED);
     } else {
       changeRightSensorState(NOT_COVERED);
@@ -124,9 +130,9 @@ class RoverConnection extends Component {
   }
 
   handleBatterySensor = (params) => {
-    const { write } = this.props;
+    const { changeBatteryVoltageReading } = this.props;
 
-    write(`Battery Sensor - ${params} mV`);
+    changeBatteryVoltageReading(parseInt(params, 10));
   }
 
   handleDewPointSensor = (params) => {
@@ -337,6 +343,8 @@ RoverConnection.propTypes = {
   changeExecutionState: PropTypes.func.isRequired,
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
+  changeLightSensorReadings: PropTypes.func.isRequired,
+  changeBatteryVoltageReading: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
 };
 
