@@ -31,6 +31,7 @@ class RoverConnection extends Component {
       'mag-sens': this.handleMagneticForceSensor,
       'battery-sens': this.handleBatterySensor,
       'dewpoint-sens': this.handleDewPointSensor,
+      button: this.handleButton,
     };
 
     this.state = {
@@ -52,26 +53,12 @@ class RoverConnection extends Component {
   };
 
   handleLightSensor = (params) => {
-    const {
-      changeLeftSensorState,
-      changeRightSensorState,
-      changeLightSensorReadings,
-    } = this.props;
+    const { changeLightSensorReadings } = this.props;
 
     const [left, right] = params.split(',');
     const leftReading = parseInt(left, 10);
     const rightReading = parseInt(right, 10);
     changeLightSensorReadings(leftReading, rightReading);
-    if (leftReading > 500) {
-      changeLeftSensorState(COVERED);
-    } else {
-      changeLeftSensorState(NOT_COVERED);
-    }
-    if (rightReading > 500) {
-      changeRightSensorState(COVERED);
-    } else {
-      changeRightSensorState(NOT_COVERED);
-    }
   }
 
   handleLineSensor = (params) => {
@@ -139,6 +126,16 @@ class RoverConnection extends Component {
     const { write } = this.props;
 
     write(`Dew Point Sensor - ${params} C`);
+  }
+
+  handleButton = (params) => {
+    const { changeLeftSensorState, changeRightSensorState, sensor } = this.props;
+
+    if (params === 'a') {
+      changeLeftSensorState(sensor.left === COVERED ? NOT_COVERED : COVERED);
+    } else if (params === 'b') {
+      changeRightSensorState(sensor.right === COVERED ? NOT_COVERED : COVERED);
+    }
   }
 
   connect = () => {
@@ -337,6 +334,10 @@ RoverConnection.propTypes = {
   rover: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }),
+  sensor: PropTypes.shape({
+    left: PropTypes.number.isRequired,
+    right: PropTypes.number.isRequired,
+  }).isRequired,
   connectToRover: PropTypes.func.isRequired,
   disconnectFromRover: PropTypes.func.isRequired,
   scanForRover: PropTypes.func.isRequired,

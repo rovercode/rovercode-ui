@@ -6,6 +6,8 @@ import {
   changeRightSensorState,
   changeLightSensorReadings,
   changeBatteryVoltageReading,
+  COVERED,
+  NOT_COVERED,
 } from '@/actions/sensor';
 import { changeExecutionState, EXECUTION_STOP } from '@/actions/code';
 import { append } from '@/actions/console';
@@ -23,6 +25,10 @@ describe('The RoverConnectionContainer', () => {
     store = mockStore({
       rover: {
         name: 'Sparky',
+      },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
       },
     });
     store.dispatch = jest.fn().mockResolvedValue();
