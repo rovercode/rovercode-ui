@@ -896,8 +896,8 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
-    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(false);
-    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(false);
+    expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(false);
+    expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(false);
 
     workspace.setProps({
       sensor: {
@@ -908,8 +908,8 @@ describe('The Workspace component', () => {
       },
     });
 
-    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(true);
-    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(false);
+    expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(true);
+    expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(false);
 
     workspace.setProps({
       sensor: {
@@ -920,8 +920,8 @@ describe('The Workspace component', () => {
       },
     });
 
-    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(true);
-    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(true);
+    expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(true);
+    expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(true);
 
     workspace.setProps({
       sensor: {
@@ -932,8 +932,8 @@ describe('The Workspace component', () => {
       },
     });
 
-    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(false);
-    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(true);
+    expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(false);
+    expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(true);
   });
 
   test('dispatches an action when sending to rover', () => {

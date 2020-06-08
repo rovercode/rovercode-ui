@@ -19,8 +19,8 @@ describe('Blockly API', () => {
       setProperty: jest.fn(),
     };
     const sensorStateCache = [];
-    sensorStateCache.SENSORS_leftIr = false;
-    sensorStateCache.SENSORS_rightIr = false;
+    sensorStateCache.A_BUTTON = false;
+    sensorStateCache.B_BUTTON = false;
     sensorStateCache.LEFT_LIGHT = 1;
     sensorStateCache.RIGHT_LIGHT = 2;
 
@@ -106,22 +106,22 @@ describe('Blockly API', () => {
     expect(sendToRover.mock.calls[0][0]).toBe('right-motor:0\n');
   });
 
-  test('handles getSensorCovered', () => {
-    const getSensorCoveredHandler = interpreter.createNativeFunction.mock.calls[4][0];
-
-    getSensorCoveredHandler('SENSORS_leftIr');
-
-    expect(interpreter.createPrimitive).toHaveBeenCalled();
-    expect(interpreter.createPrimitive).toHaveBeenCalledWith(false);
-  });
-
   test('handles getLightSensorValue', () => {
-    const getLightSensorHandler = interpreter.createNativeFunction.mock.calls[5][0];
+    const getLightSensorHandler = interpreter.createNativeFunction.mock.calls[4][0];
 
     getLightSensorHandler('LEFT');
 
     expect(interpreter.createPrimitive).toHaveBeenCalled();
     expect(interpreter.createPrimitive).toHaveBeenCalledWith(1);
+  });
+
+  test('handles buttonHasBeenPressed', () => {
+    const buttonHasBeenPressedHandler = interpreter.createNativeFunction.mock.calls[5][0];
+
+    buttonHasBeenPressedHandler('A');
+
+    expect(interpreter.createPrimitive).toHaveBeenCalled();
+    expect(interpreter.createPrimitive).toHaveBeenCalledWith(false);
   });
 
   test('handles sleep', () => {
