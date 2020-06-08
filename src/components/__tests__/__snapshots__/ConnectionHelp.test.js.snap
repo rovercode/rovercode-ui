@@ -2876,6 +2876,12 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                     disconnectFromRover={[Function]}
                                                     rover={null}
                                                     scanForRover={[Function]}
+                                                    sensor={
+                                                      Object {
+                                                        "left": 1,
+                                                        "right": 2,
+                                                      }
+                                                    }
                                                     write={[Function]}
                                                   >
                                                     <WithStyles(WithStyles(ForwardRef(Button)))

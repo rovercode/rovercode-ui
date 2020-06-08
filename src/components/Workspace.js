@@ -144,8 +144,8 @@ class Workspace extends Component {
     const { writeToConsole } = this.props;
 
     this.sensorStateCache = [];
-    this.sensorStateCache.SENSORS_leftIr = false;
-    this.sensorStateCache.SENSORS_rightIr = false;
+    this.sensorStateCache.A_BUTTON = false;
+    this.sensorStateCache.B_BUTTON = false;
     this.sleeping = false;
     this.runningEnabled = false;
     this.highlightPause = false;
@@ -232,8 +232,8 @@ class Workspace extends Component {
     leftLightSensorReading,
     rightLightSensorReading,
   ) => {
-    this.sensorStateCache.SENSORS_leftIr = leftState === COVERED;
-    this.sensorStateCache.SENSORS_rightIr = rightState === COVERED;
+    this.sensorStateCache.A_BUTTON = leftState === COVERED;
+    this.sensorStateCache.B_BUTTON = rightState === COVERED;
     this.sensorStateCache.LEFT_LIGHT = leftLightSensorReading;
     this.sensorStateCache.RIGHT_LIGHT = rightLightSensorReading;
   }
