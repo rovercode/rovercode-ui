@@ -183,7 +183,8 @@ class Workspace extends Component {
     const { code: currentCode, rover: currentRover } = prevProps;
     const { code: nextCode, sensor, rover: nextRover } = this.props;
 
-    this.updateSensorStateCache(sensor.left, sensor.right);
+    this.updateSensorStateCache(sensor.left, sensor.right,
+      sensor.leftLightSensorReading, sensor.rightLightSensorReading);
 
     if (currentCode && currentCode.isReadOnly && nextCode && !nextCode.isReadOnly) {
       this.createWorkspace();
@@ -225,9 +226,16 @@ class Workspace extends Component {
     }
   }
 
-  updateSensorStateCache = (leftState, rightState) => {
+  updateSensorStateCache = (
+    leftState,
+    rightState,
+    leftLightSensorReading,
+    rightLightSensorReading,
+  ) => {
     this.sensorStateCache.SENSORS_leftIr = leftState === COVERED;
     this.sensorStateCache.SENSORS_rightIr = rightState === COVERED;
+    this.sensorStateCache.LEFT_LIGHT = leftLightSensorReading;
+    this.sensorStateCache.RIGHT_LIGHT = rightLightSensorReading;
   }
 
   onWorkspaceAvailable = (code) => {
@@ -484,6 +492,8 @@ Workspace.propTypes = {
   sensor: PropTypes.shape({
     left: PropTypes.number.isRequired,
     right: PropTypes.number.isRequired,
+    leftLightSensorReading: PropTypes.number.isRequired,
+    rightLightSensorReading: PropTypes.number.isRequired,
   }).isRequired,
   rover: PropTypes.shape({
     transmitChannel: PropTypes.object,
