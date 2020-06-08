@@ -25,6 +25,10 @@ class BlocklyApi {
     this.sendToRover(`${motor}:${speed}\n`);
   }
 
+  sendDisplayCommand = (message) => {
+    this.sendToRover(`disp:${message}\n`);
+  }
+
   setChainableRgbLed = (blocklyLedId, blocklyColorHexString) => {
     if (blocklyLedId === null || blocklyColorHexString === null) {
       return;
@@ -106,6 +110,14 @@ class BlocklyApi {
       return false;
     };
     interpreter.setProperty(scope, 'setChainableRgbLed',
+      interpreter.createNativeFunction(wrapper));
+
+    // Add display message API function
+    wrapper = (message) => {
+      this.sendDisplayCommand(message.data);
+      return false;
+    };
+    interpreter.setProperty(scope, 'displayMessage',
       interpreter.createNativeFunction(wrapper));
   }
 }
