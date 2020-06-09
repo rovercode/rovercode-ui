@@ -35,8 +35,8 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   clearConsole: () => dispatch(clear()),
   updateXmlCode: (xmlCode) => dispatch(actionUpdateXmlCode(xmlCode)),
   sendToRover: (channel, message) => dispatch(send(channel, message)),
-  saveProgram: (id, content, name, lesson) => dispatch(
-    actionSaveProgram(id, content, name, lesson, authHeader(cookies)),
+  saveProgram: (id, content, name, lessonId) => dispatch(
+    actionSaveProgram(id, content, name, lessonId, authHeader(cookies)),
   ).catch(checkAuthError(dispatch)),
   createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
@@ -144,8 +144,8 @@ class Workspace extends Component {
     const { writeToConsole } = this.props;
 
     this.sensorStateCache = [];
-    this.sensorStateCache.SENSORS_leftIr = false;
-    this.sensorStateCache.SENSORS_rightIr = false;
+    this.sensorStateCache.A_BUTTON = false;
+    this.sensorStateCache.B_BUTTON = false;
     this.sleeping = false;
     this.runningEnabled = false;
     this.highlightPause = false;
@@ -183,7 +183,8 @@ class Workspace extends Component {
     const { code: currentCode, rover: currentRover } = prevProps;
     const { code: nextCode, sensor, rover: nextRover } = this.props;
 
-    this.updateSensorStateCache(sensor.left, sensor.right);
+    this.updateSensorStateCache(sensor.left, sensor.right,
+      sensor.leftLightSensorReading, sensor.rightLightSensorReading);
 
     if (currentCode && currentCode.isReadOnly && nextCode && !nextCode.isReadOnly) {
       this.createWorkspace();
@@ -225,9 +226,16 @@ class Workspace extends Component {
     }
   }
 
-  updateSensorStateCache = (leftState, rightState) => {
-    this.sensorStateCache.SENSORS_leftIr = leftState === COVERED;
-    this.sensorStateCache.SENSORS_rightIr = rightState === COVERED;
+  updateSensorStateCache = (
+    leftState,
+    rightState,
+    leftLightSensorReading,
+    rightLightSensorReading,
+  ) => {
+    this.sensorStateCache.A_BUTTON = leftState === COVERED;
+    this.sensorStateCache.B_BUTTON = rightState === COVERED;
+    this.sensorStateCache.LEFT_LIGHT = leftLightSensorReading;
+    this.sensorStateCache.RIGHT_LIGHT = rightLightSensorReading;
   }
 
   onWorkspaceAvailable = (code) => {
@@ -353,7 +361,7 @@ class Workspace extends Component {
     const { rover } = this.props;
 
     if (this.stepCode() && this.runningEnabled && !this.sleeping && !rover.isSending) {
-      setTimeout(this.runCode, 10);
+      setTimeout(this.runCode, 20);
     }
   }
 
@@ -484,6 +492,8 @@ Workspace.propTypes = {
   sensor: PropTypes.shape({
     left: PropTypes.number.isRequired,
     right: PropTypes.number.isRequired,
+    leftLightSensorReading: PropTypes.number.isRequired,
+    rightLightSensorReading: PropTypes.number.isRequired,
   }).isRequired,
   rover: PropTypes.shape({
     transmitChannel: PropTypes.object,

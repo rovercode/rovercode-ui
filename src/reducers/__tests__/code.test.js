@@ -21,6 +21,9 @@ import {
   CREATE_PROGRAM_PENDING,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
+  FETCH_LESSON_PENDING,
+  FETCH_LESSON_FULFILLED,
+  FETCH_LESSON_REJECTED,
   REMIX_PROGRAM_PENDING,
   REMIX_PROGRAM_FULFILLED,
   REMIX_PROGRAM_REJECTED,
@@ -170,6 +173,7 @@ describe('The code reducer', () => {
     const name = 'mybd';
     const ownerName = 'phil';
     const id = 1;
+    const lessonId = 2;
     const xmlCode = '<xml></xml>';
 
     expect(
@@ -182,6 +186,7 @@ describe('The code reducer', () => {
             username: ownerName,
           },
           content: xmlCode,
+          lesson: lessonId,
         },
       }),
     ).toEqual({
@@ -190,6 +195,7 @@ describe('The code reducer', () => {
       id,
       ownerName,
       xmlCode,
+      lessonId,
     });
   });
 
@@ -223,7 +229,7 @@ describe('The code reducer', () => {
     const name = 'mybd';
     const id = 1;
     const xmlCode = '<xml></xml>';
-    const lesson = 2;
+    const lessonId = 2;
 
     expect(
       reducer({}, {
@@ -232,7 +238,7 @@ describe('The code reducer', () => {
           name,
           id,
           content: xmlCode,
-          lesson,
+          lesson: lessonId,
         },
       }),
     ).toEqual({
@@ -240,7 +246,7 @@ describe('The code reducer', () => {
       name,
       id,
       xmlCode,
-      lesson,
+      lessonId,
     });
   });
 
@@ -308,6 +314,52 @@ describe('The code reducer', () => {
     });
   });
 
+  test('should handle FETCH_LESSON_PENDING', () => {
+    expect(
+      reducer({}, {
+        type: FETCH_LESSON_PENDING,
+      }),
+    ).toEqual({
+      isFetchingLesson: true,
+    });
+  });
+
+  test('should handle FETCH_LESSON_FULFILLED', () => {
+    const lessonTutorialLink = 'youtu.be/asdf';
+    const lessonGoals = 'to do a thing';
+
+    expect(
+      reducer({}, {
+        type: FETCH_LESSON_FULFILLED,
+        payload: {
+          tutorial_link: lessonTutorialLink,
+          goals: lessonGoals,
+        },
+      }),
+    ).toEqual({
+      isFetchingLesson: false,
+      lessonTutorialLink,
+      lessonGoals,
+    });
+  });
+
+  test('should handle FETCH_LESSON_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: FETCH_LESSON_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isFetchingLesson: false,
+      error: { detail },
+    });
+  });
+
+
   test('should handle REMIX_PROGRAM_PENDING', () => {
     expect(
       reducer({}, {
@@ -322,7 +374,7 @@ describe('The code reducer', () => {
     const name = 'mybd';
     const id = 1;
     const xmlCode = '<xml></xml>';
-    const lesson = 2;
+    const lessonId = 2;
 
     expect(
       reducer({}, {
@@ -331,7 +383,7 @@ describe('The code reducer', () => {
           name,
           id,
           content: xmlCode,
-          lesson,
+          lesson: lessonId,
         },
       }),
     ).toEqual({
@@ -339,7 +391,7 @@ describe('The code reducer', () => {
       name,
       id,
       xmlCode,
-      lesson,
+      lessonId,
     });
   });
 
@@ -392,6 +444,10 @@ describe('The code reducer', () => {
       isRemixing: false,
       error: null,
       isReadOnly: false,
+      isFetchingLesson: false,
+      lessonId: null,
+      lessonTutorialLink: null,
+      lessonGoals: null,
     });
   });
 

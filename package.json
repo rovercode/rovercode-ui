@@ -13,6 +13,7 @@
     "build": "webpack --config webpack.production.js",
     "i18n:manage": "node src/translations/runner.js",
     "test": "jest --coverage --color",
+    "test:interactive": "jest --watch --coverage --color",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "lint": "eslint webpack.* src --color --format stylish",
     "lint:fix": "eslint webpack.* src --fix --color --format stylish"
@@ -111,7 +112,6 @@
     "react-redux": "^7.2.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-websocket": "^2.0.1",
     "redux": "^4.0.1",
     "redux-debounced": "^0.5.0",
     "redux-logger": "^3.0.6",

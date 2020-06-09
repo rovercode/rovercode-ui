@@ -4,9 +4,12 @@ node_js:
   - "12"
 install:
   - yarn install --pure-lockfile
+  - yarn add --dev coveralls
 script:
   - yarn test
   - yarn lint
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 before_deploy:
   - |
     if [ "$TRAVIS_BRANCH" = "alpha" ]; then

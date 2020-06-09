@@ -31,6 +31,7 @@ class RoverConnection extends Component {
       'mag-sens': this.handleMagneticForceSensor,
       'battery-sens': this.handleBatterySensor,
       'dewpoint-sens': this.handleDewPointSensor,
+      button: this.handleButton,
     };
 
     this.state = {
@@ -52,20 +53,12 @@ class RoverConnection extends Component {
   };
 
   handleLightSensor = (params) => {
-    const { changeLeftSensorState, changeRightSensorState, write } = this.props;
+    const { changeLightSensorReadings } = this.props;
 
     const [left, right] = params.split(',');
-    write(`Light Sensor - L:${left} R:${right}`);
-    if (parseInt(left, 10) > 500) {
-      changeLeftSensorState(COVERED);
-    } else {
-      changeLeftSensorState(NOT_COVERED);
-    }
-    if (parseInt(right, 10) > 500) {
-      changeRightSensorState(COVERED);
-    } else {
-      changeRightSensorState(NOT_COVERED);
-    }
+    const leftReading = parseInt(left, 10);
+    const rightReading = parseInt(right, 10);
+    changeLightSensorReadings(leftReading, rightReading);
   }
 
   handleLineSensor = (params) => {
@@ -124,15 +117,25 @@ class RoverConnection extends Component {
   }
 
   handleBatterySensor = (params) => {
-    const { write } = this.props;
+    const { changeBatteryVoltageReading } = this.props;
 
-    write(`Battery Sensor - ${params} mV`);
+    changeBatteryVoltageReading(parseInt(params, 10));
   }
 
   handleDewPointSensor = (params) => {
     const { write } = this.props;
 
     write(`Dew Point Sensor - ${params} C`);
+  }
+
+  handleButton = (params) => {
+    const { changeLeftSensorState, changeRightSensorState, sensor } = this.props;
+
+    if (params === 'a') {
+      changeLeftSensorState(sensor.left === COVERED ? NOT_COVERED : COVERED);
+    } else if (params === 'b') {
+      changeRightSensorState(sensor.right === COVERED ? NOT_COVERED : COVERED);
+    }
   }
 
   connect = () => {
@@ -331,12 +334,18 @@ RoverConnection.propTypes = {
   rover: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }),
+  sensor: PropTypes.shape({
+    left: PropTypes.number.isRequired,
+    right: PropTypes.number.isRequired,
+  }).isRequired,
   connectToRover: PropTypes.func.isRequired,
   disconnectFromRover: PropTypes.func.isRequired,
   scanForRover: PropTypes.func.isRequired,
   changeExecutionState: PropTypes.func.isRequired,
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
+  changeLightSensorReadings: PropTypes.func.isRequired,
+  changeBatteryVoltageReading: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
 };
 

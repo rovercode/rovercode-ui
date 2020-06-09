@@ -130,37 +130,43 @@ const Control = ({
           <>
             <Grid item>
               <Tooltip title={resetTitle}>
-                <ResetButton
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => changeExecutionState(EXECUTION_RESET)}
-                  disabled={!isConnected}
-                >
-                  <Replay />
-                </ResetButton>
+                <span>
+                  <ResetButton
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => changeExecutionState(EXECUTION_RESET)}
+                    disabled={!isConnected}
+                  >
+                    <Replay />
+                  </ResetButton>
+                </span>
               </Tooltip>
             </Grid>
             <Grid item>
               <Tooltip title={runTitle}>
-                <RunButton
-                  variant="contained"
-                  color="primary"
-                  onClick={() => changeExecutionState(EXECUTION_RUN)}
-                  disabled={!isConnected}
-                >
-                  <PlayArrow />
-                </RunButton>
+                <span>
+                  <RunButton
+                    variant="contained"
+                    color="primary"
+                    onClick={() => changeExecutionState(EXECUTION_RUN)}
+                    disabled={!isConnected}
+                  >
+                    <PlayArrow />
+                  </RunButton>
+                </span>
               </Tooltip>
             </Grid>
             <Grid item>
               <Tooltip title={stepTitle}>
-                <StepButton
-                  variant="contained"
-                  onClick={() => changeExecutionState(EXECUTION_STEP)}
-                  disabled={!isConnected}
-                >
-                  <SkipNext />
-                </StepButton>
+                <span>
+                  <StepButton
+                    variant="contained"
+                    onClick={() => changeExecutionState(EXECUTION_STEP)}
+                    disabled={!isConnected}
+                  >
+                    <SkipNext />
+                  </StepButton>
+                </span>
               </Tooltip>
             </Grid>
           </>
