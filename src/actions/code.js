@@ -19,6 +19,10 @@ export const REMIX_PROGRAM = 'REMIX_PROGRAM';
 export const REMIX_PROGRAM_PENDING = `${REMIX_PROGRAM}_PENDING`;
 export const REMIX_PROGRAM_FULFILLED = `${REMIX_PROGRAM}_FULFILLED`;
 export const REMIX_PROGRAM_REJECTED = `${REMIX_PROGRAM}_REJECTED`;
+export const FETCH_LESSON = 'FETCH_LESSON';
+export const FETCH_LESSON_PENDING = `${FETCH_LESSON}_PENDING`;
+export const FETCH_LESSON_FULFILLED = `${FETCH_LESSON}_FULFILLED`;
+export const FETCH_LESSON_REJECTED = `${FETCH_LESSON}_REJECTED`;
 
 export const UPDATE_JSCODE = 'UPDATE_JSCODE';
 export const UPDATE_XMLCODE = 'UPDATE_XMLCODE';
@@ -80,12 +84,12 @@ export const fetchProgram = (id, xhroptions) => ({
     )),
 });
 
-export const saveProgram = (id, content, name, lesson, xhroptions) => ({
+export const saveProgram = (id, content, name, lessonId, xhroptions) => ({
   type: SAVE_PROGRAM,
   payload: axios.put(`/api/v1/block-diagrams/${id}/`, {
     content,
     name,
-    lesson,
+    lesson: lessonId,
   }, xhroptions)
     .then(({ data }) => (
       data
@@ -102,6 +106,15 @@ export const createProgram = (name, xhroptions) => ({
       data
     )),
 });
+
+export const fetchLesson = (id, xhroptions) => ({
+  type: FETCH_LESSON,
+  payload: axios.get(`/api/v1/lessons/${id}/`, xhroptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
 
 export const changeProgramTags = (id, tags, xhroptions) => ({
   type: CHANGE_PROGRAM_TAGS,

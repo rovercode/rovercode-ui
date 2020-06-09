@@ -19,7 +19,7 @@ jest.mock('@/components/ProgramName', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
 jest.mock('@/actions/code');
 
-import { changeReadOnly, remixProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
+import { changeReadOnly, fetchLesson, remixProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -38,6 +38,9 @@ describe('The MissionControl container', () => {
         id: 123,
         name: 'Some Program',
         tags: [],
+        lessonId: 42,
+        lessonGoals: 'To code stuff',
+        lessonTutorialLink: 'youtu.be/foobar',
       },
       sensor: {
         leftLightSensorReading: -1,
@@ -85,12 +88,92 @@ describe('The MissionControl container', () => {
       .dive();
 
     const remixPromise = wrapper.instance().props.remixProgram(1);
+    const fetchLessonPromise = wrapper.instance().props.fetchLesson(2);
     const changeReadOnlyPromise = wrapper.instance().props.changeReadOnly(true);
-    Promise.all([remixPromise, changeReadOnlyPromise]).then(() => {
+    Promise.all([remixPromise, fetchLessonPromise, changeReadOnlyPromise]).then(() => {
       expect(store.dispatch).toHaveBeenCalledWith(remixProgram(1));
+      expect(store.dispatch).toHaveBeenCalledWith(fetchLesson(2));
       expect(store.dispatch).toHaveBeenCalledWith(changeReadOnly(true));
       done();
     });
+  });
+
+  test('fetches lesson when present', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonId: 1,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue();
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(1));
+  });
+
+  test('doesn\'t fetch lesson when not present', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonId: null,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue();
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(localStore.dispatch).not.toHaveBeenCalled();
   });
 
   test('hides alert when not read only', () => {
@@ -192,7 +275,7 @@ describe('The MissionControl container', () => {
 
     expect(wrapper.find(Drawer).prop('open')).toBe(false);
 
-    wrapper.find(Button).simulate('click');
+    wrapper.find(Button).at(1).simulate('click');
     wrapper.update();
 
     expect(wrapper.find(Drawer).prop('open')).toBe(true);
@@ -203,6 +286,164 @@ describe('The MissionControl container', () => {
     expect(wrapper.find(Drawer).prop('open')).toBe(false);
   });
 
+  test('shows tutorial link when available', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonTutorialLink: 'youtu.be/asdf',
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue();
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(wrapper.find('WithStyles(ForwardRef(Button))').first().text()).toBe('Tutorial');
+  });
+
+  test('hides tutorial link when not available', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonTutorialLink: null,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue();
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toBe(1);
+    expect(wrapper.find('WithStyles(ForwardRef(Button))').first().text()).not.toBe('Tutorial');
+  });
+
+  test('shows goal when available', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonGoals: 'to do a thing',
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue();
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Typography)))').at(0).text()).toBe('Goal: to do a thing');
+  });
+
+  test('hides goals when not available', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonGoals: null,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue();
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Typography)))').exists()).toBe(false);
+  });
+
+
   test('Remixes a lesson reference program', (done) => {
     const localStore = mockStore({
       code: {
@@ -211,6 +452,7 @@ describe('The MissionControl container', () => {
         ownerName: 'phil',
         xmlCode: '<xml></xml>',
         isReadOnly: true,
+        lessonId: 50,
       },
       sensor: {
         leftLightSensorReading: -1,
@@ -219,6 +461,7 @@ describe('The MissionControl container', () => {
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
     const mockChangeReadOnly = jest.fn();
+    const mockFetchLesson = jest.fn();
     const mockRemixProgram = jest.fn().mockResolvedValue({
       value: {
         id: 2,
@@ -248,11 +491,13 @@ describe('The MissionControl container', () => {
     missionControl.setProps({
       remixProgram: mockRemixProgram,
       changeReadOnly: mockChangeReadOnly,
+      fetchLesson: mockFetchLesson,
     });
 
     missionControl.instance().remix().then(() => {
       expect(mockRemixProgram).toHaveBeenCalledWith(1);
       expect(mockChangeReadOnly).toHaveBeenCalledWith(false);
+      expect(mockFetchLesson).toHaveBeenCalledWith(50);
       done();
     });
   });
@@ -273,6 +518,7 @@ describe('The MissionControl container', () => {
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
     const mockChangeReadOnly = jest.fn();
+    const mockFetchLesson = jest.fn();
     const mockRemixProgram = jest.fn().mockResolvedValue({
       value: {
         id: 1,
@@ -304,10 +550,12 @@ describe('The MissionControl container', () => {
     missionControl.setProps({
       remixProgram: mockRemixProgram,
       changeReadOnly: mockChangeReadOnly,
+      fetchLesson: mockFetchLesson,
     });
 
     missionControl.instance().remix().then(() => {
       expect(mockRemixProgram).toHaveBeenCalledWith(1);
+      expect(mockFetchLesson).not.toHaveBeenCalled();
       done();
     });
   });
