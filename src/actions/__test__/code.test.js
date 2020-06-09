@@ -13,6 +13,7 @@ import {
   createProgram,
   clearProgram,
   remixProgram,
+  fetchLesson,
   EXECUTION_RUN,
 } from '../code';
 
@@ -102,16 +103,16 @@ describe('Code actions', () => {
       name: 'mybd',
       content: '<xml></xml>',
       user: 1,
-      lesson: 2,
+      lessonId: 2,
     };
 
     mock.onPut('/api/v1/block-diagrams/1/', {
       name: program.name,
       content: program.content,
-      lesson: program.lesson,
+      lesson: program.lessonId,
     }).reply(200, program);
 
-    const action = saveProgram(1, program.content, program.name, program.lesson);
+    const action = saveProgram(1, program.content, program.name, program.lessonId);
     const { type } = action;
     expect(type).toEqual('SAVE_PROGRAM');
     action.payload.then((result) => {
@@ -137,6 +138,26 @@ describe('Code actions', () => {
     expect(type).toEqual('CREATE_PROGRAM');
     action.payload.then((result) => {
       expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
+  });
+
+  test('fetch lesson', (done) => {
+    const mock = new MockAdapter(axios);
+    const lesson = {
+      id: 1,
+      tutorial_link: 'youtu.be/asdf',
+      goals: 'to do a thing',
+    };
+
+    mock.onGet('/api/v1/lessons/1/').reply(200, lesson);
+
+    const action = fetchLesson(1);
+    const { type } = action;
+    expect(type).toEqual('FETCH_LESSON');
+    action.payload.then((result) => {
+      expect(result).toEqual(lesson);
       mock.restore();
       done();
     });

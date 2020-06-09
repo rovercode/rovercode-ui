@@ -32,18 +32,27 @@ import ProgramName from '@/components/ProgramName';
 import ProgramTags from '@/components/ProgramTags';
 import Workspace from '@/components/Workspace';
 import { checkAuthError, authHeader } from '@/actions/auth';
-import { changeReadOnly as actionChangeReadOnly, remixProgram as actionRemixProgram } from '@/actions/code';
+import {
+  changeReadOnly as actionChangeReadOnly,
+  fetchLesson as actionFetchLesson,
+  remixProgram as actionRemixProgram,
+} from '@/actions/code';
 
 const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   remixProgram: (id) => dispatch(actionRemixProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
+  fetchLesson: (id) => dispatch(actionFetchLesson(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
 class MissionControl extends Component {
   constructor(props) {
     super(props);
+    const { code, fetchLesson } = props;
+
+    fetchLesson(code.lessonId);
 
     this.state = {
       open: false,
@@ -196,6 +205,20 @@ class MissionControl extends Component {
                   </Typography>
                 </Box>
               </Grid>
+              <Grid item>
+                <Box>
+                  <Typography variant="h6">
+                    {code.lessonGoals}
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Box>
+                  <Typography variant="h6">
+                    {code.lessonTutoralLink}
+                  </Typography>
+                </Box>
+              </Grid>
               {
                 code.isReadOnly ? (
                   <Grid item>
@@ -343,6 +366,9 @@ MissionControl.propTypes = {
     name: PropTypes.string,
     isReadOnly: PropTypes.bool,
     ownerName: PropTypes.string,
+    lessonId: PropTypes.number,
+    lessonTutoralLink: PropTypes.string,
+    lessonGoals: PropTypes.string,
   }).isRequired,
   sensor: PropTypes.shape({
     leftLightSensorReading: PropTypes.number,
@@ -350,6 +376,7 @@ MissionControl.propTypes = {
     batteryVoltageReading: PropTypes.number,
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,
+  fetchLesson: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,

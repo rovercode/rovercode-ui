@@ -39,7 +39,7 @@ describe('The Workspace component', () => {
         execution: null,
         name: 'test program',
         id: 1,
-        lesson: null,
+        lessonId: null,
       },
       sensor: {
         left: NOT_COVERED,

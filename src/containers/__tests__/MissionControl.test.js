@@ -19,7 +19,7 @@ jest.mock('@/components/ProgramName', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
 jest.mock('@/actions/code');
 
-import { changeReadOnly, remixProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
+import { changeReadOnly, fetchLesson, remixProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -85,9 +85,11 @@ describe('The MissionControl container', () => {
       .dive();
 
     const remixPromise = wrapper.instance().props.remixProgram(1);
+    const fetchLessonPromise = wrapper.instance().props.fetchLesson(2);
     const changeReadOnlyPromise = wrapper.instance().props.changeReadOnly(true);
-    Promise.all([remixPromise, changeReadOnlyPromise]).then(() => {
+    Promise.all([remixPromise, fetchLessonPromise, changeReadOnlyPromise]).then(() => {
       expect(store.dispatch).toHaveBeenCalledWith(remixProgram(1));
+      expect(store.dispatch).toHaveBeenCalledWith(fetchLesson(2));
       expect(store.dispatch).toHaveBeenCalledWith(changeReadOnly(true));
       done();
     });
