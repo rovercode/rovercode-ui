@@ -35,8 +35,8 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   clearConsole: () => dispatch(clear()),
   updateXmlCode: (xmlCode) => dispatch(actionUpdateXmlCode(xmlCode)),
   sendToRover: (channel, message) => dispatch(send(channel, message)),
-  saveProgram: (id, content, name, lesson) => dispatch(
-    actionSaveProgram(id, content, name, lesson, authHeader(cookies)),
+  saveProgram: (id, content, name, lessonId) => dispatch(
+    actionSaveProgram(id, content, name, lessonId, authHeader(cookies)),
   ).catch(checkAuthError(dispatch)),
   createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
