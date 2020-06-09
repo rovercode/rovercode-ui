@@ -9,7 +9,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider as ReduxProvider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import createDebounce from 'redux-debounced';
 import * as Sentry from '@sentry/browser';
@@ -55,13 +55,12 @@ Sentry.init({
 
 /* eslint-disable-next-line no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let middleware = [thunk, promise, createDebounce()];
+if (process.env.NODE_ENV !== 'production') {
+  middleware = [...middleware, logger];
+}
 const reduxMiddleware = composeEnhancers(
-  applyMiddleware(
-    thunk,
-    createLogger(),
-    promise,
-    createDebounce(),
-  ),
+  applyMiddleware(...middleware),
 );
 
 const authApi = new AuthApi();
