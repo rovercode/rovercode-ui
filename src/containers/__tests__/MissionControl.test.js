@@ -322,7 +322,9 @@ describe('The MissionControl container', () => {
       .dive()
       .dive();
 
-    expect(wrapper.find('WithStyles(ForwardRef(Button))').first().text()).toBe('Tutorial');
+    const button = wrapper.find('WithStyles(ForwardRef(Button))').first();
+    expect(button.text()).toBe('Tutorial');
+    expect(button.prop('href')).toBe('youtu.be/asdf');
   });
 
   test('hides tutorial link when not available', () => {
