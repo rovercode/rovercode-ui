@@ -19,6 +19,9 @@ import {
   CREATE_PROGRAM_PENDING,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
+  FETCH_LESSON_PENDING,
+  FETCH_LESSON_FULFILLED,
+  FETCH_LESSON_REJECTED,
   REMIX_PROGRAM_PENDING,
   REMIX_PROGRAM_FULFILLED,
   REMIX_PROGRAM_REJECTED,
@@ -41,6 +44,11 @@ const defaultState = {
   error: null,
   isReadOnly: false,
   ownerName: null,
+  isFetchingLesson: false,
+  lessonId: null,
+  lessonTutorialLink: null,
+  lessonGoals: null,
+
 };
 
 export default function code(
@@ -116,6 +124,7 @@ export default function code(
         name: action.payload.name,
         tags: action.payload.owner_tags,
         ownerName: action.payload.user.username,
+        lessonId: action.payload.lesson,
       };
     case FETCH_PROGRAM_REJECTED:
       return {
@@ -135,7 +144,7 @@ export default function code(
         xmlCode: action.payload.content,
         id: action.payload.id,
         name: action.payload.name,
-        lesson: action.payload.lesson,
+        lessonId: action.payload.lesson,
       };
     case SAVE_PROGRAM_REJECTED:
       return {
@@ -162,6 +171,24 @@ export default function code(
         isCreating: false,
         error: action.payload,
       };
+    case FETCH_LESSON_PENDING:
+      return {
+        ...state,
+        isFetchingLesson: true,
+      };
+    case FETCH_LESSON_FULFILLED:
+      return {
+        ...state,
+        isFetchingLesson: false,
+        lessonTutorialLink: action.payload.tutorial_link,
+        lessonGoals: action.payload.goals,
+      };
+    case FETCH_LESSON_REJECTED:
+      return {
+        ...state,
+        isFetchingLesson: false,
+        error: action.payload,
+      };
     case REMIX_PROGRAM_PENDING:
       return {
         ...state,
@@ -174,7 +201,7 @@ export default function code(
         xmlCode: action.payload.content,
         id: action.payload.id,
         name: action.payload.name,
-        lesson: action.payload.lesson,
+        lessonId: action.payload.lesson,
       };
     case REMIX_PROGRAM_REJECTED:
       return {

@@ -39,11 +39,13 @@ describe('The Workspace component', () => {
         execution: null,
         name: 'test program',
         id: 1,
-        lesson: null,
+        lessonId: null,
       },
       sensor: {
         left: NOT_COVERED,
         right: NOT_COVERED,
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -1,
       },
       rover: {
         transmitChannel: {
@@ -312,6 +314,8 @@ describe('The Workspace component', () => {
       sensor: {
         left: NOT_COVERED,
         right: NOT_COVERED,
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -1,
       },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
@@ -684,6 +688,8 @@ describe('The Workspace component', () => {
       sensor: {
         left: NOT_COVERED,
         right: NOT_COVERED,
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -1,
       },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
@@ -890,38 +896,44 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
-    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(false);
-    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(false);
+    expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(false);
+    expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(false);
 
     workspace.setProps({
       sensor: {
         left: COVERED,
         right: NOT_COVERED,
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -1,
       },
     });
 
-    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(true);
-    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(false);
+    expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(true);
+    expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(false);
 
     workspace.setProps({
       sensor: {
         left: COVERED,
         right: COVERED,
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -1,
       },
     });
 
-    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(true);
-    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(true);
+    expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(true);
+    expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(true);
 
     workspace.setProps({
       sensor: {
         left: NOT_COVERED,
         right: COVERED,
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -1,
       },
     });
 
-    expect(workspace.instance().sensorStateCache.SENSORS_leftIr).toBe(false);
-    expect(workspace.instance().sensorStateCache.SENSORS_rightIr).toBe(true);
+    expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(false);
+    expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(true);
   });
 
   test('dispatches an action when sending to rover', () => {
@@ -950,6 +962,8 @@ describe('The Workspace component', () => {
       sensor: {
         left: NOT_COVERED,
         right: NOT_COVERED,
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -1,
       },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();

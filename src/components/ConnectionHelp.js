@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  IconButton,
-  Dialog,
-  DialogContent,
   Box,
   Button,
-  Typography,
-  Link,
+  Checkbox,
+  Dialog,
+  DialogActions,
+  DialogContent,
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
+  FormControlLabel,
+  FormGroup,
+  IconButton,
+  Link,
+  Typography,
 } from '@material-ui/core';
 import {
   withStyles,
@@ -20,6 +24,7 @@ import { Redirect } from 'react-router-dom';
 import { HelpOutline, ExpandMore } from '@material-ui/icons';
 import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
+import { withCookies } from 'react-cookie';
 
 import RoverConnection from '@/containers/RoverConnection';
 import gigglebotImage from '@/assets/images/connection-help/gigglebot.png';
@@ -27,15 +32,22 @@ import displayImage from '@/assets/images/connection-help/display.png';
 import flashingImage from '@/assets/images/connection-help/flashing.png';
 import deviceWindowsImage from '@/assets/images/connection-help/device-windows.jpg';
 
-// TODO: Use a flag on user model to launch modal immediately
+import { checkAuthError, authHeader } from '@/actions/auth';
+import { editUserShowGuide as actionEditUserShowGuide } from '@/actions/user';
+
 const mapStateToProps = ({ user, rover }) => ({ user, rover: rover.rover });
+const mapDispatchToProps = (dispatch, { cookies }) => ({
+  editUserShowGuide: (id, state) => dispatch(
+    actionEditUserShowGuide(id, state, authHeader(cookies)),
+  ).catch(checkAuthError(dispatch)),
+});
 
 class ConnectionHelp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      open: true,
+      open: props.user.showGuide === undefined ? true : props.user.showGuide,
       done: false,
     };
   }
@@ -59,9 +71,15 @@ class ConnectionHelp extends Component {
     });
   }
 
+  handleShowChange = (event) => {
+    const { editUserShowGuide, user } = this.props;
+
+    editUserShowGuide(user.user_id, event.target.checked);
+  }
+
   render() {
     const { open, done } = this.state;
-    const { rover } = this.props;
+    const { rover, user } = this.props;
 
     const PaddedBox = withStyles((theme) => ({
       root: {
@@ -290,6 +308,25 @@ class ConnectionHelp extends Component {
               ) : (null)
             }
           </DialogContent>
+          <DialogActions>
+            <FormGroup row>
+              <FormControlLabel
+                control={(
+                  <Checkbox
+                    checked={user.showGuide}
+                    onChange={this.handleShowChange}
+                  />
+                )}
+                label={(
+                  <FormattedMessage
+                    id="app.connection_help.show"
+                    description="Checkbox label for whether to show this guide"
+                    defaultMessage="Show this guide each time I log in"
+                  />
+                )}
+              />
+            </FormGroup>
+          </DialogActions>
         </Dialog>
       </>
     );
@@ -298,15 +335,23 @@ class ConnectionHelp extends Component {
 
 ConnectionHelp.defaultProps = {
   rover: null,
+  user: {
+    user_id: undefined,
+    showGuide: true,
+  },
 };
 
 ConnectionHelp.propTypes = {
   user: PropTypes.shape({
-    // showConnectionHelpOnLogin: PropTypes.bool.isRequired, // TODO
-  }).isRequired,
+    user_id: PropTypes.number,
+    showGuide: PropTypes.bool,
+  }),
   rover: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }),
+  editUserShowGuide: PropTypes.func.isRequired,
 };
 
-export default hot(module)(connect(mapStateToProps)(ConnectionHelp));
+export default hot(module)(withCookies(
+  connect(mapStateToProps, mapDispatchToProps)(ConnectionHelp),
+));

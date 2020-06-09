@@ -245,7 +245,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               "execution": null,
               "id": 1,
               "jsCode": "",
-              "lesson": null,
+              "lessonId": null,
               "name": "test program",
             }
           }
@@ -308,7 +308,9 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           sensor={
             Object {
               "left": 2,
+              "leftLightSensorReading": -1,
               "right": 2,
+              "rightLightSensorReading": -1,
             }
           }
           store={

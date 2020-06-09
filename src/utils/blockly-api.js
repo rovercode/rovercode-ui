@@ -25,6 +25,12 @@ class BlocklyApi {
     this.sendToRover(`${motor}:${speed}\n`);
   }
 
+  sendDisplayCommand = (message) => {
+    this.sendToRover(`disp:${message}\n`);
+    // Give 1.5 seconds per letter to display
+    this.beginSleep(message.length * 1500);
+  }
+
   setChainableRgbLed = (blocklyLedId, blocklyColorHexString) => {
     if (blocklyLedId === null || blocklyColorHexString === null) {
       return;
@@ -75,12 +81,20 @@ class BlocklyApi {
     interpreter.setProperty(scope, 'stopMotor',
       interpreter.createNativeFunction(wrapper));
 
-    // Add get sensor covered API function
+    // Add get light sensor API function
     wrapper = (sensor) => {
-      const sensorCovered = this.sensorStateCache[sensor];
-      return interpreter.createPrimitive(sensorCovered);
+      const sensorReading = this.sensorStateCache[`${sensor}_LIGHT`];
+      return interpreter.createPrimitive(sensorReading);
     };
-    interpreter.setProperty(scope, 'getSensorCovered',
+    interpreter.setProperty(scope, 'getLightSensorValue',
+      interpreter.createNativeFunction(wrapper));
+
+    // Add get button pressed API function
+    wrapper = (sensor) => {
+      const buttonReading = this.sensorStateCache[`${sensor}_BUTTON`];
+      return interpreter.createPrimitive(buttonReading);
+    };
+    interpreter.setProperty(scope, 'buttonHasBeenPressed',
       interpreter.createNativeFunction(wrapper));
 
     // Add continue API function
@@ -98,6 +112,14 @@ class BlocklyApi {
       return false;
     };
     interpreter.setProperty(scope, 'setChainableRgbLed',
+      interpreter.createNativeFunction(wrapper));
+
+    // Add display message API function
+    wrapper = (message) => {
+      this.sendDisplayCommand(message.data);
+      return false;
+    };
+    interpreter.setProperty(scope, 'displayMessage',
       interpreter.createNativeFunction(wrapper));
   }
 }

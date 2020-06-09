@@ -8,6 +8,7 @@ import MockDate from 'mockdate';
 import { Cookies } from 'react-cookie';
 
 import { logout } from '@/actions/auth';
+import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import ProtectedRoute from '../ProtectedRoute';
 
 const cookiesValues = { };
@@ -21,16 +22,21 @@ describe('The ProtectedRoute component', () => {
   beforeEach(() => {
     store = mockStore({
       user: {
-        id: 1,
+        user_id: 1,
         username: 'testuser',
         email: 'testuser@example.com',
         exp: 1540341529,
+        showGuide: true,
       },
       auth: {
         isValidAuth: true,
       },
       rover: {
         rover: null,
+      },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
       },
     });
     store.dispatch = jest.fn();
@@ -94,6 +100,10 @@ describe('The ProtectedRoute component', () => {
       rover: {
         rover: null,
       },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
+      },
     });
     const wrapper = mountWithIntl(
       <ReduxProvider store={store}>
@@ -117,16 +127,21 @@ describe('The ProtectedRoute component', () => {
   test('renders redirect when invalid auth', () => {
     store = mockStore({
       user: {
-        id: 1,
+        user_id: 1,
         username: 'testuser',
         email: 'testuser@example.com',
         exp: 1540341529,
+        showGuide: true,
       },
       auth: {
         isValidAuth: false,
       },
       rover: {
         rover: null,
+      },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
       },
     });
     store.dispatch = jest.fn();
