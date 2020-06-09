@@ -1039,245 +1039,215 @@ exports[`The Control component renders on the page with no errors in stop state 
                       }
                       title="Reset"
                     >
-                      <WithStyles(WithStyles(ForwardRef(Button)))
+                      <span
                         aria-describedby={null}
                         className=""
-                        color="secondary"
-                        disabled={false}
                         onBlur={[Function]}
-                        onClick={[Function]}
                         onFocus={[Function]}
                         onMouseLeave={[Function]}
                         onMouseOver={[Function]}
                         onTouchEnd={[Function]}
                         onTouchStart={[Function]}
                         title="Reset"
-                        variant="contained"
                       >
-                        <WithStyles(ForwardRef(Button))
-                          aria-describedby={null}
-                          className=""
-                          classes={
-                            Object {
-                              "root": "WithStyles(ForwardRef(Button))-root-115",
-                            }
-                          }
+                        <WithStyles(WithStyles(ForwardRef(Button)))
                           color="secondary"
                           disabled={false}
-                          onBlur={[Function]}
                           onClick={[Function]}
-                          onFocus={[Function]}
-                          onMouseLeave={[Function]}
-                          onMouseOver={[Function]}
-                          onTouchEnd={[Function]}
-                          onTouchStart={[Function]}
-                          title="Reset"
                           variant="contained"
                         >
-                          <ForwardRef(Button)
-                            aria-describedby={null}
-                            className=""
+                          <WithStyles(ForwardRef(Button))
                             classes={
                               Object {
-                                "colorInherit": "MuiButton-colorInherit",
-                                "contained": "MuiButton-contained",
-                                "containedPrimary": "MuiButton-containedPrimary",
-                                "containedSecondary": "MuiButton-containedSecondary",
-                                "containedSizeLarge": "MuiButton-containedSizeLarge",
-                                "containedSizeSmall": "MuiButton-containedSizeSmall",
-                                "disableElevation": "MuiButton-disableElevation",
-                                "disabled": "Mui-disabled",
-                                "endIcon": "MuiButton-endIcon",
-                                "focusVisible": "Mui-focusVisible",
-                                "fullWidth": "MuiButton-fullWidth",
-                                "iconSizeLarge": "MuiButton-iconSizeLarge",
-                                "iconSizeMedium": "MuiButton-iconSizeMedium",
-                                "iconSizeSmall": "MuiButton-iconSizeSmall",
-                                "label": "MuiButton-label",
-                                "outlined": "MuiButton-outlined",
-                                "outlinedPrimary": "MuiButton-outlinedPrimary",
-                                "outlinedSecondary": "MuiButton-outlinedSecondary",
-                                "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
-                                "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-115",
-                                "sizeLarge": "MuiButton-sizeLarge",
-                                "sizeSmall": "MuiButton-sizeSmall",
-                                "startIcon": "MuiButton-startIcon",
-                                "text": "MuiButton-text",
-                                "textPrimary": "MuiButton-textPrimary",
-                                "textSecondary": "MuiButton-textSecondary",
-                                "textSizeLarge": "MuiButton-textSizeLarge",
-                                "textSizeSmall": "MuiButton-textSizeSmall",
+                                "root": "WithStyles(ForwardRef(Button))-root-115",
                               }
                             }
                             color="secondary"
                             disabled={false}
-                            onBlur={[Function]}
                             onClick={[Function]}
-                            onFocus={[Function]}
-                            onMouseLeave={[Function]}
-                            onMouseOver={[Function]}
-                            onTouchEnd={[Function]}
-                            onTouchStart={[Function]}
-                            title="Reset"
                             variant="contained"
                           >
-                            <WithStyles(ForwardRef(ButtonBase))
-                              aria-describedby={null}
-                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
-                              component="button"
-                              disabled={false}
-                              focusRipple={true}
-                              focusVisibleClassName="Mui-focusVisible"
-                              onBlur={[Function]}
-                              onClick={[Function]}
-                              onFocus={[Function]}
-                              onMouseLeave={[Function]}
-                              onMouseOver={[Function]}
-                              onTouchEnd={[Function]}
-                              onTouchStart={[Function]}
-                              title="Reset"
-                              type="button"
-                            >
-                              <ForwardRef(ButtonBase)
-                                aria-describedby={null}
-                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
-                                classes={
-                                  Object {
-                                    "disabled": "Mui-disabled",
-                                    "focusVisible": "Mui-focusVisible",
-                                    "root": "MuiButtonBase-root",
-                                  }
+                            <ForwardRef(Button)
+                              classes={
+                                Object {
+                                  "colorInherit": "MuiButton-colorInherit",
+                                  "contained": "MuiButton-contained",
+                                  "containedPrimary": "MuiButton-containedPrimary",
+                                  "containedSecondary": "MuiButton-containedSecondary",
+                                  "containedSizeLarge": "MuiButton-containedSizeLarge",
+                                  "containedSizeSmall": "MuiButton-containedSizeSmall",
+                                  "disableElevation": "MuiButton-disableElevation",
+                                  "disabled": "Mui-disabled",
+                                  "endIcon": "MuiButton-endIcon",
+                                  "focusVisible": "Mui-focusVisible",
+                                  "fullWidth": "MuiButton-fullWidth",
+                                  "iconSizeLarge": "MuiButton-iconSizeLarge",
+                                  "iconSizeMedium": "MuiButton-iconSizeMedium",
+                                  "iconSizeSmall": "MuiButton-iconSizeSmall",
+                                  "label": "MuiButton-label",
+                                  "outlined": "MuiButton-outlined",
+                                  "outlinedPrimary": "MuiButton-outlinedPrimary",
+                                  "outlinedSecondary": "MuiButton-outlinedSecondary",
+                                  "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
+                                  "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
+                                  "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-115",
+                                  "sizeLarge": "MuiButton-sizeLarge",
+                                  "sizeSmall": "MuiButton-sizeSmall",
+                                  "startIcon": "MuiButton-startIcon",
+                                  "text": "MuiButton-text",
+                                  "textPrimary": "MuiButton-textPrimary",
+                                  "textSecondary": "MuiButton-textSecondary",
+                                  "textSizeLarge": "MuiButton-textSizeLarge",
+                                  "textSizeSmall": "MuiButton-textSizeSmall",
                                 }
+                              }
+                              color="secondary"
+                              disabled={false}
+                              onClick={[Function]}
+                              variant="contained"
+                            >
+                              <WithStyles(ForwardRef(ButtonBase))
+                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
                                 component="button"
                                 disabled={false}
                                 focusRipple={true}
                                 focusVisibleClassName="Mui-focusVisible"
-                                onBlur={[Function]}
                                 onClick={[Function]}
-                                onFocus={[Function]}
-                                onMouseLeave={[Function]}
-                                onMouseOver={[Function]}
-                                onTouchEnd={[Function]}
-                                onTouchStart={[Function]}
-                                title="Reset"
                                 type="button"
                               >
-                                <button
-                                  aria-describedby={null}
-                                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
+                                <ForwardRef(ButtonBase)
+                                  className="MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "root": "MuiButtonBase-root",
+                                    }
+                                  }
+                                  component="button"
                                   disabled={false}
-                                  onBlur={[Function]}
+                                  focusRipple={true}
+                                  focusVisibleClassName="Mui-focusVisible"
                                   onClick={[Function]}
-                                  onDragLeave={[Function]}
-                                  onFocus={[Function]}
-                                  onKeyDown={[Function]}
-                                  onKeyUp={[Function]}
-                                  onMouseDown={[Function]}
-                                  onMouseLeave={[Function]}
-                                  onMouseOver={[Function]}
-                                  onMouseUp={[Function]}
-                                  onTouchEnd={[Function]}
-                                  onTouchMove={[Function]}
-                                  onTouchStart={[Function]}
-                                  tabIndex={0}
-                                  title="Reset"
                                   type="button"
                                 >
-                                  <span
-                                    className="MuiButton-label"
+                                  <button
+                                    className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
+                                    disabled={false}
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onDragLeave={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    onKeyUp={[Function]}
+                                    onMouseDown={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onMouseUp={[Function]}
+                                    onTouchEnd={[Function]}
+                                    onTouchMove={[Function]}
+                                    onTouchStart={[Function]}
+                                    tabIndex={0}
+                                    type="button"
                                   >
-                                    <ForwardRef>
-                                      <WithStyles(ForwardRef(SvgIcon))>
-                                        <ForwardRef(SvgIcon)
-                                          classes={
-                                            Object {
-                                              "colorAction": "MuiSvgIcon-colorAction",
-                                              "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                              "colorError": "MuiSvgIcon-colorError",
-                                              "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                              "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                              "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                              "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                              "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                              "root": "MuiSvgIcon-root",
-                                            }
-                                          }
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            className="MuiSvgIcon-root"
-                                            focusable="false"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
-                                            />
-                                          </svg>
-                                        </ForwardRef(SvgIcon)>
-                                      </WithStyles(ForwardRef(SvgIcon))>
-                                    </ForwardRef>
-                                  </span>
-                                  <WithStyles(memo)
-                                    center={false}
-                                  >
-                                    <ForwardRef(TouchRipple)
-                                      center={false}
-                                      classes={
-                                        Object {
-                                          "child": "MuiTouchRipple-child",
-                                          "childLeaving": "MuiTouchRipple-childLeaving",
-                                          "childPulsate": "MuiTouchRipple-childPulsate",
-                                          "ripple": "MuiTouchRipple-ripple",
-                                          "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                          "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                          "root": "MuiTouchRipple-root",
-                                        }
-                                      }
+                                    <span
+                                      className="MuiButton-label"
                                     >
-                                      <span
-                                        className="MuiTouchRipple-root"
+                                      <ForwardRef>
+                                        <WithStyles(ForwardRef(SvgIcon))>
+                                          <ForwardRef(SvgIcon)
+                                            classes={
+                                              Object {
+                                                "colorAction": "MuiSvgIcon-colorAction",
+                                                "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                "colorError": "MuiSvgIcon-colorError",
+                                                "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                "root": "MuiSvgIcon-root",
+                                              }
+                                            }
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              className="MuiSvgIcon-root"
+                                              focusable="false"
+                                              viewBox="0 0 24 24"
+                                            >
+                                              <path
+                                                d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
+                                              />
+                                            </svg>
+                                          </ForwardRef(SvgIcon)>
+                                        </WithStyles(ForwardRef(SvgIcon))>
+                                      </ForwardRef>
+                                    </span>
+                                    <WithStyles(memo)
+                                      center={false}
+                                    >
+                                      <ForwardRef(TouchRipple)
+                                        center={false}
+                                        classes={
+                                          Object {
+                                            "child": "MuiTouchRipple-child",
+                                            "childLeaving": "MuiTouchRipple-childLeaving",
+                                            "childPulsate": "MuiTouchRipple-childPulsate",
+                                            "ripple": "MuiTouchRipple-ripple",
+                                            "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                            "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                            "root": "MuiTouchRipple-root",
+                                          }
+                                        }
                                       >
-                                        <TransitionGroup
-                                          childFactory={[Function]}
-                                          component={null}
-                                          exit={true}
-                                        />
-                                      </span>
-                                    </ForwardRef(TouchRipple)>
-                                  </WithStyles(memo)>
-                                </button>
-                              </ForwardRef(ButtonBase)>
-                            </WithStyles(ForwardRef(ButtonBase))>
-                          </ForwardRef(Button)>
-                        </WithStyles(ForwardRef(Button))>
-                      </WithStyles(WithStyles(ForwardRef(Button)))>
+                                        <span
+                                          className="MuiTouchRipple-root"
+                                        >
+                                          <TransitionGroup
+                                            childFactory={[Function]}
+                                            component={null}
+                                            exit={true}
+                                          />
+                                        </span>
+                                      </ForwardRef(TouchRipple)>
+                                    </WithStyles(memo)>
+                                  </button>
+                                </ForwardRef(ButtonBase)>
+                              </WithStyles(ForwardRef(ButtonBase))>
+                            </ForwardRef(Button)>
+                          </WithStyles(ForwardRef(Button))>
+                        </WithStyles(WithStyles(ForwardRef(Button)))>
+                      </span>
                       <ForwardRef(Popper)
                         anchorEl={
-                          <button
-                            class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
-                            tabindex="0"
+                          <span
+                            class=""
                             title="Reset"
-                            type="button"
                           >
-                            <span
-                              class="MuiButton-label"
+                            <button
+                              class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-115 MuiButton-contained MuiButton-containedSecondary"
+                              tabindex="0"
+                              type="button"
                             >
-                              <svg
-                                aria-hidden="true"
-                                class="MuiSvgIcon-root"
-                                focusable="false"
-                                viewBox="0 0 24 24"
+                              <span
+                                class="MuiButton-label"
                               >
-                                <path
-                                  d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
-                                />
-                              </svg>
-                            </span>
-                            <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </button>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
+                              />
+                            </button>
+                          </span>
                         }
                         className="MuiTooltip-popper"
                         id={null}
@@ -1437,245 +1407,215 @@ exports[`The Control component renders on the page with no errors in stop state 
                       }
                       title="Run"
                     >
-                      <WithStyles(WithStyles(ForwardRef(Button)))
+                      <span
                         aria-describedby={null}
                         className=""
-                        color="primary"
-                        disabled={false}
                         onBlur={[Function]}
-                        onClick={[Function]}
                         onFocus={[Function]}
                         onMouseLeave={[Function]}
                         onMouseOver={[Function]}
                         onTouchEnd={[Function]}
                         onTouchStart={[Function]}
                         title="Run"
-                        variant="contained"
                       >
-                        <WithStyles(ForwardRef(Button))
-                          aria-describedby={null}
-                          className=""
-                          classes={
-                            Object {
-                              "root": "WithStyles(ForwardRef(Button))-root-157",
-                            }
-                          }
+                        <WithStyles(WithStyles(ForwardRef(Button)))
                           color="primary"
                           disabled={false}
-                          onBlur={[Function]}
                           onClick={[Function]}
-                          onFocus={[Function]}
-                          onMouseLeave={[Function]}
-                          onMouseOver={[Function]}
-                          onTouchEnd={[Function]}
-                          onTouchStart={[Function]}
-                          title="Run"
                           variant="contained"
                         >
-                          <ForwardRef(Button)
-                            aria-describedby={null}
-                            className=""
+                          <WithStyles(ForwardRef(Button))
                             classes={
                               Object {
-                                "colorInherit": "MuiButton-colorInherit",
-                                "contained": "MuiButton-contained",
-                                "containedPrimary": "MuiButton-containedPrimary",
-                                "containedSecondary": "MuiButton-containedSecondary",
-                                "containedSizeLarge": "MuiButton-containedSizeLarge",
-                                "containedSizeSmall": "MuiButton-containedSizeSmall",
-                                "disableElevation": "MuiButton-disableElevation",
-                                "disabled": "Mui-disabled",
-                                "endIcon": "MuiButton-endIcon",
-                                "focusVisible": "Mui-focusVisible",
-                                "fullWidth": "MuiButton-fullWidth",
-                                "iconSizeLarge": "MuiButton-iconSizeLarge",
-                                "iconSizeMedium": "MuiButton-iconSizeMedium",
-                                "iconSizeSmall": "MuiButton-iconSizeSmall",
-                                "label": "MuiButton-label",
-                                "outlined": "MuiButton-outlined",
-                                "outlinedPrimary": "MuiButton-outlinedPrimary",
-                                "outlinedSecondary": "MuiButton-outlinedSecondary",
-                                "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
-                                "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-157",
-                                "sizeLarge": "MuiButton-sizeLarge",
-                                "sizeSmall": "MuiButton-sizeSmall",
-                                "startIcon": "MuiButton-startIcon",
-                                "text": "MuiButton-text",
-                                "textPrimary": "MuiButton-textPrimary",
-                                "textSecondary": "MuiButton-textSecondary",
-                                "textSizeLarge": "MuiButton-textSizeLarge",
-                                "textSizeSmall": "MuiButton-textSizeSmall",
+                                "root": "WithStyles(ForwardRef(Button))-root-157",
                               }
                             }
                             color="primary"
                             disabled={false}
-                            onBlur={[Function]}
                             onClick={[Function]}
-                            onFocus={[Function]}
-                            onMouseLeave={[Function]}
-                            onMouseOver={[Function]}
-                            onTouchEnd={[Function]}
-                            onTouchStart={[Function]}
-                            title="Run"
                             variant="contained"
                           >
-                            <WithStyles(ForwardRef(ButtonBase))
-                              aria-describedby={null}
-                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
-                              component="button"
-                              disabled={false}
-                              focusRipple={true}
-                              focusVisibleClassName="Mui-focusVisible"
-                              onBlur={[Function]}
-                              onClick={[Function]}
-                              onFocus={[Function]}
-                              onMouseLeave={[Function]}
-                              onMouseOver={[Function]}
-                              onTouchEnd={[Function]}
-                              onTouchStart={[Function]}
-                              title="Run"
-                              type="button"
-                            >
-                              <ForwardRef(ButtonBase)
-                                aria-describedby={null}
-                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
-                                classes={
-                                  Object {
-                                    "disabled": "Mui-disabled",
-                                    "focusVisible": "Mui-focusVisible",
-                                    "root": "MuiButtonBase-root",
-                                  }
+                            <ForwardRef(Button)
+                              classes={
+                                Object {
+                                  "colorInherit": "MuiButton-colorInherit",
+                                  "contained": "MuiButton-contained",
+                                  "containedPrimary": "MuiButton-containedPrimary",
+                                  "containedSecondary": "MuiButton-containedSecondary",
+                                  "containedSizeLarge": "MuiButton-containedSizeLarge",
+                                  "containedSizeSmall": "MuiButton-containedSizeSmall",
+                                  "disableElevation": "MuiButton-disableElevation",
+                                  "disabled": "Mui-disabled",
+                                  "endIcon": "MuiButton-endIcon",
+                                  "focusVisible": "Mui-focusVisible",
+                                  "fullWidth": "MuiButton-fullWidth",
+                                  "iconSizeLarge": "MuiButton-iconSizeLarge",
+                                  "iconSizeMedium": "MuiButton-iconSizeMedium",
+                                  "iconSizeSmall": "MuiButton-iconSizeSmall",
+                                  "label": "MuiButton-label",
+                                  "outlined": "MuiButton-outlined",
+                                  "outlinedPrimary": "MuiButton-outlinedPrimary",
+                                  "outlinedSecondary": "MuiButton-outlinedSecondary",
+                                  "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
+                                  "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
+                                  "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-157",
+                                  "sizeLarge": "MuiButton-sizeLarge",
+                                  "sizeSmall": "MuiButton-sizeSmall",
+                                  "startIcon": "MuiButton-startIcon",
+                                  "text": "MuiButton-text",
+                                  "textPrimary": "MuiButton-textPrimary",
+                                  "textSecondary": "MuiButton-textSecondary",
+                                  "textSizeLarge": "MuiButton-textSizeLarge",
+                                  "textSizeSmall": "MuiButton-textSizeSmall",
                                 }
+                              }
+                              color="primary"
+                              disabled={false}
+                              onClick={[Function]}
+                              variant="contained"
+                            >
+                              <WithStyles(ForwardRef(ButtonBase))
+                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
                                 component="button"
                                 disabled={false}
                                 focusRipple={true}
                                 focusVisibleClassName="Mui-focusVisible"
-                                onBlur={[Function]}
                                 onClick={[Function]}
-                                onFocus={[Function]}
-                                onMouseLeave={[Function]}
-                                onMouseOver={[Function]}
-                                onTouchEnd={[Function]}
-                                onTouchStart={[Function]}
-                                title="Run"
                                 type="button"
                               >
-                                <button
-                                  aria-describedby={null}
-                                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
+                                <ForwardRef(ButtonBase)
+                                  className="MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "root": "MuiButtonBase-root",
+                                    }
+                                  }
+                                  component="button"
                                   disabled={false}
-                                  onBlur={[Function]}
+                                  focusRipple={true}
+                                  focusVisibleClassName="Mui-focusVisible"
                                   onClick={[Function]}
-                                  onDragLeave={[Function]}
-                                  onFocus={[Function]}
-                                  onKeyDown={[Function]}
-                                  onKeyUp={[Function]}
-                                  onMouseDown={[Function]}
-                                  onMouseLeave={[Function]}
-                                  onMouseOver={[Function]}
-                                  onMouseUp={[Function]}
-                                  onTouchEnd={[Function]}
-                                  onTouchMove={[Function]}
-                                  onTouchStart={[Function]}
-                                  tabIndex={0}
-                                  title="Run"
                                   type="button"
                                 >
-                                  <span
-                                    className="MuiButton-label"
+                                  <button
+                                    className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
+                                    disabled={false}
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onDragLeave={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    onKeyUp={[Function]}
+                                    onMouseDown={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onMouseUp={[Function]}
+                                    onTouchEnd={[Function]}
+                                    onTouchMove={[Function]}
+                                    onTouchStart={[Function]}
+                                    tabIndex={0}
+                                    type="button"
                                   >
-                                    <ForwardRef>
-                                      <WithStyles(ForwardRef(SvgIcon))>
-                                        <ForwardRef(SvgIcon)
-                                          classes={
-                                            Object {
-                                              "colorAction": "MuiSvgIcon-colorAction",
-                                              "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                              "colorError": "MuiSvgIcon-colorError",
-                                              "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                              "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                              "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                              "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                              "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                              "root": "MuiSvgIcon-root",
-                                            }
-                                          }
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            className="MuiSvgIcon-root"
-                                            focusable="false"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              d="M8 5v14l11-7z"
-                                            />
-                                          </svg>
-                                        </ForwardRef(SvgIcon)>
-                                      </WithStyles(ForwardRef(SvgIcon))>
-                                    </ForwardRef>
-                                  </span>
-                                  <WithStyles(memo)
-                                    center={false}
-                                  >
-                                    <ForwardRef(TouchRipple)
-                                      center={false}
-                                      classes={
-                                        Object {
-                                          "child": "MuiTouchRipple-child",
-                                          "childLeaving": "MuiTouchRipple-childLeaving",
-                                          "childPulsate": "MuiTouchRipple-childPulsate",
-                                          "ripple": "MuiTouchRipple-ripple",
-                                          "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                          "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                          "root": "MuiTouchRipple-root",
-                                        }
-                                      }
+                                    <span
+                                      className="MuiButton-label"
                                     >
-                                      <span
-                                        className="MuiTouchRipple-root"
+                                      <ForwardRef>
+                                        <WithStyles(ForwardRef(SvgIcon))>
+                                          <ForwardRef(SvgIcon)
+                                            classes={
+                                              Object {
+                                                "colorAction": "MuiSvgIcon-colorAction",
+                                                "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                "colorError": "MuiSvgIcon-colorError",
+                                                "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                "root": "MuiSvgIcon-root",
+                                              }
+                                            }
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              className="MuiSvgIcon-root"
+                                              focusable="false"
+                                              viewBox="0 0 24 24"
+                                            >
+                                              <path
+                                                d="M8 5v14l11-7z"
+                                              />
+                                            </svg>
+                                          </ForwardRef(SvgIcon)>
+                                        </WithStyles(ForwardRef(SvgIcon))>
+                                      </ForwardRef>
+                                    </span>
+                                    <WithStyles(memo)
+                                      center={false}
+                                    >
+                                      <ForwardRef(TouchRipple)
+                                        center={false}
+                                        classes={
+                                          Object {
+                                            "child": "MuiTouchRipple-child",
+                                            "childLeaving": "MuiTouchRipple-childLeaving",
+                                            "childPulsate": "MuiTouchRipple-childPulsate",
+                                            "ripple": "MuiTouchRipple-ripple",
+                                            "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                            "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                            "root": "MuiTouchRipple-root",
+                                          }
+                                        }
                                       >
-                                        <TransitionGroup
-                                          childFactory={[Function]}
-                                          component={null}
-                                          exit={true}
-                                        />
-                                      </span>
-                                    </ForwardRef(TouchRipple)>
-                                  </WithStyles(memo)>
-                                </button>
-                              </ForwardRef(ButtonBase)>
-                            </WithStyles(ForwardRef(ButtonBase))>
-                          </ForwardRef(Button)>
-                        </WithStyles(ForwardRef(Button))>
-                      </WithStyles(WithStyles(ForwardRef(Button)))>
+                                        <span
+                                          className="MuiTouchRipple-root"
+                                        >
+                                          <TransitionGroup
+                                            childFactory={[Function]}
+                                            component={null}
+                                            exit={true}
+                                          />
+                                        </span>
+                                      </ForwardRef(TouchRipple)>
+                                    </WithStyles(memo)>
+                                  </button>
+                                </ForwardRef(ButtonBase)>
+                              </WithStyles(ForwardRef(ButtonBase))>
+                            </ForwardRef(Button)>
+                          </WithStyles(ForwardRef(Button))>
+                        </WithStyles(WithStyles(ForwardRef(Button)))>
+                      </span>
                       <ForwardRef(Popper)
                         anchorEl={
-                          <button
-                            class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
-                            tabindex="0"
+                          <span
+                            class=""
                             title="Run"
-                            type="button"
                           >
-                            <span
-                              class="MuiButton-label"
+                            <button
+                              class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-157 MuiButton-contained MuiButton-containedPrimary"
+                              tabindex="0"
+                              type="button"
                             >
-                              <svg
-                                aria-hidden="true"
-                                class="MuiSvgIcon-root"
-                                focusable="false"
-                                viewBox="0 0 24 24"
+                              <span
+                                class="MuiButton-label"
                               >
-                                <path
-                                  d="M8 5v14l11-7z"
-                                />
-                              </svg>
-                            </span>
-                            <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </button>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M8 5v14l11-7z"
+                                  />
+                                </svg>
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
+                              />
+                            </button>
+                          </span>
                         }
                         className="MuiTooltip-popper"
                         id={null}
@@ -1835,242 +1775,212 @@ exports[`The Control component renders on the page with no errors in stop state 
                       }
                       title="Step"
                     >
-                      <WithStyles(WithStyles(ForwardRef(Button)))
+                      <span
                         aria-describedby={null}
                         className=""
-                        disabled={false}
                         onBlur={[Function]}
-                        onClick={[Function]}
                         onFocus={[Function]}
                         onMouseLeave={[Function]}
                         onMouseOver={[Function]}
                         onTouchEnd={[Function]}
                         onTouchStart={[Function]}
                         title="Step"
-                        variant="contained"
                       >
-                        <WithStyles(ForwardRef(Button))
-                          aria-describedby={null}
-                          className=""
-                          classes={
-                            Object {
-                              "root": "WithStyles(ForwardRef(Button))-root-158",
-                            }
-                          }
+                        <WithStyles(WithStyles(ForwardRef(Button)))
                           disabled={false}
-                          onBlur={[Function]}
                           onClick={[Function]}
-                          onFocus={[Function]}
-                          onMouseLeave={[Function]}
-                          onMouseOver={[Function]}
-                          onTouchEnd={[Function]}
-                          onTouchStart={[Function]}
-                          title="Step"
                           variant="contained"
                         >
-                          <ForwardRef(Button)
-                            aria-describedby={null}
-                            className=""
+                          <WithStyles(ForwardRef(Button))
                             classes={
                               Object {
-                                "colorInherit": "MuiButton-colorInherit",
-                                "contained": "MuiButton-contained",
-                                "containedPrimary": "MuiButton-containedPrimary",
-                                "containedSecondary": "MuiButton-containedSecondary",
-                                "containedSizeLarge": "MuiButton-containedSizeLarge",
-                                "containedSizeSmall": "MuiButton-containedSizeSmall",
-                                "disableElevation": "MuiButton-disableElevation",
-                                "disabled": "Mui-disabled",
-                                "endIcon": "MuiButton-endIcon",
-                                "focusVisible": "Mui-focusVisible",
-                                "fullWidth": "MuiButton-fullWidth",
-                                "iconSizeLarge": "MuiButton-iconSizeLarge",
-                                "iconSizeMedium": "MuiButton-iconSizeMedium",
-                                "iconSizeSmall": "MuiButton-iconSizeSmall",
-                                "label": "MuiButton-label",
-                                "outlined": "MuiButton-outlined",
-                                "outlinedPrimary": "MuiButton-outlinedPrimary",
-                                "outlinedSecondary": "MuiButton-outlinedSecondary",
-                                "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
-                                "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-158",
-                                "sizeLarge": "MuiButton-sizeLarge",
-                                "sizeSmall": "MuiButton-sizeSmall",
-                                "startIcon": "MuiButton-startIcon",
-                                "text": "MuiButton-text",
-                                "textPrimary": "MuiButton-textPrimary",
-                                "textSecondary": "MuiButton-textSecondary",
-                                "textSizeLarge": "MuiButton-textSizeLarge",
-                                "textSizeSmall": "MuiButton-textSizeSmall",
+                                "root": "WithStyles(ForwardRef(Button))-root-158",
                               }
                             }
                             disabled={false}
-                            onBlur={[Function]}
                             onClick={[Function]}
-                            onFocus={[Function]}
-                            onMouseLeave={[Function]}
-                            onMouseOver={[Function]}
-                            onTouchEnd={[Function]}
-                            onTouchStart={[Function]}
-                            title="Step"
                             variant="contained"
                           >
-                            <WithStyles(ForwardRef(ButtonBase))
-                              aria-describedby={null}
-                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
-                              component="button"
-                              disabled={false}
-                              focusRipple={true}
-                              focusVisibleClassName="Mui-focusVisible"
-                              onBlur={[Function]}
-                              onClick={[Function]}
-                              onFocus={[Function]}
-                              onMouseLeave={[Function]}
-                              onMouseOver={[Function]}
-                              onTouchEnd={[Function]}
-                              onTouchStart={[Function]}
-                              title="Step"
-                              type="button"
-                            >
-                              <ForwardRef(ButtonBase)
-                                aria-describedby={null}
-                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
-                                classes={
-                                  Object {
-                                    "disabled": "Mui-disabled",
-                                    "focusVisible": "Mui-focusVisible",
-                                    "root": "MuiButtonBase-root",
-                                  }
+                            <ForwardRef(Button)
+                              classes={
+                                Object {
+                                  "colorInherit": "MuiButton-colorInherit",
+                                  "contained": "MuiButton-contained",
+                                  "containedPrimary": "MuiButton-containedPrimary",
+                                  "containedSecondary": "MuiButton-containedSecondary",
+                                  "containedSizeLarge": "MuiButton-containedSizeLarge",
+                                  "containedSizeSmall": "MuiButton-containedSizeSmall",
+                                  "disableElevation": "MuiButton-disableElevation",
+                                  "disabled": "Mui-disabled",
+                                  "endIcon": "MuiButton-endIcon",
+                                  "focusVisible": "Mui-focusVisible",
+                                  "fullWidth": "MuiButton-fullWidth",
+                                  "iconSizeLarge": "MuiButton-iconSizeLarge",
+                                  "iconSizeMedium": "MuiButton-iconSizeMedium",
+                                  "iconSizeSmall": "MuiButton-iconSizeSmall",
+                                  "label": "MuiButton-label",
+                                  "outlined": "MuiButton-outlined",
+                                  "outlinedPrimary": "MuiButton-outlinedPrimary",
+                                  "outlinedSecondary": "MuiButton-outlinedSecondary",
+                                  "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
+                                  "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
+                                  "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-158",
+                                  "sizeLarge": "MuiButton-sizeLarge",
+                                  "sizeSmall": "MuiButton-sizeSmall",
+                                  "startIcon": "MuiButton-startIcon",
+                                  "text": "MuiButton-text",
+                                  "textPrimary": "MuiButton-textPrimary",
+                                  "textSecondary": "MuiButton-textSecondary",
+                                  "textSizeLarge": "MuiButton-textSizeLarge",
+                                  "textSizeSmall": "MuiButton-textSizeSmall",
                                 }
+                              }
+                              disabled={false}
+                              onClick={[Function]}
+                              variant="contained"
+                            >
+                              <WithStyles(ForwardRef(ButtonBase))
+                                className="MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
                                 component="button"
                                 disabled={false}
                                 focusRipple={true}
                                 focusVisibleClassName="Mui-focusVisible"
-                                onBlur={[Function]}
                                 onClick={[Function]}
-                                onFocus={[Function]}
-                                onMouseLeave={[Function]}
-                                onMouseOver={[Function]}
-                                onTouchEnd={[Function]}
-                                onTouchStart={[Function]}
-                                title="Step"
                                 type="button"
                               >
-                                <button
-                                  aria-describedby={null}
-                                  className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
+                                <ForwardRef(ButtonBase)
+                                  className="MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
+                                  classes={
+                                    Object {
+                                      "disabled": "Mui-disabled",
+                                      "focusVisible": "Mui-focusVisible",
+                                      "root": "MuiButtonBase-root",
+                                    }
+                                  }
+                                  component="button"
                                   disabled={false}
-                                  onBlur={[Function]}
+                                  focusRipple={true}
+                                  focusVisibleClassName="Mui-focusVisible"
                                   onClick={[Function]}
-                                  onDragLeave={[Function]}
-                                  onFocus={[Function]}
-                                  onKeyDown={[Function]}
-                                  onKeyUp={[Function]}
-                                  onMouseDown={[Function]}
-                                  onMouseLeave={[Function]}
-                                  onMouseOver={[Function]}
-                                  onMouseUp={[Function]}
-                                  onTouchEnd={[Function]}
-                                  onTouchMove={[Function]}
-                                  onTouchStart={[Function]}
-                                  tabIndex={0}
-                                  title="Step"
                                   type="button"
                                 >
-                                  <span
-                                    className="MuiButton-label"
+                                  <button
+                                    className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
+                                    disabled={false}
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onDragLeave={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    onKeyUp={[Function]}
+                                    onMouseDown={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onMouseUp={[Function]}
+                                    onTouchEnd={[Function]}
+                                    onTouchMove={[Function]}
+                                    onTouchStart={[Function]}
+                                    tabIndex={0}
+                                    type="button"
                                   >
-                                    <ForwardRef>
-                                      <WithStyles(ForwardRef(SvgIcon))>
-                                        <ForwardRef(SvgIcon)
-                                          classes={
-                                            Object {
-                                              "colorAction": "MuiSvgIcon-colorAction",
-                                              "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                              "colorError": "MuiSvgIcon-colorError",
-                                              "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                              "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                              "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                              "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                              "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                              "root": "MuiSvgIcon-root",
-                                            }
-                                          }
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            className="MuiSvgIcon-root"
-                                            focusable="false"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
-                                            />
-                                          </svg>
-                                        </ForwardRef(SvgIcon)>
-                                      </WithStyles(ForwardRef(SvgIcon))>
-                                    </ForwardRef>
-                                  </span>
-                                  <WithStyles(memo)
-                                    center={false}
-                                  >
-                                    <ForwardRef(TouchRipple)
-                                      center={false}
-                                      classes={
-                                        Object {
-                                          "child": "MuiTouchRipple-child",
-                                          "childLeaving": "MuiTouchRipple-childLeaving",
-                                          "childPulsate": "MuiTouchRipple-childPulsate",
-                                          "ripple": "MuiTouchRipple-ripple",
-                                          "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                          "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                          "root": "MuiTouchRipple-root",
-                                        }
-                                      }
+                                    <span
+                                      className="MuiButton-label"
                                     >
-                                      <span
-                                        className="MuiTouchRipple-root"
+                                      <ForwardRef>
+                                        <WithStyles(ForwardRef(SvgIcon))>
+                                          <ForwardRef(SvgIcon)
+                                            classes={
+                                              Object {
+                                                "colorAction": "MuiSvgIcon-colorAction",
+                                                "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                "colorError": "MuiSvgIcon-colorError",
+                                                "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                "root": "MuiSvgIcon-root",
+                                              }
+                                            }
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              className="MuiSvgIcon-root"
+                                              focusable="false"
+                                              viewBox="0 0 24 24"
+                                            >
+                                              <path
+                                                d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+                                              />
+                                            </svg>
+                                          </ForwardRef(SvgIcon)>
+                                        </WithStyles(ForwardRef(SvgIcon))>
+                                      </ForwardRef>
+                                    </span>
+                                    <WithStyles(memo)
+                                      center={false}
+                                    >
+                                      <ForwardRef(TouchRipple)
+                                        center={false}
+                                        classes={
+                                          Object {
+                                            "child": "MuiTouchRipple-child",
+                                            "childLeaving": "MuiTouchRipple-childLeaving",
+                                            "childPulsate": "MuiTouchRipple-childPulsate",
+                                            "ripple": "MuiTouchRipple-ripple",
+                                            "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                            "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                            "root": "MuiTouchRipple-root",
+                                          }
+                                        }
                                       >
-                                        <TransitionGroup
-                                          childFactory={[Function]}
-                                          component={null}
-                                          exit={true}
-                                        />
-                                      </span>
-                                    </ForwardRef(TouchRipple)>
-                                  </WithStyles(memo)>
-                                </button>
-                              </ForwardRef(ButtonBase)>
-                            </WithStyles(ForwardRef(ButtonBase))>
-                          </ForwardRef(Button)>
-                        </WithStyles(ForwardRef(Button))>
-                      </WithStyles(WithStyles(ForwardRef(Button)))>
+                                        <span
+                                          className="MuiTouchRipple-root"
+                                        >
+                                          <TransitionGroup
+                                            childFactory={[Function]}
+                                            component={null}
+                                            exit={true}
+                                          />
+                                        </span>
+                                      </ForwardRef(TouchRipple)>
+                                    </WithStyles(memo)>
+                                  </button>
+                                </ForwardRef(ButtonBase)>
+                              </WithStyles(ForwardRef(ButtonBase))>
+                            </ForwardRef(Button)>
+                          </WithStyles(ForwardRef(Button))>
+                        </WithStyles(WithStyles(ForwardRef(Button)))>
+                      </span>
                       <ForwardRef(Popper)
                         anchorEl={
-                          <button
-                            class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
-                            tabindex="0"
+                          <span
+                            class=""
                             title="Step"
-                            type="button"
                           >
-                            <span
-                              class="MuiButton-label"
+                            <button
+                              class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-158 MuiButton-contained"
+                              tabindex="0"
+                              type="button"
                             >
-                              <svg
-                                aria-hidden="true"
-                                class="MuiSvgIcon-root"
-                                focusable="false"
-                                viewBox="0 0 24 24"
+                              <span
+                                class="MuiButton-label"
                               >
-                                <path
-                                  d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
-                                />
-                              </svg>
-                            </span>
-                            <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </button>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+                                  />
+                                </svg>
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
+                              />
+                            </button>
+                          </span>
                         }
                         className="MuiTooltip-popper"
                         id={null}
