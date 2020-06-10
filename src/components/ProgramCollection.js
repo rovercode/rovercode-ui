@@ -289,7 +289,17 @@ class ProgramCollection extends Component {
         </Grid>
         <Grid container spacing={3}>
           {
-            programs.results.map((program) => (
+            programs.count === 0 ? (
+              <Grid item container direction="row" alignItems="center" justify="center">
+                <Typography variant="h4">
+                  <FormattedMessage
+                    id="app.program_collection.nothing"
+                    description="Informs the user that no programs match the filters"
+                    defaultMessage="Sorry, no programs match your filters."
+                  />
+                </Typography>
+              </Grid>
+            ) : programs.results.map((program) => (
               <Grid item xs={12} md={6} lg={3} key={program.id}>
                 <Card key={program.id}>
                   <CardActionArea
@@ -370,6 +380,7 @@ ProgramCollection.propTypes = {
     username: PropTypes.string.isRequired,
   }).isRequired,
   programs: PropTypes.shape({
+    count: PropTypes.number,
     next: PropTypes.string,
     previous: PropTypes.string,
     total_pages: PropTypes.number,

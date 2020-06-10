@@ -263,24 +263,37 @@ class CourseList extends Component {
           </Grid>
           <Grid container direction="column" justify="center" alignItems="stretch">
             {
-            courses === null ? (
-              <Grid item container direction="row" justify="center">
-                <CircularProgress />
-              </Grid>
-            ) : (
-              <Grid item>
-                <Box
-                  className={classes.listContainer}
-                >
-                  {
-                    courses.results.map((course) => (
-                      <Course key={course.id} course={course} onLessonClick={this.loadProgram} />
-                    ))
-                  }
-                </Box>
-              </Grid>
-            )
-          }
+              courses === null ? (
+                <Grid item container direction="row" justify="center">
+                  <CircularProgress />
+                </Grid>
+              ) : (null)
+            }
+            {
+              courses && courses.count === 0 ? (
+                <Grid item container direction="row" alignItems="center" justify="center">
+                  <Typography variant="h4">
+                    <FormattedMessage
+                      id="app.course_list.nothing"
+                      description="Informs the user that no courses match the filters"
+                      defaultMessage="Sorry, no courses match your filters."
+                    />
+                  </Typography>
+                </Grid>
+              ) : (
+                <Grid item>
+                  <Box
+                    className={classes.listContainer}
+                  >
+                    {
+                      courses ? courses.results.map((course) => (
+                        <Course key={course.id} course={course} onLessonClick={this.loadProgram} />
+                      )) : (null)
+                    }
+                  </Box>
+                </Grid>
+              )
+            }
           </Grid>
           {
           courses && courses.total_pages > 1 ? (
@@ -333,6 +346,7 @@ CourseList.propTypes = {
   fetchProgram: PropTypes.func.isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   courses: PropTypes.shape({
+    count: PropTypes.number,
     next: PropTypes.string,
     previous: PropTypes.string,
     total_pages: PropTypes.number,

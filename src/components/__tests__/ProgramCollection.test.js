@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Card } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import { FormattedMessage } from 'react-intl';
 import ProgramCollection from '../ProgramCollection';
@@ -21,6 +22,7 @@ describe('The ProgramCollection component', () => {
 
   test('renders on the page with no errors', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 2,
@@ -59,6 +61,7 @@ describe('The ProgramCollection component', () => {
 
   test('should set and clear sort menu anchor element when menu is opening and closing', () => {
     const programs = {
+      count: 0,
       next: null,
       previous: null,
       total_pages: 1,
@@ -82,8 +85,32 @@ describe('The ProgramCollection component', () => {
     expect(wrapper.instance().state.sortMenuAnchorElement).toBe(null);
   });
 
+  test('shows message when no results', () => {
+    const programs = {
+      count: 0,
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [],
+    };
+    const wrapper = shallowWithIntl(
+      <ProgramCollection
+        programs={programs}
+        label="My Programs"
+        user={testUser}
+        onProgramClick={onProgramClick}
+        onRemoveClick={onRemoveClick}
+        onUpdate={onUpdate}
+      />,
+    ).dive().dive().dive();
+
+    expect(wrapper.find(Card).exists()).toBe(false);
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().prop('defaultMessage')).toBe('Sorry, no programs match your filters.');
+  });
+
   test('shows the correct number of programs for the user', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 1,
@@ -122,6 +149,7 @@ describe('The ProgramCollection component', () => {
 
   test('shows the correct number of programs for other users', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 1,
@@ -160,6 +188,7 @@ describe('The ProgramCollection component', () => {
 
   test('callback when program click', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 1,
@@ -198,6 +227,7 @@ describe('The ProgramCollection component', () => {
 
   test('callback when remove click', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 1,
@@ -235,6 +265,7 @@ describe('The ProgramCollection component', () => {
 
   test('callback when page changes', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 2,
@@ -276,6 +307,7 @@ describe('The ProgramCollection component', () => {
 
   test('callback when search changes', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 2,
@@ -322,6 +354,7 @@ describe('The ProgramCollection component', () => {
 
   test('callback when order changes', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 2,
@@ -379,6 +412,7 @@ describe('The ProgramCollection component', () => {
 
   test('callback when tag changes', () => {
     const programs = {
+      count: 2,
       next: null,
       previous: null,
       total_pages: 2,
