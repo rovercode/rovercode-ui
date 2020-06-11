@@ -104,8 +104,37 @@ describe('The ProgramCollection component', () => {
       />,
     ).dive().dive().dive();
 
+    wrapper.setState({
+      searchQuery: 'test',
+    });
+
     expect(wrapper.find(Card).exists()).toBe(false);
+    expect(wrapper.find('img').exists()).toBe(false);
     expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().prop('defaultMessage')).toBe('Sorry, no programs match your filters.');
+  });
+
+  test('shows message when no programs', () => {
+    const programs = {
+      count: 0,
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [],
+    };
+    const wrapper = shallowWithIntl(
+      <ProgramCollection
+        programs={programs}
+        label="My Programs"
+        user={testUser}
+        onProgramClick={onProgramClick}
+        onRemoveClick={onRemoveClick}
+        onUpdate={onUpdate}
+      />,
+    ).dive().dive().dive();
+
+    expect(wrapper.find(Card).exists()).toBe(false);
+    expect(wrapper.find('img').exists()).toBe(true);
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().prop('defaultMessage')).toBe('You don\'t have any programs yet!');
   });
 
   test('shows the correct number of programs for the user', () => {
