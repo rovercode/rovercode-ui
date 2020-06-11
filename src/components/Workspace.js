@@ -26,6 +26,7 @@ import { append, clear } from '@/actions/console';
 import { send } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import BlocklyApi from '@/utils/blockly-api';
+import { blocklyTheme } from '@/themes/light';
 
 const mapStateToProps = ({ code, rover, sensor }) => ({ code, rover, sensor });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
@@ -46,11 +47,68 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
 
 const toolbox = `
     <xml id="toolbox" style="display: none">
-      <category name="loops" colour="282">
-        <block type="controls_whileUntil"></block>
-        <block type="controls_repeat_ext"></block>
-        <block type="controls_for"></block>
-        <block type="controls_forEach"></block>
+      <category name="motors" colour="42">
+        <block type="motors_start">
+          <value name="SPEED">
+            <block type="math_number">
+              <field name="NUM">50</field>
+            </block>
+          </value>
+        </block>
+        <block type="motors_stop"></block>
+      </category>
+      <category name="sensors and buttons" colour="160">
+        <block type="light_sensor_value"></block>
+        <block type="button_press"></block>
+      </category>
+      <category name="display" colour="230">
+        <block type="display_message">
+          <value name="MESSAGE">
+            <block type="text">
+              <field name="TEXT">Hi!</field>
+            </block>
+          </value>
+        </block>
+        <block type="text_print">
+          <value name="TEXT">
+            <block type="text">
+              <field name="TEXT">Hi!</field>
+            </block>
+          </value>
+        </block>
+      </category>
+      <category name="loops" colour="120">
+        <block type="controls_whileUntil">
+          <value name="BOOL">
+            <block type="logic_boolean">
+              <field name="BOOL">TRUE</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">4</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_for">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+          <value name="BY">
+            <block type="math_number">
+              <field name="NUM">2</field>
+            </block>
+          </value>
+        </block>
       </category>
       <category name="logic" colour="210">
         <block type="controls_if"></block>
@@ -60,67 +118,56 @@ const toolbox = `
         <block type="logic_boolean"></block>
       </category>
       <category name="time" colour="330">
-        <block type="continue"></block>
-      </category>
-      <category name="motors" colour="42">
-        <block type="motors_start"></block>
-        <block type="motors_stop"></block>
-      </category>
-      <category name="sensors and buttons" colour="160">
-        <block type="light_sensor_value"></block>
-        <block type="button_press"></block>
-      </category>
-      <category name="display" colour="230">
-        <block type="display_message"></block>
-      </category>
-      <category name="lights" colour="20">
-        <block type="chainable_rgb_led_set">
-          <value name="LED_ID">
+        <block type="continue">
+          <value name="LENGTH">
             <block type="math_number">
-              <field name="NUM">0</field>
+              <field name="NUM">3</field>
             </block>
           </value>
         </block>
-        <block type="colour_picker"></block>
-        <block type="colour_random"></block>
-        <block type="colour_rgb"></block>
-        <block type="colour_blend"></block>
       </category>
       <category name="numbers" colour="230">
         <block type="math_number"></block>
         <block type="math_arithmetic"></block>
         <block type="math_single"></block>
-        <block type="math_trig"></block>
         <block type="math_constant"></block>
         <block type="math_number_property"></block>
-        <block type="math_change"></block>
-        <block type="math_round"></block>
-        <block type="math_on_list"></block>
-        <block type="math_modulo"></block>
-        <block type="math_constrain"></block>
-        <block type="math_random_int"></block>
-        <block type="math_random_float"></block>
+        <category name="more" colour="230">
+          <block type="math_trig"></block>
+          <block type="math_change"></block>
+          <block type="math_round"></block>
+          <block type="math_on_list"></block>
+          <block type="math_modulo"></block>
+          <block type="math_random_int"></block>
+          <block type="math_random_float"></block>
+        </category>
       </category>
       <category name="text" colour="160">
-        <block type="text"></block>
+        <block type="more"></block>
         <block type="text_print"></block>
-        <block type="text_append"></block>
-        <block type="text_length"></block>
-        <block type="text_isEmpty"></block>
-        <block type="text_indexOf"></block>
-        <block type="text_charAt"></block>
-        <block type="text_getSubstring"></block>
-        <block type="text_changeCase"></block>
-        <block type="text_trim"></block>
         <block type="text_join"></block>
-      </category>
-      <category name="advanced" colour="200">
-        <category name="events" colour="230">
-          <block type="pop_event_queue"></block>
+        <category name="text" colour="160">
+          <block type="text_append"></block>
+          <block type="text_length"></block>
+          <block type="text_isEmpty"></block>
+          <block type="text_indexOf"></block>
+          <block type="text_charAt"></block>
+          <block type="text_getSubstring"></block>
+          <block type="text_changeCase"></block>
+          <block type="text_trim"></block>
         </category>
+      </category>
+      <sep></sep>
+      <category name="variables" colour="20" custom="VARIABLE">
+      </category>
+      <category name="functions" colour="80" custom="PROCEDURE">
+      </category>
+      <sep></sep>
+      <category name="advanced" colour="200">
         <category name="lists" colour="260">
           <block type="lists_create_empty"></block>
           <block type="lists_create_with"></block>
+          <block type="controls_forEach"></block>
           <block type="lists_repeat"></block>
           <block type="lists_length"></block>
           <block type="lists_isEmpty"></block>
@@ -130,11 +177,6 @@ const toolbox = `
           <block type="lists_getSublist"></block>
           <block type="lists_split"></block>
         </category>
-      </category>
-      <sep></sep>
-      <category name="variables" colour="20" custom="VARIABLE">
-      </category>
-      <category name="functions" colour="80" custom="PROCEDURE">
       </category>
     </xml>`;
 
@@ -168,10 +210,9 @@ class Workspace extends Component {
       defaultMessage: 'console started',
     });
 
-    Blockly.HSV_SATURATION = 0.85;
-    Blockly.HSV_VALUE = 0.9;
+    Blockly.HSV_SATURATION = 1.00;
+    Blockly.HSV_VALUE = 1.00;
     Blockly.Flyout.prototype.CORNER_RADIUS = 0;
-    Blockly.BlockSvg.START_HAT = true;
 
     this.createWorkspace();
 
@@ -271,6 +312,7 @@ class Workspace extends Component {
     }
 
     const workspace = Blockly.inject(this.editorDiv, {
+      theme: blocklyTheme,
       toolbox,
       zoom: {
         controls: true,
