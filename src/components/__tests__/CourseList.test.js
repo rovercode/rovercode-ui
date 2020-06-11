@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { CircularProgress } from '@material-ui/core';
+import { Card, CircularProgress } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import Course from '../Course';
 import CourseList from '../CourseList';
@@ -11,6 +11,7 @@ describe('The CourseList component', () => {
   const fetchProgram = jest.fn().mockResolvedValue();
   const changeReadOnly = jest.fn();
   const courses = {
+    count: 2,
     next: null,
     previous: null,
     total_pages: 2,
@@ -98,6 +99,27 @@ describe('The CourseList component', () => {
     expect(wrapper.find(Course).exists()).toBe(false);
     expect(wrapper.find(CircularProgress).exists()).toBe(true);
     expect(wrapper.find(CircularProgress).length).toBe(1);
+  });
+
+  test('shows message when no results', () => {
+    const empty = {
+      count: 0,
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [],
+    };
+    const wrapper = shallowWithIntl(
+      <CourseList
+        fetchCourses={fetchCourses}
+        fetchProgram={fetchProgram}
+        changeReadOnly={changeReadOnly}
+        courses={empty}
+      />,
+    ).dive().dive().dive();
+
+    expect(wrapper.find(Card).exists()).toBe(false);
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().prop('defaultMessage')).toBe('Sorry, no courses match your filters.');
   });
 
   test('fetches courses after page change', () => {
