@@ -15,8 +15,6 @@ import {
   updateXmlCode as actionUpdateXmlCode,
   changeExecutionState as actionChangeExecutionState,
   saveProgram as actionSaveProgram,
-  createProgram as actionCreateProgram,
-  fetchProgram as actionFetchProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
   EXECUTION_STOP,
@@ -39,10 +37,6 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   saveProgram: (id, content, name, lessonId) => dispatch(
     actionSaveProgram(id, content, name, lessonId, authHeader(cookies)),
   ).catch(checkAuthError(dispatch)),
-  createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
-    .catch(checkAuthError(dispatch)),
-  fetchProgram: (id) => dispatch(actionFetchProgram(id, authHeader(cookies)))
-    .catch(checkAuthError(dispatch)),
 });
 
 const toolbox = `
@@ -468,15 +462,6 @@ class Workspace extends Component {
   }
 
   loadDesign = (xmlCode) => {
-    const { createProgram } = this.props;
-
-    if (!xmlCode) {
-      // No program already loaded, create a new one
-      const number = (Math.floor(Math.random() * 1000));
-      createProgram(`Unnamed_Design_${number}`);
-      return;
-    }
-
     const { workspace } = this.state;
 
     workspace.clear();
@@ -548,7 +533,6 @@ Workspace.propTypes = {
   writeToConsole: PropTypes.func.isRequired,
   clearConsole: PropTypes.func.isRequired,
   saveProgram: PropTypes.func.isRequired,
-  createProgram: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   sendToRover: PropTypes.func.isRequired,
   intl: PropTypes.shape({

@@ -5,10 +5,8 @@ import configureStore from 'redux-mock-store';
 import { updateValidAuth } from '@/actions/auth';
 import CourseList from '../CourseList'; // eslint-disable-line import/order
 
-jest.mock('@/actions/code');
 jest.mock('@/actions/curriculum');
 
-import { changeReadOnly, fetchProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
 import { fetchCourses } from '@/actions/curriculum'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
@@ -70,18 +68,6 @@ describe('The CourseListContainer', () => {
     );
   });
 
-  test('dispatches an action to fetch specific program', () => {
-    wrapper.dive().props().fetchProgram(1);
-
-    expect(store.dispatch).toHaveBeenCalledWith(
-      fetchProgram(1, {
-        headers: {
-          Authorization: `JWT ${cookiesValues.auth_jwt}`,
-        },
-      }),
-    );
-  });
-
   test('handles authentication error fetching courses', (done) => {
     const localWrapper = shallow(
       <CourseList store={authFailStore} />, { context },
@@ -91,25 +77,6 @@ describe('The CourseListContainer', () => {
       expect(authFailStore.dispatch.mock.calls.length).toBe(2);
       expect(authFailStore.dispatch).toHaveBeenCalledWith(
         fetchCourses({
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      expect(authFailStore.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
-      done();
-    });
-  });
-
-  test('handles authentication error fetching specific program', (done) => {
-    const localWrapper = shallow(
-      <CourseList store={authFailStore} />, { context },
-    ).dive().dive().dive();
-
-    localWrapper.dive().props().fetchProgram().then(() => {
-      expect(authFailStore.dispatch.mock.calls.length).toBe(2);
-      expect(authFailStore.dispatch).toHaveBeenCalledWith(
-        fetchProgram({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
@@ -136,31 +103,5 @@ describe('The CourseListContainer', () => {
       );
       done();
     });
-  });
-
-  test('handles other error fetching specific program', (done) => {
-    const localWrapper = shallow(
-      <CourseList store={otherFailStore} />, { context },
-    ).dive().dive().dive();
-
-    localWrapper.dive().props().fetchProgram().catch(() => {
-      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
-      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
-        fetchProgram({
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      done();
-    });
-  });
-
-  test('dispatches an action to change read only', () => {
-    wrapper.dive().props().changeReadOnly(true);
-
-    expect(store.dispatch).toHaveBeenCalledWith(
-      changeReadOnly(true),
-    );
   });
 });

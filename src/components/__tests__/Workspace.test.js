@@ -13,8 +13,6 @@ jest.mock('@/actions/rover');
 import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first, import/order
 import { // eslint-disable-line import/first
   changeExecutionState,
-  createProgram,
-  fetchProgram,
   saveProgram,
   EXECUTION_RUN,
   EXECUTION_STEP,
@@ -674,6 +672,7 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
+    playground.highlightBlock.mockReset();
     workspace.instance().highlightBlock(1);
 
     expect(workspace.instance().highlightPause).toBe(false);
@@ -758,124 +757,6 @@ describe('The Workspace component', () => {
       expect(store.dispatch.mock.calls.length).toBe(1);
       expect(store.dispatch).toHaveBeenCalledWith(
         saveProgram(1, '<xml></xml>', 'test', {
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      done();
-    });
-  });
-
-  test('handles authentication error when creating', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 401,
-    };
-    store.dispatch = jest.fn();
-    store.dispatch.mockRejectedValueOnce(error);
-    store.dispatch.mockResolvedValue();
-
-    const wrapper = shallowWithIntl(
-      <Workspace store={store}>
-        <div />
-      </Workspace>, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive();
-    wrapper.props().createProgram('test').then(() => {
-      expect(store.dispatch.mock.calls.length).toBe(2);
-      expect(store.dispatch).toHaveBeenCalledWith(
-        createProgram('test', {
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
-      done();
-    });
-  });
-
-  test('handles other error when creating', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 500,
-    };
-    store.dispatch = jest.fn().mockRejectedValue(error);
-
-    const wrapper = shallowWithIntl(
-      <Workspace store={store}>
-        <div />
-      </Workspace>, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive();
-    wrapper.props().createProgram('test').catch(() => {
-      expect(store.dispatch.mock.calls.length).toBe(1);
-      expect(store.dispatch).toHaveBeenCalledWith(
-        createProgram('test', {
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      done();
-    });
-  });
-
-  test('handles authentication error when fetching', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 401,
-    };
-    store.dispatch = jest.fn();
-    store.dispatch.mockRejectedValueOnce(error);
-    store.dispatch.mockResolvedValue();
-
-    const wrapper = shallowWithIntl(
-      <Workspace store={store}>
-        <div />
-      </Workspace>, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive();
-    wrapper.props().fetchProgram(1).then(() => {
-      expect(store.dispatch.mock.calls.length).toBe(2);
-      expect(store.dispatch).toHaveBeenCalledWith(
-        fetchProgram(1, {
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
-      done();
-    });
-  });
-
-  test('handles other error when fetching', (done) => {
-    const error = new Error();
-    error.response = {
-      status: 500,
-    };
-    store.dispatch = jest.fn().mockRejectedValue(error);
-
-    const wrapper = shallowWithIntl(
-      <Workspace store={store}>
-        <div />
-      </Workspace>, { context },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive();
-    wrapper.props().fetchProgram(1).catch(() => {
-      expect(store.dispatch.mock.calls.length).toBe(1);
-      expect(store.dispatch).toHaveBeenCalledWith(
-        fetchProgram(1, {
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },

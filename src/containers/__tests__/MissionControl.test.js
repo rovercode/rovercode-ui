@@ -19,10 +19,28 @@ jest.mock('@/components/ProgramName', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
 jest.mock('@/actions/code');
 
-import { changeReadOnly, fetchLesson, remixProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
+import { // eslint-disable-line import/first, import/order
+  changeReadOnly,
+  createProgram,
+  fetchLesson,
+  fetchProgram,
+  remixProgram,
+} from '@/actions/code';
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
+const match = {
+  params: {
+    id: '1',
+  },
+};
+const fetchResult = {
+  value: {
+    user: {
+      username: 'testuser',
+    },
+  },
+};
 
 describe('The MissionControl container', () => {
   const mockStore = configureStore();
@@ -55,15 +73,21 @@ describe('The MissionControl container', () => {
         },
         commands: [],
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    store.dispatch = jest.fn().mockResolvedValue();
+    store.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.005);
   });
+
+  afterEach(() => global.Math.random.mockRestore());
 
   test('renders on the page with no errors', () => {
     wrapper = mountWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={store} />
+          <MissionControl store={store} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -76,9 +100,8 @@ describe('The MissionControl container', () => {
   });
 
   test('maps dispatches correctly', (done) => {
-    store.dispatch = jest.fn().mockResolvedValue();
     wrapper = shallowWithIntl(
-      <MissionControl store={store}>
+      <MissionControl store={store} match={match}>
         <div />
       </MissionControl>, { context },
     ).dive().dive().dive()
@@ -98,6 +121,57 @@ describe('The MissionControl container', () => {
     });
   });
 
+  test('fetches program', () => {
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={store} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(store.dispatch).toHaveBeenCalledWith(fetchProgram(1));
+  });
+
+  test('creates program', () => {
+    const localMatch = {
+      params: null,
+    };
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={store} match={localMatch} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(store.dispatch).toHaveBeenCalledWith(createProgram('Unnamed_Design_5'));
+  });
+
   test('fetches lesson when present', () => {
     const localStore = mockStore({
       code: {
@@ -112,12 +186,141 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore} />
+          <MissionControl store={localStore} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(1));
+  });
+
+  test('fetches lesson when present', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonId: 1,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+      user: {
+        username: 'testuser',
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(1));
+  });
+
+  test('fetches lesson when present', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonId: 1,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+      user: {
+        username: 'testuser',
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(1));
+  });
+
+  test('fetches lesson when present', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: false,
+        lessonId: 1,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLIghtSensorReading: -2,
+      },
+      user: {
+        username: 'testuser',
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -151,12 +354,16 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    fetchLesson.mockReset();
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore} />
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -173,7 +380,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive();
 
-    expect(localStore.dispatch).not.toHaveBeenCalled();
+    expect(fetchLesson).not.toHaveBeenCalled();
   });
 
   test('hides alert when not read only', () => {
@@ -189,12 +396,15 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore} />
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -227,12 +437,15 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore} />
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -256,7 +469,7 @@ describe('The MissionControl container', () => {
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={store} />
+          <MissionControl store={store} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -300,12 +513,15 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore} />
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -341,12 +557,15 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore} />
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -381,12 +600,15 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore} />
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -420,12 +642,15 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore} />
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -460,8 +685,11 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     const mockChangeReadOnly = jest.fn();
     const mockFetchLesson = jest.fn();
     const mockRemixProgram = jest.fn().mockResolvedValue({
@@ -474,7 +702,7 @@ describe('The MissionControl container', () => {
     const missionControl = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore}>
+          <MissionControl store={localStore} match={match}>
             <div />
           </MissionControl>
         </MemoryRouter>
@@ -517,8 +745,11 @@ describe('The MissionControl container', () => {
         leftLightSensorReading: -1,
         rightLIghtSensorReading: -2,
       },
+      user: {
+        username: 'testuser',
+      },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue();
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     const mockChangeReadOnly = jest.fn();
     const mockFetchLesson = jest.fn();
     const mockRemixProgram = jest.fn().mockResolvedValue({
@@ -533,7 +764,7 @@ describe('The MissionControl container', () => {
     const missionControl = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
-          <MissionControl store={localStore}>
+          <MissionControl store={localStore} match={match}>
             <div />
           </MissionControl>
         </MemoryRouter>
