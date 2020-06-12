@@ -47,7 +47,7 @@ class ConnectionHelp extends Component {
     super(props);
 
     this.state = {
-      open: props.user.showGuide === undefined ? true : props.user.showGuide,
+      open: props.user.showGuide === undefined ? false : props.user.showGuide,
       done: false,
     };
   }
