@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { MemoryRouter } from 'react-router';
 import { Provider as ReduxProvider } from 'react-redux';
 import { createStore } from 'redux';
@@ -170,6 +171,35 @@ describe('The MissionControl container', () => {
       .dive();
 
     expect(store.dispatch).toHaveBeenCalledWith(createProgram('Unnamed_Design_5'));
+  });
+
+  test('redirects after creating program', () => {
+    wrapper = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={store} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    wrapper.setState({
+      programCreated: 5,
+    });
+    wrapper.update();
+
+    expect(wrapper.find(Redirect).exists()).toBe(true);
   });
 
   test('fetches lesson when present', () => {

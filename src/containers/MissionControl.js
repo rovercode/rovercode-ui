@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -65,6 +66,7 @@ class MissionControl extends Component {
 
     this.state = {
       open: false,
+      programCreated: null,
       programLoaded: false,
     };
   }
@@ -88,9 +90,10 @@ class MissionControl extends Component {
     } else {
       // No program already loaded, create a new one
       const number = (Math.floor(Math.random() * 1000));
-      createProgram(`Unnamed_Design_${number}`).then(() => {
+      createProgram(`Unnamed_Design_${number}`).then((result) => {
         changeReadOnly(false);
         this.setState({
+          programCreated: result.value.id,
           programLoaded: true,
         });
       });
@@ -127,6 +130,7 @@ class MissionControl extends Component {
 
     const {
       open,
+      programCreated,
       programLoaded,
     } = this.state;
 
@@ -423,6 +427,14 @@ class MissionControl extends Component {
             </Grid>
           </Grid>
         </Grid>
+        {
+          programCreated ? (
+            <Redirect to={{
+              pathname: `/mission-control/${programCreated}`,
+            }}
+            />
+          ) : (null)
+        }
       </>
     );
   }
