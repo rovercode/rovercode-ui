@@ -21,8 +21,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           Array [
             undefined,
           ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
         ],
         "results": Array [
+          Object {
+            "type": "return",
+            "value": Promise {},
+          },
+          Object {
+            "type": "return",
+            "value": Promise {},
+          },
           Object {
             "type": "return",
             "value": Promise {},
@@ -74,8 +88,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             Array [
               undefined,
             ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
           ],
           "results": Array [
+            Object {
+              "type": "return",
+              "value": Promise {},
+            },
+            Object {
+              "type": "return",
+              "value": Promise {},
+            },
             Object {
               "type": "return",
               "value": Promise {},
@@ -127,8 +155,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               Array [
                 undefined,
               ],
+              Array [
+                undefined,
+              ],
+              Array [
+                undefined,
+              ],
             ],
             "results": Array [
+              Object {
+                "type": "return",
+                "value": Promise {},
+              },
+              Object {
+                "type": "return",
+                "value": Promise {},
+              },
               Object {
                 "type": "return",
                 "value": Promise {},
@@ -213,8 +255,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                 Array [
                   undefined,
                 ],
+                Array [
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": Promise {},
+                },
+                Object {
+                  "type": "return",
+                  "value": Promise {},
+                },
                 Object {
                   "type": "return",
                   "value": Promise {},
@@ -258,8 +314,6 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               "cookies": Object {},
             }
           }
-          createProgram={[Function]}
-          fetchProgram={[Function]}
           intl={
             Object {
               "defaultFormats": Object {},
@@ -332,8 +386,22 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                   Array [
                     undefined,
                   ],
+                  Array [
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                  ],
                 ],
                 "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  Object {
+                    "type": "return",
+                    "value": Promise {},
+                  },
                   Object {
                     "type": "return",
                     "value": Promise {},

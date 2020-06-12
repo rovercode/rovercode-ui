@@ -4,7 +4,6 @@ import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
 import { fetchCourses } from '../actions/curriculum';
 import { checkAuthError, authHeader } from '../actions/auth';
-import { changeReadOnly as actionChangeReadOnly, fetchProgram } from '../actions/code';
 import CourseList from '../components/CourseList';
 
 const mapStateToProps = ({ curriculum, user }) => ({ ...curriculum, user });
@@ -16,9 +15,6 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
 
     return dispatch(fetchCourses(xhrOptions)).catch(checkAuthError(dispatch));
   },
-  fetchProgram: (id) => dispatch(fetchProgram(id, authHeader(cookies)))
-    .catch(checkAuthError(dispatch)),
-  changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
 });
 
 const CourseListContainer = connect(
