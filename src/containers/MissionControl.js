@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import {
   Box,
   Button,
+  CircularProgress,
   Divider,
   Drawer,
   ExpansionPanel,
@@ -35,15 +37,21 @@ import { checkAuthError, authHeader } from '@/actions/auth';
 import {
   changeReadOnly as actionChangeReadOnly,
   fetchLesson as actionFetchLesson,
+  createProgram as actionCreateProgram,
+  fetchProgram as actionFetchProgram,
   remixProgram as actionRemixProgram,
 } from '@/actions/code';
 
-const mapStateToProps = ({ code, sensor }) => ({ code, sensor });
+const mapStateToProps = ({ code, sensor, user }) => ({ code, sensor, user });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
   changeReadOnly: (isReadOnly) => dispatch(actionChangeReadOnly(isReadOnly)),
   remixProgram: (id) => dispatch(actionRemixProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
   fetchLesson: (id) => dispatch(actionFetchLesson(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  fetchProgram: (id) => dispatch(actionFetchProgram(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
 });
 
@@ -58,7 +66,38 @@ class MissionControl extends Component {
 
     this.state = {
       open: false,
+      programCreated: null,
+      programLoaded: false,
     };
+  }
+
+  componentDidMount() {
+    const {
+      changeReadOnly,
+      createProgram,
+      fetchProgram,
+      match,
+      user,
+    } = this.props;
+
+    if (match && match.params && match.params.id) {
+      fetchProgram(match.params.id).then((result) => {
+        changeReadOnly(user.username !== result.value.user.username);
+        this.setState({
+          programLoaded: true,
+        });
+      });
+    } else {
+      // No program already loaded, create a new one
+      const number = (Math.floor(Math.random() * 1000));
+      createProgram(`Unnamed_Design_${number}`).then((result) => {
+        changeReadOnly(false);
+        this.setState({
+          programCreated: result.value.id,
+          programLoaded: true,
+        });
+      });
+    }
   }
 
   handleOnClose = () => this.setState({ open: false });
@@ -91,6 +130,8 @@ class MissionControl extends Component {
 
     const {
       open,
+      programCreated,
+      programLoaded,
     } = this.state;
 
     const goalLabel = intl.formatMessage({
@@ -305,9 +346,17 @@ class MissionControl extends Component {
               </Grid>
             </Grid>
             <Grid item>
-              <Workspace location={location}>
-                <Control />
-              </Workspace>
+              {
+                programLoaded ? (
+                  <Workspace location={location}>
+                    <Control />
+                  </Workspace>
+                ) : (
+                  <Grid container direction="row" alignItems="center" justify="center">
+                    <CircularProgress color="secondary" />
+                  </Grid>
+                )
+              }
             </Grid>
           </Grid>
           <Grid item container xs={2} direction="column" alignItems="stretch" spacing={2}>
@@ -378,6 +427,14 @@ class MissionControl extends Component {
             </Grid>
           </Grid>
         </Grid>
+        {
+          programCreated ? (
+            <Redirect to={{
+              pathname: `/mission-control/${programCreated}`,
+            }}
+            />
+          ) : (null)
+        }
       </>
     );
   }
@@ -406,6 +463,14 @@ MissionControl.propTypes = {
     lessonTutorialLink: PropTypes.string,
     lessonGoals: PropTypes.string,
   }).isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
   sensor: PropTypes.shape({
     leftLightSensorReading: PropTypes.number,
     rightLightSensorReading: PropTypes.number,
@@ -413,6 +478,8 @@ MissionControl.propTypes = {
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   fetchLesson: PropTypes.func.isRequired,
+  createProgram: PropTypes.func.isRequired,
+  fetchProgram: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,

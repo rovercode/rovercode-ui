@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import Blockly from 'node-blockly/browser';
 
 export default createMuiTheme({
   palette: {
@@ -34,5 +35,19 @@ export default createMuiTheme({
       fontWeight: 'bold',
       textTransform: 'none',
     },
+  },
+});
+
+export const blocklyTheme = Blockly.Theme.defineTheme('themeName', {
+  base: Blockly.Themes.Classic,
+  startHats: true,
+  fontStyle: {
+    family: 'sans-serif',
+    size: 12,
+  },
+  componentStyles: {
+    toolboxBackgroundColour: '#EEEEEE',
+    flyoutBackgroundColour: '#E0E0E0',
+    workspaceBackgroundColour: '#FFFFFF',
   },
 });

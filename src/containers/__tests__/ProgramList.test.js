@@ -9,7 +9,7 @@ jest.mock('@/actions/code');
 jest.mock('@/actions/program');
 jest.mock('@/actions/tag');
 
-import { changeReadOnly, clearProgram, fetchProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
+import { changeReadOnly, clearProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
 import { clearPrograms, fetchPrograms, removeProgram } from '@/actions/program'; // eslint-disable-line import/first, import/order
 import { fetchTags } from '@/actions/tag'; // eslint-disable-line import/first, import/order
 
@@ -64,19 +64,6 @@ describe('The ProgramListContainer', () => {
 
     wrapper = shallow(<ProgramList store={store} />, { context }).dive().dive().dive();
   });
-  test('dispatches an action to fetch programs', () => {
-    wrapper.dive().props().fetchPrograms({
-      user__not: 10,
-    }, 2);
-
-    expect(store.dispatch).toHaveBeenCalledWith(
-      fetchPrograms({
-        headers: {
-          Authorization: `JWT ${cookiesValues.auth_jwt}`,
-        },
-      }),
-    );
-  });
 
   test('dispatches an action to fetch programs for a user', () => {
     wrapper.dive().props().fetchPrograms({
@@ -88,18 +75,6 @@ describe('The ProgramListContainer', () => {
         params: {
           user: 10,
         },
-        headers: {
-          Authorization: `JWT ${cookiesValues.auth_jwt}`,
-        },
-      }),
-    );
-  });
-
-  test('dispatches an action to fetch specific program', () => {
-    wrapper.dive().props().fetchProgram(1);
-
-    expect(store.dispatch).toHaveBeenCalledWith(
-      fetchProgram(1, {
         headers: {
           Authorization: `JWT ${cookiesValues.auth_jwt}`,
         },
@@ -140,25 +115,6 @@ describe('The ProgramListContainer', () => {
       expect(authFailStore.dispatch.mock.calls.length).toBe(2);
       expect(authFailStore.dispatch).toHaveBeenCalledWith(
         fetchPrograms({
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      expect(authFailStore.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
-      done();
-    });
-  });
-
-  test('handles authentication error fetching specific program', (done) => {
-    const localWrapper = shallow(
-      <ProgramList store={authFailStore} />, { context },
-    ).dive().dive().dive();
-
-    localWrapper.dive().props().fetchProgram().then(() => {
-      expect(authFailStore.dispatch.mock.calls.length).toBe(2);
-      expect(authFailStore.dispatch).toHaveBeenCalledWith(
-        fetchProgram({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
@@ -216,24 +172,6 @@ describe('The ProgramListContainer', () => {
       expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
       expect(otherFailStore.dispatch).toHaveBeenCalledWith(
         fetchPrograms({
-          headers: {
-            Authorization: `JWT ${cookiesValues.auth_jwt}`,
-          },
-        }),
-      );
-      done();
-    });
-  });
-
-  test('handles other error fetching specific program', (done) => {
-    const localWrapper = shallow(
-      <ProgramList store={otherFailStore} />, { context },
-    ).dive().dive().dive();
-
-    localWrapper.dive().props().fetchProgram().catch(() => {
-      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
-      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
-        fetchProgram({
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },

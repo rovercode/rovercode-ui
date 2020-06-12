@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import {
@@ -27,8 +29,8 @@ import {
   Delete,
 } from '@material-ui/icons';
 import { Pagination, Autocomplete } from '@material-ui/lab';
-import { Link } from 'react-router-dom';
-import { FormattedMessage, injectIntl } from 'react-intl';
+
+import flavourImage from '@/assets/images/flavour.png';
 
 const styles = (theme) => ({
   mainContainer: {
@@ -139,7 +141,12 @@ class ProgramCollection extends Component {
       tag,
       classes,
     } = this.props;
-    const { ordering, tagFilters, sortMenuAnchorElement } = this.state;
+    const {
+      ordering,
+      searchQuery,
+      sortMenuAnchorElement,
+      tagFilters,
+    } = this.state;
 
     const searchPlaceholder = intl.formatMessage({
       id: 'app.program_collection.search',
@@ -289,7 +296,35 @@ class ProgramCollection extends Component {
         </Grid>
         <Grid container spacing={3}>
           {
-            programs.results.map((program) => (
+            programs.count === 0 && !searchQuery && tagFilters.length === 0 ? (
+              <Grid item container direction="column" alignItems="center" justify="center">
+                <Grid item>
+                  <img alt="Kids" width="300px" src={flavourImage} />
+                </Grid>
+                <Grid item>
+                  <Typography variant="h4">
+                    <FormattedMessage
+                      id="app.program_collection.no_programs"
+                      description="Notifies new users he or she has no programs"
+                      defaultMessage="You don't have any programs yet!"
+                    />
+                  </Typography>
+                </Grid>
+              </Grid>
+            ) : (null)
+          }
+          {
+            programs.count === 0 && (searchQuery || tagFilters.length !== 0) ? (
+              <Grid item container direction="row" alignItems="center" justify="center">
+                <Typography variant="h4">
+                  <FormattedMessage
+                    id="app.program_collection.nothing"
+                    description="Informs the user that no programs match the filters"
+                    defaultMessage="Sorry, no programs match your filters."
+                  />
+                </Typography>
+              </Grid>
+            ) : programs.results.map((program) => (
               <Grid item xs={12} md={6} lg={3} key={program.id}>
                 <Card key={program.id}>
                   <CardActionArea
@@ -370,6 +405,7 @@ ProgramCollection.propTypes = {
     username: PropTypes.string.isRequired,
   }).isRequired,
   programs: PropTypes.shape({
+    count: PropTypes.number,
     next: PropTypes.string,
     previous: PropTypes.string,
     total_pages: PropTypes.number,

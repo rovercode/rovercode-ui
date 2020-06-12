@@ -14,7 +14,7 @@ import Footer from './Footer';
 import ProgramCollection from './ProgramCollection';
 
 const defaultState = {
-  programLoaded: false,
+  programSelected: null,
   confirmOpen: false,
   focusProgram: {
     id: null,
@@ -74,20 +74,14 @@ class ProgramList extends Component {
     return removeProgram(focusProgram.id).then(this.fetch);
   }
 
-  loadProgram = (e) => {
-    const { changeReadOnly, fetchProgram } = this.props;
+  selectProgram = (e) => {
     let program = e.target;
     if (e.target.parentNode.parentNode.id) {
       program = e.target.parentNode.parentNode;
     }
-    const readOnly = program.dataset.owned === 'false';
 
-
-    return fetchProgram(program.id).then(() => {
-      changeReadOnly(readOnly);
-      this.setState({
-        programLoaded: true,
-      });
+    this.setState({
+      programSelected: program.id,
     });
   }
 
@@ -118,7 +112,7 @@ class ProgramList extends Component {
     const {
       confirmOpen,
       focusProgram,
-      programLoaded,
+      programSelected,
     } = this.state;
 
     const myProgramsHeader = intl.formatMessage({
@@ -162,9 +156,9 @@ class ProgramList extends Component {
     return (
       <>
         {
-          programLoaded ? (
+          programSelected ? (
             <Redirect to={{
-              pathname: '/mission-control',
+              pathname: `/mission-control/${programSelected}`,
             }}
             />
           ) : (null)
@@ -183,7 +177,7 @@ class ProgramList extends Component {
                   user={user}
                   tag={tag}
                   label={owned ? myProgramsHeader : communityProgramsHeader}
-                  onProgramClick={this.loadProgram}
+                  onProgramClick={this.selectProgram}
                   onRemoveClick={this.showConfirm}
                   onUpdate={owned ? this.fetchUserPrograms : this.fetchCommunityPrograms}
                 />
@@ -222,12 +216,10 @@ ProgramList.defaultProps = {
 };
 
 ProgramList.propTypes = {
-  fetchProgram: PropTypes.func.isRequired,
   fetchPrograms: PropTypes.func.isRequired,
   fetchTags: PropTypes.func.isRequired,
   removeProgram: PropTypes.func.isRequired,
   clearProgramList: PropTypes.func.isRequired,
-  changeReadOnly: PropTypes.func.isRequired,
   clearProgram: PropTypes.func.isRequired,
   owned: PropTypes.bool.isRequired,
   user: PropTypes.shape({
