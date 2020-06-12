@@ -63,7 +63,7 @@ class CourseList extends Component {
       searchQuery: null,
       ordering: 'name',
       sortMenuAnchorElement: null,
-      programLoaded: false,
+      programSelected: null,
     };
   }
 
@@ -93,23 +93,16 @@ class CourseList extends Component {
     fetchCourses(params);
   }
 
-  loadProgram = (e) => {
-    const { changeReadOnly, fetchProgram } = this.props;
-
+  selectProgram = (e) => {
     let program = e.target.parentNode;
     if (e.target.parentNode.parentNode.parentNode.id) {
       program = e.target.parentNode.parentNode.parentNode;
     } else if (e.target.parentNode.parentNode.parentNode.parentNode.parentNode.id) {
       program = e.target.parentNode.parentNode.parentNode.parentNode.parentNode;
     }
-    const readOnly = program.dataset.owned === 'false';
 
-
-    return fetchProgram(program.id).then(() => {
-      changeReadOnly(readOnly);
-      this.setState({
-        programLoaded: true,
-      });
+    this.setState({
+      programSelected: program.id,
     });
   }
 
@@ -156,7 +149,7 @@ class CourseList extends Component {
     } = this.props;
     const {
       ordering,
-      programLoaded,
+      programSelected,
       sortMenuAnchorElement,
     } = this.state;
 
@@ -263,24 +256,41 @@ class CourseList extends Component {
           </Grid>
           <Grid container direction="column" justify="center" alignItems="stretch">
             {
-            courses === null ? (
-              <Grid item container direction="row" justify="center">
-                <CircularProgress />
-              </Grid>
-            ) : (
-              <Grid item>
-                <Box
-                  className={classes.listContainer}
-                >
-                  {
-                    courses.results.map((course) => (
-                      <Course key={course.id} course={course} onLessonClick={this.loadProgram} />
-                    ))
-                  }
-                </Box>
-              </Grid>
-            )
-          }
+              courses === null ? (
+                <Grid item container direction="row" justify="center">
+                  <CircularProgress />
+                </Grid>
+              ) : (null)
+            }
+            {
+              courses && courses.count === 0 ? (
+                <Grid item container direction="row" alignItems="center" justify="center">
+                  <Typography variant="h4">
+                    <FormattedMessage
+                      id="app.course_list.nothing"
+                      description="Informs the user that no courses match the filters"
+                      defaultMessage="Sorry, no courses match your filters."
+                    />
+                  </Typography>
+                </Grid>
+              ) : (
+                <Grid item>
+                  <Box
+                    className={classes.listContainer}
+                  >
+                    {
+                      courses ? courses.results.map((course) => (
+                        <Course
+                          key={course.id}
+                          course={course}
+                          onLessonClick={this.selectProgram}
+                        />
+                      )) : (null)
+                    }
+                  </Box>
+                </Grid>
+              )
+            }
           </Grid>
           {
           courses && courses.total_pages > 1 ? (
@@ -302,9 +312,9 @@ class CourseList extends Component {
         <Divider />
         <Footer />
         {
-          programLoaded ? (
+          programSelected ? (
             <Redirect to={{
-              pathname: '/mission-control',
+              pathname: `/mission-control/${programSelected}`,
             }}
             />
           ) : (null)
@@ -330,9 +340,8 @@ CourseList.propTypes = {
     paginationPaddedBox: PropTypes.string.isRequired,
   }).isRequired,
   fetchCourses: PropTypes.func.isRequired,
-  fetchProgram: PropTypes.func.isRequired,
-  changeReadOnly: PropTypes.func.isRequired,
   courses: PropTypes.shape({
+    count: PropTypes.number,
     next: PropTypes.string,
     previous: PropTypes.string,
     total_pages: PropTypes.number,

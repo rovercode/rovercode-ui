@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { withCookies, Cookies } from 'react-cookie';
-import { changeReadOnly as actionChangeReadOnly, clearProgram, fetchProgram } from '../actions/code';
+import { changeReadOnly as actionChangeReadOnly, clearProgram } from '../actions/code';
 import { clearPrograms, fetchPrograms, removeProgram } from '../actions/program';
 import { checkAuthError, authHeader } from '../actions/auth';
 import { fetchTags } from '../actions/tag';
@@ -14,8 +14,6 @@ const mapStateToProps = ({
   code, ...program, tag, user,
 });
 const mapDispatchToProps = (dispatch, { cookies }) => ({
-  fetchProgram: (id) => dispatch(fetchProgram(id, authHeader(cookies)))
-    .catch(checkAuthError(dispatch)),
   fetchPrograms: (params) => {
     const xhrOptions = authHeader(cookies);
 

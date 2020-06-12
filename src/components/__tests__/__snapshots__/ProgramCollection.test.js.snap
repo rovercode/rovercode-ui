@@ -31,6 +31,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
       onUpdate={[MockFunction]}
       programs={
         Object {
+          "count": 2,
           "next": null,
           "previous": null,
           "results": Array [
@@ -100,6 +101,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
         onUpdate={[MockFunction]}
         programs={
           Object {
+            "count": 2,
             "next": null,
             "previous": null,
             "results": Array [
@@ -175,6 +177,7 @@ exports[`The ProgramCollection component renders on the page with no errors 1`] 
           onUpdate={[MockFunction]}
           programs={
             Object {
+              "count": 2,
               "next": null,
               "previous": null,
               "results": Array [

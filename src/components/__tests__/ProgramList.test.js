@@ -5,8 +5,6 @@ import { Redirect } from 'react-router-dom';
 import ProgramCollection from '../ProgramCollection';
 import ProgramList from '../ProgramList';
 
-let changeReadOnly;
-let fetchProgram;
 let fetchPrograms;
 let removeProgram;
 let fetchTags;
@@ -15,8 +13,6 @@ let clearProgramList;
 
 describe('The ProgramList component', () => {
   beforeEach(() => {
-    changeReadOnly = jest.fn();
-    fetchProgram = jest.fn().mockResolvedValue();
     fetchPrograms = jest.fn().mockResolvedValue();
     removeProgram = jest.fn().mockResolvedValue();
     fetchTags = jest.fn().mockResolvedValue();
@@ -27,8 +23,6 @@ describe('The ProgramList component', () => {
   test('renders on the page with no errors', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -51,8 +45,6 @@ describe('The ProgramList component', () => {
     await mountWithIntl(
       <MemoryRouter>
         <ProgramList
-          changeReadOnly={changeReadOnly}
-          fetchProgram={fetchProgram}
           fetchPrograms={fetchPrograms}
           removeProgram={removeProgram}
           fetchTags={fetchTags}
@@ -92,9 +84,7 @@ describe('The ProgramList component', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
-        changeReadOnly={changeReadOnly}
         userPrograms={programs}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -112,8 +102,6 @@ describe('The ProgramList component', () => {
   test('shows loading when programs fetching', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -133,8 +121,6 @@ describe('The ProgramList component', () => {
   test('redirects to mission control when program loads', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -146,16 +132,16 @@ describe('The ProgramList component', () => {
     ).dive().dive();
 
     wrapper.setState({
-      programLoaded: true,
+      programSelected: 1,
     });
 
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).at(0).prop('to')).toEqual({
-      pathname: '/mission-control',
+      pathname: '/mission-control/1',
     });
   });
 
-  test('loads a program', (done) => {
+  test('loads a program', () => {
     const programs = {
       next: null,
       previous: null,
@@ -171,9 +157,7 @@ describe('The ProgramList component', () => {
     };
     const wrapper = shallowWithIntl(
       <ProgramList
-        changeReadOnly={changeReadOnly}
         programs={programs}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -184,7 +168,7 @@ describe('The ProgramList component', () => {
       />,
     ).dive().dive();
 
-    wrapper.instance().loadProgram({
+    wrapper.instance().selectProgram({
       target: {
         parentNode: {
           parentNode: {
@@ -196,33 +180,26 @@ describe('The ProgramList component', () => {
           owned: 'false',
         },
       },
-    }).then(() => {
-      expect(changeReadOnly).toHaveBeenCalledWith(true);
-      expect(fetchProgram).toHaveBeenCalledWith(33);
-      expect(wrapper.state('programLoaded')).toBe(true);
+    });
+    expect(wrapper.state('programSelected')).toBe(33);
 
-      wrapper.setState({
-        programLoaded: false,
-      });
+    wrapper.setState({
+      programLoaded: false,
+    });
 
-      wrapper.instance().loadProgram({
-        target: {
+    wrapper.instance().selectProgram({
+      target: {
+        parentNode: {
           parentNode: {
-            parentNode: {
-              id: 55,
-              dataset: {
-                owned: 'true',
-              },
+            id: 55,
+            dataset: {
+              owned: 'true',
             },
           },
         },
-      }).then(() => {
-        expect(changeReadOnly).toHaveBeenCalledWith(false);
-        expect(fetchProgram).toHaveBeenCalledWith(33);
-        expect(wrapper.state('programLoaded')).toBe(true);
-        done();
-      });
+      },
     });
+    expect(wrapper.state('programSelected')).toBe(55);
   });
 
   test('fetches user programs after page change', () => {
@@ -242,8 +219,6 @@ describe('The ProgramList component', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -281,8 +256,6 @@ describe('The ProgramList component', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -320,8 +293,6 @@ describe('The ProgramList component', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -361,8 +332,6 @@ describe('The ProgramList component', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -402,8 +371,6 @@ describe('The ProgramList component', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
         programs={programs}
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -430,8 +397,6 @@ describe('The ProgramList component', () => {
   test('shows confirm dialog', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}
@@ -460,8 +425,6 @@ describe('The ProgramList component', () => {
   test('cancel dialog does not remove program', () => {
     const wrapper = shallowWithIntl(
       <ProgramList
-        changeReadOnly={changeReadOnly}
-        fetchProgram={fetchProgram}
         fetchPrograms={fetchPrograms}
         removeProgram={removeProgram}
         fetchTags={fetchTags}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { CircularProgress } from '@material-ui/core';
+import { Card, CircularProgress } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import Course from '../Course';
 import CourseList from '../CourseList';
@@ -8,9 +8,8 @@ import CourseList from '../CourseList';
 
 describe('The CourseList component', () => {
   const fetchCourses = jest.fn().mockResolvedValue();
-  const fetchProgram = jest.fn().mockResolvedValue();
-  const changeReadOnly = jest.fn();
   const courses = {
+    count: 2,
     next: null,
     previous: null,
     total_pages: 2,
@@ -51,8 +50,6 @@ describe('The CourseList component', () => {
       <CourseList
         courses={courses}
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
       />,
     ).dive().dive().dive();
     expect(wrapper).toMatchSnapshot();
@@ -63,8 +60,6 @@ describe('The CourseList component', () => {
       <MemoryRouter>
         <CourseList
           fetchCourses={fetchCourses}
-          fetchProgram={fetchProgram}
-          changeReadOnly={changeReadOnly}
         />
       </MemoryRouter>,
     );
@@ -76,8 +71,6 @@ describe('The CourseList component', () => {
       <CourseList
         courses={courses}
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
       />,
     ).dive().dive().dive();
 
@@ -89,8 +82,6 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
         courses={null}
       />,
     ).dive().dive().dive();
@@ -100,13 +91,30 @@ describe('The CourseList component', () => {
     expect(wrapper.find(CircularProgress).length).toBe(1);
   });
 
+  test('shows message when no results', () => {
+    const empty = {
+      count: 0,
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [],
+    };
+    const wrapper = shallowWithIntl(
+      <CourseList
+        fetchCourses={fetchCourses}
+        courses={empty}
+      />,
+    ).dive().dive().dive();
+
+    expect(wrapper.find(Card).exists()).toBe(false);
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().prop('defaultMessage')).toBe('Sorry, no courses match your filters.');
+  });
+
   test('fetches courses after page change', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
       />,
     ).dive().dive().dive();
 
@@ -123,8 +131,6 @@ describe('The CourseList component', () => {
       <CourseList
         courses={courses}
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
       />,
     ).dive().dive().dive();
 
@@ -147,8 +153,6 @@ describe('The CourseList component', () => {
       <CourseList
         courses={courses}
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
       />,
     ).dive().dive().dive();
 
@@ -191,8 +195,6 @@ describe('The CourseList component', () => {
       <CourseList
         courses={courses}
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
       />,
     ).dive().dive().dive();
 
@@ -210,32 +212,28 @@ describe('The CourseList component', () => {
       <CourseList
         courses={courses}
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
       />,
     ).dive().dive().dive();
 
     wrapper.setState({
-      programLoaded: true,
+      programSelected: 1,
     });
 
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).at(0).prop('to')).toEqual({
-      pathname: '/mission-control',
+      pathname: '/mission-control/1',
     });
   });
 
-  test('loads a program', (done) => {
+  test('selects a program', (done) => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
         fetchCourses={fetchCourses}
-        fetchProgram={fetchProgram}
-        changeReadOnly={changeReadOnly}
       />,
     ).dive().dive().dive();
 
-    wrapper.instance().loadProgram({
+    wrapper.instance().selectProgram({
       target: {
         parentNode: {
           parentNode: {
@@ -253,61 +251,52 @@ describe('The CourseList component', () => {
           },
         },
       },
-    }).then(() => {
-      expect(changeReadOnly).toHaveBeenCalledWith(true);
-      expect(fetchProgram).toHaveBeenCalledWith(33);
-      expect(wrapper.state('programLoaded')).toBe(true);
+    });
+    expect(wrapper.state('programSelected')).toBe(33);
 
-      wrapper.setState({
-        programLoaded: false,
-      });
+    wrapper.setState({
+      programLoaded: false,
+    });
 
-      wrapper.instance().loadProgram({
-        target: {
+    wrapper.instance().selectProgram({
+      target: {
+        parentNode: {
+          parentNode: {
+            parentNode: {
+              id: 55,
+              dataset: {
+                owned: 'true',
+              },
+            },
+          },
+        },
+      },
+    });
+    expect(wrapper.state('programSelected')).toBe(55);
+
+    wrapper.setState({
+      programLoaded: false,
+    });
+
+    wrapper.instance().selectProgram({
+      target: {
+        parentNode: {
+          id: 77,
+          dataset: {
+            owned: 'false',
+          },
           parentNode: {
             parentNode: {
               parentNode: {
-                id: 55,
-                dataset: {
-                  owned: 'true',
+                parentNode: {
                 },
               },
             },
           },
         },
-      }).then(() => {
-        expect(changeReadOnly).toHaveBeenCalledWith(false);
-        expect(fetchProgram).toHaveBeenCalledWith(33);
-        expect(wrapper.state('programLoaded')).toBe(true);
-
-        wrapper.setState({
-          programLoaded: false,
-        });
-
-        wrapper.instance().loadProgram({
-          target: {
-            parentNode: {
-              id: 77,
-              dataset: {
-                owned: 'false',
-              },
-              parentNode: {
-                parentNode: {
-                  parentNode: {
-                    parentNode: {
-                    },
-                  },
-                },
-              },
-            },
-          },
-        }).then(() => {
-          expect(changeReadOnly).toHaveBeenCalledWith(true);
-          expect(fetchProgram).toHaveBeenCalledWith(77);
-          expect(wrapper.state('programLoaded')).toBe(true);
-          done();
-        });
-      });
+      },
     });
+    expect(wrapper.state('programSelected')).toBe(77);
+    done();
   });
 });
