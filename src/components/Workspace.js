@@ -137,10 +137,10 @@ const toolbox = `
         </category>
       </category>
       <category name="text" colour="160">
-        <block type="more"></block>
+        <block type="text"></block>
         <block type="text_print"></block>
         <block type="text_join"></block>
-        <category name="text" colour="160">
+        <category name="more" colour="160">
           <block type="text_append"></block>
           <block type="text_length"></block>
           <block type="text_isEmpty"></block>
