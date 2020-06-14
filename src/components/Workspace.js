@@ -438,7 +438,8 @@ class Workspace extends Component {
   goToRunningState = () => {
     this.updateCode();
     this.runningEnabled = true;
-    this.runCode();
+    // TODO: Investigate why using a setTimeout here fixes https://github.com/rovercode/rovercode-ui/issues/234
+    setTimeout(this.runCode, 20);
   }
 
   goToStopState = () => {

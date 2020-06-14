@@ -616,7 +616,7 @@ describe('The Workspace component', () => {
     workspace.instance().goToRunningState();
 
     expect(workspace.instance().updateCode).toHaveBeenCalled();
-    expect(workspace.instance().runCode).toHaveBeenCalled();
+    expect(setTimeout).toHaveBeenCalled();
     expect(workspace.instance().runningEnabled).toBe(true);
   });
 
