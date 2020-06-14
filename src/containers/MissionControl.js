@@ -58,11 +58,6 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
 class MissionControl extends Component {
   constructor(props) {
     super(props);
-    const { code, fetchLesson } = props;
-
-    if (code.lessonId) {
-      fetchLesson(code.lessonId);
-    }
 
     this.state = {
       open: false,
@@ -76,6 +71,7 @@ class MissionControl extends Component {
       changeReadOnly,
       createProgram,
       fetchProgram,
+      fetchLesson,
       match,
       user,
     } = this.props;
@@ -86,6 +82,9 @@ class MissionControl extends Component {
         this.setState({
           programLoaded: true,
         });
+        if (result.value.lesson) {
+          fetchLesson(result.value.lesson);
+        }
       });
     } else {
       // No program already loaded, create a new one

@@ -252,7 +252,6 @@ describe('The MissionControl container', () => {
         name: 'test program',
         ownerName: 'phil',
         isReadOnly: false,
-        lessonId: 1,
       },
       sensor: {
         leftLightSensorReading: -1,
@@ -262,7 +261,15 @@ describe('The MissionControl container', () => {
         username: 'testuser',
       },
     });
-    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    const localFetchResult = {
+      value: {
+        user: {
+          username: 'testuser',
+        },
+        lesson: 50,
+      },
+    };
+    localStore.dispatch = jest.fn().mockResolvedValue(localFetchResult);
     wrapper = shallowWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
@@ -283,134 +290,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive();
 
-    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(1));
-  });
-
-  test('fetches lesson when present', () => {
-    const localStore = mockStore({
-      code: {
-        jsCode: '',
-        execution: null,
-        name: 'test program',
-        ownerName: 'phil',
-        isReadOnly: false,
-        lessonId: 1,
-      },
-      sensor: {
-        leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
-      },
-      user: {
-        username: 'testuser',
-      },
-    });
-    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
-    wrapper = shallowWithIntl(
-      <ReduxProvider store={store}>
-        <MemoryRouter>
-          <MissionControl store={localStore} match={match} />
-        </MemoryRouter>
-      </ReduxProvider>, {
-        context,
-        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
-      },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(1));
-  });
-
-  test('fetches lesson when present', () => {
-    const localStore = mockStore({
-      code: {
-        jsCode: '',
-        execution: null,
-        name: 'test program',
-        ownerName: 'phil',
-        isReadOnly: false,
-        lessonId: 1,
-      },
-      sensor: {
-        leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
-      },
-      user: {
-        username: 'testuser',
-      },
-    });
-    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
-    wrapper = shallowWithIntl(
-      <ReduxProvider store={store}>
-        <MemoryRouter>
-          <MissionControl store={localStore} match={match} />
-        </MemoryRouter>
-      </ReduxProvider>, {
-        context,
-        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
-      },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(1));
-  });
-
-  test('doesn\'t fetch lesson when not present', () => {
-    const localStore = mockStore({
-      code: {
-        jsCode: '',
-        execution: null,
-        name: 'test program',
-        ownerName: 'phil',
-        isReadOnly: false,
-        lessonId: null,
-      },
-      sensor: {
-        leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
-      },
-      user: {
-        username: 'testuser',
-      },
-    });
-    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
-    fetchLesson.mockReset();
-    wrapper = shallowWithIntl(
-      <ReduxProvider store={store}>
-        <MemoryRouter>
-          <MissionControl store={localStore} match={match} />
-        </MemoryRouter>
-      </ReduxProvider>, {
-        context,
-        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
-      },
-    ).dive().dive().dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive()
-      .dive();
-
-    expect(fetchLesson).not.toHaveBeenCalled();
+    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(50));
   });
 
   test('hides alert when not read only', () => {
