@@ -494,11 +494,9 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
-    workspace.setState({
-      interpreter: {
-        step: jest.fn(() => false),
-      },
-    });
+    workspace.instance().interpreter = {
+      step: jest.fn(() => false),
+    };
     const result = workspace.instance().stepCode();
 
     expect(result).toBe(false);
@@ -516,11 +514,9 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
-    workspace.setState({
-      interpreter: {
-        step: jest.fn(() => true),
-      },
-    });
+    workspace.instance().interpreter = {
+      step: jest.fn(() => true),
+    };
     workspace.instance().goToStopState = jest.fn();
     workspace.instance().highlightPause = true;
     workspace.update();
@@ -544,9 +540,7 @@ describe('The Workspace component', () => {
     const mockInterpreter = {
       step: jest.fn(() => true),
     };
-    workspace.setState({
-      interpreter: mockInterpreter,
-    });
+    workspace.instance().interpreter = mockInterpreter;
     workspace.update();
     workspace.instance().sleeping = true;
     const result = workspace.instance().stepCode();
@@ -568,11 +562,9 @@ describe('The Workspace component', () => {
       .dive()
       .dive();
 
-    workspace.setState({
-      interpreter: {
-        step: mockStep,
-      },
-    });
+    workspace.instance().interpreter = {
+      step: mockStep,
+    };
     workspace.instance().goToStopState = jest.fn();
     workspace.update();
     const result = workspace.instance().stepCode();
