@@ -37,6 +37,7 @@ import { checkAuthError, authHeader } from '@/actions/auth';
 import {
   changeReadOnly as actionChangeReadOnly,
   fetchLesson as actionFetchLesson,
+  clearLesson as actionClearLesson,
   createProgram as actionCreateProgram,
   fetchProgram as actionFetchProgram,
   remixProgram as actionRemixProgram,
@@ -49,6 +50,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     .catch(checkAuthError(dispatch)),
   fetchLesson: (id) => dispatch(actionFetchLesson(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
+  clearLesson: () => dispatch(actionClearLesson()),
   fetchProgram: (id) => dispatch(actionFetchProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
   createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
@@ -72,6 +74,7 @@ class MissionControl extends Component {
       createProgram,
       fetchProgram,
       fetchLesson,
+      clearLesson,
       match,
       user,
     } = this.props;
@@ -84,10 +87,13 @@ class MissionControl extends Component {
         });
         if (result.value.lesson) {
           fetchLesson(result.value.lesson);
+        } else {
+          clearLesson();
         }
       });
     } else {
       // No program already loaded, create a new one
+      clearLesson();
       const number = (Math.floor(Math.random() * 1000));
       createProgram(`Unnamed_Design_${number}`).then((result) => {
         changeReadOnly(false);
@@ -477,6 +483,7 @@ MissionControl.propTypes = {
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   fetchLesson: PropTypes.func.isRequired,
+  clearLesson: PropTypes.func.isRequired,
   createProgram: PropTypes.func.isRequired,
   fetchProgram: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,

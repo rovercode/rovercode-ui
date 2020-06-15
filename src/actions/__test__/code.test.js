@@ -14,6 +14,7 @@ import {
   clearProgram,
   remixProgram,
   fetchLesson,
+  clearLesson,
   EXECUTION_RUN,
 } from '../code';
 
@@ -161,6 +162,14 @@ describe('Code actions', () => {
       mock.restore();
       done();
     });
+  });
+
+  test('clearLesson', () => {
+    const action = clearLesson();
+    const { type, payload } = action;
+
+    expect(type).toEqual('CLEAR_LESSON');
+    expect(payload).toBeUndefined();
   });
 
   test('change program tags', (done) => {

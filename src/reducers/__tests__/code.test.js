@@ -24,6 +24,7 @@ import {
   FETCH_LESSON_PENDING,
   FETCH_LESSON_FULFILLED,
   FETCH_LESSON_REJECTED,
+  CLEAR_LESSON,
   REMIX_PROGRAM_PENDING,
   REMIX_PROGRAM_FULFILLED,
   REMIX_PROGRAM_REJECTED,
@@ -356,6 +357,18 @@ describe('The code reducer', () => {
     ).toEqual({
       isFetchingLesson: false,
       error: { detail },
+    });
+  });
+
+  test('should handle CLEAR_LESSON', () => {
+    expect(
+      reducer({}, {
+        type: CLEAR_LESSON,
+      }),
+    ).toEqual({
+      lessonId: null,
+      lessonTutorialLink: null,
+      lessonGoals: null,
     });
   });
 

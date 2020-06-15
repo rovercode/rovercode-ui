@@ -24,6 +24,7 @@ import { // eslint-disable-line import/first, import/order
   changeReadOnly,
   createProgram,
   fetchLesson,
+  clearLesson,
   fetchProgram,
   remixProgram,
 } from '@/actions/code';
@@ -171,6 +172,7 @@ describe('The MissionControl container', () => {
       .dive();
 
     expect(store.dispatch).toHaveBeenCalledWith(createProgram('Unnamed_Design_5'));
+    expect(store.dispatch).toHaveBeenCalledWith(clearLesson());
   });
 
   test('redirects after creating program', () => {
@@ -202,7 +204,7 @@ describe('The MissionControl container', () => {
     expect(wrapper.find(Redirect).exists()).toBe(true);
   });
 
-  test('fetches lesson when present', () => {
+  test('clears lesson when not present on fetched program', () => {
     const localStore = mockStore({
       code: {
         jsCode: '',
@@ -210,7 +212,7 @@ describe('The MissionControl container', () => {
         name: 'test program',
         ownerName: 'phil',
         isReadOnly: false,
-        lessonId: 1,
+        lessonId: null,
       },
       sensor: {
         leftLightSensorReading: -1,
@@ -241,10 +243,11 @@ describe('The MissionControl container', () => {
       .dive()
       .dive();
 
-    expect(localStore.dispatch).toHaveBeenCalledWith(fetchLesson(1));
+    expect(localStore.dispatch).toHaveBeenCalledWith(clearLesson());
   });
 
-  test('fetches lesson when present', () => {
+
+  test('fetches lesson when present on fetched program', () => {
     const localStore = mockStore({
       code: {
         jsCode: '',
