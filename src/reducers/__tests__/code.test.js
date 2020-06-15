@@ -226,14 +226,14 @@ describe('The code reducer', () => {
     });
   });
 
-  test('should handle SAVE_PROGRAM_FULFILLED', () => {
+  test('should handle SAVE_PROGRAM_FULFILLED where program ID matches state', () => {
     const name = 'mybd';
     const id = 1;
     const xmlCode = '<xml></xml>';
     const lessonId = 2;
 
     expect(
-      reducer({}, {
+      reducer({ id: 1 }, {
         type: SAVE_PROGRAM_FULFILLED,
         payload: {
           name,
@@ -248,6 +248,28 @@ describe('The code reducer', () => {
       id,
       xmlCode,
       lessonId,
+    });
+  });
+
+  test('should handle SAVE_PROGRAM_FULFILLED where program ID doesn\'t matchstate', () => {
+    const name = 'mybd';
+    const id = 1;
+    const xmlCode = '<xml></xml>';
+    const lessonId = 2;
+
+    expect(
+      reducer({ id: 7 }, {
+        type: SAVE_PROGRAM_FULFILLED,
+        payload: {
+          name,
+          id,
+          content: xmlCode,
+          lesson: lessonId,
+        },
+      }),
+    ).toEqual({
+      id: 7,
+      isSaving: false,
     });
   });
 
