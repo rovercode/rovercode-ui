@@ -187,6 +187,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
         <MissionControl
           allCookies={Object {}}
           changeReadOnly={[Function]}
+          clearLesson={[Function]}
           code={
             Object {
               "id": 123,
