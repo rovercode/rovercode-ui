@@ -139,10 +139,18 @@ export default function code(
         isSaving: true,
       };
     case SAVE_PROGRAM_FULFILLED:
-      return {
-        ...state,
-        isSaving: false,
-      };
+      return state.id === action.payload.id ?
+        {
+          ...state,
+          isSaving: false,
+          xmlCode: action.payload.content,
+          id: action.payload.id,
+          name: action.payload.name,
+          lessonId: action.payload.lesson,
+        } : {
+          ...state,
+          isSaving: false,
+        };
     case SAVE_PROGRAM_REJECTED:
       return {
         ...state,
