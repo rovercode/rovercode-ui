@@ -181,4 +181,17 @@ describe('Blockly API', () => {
     // 11 characters in 'hello world' times 1500 ms each
     expect(beginSleep).toHaveBeenCalledWith(16500);
   });
+
+  test('handles displayMessage with single charatcter message by padding', () => {
+    const displayMessageHandler = interpreter.createNativeFunction.mock.calls[8][0];
+
+    const result = displayMessageHandler({ data: 'h' });
+
+    expect(result).toBe(false);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
+    expect(sendToRover).toHaveBeenCalledWith('disp: h \n');
+    expect(beginSleep).toHaveBeenCalled();
+    // 3 characters in ' h ' times 1500 ms each
+    expect(beginSleep).toHaveBeenCalledWith(4500);
+  });
 });

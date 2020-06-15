@@ -137,10 +137,10 @@ const toolbox = `
         </category>
       </category>
       <category name="text" colour="160">
-        <block type="more"></block>
+        <block type="text"></block>
         <block type="text_print"></block>
         <block type="text_join"></block>
-        <category name="text" colour="160">
+        <category name="more" colour="160">
           <block type="text_append"></block>
           <block type="text_length"></block>
           <block type="text_isEmpty"></block>
@@ -185,13 +185,13 @@ class Workspace extends Component {
     this.sleeping = false;
     this.runningEnabled = false;
     this.highlightPause = false;
+    this.interpreter = null;
 
     this.api = new BlocklyApi(this.highlightBlock, this.beginSleep,
       this.sensorStateCache, writeToConsole, this.sendToRover);
 
     this.state = {
       workspace: null,
-      interpreter: null,
     };
   }
 
@@ -361,9 +361,7 @@ class Workspace extends Component {
 
     updateJsCode(code);
 
-    this.setState({
-      interpreter: new Interpreter(code, this.api.initApi),
-    });
+    this.interpreter = new Interpreter(code, this.api.initApi);
 
     return code;
   }
@@ -402,14 +400,14 @@ class Workspace extends Component {
   }
 
   stepCode = () => {
-    const { interpreter, workspace } = this.state;
+    const { workspace } = this.state;
     const { rover } = this.props;
 
     if (this.sleeping || rover.isSending) {
       return true;
     }
 
-    const ok = interpreter.step();
+    const ok = this.interpreter.step();
     if (!ok) {
       // Program complete, no more code to execute.
       workspace.highlightBlock(null);

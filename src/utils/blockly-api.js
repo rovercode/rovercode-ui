@@ -26,6 +26,10 @@ class BlocklyApi {
   }
 
   sendDisplayCommand = (message) => {
+    if (message.length < 2) {
+      // pad with spaces to ensure scrolling
+      message = ` ${message} `;
+    }
     this.sendToRover(`disp:${message}\n`);
     // Give 1.5 seconds per letter to display
     this.beginSleep(message.length * 1500);
