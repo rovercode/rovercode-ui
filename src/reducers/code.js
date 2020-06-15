@@ -139,8 +139,8 @@ export default function code(
         isSaving: true,
       };
     case SAVE_PROGRAM_FULFILLED:
-      return state.id === action.payload.id ?
-        {
+      return state.id === action.payload.id
+        ? {
           ...state,
           isSaving: false,
           xmlCode: action.payload.content,

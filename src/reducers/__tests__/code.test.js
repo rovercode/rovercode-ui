@@ -233,7 +233,7 @@ describe('The code reducer', () => {
     const lessonId = 2;
 
     expect(
-      reducer({id: 1}, {
+      reducer({ id: 1 }, {
         type: SAVE_PROGRAM_FULFILLED,
         payload: {
           name,
@@ -258,7 +258,7 @@ describe('The code reducer', () => {
     const lessonId = 2;
 
     expect(
-      reducer({id: 7}, {
+      reducer({ id: 7 }, {
         type: SAVE_PROGRAM_FULFILLED,
         payload: {
           name,
