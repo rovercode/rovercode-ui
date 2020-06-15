@@ -23,6 +23,7 @@ export const FETCH_LESSON = 'FETCH_LESSON';
 export const FETCH_LESSON_PENDING = `${FETCH_LESSON}_PENDING`;
 export const FETCH_LESSON_FULFILLED = `${FETCH_LESSON}_FULFILLED`;
 export const FETCH_LESSON_REJECTED = `${FETCH_LESSON}_REJECTED`;
+export const CLEAR_LESSON = 'CLEAR_LESSON';
 
 export const UPDATE_JSCODE = 'UPDATE_JSCODE';
 export const UPDATE_XMLCODE = 'UPDATE_XMLCODE';
@@ -115,6 +116,9 @@ export const fetchLesson = (id, xhroptions) => ({
     )),
 });
 
+export const clearLesson = () => ({
+  type: CLEAR_LESSON,
+});
 
 export const changeProgramTags = (id, tags, xhroptions) => ({
   type: CHANGE_PROGRAM_TAGS,

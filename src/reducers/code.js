@@ -22,6 +22,7 @@ import {
   FETCH_LESSON_PENDING,
   FETCH_LESSON_FULFILLED,
   FETCH_LESSON_REJECTED,
+  CLEAR_LESSON,
   REMIX_PROGRAM_PENDING,
   REMIX_PROGRAM_FULFILLED,
   REMIX_PROGRAM_REJECTED,
@@ -188,6 +189,13 @@ export default function code(
         ...state,
         isFetchingLesson: false,
         error: action.payload,
+      };
+    case CLEAR_LESSON:
+      return {
+        ...state,
+        lessonId: null,
+        lessonTutorialLink: null,
+        lessonGoals: null,
       };
     case REMIX_PROGRAM_PENDING:
       return {
