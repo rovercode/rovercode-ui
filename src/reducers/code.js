@@ -142,10 +142,6 @@ export default function code(
       return {
         ...state,
         isSaving: false,
-        xmlCode: action.payload.content,
-        id: action.payload.id,
-        name: action.payload.name,
-        lessonId: action.payload.lesson,
       };
     case SAVE_PROGRAM_REJECTED:
       return {

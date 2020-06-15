@@ -322,6 +322,7 @@ class Workspace extends Component {
     });
 
     workspace.addChangeListener(
+      // this.updateCode
       debounce(
         parseInt(SAVE_DEBOUNCE_TIME, 10) || 5000, this.updateCode, // eslint-disable-line no-undef
       ),

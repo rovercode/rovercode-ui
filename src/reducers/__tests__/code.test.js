@@ -244,10 +244,6 @@ describe('The code reducer', () => {
       }),
     ).toEqual({
       isSaving: false,
-      name,
-      id,
-      xmlCode,
-      lessonId,
     });
   });
 
