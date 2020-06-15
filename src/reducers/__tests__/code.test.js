@@ -361,9 +361,6 @@ describe('The code reducer', () => {
   });
 
   test('should handle CLEAR_LESSON', () => {
-    const lessonTutorialLink = 'youtu.be/asdf';
-    const lessonGoals = 'to do a thing';
-
     expect(
       reducer({}, {
         type: CLEAR_LESSON,

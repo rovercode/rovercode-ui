@@ -483,6 +483,7 @@ MissionControl.propTypes = {
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,
   fetchLesson: PropTypes.func.isRequired,
+  clearLesson: PropTypes.func.isRequired,
   createProgram: PropTypes.func.isRequired,
   fetchProgram: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,
