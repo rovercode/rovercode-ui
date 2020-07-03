@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ProblemReporter component renders on the page with no errors 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(Button))
+    color="secondary"
+    onClick={[Function]}
+    variant="contained"
+  >
+    Problem?
+  </WithStyles(ForwardRef(Button))>
+  <WithStyles(ForwardRef(Dialog))
+    maxWidth="md"
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(ForwardRef(DialogContent))
+      dividers={true}
+    >
+      <WithStyles(ForwardRef(Grid))
+        container={true}
+        direction="column"
+        spacing={2}
+      >
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(Typography))
+            gutterBottom={true}
+            variant="h4"
+          >
+            <FormattedMessage
+              defaultMessage="Something not working correctly?"
+              id="app.problem_reporter.title"
+              values={Object {}}
+            />
+          </WithStyles(ForwardRef(Typography))>
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(Typography))
+            gutterBottom={true}
+            variant="h5"
+          >
+            <FormattedMessage
+              defaultMessage="Tell us about it, and we can try to fix it."
+              id="app.problem_reporter.tell_us"
+              values={Object {}}
+            />
+          </WithStyles(ForwardRef(Typography))>
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(TextField))
+            fullWidth={true}
+            id="outlined-multiline-static"
+            label="What were you working on doing?"
+            multiline={true}
+            onChange={[Function]}
+            placeholder="I was trying to write code that..."
+            rows={4}
+            variant="outlined"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(TextField))
+            fullWidth={true}
+            id="outlined-multiline-static"
+            label="What did you expect to happen?"
+            multiline={true}
+            onChange={[Function]}
+            placeholder="I expected..."
+            rows={4}
+            variant="outlined"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+        >
+          <WithStyles(ForwardRef(TextField))
+            fullWidth={true}
+            id="outlined-multiline-static"
+            label="What happened instead?"
+            multiline={true}
+            onChange={[Function]}
+            placeholder="Instead..."
+            rows={4}
+            variant="outlined"
+          />
+        </WithStyles(ForwardRef(Grid))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(DialogContent))>
+    <WithStyles(ForwardRef(DialogActions))>
+      <WithStyles(ForwardRef(Typography))
+        gutterBottom={true}
+        variant="subtitle2"
+      >
+        <FormattedMessage
+          defaultMessage="Thank you so much for reporting this issue. We will contact you via the email address on your Rovercode account with our resolution. In the meantime, it's possible that you can find how others have worked around this issue on the Community Program page."
+          id="app.problem_reporter.thank_you"
+          values={Object {}}
+        />
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Button))
+        color="primary"
+        disabled={false}
+        onClick={[Function]}
+        variant="contained"
+      >
+        <FormattedMessage
+          defaultMessage="Submit"
+          id="app.problem_reporter.submit"
+          values={Object {}}
+        />
+      </WithStyles(ForwardRef(Button))>
+    </WithStyles(ForwardRef(DialogActions))>
+  </WithStyles(ForwardRef(Dialog))>
+</Fragment>
+`;
