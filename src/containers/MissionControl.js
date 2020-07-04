@@ -32,6 +32,7 @@ import Indicator from '@/components/Indicator';
 import NumericSensorReadout from '@/components/NumericSensorReadout';
 import ProgramName from '@/components/ProgramName';
 import ProgramTags from '@/components/ProgramTags';
+import ProblemReporter from '@/components/ProblemReporter';
 import Workspace from '@/components/Workspace';
 import { checkAuthError, authHeader } from '@/actions/auth';
 import {
@@ -429,6 +430,15 @@ class MissionControl extends Component {
                   defaultMessage="View JavaScript"
                 />
               </CodeViewer>
+            </Grid>
+            <Grid item>
+              <ProblemReporter>
+                <FormattedMessage
+                  id="app.mission_control.report_problem"
+                  description="Button label for displaying modal to report a problem with a program"
+                  defaultMessage="Problem?"
+                />
+              </ProblemReporter>
             </Grid>
           </Grid>
         </Grid>
