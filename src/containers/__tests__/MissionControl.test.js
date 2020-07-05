@@ -17,6 +17,7 @@ jest.mock('@/components/Control', () => () => <div />);
 jest.mock('@/components/Indicator', () => () => <div />);
 jest.mock('@/components/NumericSensorReadout', () => () => <div />);
 jest.mock('@/components/ProgramName', () => () => <div />);
+jest.mock('@/components/ProblemReporter', () => () => <div />);
 jest.mock('@/components/Workspace', () => () => <div />);
 jest.mock('@/actions/code');
 

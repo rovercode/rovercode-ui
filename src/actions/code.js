@@ -19,6 +19,10 @@ export const REMIX_PROGRAM = 'REMIX_PROGRAM';
 export const REMIX_PROGRAM_PENDING = `${REMIX_PROGRAM}_PENDING`;
 export const REMIX_PROGRAM_FULFILLED = `${REMIX_PROGRAM}_FULFILLED`;
 export const REMIX_PROGRAM_REJECTED = `${REMIX_PROGRAM}_REJECTED`;
+export const REPORT_PROGRAM = 'REPORT_PROGRAM';
+export const REPORT_PROGRAM_PENDING = `${REPORT_PROGRAM}_PENDING`;
+export const REPORT_PROGRAM_FULFILLED = `${REPORT_PROGRAM}_FULFILLED`;
+export const REPORT_PROGRAM_REJECTED = `${REPORT_PROGRAM}_REJECTED`;
 export const FETCH_LESSON = 'FETCH_LESSON';
 export const FETCH_LESSON_PENDING = `${FETCH_LESSON}_PENDING`;
 export const FETCH_LESSON_FULFILLED = `${FETCH_LESSON}_FULFILLED`;
@@ -133,6 +137,14 @@ export const changeProgramTags = (id, tags, xhroptions) => ({
 export const remixProgram = (id, xhroptions) => ({
   type: REMIX_PROGRAM,
   payload: axios.post(`/api/v1/block-diagrams/${id}/remix/`, null, xhroptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const reportProgram = (id, description, xhroptions) => ({
+  type: REPORT_PROGRAM,
+  payload: axios.post(`/api/v1/block-diagrams/${id}/report/`, { description }, xhroptions)
     .then(({ data }) => (
       data
     )),
