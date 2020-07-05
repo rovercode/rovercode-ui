@@ -26,6 +26,9 @@ import {
   REMIX_PROGRAM_PENDING,
   REMIX_PROGRAM_FULFILLED,
   REMIX_PROGRAM_REJECTED,
+  REPORT_PROGRAM_PENDING,
+  REPORT_PROGRAM_FULFILLED,
+  REPORT_PROGRAM_REJECTED,
   CLEAR_PROGRAM,
 } from '../actions/code';
 
@@ -42,6 +45,7 @@ const defaultState = {
   isChangingName: false,
   isChangingProgramTags: false,
   isRemixing: false,
+  isReporting: false,
   error: null,
   isReadOnly: false,
   ownerName: null,
@@ -219,6 +223,22 @@ export default function code(
       return {
         ...state,
         isRemixing: false,
+        error: action.payload,
+      };
+    case REPORT_PROGRAM_PENDING:
+      return {
+        ...state,
+        isReporting: true,
+      };
+    case REPORT_PROGRAM_FULFILLED:
+      return {
+        ...state,
+        isReporting: false,
+      };
+    case REPORT_PROGRAM_REJECTED:
+      return {
+        ...state,
+        isReporting: false,
         error: action.payload,
       };
     case CHANGE_READ_ONLY:

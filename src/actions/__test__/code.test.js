@@ -13,6 +13,7 @@ import {
   createProgram,
   clearProgram,
   remixProgram,
+  reportProgram,
   fetchLesson,
   clearLesson,
   EXECUTION_RUN,
@@ -207,6 +208,19 @@ describe('Code actions', () => {
     expect(type).toEqual('REMIX_PROGRAM');
     action.payload.then((result) => {
       expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
+  });
+
+  test('report program', (done) => {
+    const mock = new MockAdapter(axios);
+    mock.onPost('/api/v1/block-diagrams/1/report/').reply(200);
+
+    const action = reportProgram(1, 'Something went wrong');
+    const { type } = action;
+    expect(type).toEqual('REPORT_PROGRAM');
+    action.payload.then(() => {
       mock.restore();
       done();
     });

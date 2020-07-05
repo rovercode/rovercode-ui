@@ -28,6 +28,9 @@ import {
   REMIX_PROGRAM_PENDING,
   REMIX_PROGRAM_FULFILLED,
   REMIX_PROGRAM_REJECTED,
+  REPORT_PROGRAM_PENDING,
+  REPORT_PROGRAM_FULFILLED,
+  REPORT_PROGRAM_REJECTED,
   CLEAR_PROGRAM,
 } from '../../actions/code';
 
@@ -446,6 +449,42 @@ describe('The code reducer', () => {
     });
   });
 
+  test('should handle REPORT_PROGRAM_PENDING', () => {
+    expect(
+      reducer({}, {
+        type: REPORT_PROGRAM_PENDING,
+      }),
+    ).toEqual({
+      isReporting: true,
+    });
+  });
+
+  test('should handle REPORT_PROGRAM_FULFILLED', () => {
+    expect(
+      reducer({}, {
+        type: REPORT_PROGRAM_FULFILLED,
+      }),
+    ).toEqual({
+      isReporting: false,
+    });
+  });
+
+  test('should handle REPORT_PROGRAM_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: REPORT_PROGRAM_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isReporting: false,
+      error: { detail },
+    });
+  });
+
   test('should handle CHANGE_READ_ONLY', () => {
     expect(
       reducer({}, {
@@ -477,6 +516,7 @@ describe('The code reducer', () => {
       isChangingName: false,
       isChangingProgramTags: false,
       isRemixing: false,
+      isReporting: false,
       error: null,
       isReadOnly: false,
       isFetchingLesson: false,
