@@ -2,6 +2,7 @@ import {
   changeLeftSensorState,
   changeRightSensorState,
   changeLightSensorReadings,
+  changeLineSensorReadings,
   changeBatteryVoltageReading,
   COVERED,
   NOT_COVERED,
@@ -30,6 +31,14 @@ describe('Sensor actions', () => {
     const { type, payload } = action;
 
     expect(type).toEqual('CHANGE_LIGHT_SENSOR_READINGS');
+    expect(payload).toEqual({ leftReading: 1, rightReading: 2 });
+  });
+
+  test('changeLineSensorReadings', () => {
+    const action = changeLineSensorReadings(1, 2);
+    const { type, payload } = action;
+
+    expect(type).toEqual('CHANGE_LINE_SENSOR_READINGS');
     expect(payload).toEqual({ leftReading: 1, rightReading: 2 });
   });
 

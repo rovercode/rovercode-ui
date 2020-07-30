@@ -3,6 +3,7 @@ import {
   CHANGE_LEFT_SENSOR_STATE,
   CHANGE_RIGHT_SENSOR_STATE,
   CHANGE_LIGHT_SENSOR_READINGS,
+  CHANGE_LINE_SENSOR_READINGS,
   CHANGE_BATTERY_VOLTAGE_READING,
   COVERED,
   NOT_COVERED,
@@ -40,6 +41,18 @@ describe('The sensor reducer', () => {
     ).toEqual({
       leftLightSensorReading: 1,
       rightLightSensorReading: 2,
+    });
+  });
+
+  test('should handle CHANGE_LINE_SENSOR_READINGS', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_LINE_SENSOR_READINGS,
+        payload: { leftReading: 1, rightReading: 2 },
+      }),
+    ).toEqual({
+      leftLineSensorReading: 1,
+      rightLineSensorReading: 2,
     });
   });
 

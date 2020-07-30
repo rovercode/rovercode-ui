@@ -2,6 +2,7 @@ import {
   CHANGE_LEFT_SENSOR_STATE,
   CHANGE_RIGHT_SENSOR_STATE,
   CHANGE_LIGHT_SENSOR_READINGS,
+  CHANGE_LINE_SENSOR_READINGS,
   CHANGE_BATTERY_VOLTAGE_READING,
   NOT_COVERED,
 } from '../actions/sensor';
@@ -32,6 +33,12 @@ export default function sensor(
         ...state,
         leftLightSensorReading: action.payload.leftReading,
         rightLightSensorReading: action.payload.rightReading,
+      };
+    case CHANGE_LINE_SENSOR_READINGS:
+      return {
+        ...state,
+        leftLineSensorReading: action.payload.leftReading,
+        rightLineSensorReading: action.payload.rightReading,
       };
     case CHANGE_BATTERY_VOLTAGE_READING:
       return {
