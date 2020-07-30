@@ -13,6 +13,8 @@ export default function sensor(
     right: NOT_COVERED,
     leftLightSensorReading: null,
     rightLightSensorReading: null,
+    leftLineSensorReading: null,
+    rightLineSensorReading: null,
     batteryVoltageReading: null,
   },
   action,

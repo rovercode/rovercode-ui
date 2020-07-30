@@ -100,7 +100,7 @@
     "js-interpreter": "^1.4.6",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
-    "node-blockly": "git+https://github.com/rovercode/node-blockly.git#f7b9c912d65c8cfb925c7b954f42a3b2bf8a7d5c",
+    "node-blockly": "git+https://github.com/rovercode/node-blockly.git#38f70e8912f9fa3d7f6b5df3d05e5bc01df998d1",
     "prop-types": "^15.6.2",
     "query-string": "^6.12.0",
     "react": "^16.13.1",

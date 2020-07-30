@@ -350,16 +350,6 @@ describe('The RoverConnection component', () => {
     expect(write).toHaveBeenCalledWith('Unknown rover message received.');
   });
 
-  test('outputs line sensor state on message', () => {
-    wrapper.instance().onMessage({
-      target: {
-        value: generateDataView(Buffer.from('line-sens:100,200')),
-      },
-    });
-
-    expect(write).toHaveBeenCalledWith('Line Sensor - L:100 R:200');
-  });
-
   test('outputs distance sensor state on message', () => {
     wrapper.instance().onMessage({
       target: {
