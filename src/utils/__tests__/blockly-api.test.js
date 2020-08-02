@@ -23,6 +23,8 @@ describe('Blockly API', () => {
     sensorStateCache.B_BUTTON = false;
     sensorStateCache.LEFT_LIGHT = 1;
     sensorStateCache.RIGHT_LIGHT = 2;
+    sensorStateCache.LEFT_LINE = 3;
+    sensorStateCache.RIGHT_LINE = 4;
 
     api = new BlocklyApi(highlightBlock, beginSleep, sensorStateCache, writeToConsole, sendToRover);
     api.initApi(interpreter);
@@ -115,8 +117,17 @@ describe('Blockly API', () => {
     expect(interpreter.createPrimitive).toHaveBeenCalledWith(1);
   });
 
+  test('handles getLineSensorValue', () => {
+    const getLineSensorHandler = interpreter.createNativeFunction.mock.calls[5][0];
+
+    getLineSensorHandler('LEFT');
+
+    expect(interpreter.createPrimitive).toHaveBeenCalled();
+    expect(interpreter.createPrimitive).toHaveBeenCalledWith(3);
+  });
+
   test('handles buttonHasBeenPressed', () => {
-    const buttonHasBeenPressedHandler = interpreter.createNativeFunction.mock.calls[5][0];
+    const buttonHasBeenPressedHandler = interpreter.createNativeFunction.mock.calls[6][0];
 
     buttonHasBeenPressedHandler('A');
 
@@ -125,7 +136,7 @@ describe('Blockly API', () => {
   });
 
   test('handles sleep', () => {
-    const sleepHandler = interpreter.createNativeFunction.mock.calls[6][0];
+    const sleepHandler = interpreter.createNativeFunction.mock.calls[7][0];
 
     sleepHandler(100);
 
@@ -136,7 +147,7 @@ describe('Blockly API', () => {
   });
 
   test('handles setChainableRgbLed', () => {
-    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[7][0];
+    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
 
     const result = setChainableRgbLedHandler({ data: 0 }, { data: '#ff0042' });
 
@@ -152,7 +163,7 @@ describe('Blockly API', () => {
   });
 
   test('handles setChainableRgbLed missing LED id', () => {
-    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[7][0];
+    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
 
     const result = setChainableRgbLedHandler({ data: null }, { data: '#ff0042' });
 
@@ -161,7 +172,7 @@ describe('Blockly API', () => {
   });
 
   test('handles setChainableRgbLed missing color', () => {
-    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[7][0];
+    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
 
     const result = setChainableRgbLedHandler({ data: 0 }, { data: null });
 
@@ -170,7 +181,7 @@ describe('Blockly API', () => {
   });
 
   test('handles displayMessage', () => {
-    const displayMessageHandler = interpreter.createNativeFunction.mock.calls[8][0];
+    const displayMessageHandler = interpreter.createNativeFunction.mock.calls[9][0];
 
     const result = displayMessageHandler({ data: 'hello world' });
 
@@ -183,7 +194,7 @@ describe('Blockly API', () => {
   });
 
   test('handles displayMessage with single charatcter message by padding', () => {
-    const displayMessageHandler = interpreter.createNativeFunction.mock.calls[8][0];
+    const displayMessageHandler = interpreter.createNativeFunction.mock.calls[9][0];
 
     const result = displayMessageHandler({ data: 'h' });
 

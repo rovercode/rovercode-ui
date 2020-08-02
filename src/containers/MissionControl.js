@@ -165,6 +165,12 @@ class MissionControl extends Component {
       defaultMessage: 'Light Sensors',
     });
 
+    const lineSensorsTitle = intl.formatMessage({
+      id: 'app.mission_control.line_sensors',
+      description: 'Describes the line sensors section',
+      defaultMessage: 'Line Sensors',
+    });
+
     const unitsLabel = intl.formatMessage({
       id: 'app.mission_control.units',
       description: 'Describes a value in units',
@@ -216,6 +222,19 @@ class MissionControl extends Component {
       {
         label: rightLabel,
         reading: sensor.rightLightSensorReading,
+        maxReading: 1023,
+      },
+    ];
+
+    const lineSensorReadings = [
+      {
+        label: leftLabel,
+        reading: sensor.leftLineSensorReading,
+        maxReading: 1023,
+      },
+      {
+        label: rightLabel,
+        reading: sensor.rightLineSensorReading,
         maxReading: 1023,
       },
     ];
@@ -400,6 +419,12 @@ class MissionControl extends Component {
                 />
                 <Divider />
                 <NumericSensorReadout
+                  title={lineSensorsTitle}
+                  readings={lineSensorReadings}
+                  unit={unitsLabel}
+                />
+                <Divider />
+                <NumericSensorReadout
                   title={batteryTitle}
                   readings={batteryVoltageReading}
                   unit={milliVoltsLabel}
@@ -489,6 +514,8 @@ MissionControl.propTypes = {
   sensor: PropTypes.shape({
     leftLightSensorReading: PropTypes.number,
     rightLightSensorReading: PropTypes.number,
+    leftLineSensorReading: PropTypes.number,
+    rightLineSensorReading: PropTypes.number,
     batteryVoltageReading: PropTypes.number,
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,

@@ -8,6 +8,7 @@ let changeExecutionState;
 let changeLeftSensorState;
 let changeRightSensorState;
 let changeLightSensorReadings;
+let changeLineSensorReadings;
 let changeBatteryVoltageReading;
 let connectToRover;
 let disconnectFromRover;
@@ -42,6 +43,7 @@ describe('The RoverConnection component', () => {
     changeLeftSensorState = jest.fn();
     changeRightSensorState = jest.fn();
     changeLightSensorReadings = jest.fn();
+    changeLineSensorReadings = jest.fn();
     changeBatteryVoltageReading = jest.fn();
     connectToRover = jest.fn().mockResolvedValue();
     disconnectFromRover = jest.fn();
@@ -54,6 +56,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeLineSensorReadings={changeLineSensorReadings}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -73,6 +76,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeLineSensorReadings={changeLineSensorReadings}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -98,6 +102,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeLineSensorReadings={changeLineSensorReadings}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -122,6 +127,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeLineSensorReadings={changeLineSensorReadings}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -149,6 +155,7 @@ describe('The RoverConnection component', () => {
         changeLeftSensorState={changeLeftSensorState}
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
+        changeLineSensorReadings={changeLineSensorReadings}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -202,6 +209,40 @@ describe('The RoverConnection component', () => {
     });
 
     expect(changeLightSensorReadings).toHaveBeenCalledWith(600, 100);
+  });
+
+  test('changes line sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('line-sens:600,600')),
+      },
+    });
+
+    expect(changeLineSensorReadings).toHaveBeenCalledWith(600, 600);
+
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('line-sens:100,600')),
+      },
+    });
+
+    expect(changeLineSensorReadings).toHaveBeenCalledWith(100, 600);
+
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('line-sens:100,100')),
+      },
+    });
+
+    expect(changeLineSensorReadings).toHaveBeenCalledWith(100, 100);
+
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('line-sens:600,100')),
+      },
+    });
+
+    expect(changeLineSensorReadings).toHaveBeenCalledWith(600, 100);
   });
 
   test('changes button state on message', () => {
@@ -307,16 +348,6 @@ describe('The RoverConnection component', () => {
     expect(changeRightSensorState).not.toHaveBeenCalled();
     expect(changeLeftSensorState).not.toHaveBeenCalled();
     expect(write).toHaveBeenCalledWith('Unknown rover message received.');
-  });
-
-  test('outputs line sensor state on message', () => {
-    wrapper.instance().onMessage({
-      target: {
-        value: generateDataView(Buffer.from('line-sens:100,200')),
-      },
-    });
-
-    expect(write).toHaveBeenCalledWith('Line Sensor - L:100 R:200');
   });
 
   test('outputs distance sensor state on message', () => {

@@ -65,7 +65,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       rover: {
         isFetching: false,
@@ -217,7 +219,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -259,7 +263,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -308,7 +314,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -349,7 +357,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -425,7 +435,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -469,7 +481,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -512,7 +526,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -554,7 +570,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -597,7 +615,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
@@ -657,7 +677,9 @@ describe('The MissionControl container', () => {
       },
       sensor: {
         leftLightSensorReading: -1,
-        rightLIghtSensorReading: -2,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
       },
       user: {
         username: 'testuser',
