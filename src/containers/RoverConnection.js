@@ -12,6 +12,7 @@ import {
   changeLeftSensorState as actionChangeLeftSensorState,
   changeRightSensorState as actionChangeRightSensorState,
   changeLightSensorReadings as actionChangeLightSensorReadings,
+  changeLineSensorReadings as actionChangeLineSensorReadings,
   changeBatteryVoltageReading as actionChangeBatteryVoltageReading,
 } from '@/actions/sensor';
 import RoverConnection from '@/components/RoverConnection';
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
   changeRightSensorState: (state) => dispatch(actionChangeRightSensorState(state)),
   changeLightSensorReadings: (leftReading, rightReading) => dispatch(
     actionChangeLightSensorReadings(leftReading, rightReading),
+  ),
+  changeLineSensorReadings: (leftReading, rightReading) => dispatch(
+    actionChangeLineSensorReadings(leftReading, rightReading),
   ),
   changeBatteryVoltageReading: (voltageReading) => dispatch(
     actionChangeBatteryVoltageReading(voltageReading),

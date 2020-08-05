@@ -2871,6 +2871,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                     changeExecutionState={[Function]}
                                                     changeLeftSensorState={[Function]}
                                                     changeLightSensorReadings={[Function]}
+                                                    changeLineSensorReadings={[Function]}
                                                     changeRightSensorState={[Function]}
                                                     connectToRover={[Function]}
                                                     disconnectFromRover={[Function]}
