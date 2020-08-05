@@ -44,6 +44,8 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
         leftLightSensorReading: -1,
         rightLightSensorReading: -1,
+        leftLineSensorReading: -1,
+        rightLineSensorReading: -1,
       },
       rover: {
         transmitChannel: {
@@ -314,6 +316,8 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
         leftLightSensorReading: -1,
         rightLightSensorReading: -1,
+        leftLineSensorReading: -1,
+        rightLineSensorReading: -1,
       },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
@@ -681,6 +685,8 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
         leftLightSensorReading: -1,
         rightLightSensorReading: -1,
+        leftLineSensorReading: -1,
+        rightLineSensorReading: -1,
       },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();
@@ -778,6 +784,8 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
         leftLightSensorReading: -1,
         rightLightSensorReading: -1,
+        leftLineSensorReading: -1,
+        rightLineSensorReading: -1,
       },
     });
 
@@ -790,6 +798,8 @@ describe('The Workspace component', () => {
         right: COVERED,
         leftLightSensorReading: -1,
         rightLightSensorReading: -1,
+        leftLineSensorReading: -1,
+        rightLineSensorReading: -1,
       },
     });
 
@@ -802,6 +812,8 @@ describe('The Workspace component', () => {
         right: COVERED,
         leftLightSensorReading: -1,
         rightLightSensorReading: -1,
+        leftLineSensorReading: -1,
+        rightLineSensorReading: -1,
       },
     });
 
@@ -837,6 +849,8 @@ describe('The Workspace component', () => {
         right: NOT_COVERED,
         leftLightSensorReading: -1,
         rightLightSensorReading: -1,
+        leftLineSensorReading: -1,
+        rightLineSensorReading: -1,
       },
     });
     localStore.dispatch = jest.fn().mockResolvedValue();

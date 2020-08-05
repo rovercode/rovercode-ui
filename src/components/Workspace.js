@@ -53,6 +53,7 @@ const toolbox = `
       </category>
       <category name="sensors and buttons" colour="160">
         <block type="light_sensor_value"></block>
+        <block type="line_sensor_value"></block>
         <block type="button_press"></block>
       </category>
       <category name="display" colour="230">
@@ -182,6 +183,10 @@ class Workspace extends Component {
     this.sensorStateCache = [];
     this.sensorStateCache.A_BUTTON = false;
     this.sensorStateCache.B_BUTTON = false;
+    this.sensorStateCache.LEFT_LIGHT = -1;
+    this.sensorStateCache.RIGHT_LIGHT = -1;
+    this.sensorStateCache.LEFT_LINE = -1;
+    this.sensorStateCache.RIGHT_LINE = -1;
     this.sleeping = false;
     this.runningEnabled = false;
     this.highlightPause = false;
@@ -219,7 +224,8 @@ class Workspace extends Component {
     const { code: nextCode, sensor, rover: nextRover } = this.props;
 
     this.updateSensorStateCache(sensor.left, sensor.right,
-      sensor.leftLightSensorReading, sensor.rightLightSensorReading);
+      sensor.leftLightSensorReading, sensor.rightLightSensorReading,
+      sensor.leftLineSensorReading, sensor.rightLineSensorReading);
 
     if (currentCode && currentCode.isReadOnly && nextCode && !nextCode.isReadOnly) {
       this.createWorkspace();
@@ -266,11 +272,15 @@ class Workspace extends Component {
     rightState,
     leftLightSensorReading,
     rightLightSensorReading,
+    leftLineSensorReading,
+    rightLineSensorReading,
   ) => {
     this.sensorStateCache.A_BUTTON = leftState === COVERED;
     this.sensorStateCache.B_BUTTON = rightState === COVERED;
     this.sensorStateCache.LEFT_LIGHT = leftLightSensorReading;
     this.sensorStateCache.RIGHT_LIGHT = rightLightSensorReading;
+    this.sensorStateCache.LEFT_LINE = leftLineSensorReading;
+    this.sensorStateCache.RIGHT_LINE = rightLineSensorReading;
   }
 
   onWorkspaceAvailable = (code) => {
@@ -327,7 +337,9 @@ class Workspace extends Component {
       ),
     );
 
-    this.updateSensorStateCache(sensor.left, sensor.right);
+    this.updateSensorStateCache(sensor.left, sensor.right,
+      sensor.leftLightSensorReading, sensor.rightLightSensorReading,
+      sensor.leftLineSensorReading, sensor.rightLineSensorReading);
 
     this.setState({
       workspace,
@@ -519,6 +531,8 @@ Workspace.propTypes = {
     right: PropTypes.number.isRequired,
     leftLightSensorReading: PropTypes.number.isRequired,
     rightLightSensorReading: PropTypes.number.isRequired,
+    leftLineSensorReading: PropTypes.number.isRequired,
+    rightLineSensorReading: PropTypes.number.isRequired,
   }).isRequired,
   rover: PropTypes.shape({
     transmitChannel: PropTypes.object,

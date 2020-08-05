@@ -264,7 +264,9 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
           sensor={
             Object {
               "leftLightSensorReading": -1,
-              "rightLIghtSensorReading": -2,
+              "leftLineSensorReading": -3,
+              "rightLightSensorReading": -2,
+              "rightLineSensorReading": -4,
             }
           }
           store={
@@ -2993,7 +2995,7 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                           Object {
                                                             "label": "Right",
                                                             "maxReading": 1023,
-                                                            "reading": undefined,
+                                                            "reading": -2,
                                                           },
                                                         ]
                                                       }
@@ -3025,6 +3027,48 @@ exports[`The MissionControl container renders on the page with no errors 1`] = `
                                                     </WithStyles(ForwardRef(Divider))>
                                                     <Component
                                                       key=".7"
+                                                      readings={
+                                                        Array [
+                                                          Object {
+                                                            "label": "Left",
+                                                            "maxReading": 1023,
+                                                            "reading": -3,
+                                                          },
+                                                          Object {
+                                                            "label": "Right",
+                                                            "maxReading": 1023,
+                                                            "reading": -4,
+                                                          },
+                                                        ]
+                                                      }
+                                                      title="Line Sensors"
+                                                      unit="units"
+                                                    >
+                                                      <div />
+                                                    </Component>
+                                                    <WithStyles(ForwardRef(Divider))
+                                                      key=".8"
+                                                    >
+                                                      <ForwardRef(Divider)
+                                                        classes={
+                                                          Object {
+                                                            "absolute": "MuiDivider-absolute",
+                                                            "flexItem": "MuiDivider-flexItem",
+                                                            "inset": "MuiDivider-inset",
+                                                            "light": "MuiDivider-light",
+                                                            "middle": "MuiDivider-middle",
+                                                            "root": "MuiDivider-root",
+                                                            "vertical": "MuiDivider-vertical",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root"
+                                                        />
+                                                      </ForwardRef(Divider)>
+                                                    </WithStyles(ForwardRef(Divider))>
+                                                    <Component
+                                                      key=".9"
                                                       readings={
                                                         Array [
                                                           Object {

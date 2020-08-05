@@ -93,6 +93,14 @@ class BlocklyApi {
     interpreter.setProperty(scope, 'getLightSensorValue',
       interpreter.createNativeFunction(wrapper));
 
+    // Add get line sensor API function
+    wrapper = (sensor) => {
+      const sensorReading = this.sensorStateCache[`${sensor}_LINE`];
+      return interpreter.createPrimitive(sensorReading);
+    };
+    interpreter.setProperty(scope, 'getLineSensorValue',
+      interpreter.createNativeFunction(wrapper));
+
     // Add get button pressed API function
     wrapper = (sensor) => {
       const buttonReading = this.sensorStateCache[`${sensor}_BUTTON`];

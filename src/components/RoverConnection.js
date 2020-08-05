@@ -62,11 +62,12 @@ class RoverConnection extends Component {
   }
 
   handleLineSensor = (params) => {
-    const { write } = this.props;
+    const { changeLineSensorReadings } = this.props;
 
     const [left, right] = params.split(',');
-
-    write(`Line Sensor - L:${left} R:${right}`);
+    const leftReading = parseInt(left, 10);
+    const rightReading = parseInt(right, 10);
+    changeLineSensorReadings(leftReading, rightReading);
   }
 
   handleDistanceSensor = (params) => {
@@ -345,6 +346,7 @@ RoverConnection.propTypes = {
   changeLeftSensorState: PropTypes.func.isRequired,
   changeRightSensorState: PropTypes.func.isRequired,
   changeLightSensorReadings: PropTypes.func.isRequired,
+  changeLineSensorReadings: PropTypes.func.isRequired,
   changeBatteryVoltageReading: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
 };
