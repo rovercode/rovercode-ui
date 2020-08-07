@@ -1794,7 +1794,7 @@ exports[`The PlanClass component renders success status on the page with no erro
 <PlanClass
   active={true}
   error={null}
-  expires={0}
+  expires={1596831913}
   maxLength={8}
   upgradeSubscription={[MockFunction]}
   userId={1}
@@ -2089,7 +2089,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                     >
                       Your class plan expires:
                     </FormattedMessage>
-                     12/31/1969
+                     8/7/2020
                   </h6>
                 </ForwardRef(Typography)>
               </WithStyles(ForwardRef(Typography))>

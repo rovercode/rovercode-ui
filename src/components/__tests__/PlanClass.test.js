@@ -38,7 +38,7 @@ describe('The PlanClass component', () => {
 
   test('renders success status on the page with no errors', () => {
     const wrapper = mountWithIntl(
-      <PlanClass upgradeSubscription={upgradeSubscription} userId={1} active />,
+      <PlanClass upgradeSubscription={upgradeSubscription} userId={1} active expires={1596831913}/>,
     );
     expect(wrapper).toMatchSnapshot();
   });
