@@ -221,5 +221,54 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
       </form>
     </Styled(MuiBox)>
   </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+  >
+    <WithStyles(ForwardRef(Typography))
+      variant="h4"
+    >
+      <FormattedMessage
+        defaultMessage="Plans"
+        id="app.user_setting.plans"
+        values={Object {}}
+      />
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    alignItems="flex-start"
+    container={true}
+    direction="row"
+    item={true}
+    justify="center"
+    spacing={1}
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <WithStyles(ForwardRef(Skeleton))
+        animation="wave"
+        height={200}
+        width={300}
+      />
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <WithStyles(ForwardRef(Skeleton))
+        animation="wave"
+        height={200}
+        width={300}
+      />
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <WithStyles(ForwardRef(Skeleton))
+        animation="wave"
+        height={200}
+        width={300}
+      />
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
 </WithStyles(ForwardRef(Grid))>
 `;

@@ -10,6 +10,8 @@ global.PXT_HEX_URL = 'https://some-url';
 
 global.LOGGER_ENDPOINT = 'https://some-sumo-url/rovercode';
 
+global.SUBSCRIPTION_SERVICE = 'https://some-subscription-url';
+
 const mockDevice = { name: 'Sparky' };
 const mockBluetooth = {
   requestDevice: jest.fn(() => mockDevice),
