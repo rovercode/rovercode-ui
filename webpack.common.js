@@ -62,6 +62,8 @@ module.exports = {
       PXT_HEX_URL: JSON.stringify(process.env.PXT_HEX_URL
         || 'https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex'),
       SAVE_DEBOUNCE_TIME: JSON.stringify(process.env.SAVE_DEBOUNCE_TIME),
+      SUBSCRIPTION_SERVICE: JSON.stringify(process.env.SUBSCRIPTION_SERVICE
+        || 'http://localhost:3000'),
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',

@@ -11,9 +11,15 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { Alert, Skeleton } from '@material-ui/lab';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+
+import PlanClass from '@/components/PlanClass';
+import PlanFree from '@/components/PlanFree';
+import PlanIndividual from '@/components/PlanIndividual';
+import PlanItem from '@/components/PlanItem';
 
 class UserSetting extends Component {
   constructor(props) {
@@ -31,6 +37,12 @@ class UserSetting extends Component {
       password2Error: null,
       nonFieldError: null,
     };
+  }
+
+  componentDidMount() {
+    const { fetchSubscription, user } = this.props;
+
+    fetchSubscription(user.user_id);
   }
 
   errorMessage = () => {
@@ -126,7 +138,14 @@ class UserSetting extends Component {
   handleChange = (event) => this.setState({ [event.target.name]: event.target.value })
 
   render() {
-    const { intl, user } = this.props;
+    const {
+      isFetching,
+      intl,
+      subscription,
+      upgradeError,
+      upgradeSubscription,
+      user,
+    } = this.props;
     const {
       saveSuccess,
       usernameError,
@@ -285,20 +304,91 @@ class UserSetting extends Component {
             </>
           ) : (null)
         }
+        <Grid item>
+          <Typography variant="h4">
+            <FormattedMessage
+              id="app.user_setting.plans"
+              description="Header for list of plans"
+              defaultMessage="Plans"
+            />
+          </Typography>
+        </Grid>
+        <Grid item container direction="row" justify="center" alignItems="flex-start" spacing={1}>
+          {
+          isFetching ? (
+            <>
+              <Grid item>
+                <Skeleton animation="wave" width={300} height={200} />
+              </Grid>
+              <Grid item>
+                <Skeleton animation="wave" width={300} height={200} />
+              </Grid>
+              <Grid item>
+                <Skeleton animation="wave" width={300} height={200} />
+              </Grid>
+            </>
+          ) : (
+            <>
+              <Grid item>
+                <PlanItem title="Free Plan" active={!subscription.plan || subscription.plan === '1'}>
+                  <PlanFree freeSlots={8} />
+                </PlanItem>
+              </Grid>
+              <Grid item>
+                <PlanItem title="Individual Plan" active={subscription.plan === '3'}>
+                  <PlanIndividual />
+                </PlanItem>
+              </Grid>
+              <Grid item>
+                <PlanItem title="Class Plan" active={subscription.plan === '2'}>
+                  <PlanClass
+                    active={subscription.plan === '2'}
+                    error={upgradeError ? upgradeError.response.data.accessCode[0] : null}
+                    expires={moment.unix(subscription.start).add(1, 'year').unix()}
+                    maxLength={8}
+                    upgradeSubscription={upgradeSubscription}
+                    userId={user.user_id}
+                  />
+                </PlanItem>
+              </Grid>
+            </>
+          )
+        }
+        </Grid>
       </Grid>
     );
   }
 }
 
+UserSetting.defaultProps = {
+  subscription: {
+    plan: '',
+    price: 0,
+    interval: '',
+    start: 0,
+  },
+  upgradeError: null,
+};
+
 UserSetting.propTypes = {
   editUserUsername: PropTypes.func.isRequired,
   editUserPassword: PropTypes.func.isRequired,
+  fetchSubscription: PropTypes.func.isRequired,
+  upgradeSubscription: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     isSocial: PropTypes.bool.isRequired,
   }).isRequired,
+  subscription: PropTypes.shape({
+    plan: PropTypes.string,
+    price: PropTypes.number,
+    interval: PropTypes.string,
+    start: PropTypes.number,
+  }),
+  isFetching: PropTypes.bool.isRequired,
+  upgradeError: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,

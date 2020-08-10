@@ -6,6 +6,7 @@ import curriculum from './curriculum';
 import program from './program';
 import rover from './rover';
 import sensor from './sensor';
+import subscription from './subscription';
 import tag from './tag';
 import user from './user';
 
@@ -17,6 +18,7 @@ export default combineReducers({
   program,
   rover,
   sensor,
+  subscription,
   tag,
   user,
 });
