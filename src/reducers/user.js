@@ -21,6 +21,7 @@ export default function user(
     email: null,
     exp: null,
     showGuide: true,
+    tier: 1,
     isSocial: false,
     userList: [],
     isEditingUsername: false,
@@ -44,6 +45,7 @@ export default function user(
         exp: action.payload.exp,
         showGuide: action.payload.show_guide,
         isSocial: action.payload.isSocial,
+        tier: action.payload.tier,
       };
     case EDIT_USER_USERNAME_PENDING:
       return {

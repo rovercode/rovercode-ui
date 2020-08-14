@@ -23,6 +23,7 @@ describe('The user reducer', () => {
       email: 'testuser@example.com',
       exp: 1540178211,
       isSocial: false,
+      tier: 2,
     };
     expect(
       reducer({}, {
@@ -35,6 +36,7 @@ describe('The user reducer', () => {
       email: user.email,
       exp: user.exp,
       isSocial: user.isSocial,
+      tier: user.tier,
     });
   });
 
@@ -50,6 +52,7 @@ describe('The user reducer', () => {
       exp: null,
       showGuide: true,
       isSocial: false,
+      tier: 1,
       userList: [],
       isEditingUsername: true,
       isEditingPassword: false,
@@ -105,6 +108,7 @@ describe('The user reducer', () => {
       exp: null,
       showGuide: true,
       isSocial: false,
+      tier: 1,
       userList: [],
       isEditingUsername: false,
       isEditingPassword: true,
@@ -158,6 +162,7 @@ describe('The user reducer', () => {
       exp: null,
       showGuide: true,
       isSocial: false,
+      tier: 1,
       userList: [],
       isEditingUsername: false,
       isEditingPassword: false,
@@ -210,6 +215,7 @@ describe('The user reducer', () => {
       exp: null,
       showGuide: true,
       isSocial: false,
+      tier: 1,
       userList: [],
       isEditingUsername: false,
       isEditingPassword: false,
