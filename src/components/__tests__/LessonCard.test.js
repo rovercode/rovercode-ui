@@ -11,8 +11,12 @@ describe('The LessonCard component', () => {
     description: 'This is a test',
     active_bd: 1,
     active_bd_owned: false,
+    tier: 1,
   };
   const onClick = jest.fn();
+  beforeEach(() => {
+    onClick.mockReset();
+  });
 
   test('renders on the page with no errors', () => {
     lesson.state = { progress: 'AVAILABLE' };
@@ -54,5 +58,21 @@ describe('The LessonCard component', () => {
 
     expect(wrapper.find(CardActionArea).prop('disabled')).toBe(false);
     expect(wrapper.find(CardHeader).prop('action').props.children).toBeNull();
+  });
+
+  test('allows click when unlocked', () => {
+    lesson.state = { progress: 'IN_PROGRESS' };
+    const wrapper = shallow(<LessonCard lesson={lesson} onClick={onClick} />);
+
+    wrapper.find(CardActionArea).simulate('click');
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  test('blocks click when locked', () => {
+    lesson.state = { progress: 'IN_PROGRESS' };
+    const wrapper = shallow(<LessonCard lesson={lesson} onClick={onClick} userTier={0} />);
+
+    wrapper.find(CardActionArea).simulate('click');
+    expect(onClick).not.toHaveBeenCalled();
   });
 });

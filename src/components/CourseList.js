@@ -146,6 +146,7 @@ class CourseList extends Component {
       classes,
       intl,
       courses,
+      user,
     } = this.props;
     const {
       ordering,
@@ -284,6 +285,7 @@ class CourseList extends Component {
                           key={course.id}
                           course={course}
                           onLessonClick={this.selectProgram}
+                          userTier={user.tier}
                         />
                       )) : (null)
                     }
@@ -357,6 +359,9 @@ CourseList.propTypes = {
       }),
     ),
   }),
+  user: PropTypes.shape({
+    tier: PropTypes.number,
+  }).isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,

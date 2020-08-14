@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 import LessonCard from './LessonCard';
 
-const Course = ({ course, onLessonClick }) => (
+const Course = ({ course, userTier, onLessonClick }) => (
   <ExpansionPanel defaultExpanded>
     <ExpansionPanelSummary expandIcon={<ExpandMore />}>
       <Typography>
@@ -25,7 +25,7 @@ const Course = ({ course, onLessonClick }) => (
           course.lessons.sort((l1, l2) => l1.sequence_number - l2.sequence_number)
             .map((lesson) => (
               <Grid item xs={12} md={6} lg={3} key={lesson.id}>
-                <LessonCard lesson={lesson} onClick={onLessonClick} />
+                <LessonCard lesson={lesson} userTier={userTier} onClick={onLessonClick} />
               </Grid>
             ))
         }
@@ -33,6 +33,10 @@ const Course = ({ course, onLessonClick }) => (
     </ExpansionPanelDetails>
   </ExpansionPanel>
 );
+
+Course.defaultProps = {
+  userTier: 1,
+};
 
 Course.propTypes = {
   course: PropTypes.shape({
@@ -44,6 +48,7 @@ Course.propTypes = {
       description: PropTypes.string.isRequired,
     })).isRequired,
   }).isRequired,
+  userTier: PropTypes.number,
   onLessonClick: PropTypes.func.isRequired,
 };
 
