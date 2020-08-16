@@ -40,6 +40,9 @@ describe('The CourseList component', () => {
       }],
     }],
   };
+  const user = {
+    tier: 1,
+  };
 
   beforeEach(() => {
     fetchCourses.mockReset();
@@ -49,6 +52,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
+        user={user}
         fetchCourses={fetchCourses}
       />,
     ).dive().dive().dive();
@@ -60,6 +64,7 @@ describe('The CourseList component', () => {
       <MemoryRouter>
         <CourseList
           fetchCourses={fetchCourses}
+          user={user}
         />
       </MemoryRouter>,
     );
@@ -70,6 +75,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
+        user={user}
         fetchCourses={fetchCourses}
       />,
     ).dive().dive().dive();
@@ -82,6 +88,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         fetchCourses={fetchCourses}
+        user={user}
         courses={null}
       />,
     ).dive().dive().dive();
@@ -102,6 +109,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         fetchCourses={fetchCourses}
+        user={user}
         courses={empty}
       />,
     ).dive().dive().dive();
@@ -114,6 +122,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
+        user={user}
         fetchCourses={fetchCourses}
       />,
     ).dive().dive().dive();
@@ -130,6 +139,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
+        user={user}
         fetchCourses={fetchCourses}
       />,
     ).dive().dive().dive();
@@ -152,6 +162,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
+        user={user}
         fetchCourses={fetchCourses}
       />,
     ).dive().dive().dive();
@@ -194,6 +205,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
+        user={user}
         fetchCourses={fetchCourses}
       />,
     ).dive().dive().dive();
@@ -211,6 +223,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
+        user={user}
         fetchCourses={fetchCourses}
       />,
     ).dive().dive().dive();
@@ -229,6 +242,7 @@ describe('The CourseList component', () => {
     const wrapper = shallowWithIntl(
       <CourseList
         courses={courses}
+        user={user}
         fetchCourses={fetchCourses}
       />,
     ).dive().dive().dive();

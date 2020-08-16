@@ -39,6 +39,7 @@ exports[`The Course component renders on the page with no errors 1`] = `
             }
           }
           onClick={[MockFunction]}
+          userTier={1}
         />
       </WithStyles(ForwardRef(Grid))>
       <WithStyles(ForwardRef(Grid))
@@ -63,6 +64,7 @@ exports[`The Course component renders on the page with no errors 1`] = `
             }
           }
           onClick={[MockFunction]}
+          userTier={1}
         />
       </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>

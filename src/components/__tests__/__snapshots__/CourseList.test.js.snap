@@ -152,6 +152,7 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
             }
             key="1"
             onLessonClick={[Function]}
+            userTier={1}
           />
         </Styled(MuiBox)>
       </WithStyles(ForwardRef(Grid))>
