@@ -10,9 +10,6 @@ import {
   EDIT_USER_SHOW_GUIDE_PENDING,
   EDIT_USER_SHOW_GUIDE_FULFILLED,
   EDIT_USER_SHOW_GUIDE_REJECTED,
-  FETCH_USER_LIST_PENDING,
-  FETCH_USER_LIST_FULFILLED,
-  FETCH_USER_LIST_REJECTED,
 } from '../../actions/user';
 
 describe('The user reducer', () => {
@@ -53,15 +50,12 @@ describe('The user reducer', () => {
       showGuide: true,
       isSocial: false,
       tier: 1,
-      userList: [],
       isEditingUsername: true,
       isEditingPassword: false,
       isEditingShowGuide: false,
-      isFetchingUserList: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
-      fetchUserListError: null,
     });
   });
 
@@ -109,15 +103,12 @@ describe('The user reducer', () => {
       showGuide: true,
       isSocial: false,
       tier: 1,
-      userList: [],
       isEditingUsername: false,
       isEditingPassword: true,
       isEditingShowGuide: false,
-      isFetchingUserList: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
-      fetchUserListError: null,
     });
   });
 
@@ -163,15 +154,12 @@ describe('The user reducer', () => {
       showGuide: true,
       isSocial: false,
       tier: 1,
-      userList: [],
       isEditingUsername: false,
       isEditingPassword: false,
       isEditingShowGuide: true,
-      isFetchingUserList: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
-      fetchUserListError: null,
     });
   });
 
@@ -200,64 +188,6 @@ describe('The user reducer', () => {
     ).toEqual({
       isEditingShowGuide: false,
       editShowGuideError: error,
-    });
-  });
-
-  test('should handle FETCH_USER_LIST_PENDING', () => {
-    expect(
-      reducer(undefined, {
-        type: FETCH_USER_LIST_PENDING,
-      }),
-    ).toEqual({
-      user_id: null,
-      username: null,
-      email: null,
-      exp: null,
-      showGuide: true,
-      isSocial: false,
-      tier: 1,
-      userList: [],
-      isEditingUsername: false,
-      isEditingPassword: false,
-      isEditingShowGuide: false,
-      isFetchingUserList: true,
-      editUsernameError: null,
-      editPasswordError: null,
-      editShowGuideError: null,
-      fetchUserListError: null,
-    });
-  });
-
-  test('should handle FETCH_USER_LIST_FULFILLED', () => {
-    const userList = [
-      {
-        username: 'user1',
-      },
-      {
-        username: 'user2',
-      },
-    ];
-    expect(
-      reducer({}, {
-        type: FETCH_USER_LIST_FULFILLED,
-        payload: userList,
-      }),
-    ).toEqual({
-      userList,
-      isFetchingUserList: false,
-    });
-  });
-
-  test('should handle FETCH_USER_LIST_REJECTED', () => {
-    const error = 'woops';
-    expect(
-      reducer({}, {
-        type: FETCH_USER_LIST_REJECTED,
-        payload: error,
-      }),
-    ).toEqual({
-      isFetchingUserList: false,
-      fetchUserListError: error,
     });
   });
 

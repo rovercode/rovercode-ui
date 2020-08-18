@@ -4,7 +4,6 @@ import {
   editUserUsername,
   editUserPassword,
   editUserShowGuide,
-  fetchUserList,
   updateUser,
 } from '../user';
 
@@ -58,27 +57,6 @@ describe('User actions', () => {
     expect(type).toEqual('EDIT_USER_PASSWORD');
     action.payload.then((result) => {
       expect(result).toEqual('Password changed');
-      done();
-    });
-  });
-  test('fetchUserList', (done) => {
-    const mock = new MockAdapter(axios);
-    const userList = [
-      {
-        username: 'user1',
-      },
-      {
-        username: 'user2',
-      },
-    ];
-
-    mock.onGet('/api/v1/users/').reply(200, userList);
-
-    const action = fetchUserList();
-    const { type } = action;
-    expect(type).toEqual('FETCH_USER_LIST');
-    action.payload.then((result) => {
-      expect(result).toEqual(userList);
       done();
     });
   });
