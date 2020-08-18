@@ -6,6 +6,7 @@ import { changeReadOnly as actionChangeReadOnly, clearProgram } from '../actions
 import { clearPrograms, fetchPrograms, removeProgram } from '../actions/program';
 import { checkAuthError, authHeader } from '../actions/auth';
 import { fetchTags } from '../actions/tag';
+import { fetchUserStats } from '../actions/user';
 import ProgramList from '../components/ProgramList';
 
 const mapStateToProps = ({
@@ -27,6 +28,8 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchTags: () => dispatch(fetchTags(authHeader(cookies))).catch(checkAuthError(dispatch)),
   clearProgram: () => dispatch(clearProgram()),
   clearProgramList: () => dispatch(clearPrograms()),
+  fetchUserStats: (id) => dispatch(fetchUserStats(id, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
 });
 
 const ProgramListContainer = connect(

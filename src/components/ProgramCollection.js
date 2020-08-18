@@ -18,6 +18,7 @@ import {
   CardContent,
   CardActionArea,
   CardActions,
+  Link as MuiLink,
 } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
@@ -184,6 +185,13 @@ class ProgramCollection extends Component {
       },
     }))(Grid);
 
+    let programCount = -1;
+    let programLimit = -1;
+    if (user.stats && user.stats.block_diagram) {
+      programCount = user.stats.block_diagram.count;
+      programLimit = user.stats.block_diagram.limit;
+    }
+
     return (
       <Container className={classes.mainContainer}>
         <TitleArea item container direction="row" justify="space-between">
@@ -200,6 +208,7 @@ class ProgramCollection extends Component {
               startIcon={<Add />}
               component={Link}
               to="/mission-control"
+              disabled={user.tier === 1 && programCount >= programLimit}
             >
               <FormattedMessage
                 id="app.program_collection.new"
@@ -294,6 +303,52 @@ class ProgramCollection extends Component {
             </Grid>
           </Grid>
         </Grid>
+        {
+          user.tier === 1 && programCount >= 0 ? (
+            <Grid container direction="column" justify="flex-start" spacing={2}>
+              <Grid item>
+                <Typography variant="h5" display="inline">
+                  <FormattedMessage
+                    id="app.program_collection.slots"
+                    description="Lists the number of free slots"
+                    defaultMessage="Free Program Slots"
+                  />
+                  {': '}
+                </Typography>
+                <Typography variant="h5" color="secondary" display="inline">
+                  {`${programCount}/${programLimit}`}
+                </Typography>
+              </Grid>
+              {
+                programCount >= programLimit ? (
+                  <Grid item>
+                    <Typography variant="subtitle1">
+                      <FormattedMessage
+                        id="app.program_collection.over1"
+                        description="Notifies the user of no remaining free slots"
+                        defaultMessage="You have used all your free program slots. You can delete an existing program to free up a program slot, or you can"
+                      />
+                      {' '}
+                      <MuiLink href="/user/settings">
+                        <FormattedMessage
+                          id="app.program_collection.over2"
+                          description="Notifies the user of no remaining free slots"
+                          defaultMessage="upgrade your account"
+                        />
+                      </MuiLink>
+                      {' '}
+                      <FormattedMessage
+                        id="app.program_collection.over3"
+                        description="Notifies the user of no remaining free slots"
+                        defaultMessage="for unlimited programs."
+                      />
+                    </Typography>
+                  </Grid>
+                ) : (null)
+              }
+            </Grid>
+          ) : (null)
+        }
         <Grid container spacing={3}>
           {
             programs.count === 0 && !searchQuery && tagFilters.length === 0 ? (
@@ -403,12 +458,15 @@ ProgramCollection.propTypes = {
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
+    tier: PropTypes.number.isRequired,
+    stats: PropTypes.object,
   }).isRequired,
   programs: PropTypes.shape({
     count: PropTypes.number,
     next: PropTypes.string,
     previous: PropTypes.string,
     total_pages: PropTypes.number,
+    free_max: PropTypes.number,
     results: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
