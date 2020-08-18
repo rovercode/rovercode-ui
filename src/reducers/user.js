@@ -9,9 +9,9 @@ import {
   EDIT_USER_SHOW_GUIDE_PENDING,
   EDIT_USER_SHOW_GUIDE_FULFILLED,
   EDIT_USER_SHOW_GUIDE_REJECTED,
-  FETCH_USER_LIST_PENDING,
-  FETCH_USER_LIST_FULFILLED,
-  FETCH_USER_LIST_REJECTED,
+  FETCH_USER_STATS_PENDING,
+  FETCH_USER_STATS_FULFILLED,
+  FETCH_USER_STATS_REJECTED,
 } from '../actions/user';
 
 export default function user(
@@ -22,16 +22,16 @@ export default function user(
     exp: null,
     showGuide: true,
     tier: 1,
+    stats: null,
     isSocial: false,
-    userList: [],
     isEditingUsername: false,
     isEditingPassword: false,
     isEditingShowGuide: false,
-    isFetchingUserList: false,
+    isFetchingStats: false,
     editUsernameError: null,
     editPasswordError: null,
     editShowGuideError: null,
-    fetchUserListError: null,
+    fetchStatsError: null,
   },
   action,
 ) {
@@ -98,22 +98,22 @@ export default function user(
         isEditingShowGuide: false,
         editShowGuideError: action.payload,
       };
-    case FETCH_USER_LIST_PENDING:
+    case FETCH_USER_STATS_PENDING:
       return {
         ...state,
-        isFetchingUserList: true,
+        isFetchingStats: true,
       };
-    case FETCH_USER_LIST_FULFILLED:
+    case FETCH_USER_STATS_FULFILLED:
       return {
         ...state,
-        isFetchingUserList: false,
-        userList: action.payload,
+        isFetchingStats: false,
+        stats: action.payload,
       };
-    case FETCH_USER_LIST_REJECTED:
+    case FETCH_USER_STATS_REJECTED:
       return {
         ...state,
-        isFetchingUserList: false,
-        fetchUserListError: action.payload,
+        isFetchingStats: false,
+        fetchStatsError: action.payload,
       };
     default:
       return state;

@@ -10,6 +10,7 @@ let removeProgram;
 let fetchTags;
 let clearProgram;
 let clearProgramList;
+let fetchUserStats;
 
 describe('The ProgramList component', () => {
   beforeEach(() => {
@@ -18,6 +19,7 @@ describe('The ProgramList component', () => {
     fetchTags = jest.fn().mockResolvedValue();
     clearProgram = jest.fn();
     clearProgramList = jest.fn();
+    fetchUserStats = jest.fn().mockResolvedValue();
   });
 
   test('renders on the page with no errors', () => {
@@ -28,7 +30,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
@@ -50,7 +53,8 @@ describe('The ProgramList component', () => {
           fetchTags={fetchTags}
           clearProgram={clearProgram}
           clearProgramList={clearProgramList}
-          user={{ user_id: 1, username: 'testuser' }}
+          fetchUserStats={fetchUserStats}
+          user={{ user_id: 1, username: 'testuser', tier: 1 }}
           owned
         />
       </MemoryRouter>,
@@ -90,7 +94,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
@@ -107,7 +112,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         programs={null}
         owned
       />,
@@ -126,7 +132,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
@@ -163,7 +170,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
@@ -224,7 +232,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
@@ -261,7 +270,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned={false}
       />,
     ).dive().dive();
@@ -298,7 +308,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
@@ -337,7 +348,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned={false}
       />,
     ).dive().dive();
@@ -376,7 +388,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
@@ -402,7 +415,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
@@ -430,7 +444,8 @@ describe('The ProgramList component', () => {
         fetchTags={fetchTags}
         clearProgram={clearProgram}
         clearProgramList={clearProgramList}
-        user={{ user_id: 1, username: 'testuser' }}
+        fetchUserStats={fetchUserStats}
+        user={{ user_id: 1, username: 'testuser', tier: 1 }}
         owned
       />,
     ).dive().dive();
