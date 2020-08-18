@@ -80,6 +80,13 @@ describe('The MissionControl container', () => {
       },
       user: {
         username: 'testuser',
+        tier: 1,
+        stats: {
+          block_diagram: {
+            count: 3,
+            limit: 5,
+          },
+        },
       },
     });
     store.dispatch = jest.fn().mockResolvedValue(fetchResult);
@@ -88,11 +95,97 @@ describe('The MissionControl container', () => {
 
   afterEach(() => global.Math.random.mockRestore());
 
-  test('renders on the page with no errors', () => {
+  test('renders on the page with no errors under limit', () => {
     wrapper = mountWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
           <MissionControl store={store} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    );
+    const mcWrapper = wrapper.find(MissionControl);
+
+    expect(mcWrapper).toMatchSnapshot();
+  });
+
+  test('renders on the page with no errors over limit', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: true,
+        lessonId: null,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
+      },
+      user: {
+        username: 'testuser',
+        tier: 1,
+        stats: {
+          block_diagram: {
+            count: 5,
+            limit: 5,
+          },
+        },
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    wrapper = mountWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    );
+    const mcWrapper = wrapper.find(MissionControl);
+
+    expect(mcWrapper).toMatchSnapshot();
+  });
+
+  test('renders on the page with no errors paid tier', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: true,
+        lessonId: null,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
+      },
+      user: {
+        username: 'testuser',
+        tier: 2,
+        stats: {
+          block_diagram: {
+            count: 10,
+            limit: 5,
+          },
+        },
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    wrapper = mountWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,

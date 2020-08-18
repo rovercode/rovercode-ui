@@ -132,6 +132,7 @@ class MissionControl extends Component {
       location,
       code,
       sensor,
+      user,
     } = this.props;
 
     const {
@@ -247,6 +248,13 @@ class MissionControl extends Component {
       },
     ];
 
+    let programCount = -2;
+    let programLimit = -1;
+    if (user.stats && user.stats.block_diagram) {
+      programCount = user.stats.block_diagram.count;
+      programLimit = user.stats.block_diagram.limit;
+    }
+
     return (
       <>
         <Drawer anchor="left" open={open} onClose={this.handleOnClose}>
@@ -328,7 +336,7 @@ class MissionControl extends Component {
                       <Alert
                         severity="info"
                         action={(
-                          <Button color="primary" variant="contained" size="huge" onClick={this.remix}>
+                          <Button color="primary" variant="contained" size="large" onClick={this.remix} disabled={user.tier === 1 && programCount >= programLimit}>
                             <FormattedMessage
                               id="app.mission_control.remix"
                               description="Button label to copy other user's program for this user to edit"
@@ -505,6 +513,8 @@ MissionControl.propTypes = {
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
+    stats: PropTypes.object,
+    tier: PropTypes.number,
   }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
