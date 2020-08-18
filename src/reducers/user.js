@@ -9,6 +9,9 @@ import {
   EDIT_USER_SHOW_GUIDE_PENDING,
   EDIT_USER_SHOW_GUIDE_FULFILLED,
   EDIT_USER_SHOW_GUIDE_REJECTED,
+  FETCH_USER_STATS_PENDING,
+  FETCH_USER_STATS_FULFILLED,
+  FETCH_USER_STATS_REJECTED,
 } from '../actions/user';
 
 export default function user(
@@ -19,13 +22,16 @@ export default function user(
     exp: null,
     showGuide: true,
     tier: 1,
+    stats: null,
     isSocial: false,
     isEditingUsername: false,
     isEditingPassword: false,
     isEditingShowGuide: false,
+    isFetchingStats: false,
     editUsernameError: null,
     editPasswordError: null,
     editShowGuideError: null,
+    fetchStatsError: null,
   },
   action,
 ) {
@@ -91,6 +97,23 @@ export default function user(
         ...state,
         isEditingShowGuide: false,
         editShowGuideError: action.payload,
+      };
+    case FETCH_USER_STATS_PENDING:
+      return {
+        ...state,
+        isFetchingStats: true,
+      };
+    case FETCH_USER_STATS_FULFILLED:
+      return {
+        ...state,
+        isFetchingStats: false,
+        stats: action.payload,
+      };
+    case FETCH_USER_STATS_REJECTED:
+      return {
+        ...state,
+        isFetchingStats: false,
+        fetchStatsError: action.payload,
       };
     default:
       return state;

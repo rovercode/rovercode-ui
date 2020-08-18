@@ -4,6 +4,7 @@ import {
   editUserUsername,
   editUserPassword,
   editUserShowGuide,
+  fetchUserStats,
   updateUser,
 } from '../user';
 
@@ -71,6 +72,25 @@ describe('User actions', () => {
     const action = editUserShowGuide(1, false);
     const { type } = action;
     expect(type).toEqual('EDIT_USER_SHOW_GUIDE');
+    action.payload.then((result) => {
+      expect(result).toEqual(data);
+      done();
+    });
+  });
+  test('fetchUserStats', (done) => {
+    const mock = new MockAdapter(axios);
+    const data = {
+      block_diagrams: {
+        count: 3,
+        allowed: 5,
+      },
+    };
+
+    mock.onGet('/api/v1/users/1/stats/').reply(200, data);
+
+    const action = fetchUserStats(1);
+    const { type } = action;
+    expect(type).toEqual('FETCH_USER_STATS');
     action.payload.then((result) => {
       expect(result).toEqual(data);
       done();

@@ -10,6 +10,9 @@ import {
   EDIT_USER_SHOW_GUIDE_PENDING,
   EDIT_USER_SHOW_GUIDE_FULFILLED,
   EDIT_USER_SHOW_GUIDE_REJECTED,
+  FETCH_USER_STATS_PENDING,
+  FETCH_USER_STATS_FULFILLED,
+  FETCH_USER_STATS_REJECTED,
 } from '../../actions/user';
 
 describe('The user reducer', () => {
@@ -50,12 +53,15 @@ describe('The user reducer', () => {
       showGuide: true,
       isSocial: false,
       tier: 1,
+      stats: null,
       isEditingUsername: true,
       isEditingPassword: false,
       isEditingShowGuide: false,
+      isFetchingStats: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
+      fetchStatsError: null,
     });
   });
 
@@ -103,12 +109,15 @@ describe('The user reducer', () => {
       showGuide: true,
       isSocial: false,
       tier: 1,
+      stats: null,
       isEditingUsername: false,
       isEditingPassword: true,
       isEditingShowGuide: false,
+      isFetchingStats: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
+      fetchStatsError: null,
     });
   });
 
@@ -154,12 +163,15 @@ describe('The user reducer', () => {
       showGuide: true,
       isSocial: false,
       tier: 1,
+      stats: null,
       isEditingUsername: false,
       isEditingPassword: false,
       isEditingShowGuide: true,
+      isFetchingStats: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
+      fetchStatsError: null,
     });
   });
 
@@ -188,6 +200,62 @@ describe('The user reducer', () => {
     ).toEqual({
       isEditingShowGuide: false,
       editShowGuideError: error,
+    });
+  });
+
+  test('should handle FETCH_USER_STATS_PENDING', () => {
+    expect(
+      reducer(undefined, {
+        type: FETCH_USER_STATS_PENDING,
+      }),
+    ).toEqual({
+      user_id: null,
+      username: null,
+      email: null,
+      exp: null,
+      showGuide: true,
+      isSocial: false,
+      tier: 1,
+      stats: null,
+      isEditingUsername: false,
+      isEditingPassword: false,
+      isEditingShowGuide: false,
+      isFetchingStats: true,
+      editUsernameError: null,
+      editPasswordError: null,
+      editShowGuideError: null,
+      fetchStatsError: null,
+    });
+  });
+
+  test('should handle FETCH_USER_STATS_FULFILLED', () => {
+    const payload = {
+      block_diagrams: {
+        count: 3,
+        allowed: 5,
+      },
+    };
+    expect(
+      reducer({}, {
+        type: FETCH_USER_STATS_FULFILLED,
+        payload,
+      }),
+    ).toEqual({
+      stats: payload,
+      isFetchingStats: false,
+    });
+  });
+
+  test('should handle FETCH_USER_STATS_REJECTED', () => {
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: FETCH_USER_STATS_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      isFetchingStats: false,
+      fetchStatsError: error,
     });
   });
 
