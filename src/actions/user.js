@@ -1,6 +1,7 @@
 // actions https://redux.js.org/basics/actions
 // async actions https://redux.js.org/advanced/asyncactions
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 export const UPDATE_USER = 'UPDATE_USER';
 export const EDIT_USER_USERNAME = 'EDIT_USER_USERNAME';
@@ -19,11 +20,25 @@ export const FETCH_USER_STATS = 'FETCH_USER_STATS';
 export const FETCH_USER_STATS_PENDING = `${FETCH_USER_STATS}_PENDING`;
 export const FETCH_USER_STATS_FULFILLED = `${FETCH_USER_STATS}_FULFILLED`;
 export const FETCH_USER_STATS_REJECTED = `${FETCH_USER_STATS}_REJECTED`;
+export const REFRESH_SESSION = 'REFRESH_SESSION';
+export const REFRESH_SESSION_PENDING = `${REFRESH_SESSION}_PENDING`;
+export const REFRESH_SESSION_FULFILLED = `${REFRESH_SESSION}_FULFILLED`;
+export const REFRESH_SESSION_REJECTED = `${REFRESH_SESSION}_REJECTED`;
 
 // action creators
 export const updateUser = (data) => ({
   type: UPDATE_USER,
   payload: data,
+});
+
+export const refreshSession = (cookies) => ({
+  type: REFRESH_SESSION,
+  payload: axios.post('/api/api-token-refresh/', {
+    token: cookies.get('auth_jwt'),
+  })
+    .then(({ data }) => (
+      jwtDecode(data.token)
+    )),
 });
 
 export const editUserUsername = (username, xhrOptions) => ({
