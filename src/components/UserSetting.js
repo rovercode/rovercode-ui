@@ -141,6 +141,7 @@ class UserSetting extends Component {
     const {
       isFetching,
       intl,
+      refreshSession,
       subscription,
       upgradeError,
       upgradeSubscription,
@@ -346,6 +347,7 @@ class UserSetting extends Component {
                     error={upgradeError ? upgradeError.response.data.accessCode[0] : null}
                     expires={moment.unix(subscription.start).add(1, 'year').unix()}
                     maxLength={8}
+                    refreshSession={refreshSession}
                     upgradeSubscription={upgradeSubscription}
                     userId={user.user_id}
                   />
@@ -374,6 +376,7 @@ UserSetting.propTypes = {
   editUserUsername: PropTypes.func.isRequired,
   editUserPassword: PropTypes.func.isRequired,
   fetchSubscription: PropTypes.func.isRequired,
+  refreshSession: PropTypes.func.isRequired,
   upgradeSubscription: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,

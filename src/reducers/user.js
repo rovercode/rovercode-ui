@@ -12,6 +12,9 @@ import {
   FETCH_USER_STATS_PENDING,
   FETCH_USER_STATS_FULFILLED,
   FETCH_USER_STATS_REJECTED,
+  REFRESH_SESSION_PENDING,
+  REFRESH_SESSION_FULFILLED,
+  REFRESH_SESSION_REJECTED,
 } from '../actions/user';
 
 export default function user(
@@ -28,10 +31,12 @@ export default function user(
     isEditingPassword: false,
     isEditingShowGuide: false,
     isFetchingStats: false,
+    isRefreshingSession: false,
     editUsernameError: null,
     editPasswordError: null,
     editShowGuideError: null,
     fetchStatsError: null,
+    refreshSessionError: null,
   },
   action,
 ) {
@@ -114,6 +119,28 @@ export default function user(
         ...state,
         isFetchingStats: false,
         fetchStatsError: action.payload,
+      };
+    case REFRESH_SESSION_FULFILLED:
+      return {
+        ...state,
+        isRefreshingSession: false,
+        user_id: action.payload.user_id,
+        username: action.payload.username,
+        email: action.payload.email,
+        exp: action.payload.exp,
+        isSocial: action.payload.isSocial,
+        tier: action.payload.tier,
+      };
+    case REFRESH_SESSION_PENDING:
+      return {
+        ...state,
+        isRefreshingSession: true,
+      };
+    case REFRESH_SESSION_REJECTED:
+      return {
+        ...state,
+        isRefreshingSession: false,
+        refreshSessionError: action.payload,
       };
     default:
       return state;

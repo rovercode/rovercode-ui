@@ -3,13 +3,15 @@ import { shallow } from 'enzyme';
 
 import PlanClass from '../PlanClass';
 
+let refreshSession;
 let upgradeSubscription;
 
 describe('The PlanClass component', () => {
   const setState = jest.fn();
 
   beforeEach(() => {
-    upgradeSubscription = jest.fn();
+    refreshSession = jest.fn().mockResolvedValue();
+    upgradeSubscription = jest.fn().mockResolvedValue();
   });
 
   afterEach(() => {
@@ -18,14 +20,22 @@ describe('The PlanClass component', () => {
 
   test('renders on the page with no errors', () => {
     const wrapper = mountWithIntl(
-      <PlanClass upgradeSubscription={upgradeSubscription} userId={1} />,
+      <PlanClass
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        userId={1}
+      />,
     );
     expect(wrapper).toMatchSnapshot();
   });
 
   test('renders typing status on the page with no errors', () => {
     const wrapper = mountWithIntl(
-      <PlanClass upgradeSubscription={upgradeSubscription} userId={1} />,
+      <PlanClass
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        userId={1}
+      />,
     );
     wrapper.find('input').simulate('change', {
       target: {
@@ -39,6 +49,7 @@ describe('The PlanClass component', () => {
   test('renders success status on the page with no errors', () => {
     const wrapper = mountWithIntl(
       <PlanClass
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         userId={1}
         active
@@ -51,7 +62,13 @@ describe('The PlanClass component', () => {
   test('sets length on text change', () => {
     const useStateSpy = jest.spyOn(React, 'useState');
     useStateSpy.mockImplementation((init) => [init, setState]);
-    const wrapper = shallow(<PlanClass upgradeSubscription={upgradeSubscription} userId={1} />);
+    const wrapper = shallow(
+      <PlanClass
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        userId={1}
+      />,
+    );
 
     wrapper.find('WithStyles(WithStyles(ForwardRef(TextField)))').simulate('change', {
       target: {
@@ -69,7 +86,12 @@ describe('The PlanClass component', () => {
     const useStateSpy = jest.spyOn(React, 'useState');
     useStateSpy.mockImplementation((init) => [init, setState]);
     const wrapper = shallow(
-      <PlanClass upgradeSubscription={upgradeSubscription} userId={1} maxLength={5} />,
+      <PlanClass
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        userId={1}
+        maxLength={5}
+      />,
     );
 
     wrapper.find('WithStyles(WithStyles(ForwardRef(TextField)))').simulate('change', {

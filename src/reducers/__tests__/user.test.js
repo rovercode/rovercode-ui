@@ -13,6 +13,9 @@ import {
   FETCH_USER_STATS_PENDING,
   FETCH_USER_STATS_FULFILLED,
   FETCH_USER_STATS_REJECTED,
+  REFRESH_SESSION_PENDING,
+  REFRESH_SESSION_FULFILLED,
+  REFRESH_SESSION_REJECTED,
 } from '../../actions/user';
 
 describe('The user reducer', () => {
@@ -58,10 +61,12 @@ describe('The user reducer', () => {
       isEditingPassword: false,
       isEditingShowGuide: false,
       isFetchingStats: false,
+      isRefreshingSession: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
       fetchStatsError: null,
+      refreshSessionError: null,
     });
   });
 
@@ -114,10 +119,12 @@ describe('The user reducer', () => {
       isEditingPassword: true,
       isEditingShowGuide: false,
       isFetchingStats: false,
+      isRefreshingSession: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
       fetchStatsError: null,
+      refreshSessionError: null,
     });
   });
 
@@ -168,10 +175,12 @@ describe('The user reducer', () => {
       isEditingPassword: false,
       isEditingShowGuide: true,
       isFetchingStats: false,
+      isRefreshingSession: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
       fetchStatsError: null,
+      refreshSessionError: null,
     });
   });
 
@@ -221,10 +230,12 @@ describe('The user reducer', () => {
       isEditingPassword: false,
       isEditingShowGuide: false,
       isFetchingStats: true,
+      isRefreshingSession: false,
       editUsernameError: null,
       editPasswordError: null,
       editShowGuideError: null,
       fetchStatsError: null,
+      refreshSessionError: null,
     });
   });
 
@@ -256,6 +267,71 @@ describe('The user reducer', () => {
     ).toEqual({
       isFetchingStats: false,
       fetchStatsError: error,
+    });
+  });
+
+  test('should handle REFRESH_SESSION_PENDING', () => {
+    expect(
+      reducer(undefined, {
+        type: REFRESH_SESSION_PENDING,
+      }),
+    ).toEqual({
+      user_id: null,
+      username: null,
+      email: null,
+      exp: null,
+      showGuide: true,
+      isSocial: false,
+      tier: 1,
+      stats: null,
+      isEditingUsername: false,
+      isEditingPassword: false,
+      isEditingShowGuide: false,
+      isFetchingStats: false,
+      isRefreshingSession: true,
+      editUsernameError: null,
+      editPasswordError: null,
+      editShowGuideError: null,
+      fetchStatsError: null,
+      refreshSessionError: null,
+    });
+  });
+
+  test('should handle REFRESH_SESSION_FULFILLED', () => {
+    const user = {
+      user_id: 1,
+      username: 'testuser',
+      email: 'testuser@example.com',
+      exp: 1540178211,
+      isSocial: false,
+      tier: 2,
+    };
+    expect(
+      reducer({}, {
+        type: REFRESH_SESSION_FULFILLED,
+        payload: user,
+      }),
+    ).toEqual({
+      user_id: user.user_id,
+      username: user.username,
+      email: user.email,
+      exp: user.exp,
+      isSocial: user.isSocial,
+      tier: user.tier,
+      isRefreshingSession: false,
+    });
+  });
+
+  test('should handle REFRESH_SESSION_REJECTED', () => {
+    const error = 'woops';
+    expect(
+      reducer({}, {
+        type: REFRESH_SESSION_REJECTED,
+        payload: error,
+      }),
+    ).toEqual({
+      isRefreshingSession: false,
+      refreshSessionError: error,
     });
   });
 

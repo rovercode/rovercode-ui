@@ -37,6 +37,7 @@ const PlanClass = ({
   error,
   expires,
   maxLength,
+  refreshSession,
   upgradeSubscription,
   userId,
 }) => {
@@ -45,7 +46,7 @@ const PlanClass = ({
   const handleCodeChange = (event) => {
     setLength(event.target.value.length);
     if (event.target.value.length === maxLength) {
-      upgradeSubscription(userId, event.target.value);
+      upgradeSubscription(userId, event.target.value).then(refreshSession);
     }
   };
 
@@ -178,6 +179,7 @@ PlanClass.propTypes = {
   error: PropTypes.string,
   expires: PropTypes.number,
   maxLength: PropTypes.number,
+  refreshSession: PropTypes.func.isRequired,
   upgradeSubscription: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
 };
