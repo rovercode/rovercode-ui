@@ -6,6 +6,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
   error={null}
   expires={0}
   maxLength={8}
+  refreshSession={[MockFunction]}
   upgradeSubscription={[MockFunction]}
   userId={1}
 >
@@ -1796,6 +1797,7 @@ exports[`The PlanClass component renders success status on the page with no erro
   error={null}
   expires={1596831913}
   maxLength={8}
+  refreshSession={[MockFunction]}
   upgradeSubscription={[MockFunction]}
   userId={1}
 >
@@ -2722,6 +2724,7 @@ exports[`The PlanClass component renders typing status on the page with no error
   error={null}
   expires={0}
   maxLength={8}
+  refreshSession={[MockFunction]}
   upgradeSubscription={[MockFunction]}
   userId={1}
 >

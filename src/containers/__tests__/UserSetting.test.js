@@ -7,7 +7,7 @@ import UserSetting from '../UserSetting'; // eslint-disable-line import/order
 
 jest.mock('@/actions/user');
 
-import { editUserUsername, editUserPassword } from '@/actions/user'; // eslint-disable-line import/first, import/order
+import { editUserUsername, editUserPassword, refreshSession } from '@/actions/user'; // eslint-disable-line import/first, import/order
 import { fetchSubscription, upgradeSubscription } from '@/actions/subscription'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
@@ -184,6 +184,14 @@ describe('The UserSettingContainer', () => {
     );
   });
 
+  test('dispatches an action to upgrade subscription', () => {
+    wrapper.dive().props().refreshSession(cookiesValues);
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      refreshSession(cookiesValues.auth_jwt),
+    );
+  });
+
   test('handles error fetching subscription', (done) => {
     const userId = 1;
     const localWrapper = shallow(
@@ -218,6 +226,20 @@ describe('The UserSettingContainer', () => {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
         }),
+      );
+      done();
+    });
+  });
+
+  test('handles error refreshing session', (done) => {
+    const localWrapper = shallow(
+      <UserSetting store={otherFailStore} />, { context },
+    ).dive().dive().dive();
+
+    localWrapper.dive().props().refreshSession(cookiesValues).catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
+        refreshSession(cookiesValues.auth_jwt),
       );
       done();
     });

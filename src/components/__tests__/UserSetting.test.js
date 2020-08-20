@@ -9,6 +9,7 @@ import UserSetting from '../UserSetting';
 let editUserPassword;
 let editUserUsername;
 let fetchSubscription;
+let refreshSession;
 let upgradeSubscription;
 
 describe('The UserSetting component', () => {
@@ -16,6 +17,7 @@ describe('The UserSetting component', () => {
     editUserPassword = jest.fn().mockResolvedValue();
     editUserUsername = jest.fn().mockResolvedValue();
     fetchSubscription = jest.fn().mockResolvedValue();
+    refreshSession = jest.fn().mockResolvedValue();
     upgradeSubscription = jest.fn().mockResolvedValue();
   });
 
@@ -32,6 +34,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
@@ -53,6 +56,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
@@ -73,6 +77,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
@@ -109,6 +114,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
@@ -152,6 +158,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
@@ -202,6 +209,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
@@ -241,6 +249,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
@@ -279,6 +288,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching={false}
       />,
@@ -309,6 +319,7 @@ describe('The UserSetting component', () => {
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         upgradeSubscription={upgradeSubscription}
         isFetching={false}
         upgradeError={{
