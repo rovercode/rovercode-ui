@@ -38,7 +38,7 @@ describe('The UserSetting component', () => {
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find({ type: 'password' }).length).toBe(2);
   });
@@ -60,7 +60,7 @@ describe('The UserSetting component', () => {
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
     expect(wrapper.find({ type: 'password' }).exists()).toBe(false);
   });
 
@@ -81,7 +81,7 @@ describe('The UserSetting component', () => {
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find(TextField).first().simulate('change', {
       target: {
@@ -118,7 +118,7 @@ describe('The UserSetting component', () => {
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find(TextField).at(1).simulate('change', {
       target: {
@@ -162,7 +162,7 @@ describe('The UserSetting component', () => {
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find(TextField).at(1).simulate('change', {
       target: {
@@ -213,7 +213,7 @@ describe('The UserSetting component', () => {
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.instance().saveUserUsername({ preventDefault: jest.fn() }).then(() => {
       expect(wrapper.state('saveSuccess')).toBe(false);
@@ -253,7 +253,7 @@ describe('The UserSetting component', () => {
         upgradeSubscription={upgradeSubscription}
         isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.instance().saveUserPassword({ preventDefault: jest.fn() }).then(() => {
       expect(wrapper.state('saveSuccess')).toBe(false);
@@ -292,7 +292,7 @@ describe('The UserSetting component', () => {
         upgradeSubscription={upgradeSubscription}
         isFetching={false}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
     expect(wrapper.find(PlanItem).length).toBe(3);
     expect(wrapper.find(PlanItem).at(0).prop('active')).toBe(false);
     expect(wrapper.find(PlanItem).at(1).prop('active')).toBe(false);
@@ -330,7 +330,7 @@ describe('The UserSetting component', () => {
           },
         }}
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
     expect(wrapper.find(PlanItem).length).toBe(3);
     expect(wrapper.find(PlanItem).at(0).prop('active')).toBe(true);
     expect(wrapper.find(PlanItem).at(1).prop('active')).toBe(false);

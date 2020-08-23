@@ -30,7 +30,7 @@ const PlanItem = ({ active, children, title }) => (
     ) : (null)
   }
     <Box p={2} border={1} borderRadius="borderRadius" boxShadow={2} borderColor="grey.300">
-      <Typography variant="h4" align="center">
+      <Typography variant="h5" align="center">
         {title}
       </Typography>
       {children}
