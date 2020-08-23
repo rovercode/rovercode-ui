@@ -82,7 +82,7 @@ exports[`The PlanItem component renders active on the page with no errors 1`] = 
     >
       <WithStyles(ForwardRef(Typography))
         align="center"
-        variant="h4"
+        variant="h5"
       >
         <ForwardRef(Typography)
           align="center"
@@ -120,13 +120,13 @@ exports[`The PlanItem component renders active on the page with no errors 1`] = 
               "subtitle2": "MuiTypography-subtitle2",
             }
           }
-          variant="h4"
+          variant="h5"
         >
-          <h4
-            className="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter"
+          <h5
+            className="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter"
           >
             Test Title
-          </h4>
+          </h5>
         </ForwardRef(Typography)>
       </WithStyles(ForwardRef(Typography))>
       <div />
@@ -152,7 +152,7 @@ exports[`The PlanItem component renders inactive on the page with no errors 1`] 
     >
       <WithStyles(ForwardRef(Typography))
         align="center"
-        variant="h4"
+        variant="h5"
       >
         <ForwardRef(Typography)
           align="center"
@@ -190,13 +190,13 @@ exports[`The PlanItem component renders inactive on the page with no errors 1`] 
               "subtitle2": "MuiTypography-subtitle2",
             }
           }
-          variant="h4"
+          variant="h5"
         >
-          <h4
-            className="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter"
+          <h5
+            className="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter"
           >
             Test Title
-          </h4>
+          </h5>
         </ForwardRef(Typography)>
       </WithStyles(ForwardRef(Typography))>
       <div />

@@ -1,274 +1,295 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The UserSetting component renders on the page with no errors 1`] = `
-<WithStyles(ForwardRef(Grid))
-  alignItems="center"
-  container={true}
-  direction="column"
-  justify="center"
-  spacing={2}
+<WithStyles(ForwardRef(Container))
+  className="UserSetting-mainContainer-1"
 >
   <WithStyles(ForwardRef(Grid))
-    alignItems="center"
+    className="UserSetting-settingsSection-2"
     container={true}
-    direction="row"
-    item={true}
-    justify="center"
     spacing={2}
   >
     <WithStyles(ForwardRef(Grid))
+      className="UserSetting-titleArea-4"
+      container={true}
+      direction="row"
       item={true}
+      justify="space-between"
     >
-      <SettingsIcon
-        fontSize="large"
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+      >
+        <WithStyles(ForwardRef(Typography))
+          className="UserSetting-title-3"
+          variant="h4"
+        >
+          <FormattedMessage
+            defaultMessage="Account"
+            id="app.user_setting.header"
+            values={Object {}}
+          />
+        </WithStyles(ForwardRef(Typography))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+      spacing={2}
+    >
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+      >
+        <WithStyles(ForwardRef(Alert))
+          severity="info"
+        >
+          <FormattedMessage
+            defaultMessage="Changing any of these settings requires signing back in."
+            id="app.user_setting.info"
+            values={Object {}}
+          />
+        </WithStyles(ForwardRef(Alert))>
+      </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(Grid))
+        item={true}
       />
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
+      lg={4}
+      xs={12}
     >
-      <WithStyles(ForwardRef(Typography))
-        variant="h3"
-      >
-        <FormattedMessage
-          defaultMessage="My Settings"
-          id="app.user_setting.header"
-          values={Object {}}
-        />
-      </WithStyles(ForwardRef(Typography))>
-    </WithStyles(ForwardRef(Grid))>
-  </WithStyles(ForwardRef(Grid))>
-  <WithStyles(ForwardRef(Grid))
-    item={true}
-  >
-    <WithStyles(ForwardRef(Alert))
-      severity="info"
-    >
-      <FormattedMessage
-        defaultMessage="Changing any of these settings requires signing back in."
-        id="app.user_setting.info"
-        values={Object {}}
-      />
-    </WithStyles(ForwardRef(Alert))>
-  </WithStyles(ForwardRef(Grid))>
-  <WithStyles(ForwardRef(Grid))
-    item={true}
-  >
-    <Styled(MuiBox)
-      border={1}
-      borderColor="grey.500"
-      borderRadius="borderRadius"
-      boxShadow={3}
-      p={3}
-    >
-      <WithStyles(ForwardRef(Grid))
-        alignItems="center"
-        container={true}
-        direction="row"
-        item={true}
-        justify="center"
-        spacing={1}
+      <Styled(MuiBox)
+        border={1}
+        borderColor="grey.500"
+        borderRadius="borderRadius"
+        boxShadow={3}
+        p={3}
       >
         <WithStyles(ForwardRef(Grid))
-          item={true}
-        >
-          <PersonIcon
-            fontSize="large"
-          />
-        </WithStyles(ForwardRef(Grid))>
-        <WithStyles(ForwardRef(Grid))
-          item={true}
-        >
-          <WithStyles(ForwardRef(Typography))
-            variant="h5"
-          >
-            <FormattedMessage
-              defaultMessage="Change Username"
-              id="app.user_setting.username_header"
-              values={Object {}}
-            />
-          </WithStyles(ForwardRef(Typography))>
-        </WithStyles(ForwardRef(Grid))>
-      </WithStyles(ForwardRef(Grid))>
-      <form
-        key="1"
-        onSubmit={[Function]}
-      >
-        <WithStyles(ForwardRef(Grid))
-          item={true}
-        >
-          <WithStyles(ForwardRef(TextField))
-            defaultValue="testuser"
-            error={false}
-            label="Username:"
-            margin="dense"
-            name="username"
-            onChange={[Function]}
-            required={true}
-            variant="outlined"
-          />
-        </WithStyles(ForwardRef(Grid))>
-        <WithStyles(ForwardRef(Grid))
-          item={true}
-        >
-          <WithStyles(ForwardRef(Button))
-            color="primary"
-            type="submit"
-            variant="contained"
-          >
-            <FormattedMessage
-              defaultMessage="Save"
-              id="app.user_setting.save_username"
-              values={Object {}}
-            />
-          </WithStyles(ForwardRef(Button))>
-        </WithStyles(ForwardRef(Grid))>
-      </form>
-    </Styled(MuiBox)>
-  </WithStyles(ForwardRef(Grid))>
-  <WithStyles(ForwardRef(Grid))
-    item={true}
-  >
-    <Styled(MuiBox)
-      border={1}
-      borderColor="grey.500"
-      borderRadius="borderRadius"
-      boxShadow={3}
-      p={3}
-    >
-      <WithStyles(ForwardRef(Grid))
-        alignItems="center"
-        container={true}
-        direction="row"
-        item={true}
-        justify="center"
-        spacing={1}
-      >
-        <WithStyles(ForwardRef(Grid))
-          item={true}
-        >
-          <LockIcon
-            fontSize="large"
-          />
-        </WithStyles(ForwardRef(Grid))>
-        <WithStyles(ForwardRef(Grid))
-          item={true}
-        >
-          <WithStyles(ForwardRef(Typography))
-            variant="h5"
-          >
-            <FormattedMessage
-              defaultMessage="Change Password"
-              id="app.user_setting.password_header"
-              values={Object {}}
-            />
-          </WithStyles(ForwardRef(Typography))>
-        </WithStyles(ForwardRef(Grid))>
-      </WithStyles(ForwardRef(Grid))>
-      <form
-        key="1"
-        onSubmit={[Function]}
-      >
-        <WithStyles(ForwardRef(Grid))
+          alignItems="center"
           container={true}
           direction="row"
           item={true}
+          justify="center"
           spacing={1}
         >
           <WithStyles(ForwardRef(Grid))
             item={true}
           >
+            <PersonIcon
+              fontSize="medium"
+            />
+          </WithStyles(ForwardRef(Grid))>
+          <WithStyles(ForwardRef(Grid))
+            item={true}
+          >
+            <WithStyles(ForwardRef(Typography))
+              variant="h6"
+            >
+              <FormattedMessage
+                defaultMessage="Change Username"
+                id="app.user_setting.username_header"
+                values={Object {}}
+              />
+            </WithStyles(ForwardRef(Typography))>
+          </WithStyles(ForwardRef(Grid))>
+        </WithStyles(ForwardRef(Grid))>
+        <form
+          key="1"
+          onSubmit={[Function]}
+        >
+          <WithStyles(ForwardRef(Grid))
+            item={true}
+          >
             <WithStyles(ForwardRef(TextField))
+              defaultValue="testuser"
               error={false}
-              label="New Password:"
+              label="Username:"
               margin="dense"
-              name="password1"
+              name="username"
               onChange={[Function]}
               required={true}
-              type="password"
               variant="outlined"
             />
           </WithStyles(ForwardRef(Grid))>
           <WithStyles(ForwardRef(Grid))
             item={true}
           >
-            <WithStyles(ForwardRef(TextField))
-              error={false}
-              label="Verify:"
-              margin="dense"
-              name="password2"
-              onChange={[Function]}
-              required={true}
-              type="password"
-              variant="outlined"
+            <WithStyles(ForwardRef(Button))
+              color="primary"
+              type="submit"
+              variant="contained"
+            >
+              <FormattedMessage
+                defaultMessage="Save"
+                id="app.user_setting.save_username"
+                values={Object {}}
+              />
+            </WithStyles(ForwardRef(Button))>
+          </WithStyles(ForwardRef(Grid))>
+        </form>
+      </Styled(MuiBox)>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      lg={6}
+      xs={12}
+    >
+      <Styled(MuiBox)
+        border={1}
+        borderColor="grey.500"
+        borderRadius="borderRadius"
+        boxShadow={3}
+        p={3}
+      >
+        <WithStyles(ForwardRef(Grid))
+          alignItems="center"
+          container={true}
+          direction="row"
+          item={true}
+          justify="center"
+          spacing={1}
+        >
+          <WithStyles(ForwardRef(Grid))
+            item={true}
+          >
+            <LockIcon
+              fontSize="medium"
             />
           </WithStyles(ForwardRef(Grid))>
-        </WithStyles(ForwardRef(Grid))>
-        <WithStyles(ForwardRef(Grid))
-          item={true}
-        >
-          <WithStyles(ForwardRef(Button))
-            color="primary"
-            type="submit"
-            variant="contained"
+          <WithStyles(ForwardRef(Grid))
+            item={true}
           >
-            <FormattedMessage
-              defaultMessage="Save"
-              id="app.user_setting.save_password"
-              values={Object {}}
-            />
-          </WithStyles(ForwardRef(Button))>
+            <WithStyles(ForwardRef(Typography))
+              variant="h6"
+            >
+              <FormattedMessage
+                defaultMessage="Change Password"
+                id="app.user_setting.password_header"
+                values={Object {}}
+              />
+            </WithStyles(ForwardRef(Typography))>
+          </WithStyles(ForwardRef(Grid))>
         </WithStyles(ForwardRef(Grid))>
-      </form>
-    </Styled(MuiBox)>
+        <form
+          key="1"
+          onSubmit={[Function]}
+        >
+          <WithStyles(ForwardRef(Grid))
+            container={true}
+            direction="row"
+            item={true}
+            spacing={1}
+          >
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+            >
+              <WithStyles(ForwardRef(TextField))
+                error={false}
+                label="New Password:"
+                margin="dense"
+                name="password1"
+                onChange={[Function]}
+                required={true}
+                type="password"
+                variant="outlined"
+              />
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+            >
+              <WithStyles(ForwardRef(TextField))
+                error={false}
+                label="Verify:"
+                margin="dense"
+                name="password2"
+                onChange={[Function]}
+                required={true}
+                type="password"
+                variant="outlined"
+              />
+            </WithStyles(ForwardRef(Grid))>
+          </WithStyles(ForwardRef(Grid))>
+          <WithStyles(ForwardRef(Grid))
+            item={true}
+          >
+            <WithStyles(ForwardRef(Button))
+              color="primary"
+              type="submit"
+              variant="contained"
+            >
+              <FormattedMessage
+                defaultMessage="Save"
+                id="app.user_setting.save_password"
+                values={Object {}}
+              />
+            </WithStyles(ForwardRef(Button))>
+          </WithStyles(ForwardRef(Grid))>
+        </form>
+      </Styled(MuiBox)>
+    </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(Grid))>
   <WithStyles(ForwardRef(Grid))
-    item={true}
-  >
-    <WithStyles(ForwardRef(Typography))
-      variant="h4"
-    >
-      <FormattedMessage
-        defaultMessage="Plans"
-        id="app.user_setting.plans"
-        values={Object {}}
-      />
-    </WithStyles(ForwardRef(Typography))>
-  </WithStyles(ForwardRef(Grid))>
-  <WithStyles(ForwardRef(Grid))
-    alignItems="flex-start"
+    className="UserSetting-settingsSection-2"
     container={true}
-    direction="row"
-    item={true}
-    justify="center"
-    spacing={1}
+    spacing={2}
   >
     <WithStyles(ForwardRef(Grid))
+      className="UserSetting-titleArea-4"
+      container={true}
+      direction="row"
       item={true}
+      justify="space-between"
     >
-      <WithStyles(ForwardRef(Skeleton))
-        animation="wave"
-        height={200}
-        width={300}
-      />
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+      >
+        <WithStyles(ForwardRef(Typography))
+          className="UserSetting-title-3"
+          variant="h5"
+        >
+          <FormattedMessage
+            defaultMessage="Plans"
+            id="app.user_setting.plans"
+            values={Object {}}
+          />
+        </WithStyles(ForwardRef(Typography))>
+      </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
+      alignItems="flex-start"
+      container={true}
+      direction="row"
       item={true}
+      spacing={1}
     >
-      <WithStyles(ForwardRef(Skeleton))
-        animation="wave"
-        height={200}
-        width={300}
-      />
-    </WithStyles(ForwardRef(Grid))>
-    <WithStyles(ForwardRef(Grid))
-      item={true}
-    >
-      <WithStyles(ForwardRef(Skeleton))
-        animation="wave"
-        height={200}
-        width={300}
-      />
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={200}
+          width={300}
+        />
+      </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={200}
+          width={300}
+        />
+      </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={200}
+          width={300}
+        />
+      </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(Grid))>
-</WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Container))>
 `;
