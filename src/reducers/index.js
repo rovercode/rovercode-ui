@@ -3,6 +3,7 @@ import auth from './auth';
 import code from './code';
 import console from './console';
 import curriculum from './curriculum';
+import notification from './notification';
 import program from './program';
 import rover from './rover';
 import sensor from './sensor';
@@ -15,6 +16,7 @@ export default combineReducers({
   code,
   console,
   curriculum,
+  notification,
   program,
   rover,
   sensor,
