@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Box, Grid } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import Blockly from 'node-blockly/browser';
+import Blockly from '@rovercode/blockly';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';

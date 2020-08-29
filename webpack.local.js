@@ -10,8 +10,8 @@ module.exports = merge(common, {
     historyApiFallback: true,
     contentBase: './',
     proxy: {
-      '/api': 'http://localhost:8000',
-      '/jwt': 'http://localhost:8000',
+      '/api': 'http://localhost:8001',
+      '/jwt': 'http://localhost:8001',
     },
   },
 });
