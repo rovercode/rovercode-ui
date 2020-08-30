@@ -3,6 +3,7 @@ import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
 import { updateValidAuth } from '@/actions/auth';
+import { showNotification } from '@/actions/notification';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import Workspace from '../Workspace'; // eslint-disable-line import/order
 
@@ -732,6 +733,39 @@ describe('The Workspace component', () => {
         }),
       );
       expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
+  test('handles API error when saving', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 502,
+    };
+    store.dispatch = jest.fn();
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
+
+    const wrapper = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive();
+    wrapper.props().saveProgram(1, '<xml></xml>', 'test', 1, 'error message').then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        saveProgram(1, '<xml></xml>', 'test', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(
+        showNotification('error message', 4000, 'error'),
+      );
       done();
     });
   });

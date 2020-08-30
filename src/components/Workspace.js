@@ -21,6 +21,7 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 import { append, clear } from '@/actions/console';
+import { showNotification } from '@/actions/notification';
 import { send } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
 import {
@@ -44,9 +45,17 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   clearConsole: () => dispatch(clear()),
   updateXmlCode: (xmlCode) => dispatch(actionUpdateXmlCode(xmlCode)),
   sendToRover: (channel, message) => dispatch(send(channel, message)),
-  saveProgram: (id, content, name, lessonId) => dispatch(
+  saveProgram: (id, content, name, lessonId, errorMessage) => dispatch(
     actionSaveProgram(id, content, name, lessonId, authHeader(cookies)),
-  ).catch(checkAuthError(dispatch)),
+  ).catch(checkAuthError(dispatch)).catch((error) => {
+    const serverError = error.response && [502, 503, 504].includes(error.response.status);
+    if (error.message === 'Network Error' || serverError) {
+      // There was an error contacting the API
+      dispatch(showNotification(errorMessage, 4000, 'error'));
+    } else {
+      throw error;
+    }
+  }),
 });
 
 Blockly.Blocks.button_press = ButtonPress.definition;
@@ -205,7 +214,7 @@ const toolbox = `
 class Workspace extends Component {
   constructor(props) {
     super(props);
-    const { writeToConsole } = this.props;
+    const { intl, writeToConsole } = this.props;
 
     this.sensorStateCache = [];
     this.sensorStateCache.A_BUTTON = false;
@@ -218,6 +227,11 @@ class Workspace extends Component {
     this.runningEnabled = false;
     this.highlightPause = false;
     this.interpreter = null;
+    this.saveErrorMessage = intl.formatMessage({
+      id: 'app.workspace.save_error',
+      description: 'Indicates that saving the program has failed',
+      defaultMessage: 'Error saving program',
+    });
 
     this.api = new BlocklyApi(this.highlightBlock, this.beginSleep,
       this.sensorStateCache, writeToConsole, this.sendToRover);
@@ -412,7 +426,7 @@ class Workspace extends Component {
     const xmlCode = this.updateXmlCode();
 
     if (!code.isReadOnly && code.id) {
-      saveProgram(code.id, xmlCode, code.name, code.lesson);
+      saveProgram(code.id, xmlCode, code.name, code.lesson, this.saveErrorMessage);
     }
   }
 

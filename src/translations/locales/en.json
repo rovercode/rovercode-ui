@@ -147,5 +147,6 @@
   "app.user_setting.username": "Username:",
   "app.user_setting.username_header": "Change Username",
   "app.user_setting.verify": "Verify:",
-  "app.workspace.console": "console started"
+  "app.workspace.console": "console started",
+  "app.workspace.save_error": "Error saving program"
 }
