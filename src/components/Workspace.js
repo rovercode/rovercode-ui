@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Box, Grid } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import Blockly from 'node-blockly/browser';
+import Blockly from 'blockly';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
@@ -24,6 +24,16 @@ import { append, clear } from '@/actions/console';
 import { showNotification } from '@/actions/notification';
 import { send } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
+import {
+  ButtonPress,
+  Continue,
+  DisplayMessage,
+  LightSensorValue,
+  LineSensorValue,
+  MotorsStart,
+  MotorsStop,
+  SensorsGetCovered,
+} from '@/blocks';
 import BlocklyApi from '@/utils/blockly-api';
 import { blocklyTheme } from '@/themes/light';
 
@@ -47,6 +57,23 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     }
   }),
 });
+
+Blockly.Blocks.button_press = ButtonPress.definition;
+Blockly.JavaScript.button_press = ButtonPress.generator;
+Blockly.Blocks.continue = Continue.definition;
+Blockly.JavaScript.continue = Continue.generator;
+Blockly.Blocks.display_message = DisplayMessage.definition;
+Blockly.JavaScript.display_message = DisplayMessage.generator;
+Blockly.Blocks.light_sensor_value = LightSensorValue.definition;
+Blockly.JavaScript.light_sensor_value = LightSensorValue.generator;
+Blockly.Blocks.line_sensor_value = LineSensorValue.definition;
+Blockly.JavaScript.line_sensor_value = LineSensorValue.generator;
+Blockly.Blocks.motors_start = MotorsStart.definition;
+Blockly.JavaScript.motors_start = MotorsStart.generator;
+Blockly.Blocks.motors_stop = MotorsStop.definition;
+Blockly.JavaScript.motors_stop = MotorsStop.generator;
+Blockly.Blocks.sensors_get_covered = SensorsGetCovered.definition;
+Blockly.JavaScript.sensors_get_covered = SensorsGetCovered.generator;
 
 const toolbox = `
     <xml id="toolbox" style="display: none">
