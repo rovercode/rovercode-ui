@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import Blockly from 'node-blockly/browser';
+import Blockly from 'blockly';
 
 export default createMuiTheme({
   palette: {

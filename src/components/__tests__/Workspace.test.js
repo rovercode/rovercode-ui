@@ -6,11 +6,11 @@ import { updateValidAuth } from '@/actions/auth';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import Workspace from '../Workspace'; // eslint-disable-line import/order
 
-jest.mock('node-blockly/browser');
+jest.mock('blockly');
 jest.mock('@/actions/code');
 jest.mock('@/actions/rover');
 
-import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first, import/order
+import Blockly from 'blockly'; // eslint-disable-line import/first, import/order
 import { // eslint-disable-line import/first
   changeExecutionState,
   saveProgram,
