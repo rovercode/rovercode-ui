@@ -521,7 +521,7 @@ class Workspace extends Component {
 
     const xmlDom = Blockly.Xml.textToDom(xmlCode);
     try {
-      Blockly.Xml.domToWorkspace(workspace, xmlDom);
+      Blockly.Xml.domToWorkspace(xmlDom, workspace);
       this.setState({
         unsupportedProgram: false,
       }, this.updateCode);

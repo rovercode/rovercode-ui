@@ -704,7 +704,7 @@ describe('The Workspace component', () => {
 
     expect(playground.clear).toHaveBeenCalled();
     expect(Blockly.Xml.domToWorkspace).toHaveBeenCalled();
-    expect(Blockly.Xml.domToWorkspace).toHaveBeenCalledWith(playground, 'test-dom');
+    expect(Blockly.Xml.domToWorkspace).toHaveBeenCalledWith('test-dom', playground);
   });
 
   test('handles error when loading program', () => {
