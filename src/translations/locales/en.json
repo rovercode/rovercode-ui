@@ -148,5 +148,7 @@
   "app.user_setting.username_header": "Change Username",
   "app.user_setting.verify": "Verify:",
   "app.workspace.console": "console started",
+  "app.workspace.program_error_description": "This program is no longer supported.",
+  "app.workspace.program_error_title": "Error loading program",
   "app.workspace.save_error": "Error saving program"
 }

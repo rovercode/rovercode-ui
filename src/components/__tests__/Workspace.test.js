@@ -2,6 +2,7 @@ import React from 'react';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
+import { Alert } from '@material-ui/lab';
 import { updateValidAuth } from '@/actions/auth';
 import { showNotification } from '@/actions/notification';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
@@ -703,7 +704,27 @@ describe('The Workspace component', () => {
 
     expect(playground.clear).toHaveBeenCalled();
     expect(Blockly.Xml.domToWorkspace).toHaveBeenCalled();
-    expect(Blockly.Xml.domToWorkspace).toHaveBeenCalledWith(playground, 'test-dom');
+    expect(Blockly.Xml.domToWorkspace).toHaveBeenCalledWith('test-dom', playground);
+  });
+
+  test('handles error when loading program', () => {
+    const workspace = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    Blockly.Xml.domToWorkspace.mockImplementation(() => {
+      throw new Error();
+    });
+    workspace.instance().loadDesign('<xml></xml>');
+
+    expect(workspace.state('unsupportedProgram')).toBe(true);
+    expect(workspace.find(Alert).exists()).toBe(true);
   });
 
   test('handles authentication error when saving', (done) => {
