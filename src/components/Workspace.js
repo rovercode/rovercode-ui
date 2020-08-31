@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Box, Grid } from '@material-ui/core';
-import { injectIntl } from 'react-intl';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import Blockly from 'blockly';
 import PropTypes from 'prop-types';
@@ -238,6 +239,7 @@ class Workspace extends Component {
 
     this.state = {
       workspace: null,
+      unsupportedProgram: false,
     };
   }
 
@@ -518,34 +520,63 @@ class Workspace extends Component {
     workspace.clear();
 
     const xmlDom = Blockly.Xml.textToDom(xmlCode);
-    Blockly.Xml.domToWorkspace(workspace, xmlDom);
-
-    this.updateCode();
+    try {
+      Blockly.Xml.domToWorkspace(workspace, xmlDom);
+      this.setState({
+        unsupportedProgram: false,
+      }, this.updateCode);
+    } catch (err) {
+      this.setState({
+        unsupportedProgram: true,
+      });
+    }
   }
 
 
   render() {
     const { children, code, rover } = this.props;
+    const { unsupportedProgram } = this.state;
 
     return (
       <Box>
         <Grid container direction="column" justify="center" alignItems="center">
-          <Grid item container direction="column" alignItems="stretch">
-            <Grid item style={{ minHeight: code.isReadOnly ? '76vh' : '80vh', maxHeight: '1080px' }}>
-              <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
-                <Box
-                  zIndex="modal"
-                  style={{ position: 'absolute', bottom: '15%', left: code.isReadOnly ? '5%' : '15%' }}
-                >
-                  {
-                    React.Children.map(children, (child) => React.cloneElement(child, {
-                      isConnected: !!rover.rover,
-                    }))
-                  }
-                </Box>
-              </div>
-            </Grid>
-          </Grid>
+          {
+            unsupportedProgram ? (
+              <Grid item>
+                <Alert variant="outlined" severity="error">
+                  <AlertTitle>
+                    <FormattedMessage
+                      id="app.workspace.program_error_title"
+                      description="Notifies the user of an error loading a program"
+                      defaultMessage="Error loading program"
+                    />
+                  </AlertTitle>
+                  <FormattedMessage
+                    id="app.workspace.program_error_description"
+                    description="Notifies the user of an error loading a program"
+                    defaultMessage="This program is no longer supported."
+                  />
+                </Alert>
+              </Grid>
+            ) : (
+              <Grid item container direction="column" alignItems="stretch">
+                <Grid item style={{ minHeight: code.isReadOnly ? '76vh' : '80vh', maxHeight: '1080px' }}>
+                  <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
+                    <Box
+                      zIndex="modal"
+                      style={{ position: 'absolute', bottom: '15%', left: code.isReadOnly ? '5%' : '15%' }}
+                    >
+                      {
+                        React.Children.map(children, (child) => React.cloneElement(child, {
+                          isConnected: !!rover.rover,
+                        }))
+                      }
+                    </Box>
+                  </div>
+                </Grid>
+              </Grid>
+            )
+          }
         </Grid>
       </Box>
     );
