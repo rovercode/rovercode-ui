@@ -263,7 +263,7 @@ class Workspace extends Component {
 
     if (rover.rover) {
       const encoder = new TextEncoder();
-      sendToRover(rover.transmitChannel, encoder.encode(command));
+      sendToRover(rover.transmitChannel, encoder.encode(command)).catch(this.goToStopState);
     }
   }
 
