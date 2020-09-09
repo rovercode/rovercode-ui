@@ -892,6 +892,24 @@ describe('The Workspace component', () => {
     expect(store.dispatch).toHaveBeenCalledWith(send(store.getState().rover.transmitChannel, 'command'));
   });
 
+  test('stops program when failure sending to rover', (done) => {
+    const error = new Error();
+    store.dispatch = jest.fn().mockRejectedValue(error);
+    const wrapper = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    wrapper.instance().goToStopState = jest.fn(() => done());
+
+    wrapper.instance().sendToRover('command');
+  });
+
   test('dispatches an action when sending to rover with no connected rover', () => {
     const localStore = mockStore({
       code: {
