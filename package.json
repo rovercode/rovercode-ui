@@ -21,7 +21,8 @@
   "jest": {
     "globals": {
       "LOGGER_ENDPOINT": "",
-      "SAVE_DEBOUNCE_TIME": "1000"
+      "SAVE_DEBOUNCE_TIME": "1000",
+      "SEARCH_DEBOUNCE_TIME": "500"
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
