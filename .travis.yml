@@ -14,15 +14,15 @@ before_deploy:
   - |
     if [ "$TRAVIS_BRANCH" = "alpha" ]; then
       eval export FRONTEND_SENTRY_DSN=https://88d114444d43458398b75b825909c30e@sentry.io/1406271
-      eval export PXT_HEX_URL=https://rovercode-pxt.s3.us-east-2.amazonaws.com/alpha/rovercode.hex
+      eval export PXT_HEX_URL=https://rovercode-gigglebot-mbed.s3.us-east-2.amazonaws.com/alpha/rovercode.hex
       eval export SUBSCRIPTION_SERVICE=https://alpha-payment.rovercode.com
     elif [ "$TRAVIS_BRANCH" = "beta" ]; then
       eval export FRONTEND_SENTRY_DSN=https://a82f31ed5aa14c6f835de8e5ba8ef3fa@sentry.io/1406272
-      eval export PXT_HEX_URL=https://rovercode-pxt.s3.us-east-2.amazonaws.com/beta/rovercode.hex
+      eval export PXT_HEX_URL=https://rovercode-gigglebot-mbed.s3.us-east-2.amazonaws.com/beta/rovercode.hex
       eval export SUBSCRIPTION_SERVICE=https://beta-payment.rovercode.com
     else
       eval export FRONTEND_SENTRY_DSN=https://8ccf4910438348d494a8592312a4afdf@sentry.io/1406255
-      eval export PXT_HEX_URL=https://rovercode-pxt.s3.us-east-2.amazonaws.com/prod/rovercode.hex
+      eval export PXT_HEX_URL=https://rovercode-gigglebot-mbed.s3.us-east-2.amazonaws.com/prod/rovercode.hex
       eval export SUBSCRIPTION_SERVICE=https://payment.rovercode.com
     fi
     yarn build
