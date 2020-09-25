@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, ExpansionPanelDetails } from '@material-ui/core';
+import { Typography, AccordionDetails } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
@@ -19,14 +19,14 @@ const NumericSensorReadout = ({
   classes,
 }) => (
   <>
-    <ExpansionPanelDetails>
+    <AccordionDetails>
       <Typography>
         {title}
       </Typography>
-    </ExpansionPanelDetails>
+    </AccordionDetails>
     {
       readings.map((reading) => (
-        <ExpansionPanelDetails key={reading.label} className={classes.expansionPanelSubDetails}>
+        <AccordionDetails key={reading.label} className={classes.expansionPanelSubDetails}>
           <Typography variant="body2">
             {
               reading.reading === null ? (
@@ -36,7 +36,7 @@ const NumericSensorReadout = ({
               )
             }
           </Typography>
-        </ExpansionPanelDetails>
+        </AccordionDetails>
       ))
     }
   </>

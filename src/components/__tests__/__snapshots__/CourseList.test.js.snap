@@ -67,7 +67,6 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
               <FormattedMessage
                 defaultMessage="Sort"
                 id="app.program_collection.sort"
-                values={Object {}}
               />
             </WithStyles(ForwardRef(Button))>
             <WithStyles(ForwardRef(Menu))
@@ -97,7 +96,6 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
                 <FormattedMessage
                   defaultMessage="Name"
                   id="app.program_collection.name"
-                  values={Object {}}
                 />
                 <ArrowDownwardIcon />
               </WithStyles(ForwardRef(MenuItem))>

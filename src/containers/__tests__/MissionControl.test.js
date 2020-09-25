@@ -238,6 +238,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(store.dispatch).toHaveBeenCalledWith(fetchProgram(1));
@@ -265,6 +266,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(store.dispatch).toHaveBeenCalledWith(createProgram('Unnamed_Design_5'));
@@ -282,6 +284,7 @@ describe('The MissionControl container', () => {
         childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
       },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -339,11 +342,11 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(localStore.dispatch).toHaveBeenCalledWith(clearLesson());
   });
-
 
   test('fetches lesson when present on fetched program', () => {
     const localStore = mockStore({
@@ -383,6 +386,7 @@ describe('The MissionControl container', () => {
         childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
       },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -434,6 +438,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find(Alert).exists()).toBe(false);
@@ -477,6 +482,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find(Alert).exists()).toBe(true);
@@ -493,6 +499,7 @@ describe('The MissionControl container', () => {
         childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
       },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -555,6 +562,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     const button = wrapper.find('WithStyles(ForwardRef(Button))').first();
@@ -593,6 +601,7 @@ describe('The MissionControl container', () => {
         childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
       },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -646,6 +655,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Typography)))').at(0).text()).toBe('Goal: to do a thing');
@@ -690,11 +700,11 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Typography)))').exists()).toBe(false);
   });
-
 
   test('Remixes a lesson reference program', (done) => {
     const localStore = mockStore({
@@ -735,6 +745,7 @@ describe('The MissionControl container', () => {
         </MemoryRouter>
       </ReduxProvider>, { context },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -799,6 +810,7 @@ describe('The MissionControl container', () => {
         </MemoryRouter>
       </ReduxProvider>, { context },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()

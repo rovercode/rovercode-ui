@@ -32,16 +32,16 @@ exports[`The NumericSensorReadout component renders on the page with no errors w
     title="Flux Sensors"
     unit="Weber"
   >
-    <WithStyles(ForwardRef(ExpansionPanelDetails))>
-      <ForwardRef(ExpansionPanelDetails)
+    <WithStyles(ForwardRef(AccordionDetails))>
+      <ForwardRef(AccordionDetails)
         classes={
           Object {
-            "root": "MuiExpansionPanelDetails-root",
+            "root": "MuiAccordionDetails-root",
           }
         }
       >
         <div
-          className="MuiExpansionPanelDetails-root"
+          className="MuiAccordionDetails-root"
         >
           <WithStyles(ForwardRef(Typography))>
             <ForwardRef(Typography)
@@ -88,22 +88,22 @@ exports[`The NumericSensorReadout component renders on the page with no errors w
             </ForwardRef(Typography)>
           </WithStyles(ForwardRef(Typography))>
         </div>
-      </ForwardRef(ExpansionPanelDetails)>
-    </WithStyles(ForwardRef(ExpansionPanelDetails))>
-    <WithStyles(ForwardRef(ExpansionPanelDetails))
+      </ForwardRef(AccordionDetails)>
+    </WithStyles(ForwardRef(AccordionDetails))>
+    <WithStyles(ForwardRef(AccordionDetails))
       className="NumericSensorReadout-expansionPanelSubDetails-1"
       key="A"
     >
-      <ForwardRef(ExpansionPanelDetails)
+      <ForwardRef(AccordionDetails)
         className="NumericSensorReadout-expansionPanelSubDetails-1"
         classes={
           Object {
-            "root": "MuiExpansionPanelDetails-root",
+            "root": "MuiAccordionDetails-root",
           }
         }
       >
         <div
-          className="MuiExpansionPanelDetails-root NumericSensorReadout-expansionPanelSubDetails-1"
+          className="MuiAccordionDetails-root NumericSensorReadout-expansionPanelSubDetails-1"
         >
           <WithStyles(ForwardRef(Typography))
             variant="body2"
@@ -153,8 +153,8 @@ exports[`The NumericSensorReadout component renders on the page with no errors w
             </ForwardRef(Typography)>
           </WithStyles(ForwardRef(Typography))>
         </div>
-      </ForwardRef(ExpansionPanelDetails)>
-    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+      </ForwardRef(AccordionDetails)>
+    </WithStyles(ForwardRef(AccordionDetails))>
   </NumericSensorReadout>
 </WithStyles(NumericSensorReadout)>
 `;
@@ -191,16 +191,16 @@ exports[`The NumericSensorReadout component renders values on the page with no e
     title="Flux Sensors"
     unit="Weber"
   >
-    <WithStyles(ForwardRef(ExpansionPanelDetails))>
-      <ForwardRef(ExpansionPanelDetails)
+    <WithStyles(ForwardRef(AccordionDetails))>
+      <ForwardRef(AccordionDetails)
         classes={
           Object {
-            "root": "MuiExpansionPanelDetails-root",
+            "root": "MuiAccordionDetails-root",
           }
         }
       >
         <div
-          className="MuiExpansionPanelDetails-root"
+          className="MuiAccordionDetails-root"
         >
           <WithStyles(ForwardRef(Typography))>
             <ForwardRef(Typography)
@@ -247,22 +247,22 @@ exports[`The NumericSensorReadout component renders values on the page with no e
             </ForwardRef(Typography)>
           </WithStyles(ForwardRef(Typography))>
         </div>
-      </ForwardRef(ExpansionPanelDetails)>
-    </WithStyles(ForwardRef(ExpansionPanelDetails))>
-    <WithStyles(ForwardRef(ExpansionPanelDetails))
+      </ForwardRef(AccordionDetails)>
+    </WithStyles(ForwardRef(AccordionDetails))>
+    <WithStyles(ForwardRef(AccordionDetails))
       className="NumericSensorReadout-expansionPanelSubDetails-1"
       key="A"
     >
-      <ForwardRef(ExpansionPanelDetails)
+      <ForwardRef(AccordionDetails)
         className="NumericSensorReadout-expansionPanelSubDetails-1"
         classes={
           Object {
-            "root": "MuiExpansionPanelDetails-root",
+            "root": "MuiAccordionDetails-root",
           }
         }
       >
         <div
-          className="MuiExpansionPanelDetails-root NumericSensorReadout-expansionPanelSubDetails-1"
+          className="MuiAccordionDetails-root NumericSensorReadout-expansionPanelSubDetails-1"
         >
           <WithStyles(ForwardRef(Typography))
             variant="body2"
@@ -312,8 +312,8 @@ exports[`The NumericSensorReadout component renders values on the page with no e
             </ForwardRef(Typography)>
           </WithStyles(ForwardRef(Typography))>
         </div>
-      </ForwardRef(ExpansionPanelDetails)>
-    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+      </ForwardRef(AccordionDetails)>
+    </WithStyles(ForwardRef(AccordionDetails))>
   </NumericSensorReadout>
 </WithStyles(NumericSensorReadout)>
 `;

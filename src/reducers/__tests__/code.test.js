@@ -397,7 +397,6 @@ describe('The code reducer', () => {
     });
   });
 
-
   test('should handle REMIX_PROGRAM_PENDING', () => {
     expect(
       reducer({}, {

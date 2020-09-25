@@ -18,7 +18,6 @@ exports[`SignUp renders on the page with no errors 1`] = `
         <FormattedMessage
           defaultMessage="Sign Up"
           id="app.signup.header"
-          values={Object {}}
         />
       </WithStyles(ForwardRef(Typography))>
     </WithStyles(ForwardRef(Grid))>
@@ -29,7 +28,6 @@ exports[`SignUp renders on the page with no errors 1`] = `
         <FormattedMessage
           defaultMessage="Already have an account? Then please"
           id="app.signup.check_1"
-          values={Object {}}
         />
          
         <WithStyles(ForwardRef(Link))
@@ -52,7 +50,6 @@ exports[`SignUp renders on the page with no errors 1`] = `
           <FormattedMessage
             defaultMessage="sign in."
             id="app.signup.check_2"
-            values={Object {}}
           />
         </WithStyles(ForwardRef(Link))>
       </WithStyles(ForwardRef(Typography))>
@@ -164,7 +161,6 @@ exports[`SignUp renders on the page with no errors 1`] = `
             <FormattedMessage
               defaultMessage="Sign Up"
               id="app.signup.signup"
-              values={Object {}}
             />
           </WithStyles(ForwardRef(Button))>
         </WithStyles(ForwardRef(Grid))>

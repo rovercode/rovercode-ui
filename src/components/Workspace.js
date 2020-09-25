@@ -532,7 +532,6 @@ class Workspace extends Component {
     }
   }
 
-
   render() {
     const { children, code, rover } = this.props;
     const { unsupportedProgram } = this.state;
@@ -607,9 +606,16 @@ Workspace.propTypes = {
     rightLineSensorReading: PropTypes.number.isRequired,
   }).isRequired,
   rover: PropTypes.shape({
-    transmitChannel: PropTypes.object,
+    transmitChannel: PropTypes.shape({
+      writeValue: PropTypes.func,
+    }),
     isSending: PropTypes.bool,
-    rover: PropTypes.object,
+    rover: PropTypes.shape({
+      gatt: PropTypes.shape({
+        connect: PropTypes.func,
+        disconnect: PropTypes.func,
+      }),
+    }),
   }),
   updateJsCode: PropTypes.func.isRequired,
   updateXmlCode: PropTypes.func.isRequired,

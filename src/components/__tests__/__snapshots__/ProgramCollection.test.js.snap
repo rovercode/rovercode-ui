@@ -76,7 +76,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -100,6 +99,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         label="My Programs"
@@ -159,7 +159,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -183,6 +182,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           label="My Programs"
@@ -263,7 +263,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                   <WithStyles(ForwardRef(Grid))
                     classes={
                       Object {
-                        "root": "WithStyles(ForwardRef(Grid))-root-384",
+                        "root": "WithStyles(ForwardRef(Grid))-root-12",
                       }
                     }
                     container={true}
@@ -363,7 +363,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                           "justify-xs-space-around": "MuiGrid-justify-xs-space-around",
                           "justify-xs-space-between": "MuiGrid-justify-xs-space-between",
                           "justify-xs-space-evenly": "MuiGrid-justify-xs-space-evenly",
-                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-384",
+                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-12",
                           "spacing-xs-1": "MuiGrid-spacing-xs-1",
                           "spacing-xs-10": "MuiGrid-spacing-xs-10",
                           "spacing-xs-2": "MuiGrid-spacing-xs-2",
@@ -385,7 +385,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                       justify="space-between"
                     >
                       <div
-                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-384 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
+                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-12 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
                       >
                         <WithStyles(ForwardRef(Grid))
                           item={true}
@@ -509,7 +509,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                 <WithStyles(ForwardRef(Typography))
                                   classes={
                                     Object {
-                                      "root": "WithStyles(ForwardRef(Typography))-root-385",
+                                      "root": "WithStyles(ForwardRef(Typography))-root-13",
                                     }
                                   }
                                   variant="h4"
@@ -543,7 +543,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         "noWrap": "MuiTypography-noWrap",
                                         "overline": "MuiTypography-overline",
                                         "paragraph": "MuiTypography-paragraph",
-                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-385",
+                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-13",
                                         "srOnly": "MuiTypography-srOnly",
                                         "subtitle1": "MuiTypography-subtitle1",
                                         "subtitle2": "MuiTypography-subtitle2",
@@ -552,7 +552,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                     variant="h4"
                                   >
                                     <h4
-                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-385 MuiTypography-h4"
+                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-13 MuiTypography-h4"
                                     >
                                       My Programs
                                     </h4>
@@ -886,7 +886,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       }
                                                     >
                                                       <svg
-                                                        aria-hidden="true"
+                                                        aria-hidden={true}
                                                         className="MuiSvgIcon-root"
                                                         focusable="false"
                                                         viewBox="0 0 24 24"
@@ -902,7 +902,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <FormattedMessage
                                                 defaultMessage="New Program"
                                                 id="app.program_collection.new"
-                                                values={Object {}}
                                               >
                                                 New Program
                                               </FormattedMessage>
@@ -1407,7 +1406,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                             }
                                                           >
                                                             <svg
-                                                              aria-hidden="true"
+                                                              aria-hidden={true}
                                                               className="MuiSvgIcon-root"
                                                               focusable="false"
                                                               viewBox="0 0 24 24"
@@ -1431,10 +1430,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     className="MuiOutlinedInput-notchedOutline"
                                                     classes={
                                                       Object {
-                                                        "legend": "PrivateNotchedOutline-legend-233",
-                                                        "legendLabelled": "PrivateNotchedOutline-legendLabelled-234",
-                                                        "legendNotched": "PrivateNotchedOutline-legendNotched-235",
-                                                        "root": "PrivateNotchedOutline-root-232",
+                                                        "legend": "PrivateNotchedOutline-legend-6",
+                                                        "legendLabelled": "PrivateNotchedOutline-legendLabelled-7",
+                                                        "legendNotched": "PrivateNotchedOutline-legendNotched-8",
+                                                        "root": "PrivateNotchedOutline-root-5",
                                                       }
                                                     }
                                                     labelWidth={0}
@@ -1442,7 +1441,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   >
                                                     <fieldset
                                                       aria-hidden={true}
-                                                      className="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                                                      className="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
                                                       style={
                                                         Object {
                                                           "paddingLeft": 8,
@@ -1450,7 +1449,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       }
                                                     >
                                                       <legend
-                                                        className="PrivateNotchedOutline-legend-233"
+                                                        className="PrivateNotchedOutline-legend-6"
                                                         style={
                                                           Object {
                                                             "width": 0.01,
@@ -1933,7 +1932,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     <FormattedMessage
                                                       defaultMessage="Sort"
                                                       id="app.program_collection.sort"
-                                                      values={Object {}}
                                                     >
                                                       Sort
                                                     </FormattedMessage>
@@ -2174,7 +2172,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                           onClick={[Function]}
                                                           open={false}
                                                         />
-                                                        <TrapFocus
+                                                        <Unstable_TrapFocus
                                                           disableAutoFocus={false}
                                                           disableEnforceFocus={false}
                                                           disableRestoreFocus={false}
@@ -2433,7 +2431,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                             defaultMessage="Name"
                                                                                             id="app.program_collection.name"
                                                                                             key=".0"
-                                                                                            values={Object {}}
                                                                                           >
                                                                                             Name
                                                                                           </FormattedMessage>
@@ -2455,7 +2452,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                                 }
                                                                                               >
                                                                                                 <svg
-                                                                                                  aria-hidden="true"
+                                                                                                  aria-hidden={true}
                                                                                                   className="MuiSvgIcon-root"
                                                                                                   focusable="false"
                                                                                                   viewBox="0 0 24 24"
@@ -2515,7 +2512,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                             data-test="sentinelEnd"
                                                             tabIndex={0}
                                                           />
-                                                        </TrapFocus>
+                                                        </Unstable_TrapFocus>
                                                       </div>
                                                     </Portal>
                                                   </ForwardRef(Portal)>
@@ -2665,7 +2662,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                           <WithStyles(ForwardRef(Autocomplete))
                                             classes={
                                               Object {
-                                                "root": "WithStyles(ForwardRef(Autocomplete))-root-386",
+                                                "root": "WithStyles(ForwardRef(Autocomplete))-root-14",
                                               }
                                             }
                                             filterSelectedOptions={true}
@@ -2708,7 +2705,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   "popperDisablePortal": "MuiAutocomplete-popperDisablePortal",
                                                   "popupIndicator": "MuiAutocomplete-popupIndicator",
                                                   "popupIndicatorOpen": "MuiAutocomplete-popupIndicatorOpen",
-                                                  "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-386",
+                                                  "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-14",
                                                   "tag": "MuiAutocomplete-tag",
                                                   "tagSizeSmall": "MuiAutocomplete-tagSizeSmall",
                                                 }
@@ -2732,7 +2729,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <div
                                                 aria-expanded={false}
                                                 aria-owns={null}
-                                                className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-386 MuiAutocomplete-hasClearIcon"
+                                                className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-14 MuiAutocomplete-hasClearIcon"
                                                 onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 onMouseDown={[Function]}
@@ -2758,7 +2755,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                           tabIndex={-1}
                                                           title="Clear"
                                                         >
-                                                          <Memo(CloseIcon)
+                                                          <Memo
                                                             fontSize="small"
                                                           />
                                                         </WithStyles(ForwardRef(IconButton))>
@@ -2846,7 +2843,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                             tabIndex={-1}
                                                             title="Clear"
                                                           >
-                                                            <Memo(CloseIcon)
+                                                            <Memo
                                                               fontSize="small"
                                                             />
                                                           </WithStyles(ForwardRef(IconButton))>
@@ -3033,7 +3030,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                   tabIndex={-1}
                                                                   title="Clear"
                                                                 >
-                                                                  <Memo(CloseIcon)
+                                                                  <Memo
                                                                     fontSize="small"
                                                                   />
                                                                 </WithStyles(ForwardRef(IconButton))>
@@ -3136,7 +3133,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                     tabIndex={-1}
                                                                     title="Clear"
                                                                   >
-                                                                    <Memo(CloseIcon)
+                                                                    <Memo
                                                                       fontSize="small"
                                                                     />
                                                                   </WithStyles(ForwardRef(IconButton))>
@@ -3239,7 +3236,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                       tabIndex={-1}
                                                                       title="Clear"
                                                                     >
-                                                                      <Memo(CloseIcon)
+                                                                      <Memo
                                                                         fontSize="small"
                                                                       />
                                                                     </WithStyles(ForwardRef(IconButton))>
@@ -3343,7 +3340,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                         tabIndex={-1}
                                                                         title="Clear"
                                                                       >
-                                                                        <Memo(CloseIcon)
+                                                                        <Memo
                                                                           fontSize="small"
                                                                         />
                                                                       </WithStyles(ForwardRef(IconButton))>
@@ -3483,7 +3480,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                           >
                                                                             tag1
                                                                           </span>
-                                                                          <ForwardRef
+                                                                          <ForwardRef(CancelIcon)
                                                                             className="MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                             onClick={[Function]}
                                                                           >
@@ -3509,7 +3506,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 onClick={[Function]}
                                                                               >
                                                                                 <svg
-                                                                                  aria-hidden="true"
+                                                                                  aria-hidden={true}
                                                                                   className="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                                   focusable="false"
                                                                                   onClick={[Function]}
@@ -3521,7 +3518,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 </svg>
                                                                               </ForwardRef(SvgIcon)>
                                                                             </WithStyles(ForwardRef(SvgIcon))>
-                                                                          </ForwardRef>
+                                                                          </ForwardRef(CancelIcon)>
                                                                         </div>
                                                                       </ForwardRef(Chip)>
                                                                     </WithStyles(ForwardRef(Chip))>
@@ -3593,7 +3590,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                           >
                                                                             tag2
                                                                           </span>
-                                                                          <ForwardRef
+                                                                          <ForwardRef(CancelIcon)
                                                                             className="MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                             onClick={[Function]}
                                                                           >
@@ -3619,7 +3616,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 onClick={[Function]}
                                                                               >
                                                                                 <svg
-                                                                                  aria-hidden="true"
+                                                                                  aria-hidden={true}
                                                                                   className="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                                   focusable="false"
                                                                                   onClick={[Function]}
@@ -3631,7 +3628,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 </svg>
                                                                               </ForwardRef(SvgIcon)>
                                                                             </WithStyles(ForwardRef(SvgIcon))>
-                                                                          </ForwardRef>
+                                                                          </ForwardRef(CancelIcon)>
                                                                         </div>
                                                                       </ForwardRef(Chip)>
                                                                     </WithStyles(ForwardRef(Chip))>
@@ -3736,7 +3733,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 <span
                                                                                   className="MuiIconButton-label"
                                                                                 >
-                                                                                  <ForwardRef
+                                                                                  <ForwardRef(CloseIcon)
                                                                                     fontSize="small"
                                                                                   >
                                                                                     <WithStyles(ForwardRef(SvgIcon))
@@ -3759,7 +3756,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                         fontSize="small"
                                                                                       >
                                                                                         <svg
-                                                                                          aria-hidden="true"
+                                                                                          aria-hidden={true}
                                                                                           className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
                                                                                           focusable="false"
                                                                                           viewBox="0 0 24 24"
@@ -3770,7 +3767,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                         </svg>
                                                                                       </ForwardRef(SvgIcon)>
                                                                                     </WithStyles(ForwardRef(SvgIcon))>
-                                                                                  </ForwardRef>
+                                                                                  </ForwardRef(CloseIcon)>
                                                                                 </span>
                                                                                 <WithStyles(memo)
                                                                                   center={true}
@@ -3820,10 +3817,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                         className="MuiOutlinedInput-notchedOutline"
                                                                         classes={
                                                                           Object {
-                                                                            "legend": "PrivateNotchedOutline-legend-233",
-                                                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-234",
-                                                                            "legendNotched": "PrivateNotchedOutline-legendNotched-235",
-                                                                            "root": "PrivateNotchedOutline-root-232",
+                                                                            "legend": "PrivateNotchedOutline-legend-6",
+                                                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-7",
+                                                                            "legendNotched": "PrivateNotchedOutline-legendNotched-8",
+                                                                            "root": "PrivateNotchedOutline-root-5",
                                                                           }
                                                                         }
                                                                         label={
@@ -3836,10 +3833,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                       >
                                                                         <fieldset
                                                                           aria-hidden={true}
-                                                                          className="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                                                                          className="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
                                                                         >
                                                                           <legend
-                                                                            className="PrivateNotchedOutline-legendLabelled-234 PrivateNotchedOutline-legendNotched-235"
+                                                                            className="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
                                                                           >
                                                                             <span>
                                                                               Filter by tag
@@ -4160,7 +4157,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                   <FormattedMessage
                                     defaultMessage="Free Program Slots"
                                     id="app.program_collection.slots"
-                                    values={Object {}}
                                   >
                                     Free Program Slots
                                   </FormattedMessage>
@@ -4384,7 +4380,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                   <FormattedMessage
                                     defaultMessage="You have used all your free program slots. You can delete an existing program to free up a program slot, or you can"
                                     id="app.program_collection.over1"
-                                    values={Object {}}
                                   >
                                     You have used all your free program slots. You can delete an existing program to free up a program slot, or you can
                                   </FormattedMessage>
@@ -4466,7 +4461,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                             <FormattedMessage
                                               defaultMessage="upgrade your account"
                                               id="app.program_collection.over2"
-                                              values={Object {}}
                                             >
                                               upgrade your account
                                             </FormattedMessage>
@@ -4479,7 +4473,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                   <FormattedMessage
                                     defaultMessage="for unlimited programs."
                                     id="app.program_collection.over3"
-                                    values={Object {}}
                                   >
                                     for unlimited programs.
                                   </FormattedMessage>
@@ -5349,7 +5342,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <WithStyles(ForwardRef(Button))
                                                 classes={
                                                   Object {
-                                                    "root": "WithStyles(ForwardRef(Button))-root-417",
+                                                    "root": "WithStyles(ForwardRef(Button))-root-15",
                                                   }
                                                 }
                                                 id={5}
@@ -5381,7 +5374,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                       "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                       "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-417",
+                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-15",
                                                       "sizeLarge": "MuiButton-sizeLarge",
                                                       "sizeSmall": "MuiButton-sizeSmall",
                                                       "startIcon": "MuiButton-startIcon",
@@ -5399,7 +5392,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   startIcon={<Memo(DeleteIcon) />}
                                                 >
                                                   <WithStyles(ForwardRef(ButtonBase))
-                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-417 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-15 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                     component="button"
                                                     disabled={false}
                                                     focusRipple={true}
@@ -5410,7 +5403,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     type="button"
                                                   >
                                                     <ForwardRef(ButtonBase)
-                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-417 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-15 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                       classes={
                                                         Object {
                                                           "disabled": "Mui-disabled",
@@ -5428,7 +5421,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       type="button"
                                                     >
                                                       <button
-                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-417 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-15 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                         disabled={false}
                                                         id={5}
                                                         name="Unnamed_Design_2"
@@ -5471,7 +5464,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -5487,7 +5480,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                           <FormattedMessage
                                                             defaultMessage="Delete"
                                                             id="app.program_collection.remove"
-                                                            values={Object {}}
                                                           >
                                                             Delete
                                                           </FormattedMessage>
@@ -5544,7 +5536,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                   className="ProgramCollection-paginationPaddedBox-2"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-337 ProgramCollection-paginationPaddedBox-2"
+                    className="MuiBox-root MuiBox-root-11 ProgramCollection-paginationPaddedBox-2"
                   >
                     <WithStyles(ForwardRef(Pagination))
                       color="secondary"
@@ -5661,7 +5653,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         tabIndex={-1}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(FirstPageIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -5684,7 +5676,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -5695,7 +5687,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(FirstPageIcon)>
                                       </button>
                                     </ForwardRef(ButtonBase)>
                                   </WithStyles(ForwardRef(ButtonBase))>
@@ -5788,7 +5780,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         tabIndex={-1}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(NavigateBeforeIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -5811,7 +5803,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -5822,7 +5814,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(NavigateBeforeIcon)>
                                       </button>
                                     </ForwardRef(ButtonBase)>
                                   </WithStyles(ForwardRef(ButtonBase))>
@@ -6162,7 +6154,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         tabIndex={0}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(NavigateNextIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -6185,7 +6177,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -6196,7 +6188,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(NavigateNextIcon)>
                                         <WithStyles(memo)
                                           center={false}
                                         >
@@ -6317,7 +6309,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         tabIndex={0}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(LastPageIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -6340,7 +6332,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -6351,7 +6343,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(LastPageIcon)>
                                         <WithStyles(memo)
                                           center={false}
                                         >
@@ -6478,7 +6470,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -6502,6 +6493,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         label="My Programs"
@@ -6561,7 +6553,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -6585,6 +6576,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           label="My Programs"
@@ -6665,7 +6657,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                   <WithStyles(ForwardRef(Grid))
                     classes={
                       Object {
-                        "root": "WithStyles(ForwardRef(Grid))-root-423",
+                        "root": "WithStyles(ForwardRef(Grid))-root-21",
                       }
                     }
                     container={true}
@@ -6765,7 +6757,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                           "justify-xs-space-around": "MuiGrid-justify-xs-space-around",
                           "justify-xs-space-between": "MuiGrid-justify-xs-space-between",
                           "justify-xs-space-evenly": "MuiGrid-justify-xs-space-evenly",
-                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-423",
+                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-21",
                           "spacing-xs-1": "MuiGrid-spacing-xs-1",
                           "spacing-xs-10": "MuiGrid-spacing-xs-10",
                           "spacing-xs-2": "MuiGrid-spacing-xs-2",
@@ -6787,7 +6779,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                       justify="space-between"
                     >
                       <div
-                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-423 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
+                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-21 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
                       >
                         <WithStyles(ForwardRef(Grid))
                           item={true}
@@ -6911,7 +6903,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                 <WithStyles(ForwardRef(Typography))
                                   classes={
                                     Object {
-                                      "root": "WithStyles(ForwardRef(Typography))-root-424",
+                                      "root": "WithStyles(ForwardRef(Typography))-root-22",
                                     }
                                   }
                                   variant="h4"
@@ -6945,7 +6937,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         "noWrap": "MuiTypography-noWrap",
                                         "overline": "MuiTypography-overline",
                                         "paragraph": "MuiTypography-paragraph",
-                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-424",
+                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-22",
                                         "srOnly": "MuiTypography-srOnly",
                                         "subtitle1": "MuiTypography-subtitle1",
                                         "subtitle2": "MuiTypography-subtitle2",
@@ -6954,7 +6946,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                     variant="h4"
                                   >
                                     <h4
-                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-424 MuiTypography-h4"
+                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-22 MuiTypography-h4"
                                     >
                                       My Programs
                                     </h4>
@@ -7288,7 +7280,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       }
                                                     >
                                                       <svg
-                                                        aria-hidden="true"
+                                                        aria-hidden={true}
                                                         className="MuiSvgIcon-root"
                                                         focusable="false"
                                                         viewBox="0 0 24 24"
@@ -7304,7 +7296,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <FormattedMessage
                                                 defaultMessage="New Program"
                                                 id="app.program_collection.new"
-                                                values={Object {}}
                                               >
                                                 New Program
                                               </FormattedMessage>
@@ -7837,7 +7828,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                             }
                                                           >
                                                             <svg
-                                                              aria-hidden="true"
+                                                              aria-hidden={true}
                                                               className="MuiSvgIcon-root"
                                                               focusable="false"
                                                               viewBox="0 0 24 24"
@@ -7861,10 +7852,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     className="MuiOutlinedInput-notchedOutline"
                                                     classes={
                                                       Object {
-                                                        "legend": "PrivateNotchedOutline-legend-233",
-                                                        "legendLabelled": "PrivateNotchedOutline-legendLabelled-234",
-                                                        "legendNotched": "PrivateNotchedOutline-legendNotched-235",
-                                                        "root": "PrivateNotchedOutline-root-232",
+                                                        "legend": "PrivateNotchedOutline-legend-6",
+                                                        "legendLabelled": "PrivateNotchedOutline-legendLabelled-7",
+                                                        "legendNotched": "PrivateNotchedOutline-legendNotched-8",
+                                                        "root": "PrivateNotchedOutline-root-5",
                                                       }
                                                     }
                                                     labelWidth={0}
@@ -7872,7 +7863,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   >
                                                     <fieldset
                                                       aria-hidden={true}
-                                                      className="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                                                      className="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
                                                       style={
                                                         Object {
                                                           "paddingLeft": 8,
@@ -7880,7 +7871,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       }
                                                     >
                                                       <legend
-                                                        className="PrivateNotchedOutline-legend-233"
+                                                        className="PrivateNotchedOutline-legend-6"
                                                         style={
                                                           Object {
                                                             "width": 0.01,
@@ -8363,7 +8354,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     <FormattedMessage
                                                       defaultMessage="Sort"
                                                       id="app.program_collection.sort"
-                                                      values={Object {}}
                                                     >
                                                       Sort
                                                     </FormattedMessage>
@@ -8654,7 +8644,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                           onClick={[Function]}
                                                           open={false}
                                                         />
-                                                        <TrapFocus
+                                                        <Unstable_TrapFocus
                                                           disableAutoFocus={false}
                                                           disableEnforceFocus={false}
                                                           disableRestoreFocus={false}
@@ -8913,7 +8903,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                             defaultMessage="Name"
                                                                                             id="app.program_collection.name"
                                                                                             key=".0"
-                                                                                            values={Object {}}
                                                                                           >
                                                                                             Name
                                                                                           </FormattedMessage>
@@ -8935,7 +8924,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                                 }
                                                                                               >
                                                                                                 <svg
-                                                                                                  aria-hidden="true"
+                                                                                                  aria-hidden={true}
                                                                                                   className="MuiSvgIcon-root"
                                                                                                   focusable="false"
                                                                                                   viewBox="0 0 24 24"
@@ -8995,7 +8984,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                             data-test="sentinelEnd"
                                                             tabIndex={0}
                                                           />
-                                                        </TrapFocus>
+                                                        </Unstable_TrapFocus>
                                                       </div>
                                                     </Portal>
                                                   </ForwardRef(Portal)>
@@ -9145,7 +9134,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                           <WithStyles(ForwardRef(Autocomplete))
                                             classes={
                                               Object {
-                                                "root": "WithStyles(ForwardRef(Autocomplete))-root-425",
+                                                "root": "WithStyles(ForwardRef(Autocomplete))-root-23",
                                               }
                                             }
                                             filterSelectedOptions={true}
@@ -9188,7 +9177,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   "popperDisablePortal": "MuiAutocomplete-popperDisablePortal",
                                                   "popupIndicator": "MuiAutocomplete-popupIndicator",
                                                   "popupIndicatorOpen": "MuiAutocomplete-popupIndicatorOpen",
-                                                  "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-425",
+                                                  "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-23",
                                                   "tag": "MuiAutocomplete-tag",
                                                   "tagSizeSmall": "MuiAutocomplete-tagSizeSmall",
                                                 }
@@ -9212,7 +9201,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <div
                                                 aria-expanded={false}
                                                 aria-owns={null}
-                                                className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-425 MuiAutocomplete-hasClearIcon"
+                                                className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-23 MuiAutocomplete-hasClearIcon"
                                                 onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 onMouseDown={[Function]}
@@ -9238,7 +9227,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                           tabIndex={-1}
                                                           title="Clear"
                                                         >
-                                                          <Memo(CloseIcon)
+                                                          <Memo
                                                             fontSize="small"
                                                           />
                                                         </WithStyles(ForwardRef(IconButton))>
@@ -9326,7 +9315,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                             tabIndex={-1}
                                                             title="Clear"
                                                           >
-                                                            <Memo(CloseIcon)
+                                                            <Memo
                                                               fontSize="small"
                                                             />
                                                           </WithStyles(ForwardRef(IconButton))>
@@ -9513,7 +9502,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                   tabIndex={-1}
                                                                   title="Clear"
                                                                 >
-                                                                  <Memo(CloseIcon)
+                                                                  <Memo
                                                                     fontSize="small"
                                                                   />
                                                                 </WithStyles(ForwardRef(IconButton))>
@@ -9616,7 +9605,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                     tabIndex={-1}
                                                                     title="Clear"
                                                                   >
-                                                                    <Memo(CloseIcon)
+                                                                    <Memo
                                                                       fontSize="small"
                                                                     />
                                                                   </WithStyles(ForwardRef(IconButton))>
@@ -9719,7 +9708,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                       tabIndex={-1}
                                                                       title="Clear"
                                                                     >
-                                                                      <Memo(CloseIcon)
+                                                                      <Memo
                                                                         fontSize="small"
                                                                       />
                                                                     </WithStyles(ForwardRef(IconButton))>
@@ -9823,7 +9812,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                         tabIndex={-1}
                                                                         title="Clear"
                                                                       >
-                                                                        <Memo(CloseIcon)
+                                                                        <Memo
                                                                           fontSize="small"
                                                                         />
                                                                       </WithStyles(ForwardRef(IconButton))>
@@ -9963,7 +9952,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                           >
                                                                             tag1
                                                                           </span>
-                                                                          <ForwardRef
+                                                                          <ForwardRef(CancelIcon)
                                                                             className="MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                             onClick={[Function]}
                                                                           >
@@ -9989,7 +9978,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 onClick={[Function]}
                                                                               >
                                                                                 <svg
-                                                                                  aria-hidden="true"
+                                                                                  aria-hidden={true}
                                                                                   className="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                                   focusable="false"
                                                                                   onClick={[Function]}
@@ -10001,7 +9990,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 </svg>
                                                                               </ForwardRef(SvgIcon)>
                                                                             </WithStyles(ForwardRef(SvgIcon))>
-                                                                          </ForwardRef>
+                                                                          </ForwardRef(CancelIcon)>
                                                                         </div>
                                                                       </ForwardRef(Chip)>
                                                                     </WithStyles(ForwardRef(Chip))>
@@ -10073,7 +10062,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                           >
                                                                             tag2
                                                                           </span>
-                                                                          <ForwardRef
+                                                                          <ForwardRef(CancelIcon)
                                                                             className="MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                             onClick={[Function]}
                                                                           >
@@ -10099,7 +10088,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 onClick={[Function]}
                                                                               >
                                                                                 <svg
-                                                                                  aria-hidden="true"
+                                                                                  aria-hidden={true}
                                                                                   className="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                                   focusable="false"
                                                                                   onClick={[Function]}
@@ -10111,7 +10100,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 </svg>
                                                                               </ForwardRef(SvgIcon)>
                                                                             </WithStyles(ForwardRef(SvgIcon))>
-                                                                          </ForwardRef>
+                                                                          </ForwardRef(CancelIcon)>
                                                                         </div>
                                                                       </ForwardRef(Chip)>
                                                                     </WithStyles(ForwardRef(Chip))>
@@ -10216,7 +10205,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                 <span
                                                                                   className="MuiIconButton-label"
                                                                                 >
-                                                                                  <ForwardRef
+                                                                                  <ForwardRef(CloseIcon)
                                                                                     fontSize="small"
                                                                                   >
                                                                                     <WithStyles(ForwardRef(SvgIcon))
@@ -10239,7 +10228,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                         fontSize="small"
                                                                                       >
                                                                                         <svg
-                                                                                          aria-hidden="true"
+                                                                                          aria-hidden={true}
                                                                                           className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
                                                                                           focusable="false"
                                                                                           viewBox="0 0 24 24"
@@ -10250,7 +10239,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                                         </svg>
                                                                                       </ForwardRef(SvgIcon)>
                                                                                     </WithStyles(ForwardRef(SvgIcon))>
-                                                                                  </ForwardRef>
+                                                                                  </ForwardRef(CloseIcon)>
                                                                                 </span>
                                                                                 <WithStyles(memo)
                                                                                   center={true}
@@ -10300,10 +10289,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                         className="MuiOutlinedInput-notchedOutline"
                                                                         classes={
                                                                           Object {
-                                                                            "legend": "PrivateNotchedOutline-legend-233",
-                                                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-234",
-                                                                            "legendNotched": "PrivateNotchedOutline-legendNotched-235",
-                                                                            "root": "PrivateNotchedOutline-root-232",
+                                                                            "legend": "PrivateNotchedOutline-legend-6",
+                                                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-7",
+                                                                            "legendNotched": "PrivateNotchedOutline-legendNotched-8",
+                                                                            "root": "PrivateNotchedOutline-root-5",
                                                                           }
                                                                         }
                                                                         label={
@@ -10316,10 +10305,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                       >
                                                                         <fieldset
                                                                           aria-hidden={true}
-                                                                          className="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                                                                          className="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
                                                                         >
                                                                           <legend
-                                                                            className="PrivateNotchedOutline-legendLabelled-234 PrivateNotchedOutline-legendNotched-235"
+                                                                            className="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
                                                                           >
                                                                             <span>
                                                                               Filter by tag
@@ -10640,7 +10629,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                   <FormattedMessage
                                     defaultMessage="Free Program Slots"
                                     id="app.program_collection.slots"
-                                    values={Object {}}
                                   >
                                     Free Program Slots
                                   </FormattedMessage>
@@ -11562,7 +11550,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <WithStyles(ForwardRef(Button))
                                                 classes={
                                                   Object {
-                                                    "root": "WithStyles(ForwardRef(Button))-root-426",
+                                                    "root": "WithStyles(ForwardRef(Button))-root-24",
                                                   }
                                                 }
                                                 id={5}
@@ -11594,7 +11582,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                       "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                       "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-426",
+                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-24",
                                                       "sizeLarge": "MuiButton-sizeLarge",
                                                       "sizeSmall": "MuiButton-sizeSmall",
                                                       "startIcon": "MuiButton-startIcon",
@@ -11612,7 +11600,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   startIcon={<Memo(DeleteIcon) />}
                                                 >
                                                   <WithStyles(ForwardRef(ButtonBase))
-                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-426 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-24 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                     component="button"
                                                     disabled={false}
                                                     focusRipple={true}
@@ -11623,7 +11611,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     type="button"
                                                   >
                                                     <ForwardRef(ButtonBase)
-                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-426 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-24 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                       classes={
                                                         Object {
                                                           "disabled": "Mui-disabled",
@@ -11641,7 +11629,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       type="button"
                                                     >
                                                       <button
-                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-426 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-24 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                         disabled={false}
                                                         id={5}
                                                         name="Unnamed_Design_2"
@@ -11684,7 +11672,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -11700,7 +11688,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                           <FormattedMessage
                                                             defaultMessage="Delete"
                                                             id="app.program_collection.remove"
-                                                            values={Object {}}
                                                           >
                                                             Delete
                                                           </FormattedMessage>
@@ -11757,7 +11744,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                   className="ProgramCollection-paginationPaddedBox-2"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-422 ProgramCollection-paginationPaddedBox-2"
+                    className="MuiBox-root MuiBox-root-20 ProgramCollection-paginationPaddedBox-2"
                   >
                     <WithStyles(ForwardRef(Pagination))
                       color="secondary"
@@ -11874,7 +11861,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         tabIndex={-1}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(FirstPageIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -11897,7 +11884,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -11908,7 +11895,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(FirstPageIcon)>
                                       </button>
                                     </ForwardRef(ButtonBase)>
                                   </WithStyles(ForwardRef(ButtonBase))>
@@ -12001,7 +11988,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         tabIndex={-1}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(NavigateBeforeIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -12024,7 +12011,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -12035,7 +12022,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(NavigateBeforeIcon)>
                                       </button>
                                     </ForwardRef(ButtonBase)>
                                   </WithStyles(ForwardRef(ButtonBase))>
@@ -12375,7 +12362,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         tabIndex={0}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(NavigateNextIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -12398,7 +12385,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -12409,7 +12396,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(NavigateNextIcon)>
                                         <WithStyles(memo)
                                           center={false}
                                         >
@@ -12530,7 +12517,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         tabIndex={0}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(LastPageIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -12553,7 +12540,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -12564,7 +12551,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(LastPageIcon)>
                                         <WithStyles(memo)
                                           center={false}
                                         >
@@ -12691,7 +12678,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -12715,6 +12701,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         label="My Programs"
@@ -12774,7 +12761,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -12798,6 +12784,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           label="My Programs"
@@ -12878,7 +12865,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                   <WithStyles(ForwardRef(Grid))
                     classes={
                       Object {
-                        "root": "WithStyles(ForwardRef(Grid))-root-432",
+                        "root": "WithStyles(ForwardRef(Grid))-root-30",
                       }
                     }
                     container={true}
@@ -12978,7 +12965,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                           "justify-xs-space-around": "MuiGrid-justify-xs-space-around",
                           "justify-xs-space-between": "MuiGrid-justify-xs-space-between",
                           "justify-xs-space-evenly": "MuiGrid-justify-xs-space-evenly",
-                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-432",
+                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-30",
                           "spacing-xs-1": "MuiGrid-spacing-xs-1",
                           "spacing-xs-10": "MuiGrid-spacing-xs-10",
                           "spacing-xs-2": "MuiGrid-spacing-xs-2",
@@ -13000,7 +12987,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                       justify="space-between"
                     >
                       <div
-                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-432 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
+                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-30 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
                       >
                         <WithStyles(ForwardRef(Grid))
                           item={true}
@@ -13124,7 +13111,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                 <WithStyles(ForwardRef(Typography))
                                   classes={
                                     Object {
-                                      "root": "WithStyles(ForwardRef(Typography))-root-433",
+                                      "root": "WithStyles(ForwardRef(Typography))-root-31",
                                     }
                                   }
                                   variant="h4"
@@ -13158,7 +13145,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                         "noWrap": "MuiTypography-noWrap",
                                         "overline": "MuiTypography-overline",
                                         "paragraph": "MuiTypography-paragraph",
-                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-433",
+                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-31",
                                         "srOnly": "MuiTypography-srOnly",
                                         "subtitle1": "MuiTypography-subtitle1",
                                         "subtitle2": "MuiTypography-subtitle2",
@@ -13167,7 +13154,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                     variant="h4"
                                   >
                                     <h4
-                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-433 MuiTypography-h4"
+                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-31 MuiTypography-h4"
                                     >
                                       My Programs
                                     </h4>
@@ -13501,7 +13488,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                       }
                                                     >
                                                       <svg
-                                                        aria-hidden="true"
+                                                        aria-hidden={true}
                                                         className="MuiSvgIcon-root"
                                                         focusable="false"
                                                         viewBox="0 0 24 24"
@@ -13517,7 +13504,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               <FormattedMessage
                                                 defaultMessage="New Program"
                                                 id="app.program_collection.new"
-                                                values={Object {}}
                                               >
                                                 New Program
                                               </FormattedMessage>
@@ -14050,7 +14036,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                             }
                                                           >
                                                             <svg
-                                                              aria-hidden="true"
+                                                              aria-hidden={true}
                                                               className="MuiSvgIcon-root"
                                                               focusable="false"
                                                               viewBox="0 0 24 24"
@@ -14074,10 +14060,10 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                     className="MuiOutlinedInput-notchedOutline"
                                                     classes={
                                                       Object {
-                                                        "legend": "PrivateNotchedOutline-legend-233",
-                                                        "legendLabelled": "PrivateNotchedOutline-legendLabelled-234",
-                                                        "legendNotched": "PrivateNotchedOutline-legendNotched-235",
-                                                        "root": "PrivateNotchedOutline-root-232",
+                                                        "legend": "PrivateNotchedOutline-legend-6",
+                                                        "legendLabelled": "PrivateNotchedOutline-legendLabelled-7",
+                                                        "legendNotched": "PrivateNotchedOutline-legendNotched-8",
+                                                        "root": "PrivateNotchedOutline-root-5",
                                                       }
                                                     }
                                                     labelWidth={0}
@@ -14085,7 +14071,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                   >
                                                     <fieldset
                                                       aria-hidden={true}
-                                                      className="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                                                      className="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
                                                       style={
                                                         Object {
                                                           "paddingLeft": 8,
@@ -14093,7 +14079,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                       }
                                                     >
                                                       <legend
-                                                        className="PrivateNotchedOutline-legend-233"
+                                                        className="PrivateNotchedOutline-legend-6"
                                                         style={
                                                           Object {
                                                             "width": 0.01,
@@ -14576,7 +14562,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                     <FormattedMessage
                                                       defaultMessage="Sort"
                                                       id="app.program_collection.sort"
-                                                      values={Object {}}
                                                     >
                                                       Sort
                                                     </FormattedMessage>
@@ -14917,7 +14902,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                           onClick={[Function]}
                                                           open={false}
                                                         />
-                                                        <TrapFocus
+                                                        <Unstable_TrapFocus
                                                           disableAutoFocus={false}
                                                           disableEnforceFocus={false}
                                                           disableRestoreFocus={false}
@@ -15176,7 +15161,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                             defaultMessage="Name"
                                                                                             id="app.program_collection.name"
                                                                                             key=".0"
-                                                                                            values={Object {}}
                                                                                           >
                                                                                             Name
                                                                                           </FormattedMessage>
@@ -15198,7 +15182,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                                 }
                                                                                               >
                                                                                                 <svg
-                                                                                                  aria-hidden="true"
+                                                                                                  aria-hidden={true}
                                                                                                   className="MuiSvgIcon-root"
                                                                                                   focusable="false"
                                                                                                   viewBox="0 0 24 24"
@@ -15258,7 +15242,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                             data-test="sentinelEnd"
                                                             tabIndex={0}
                                                           />
-                                                        </TrapFocus>
+                                                        </Unstable_TrapFocus>
                                                       </div>
                                                     </Portal>
                                                   </ForwardRef(Portal)>
@@ -15408,7 +15392,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                           <WithStyles(ForwardRef(Autocomplete))
                                             classes={
                                               Object {
-                                                "root": "WithStyles(ForwardRef(Autocomplete))-root-434",
+                                                "root": "WithStyles(ForwardRef(Autocomplete))-root-32",
                                               }
                                             }
                                             filterSelectedOptions={true}
@@ -15451,7 +15435,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                   "popperDisablePortal": "MuiAutocomplete-popperDisablePortal",
                                                   "popupIndicator": "MuiAutocomplete-popupIndicator",
                                                   "popupIndicatorOpen": "MuiAutocomplete-popupIndicatorOpen",
-                                                  "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-434",
+                                                  "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-32",
                                                   "tag": "MuiAutocomplete-tag",
                                                   "tagSizeSmall": "MuiAutocomplete-tagSizeSmall",
                                                 }
@@ -15475,7 +15459,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               <div
                                                 aria-expanded={false}
                                                 aria-owns={null}
-                                                className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-434 MuiAutocomplete-hasClearIcon"
+                                                className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-32 MuiAutocomplete-hasClearIcon"
                                                 onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 onMouseDown={[Function]}
@@ -15501,7 +15485,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                           tabIndex={-1}
                                                           title="Clear"
                                                         >
-                                                          <Memo(CloseIcon)
+                                                          <Memo
                                                             fontSize="small"
                                                           />
                                                         </WithStyles(ForwardRef(IconButton))>
@@ -15589,7 +15573,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                             tabIndex={-1}
                                                             title="Clear"
                                                           >
-                                                            <Memo(CloseIcon)
+                                                            <Memo
                                                               fontSize="small"
                                                             />
                                                           </WithStyles(ForwardRef(IconButton))>
@@ -15776,7 +15760,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                   tabIndex={-1}
                                                                   title="Clear"
                                                                 >
-                                                                  <Memo(CloseIcon)
+                                                                  <Memo
                                                                     fontSize="small"
                                                                   />
                                                                 </WithStyles(ForwardRef(IconButton))>
@@ -15879,7 +15863,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                     tabIndex={-1}
                                                                     title="Clear"
                                                                   >
-                                                                    <Memo(CloseIcon)
+                                                                    <Memo
                                                                       fontSize="small"
                                                                     />
                                                                   </WithStyles(ForwardRef(IconButton))>
@@ -15982,7 +15966,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                       tabIndex={-1}
                                                                       title="Clear"
                                                                     >
-                                                                      <Memo(CloseIcon)
+                                                                      <Memo
                                                                         fontSize="small"
                                                                       />
                                                                     </WithStyles(ForwardRef(IconButton))>
@@ -16086,7 +16070,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                         tabIndex={-1}
                                                                         title="Clear"
                                                                       >
-                                                                        <Memo(CloseIcon)
+                                                                        <Memo
                                                                           fontSize="small"
                                                                         />
                                                                       </WithStyles(ForwardRef(IconButton))>
@@ -16226,7 +16210,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                           >
                                                                             tag1
                                                                           </span>
-                                                                          <ForwardRef
+                                                                          <ForwardRef(CancelIcon)
                                                                             className="MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                             onClick={[Function]}
                                                                           >
@@ -16252,7 +16236,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                 onClick={[Function]}
                                                                               >
                                                                                 <svg
-                                                                                  aria-hidden="true"
+                                                                                  aria-hidden={true}
                                                                                   className="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                                   focusable="false"
                                                                                   onClick={[Function]}
@@ -16264,7 +16248,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                 </svg>
                                                                               </ForwardRef(SvgIcon)>
                                                                             </WithStyles(ForwardRef(SvgIcon))>
-                                                                          </ForwardRef>
+                                                                          </ForwardRef(CancelIcon)>
                                                                         </div>
                                                                       </ForwardRef(Chip)>
                                                                     </WithStyles(ForwardRef(Chip))>
@@ -16336,7 +16320,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                           >
                                                                             tag2
                                                                           </span>
-                                                                          <ForwardRef
+                                                                          <ForwardRef(CancelIcon)
                                                                             className="MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                             onClick={[Function]}
                                                                           >
@@ -16362,7 +16346,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                 onClick={[Function]}
                                                                               >
                                                                                 <svg
-                                                                                  aria-hidden="true"
+                                                                                  aria-hidden={true}
                                                                                   className="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                                   focusable="false"
                                                                                   onClick={[Function]}
@@ -16374,7 +16358,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                 </svg>
                                                                               </ForwardRef(SvgIcon)>
                                                                             </WithStyles(ForwardRef(SvgIcon))>
-                                                                          </ForwardRef>
+                                                                          </ForwardRef(CancelIcon)>
                                                                         </div>
                                                                       </ForwardRef(Chip)>
                                                                     </WithStyles(ForwardRef(Chip))>
@@ -16479,7 +16463,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                 <span
                                                                                   className="MuiIconButton-label"
                                                                                 >
-                                                                                  <ForwardRef
+                                                                                  <ForwardRef(CloseIcon)
                                                                                     fontSize="small"
                                                                                   >
                                                                                     <WithStyles(ForwardRef(SvgIcon))
@@ -16502,7 +16486,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                         fontSize="small"
                                                                                       >
                                                                                         <svg
-                                                                                          aria-hidden="true"
+                                                                                          aria-hidden={true}
                                                                                           className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
                                                                                           focusable="false"
                                                                                           viewBox="0 0 24 24"
@@ -16513,7 +16497,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                                         </svg>
                                                                                       </ForwardRef(SvgIcon)>
                                                                                     </WithStyles(ForwardRef(SvgIcon))>
-                                                                                  </ForwardRef>
+                                                                                  </ForwardRef(CloseIcon)>
                                                                                 </span>
                                                                                 <WithStyles(memo)
                                                                                   center={true}
@@ -16563,10 +16547,10 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                         className="MuiOutlinedInput-notchedOutline"
                                                                         classes={
                                                                           Object {
-                                                                            "legend": "PrivateNotchedOutline-legend-233",
-                                                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-234",
-                                                                            "legendNotched": "PrivateNotchedOutline-legendNotched-235",
-                                                                            "root": "PrivateNotchedOutline-root-232",
+                                                                            "legend": "PrivateNotchedOutline-legend-6",
+                                                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-7",
+                                                                            "legendNotched": "PrivateNotchedOutline-legendNotched-8",
+                                                                            "root": "PrivateNotchedOutline-root-5",
                                                                           }
                                                                         }
                                                                         label={
@@ -16579,10 +16563,10 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                       >
                                                                         <fieldset
                                                                           aria-hidden={true}
-                                                                          className="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                                                                          className="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
                                                                         >
                                                                           <legend
-                                                                            className="PrivateNotchedOutline-legendLabelled-234 PrivateNotchedOutline-legendNotched-235"
+                                                                            className="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
                                                                           >
                                                                             <span>
                                                                               Filter by tag
@@ -17088,7 +17072,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               <WithStyles(ForwardRef(Button))
                                                 classes={
                                                   Object {
-                                                    "root": "WithStyles(ForwardRef(Button))-root-435",
+                                                    "root": "WithStyles(ForwardRef(Button))-root-33",
                                                   }
                                                 }
                                                 id={33}
@@ -17120,7 +17104,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                       "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                       "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                       "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-435",
+                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-33",
                                                       "sizeLarge": "MuiButton-sizeLarge",
                                                       "sizeSmall": "MuiButton-sizeSmall",
                                                       "startIcon": "MuiButton-startIcon",
@@ -17138,7 +17122,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                   startIcon={<Memo(DeleteIcon) />}
                                                 >
                                                   <WithStyles(ForwardRef(ButtonBase))
-                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-435 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-33 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                     component="button"
                                                     disabled={false}
                                                     focusRipple={true}
@@ -17149,7 +17133,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                     type="button"
                                                   >
                                                     <ForwardRef(ButtonBase)
-                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-435 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-33 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                       classes={
                                                         Object {
                                                           "disabled": "Mui-disabled",
@@ -17167,7 +17151,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                       type="button"
                                                     >
                                                       <button
-                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-435 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-33 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                         disabled={false}
                                                         id={33}
                                                         name="Unnamed_Design_3"
@@ -17210,7 +17194,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -17226,7 +17210,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                           <FormattedMessage
                                                             defaultMessage="Delete"
                                                             id="app.program_collection.remove"
-                                                            values={Object {}}
                                                           >
                                                             Delete
                                                           </FormattedMessage>
@@ -17669,7 +17652,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                   className="ProgramCollection-paginationPaddedBox-2"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-431 ProgramCollection-paginationPaddedBox-2"
+                    className="MuiBox-root MuiBox-root-29 ProgramCollection-paginationPaddedBox-2"
                   >
                     <WithStyles(ForwardRef(Pagination))
                       color="secondary"
@@ -17786,7 +17769,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                         tabIndex={-1}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(FirstPageIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -17809,7 +17792,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -17820,7 +17803,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(FirstPageIcon)>
                                       </button>
                                     </ForwardRef(ButtonBase)>
                                   </WithStyles(ForwardRef(ButtonBase))>
@@ -17913,7 +17896,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                         tabIndex={-1}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(NavigateBeforeIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -17936,7 +17919,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -17947,7 +17930,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(NavigateBeforeIcon)>
                                       </button>
                                     </ForwardRef(ButtonBase)>
                                   </WithStyles(ForwardRef(ButtonBase))>
@@ -18287,7 +18270,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                         tabIndex={0}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(NavigateNextIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -18310,7 +18293,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -18321,7 +18304,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(NavigateNextIcon)>
                                         <WithStyles(memo)
                                           center={false}
                                         >
@@ -18442,7 +18425,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                         tabIndex={0}
                                         type="button"
                                       >
-                                        <ForwardRef
+                                        <ForwardRef(LastPageIcon)
                                           className="MuiPaginationItem-icon"
                                         >
                                           <WithStyles(ForwardRef(SvgIcon))
@@ -18465,7 +18448,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               }
                                             >
                                               <svg
-                                                aria-hidden="true"
+                                                aria-hidden={true}
                                                 className="MuiSvgIcon-root MuiPaginationItem-icon"
                                                 focusable="false"
                                                 viewBox="0 0 24 24"
@@ -18476,7 +18459,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               </svg>
                                             </ForwardRef(SvgIcon)>
                                           </WithStyles(ForwardRef(SvgIcon))>
-                                        </ForwardRef>
+                                        </ForwardRef(LastPageIcon)>
                                         <WithStyles(memo)
                                           center={false}
                                         >

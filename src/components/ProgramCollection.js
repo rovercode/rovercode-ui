@@ -459,7 +459,12 @@ ProgramCollection.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
     tier: PropTypes.number.isRequired,
-    stats: PropTypes.object,
+    stats: PropTypes.shape({
+      block_diagram: PropTypes.shape({
+        count: PropTypes.number,
+        limit: PropTypes.number,
+      }),
+    }),
   }).isRequired,
   programs: PropTypes.shape({
     count: PropTypes.number,

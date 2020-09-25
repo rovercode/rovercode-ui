@@ -296,7 +296,6 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                     <FormattedMessage
                       defaultMessage="If you have a class code, enter"
                       id="app.plan_class.code1"
-                      values={Object {}}
                     >
                       If you have a class code, enter
                     </FormattedMessage>
@@ -470,7 +469,6 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                     <FormattedMessage
                       defaultMessage="it below to join your class plan."
                       id="app.plan_class.code2"
-                      values={Object {}}
                     >
                       it below to join your class plan.
                     </FormattedMessage>
@@ -633,7 +631,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                   }
                   classes={
                     Object {
-                      "root": "WithStyles(ForwardRef(TextField))-root-134",
+                      "root": "WithStyles(ForwardRef(TextField))-root-1",
                     }
                   }
                   error={false}
@@ -662,7 +660,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                     }
                     classes={
                       Object {
-                        "root": "MuiTextField-root WithStyles(ForwardRef(TextField))-root-134",
+                        "root": "MuiTextField-root WithStyles(ForwardRef(TextField))-root-1",
                       }
                     }
                     error={false}
@@ -679,7 +677,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                     variant="outlined"
                   >
                     <WithStyles(ForwardRef(FormControl))
-                      className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                      className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                       color="primary"
                       disabled={false}
                       error={false}
@@ -689,7 +687,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                       variant="outlined"
                     >
                       <ForwardRef(FormControl)
-                        className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                        className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                         classes={
                           Object {
                             "fullWidth": "MuiFormControl-fullWidth",
@@ -707,7 +705,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                         variant="outlined"
                       >
                         <div
-                          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                         >
                           <WithStyles(ForwardRef(OutlinedInput))
                             autoFocus={false}
@@ -901,7 +899,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                                                 }
                                               >
                                                 <svg
-                                                  aria-hidden="true"
+                                                  aria-hidden={true}
                                                   className="MuiSvgIcon-root"
                                                   focusable="false"
                                                   viewBox="0 0 24 24"
@@ -940,10 +938,10 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                                         className="MuiOutlinedInput-notchedOutline"
                                         classes={
                                           Object {
-                                            "legend": "PrivateNotchedOutline-legend-190",
-                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-191",
-                                            "legendNotched": "PrivateNotchedOutline-legendNotched-192",
-                                            "root": "PrivateNotchedOutline-root-189",
+                                            "legend": "PrivateNotchedOutline-legend-3",
+                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-4",
+                                            "legendNotched": "PrivateNotchedOutline-legendNotched-5",
+                                            "root": "PrivateNotchedOutline-root-2",
                                           }
                                         }
                                         labelWidth={0}
@@ -951,7 +949,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                                       >
                                         <fieldset
                                           aria-hidden={true}
-                                          className="PrivateNotchedOutline-root-189 MuiOutlinedInput-notchedOutline"
+                                          className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
                                           style={
                                             Object {
                                               "paddingLeft": 8,
@@ -959,7 +957,7 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                                           }
                                         >
                                           <legend
-                                            className="PrivateNotchedOutline-legend-190"
+                                            className="PrivateNotchedOutline-legend-3"
                                             style={
                                               Object {
                                                 "width": 0.01,
@@ -1275,7 +1273,6 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                     <FormattedMessage
                       defaultMessage="Contact us to setup a class plan"
                       id="app.plan_class.contact1"
-                      values={Object {}}
                     >
                       Contact us to setup a class plan
                     </FormattedMessage>
@@ -1449,7 +1446,6 @@ exports[`The PlanClass component renders on the page with no errors 1`] = `
                     <FormattedMessage
                       defaultMessage="for your student group."
                       id="app.plan_class.contact2"
-                      values={Object {}}
                     >
                       for your student group.
                     </FormattedMessage>
@@ -2087,7 +2083,6 @@ exports[`The PlanClass component renders success status on the page with no erro
                     <FormattedMessage
                       defaultMessage="Your class plan expires:"
                       id="app.plan_class.expires"
-                      values={Object {}}
                     >
                       Your class plan expires:
                     </FormattedMessage>
@@ -2259,7 +2254,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                   }
                   classes={
                     Object {
-                      "root": "WithStyles(ForwardRef(TextField))-root-134",
+                      "root": "WithStyles(ForwardRef(TextField))-root-1",
                     }
                   }
                   error={false}
@@ -2292,7 +2287,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                     }
                     classes={
                       Object {
-                        "root": "MuiTextField-root WithStyles(ForwardRef(TextField))-root-134",
+                        "root": "MuiTextField-root WithStyles(ForwardRef(TextField))-root-1",
                       }
                     }
                     error={false}
@@ -2309,7 +2304,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                     variant="outlined"
                   >
                     <WithStyles(ForwardRef(FormControl))
-                      className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                      className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                       color="primary"
                       disabled={false}
                       error={false}
@@ -2319,7 +2314,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                       variant="outlined"
                     >
                       <ForwardRef(FormControl)
-                        className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                        className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                         classes={
                           Object {
                             "fullWidth": "MuiFormControl-fullWidth",
@@ -2337,7 +2332,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                         variant="outlined"
                       >
                         <div
-                          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                         >
                           <WithStyles(ForwardRef(OutlinedInput))
                             autoFocus={false}
@@ -2555,7 +2550,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                                                 }
                                               >
                                                 <svg
-                                                  aria-hidden="true"
+                                                  aria-hidden={true}
                                                   className="MuiSvgIcon-root"
                                                   focusable="false"
                                                   viewBox="0 0 24 24"
@@ -2609,14 +2604,14 @@ exports[`The PlanClass component renders success status on the page with no erro
                                             <ForwardRef
                                               classes={
                                                 Object {
-                                                  "root": "CheckCircleIcon-root-200",
+                                                  "root": "CheckCircleIcon-root-7",
                                                 }
                                               }
                                             >
                                               <WithStyles(ForwardRef(SvgIcon))
                                                 classes={
                                                   Object {
-                                                    "root": "CheckCircleIcon-root-200",
+                                                    "root": "CheckCircleIcon-root-7",
                                                   }
                                                 }
                                               >
@@ -2631,13 +2626,13 @@ exports[`The PlanClass component renders success status on the page with no erro
                                                       "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
                                                       "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
                                                       "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                      "root": "MuiSvgIcon-root CheckCircleIcon-root-200",
+                                                      "root": "MuiSvgIcon-root CheckCircleIcon-root-7",
                                                     }
                                                   }
                                                 >
                                                   <svg
-                                                    aria-hidden="true"
-                                                    className="MuiSvgIcon-root CheckCircleIcon-root-200"
+                                                    aria-hidden={true}
+                                                    className="MuiSvgIcon-root CheckCircleIcon-root-7"
                                                     focusable="false"
                                                     viewBox="0 0 24 24"
                                                   >
@@ -2661,10 +2656,10 @@ exports[`The PlanClass component renders success status on the page with no erro
                                         className="MuiOutlinedInput-notchedOutline"
                                         classes={
                                           Object {
-                                            "legend": "PrivateNotchedOutline-legend-190",
-                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-191",
-                                            "legendNotched": "PrivateNotchedOutline-legendNotched-192",
-                                            "root": "PrivateNotchedOutline-root-189",
+                                            "legend": "PrivateNotchedOutline-legend-3",
+                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-4",
+                                            "legendNotched": "PrivateNotchedOutline-legendNotched-5",
+                                            "root": "PrivateNotchedOutline-root-2",
                                           }
                                         }
                                         labelWidth={0}
@@ -2672,7 +2667,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                                       >
                                         <fieldset
                                           aria-hidden={true}
-                                          className="PrivateNotchedOutline-root-189 MuiOutlinedInput-notchedOutline"
+                                          className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
                                           style={
                                             Object {
                                               "paddingLeft": 8,
@@ -2680,7 +2675,7 @@ exports[`The PlanClass component renders success status on the page with no erro
                                           }
                                         >
                                           <legend
-                                            className="PrivateNotchedOutline-legend-190"
+                                            className="PrivateNotchedOutline-legend-3"
                                             style={
                                               Object {
                                                 "width": 0.01,
@@ -3014,7 +3009,6 @@ exports[`The PlanClass component renders typing status on the page with no error
                     <FormattedMessage
                       defaultMessage="If you have a class code, enter"
                       id="app.plan_class.code1"
-                      values={Object {}}
                     >
                       If you have a class code, enter
                     </FormattedMessage>
@@ -3188,7 +3182,6 @@ exports[`The PlanClass component renders typing status on the page with no error
                     <FormattedMessage
                       defaultMessage="it below to join your class plan."
                       id="app.plan_class.code2"
-                      values={Object {}}
                     >
                       it below to join your class plan.
                     </FormattedMessage>
@@ -3359,7 +3352,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                   }
                   classes={
                     Object {
-                      "root": "WithStyles(ForwardRef(TextField))-root-134",
+                      "root": "WithStyles(ForwardRef(TextField))-root-1",
                     }
                   }
                   error={false}
@@ -3392,7 +3385,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                     }
                     classes={
                       Object {
-                        "root": "MuiTextField-root WithStyles(ForwardRef(TextField))-root-134",
+                        "root": "MuiTextField-root WithStyles(ForwardRef(TextField))-root-1",
                       }
                     }
                     error={false}
@@ -3409,7 +3402,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                     variant="outlined"
                   >
                     <WithStyles(ForwardRef(FormControl))
-                      className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                      className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                       color="primary"
                       disabled={false}
                       error={false}
@@ -3419,7 +3412,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                       variant="outlined"
                     >
                       <ForwardRef(FormControl)
-                        className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                        className="MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                         classes={
                           Object {
                             "fullWidth": "MuiFormControl-fullWidth",
@@ -3437,7 +3430,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                         variant="outlined"
                       >
                         <div
-                          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-134"
+                          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-1"
                         >
                           <WithStyles(ForwardRef(OutlinedInput))
                             autoFocus={false}
@@ -3655,7 +3648,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                                                 }
                                               >
                                                 <svg
-                                                  aria-hidden="true"
+                                                  aria-hidden={true}
                                                   className="MuiSvgIcon-root"
                                                   focusable="false"
                                                   viewBox="0 0 24 24"
@@ -3691,7 +3684,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                                       <WithStyles(ForwardRef(Typography))
                                         classes={
                                           Object {
-                                            "root": "WithStyles(ForwardRef(Typography))-root-199",
+                                            "root": "WithStyles(ForwardRef(Typography))-root-6",
                                           }
                                         }
                                         variant="subtitle2"
@@ -3725,7 +3718,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                                               "noWrap": "MuiTypography-noWrap",
                                               "overline": "MuiTypography-overline",
                                               "paragraph": "MuiTypography-paragraph",
-                                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-199",
+                                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-6",
                                               "srOnly": "MuiTypography-srOnly",
                                               "subtitle1": "MuiTypography-subtitle1",
                                               "subtitle2": "MuiTypography-subtitle2",
@@ -3734,7 +3727,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                                           variant="subtitle2"
                                         >
                                           <h6
-                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-199 MuiTypography-subtitle2"
+                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-6 MuiTypography-subtitle2"
                                           >
                                             3/8
                                           </h6>
@@ -3750,10 +3743,10 @@ exports[`The PlanClass component renders typing status on the page with no error
                                         className="MuiOutlinedInput-notchedOutline"
                                         classes={
                                           Object {
-                                            "legend": "PrivateNotchedOutline-legend-190",
-                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-191",
-                                            "legendNotched": "PrivateNotchedOutline-legendNotched-192",
-                                            "root": "PrivateNotchedOutline-root-189",
+                                            "legend": "PrivateNotchedOutline-legend-3",
+                                            "legendLabelled": "PrivateNotchedOutline-legendLabelled-4",
+                                            "legendNotched": "PrivateNotchedOutline-legendNotched-5",
+                                            "root": "PrivateNotchedOutline-root-2",
                                           }
                                         }
                                         labelWidth={0}
@@ -3761,7 +3754,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                                       >
                                         <fieldset
                                           aria-hidden={true}
-                                          className="PrivateNotchedOutline-root-189 MuiOutlinedInput-notchedOutline"
+                                          className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
                                           style={
                                             Object {
                                               "paddingLeft": 8,
@@ -3769,7 +3762,7 @@ exports[`The PlanClass component renders typing status on the page with no error
                                           }
                                         >
                                           <legend
-                                            className="PrivateNotchedOutline-legend-190"
+                                            className="PrivateNotchedOutline-legend-3"
                                             style={
                                               Object {
                                                 "width": 0.01,
@@ -4085,7 +4078,6 @@ exports[`The PlanClass component renders typing status on the page with no error
                     <FormattedMessage
                       defaultMessage="Contact us to setup a class plan"
                       id="app.plan_class.contact1"
-                      values={Object {}}
                     >
                       Contact us to setup a class plan
                     </FormattedMessage>
@@ -4259,7 +4251,6 @@ exports[`The PlanClass component renders typing status on the page with no error
                     <FormattedMessage
                       defaultMessage="for your student group."
                       id="app.plan_class.contact2"
-                      values={Object {}}
                     >
                       for your student group.
                     </FormattedMessage>

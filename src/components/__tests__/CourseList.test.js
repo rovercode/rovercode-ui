@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import Course from '../Course';
 import CourseList from '../CourseList';
 
-
 describe('The CourseList component', () => {
   const fetchCourses = jest.fn().mockResolvedValue();
   const courses = {

@@ -8,7 +8,6 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-
 const ConfirmDialog = (props) => {
   const {
     cancelButton,
