@@ -2,7 +2,6 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { fetchSubscription, upgradeSubscription } from '../subscription';
 
-
 describe('Subscription actions', () => {
   test('fetch subscription', (done) => {
     const mock = new MockAdapter(axios);

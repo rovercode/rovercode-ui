@@ -425,7 +425,6 @@ describe('The Workspace component', () => {
     expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
-
   test('doesn\'t run code when at the end', () => {
     jest.useFakeTimers();
 

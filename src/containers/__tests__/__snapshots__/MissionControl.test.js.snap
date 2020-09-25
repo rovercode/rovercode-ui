@@ -135,7 +135,6 @@ exports[`The MissionControl container renders on the page with no errors over li
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -159,6 +158,7 @@ exports[`The MissionControl container renders on the page with no errors over li
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         match={
@@ -225,7 +225,6 @@ exports[`The MissionControl container renders on the page with no errors over li
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -249,6 +248,7 @@ exports[`The MissionControl container renders on the page with no errors over li
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           location={
@@ -1157,7 +1157,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-279"
+                                      className="MuiBox-root MuiBox-root-10"
                                     >
                                       <WithStyles(ForwardRef(Typography))
                                         variant="h6"
@@ -1331,7 +1331,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                     m={0}
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-280"
+                                      className="MuiBox-root MuiBox-root-11"
                                     >
                                       <WithStyles(ForwardRef(Alert))
                                         action={
@@ -1345,7 +1345,6 @@ exports[`The MissionControl container renders on the page with no errors over li
                                             <FormattedMessage
                                               defaultMessage="Remix"
                                               id="app.mission_control.remix"
-                                              values={Object {}}
                                             />
                                           </WithStyles(ForwardRef(Button))>
                                         }
@@ -1363,7 +1362,6 @@ exports[`The MissionControl container renders on the page with no errors over li
                                               <FormattedMessage
                                                 defaultMessage="Remix"
                                                 id="app.mission_control.remix"
-                                                values={Object {}}
                                               />
                                             </WithStyles(ForwardRef(Button))>
                                           }
@@ -1440,7 +1438,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                 <div
                                                   className="MuiAlert-icon"
                                                 >
-                                                  <ForwardRef
+                                                  <ForwardRef(InfoOutlinedIcon)
                                                     fontSize="inherit"
                                                   >
                                                     <WithStyles(ForwardRef(SvgIcon))
@@ -1463,7 +1461,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         fontSize="inherit"
                                                       >
                                                         <svg
-                                                          aria-hidden="true"
+                                                          aria-hidden={true}
                                                           className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
                                                           focusable="false"
                                                           viewBox="0 0 24 24"
@@ -1474,7 +1472,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         </svg>
                                                       </ForwardRef(SvgIcon)>
                                                     </WithStyles(ForwardRef(SvgIcon))>
-                                                  </ForwardRef>
+                                                  </ForwardRef(InfoOutlinedIcon)>
                                                 </div>
                                                 <div
                                                   className="MuiAlert-message"
@@ -1543,7 +1541,6 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                   <FormattedMessage
                                                     defaultMessage="Remix it to make your own copy."
                                                     id="app.mission_control.read_only_content"
-                                                    values={Object {}}
                                                   >
                                                     Remix it to make your own copy.
                                                   </FormattedMessage>
@@ -1647,7 +1644,6 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                               <FormattedMessage
                                                                 defaultMessage="Remix"
                                                                 id="app.mission_control.remix"
-                                                                values={Object {}}
                                                               >
                                                                 Remix
                                                               </FormattedMessage>
@@ -1874,7 +1870,6 @@ exports[`The MissionControl container renders on the page with no errors over li
                                               <FormattedMessage
                                                 defaultMessage="View Project Details"
                                                 id="app.mission_control.view_details"
-                                                values={Object {}}
                                               >
                                                 View Project Details
                                               </FormattedMessage>
@@ -2454,23 +2449,23 @@ exports[`The MissionControl container renders on the page with no errors over li
                           <div
                             className="MuiGrid-root MuiGrid-item"
                           >
-                            <WithStyles(ForwardRef(ExpansionPanel))>
-                              <ForwardRef(ExpansionPanel)
+                            <WithStyles(ForwardRef(Accordion))>
+                              <ForwardRef(Accordion)
                                 classes={
                                   Object {
                                     "disabled": "Mui-disabled",
                                     "expanded": "Mui-expanded",
-                                    "root": "MuiExpansionPanel-root",
-                                    "rounded": "MuiExpansionPanel-rounded",
+                                    "root": "MuiAccordion-root",
+                                    "rounded": "MuiAccordion-rounded",
                                   }
                                 }
                               >
                                 <WithStyles(ForwardRef(Paper))
-                                  className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                  className="MuiAccordion-root MuiAccordion-rounded"
                                   square={false}
                                 >
                                   <ForwardRef(Paper)
-                                    className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                    className="MuiAccordion-root MuiAccordion-rounded"
                                     classes={
                                       Object {
                                         "elevation0": "MuiPaper-elevation0",
@@ -2506,28 +2501,28 @@ exports[`The MissionControl container renders on the page with no errors over li
                                     square={false}
                                   >
                                     <div
-                                      className="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                     >
-                                      <WithStyles(ForwardRef(ExpansionPanelSummary))
+                                      <WithStyles(ForwardRef(AccordionSummary))
                                         expandIcon={<Memo(ExpandMoreIcon) />}
                                         key=".0"
                                       >
-                                        <ForwardRef(ExpansionPanelSummary)
+                                        <ForwardRef(AccordionSummary)
                                           classes={
                                             Object {
-                                              "content": "MuiExpansionPanelSummary-content",
+                                              "content": "MuiAccordionSummary-content",
                                               "disabled": "Mui-disabled",
-                                              "expandIcon": "MuiExpansionPanelSummary-expandIcon",
+                                              "expandIcon": "MuiAccordionSummary-expandIcon",
                                               "expanded": "Mui-expanded",
                                               "focused": "Mui-focused",
-                                              "root": "MuiExpansionPanelSummary-root",
+                                              "root": "MuiAccordionSummary-root",
                                             }
                                           }
                                           expandIcon={<Memo(ExpandMoreIcon) />}
                                         >
                                           <WithStyles(ForwardRef(ButtonBase))
                                             aria-expanded={false}
-                                            className="MuiExpansionPanelSummary-root"
+                                            className="MuiAccordionSummary-root"
                                             component="div"
                                             disableRipple={true}
                                             disabled={false}
@@ -2538,7 +2533,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                           >
                                             <ForwardRef(ButtonBase)
                                               aria-expanded={false}
-                                              className="MuiExpansionPanelSummary-root"
+                                              className="MuiAccordionSummary-root"
                                               classes={
                                                 Object {
                                                   "disabled": "Mui-disabled",
@@ -2557,7 +2552,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                               <div
                                                 aria-disabled={false}
                                                 aria-expanded={false}
-                                                className="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                                className="MuiButtonBase-root MuiAccordionSummary-root"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onDragLeave={[Function]}
@@ -2574,7 +2569,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                 tabIndex={0}
                                               >
                                                 <div
-                                                  className="MuiExpansionPanelSummary-content"
+                                                  className="MuiAccordionSummary-content"
                                                 >
                                                   <WithStyles(ForwardRef(Typography))>
                                                     <ForwardRef(Typography)
@@ -2619,7 +2614,6 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         <FormattedMessage
                                                           defaultMessage="Sensors"
                                                           id="app.mission_control.sensors"
-                                                          values={Object {}}
                                                         >
                                                           Sensors
                                                         </FormattedMessage>
@@ -2629,7 +2623,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                 </div>
                                                 <WithStyles(ForwardRef(IconButton))
                                                   aria-hidden={true}
-                                                  className="MuiExpansionPanelSummary-expandIcon"
+                                                  className="MuiAccordionSummary-expandIcon"
                                                   component="div"
                                                   edge="end"
                                                   role={null}
@@ -2637,7 +2631,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                 >
                                                   <ForwardRef(IconButton)
                                                     aria-hidden={true}
-                                                    className="MuiExpansionPanelSummary-expandIcon"
+                                                    className="MuiAccordionSummary-expandIcon"
                                                     classes={
                                                       Object {
                                                         "colorInherit": "MuiIconButton-colorInherit",
@@ -2659,7 +2653,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                     <WithStyles(ForwardRef(ButtonBase))
                                                       aria-hidden={true}
                                                       centerRipple={true}
-                                                      className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                      className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                       component="div"
                                                       disabled={false}
                                                       focusRipple={true}
@@ -2669,7 +2663,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                       <ForwardRef(ButtonBase)
                                                         aria-hidden={true}
                                                         centerRipple={true}
-                                                        className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                        className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                         classes={
                                                           Object {
                                                             "disabled": "Mui-disabled",
@@ -2686,7 +2680,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         <div
                                                           aria-disabled={false}
                                                           aria-hidden={true}
-                                                          className="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                           onBlur={[Function]}
                                                           onDragLeave={[Function]}
                                                           onFocus={[Function]}
@@ -2722,7 +2716,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -2771,8 +2765,8 @@ exports[`The MissionControl container renders on the page with no errors over li
                                               </div>
                                             </ForwardRef(ButtonBase)>
                                           </WithStyles(ForwardRef(ButtonBase))>
-                                        </ForwardRef(ExpansionPanelSummary)>
-                                      </WithStyles(ForwardRef(ExpansionPanelSummary))>
+                                        </ForwardRef(AccordionSummary)>
+                                      </WithStyles(ForwardRef(AccordionSummary))>
                                       <WithStyles(ForwardRef(Collapse))
                                         in={false}
                                         timeout="auto"
@@ -2844,18 +2838,18 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         />
                                                       </ForwardRef(Divider)>
                                                     </WithStyles(ForwardRef(Divider))>
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".2"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <WithStyles(ForwardRef(Typography))>
                                                             <ForwardRef(Typography)
@@ -2900,7 +2894,6 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                                 <FormattedMessage
                                                                   defaultMessage="Buttons"
                                                                   id="app.mission_control.buttons"
-                                                                  values={Object {}}
                                                                 >
                                                                   Buttons
                                                                 </FormattedMessage>
@@ -2908,20 +2901,20 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                             </ForwardRef(Typography)>
                                                           </WithStyles(ForwardRef(Typography))>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".3"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <WithStyles(Styled(MuiBox))
                                                             border={1}
@@ -2935,16 +2928,16 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                               borderRadius="borderRadius"
                                                               classes={
                                                                 Object {
-                                                                  "root": "Styled(MuiBox)-root-310",
+                                                                  "root": "Styled(MuiBox)-root-12",
                                                                 }
                                                               }
                                                               p={2}
                                                             >
                                                               <div
-                                                                className="MuiBox-root MuiBox-root-311 Styled(MuiBox)-root-310"
+                                                                className="MuiBox-root MuiBox-root-13 Styled(MuiBox)-root-12"
                                                                 classes={
                                                                   Object {
-                                                                    "root": "Styled(MuiBox)-root-310",
+                                                                    "root": "Styled(MuiBox)-root-12",
                                                                   }
                                                                 }
                                                               >
@@ -2955,8 +2948,8 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                             </Styled(MuiBox)>
                                                           </WithStyles(Styled(MuiBox))>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
                                                     <WithStyles(ForwardRef(Divider))
                                                       key=".4"
                                                     >
@@ -3088,8 +3081,8 @@ exports[`The MissionControl container renders on the page with no errors over li
                                     </div>
                                   </ForwardRef(Paper)>
                                 </WithStyles(ForwardRef(Paper))>
-                              </ForwardRef(ExpansionPanel)>
-                            </WithStyles(ForwardRef(ExpansionPanel))>
+                              </ForwardRef(Accordion)>
+                            </WithStyles(ForwardRef(Accordion))>
                           </div>
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>
@@ -3209,23 +3202,23 @@ exports[`The MissionControl container renders on the page with no errors over li
                           <div
                             className="MuiGrid-root MuiGrid-item"
                           >
-                            <WithStyles(ForwardRef(ExpansionPanel))>
-                              <ForwardRef(ExpansionPanel)
+                            <WithStyles(ForwardRef(Accordion))>
+                              <ForwardRef(Accordion)
                                 classes={
                                   Object {
                                     "disabled": "Mui-disabled",
                                     "expanded": "Mui-expanded",
-                                    "root": "MuiExpansionPanel-root",
-                                    "rounded": "MuiExpansionPanel-rounded",
+                                    "root": "MuiAccordion-root",
+                                    "rounded": "MuiAccordion-rounded",
                                   }
                                 }
                               >
                                 <WithStyles(ForwardRef(Paper))
-                                  className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                  className="MuiAccordion-root MuiAccordion-rounded"
                                   square={false}
                                 >
                                   <ForwardRef(Paper)
-                                    className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                    className="MuiAccordion-root MuiAccordion-rounded"
                                     classes={
                                       Object {
                                         "elevation0": "MuiPaper-elevation0",
@@ -3261,28 +3254,28 @@ exports[`The MissionControl container renders on the page with no errors over li
                                     square={false}
                                   >
                                     <div
-                                      className="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                     >
-                                      <WithStyles(ForwardRef(ExpansionPanelSummary))
+                                      <WithStyles(ForwardRef(AccordionSummary))
                                         expandIcon={<Memo(ExpandMoreIcon) />}
                                         key=".0"
                                       >
-                                        <ForwardRef(ExpansionPanelSummary)
+                                        <ForwardRef(AccordionSummary)
                                           classes={
                                             Object {
-                                              "content": "MuiExpansionPanelSummary-content",
+                                              "content": "MuiAccordionSummary-content",
                                               "disabled": "Mui-disabled",
-                                              "expandIcon": "MuiExpansionPanelSummary-expandIcon",
+                                              "expandIcon": "MuiAccordionSummary-expandIcon",
                                               "expanded": "Mui-expanded",
                                               "focused": "Mui-focused",
-                                              "root": "MuiExpansionPanelSummary-root",
+                                              "root": "MuiAccordionSummary-root",
                                             }
                                           }
                                           expandIcon={<Memo(ExpandMoreIcon) />}
                                         >
                                           <WithStyles(ForwardRef(ButtonBase))
                                             aria-expanded={false}
-                                            className="MuiExpansionPanelSummary-root"
+                                            className="MuiAccordionSummary-root"
                                             component="div"
                                             disableRipple={true}
                                             disabled={false}
@@ -3293,7 +3286,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                           >
                                             <ForwardRef(ButtonBase)
                                               aria-expanded={false}
-                                              className="MuiExpansionPanelSummary-root"
+                                              className="MuiAccordionSummary-root"
                                               classes={
                                                 Object {
                                                   "disabled": "Mui-disabled",
@@ -3312,7 +3305,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                               <div
                                                 aria-disabled={false}
                                                 aria-expanded={false}
-                                                className="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                                className="MuiButtonBase-root MuiAccordionSummary-root"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onDragLeave={[Function]}
@@ -3329,7 +3322,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                 tabIndex={0}
                                               >
                                                 <div
-                                                  className="MuiExpansionPanelSummary-content"
+                                                  className="MuiAccordionSummary-content"
                                                 >
                                                   <WithStyles(ForwardRef(Typography))>
                                                     <ForwardRef(Typography)
@@ -3374,7 +3367,6 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         <FormattedMessage
                                                           defaultMessage="Debug Console"
                                                           id="app.mission_control.console"
-                                                          values={Object {}}
                                                         >
                                                           Debug Console
                                                         </FormattedMessage>
@@ -3384,7 +3376,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                 </div>
                                                 <WithStyles(ForwardRef(IconButton))
                                                   aria-hidden={true}
-                                                  className="MuiExpansionPanelSummary-expandIcon"
+                                                  className="MuiAccordionSummary-expandIcon"
                                                   component="div"
                                                   edge="end"
                                                   role={null}
@@ -3392,7 +3384,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                 >
                                                   <ForwardRef(IconButton)
                                                     aria-hidden={true}
-                                                    className="MuiExpansionPanelSummary-expandIcon"
+                                                    className="MuiAccordionSummary-expandIcon"
                                                     classes={
                                                       Object {
                                                         "colorInherit": "MuiIconButton-colorInherit",
@@ -3414,7 +3406,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                     <WithStyles(ForwardRef(ButtonBase))
                                                       aria-hidden={true}
                                                       centerRipple={true}
-                                                      className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                      className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                       component="div"
                                                       disabled={false}
                                                       focusRipple={true}
@@ -3424,7 +3416,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                       <ForwardRef(ButtonBase)
                                                         aria-hidden={true}
                                                         centerRipple={true}
-                                                        className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                        className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                         classes={
                                                           Object {
                                                             "disabled": "Mui-disabled",
@@ -3441,7 +3433,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         <div
                                                           aria-disabled={false}
                                                           aria-hidden={true}
-                                                          className="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                           onBlur={[Function]}
                                                           onDragLeave={[Function]}
                                                           onFocus={[Function]}
@@ -3477,7 +3469,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -3526,8 +3518,8 @@ exports[`The MissionControl container renders on the page with no errors over li
                                               </div>
                                             </ForwardRef(ButtonBase)>
                                           </WithStyles(ForwardRef(ButtonBase))>
-                                        </ForwardRef(ExpansionPanelSummary)>
-                                      </WithStyles(ForwardRef(ExpansionPanelSummary))>
+                                        </ForwardRef(AccordionSummary)>
+                                      </WithStyles(ForwardRef(AccordionSummary))>
                                       <WithStyles(ForwardRef(Collapse))
                                         in={false}
                                         timeout="auto"
@@ -3578,25 +3570,25 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                   <div
                                                     role="region"
                                                   >
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".1"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <Component>
                                                             <div />
                                                           </Component>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
                                                   </div>
                                                 </div>
                                               </div>
@@ -3607,8 +3599,8 @@ exports[`The MissionControl container renders on the page with no errors over li
                                     </div>
                                   </ForwardRef(Paper)>
                                 </WithStyles(ForwardRef(Paper))>
-                              </ForwardRef(ExpansionPanel)>
-                            </WithStyles(ForwardRef(ExpansionPanel))>
+                              </ForwardRef(Accordion)>
+                            </WithStyles(ForwardRef(Accordion))>
                           </div>
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>
@@ -4007,7 +3999,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -4031,6 +4022,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         match={
@@ -4098,7 +4090,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -4122,6 +4113,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           location={
@@ -5030,7 +5022,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-314"
+                                      className="MuiBox-root MuiBox-root-16"
                                     >
                                       <WithStyles(ForwardRef(Typography))
                                         variant="h6"
@@ -5204,7 +5196,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                     m={0}
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-315"
+                                      className="MuiBox-root MuiBox-root-17"
                                     >
                                       <WithStyles(ForwardRef(Alert))
                                         action={
@@ -5218,7 +5210,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                             <FormattedMessage
                                               defaultMessage="Remix"
                                               id="app.mission_control.remix"
-                                              values={Object {}}
                                             />
                                           </WithStyles(ForwardRef(Button))>
                                         }
@@ -5236,7 +5227,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                               <FormattedMessage
                                                 defaultMessage="Remix"
                                                 id="app.mission_control.remix"
-                                                values={Object {}}
                                               />
                                             </WithStyles(ForwardRef(Button))>
                                           }
@@ -5313,7 +5303,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                 <div
                                                   className="MuiAlert-icon"
                                                 >
-                                                  <ForwardRef
+                                                  <ForwardRef(InfoOutlinedIcon)
                                                     fontSize="inherit"
                                                   >
                                                     <WithStyles(ForwardRef(SvgIcon))
@@ -5336,7 +5326,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         fontSize="inherit"
                                                       >
                                                         <svg
-                                                          aria-hidden="true"
+                                                          aria-hidden={true}
                                                           className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
                                                           focusable="false"
                                                           viewBox="0 0 24 24"
@@ -5347,7 +5337,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         </svg>
                                                       </ForwardRef(SvgIcon)>
                                                     </WithStyles(ForwardRef(SvgIcon))>
-                                                  </ForwardRef>
+                                                  </ForwardRef(InfoOutlinedIcon)>
                                                 </div>
                                                 <div
                                                   className="MuiAlert-message"
@@ -5416,7 +5406,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                   <FormattedMessage
                                                     defaultMessage="Remix it to make your own copy."
                                                     id="app.mission_control.read_only_content"
-                                                    values={Object {}}
                                                   >
                                                     Remix it to make your own copy.
                                                   </FormattedMessage>
@@ -5520,7 +5509,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                               <FormattedMessage
                                                                 defaultMessage="Remix"
                                                                 id="app.mission_control.remix"
-                                                                values={Object {}}
                                                               >
                                                                 Remix
                                                               </FormattedMessage>
@@ -5775,7 +5763,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                               <FormattedMessage
                                                 defaultMessage="View Project Details"
                                                 id="app.mission_control.view_details"
-                                                values={Object {}}
                                               >
                                                 View Project Details
                                               </FormattedMessage>
@@ -6355,23 +6342,23 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                           <div
                             className="MuiGrid-root MuiGrid-item"
                           >
-                            <WithStyles(ForwardRef(ExpansionPanel))>
-                              <ForwardRef(ExpansionPanel)
+                            <WithStyles(ForwardRef(Accordion))>
+                              <ForwardRef(Accordion)
                                 classes={
                                   Object {
                                     "disabled": "Mui-disabled",
                                     "expanded": "Mui-expanded",
-                                    "root": "MuiExpansionPanel-root",
-                                    "rounded": "MuiExpansionPanel-rounded",
+                                    "root": "MuiAccordion-root",
+                                    "rounded": "MuiAccordion-rounded",
                                   }
                                 }
                               >
                                 <WithStyles(ForwardRef(Paper))
-                                  className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                  className="MuiAccordion-root MuiAccordion-rounded"
                                   square={false}
                                 >
                                   <ForwardRef(Paper)
-                                    className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                    className="MuiAccordion-root MuiAccordion-rounded"
                                     classes={
                                       Object {
                                         "elevation0": "MuiPaper-elevation0",
@@ -6407,28 +6394,28 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                     square={false}
                                   >
                                     <div
-                                      className="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                     >
-                                      <WithStyles(ForwardRef(ExpansionPanelSummary))
+                                      <WithStyles(ForwardRef(AccordionSummary))
                                         expandIcon={<Memo(ExpandMoreIcon) />}
                                         key=".0"
                                       >
-                                        <ForwardRef(ExpansionPanelSummary)
+                                        <ForwardRef(AccordionSummary)
                                           classes={
                                             Object {
-                                              "content": "MuiExpansionPanelSummary-content",
+                                              "content": "MuiAccordionSummary-content",
                                               "disabled": "Mui-disabled",
-                                              "expandIcon": "MuiExpansionPanelSummary-expandIcon",
+                                              "expandIcon": "MuiAccordionSummary-expandIcon",
                                               "expanded": "Mui-expanded",
                                               "focused": "Mui-focused",
-                                              "root": "MuiExpansionPanelSummary-root",
+                                              "root": "MuiAccordionSummary-root",
                                             }
                                           }
                                           expandIcon={<Memo(ExpandMoreIcon) />}
                                         >
                                           <WithStyles(ForwardRef(ButtonBase))
                                             aria-expanded={false}
-                                            className="MuiExpansionPanelSummary-root"
+                                            className="MuiAccordionSummary-root"
                                             component="div"
                                             disableRipple={true}
                                             disabled={false}
@@ -6439,7 +6426,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                           >
                                             <ForwardRef(ButtonBase)
                                               aria-expanded={false}
-                                              className="MuiExpansionPanelSummary-root"
+                                              className="MuiAccordionSummary-root"
                                               classes={
                                                 Object {
                                                   "disabled": "Mui-disabled",
@@ -6458,7 +6445,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                               <div
                                                 aria-disabled={false}
                                                 aria-expanded={false}
-                                                className="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                                className="MuiButtonBase-root MuiAccordionSummary-root"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onDragLeave={[Function]}
@@ -6475,7 +6462,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                 tabIndex={0}
                                               >
                                                 <div
-                                                  className="MuiExpansionPanelSummary-content"
+                                                  className="MuiAccordionSummary-content"
                                                 >
                                                   <WithStyles(ForwardRef(Typography))>
                                                     <ForwardRef(Typography)
@@ -6520,7 +6507,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         <FormattedMessage
                                                           defaultMessage="Sensors"
                                                           id="app.mission_control.sensors"
-                                                          values={Object {}}
                                                         >
                                                           Sensors
                                                         </FormattedMessage>
@@ -6530,7 +6516,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                 </div>
                                                 <WithStyles(ForwardRef(IconButton))
                                                   aria-hidden={true}
-                                                  className="MuiExpansionPanelSummary-expandIcon"
+                                                  className="MuiAccordionSummary-expandIcon"
                                                   component="div"
                                                   edge="end"
                                                   role={null}
@@ -6538,7 +6524,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                 >
                                                   <ForwardRef(IconButton)
                                                     aria-hidden={true}
-                                                    className="MuiExpansionPanelSummary-expandIcon"
+                                                    className="MuiAccordionSummary-expandIcon"
                                                     classes={
                                                       Object {
                                                         "colorInherit": "MuiIconButton-colorInherit",
@@ -6560,7 +6546,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                     <WithStyles(ForwardRef(ButtonBase))
                                                       aria-hidden={true}
                                                       centerRipple={true}
-                                                      className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                      className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                       component="div"
                                                       disabled={false}
                                                       focusRipple={true}
@@ -6570,7 +6556,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                       <ForwardRef(ButtonBase)
                                                         aria-hidden={true}
                                                         centerRipple={true}
-                                                        className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                        className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                         classes={
                                                           Object {
                                                             "disabled": "Mui-disabled",
@@ -6587,7 +6573,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         <div
                                                           aria-disabled={false}
                                                           aria-hidden={true}
-                                                          className="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                           onBlur={[Function]}
                                                           onDragLeave={[Function]}
                                                           onFocus={[Function]}
@@ -6623,7 +6609,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -6672,8 +6658,8 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                               </div>
                                             </ForwardRef(ButtonBase)>
                                           </WithStyles(ForwardRef(ButtonBase))>
-                                        </ForwardRef(ExpansionPanelSummary)>
-                                      </WithStyles(ForwardRef(ExpansionPanelSummary))>
+                                        </ForwardRef(AccordionSummary)>
+                                      </WithStyles(ForwardRef(AccordionSummary))>
                                       <WithStyles(ForwardRef(Collapse))
                                         in={false}
                                         timeout="auto"
@@ -6745,18 +6731,18 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         />
                                                       </ForwardRef(Divider)>
                                                     </WithStyles(ForwardRef(Divider))>
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".2"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <WithStyles(ForwardRef(Typography))>
                                                             <ForwardRef(Typography)
@@ -6801,7 +6787,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                                 <FormattedMessage
                                                                   defaultMessage="Buttons"
                                                                   id="app.mission_control.buttons"
-                                                                  values={Object {}}
                                                                 >
                                                                   Buttons
                                                                 </FormattedMessage>
@@ -6809,20 +6794,20 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                             </ForwardRef(Typography)>
                                                           </WithStyles(ForwardRef(Typography))>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".3"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <WithStyles(Styled(MuiBox))
                                                             border={1}
@@ -6836,16 +6821,16 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                               borderRadius="borderRadius"
                                                               classes={
                                                                 Object {
-                                                                  "root": "Styled(MuiBox)-root-328",
+                                                                  "root": "Styled(MuiBox)-root-18",
                                                                 }
                                                               }
                                                               p={2}
                                                             >
                                                               <div
-                                                                className="MuiBox-root MuiBox-root-329 Styled(MuiBox)-root-328"
+                                                                className="MuiBox-root MuiBox-root-19 Styled(MuiBox)-root-18"
                                                                 classes={
                                                                   Object {
-                                                                    "root": "Styled(MuiBox)-root-328",
+                                                                    "root": "Styled(MuiBox)-root-18",
                                                                   }
                                                                 }
                                                               >
@@ -6856,8 +6841,8 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                             </Styled(MuiBox)>
                                                           </WithStyles(Styled(MuiBox))>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
                                                     <WithStyles(ForwardRef(Divider))
                                                       key=".4"
                                                     >
@@ -6989,8 +6974,8 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                     </div>
                                   </ForwardRef(Paper)>
                                 </WithStyles(ForwardRef(Paper))>
-                              </ForwardRef(ExpansionPanel)>
-                            </WithStyles(ForwardRef(ExpansionPanel))>
+                              </ForwardRef(Accordion)>
+                            </WithStyles(ForwardRef(Accordion))>
                           </div>
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>
@@ -7110,23 +7095,23 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                           <div
                             className="MuiGrid-root MuiGrid-item"
                           >
-                            <WithStyles(ForwardRef(ExpansionPanel))>
-                              <ForwardRef(ExpansionPanel)
+                            <WithStyles(ForwardRef(Accordion))>
+                              <ForwardRef(Accordion)
                                 classes={
                                   Object {
                                     "disabled": "Mui-disabled",
                                     "expanded": "Mui-expanded",
-                                    "root": "MuiExpansionPanel-root",
-                                    "rounded": "MuiExpansionPanel-rounded",
+                                    "root": "MuiAccordion-root",
+                                    "rounded": "MuiAccordion-rounded",
                                   }
                                 }
                               >
                                 <WithStyles(ForwardRef(Paper))
-                                  className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                  className="MuiAccordion-root MuiAccordion-rounded"
                                   square={false}
                                 >
                                   <ForwardRef(Paper)
-                                    className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                    className="MuiAccordion-root MuiAccordion-rounded"
                                     classes={
                                       Object {
                                         "elevation0": "MuiPaper-elevation0",
@@ -7162,28 +7147,28 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                     square={false}
                                   >
                                     <div
-                                      className="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                     >
-                                      <WithStyles(ForwardRef(ExpansionPanelSummary))
+                                      <WithStyles(ForwardRef(AccordionSummary))
                                         expandIcon={<Memo(ExpandMoreIcon) />}
                                         key=".0"
                                       >
-                                        <ForwardRef(ExpansionPanelSummary)
+                                        <ForwardRef(AccordionSummary)
                                           classes={
                                             Object {
-                                              "content": "MuiExpansionPanelSummary-content",
+                                              "content": "MuiAccordionSummary-content",
                                               "disabled": "Mui-disabled",
-                                              "expandIcon": "MuiExpansionPanelSummary-expandIcon",
+                                              "expandIcon": "MuiAccordionSummary-expandIcon",
                                               "expanded": "Mui-expanded",
                                               "focused": "Mui-focused",
-                                              "root": "MuiExpansionPanelSummary-root",
+                                              "root": "MuiAccordionSummary-root",
                                             }
                                           }
                                           expandIcon={<Memo(ExpandMoreIcon) />}
                                         >
                                           <WithStyles(ForwardRef(ButtonBase))
                                             aria-expanded={false}
-                                            className="MuiExpansionPanelSummary-root"
+                                            className="MuiAccordionSummary-root"
                                             component="div"
                                             disableRipple={true}
                                             disabled={false}
@@ -7194,7 +7179,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                           >
                                             <ForwardRef(ButtonBase)
                                               aria-expanded={false}
-                                              className="MuiExpansionPanelSummary-root"
+                                              className="MuiAccordionSummary-root"
                                               classes={
                                                 Object {
                                                   "disabled": "Mui-disabled",
@@ -7213,7 +7198,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                               <div
                                                 aria-disabled={false}
                                                 aria-expanded={false}
-                                                className="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                                className="MuiButtonBase-root MuiAccordionSummary-root"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onDragLeave={[Function]}
@@ -7230,7 +7215,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                 tabIndex={0}
                                               >
                                                 <div
-                                                  className="MuiExpansionPanelSummary-content"
+                                                  className="MuiAccordionSummary-content"
                                                 >
                                                   <WithStyles(ForwardRef(Typography))>
                                                     <ForwardRef(Typography)
@@ -7275,7 +7260,6 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         <FormattedMessage
                                                           defaultMessage="Debug Console"
                                                           id="app.mission_control.console"
-                                                          values={Object {}}
                                                         >
                                                           Debug Console
                                                         </FormattedMessage>
@@ -7285,7 +7269,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                 </div>
                                                 <WithStyles(ForwardRef(IconButton))
                                                   aria-hidden={true}
-                                                  className="MuiExpansionPanelSummary-expandIcon"
+                                                  className="MuiAccordionSummary-expandIcon"
                                                   component="div"
                                                   edge="end"
                                                   role={null}
@@ -7293,7 +7277,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                 >
                                                   <ForwardRef(IconButton)
                                                     aria-hidden={true}
-                                                    className="MuiExpansionPanelSummary-expandIcon"
+                                                    className="MuiAccordionSummary-expandIcon"
                                                     classes={
                                                       Object {
                                                         "colorInherit": "MuiIconButton-colorInherit",
@@ -7315,7 +7299,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                     <WithStyles(ForwardRef(ButtonBase))
                                                       aria-hidden={true}
                                                       centerRipple={true}
-                                                      className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                      className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                       component="div"
                                                       disabled={false}
                                                       focusRipple={true}
@@ -7325,7 +7309,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                       <ForwardRef(ButtonBase)
                                                         aria-hidden={true}
                                                         centerRipple={true}
-                                                        className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                        className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                         classes={
                                                           Object {
                                                             "disabled": "Mui-disabled",
@@ -7342,7 +7326,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         <div
                                                           aria-disabled={false}
                                                           aria-hidden={true}
-                                                          className="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                           onBlur={[Function]}
                                                           onDragLeave={[Function]}
                                                           onFocus={[Function]}
@@ -7378,7 +7362,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -7427,8 +7411,8 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                               </div>
                                             </ForwardRef(ButtonBase)>
                                           </WithStyles(ForwardRef(ButtonBase))>
-                                        </ForwardRef(ExpansionPanelSummary)>
-                                      </WithStyles(ForwardRef(ExpansionPanelSummary))>
+                                        </ForwardRef(AccordionSummary)>
+                                      </WithStyles(ForwardRef(AccordionSummary))>
                                       <WithStyles(ForwardRef(Collapse))
                                         in={false}
                                         timeout="auto"
@@ -7479,25 +7463,25 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                   <div
                                                     role="region"
                                                   >
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".1"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <Component>
                                                             <div />
                                                           </Component>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
                                                   </div>
                                                 </div>
                                               </div>
@@ -7508,8 +7492,8 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                     </div>
                                   </ForwardRef(Paper)>
                                 </WithStyles(ForwardRef(Paper))>
-                              </ForwardRef(ExpansionPanel)>
-                            </WithStyles(ForwardRef(ExpansionPanel))>
+                              </ForwardRef(Accordion)>
+                            </WithStyles(ForwardRef(Accordion))>
                           </div>
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>
@@ -7899,7 +7883,6 @@ exports[`The MissionControl container renders on the page with no errors under l
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -7923,6 +7906,7 @@ exports[`The MissionControl container renders on the page with no errors under l
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         match={
@@ -7990,7 +7974,6 @@ exports[`The MissionControl container renders on the page with no errors under l
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -8014,6 +7997,7 @@ exports[`The MissionControl container renders on the page with no errors under l
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           location={
@@ -8921,7 +8905,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-117"
+                                      className="MuiBox-root MuiBox-root-1"
                                     >
                                       <WithStyles(ForwardRef(Typography))
                                         variant="h6"
@@ -9093,7 +9077,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-148"
+                                      className="MuiBox-root MuiBox-root-2"
                                     >
                                       <WithStyles(WithStyles(ForwardRef(Typography)))
                                         variant="h6"
@@ -9101,7 +9085,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                         <WithStyles(ForwardRef(Typography))
                                           classes={
                                             Object {
-                                              "root": "WithStyles(ForwardRef(Typography))-root-149",
+                                              "root": "WithStyles(ForwardRef(Typography))-root-3",
                                             }
                                           }
                                           variant="h6"
@@ -9135,7 +9119,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                 "noWrap": "MuiTypography-noWrap",
                                                 "overline": "MuiTypography-overline",
                                                 "paragraph": "MuiTypography-paragraph",
-                                                "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-149",
+                                                "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-3",
                                                 "srOnly": "MuiTypography-srOnly",
                                                 "subtitle1": "MuiTypography-subtitle1",
                                                 "subtitle2": "MuiTypography-subtitle2",
@@ -9144,7 +9128,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                             variant="h6"
                                           >
                                             <h6
-                                              className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-149 MuiTypography-h6"
+                                              className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-3 MuiTypography-h6"
                                             >
                                               Goal: To code stuff
                                             </h6>
@@ -9274,7 +9258,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-150"
+                                      className="MuiBox-root MuiBox-root-4"
                                     >
                                       <WithStyles(ForwardRef(Button))
                                         color="primary"
@@ -9397,7 +9381,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                           }
                                                         >
                                                           <svg
-                                                            aria-hidden="true"
+                                                            aria-hidden={true}
                                                             className="MuiSvgIcon-root"
                                                             focusable="false"
                                                             viewBox="0 0 24 24"
@@ -9656,7 +9640,6 @@ exports[`The MissionControl container renders on the page with no errors under l
                                               <FormattedMessage
                                                 defaultMessage="Edit Project Details"
                                                 id="app.mission_control.edit_details"
-                                                values={Object {}}
                                               >
                                                 Edit Project Details
                                               </FormattedMessage>
@@ -10236,23 +10219,23 @@ exports[`The MissionControl container renders on the page with no errors under l
                           <div
                             className="MuiGrid-root MuiGrid-item"
                           >
-                            <WithStyles(ForwardRef(ExpansionPanel))>
-                              <ForwardRef(ExpansionPanel)
+                            <WithStyles(ForwardRef(Accordion))>
+                              <ForwardRef(Accordion)
                                 classes={
                                   Object {
                                     "disabled": "Mui-disabled",
                                     "expanded": "Mui-expanded",
-                                    "root": "MuiExpansionPanel-root",
-                                    "rounded": "MuiExpansionPanel-rounded",
+                                    "root": "MuiAccordion-root",
+                                    "rounded": "MuiAccordion-rounded",
                                   }
                                 }
                               >
                                 <WithStyles(ForwardRef(Paper))
-                                  className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                  className="MuiAccordion-root MuiAccordion-rounded"
                                   square={false}
                                 >
                                   <ForwardRef(Paper)
-                                    className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                    className="MuiAccordion-root MuiAccordion-rounded"
                                     classes={
                                       Object {
                                         "elevation0": "MuiPaper-elevation0",
@@ -10288,28 +10271,28 @@ exports[`The MissionControl container renders on the page with no errors under l
                                     square={false}
                                   >
                                     <div
-                                      className="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                     >
-                                      <WithStyles(ForwardRef(ExpansionPanelSummary))
+                                      <WithStyles(ForwardRef(AccordionSummary))
                                         expandIcon={<Memo(ExpandMoreIcon) />}
                                         key=".0"
                                       >
-                                        <ForwardRef(ExpansionPanelSummary)
+                                        <ForwardRef(AccordionSummary)
                                           classes={
                                             Object {
-                                              "content": "MuiExpansionPanelSummary-content",
+                                              "content": "MuiAccordionSummary-content",
                                               "disabled": "Mui-disabled",
-                                              "expandIcon": "MuiExpansionPanelSummary-expandIcon",
+                                              "expandIcon": "MuiAccordionSummary-expandIcon",
                                               "expanded": "Mui-expanded",
                                               "focused": "Mui-focused",
-                                              "root": "MuiExpansionPanelSummary-root",
+                                              "root": "MuiAccordionSummary-root",
                                             }
                                           }
                                           expandIcon={<Memo(ExpandMoreIcon) />}
                                         >
                                           <WithStyles(ForwardRef(ButtonBase))
                                             aria-expanded={false}
-                                            className="MuiExpansionPanelSummary-root"
+                                            className="MuiAccordionSummary-root"
                                             component="div"
                                             disableRipple={true}
                                             disabled={false}
@@ -10320,7 +10303,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                           >
                                             <ForwardRef(ButtonBase)
                                               aria-expanded={false}
-                                              className="MuiExpansionPanelSummary-root"
+                                              className="MuiAccordionSummary-root"
                                               classes={
                                                 Object {
                                                   "disabled": "Mui-disabled",
@@ -10339,7 +10322,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                               <div
                                                 aria-disabled={false}
                                                 aria-expanded={false}
-                                                className="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                                className="MuiButtonBase-root MuiAccordionSummary-root"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onDragLeave={[Function]}
@@ -10356,7 +10339,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                 tabIndex={0}
                                               >
                                                 <div
-                                                  className="MuiExpansionPanelSummary-content"
+                                                  className="MuiAccordionSummary-content"
                                                 >
                                                   <WithStyles(ForwardRef(Typography))>
                                                     <ForwardRef(Typography)
@@ -10401,7 +10384,6 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                         <FormattedMessage
                                                           defaultMessage="Sensors"
                                                           id="app.mission_control.sensors"
-                                                          values={Object {}}
                                                         >
                                                           Sensors
                                                         </FormattedMessage>
@@ -10411,7 +10393,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                 </div>
                                                 <WithStyles(ForwardRef(IconButton))
                                                   aria-hidden={true}
-                                                  className="MuiExpansionPanelSummary-expandIcon"
+                                                  className="MuiAccordionSummary-expandIcon"
                                                   component="div"
                                                   edge="end"
                                                   role={null}
@@ -10419,7 +10401,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                 >
                                                   <ForwardRef(IconButton)
                                                     aria-hidden={true}
-                                                    className="MuiExpansionPanelSummary-expandIcon"
+                                                    className="MuiAccordionSummary-expandIcon"
                                                     classes={
                                                       Object {
                                                         "colorInherit": "MuiIconButton-colorInherit",
@@ -10441,7 +10423,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                     <WithStyles(ForwardRef(ButtonBase))
                                                       aria-hidden={true}
                                                       centerRipple={true}
-                                                      className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                      className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                       component="div"
                                                       disabled={false}
                                                       focusRipple={true}
@@ -10451,7 +10433,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                       <ForwardRef(ButtonBase)
                                                         aria-hidden={true}
                                                         centerRipple={true}
-                                                        className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                        className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                         classes={
                                                           Object {
                                                             "disabled": "Mui-disabled",
@@ -10468,7 +10450,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                         <div
                                                           aria-disabled={false}
                                                           aria-hidden={true}
-                                                          className="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                           onBlur={[Function]}
                                                           onDragLeave={[Function]}
                                                           onFocus={[Function]}
@@ -10504,7 +10486,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -10553,8 +10535,8 @@ exports[`The MissionControl container renders on the page with no errors under l
                                               </div>
                                             </ForwardRef(ButtonBase)>
                                           </WithStyles(ForwardRef(ButtonBase))>
-                                        </ForwardRef(ExpansionPanelSummary)>
-                                      </WithStyles(ForwardRef(ExpansionPanelSummary))>
+                                        </ForwardRef(AccordionSummary)>
+                                      </WithStyles(ForwardRef(AccordionSummary))>
                                       <WithStyles(ForwardRef(Collapse))
                                         in={false}
                                         timeout="auto"
@@ -10626,18 +10608,18 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                         />
                                                       </ForwardRef(Divider)>
                                                     </WithStyles(ForwardRef(Divider))>
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".2"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <WithStyles(ForwardRef(Typography))>
                                                             <ForwardRef(Typography)
@@ -10682,7 +10664,6 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                 <FormattedMessage
                                                                   defaultMessage="Buttons"
                                                                   id="app.mission_control.buttons"
-                                                                  values={Object {}}
                                                                 >
                                                                   Buttons
                                                                 </FormattedMessage>
@@ -10690,20 +10671,20 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                             </ForwardRef(Typography)>
                                                           </WithStyles(ForwardRef(Typography))>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".3"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <WithStyles(Styled(MuiBox))
                                                             border={1}
@@ -10717,16 +10698,16 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                               borderRadius="borderRadius"
                                                               classes={
                                                                 Object {
-                                                                  "root": "Styled(MuiBox)-root-264",
+                                                                  "root": "Styled(MuiBox)-root-5",
                                                                 }
                                                               }
                                                               p={2}
                                                             >
                                                               <div
-                                                                className="MuiBox-root MuiBox-root-265 Styled(MuiBox)-root-264"
+                                                                className="MuiBox-root MuiBox-root-6 Styled(MuiBox)-root-5"
                                                                 classes={
                                                                   Object {
-                                                                    "root": "Styled(MuiBox)-root-264",
+                                                                    "root": "Styled(MuiBox)-root-5",
                                                                   }
                                                                 }
                                                               >
@@ -10737,8 +10718,8 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                             </Styled(MuiBox)>
                                                           </WithStyles(Styled(MuiBox))>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
                                                     <WithStyles(ForwardRef(Divider))
                                                       key=".4"
                                                     >
@@ -10870,8 +10851,8 @@ exports[`The MissionControl container renders on the page with no errors under l
                                     </div>
                                   </ForwardRef(Paper)>
                                 </WithStyles(ForwardRef(Paper))>
-                              </ForwardRef(ExpansionPanel)>
-                            </WithStyles(ForwardRef(ExpansionPanel))>
+                              </ForwardRef(Accordion)>
+                            </WithStyles(ForwardRef(Accordion))>
                           </div>
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>
@@ -10991,23 +10972,23 @@ exports[`The MissionControl container renders on the page with no errors under l
                           <div
                             className="MuiGrid-root MuiGrid-item"
                           >
-                            <WithStyles(ForwardRef(ExpansionPanel))>
-                              <ForwardRef(ExpansionPanel)
+                            <WithStyles(ForwardRef(Accordion))>
+                              <ForwardRef(Accordion)
                                 classes={
                                   Object {
                                     "disabled": "Mui-disabled",
                                     "expanded": "Mui-expanded",
-                                    "root": "MuiExpansionPanel-root",
-                                    "rounded": "MuiExpansionPanel-rounded",
+                                    "root": "MuiAccordion-root",
+                                    "rounded": "MuiAccordion-rounded",
                                   }
                                 }
                               >
                                 <WithStyles(ForwardRef(Paper))
-                                  className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                  className="MuiAccordion-root MuiAccordion-rounded"
                                   square={false}
                                 >
                                   <ForwardRef(Paper)
-                                    className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                    className="MuiAccordion-root MuiAccordion-rounded"
                                     classes={
                                       Object {
                                         "elevation0": "MuiPaper-elevation0",
@@ -11043,28 +11024,28 @@ exports[`The MissionControl container renders on the page with no errors under l
                                     square={false}
                                   >
                                     <div
-                                      className="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                      className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                     >
-                                      <WithStyles(ForwardRef(ExpansionPanelSummary))
+                                      <WithStyles(ForwardRef(AccordionSummary))
                                         expandIcon={<Memo(ExpandMoreIcon) />}
                                         key=".0"
                                       >
-                                        <ForwardRef(ExpansionPanelSummary)
+                                        <ForwardRef(AccordionSummary)
                                           classes={
                                             Object {
-                                              "content": "MuiExpansionPanelSummary-content",
+                                              "content": "MuiAccordionSummary-content",
                                               "disabled": "Mui-disabled",
-                                              "expandIcon": "MuiExpansionPanelSummary-expandIcon",
+                                              "expandIcon": "MuiAccordionSummary-expandIcon",
                                               "expanded": "Mui-expanded",
                                               "focused": "Mui-focused",
-                                              "root": "MuiExpansionPanelSummary-root",
+                                              "root": "MuiAccordionSummary-root",
                                             }
                                           }
                                           expandIcon={<Memo(ExpandMoreIcon) />}
                                         >
                                           <WithStyles(ForwardRef(ButtonBase))
                                             aria-expanded={false}
-                                            className="MuiExpansionPanelSummary-root"
+                                            className="MuiAccordionSummary-root"
                                             component="div"
                                             disableRipple={true}
                                             disabled={false}
@@ -11075,7 +11056,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                           >
                                             <ForwardRef(ButtonBase)
                                               aria-expanded={false}
-                                              className="MuiExpansionPanelSummary-root"
+                                              className="MuiAccordionSummary-root"
                                               classes={
                                                 Object {
                                                   "disabled": "Mui-disabled",
@@ -11094,7 +11075,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                               <div
                                                 aria-disabled={false}
                                                 aria-expanded={false}
-                                                className="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                                className="MuiButtonBase-root MuiAccordionSummary-root"
                                                 onBlur={[Function]}
                                                 onClick={[Function]}
                                                 onDragLeave={[Function]}
@@ -11111,7 +11092,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                 tabIndex={0}
                                               >
                                                 <div
-                                                  className="MuiExpansionPanelSummary-content"
+                                                  className="MuiAccordionSummary-content"
                                                 >
                                                   <WithStyles(ForwardRef(Typography))>
                                                     <ForwardRef(Typography)
@@ -11156,7 +11137,6 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                         <FormattedMessage
                                                           defaultMessage="Debug Console"
                                                           id="app.mission_control.console"
-                                                          values={Object {}}
                                                         >
                                                           Debug Console
                                                         </FormattedMessage>
@@ -11166,7 +11146,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                 </div>
                                                 <WithStyles(ForwardRef(IconButton))
                                                   aria-hidden={true}
-                                                  className="MuiExpansionPanelSummary-expandIcon"
+                                                  className="MuiAccordionSummary-expandIcon"
                                                   component="div"
                                                   edge="end"
                                                   role={null}
@@ -11174,7 +11154,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                 >
                                                   <ForwardRef(IconButton)
                                                     aria-hidden={true}
-                                                    className="MuiExpansionPanelSummary-expandIcon"
+                                                    className="MuiAccordionSummary-expandIcon"
                                                     classes={
                                                       Object {
                                                         "colorInherit": "MuiIconButton-colorInherit",
@@ -11196,7 +11176,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                     <WithStyles(ForwardRef(ButtonBase))
                                                       aria-hidden={true}
                                                       centerRipple={true}
-                                                      className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                      className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                       component="div"
                                                       disabled={false}
                                                       focusRipple={true}
@@ -11206,7 +11186,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                       <ForwardRef(ButtonBase)
                                                         aria-hidden={true}
                                                         centerRipple={true}
-                                                        className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                        className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                         classes={
                                                           Object {
                                                             "disabled": "Mui-disabled",
@@ -11223,7 +11203,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                         <div
                                                           aria-disabled={false}
                                                           aria-hidden={true}
-                                                          className="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                          className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                           onBlur={[Function]}
                                                           onDragLeave={[Function]}
                                                           onFocus={[Function]}
@@ -11259,7 +11239,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -11308,8 +11288,8 @@ exports[`The MissionControl container renders on the page with no errors under l
                                               </div>
                                             </ForwardRef(ButtonBase)>
                                           </WithStyles(ForwardRef(ButtonBase))>
-                                        </ForwardRef(ExpansionPanelSummary)>
-                                      </WithStyles(ForwardRef(ExpansionPanelSummary))>
+                                        </ForwardRef(AccordionSummary)>
+                                      </WithStyles(ForwardRef(AccordionSummary))>
                                       <WithStyles(ForwardRef(Collapse))
                                         in={false}
                                         timeout="auto"
@@ -11360,25 +11340,25 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                   <div
                                                     role="region"
                                                   >
-                                                    <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                    <WithStyles(ForwardRef(AccordionDetails))
                                                       key=".1"
                                                     >
-                                                      <ForwardRef(ExpansionPanelDetails)
+                                                      <ForwardRef(AccordionDetails)
                                                         classes={
                                                           Object {
-                                                            "root": "MuiExpansionPanelDetails-root",
+                                                            "root": "MuiAccordionDetails-root",
                                                           }
                                                         }
                                                       >
                                                         <div
-                                                          className="MuiExpansionPanelDetails-root"
+                                                          className="MuiAccordionDetails-root"
                                                         >
                                                           <Component>
                                                             <div />
                                                           </Component>
                                                         </div>
-                                                      </ForwardRef(ExpansionPanelDetails)>
-                                                    </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                      </ForwardRef(AccordionDetails)>
+                                                    </WithStyles(ForwardRef(AccordionDetails))>
                                                   </div>
                                                 </div>
                                               </div>
@@ -11389,8 +11369,8 @@ exports[`The MissionControl container renders on the page with no errors under l
                                     </div>
                                   </ForwardRef(Paper)>
                                 </WithStyles(ForwardRef(Paper))>
-                              </ForwardRef(ExpansionPanel)>
-                            </WithStyles(ForwardRef(ExpansionPanel))>
+                              </ForwardRef(Accordion)>
+                            </WithStyles(ForwardRef(Accordion))>
                           </div>
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>

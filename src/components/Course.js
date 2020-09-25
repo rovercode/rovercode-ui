@@ -1,9 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import {
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Grid,
   Typography,
 } from '@material-ui/core';
@@ -13,13 +13,13 @@ import PropTypes from 'prop-types';
 import LessonCard from './LessonCard';
 
 const Course = ({ course, userTier, onLessonClick }) => (
-  <ExpansionPanel defaultExpanded>
-    <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+  <Accordion defaultExpanded>
+    <AccordionSummary expandIcon={<ExpandMore />}>
       <Typography>
         { course.name }
       </Typography>
-    </ExpansionPanelSummary>
-    <ExpansionPanelDetails>
+    </AccordionSummary>
+    <AccordionDetails>
       <Grid container direction="row" spacing={2}>
         {
           course.lessons.sort((l1, l2) => l1.sequence_number - l2.sequence_number)
@@ -30,8 +30,8 @@ const Course = ({ course, userTier, onLessonClick }) => (
             ))
         }
       </Grid>
-    </ExpansionPanelDetails>
-  </ExpansionPanel>
+    </AccordionDetails>
+  </Accordion>
 );
 
 Course.defaultProps = {

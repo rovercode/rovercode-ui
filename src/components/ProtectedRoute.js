@@ -80,7 +80,6 @@ class ProtectedRoute extends Component {
   }
 }
 
-
 ProtectedRoute.propTypes = {
   auth: PropTypes.shape({
     isValidAuth: PropTypes.bool,

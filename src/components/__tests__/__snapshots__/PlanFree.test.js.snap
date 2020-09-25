@@ -18,7 +18,6 @@ exports[`The PlanFree component renders on the page with no errors 1`] = `
       <FormattedMessage
         defaultMessage="program slots"
         id="app.plan_free.programs"
-        values={Object {}}
       />
     </WithStyles(ForwardRef(Typography))>
   </WithStyles(ForwardRef(Grid))>
@@ -32,7 +31,6 @@ exports[`The PlanFree component renders on the page with no errors 1`] = `
       <FormattedMessage
         defaultMessage="Limited access to courses"
         id="app.plan_free.courses"
-        values={Object {}}
       />
     </WithStyles(ForwardRef(Typography))>
   </WithStyles(ForwardRef(Grid))>

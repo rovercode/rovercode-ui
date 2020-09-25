@@ -9,7 +9,6 @@ import {
   updateUser,
 } from '../user';
 
-
 describe('User actions', () => {
   test('updateUser', () => {
     const user = {

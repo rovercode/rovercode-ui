@@ -415,7 +415,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
                   <WithStyles(ForwardRef(Button))
                     classes={
                       Object {
-                        "root": "WithStyles(ForwardRef(Button))-root-104",
+                        "root": "WithStyles(ForwardRef(Button))-root-1",
                       }
                     }
                     color="primary"
@@ -445,7 +445,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
                           "outlinedSecondary": "MuiButton-outlinedSecondary",
                           "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                           "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                          "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-104",
+                          "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-1",
                           "sizeLarge": "MuiButton-sizeLarge",
                           "sizeSmall": "MuiButton-sizeSmall",
                           "startIcon": "MuiButton-startIcon",
@@ -461,7 +461,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
                       variant="contained"
                     >
                       <WithStyles(ForwardRef(ButtonBase))
-                        className="MuiButton-root WithStyles(ForwardRef(Button))-root-104 MuiButton-contained MuiButton-containedPrimary"
+                        className="MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained MuiButton-containedPrimary"
                         component="button"
                         disabled={false}
                         focusRipple={true}
@@ -470,7 +470,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
                         type="button"
                       >
                         <ForwardRef(ButtonBase)
-                          className="MuiButton-root WithStyles(ForwardRef(Button))-root-104 MuiButton-contained MuiButton-containedPrimary"
+                          className="MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained MuiButton-containedPrimary"
                           classes={
                             Object {
                               "disabled": "Mui-disabled",
@@ -486,7 +486,7 @@ exports[`The Console component renders on the page with no errors 1`] = `
                           type="button"
                         >
                           <button
-                            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-104 MuiButton-contained MuiButton-containedPrimary"
+                            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained MuiButton-containedPrimary"
                             disabled={false}
                             onBlur={[Function]}
                             onClick={[Function]}
@@ -509,7 +509,6 @@ exports[`The Console component renders on the page with no errors 1`] = `
                               <FormattedMessage
                                 defaultMessage="Clear"
                                 id="app.console.clear"
-                                values={Object {}}
                               >
                                 Clear
                               </FormattedMessage>

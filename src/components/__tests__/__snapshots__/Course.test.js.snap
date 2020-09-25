@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Course component renders on the page with no errors 1`] = `
-<WithStyles(ForwardRef(ExpansionPanel))
+<WithStyles(ForwardRef(Accordion))
   defaultExpanded={true}
 >
-  <WithStyles(ForwardRef(ExpansionPanelSummary))
+  <WithStyles(ForwardRef(AccordionSummary))
     expandIcon={<Memo(ExpandMoreIcon) />}
   >
     <WithStyles(ForwardRef(Typography))>
       Test
     </WithStyles(ForwardRef(Typography))>
-  </WithStyles(ForwardRef(ExpansionPanelSummary))>
-  <WithStyles(ForwardRef(ExpansionPanelDetails))>
+  </WithStyles(ForwardRef(AccordionSummary))>
+  <WithStyles(ForwardRef(AccordionDetails))>
     <WithStyles(ForwardRef(Grid))
       container={true}
       direction="row"
@@ -68,6 +68,6 @@ exports[`The Course component renders on the page with no errors 1`] = `
         />
       </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>
-  </WithStyles(ForwardRef(ExpansionPanelDetails))>
-</WithStyles(ForwardRef(ExpansionPanel))>
+  </WithStyles(ForwardRef(AccordionDetails))>
+</WithStyles(ForwardRef(Accordion))>
 `;

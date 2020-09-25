@@ -248,7 +248,7 @@ exports[`The PlanIndividual component renders on the page with no errors 1`] = `
                   align="center"
                   classes={
                     Object {
-                      "root": "WithStyles(ForwardRef(Typography))-root-104",
+                      "root": "WithStyles(ForwardRef(Typography))-root-1",
                     }
                   }
                   variant="subtitle1"
@@ -283,7 +283,7 @@ exports[`The PlanIndividual component renders on the page with no errors 1`] = `
                         "noWrap": "MuiTypography-noWrap",
                         "overline": "MuiTypography-overline",
                         "paragraph": "MuiTypography-paragraph",
-                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-104",
+                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-1",
                         "srOnly": "MuiTypography-srOnly",
                         "subtitle1": "MuiTypography-subtitle1",
                         "subtitle2": "MuiTypography-subtitle2",
@@ -292,12 +292,11 @@ exports[`The PlanIndividual component renders on the page with no errors 1`] = `
                     variant="subtitle1"
                   >
                     <h6
-                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-104 MuiTypography-subtitle1 MuiTypography-alignCenter"
+                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-1 MuiTypography-subtitle1 MuiTypography-alignCenter"
                     >
                       <FormattedMessage
                         defaultMessage="Coming soon"
                         id="app.plan_individual.coming_soon"
-                        values={Object {}}
                       >
                         Coming soon
                       </FormattedMessage>

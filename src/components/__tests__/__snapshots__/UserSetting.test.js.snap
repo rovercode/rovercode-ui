@@ -26,7 +26,6 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
           <FormattedMessage
             defaultMessage="Account"
             id="app.user_setting.header"
-            values={Object {}}
           />
         </WithStyles(ForwardRef(Typography))>
       </WithStyles(ForwardRef(Grid))>
@@ -44,7 +43,6 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
           <FormattedMessage
             defaultMessage="Changing any of these settings requires signing back in."
             id="app.user_setting.info"
-            values={Object {}}
           />
         </WithStyles(ForwardRef(Alert))>
       </WithStyles(ForwardRef(Grid))>
@@ -88,7 +86,6 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
               <FormattedMessage
                 defaultMessage="Change Username"
                 id="app.user_setting.username_header"
-                values={Object {}}
               />
             </WithStyles(ForwardRef(Typography))>
           </WithStyles(ForwardRef(Grid))>
@@ -122,7 +119,6 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
               <FormattedMessage
                 defaultMessage="Save"
                 id="app.user_setting.save_username"
-                values={Object {}}
               />
             </WithStyles(ForwardRef(Button))>
           </WithStyles(ForwardRef(Grid))>
@@ -165,7 +161,6 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
               <FormattedMessage
                 defaultMessage="Change Password"
                 id="app.user_setting.password_header"
-                values={Object {}}
               />
             </WithStyles(ForwardRef(Typography))>
           </WithStyles(ForwardRef(Grid))>
@@ -220,7 +215,6 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
               <FormattedMessage
                 defaultMessage="Save"
                 id="app.user_setting.save_password"
-                values={Object {}}
               />
             </WithStyles(ForwardRef(Button))>
           </WithStyles(ForwardRef(Grid))>
@@ -250,7 +244,6 @@ exports[`The UserSetting component renders on the page with no errors 1`] = `
           <FormattedMessage
             defaultMessage="Plans"
             id="app.user_setting.plans"
-            values={Object {}}
           />
         </WithStyles(ForwardRef(Typography))>
       </WithStyles(ForwardRef(Grid))>

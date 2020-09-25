@@ -8,7 +8,6 @@ import {
   NOT_COVERED,
 } from '../sensor';
 
-
 describe('Sensor actions', () => {
   test('changeLeftSensor', () => {
     const action = changeLeftSensorState(COVERED);

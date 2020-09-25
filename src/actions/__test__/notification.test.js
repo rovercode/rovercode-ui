@@ -1,6 +1,5 @@
 import { showNotification, clearNotification } from '../notification';
 
-
 describe('Notification actions', () => {
   test('showNotification', () => {
     const action = showNotification('message', 1000, 'info');
