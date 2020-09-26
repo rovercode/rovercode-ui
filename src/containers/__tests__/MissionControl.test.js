@@ -80,6 +80,13 @@ describe('The MissionControl container', () => {
       },
       user: {
         username: 'testuser',
+        tier: 1,
+        stats: {
+          block_diagram: {
+            count: 3,
+            limit: 5,
+          },
+        },
       },
     });
     store.dispatch = jest.fn().mockResolvedValue(fetchResult);
@@ -88,11 +95,97 @@ describe('The MissionControl container', () => {
 
   afterEach(() => global.Math.random.mockRestore());
 
-  test('renders on the page with no errors', () => {
+  test('renders on the page with no errors under limit', () => {
     wrapper = mountWithIntl(
       <ReduxProvider store={store}>
         <MemoryRouter>
           <MissionControl store={store} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    );
+    const mcWrapper = wrapper.find(MissionControl);
+
+    expect(mcWrapper).toMatchSnapshot();
+  });
+
+  test('renders on the page with no errors over limit', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: true,
+        lessonId: null,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
+      },
+      user: {
+        username: 'testuser',
+        tier: 1,
+        stats: {
+          block_diagram: {
+            count: 5,
+            limit: 5,
+          },
+        },
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    wrapper = mountWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} match={match} />
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context,
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    );
+    const mcWrapper = wrapper.find(MissionControl);
+
+    expect(mcWrapper).toMatchSnapshot();
+  });
+
+  test('renders on the page with no errors paid tier', () => {
+    const localStore = mockStore({
+      code: {
+        jsCode: '',
+        execution: null,
+        name: 'test program',
+        ownerName: 'phil',
+        isReadOnly: true,
+        lessonId: null,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
+      },
+      user: {
+        username: 'testuser',
+        tier: 2,
+        stats: {
+          block_diagram: {
+            count: 10,
+            limit: 5,
+          },
+        },
+      },
+    });
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    wrapper = mountWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl store={localStore} match={match} />
         </MemoryRouter>
       </ReduxProvider>, {
         context,
@@ -145,6 +238,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(store.dispatch).toHaveBeenCalledWith(fetchProgram(1));
@@ -172,6 +266,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(store.dispatch).toHaveBeenCalledWith(createProgram('Unnamed_Design_5'));
@@ -189,6 +284,7 @@ describe('The MissionControl container', () => {
         childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
       },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -246,11 +342,11 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(localStore.dispatch).toHaveBeenCalledWith(clearLesson());
   });
-
 
   test('fetches lesson when present on fetched program', () => {
     const localStore = mockStore({
@@ -290,6 +386,7 @@ describe('The MissionControl container', () => {
         childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
       },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -341,6 +438,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find(Alert).exists()).toBe(false);
@@ -384,6 +482,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find(Alert).exists()).toBe(true);
@@ -400,6 +499,7 @@ describe('The MissionControl container', () => {
         childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
       },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -462,6 +562,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     const button = wrapper.find('WithStyles(ForwardRef(Button))').first();
@@ -500,6 +601,7 @@ describe('The MissionControl container', () => {
         childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
       },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -553,6 +655,7 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Typography)))').at(0).text()).toBe('Goal: to do a thing');
@@ -597,11 +700,11 @@ describe('The MissionControl container', () => {
       .dive()
       .dive()
       .dive()
+      .dive()
       .dive();
 
     expect(wrapper.find('WithStyles(WithStyles(ForwardRef(Typography)))').exists()).toBe(false);
   });
-
 
   test('Remixes a lesson reference program', (done) => {
     const localStore = mockStore({
@@ -642,6 +745,7 @@ describe('The MissionControl container', () => {
         </MemoryRouter>
       </ReduxProvider>, { context },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()
@@ -706,6 +810,7 @@ describe('The MissionControl container', () => {
         </MemoryRouter>
       </ReduxProvider>, { context },
     ).dive().dive().dive()
+      .dive()
       .dive()
       .dive()
       .dive()

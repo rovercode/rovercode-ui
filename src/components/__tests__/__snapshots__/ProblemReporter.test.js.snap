@@ -32,7 +32,6 @@ exports[`The ProblemReporter component renders on the page with no errors 1`] = 
             <FormattedMessage
               defaultMessage="Something not working correctly?"
               id="app.problem_reporter.title"
-              values={Object {}}
             />
           </WithStyles(ForwardRef(Typography))>
         </WithStyles(ForwardRef(Grid))>
@@ -46,7 +45,6 @@ exports[`The ProblemReporter component renders on the page with no errors 1`] = 
             <FormattedMessage
               defaultMessage="Tell us about it, and we can try to fix it."
               id="app.problem_reporter.tell_us"
-              values={Object {}}
             />
           </WithStyles(ForwardRef(Typography))>
         </WithStyles(ForwardRef(Grid))>
@@ -102,7 +100,6 @@ exports[`The ProblemReporter component renders on the page with no errors 1`] = 
         <FormattedMessage
           defaultMessage="Thank you so much for reporting this issue. We will contact you via the email address on your Rovercode account with our resolution. In the meantime, it's possible that you can find how others have worked around this issue on the Community Program page."
           id="app.problem_reporter.thank_you"
-          values={Object {}}
         />
       </WithStyles(ForwardRef(Typography))>
       <WithStyles(ForwardRef(Button))
@@ -114,7 +111,6 @@ exports[`The ProblemReporter component renders on the page with no errors 1`] = 
         <FormattedMessage
           defaultMessage="Submit"
           id="app.problem_reporter.submit"
-          values={Object {}}
         />
       </WithStyles(ForwardRef(Button))>
     </WithStyles(ForwardRef(DialogActions))>

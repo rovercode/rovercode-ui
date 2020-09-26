@@ -19,7 +19,6 @@ import {
   EXECUTION_RUN,
 } from '../code';
 
-
 describe('Code actions', () => {
   test('updateJsCode', () => {
     const action = updateJsCode('test code');

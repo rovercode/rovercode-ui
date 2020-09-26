@@ -9,9 +9,12 @@ import {
   EDIT_USER_SHOW_GUIDE_PENDING,
   EDIT_USER_SHOW_GUIDE_FULFILLED,
   EDIT_USER_SHOW_GUIDE_REJECTED,
-  FETCH_USER_LIST_PENDING,
-  FETCH_USER_LIST_FULFILLED,
-  FETCH_USER_LIST_REJECTED,
+  FETCH_USER_STATS_PENDING,
+  FETCH_USER_STATS_FULFILLED,
+  FETCH_USER_STATS_REJECTED,
+  REFRESH_SESSION_PENDING,
+  REFRESH_SESSION_FULFILLED,
+  REFRESH_SESSION_REJECTED,
 } from '../actions/user';
 
 export default function user(
@@ -21,16 +24,19 @@ export default function user(
     email: null,
     exp: null,
     showGuide: true,
+    tier: 1,
+    stats: null,
     isSocial: false,
-    userList: [],
     isEditingUsername: false,
     isEditingPassword: false,
     isEditingShowGuide: false,
-    isFetchingUserList: false,
+    isFetchingStats: false,
+    isRefreshingSession: false,
     editUsernameError: null,
     editPasswordError: null,
     editShowGuideError: null,
-    fetchUserListError: null,
+    fetchStatsError: null,
+    refreshSessionError: null,
   },
   action,
 ) {
@@ -44,6 +50,7 @@ export default function user(
         exp: action.payload.exp,
         showGuide: action.payload.show_guide,
         isSocial: action.payload.isSocial,
+        tier: action.payload.tier,
       };
     case EDIT_USER_USERNAME_PENDING:
       return {
@@ -96,22 +103,44 @@ export default function user(
         isEditingShowGuide: false,
         editShowGuideError: action.payload,
       };
-    case FETCH_USER_LIST_PENDING:
+    case FETCH_USER_STATS_PENDING:
       return {
         ...state,
-        isFetchingUserList: true,
+        isFetchingStats: true,
       };
-    case FETCH_USER_LIST_FULFILLED:
+    case FETCH_USER_STATS_FULFILLED:
       return {
         ...state,
-        isFetchingUserList: false,
-        userList: action.payload,
+        isFetchingStats: false,
+        stats: action.payload,
       };
-    case FETCH_USER_LIST_REJECTED:
+    case FETCH_USER_STATS_REJECTED:
       return {
         ...state,
-        isFetchingUserList: false,
-        fetchUserListError: action.payload,
+        isFetchingStats: false,
+        fetchStatsError: action.payload,
+      };
+    case REFRESH_SESSION_FULFILLED:
+      return {
+        ...state,
+        isRefreshingSession: false,
+        user_id: action.payload.user_id,
+        username: action.payload.username,
+        email: action.payload.email,
+        exp: action.payload.exp,
+        isSocial: action.payload.isSocial,
+        tier: action.payload.tier,
+      };
+    case REFRESH_SESSION_PENDING:
+      return {
+        ...state,
+        isRefreshingSession: true,
+      };
+    case REFRESH_SESSION_REJECTED:
+      return {
+        ...state,
+        isRefreshingSession: false,
+        refreshSessionError: action.payload,
       };
     default:
       return state;

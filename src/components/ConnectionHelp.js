@@ -8,9 +8,9 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   FormControlLabel,
   FormGroup,
   IconButton,
@@ -88,11 +88,11 @@ class ConnectionHelp extends Component {
       },
     }))(Box);
 
-    const CenteredExpansionPanelDetails = withStyles(() => ({
+    const CenteredAccordionDetails = withStyles(() => ({
       root: {
         justifyContent: 'center',
       },
-    }))(ExpansionPanelDetails);
+    }))(AccordionDetails);
 
     return (
       <>
@@ -161,8 +161,8 @@ class ConnectionHelp extends Component {
               <img src={displayImage} alt="micro:bit displaying an R" />
             </PaddedBox>
             <PaddedBox>
-              <ExpansionPanel>
-                <ExpansionPanelSummary
+              <Accordion>
+                <AccordionSummary
                   expandIcon={<ExpandMore />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
@@ -175,8 +175,8 @@ class ConnectionHelp extends Component {
                       and flash the Rovercode firmware. Click here to see how."
                     />
                   </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                   <Typography gutterBottom>
                     <FormattedMessage
                       id="app.connection_help.connect_microbit"
@@ -184,13 +184,13 @@ class ConnectionHelp extends Component {
                       defaultMessage="Use a USB cable to connect the micro:bit to your computer."
                     />
                   </Typography>
-                </ExpansionPanelDetails>
-                <CenteredExpansionPanelDetails>
+                </AccordionDetails>
+                <CenteredAccordionDetails>
                   <PaddedBox>
                     <img src={flashingImage} width="300px" alt="Connecting the micro:bit to a computer" />
                   </PaddedBox>
-                </CenteredExpansionPanelDetails>
-                <ExpansionPanelDetails>
+                </CenteredAccordionDetails>
+                <AccordionDetails>
                   <Typography gutterBottom>
                     <FormattedMessage
                       id="app.connection_help.computer_device"
@@ -198,13 +198,13 @@ class ConnectionHelp extends Component {
                       defaultMessage="The micro:bit device should show up in your file browser."
                     />
                   </Typography>
-                </ExpansionPanelDetails>
-                <CenteredExpansionPanelDetails>
+                </AccordionDetails>
+                <CenteredAccordionDetails>
                   <PaddedBox>
                     <img src={deviceWindowsImage} alt="Connecting the micro:bit to a computer" />
                   </PaddedBox>
-                </CenteredExpansionPanelDetails>
-                <ExpansionPanelDetails>
+                </CenteredAccordionDetails>
+                <AccordionDetails>
                   <Typography gutterBottom>
                     <FormattedMessage
                       id="app.connection_help.firmware_save"
@@ -213,8 +213,8 @@ class ConnectionHelp extends Component {
                       and choose to save it directly to the micro:bit device."
                     />
                   </Typography>
-                </ExpansionPanelDetails>
-                <CenteredExpansionPanelDetails>
+                </AccordionDetails>
+                <CenteredAccordionDetails>
                   <PaddedBox>
                     <Button
                       color="primary"
@@ -228,8 +228,8 @@ class ConnectionHelp extends Component {
                       />
                     </Button>
                   </PaddedBox>
-                </CenteredExpansionPanelDetails>
-                <ExpansionPanelDetails>
+                </CenteredAccordionDetails>
+                <AccordionDetails>
                   <Typography gutterBottom>
                     <FormattedMessage
                       id="app.connection_help.firmware_complete"
@@ -238,8 +238,8 @@ class ConnectionHelp extends Component {
                   displayed on the micro:bit's display."
                     />
                   </Typography>
-                </ExpansionPanelDetails>
-                <ExpansionPanelDetails>
+                </AccordionDetails>
+                <AccordionDetails>
                   <Link
                     variant="body1"
                     href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
@@ -252,8 +252,8 @@ class ConnectionHelp extends Component {
                       defaultMessage="More instructions can be found here."
                     />
                   </Link>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
+                </AccordionDetails>
+              </Accordion>
             </PaddedBox>
             <Typography variant="h5" gutterBottom />
             <Typography variant="h5" gutterBottom>

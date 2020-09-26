@@ -18,7 +18,6 @@ exports[`The CodeViewer component renders on the page with no errors 1`] = `
       <FormattedMessage
         defaultMessage="Here is the code in"
         id="app.code_viewer.description"
-        values={Object {}}
       />
        
       <WithStyles(ForwardRef(Link))

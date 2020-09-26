@@ -2,7 +2,6 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { fetchTags } from '../tag';
 
-
 describe('Tag actions', () => {
   test('fetch all tags', (done) => {
     const mock = new MockAdapter(axios);

@@ -12,7 +12,6 @@ import PasswordReset from './PasswordReset';
 import PasswordResetCallback from './PasswordResetCallback';
 import SignUp from './SignUp';
 
-
 const Base = ({ match }) => (
   <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
     <Grid item>

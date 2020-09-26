@@ -5,7 +5,6 @@ import {
   send,
 } from '../rover';
 
-
 describe('Rover actions', () => {
   test('rover scan', () => {
     const action = scan();

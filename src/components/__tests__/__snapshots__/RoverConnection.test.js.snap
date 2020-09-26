@@ -38,7 +38,7 @@ exports[`The RoverConnection component renders connect button when not connected
     <WithStyles(ForwardRef(Button))
       classes={
         Object {
-          "root": "WithStyles(ForwardRef(Button))-root-85",
+          "root": "WithStyles(ForwardRef(Button))-root-4",
         }
       }
       disableElevation={true}
@@ -78,7 +78,7 @@ exports[`The RoverConnection component renders connect button when not connected
             "outlinedSecondary": "MuiButton-outlinedSecondary",
             "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
             "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-            "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-85",
+            "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-4",
             "sizeLarge": "MuiButton-sizeLarge",
             "sizeSmall": "MuiButton-sizeSmall",
             "startIcon": "MuiButton-startIcon",
@@ -104,7 +104,7 @@ exports[`The RoverConnection component renders connect button when not connected
         variant="outlined"
       >
         <WithStyles(ForwardRef(ButtonBase))
-          className="MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-outlined MuiButton-disableElevation"
+          className="MuiButton-root WithStyles(ForwardRef(Button))-root-4 MuiButton-outlined MuiButton-disableElevation"
           component="button"
           disabled={false}
           focusRipple={true}
@@ -113,7 +113,7 @@ exports[`The RoverConnection component renders connect button when not connected
           type="button"
         >
           <ForwardRef(ButtonBase)
-            className="MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-outlined MuiButton-disableElevation"
+            className="MuiButton-root WithStyles(ForwardRef(Button))-root-4 MuiButton-outlined MuiButton-disableElevation"
             classes={
               Object {
                 "disabled": "Mui-disabled",
@@ -129,7 +129,7 @@ exports[`The RoverConnection component renders connect button when not connected
             type="button"
           >
             <button
-              className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-85 MuiButton-outlined MuiButton-disableElevation"
+              className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-4 MuiButton-outlined MuiButton-disableElevation"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -162,7 +162,7 @@ exports[`The RoverConnection component renders connect button when not connected
                     <LogoIcon
                       classes={
                         Object {
-                          "root": "LogoIcon-root-86",
+                          "root": "LogoIcon-root-5",
                         }
                       }
                       style={
@@ -174,7 +174,7 @@ exports[`The RoverConnection component renders connect button when not connected
                       <WithStyles(ForwardRef(SvgIcon))
                         classes={
                           Object {
-                            "root": "LogoIcon-root-86",
+                            "root": "LogoIcon-root-5",
                           }
                         }
                         style={
@@ -194,7 +194,7 @@ exports[`The RoverConnection component renders connect button when not connected
                               "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
                               "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
                               "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                              "root": "MuiSvgIcon-root LogoIcon-root-86",
+                              "root": "MuiSvgIcon-root LogoIcon-root-5",
                             }
                           }
                           style={
@@ -204,8 +204,8 @@ exports[`The RoverConnection component renders connect button when not connected
                           }
                         >
                           <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root LogoIcon-root-86"
+                            aria-hidden={true}
+                            className="MuiSvgIcon-root LogoIcon-root-5"
                             focusable="false"
                             style={
                               Object {
@@ -255,7 +255,7 @@ exports[`The RoverConnection component renders connect button when not connected
                     <WithStyles(ForwardRef(Typography))
                       classes={
                         Object {
-                          "root": "WithStyles(ForwardRef(Typography))-root-87",
+                          "root": "WithStyles(ForwardRef(Typography))-root-6",
                         }
                       }
                       variant="h6"
@@ -289,7 +289,7 @@ exports[`The RoverConnection component renders connect button when not connected
                             "noWrap": "MuiTypography-noWrap",
                             "overline": "MuiTypography-overline",
                             "paragraph": "MuiTypography-paragraph",
-                            "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-87",
+                            "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-6",
                             "srOnly": "MuiTypography-srOnly",
                             "subtitle1": "MuiTypography-subtitle1",
                             "subtitle2": "MuiTypography-subtitle2",
@@ -298,12 +298,11 @@ exports[`The RoverConnection component renders connect button when not connected
                         variant="h6"
                       >
                         <h6
-                          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-87 MuiTypography-h6"
+                          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-6 MuiTypography-h6"
                         >
                           <FormattedMessage
                             defaultMessage="No Rover"
                             id="app.rover_connection.no_rover"
-                            values={Object {}}
                           >
                             No Rover
                           </FormattedMessage>
@@ -318,7 +317,7 @@ exports[`The RoverConnection component renders connect button when not connected
                     <WithStyles(ForwardRef(Typography))
                       classes={
                         Object {
-                          "root": "WithStyles(ForwardRef(Typography))-root-88",
+                          "root": "WithStyles(ForwardRef(Typography))-root-7",
                         }
                       }
                       color="primary"
@@ -352,7 +351,7 @@ exports[`The RoverConnection component renders connect button when not connected
                             "noWrap": "MuiTypography-noWrap",
                             "overline": "MuiTypography-overline",
                             "paragraph": "MuiTypography-paragraph",
-                            "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-88",
+                            "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-7",
                             "srOnly": "MuiTypography-srOnly",
                             "subtitle1": "MuiTypography-subtitle1",
                             "subtitle2": "MuiTypography-subtitle2",
@@ -361,12 +360,11 @@ exports[`The RoverConnection component renders connect button when not connected
                         color="primary"
                       >
                         <p
-                          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-88 MuiTypography-body1 MuiTypography-colorPrimary"
+                          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-7 MuiTypography-body1 MuiTypography-colorPrimary"
                         >
                           <FormattedMessage
                             defaultMessage="Connect"
                             id="app.rover_connection.connect"
-                            values={Object {}}
                           >
                             Connect
                           </FormattedMessage>
@@ -456,7 +454,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
       <WithStyles(ForwardRef(Button))
         classes={
           Object {
-            "root": "WithStyles(ForwardRef(Button))-root-93",
+            "root": "WithStyles(ForwardRef(Button))-root-12",
           }
         }
         disableElevation={true}
@@ -496,7 +494,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
               "outlinedSecondary": "MuiButton-outlinedSecondary",
               "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
               "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-              "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-93",
+              "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-12",
               "sizeLarge": "MuiButton-sizeLarge",
               "sizeSmall": "MuiButton-sizeSmall",
               "startIcon": "MuiButton-startIcon",
@@ -522,7 +520,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
           variant="outlined"
         >
           <WithStyles(ForwardRef(ButtonBase))
-            className="MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
+            className="MuiButton-root WithStyles(ForwardRef(Button))-root-12 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
             component="button"
             disabled={true}
             focusRipple={true}
@@ -531,7 +529,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
             type="button"
           >
             <ForwardRef(ButtonBase)
-              className="MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
+              className="MuiButton-root WithStyles(ForwardRef(Button))-root-12 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
               classes={
                 Object {
                   "disabled": "Mui-disabled",
@@ -547,7 +545,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
               type="button"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-93 MuiButton-outlined MuiButton-disableElevation Mui-disabled Mui-disabled"
+                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-12 MuiButton-outlined MuiButton-disableElevation Mui-disabled Mui-disabled"
                 disabled={true}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -580,7 +578,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                       <LogoIcon
                         classes={
                           Object {
-                            "root": "LogoIcon-root-94",
+                            "root": "LogoIcon-root-13",
                           }
                         }
                         style={
@@ -592,7 +590,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                         <WithStyles(ForwardRef(SvgIcon))
                           classes={
                             Object {
-                              "root": "LogoIcon-root-94",
+                              "root": "LogoIcon-root-13",
                             }
                           }
                           style={
@@ -612,7 +610,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                                 "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
                                 "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
                                 "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                "root": "MuiSvgIcon-root LogoIcon-root-94",
+                                "root": "MuiSvgIcon-root LogoIcon-root-13",
                               }
                             }
                             style={
@@ -622,8 +620,8 @@ exports[`The RoverConnection component renders disabled connect button when on u
                             }
                           >
                             <svg
-                              aria-hidden="true"
-                              className="MuiSvgIcon-root LogoIcon-root-94"
+                              aria-hidden={true}
+                              className="MuiSvgIcon-root LogoIcon-root-13"
                               focusable="false"
                               style={
                                 Object {
@@ -673,7 +671,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                       <WithStyles(ForwardRef(Typography))
                         classes={
                           Object {
-                            "root": "WithStyles(ForwardRef(Typography))-root-95",
+                            "root": "WithStyles(ForwardRef(Typography))-root-14",
                           }
                         }
                         variant="h6"
@@ -707,7 +705,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                               "noWrap": "MuiTypography-noWrap",
                               "overline": "MuiTypography-overline",
                               "paragraph": "MuiTypography-paragraph",
-                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-95",
+                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-14",
                               "srOnly": "MuiTypography-srOnly",
                               "subtitle1": "MuiTypography-subtitle1",
                               "subtitle2": "MuiTypography-subtitle2",
@@ -716,12 +714,11 @@ exports[`The RoverConnection component renders disabled connect button when on u
                           variant="h6"
                         >
                           <h6
-                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-95 MuiTypography-h6"
+                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-14 MuiTypography-h6"
                           >
                             <FormattedMessage
                               defaultMessage="No Rover"
                               id="app.rover_connection.no_rover"
-                              values={Object {}}
                             >
                               No Rover
                             </FormattedMessage>
@@ -736,7 +733,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                       <WithStyles(ForwardRef(Typography))
                         classes={
                           Object {
-                            "root": "WithStyles(ForwardRef(Typography))-root-96",
+                            "root": "WithStyles(ForwardRef(Typography))-root-15",
                           }
                         }
                         color="initial"
@@ -770,7 +767,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                               "noWrap": "MuiTypography-noWrap",
                               "overline": "MuiTypography-overline",
                               "paragraph": "MuiTypography-paragraph",
-                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-96",
+                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-15",
                               "srOnly": "MuiTypography-srOnly",
                               "subtitle1": "MuiTypography-subtitle1",
                               "subtitle2": "MuiTypography-subtitle2",
@@ -779,12 +776,11 @@ exports[`The RoverConnection component renders disabled connect button when on u
                           color="initial"
                         >
                           <p
-                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-96 MuiTypography-body1"
+                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-15 MuiTypography-body1"
                           >
                             <FormattedMessage
                               defaultMessage="Connect"
                               id="app.rover_connection.connect"
-                              values={Object {}}
                             >
                               Connect
                             </FormattedMessage>
@@ -830,7 +826,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
       }
       classes={
         Object {
-          "root": "WithStyles(ForwardRef(Popover))-root-97",
+          "root": "WithStyles(ForwardRef(Popover))-root-16",
         }
       }
       disableRestoreFocus={true}
@@ -855,7 +851,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
         classes={
           Object {
             "paper": "MuiPopover-paper",
-            "root": "MuiPopover-root WithStyles(ForwardRef(Popover))-root-97",
+            "root": "MuiPopover-root WithStyles(ForwardRef(Popover))-root-16",
           }
         }
         disableRestoreFocus={true}
@@ -875,7 +871,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
               "invisible": true,
             }
           }
-          className="MuiPopover-root WithStyles(ForwardRef(Popover))-root-97"
+          className="MuiPopover-root WithStyles(ForwardRef(Popover))-root-16"
           disableRestoreFocus={true}
           id="mouse-over-popover"
           onClose={[Function]}
@@ -1054,7 +1050,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
                     <LogoIcon
                       classes={
                         Object {
-                          "root": "LogoIcon-root-34",
+                          "root": "LogoIcon-root-2",
                         }
                       }
                       style={
@@ -1066,7 +1062,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
                       <WithStyles(ForwardRef(SvgIcon))
                         classes={
                           Object {
-                            "root": "LogoIcon-root-34",
+                            "root": "LogoIcon-root-2",
                           }
                         }
                         style={
@@ -1086,7 +1082,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
                               "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
                               "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
                               "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                              "root": "MuiSvgIcon-root LogoIcon-root-34",
+                              "root": "MuiSvgIcon-root LogoIcon-root-2",
                             }
                           }
                           style={
@@ -1096,8 +1092,8 @@ exports[`The RoverConnection component renders disconnect button when connected 
                           }
                         >
                           <svg
-                            aria-hidden="true"
-                            className="MuiSvgIcon-root LogoIcon-root-34"
+                            aria-hidden={true}
+                            className="MuiSvgIcon-root LogoIcon-root-2"
                             focusable="false"
                             style={
                               Object {
@@ -1195,7 +1191,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
                     <WithStyles(ForwardRef(Typography))
                       classes={
                         Object {
-                          "root": "WithStyles(ForwardRef(Typography))-root-74",
+                          "root": "WithStyles(ForwardRef(Typography))-root-3",
                         }
                       }
                       color="primary"
@@ -1229,7 +1225,7 @@ exports[`The RoverConnection component renders disconnect button when connected 
                             "noWrap": "MuiTypography-noWrap",
                             "overline": "MuiTypography-overline",
                             "paragraph": "MuiTypography-paragraph",
-                            "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-74",
+                            "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-3",
                             "srOnly": "MuiTypography-srOnly",
                             "subtitle1": "MuiTypography-subtitle1",
                             "subtitle2": "MuiTypography-subtitle2",
@@ -1238,12 +1234,11 @@ exports[`The RoverConnection component renders disconnect button when connected 
                         color="primary"
                       >
                         <p
-                          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-74 MuiTypography-body1 MuiTypography-colorPrimary"
+                          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-3 MuiTypography-body1 MuiTypography-colorPrimary"
                         >
                           <FormattedMessage
                             defaultMessage="Disconnect"
                             id="app.rover_connection.disconnect"
-                            values={Object {}}
                           >
                             Disconnect
                           </FormattedMessage>

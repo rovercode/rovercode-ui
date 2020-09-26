@@ -3,7 +3,6 @@ import { EXECUTION_STOP } from '@/actions/code';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import RoverConnection from '../RoverConnection';
 
-
 let changeExecutionState;
 let changeLeftSensorState;
 let changeRightSensorState;

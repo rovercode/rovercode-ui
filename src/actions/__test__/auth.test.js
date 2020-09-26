@@ -1,6 +1,5 @@
 import { updateValidAuth } from '../auth';
 
-
 describe('Auth actions', () => {
   test('updateValidAuth', () => {
     const action = updateValidAuth(false);

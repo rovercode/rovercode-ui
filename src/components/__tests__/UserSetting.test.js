@@ -2,15 +2,23 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
+import PlanClass from '../PlanClass';
+import PlanItem from '../PlanItem';
 import UserSetting from '../UserSetting';
 
 let editUserPassword;
 let editUserUsername;
+let fetchSubscription;
+let refreshSession;
+let upgradeSubscription;
 
 describe('The UserSetting component', () => {
   beforeEach(() => {
     editUserPassword = jest.fn().mockResolvedValue();
     editUserUsername = jest.fn().mockResolvedValue();
+    fetchSubscription = jest.fn().mockResolvedValue();
+    refreshSession = jest.fn().mockResolvedValue();
+    upgradeSubscription = jest.fn().mockResolvedValue();
   });
 
   test('renders on the page with no errors', () => {
@@ -25,8 +33,12 @@ describe('The UserSetting component', () => {
         user={user}
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find({ type: 'password' }).length).toBe(2);
   });
@@ -43,8 +55,12 @@ describe('The UserSetting component', () => {
         user={user}
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
     expect(wrapper.find({ type: 'password' }).exists()).toBe(false);
   });
 
@@ -60,8 +76,12 @@ describe('The UserSetting component', () => {
         user={user}
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find(TextField).first().simulate('change', {
       target: {
@@ -93,8 +113,12 @@ describe('The UserSetting component', () => {
         user={user}
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find(TextField).at(1).simulate('change', {
       target: {
@@ -133,8 +157,12 @@ describe('The UserSetting component', () => {
         user={user}
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.find(TextField).at(1).simulate('change', {
       target: {
@@ -180,8 +208,12 @@ describe('The UserSetting component', () => {
         user={user}
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.instance().saveUserUsername({ preventDefault: jest.fn() }).then(() => {
       expect(wrapper.state('saveSuccess')).toBe(false);
@@ -216,8 +248,12 @@ describe('The UserSetting component', () => {
         user={user}
         editUserPassword={editUserPassword}
         editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching
       />,
-    ).dive().dive();
+    ).dive().dive().dive();
 
     wrapper.instance().saveUserPassword({ preventDefault: jest.fn() }).then(() => {
       expect(wrapper.state('saveSuccess')).toBe(false);
@@ -230,5 +266,75 @@ describe('The UserSetting component', () => {
       expect(wrapper.find(TextField).at(2).prop('error')).toBe(true);
       done();
     });
+  });
+
+  test('displays plans', () => {
+    const user = {
+      user_id: 1,
+      username: 'testuser',
+      email: 'test@example.com',
+      isSocial: false,
+    };
+    const subscription = {
+      plan: '2',
+      price: 0,
+      interval: '',
+      start: 0,
+    };
+    const wrapper = shallowWithIntl(
+      <UserSetting
+        user={user}
+        subscription={subscription}
+        editUserPassword={editUserPassword}
+        editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching={false}
+      />,
+    ).dive().dive().dive();
+    expect(wrapper.find(PlanItem).length).toBe(3);
+    expect(wrapper.find(PlanItem).at(0).prop('active')).toBe(false);
+    expect(wrapper.find(PlanItem).at(1).prop('active')).toBe(false);
+    expect(wrapper.find(PlanItem).at(2).prop('active')).toBe(true);
+  });
+
+  test('handles upgrade error', () => {
+    const user = {
+      user_id: 1,
+      username: 'testuser',
+      email: 'test@example.com',
+      isSocial: false,
+    };
+    const subscription = {
+      plan: '1',
+      price: 0,
+      interval: '',
+      start: 0,
+    };
+    const wrapper = shallowWithIntl(
+      <UserSetting
+        user={user}
+        subscription={subscription}
+        editUserPassword={editUserPassword}
+        editUserUsername={editUserUsername}
+        fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
+        upgradeSubscription={upgradeSubscription}
+        isFetching={false}
+        upgradeError={{
+          response: {
+            data: {
+              accessCode: ['This code is not valid.'],
+            },
+          },
+        }}
+      />,
+    ).dive().dive().dive();
+    expect(wrapper.find(PlanItem).length).toBe(3);
+    expect(wrapper.find(PlanItem).at(0).prop('active')).toBe(true);
+    expect(wrapper.find(PlanItem).at(1).prop('active')).toBe(false);
+    expect(wrapper.find(PlanItem).at(2).prop('active')).toBe(false);
+    expect(wrapper.find(PlanClass).prop('error')).toBe('This code is not valid.');
   });
 });

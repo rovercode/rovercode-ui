@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The PlanFree component renders on the page with no errors 1`] = `
+<WithStyles(ForwardRef(Grid))
+  alignItems="stretch"
+  container={true}
+  direction="column"
+  justify="center"
+>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+  >
+    <WithStyles(ForwardRef(Typography))
+      align="center"
+      variant="subtitle2"
+    >
+      2 
+      <FormattedMessage
+        defaultMessage="program slots"
+        id="app.plan_free.programs"
+      />
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+  >
+    <WithStyles(ForwardRef(Typography))
+      align="center"
+      variant="subtitle2"
+    >
+      <FormattedMessage
+        defaultMessage="Limited access to courses"
+        id="app.plan_free.courses"
+      />
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;

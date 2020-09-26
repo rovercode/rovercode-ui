@@ -1,6 +1,5 @@
 import { append, clear } from '../console';
 
-
 describe('Console actions', () => {
   test('append', () => {
     const action = append('message');

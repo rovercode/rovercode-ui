@@ -16,11 +16,109 @@ describe('The ProgramCollection component', () => {
     onProgramClick = jest.fn();
     onRemoveClick = jest.fn();
     onUpdate = jest.fn();
-    adminUser = { username: 'admin' };
-    testUser = { username: 'testuser' };
+    adminUser = {
+      username: 'admin',
+      tier: 2,
+      stats: {
+        block_diagram: {
+          count: 15,
+          limit: 5,
+        },
+      },
+    };
+    testUser = {
+      username: 'testuser',
+      tier: 1,
+      stats: {
+        block_diagram: {
+          count: 5,
+          limit: 5,
+        },
+      },
+    };
   });
 
-  test('renders on the page with no errors', () => {
+  test('renders on the page with no errors as free tier over', () => {
+    const programs = {
+      count: 2,
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'admin',
+        },
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }],
+    };
+    const wrapper = mountWithIntl(
+      <Router>
+        <ProgramCollection
+          programs={programs}
+          label="My Programs"
+          user={testUser}
+          onProgramClick={onProgramClick}
+          onRemoveClick={onRemoveClick}
+          onUpdate={onUpdate}
+        />
+      </Router>,
+    );
+    wrapper.find('ProgramCollection').instance().setState({ tagFilters: ['tag1', 'tag2'] });
+    wrapper.update();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('renders on the page with no errors as free tier under', () => {
+    testUser.stats.block_diagram.count = 2;
+    const programs = {
+      count: 2,
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'admin',
+        },
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }],
+    };
+    const wrapper = mountWithIntl(
+      <Router>
+        <ProgramCollection
+          programs={programs}
+          label="My Programs"
+          user={testUser}
+          onProgramClick={onProgramClick}
+          onRemoveClick={onRemoveClick}
+          onUpdate={onUpdate}
+        />
+      </Router>,
+    );
+    wrapper.find('ProgramCollection').instance().setState({ tagFilters: ['tag1', 'tag2'] });
+    wrapper.update();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('renders on the page with no errors as paid tier', () => {
+    testUser.stats.block_diagram.count = 2;
     const programs = {
       count: 2,
       next: null,
@@ -110,7 +208,7 @@ describe('The ProgramCollection component', () => {
 
     expect(wrapper.find(Card).exists()).toBe(false);
     expect(wrapper.find('img').exists()).toBe(false);
-    expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().prop('defaultMessage')).toBe('Sorry, no programs match your filters.');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().last().prop('defaultMessage')).toBe('Sorry, no programs match your filters.');
   });
 
   test('shows message when no programs', () => {
@@ -134,7 +232,7 @@ describe('The ProgramCollection component', () => {
 
     expect(wrapper.find(Card).exists()).toBe(false);
     expect(wrapper.find('img').exists()).toBe(true);
-    expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().prop('defaultMessage')).toBe('You don\'t have any programs yet!');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').children().last().prop('defaultMessage')).toBe('You don\'t have any programs yet!');
   });
 
   test('shows the correct number of programs for the user', () => {

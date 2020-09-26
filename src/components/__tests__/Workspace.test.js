@@ -2,15 +2,17 @@ import React from 'react';
 import toJson from 'enzyme-to-json';
 import { Cookies } from 'react-cookie';
 import configureStore from 'redux-mock-store';
+import { Alert } from '@material-ui/lab';
 import { updateValidAuth } from '@/actions/auth';
+import { showNotification } from '@/actions/notification';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import Workspace from '../Workspace'; // eslint-disable-line import/order
 
-jest.mock('node-blockly/browser');
+jest.mock('blockly');
 jest.mock('@/actions/code');
 jest.mock('@/actions/rover');
 
-import Blockly from 'node-blockly/browser'; // eslint-disable-line import/first, import/order
+import Blockly from 'blockly'; // eslint-disable-line import/first, import/order
 import { // eslint-disable-line import/first
   changeExecutionState,
   saveProgram,
@@ -423,7 +425,6 @@ describe('The Workspace component', () => {
     expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
-
   test('doesn\'t run code when at the end', () => {
     jest.useFakeTimers();
 
@@ -702,7 +703,27 @@ describe('The Workspace component', () => {
 
     expect(playground.clear).toHaveBeenCalled();
     expect(Blockly.Xml.domToWorkspace).toHaveBeenCalled();
-    expect(Blockly.Xml.domToWorkspace).toHaveBeenCalledWith(playground, 'test-dom');
+    expect(Blockly.Xml.domToWorkspace).toHaveBeenCalledWith('test-dom', playground);
+  });
+
+  test('handles error when loading program', () => {
+    const workspace = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    Blockly.Xml.domToWorkspace.mockImplementation(() => {
+      throw new Error();
+    });
+    workspace.instance().loadDesign('<xml></xml>');
+
+    expect(workspace.state('unsupportedProgram')).toBe(true);
+    expect(workspace.find(Alert).exists()).toBe(true);
   });
 
   test('handles authentication error when saving', (done) => {
@@ -732,6 +753,39 @@ describe('The Workspace component', () => {
         }),
       );
       expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
+  test('handles API error when saving', (done) => {
+    const error = new Error();
+    error.response = {
+      status: 502,
+    };
+    store.dispatch = jest.fn();
+    store.dispatch.mockRejectedValueOnce(error);
+    store.dispatch.mockResolvedValue();
+
+    const wrapper = shallowWithIntl(
+      <Workspace store={store}>
+        <div />
+      </Workspace>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive();
+    wrapper.props().saveProgram(1, '<xml></xml>', 'test', 1, 'error message').then(() => {
+      expect(store.dispatch.mock.calls.length).toBe(2);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        saveProgram(1, '<xml></xml>', 'test', {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(store.dispatch).toHaveBeenCalledWith(
+        showNotification('error message', 4000, 'error'),
+      );
       done();
     });
   });
