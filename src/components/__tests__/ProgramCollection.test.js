@@ -433,6 +433,8 @@ describe('The ProgramCollection component', () => {
   });
 
   test('callback when search changes', () => {
+    jest.useFakeTimers();
+
     const programs = {
       count: 2,
       next: null,
@@ -471,12 +473,82 @@ describe('The ProgramCollection component', () => {
       },
     });
 
+    expect(onUpdate).not.toHaveBeenCalled();
+
+    jest.advanceTimersByTime(250);
+
+    expect(onUpdate).not.toHaveBeenCalled();
+
+    jest.advanceTimersByTime(500);
+
     expect(onUpdate).toHaveBeenCalledWith({
       search: 'abc',
       page: 1,
       ordering: 'name',
       tag: '',
     });
+  });
+
+  test('callback when search changes unset debounce time', () => {
+    jest.useFakeTimers();
+
+    const builtInParseInt = global.parseInt;
+    global.parseInt = () => NaN;
+
+    const programs = {
+      count: 2,
+      next: null,
+      previous: null,
+      total_pages: 2,
+      results: [{
+        id: 33,
+        name: 'Unnamed_Design_3',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }, {
+        id: 5,
+        name: 'Unnamed_Design_2',
+        content: '<xml><variables></variables></xml>',
+        user: {
+          username: 'testuser',
+        },
+      }],
+    };
+    const wrapper = shallowWithIntl(
+      <ProgramCollection
+        programs={programs}
+        label="My Programs"
+        user={adminUser}
+        onProgramClick={onProgramClick}
+        onRemoveClick={onRemoveClick}
+        onUpdate={onUpdate}
+      />,
+    ).dive().dive().dive();
+
+    wrapper.find('WithStyles(ForwardRef(TextField))').simulate('change', {
+      target: {
+        value: 'abc',
+      },
+    });
+
+    expect(onUpdate).not.toHaveBeenCalled();
+
+    jest.advanceTimersByTime(500);
+
+    expect(onUpdate).not.toHaveBeenCalled();
+
+    jest.advanceTimersByTime(500);
+
+    expect(onUpdate).toHaveBeenCalledWith({
+      search: 'abc',
+      page: 1,
+      ordering: 'name',
+      tag: '',
+    });
+
+    global.parseInt = builtInParseInt;
   });
 
   test('callback when order changes', () => {

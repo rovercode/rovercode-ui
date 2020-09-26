@@ -30,6 +30,7 @@ import {
   Delete,
 } from '@material-ui/icons';
 import { Pagination, Autocomplete } from '@material-ui/lab';
+import { debounce } from 'throttle-debounce';
 
 import flavourImage from '@/assets/images/flavour.png';
 
@@ -60,6 +61,10 @@ const styles = (theme) => ({
 class ProgramCollection extends Component {
   constructor(props) {
     super(props);
+
+    this.searchDebounce = debounce(
+      parseInt(SEARCH_DEBOUNCE_TIME, 10) || 1000, this.update, // eslint-disable-line no-undef
+    );
 
     this.state = {
       page: 1,
@@ -116,20 +121,20 @@ class ProgramCollection extends Component {
 
   handlePageChange = (e, page) => this.setState({
     page,
-  }, () => this.update())
+  }, this.update)
 
   handleSearchChange = (event) => this.setState({
     searchQuery: event.target.value,
     page: 1,
-  }, () => this.update())
+  }, this.searchDebounce)
 
   handleOrderingChange = (e) => this.setState({
     ordering: this.toggleOrdering(e.target.id),
-  }, () => this.update())
+  }, this.update)
 
   handleTagFilterChange = (event, value) => this.setState({
     tagFilters: value,
-  }, () => this.update())
+  }, this.update)
 
   render() {
     const {
