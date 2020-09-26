@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Box, Grid } from '@material-ui/core';
-import { injectIntl } from 'react-intl';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import Blockly from 'node-blockly/browser';
+import Blockly from 'blockly';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { withCookies } from 'react-cookie';
@@ -21,8 +22,19 @@ import {
   EXECUTION_RESET,
 } from '@/actions/code';
 import { append, clear } from '@/actions/console';
+import { showNotification } from '@/actions/notification';
 import { send } from '@/actions/rover';
 import { COVERED } from '@/actions/sensor';
+import {
+  ButtonPress,
+  Continue,
+  DisplayMessage,
+  LightSensorValue,
+  LineSensorValue,
+  MotorsStart,
+  MotorsStop,
+  SensorsGetCovered,
+} from '@/blocks';
 import BlocklyApi from '@/utils/blockly-api';
 import { blocklyTheme } from '@/themes/light';
 
@@ -34,10 +46,35 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   clearConsole: () => dispatch(clear()),
   updateXmlCode: (xmlCode) => dispatch(actionUpdateXmlCode(xmlCode)),
   sendToRover: (channel, message) => dispatch(send(channel, message)),
-  saveProgram: (id, content, name, lessonId) => dispatch(
+  saveProgram: (id, content, name, lessonId, errorMessage) => dispatch(
     actionSaveProgram(id, content, name, lessonId, authHeader(cookies)),
-  ).catch(checkAuthError(dispatch)),
+  ).catch(checkAuthError(dispatch)).catch((error) => {
+    const serverError = error.response && [502, 503, 504].includes(error.response.status);
+    if (error.message === 'Network Error' || serverError) {
+      // There was an error contacting the API
+      dispatch(showNotification(errorMessage, 4000, 'error'));
+    } else {
+      throw error;
+    }
+  }),
 });
+
+Blockly.Blocks.button_press = ButtonPress.definition;
+Blockly.JavaScript.button_press = ButtonPress.generator;
+Blockly.Blocks.continue = Continue.definition;
+Blockly.JavaScript.continue = Continue.generator;
+Blockly.Blocks.display_message = DisplayMessage.definition;
+Blockly.JavaScript.display_message = DisplayMessage.generator;
+Blockly.Blocks.light_sensor_value = LightSensorValue.definition;
+Blockly.JavaScript.light_sensor_value = LightSensorValue.generator;
+Blockly.Blocks.line_sensor_value = LineSensorValue.definition;
+Blockly.JavaScript.line_sensor_value = LineSensorValue.generator;
+Blockly.Blocks.motors_start = MotorsStart.definition;
+Blockly.JavaScript.motors_start = MotorsStart.generator;
+Blockly.Blocks.motors_stop = MotorsStop.definition;
+Blockly.JavaScript.motors_stop = MotorsStop.generator;
+Blockly.Blocks.sensors_get_covered = SensorsGetCovered.definition;
+Blockly.JavaScript.sensors_get_covered = SensorsGetCovered.generator;
 
 const toolbox = `
     <xml id="toolbox" style="display: none">
@@ -178,7 +215,7 @@ const toolbox = `
 class Workspace extends Component {
   constructor(props) {
     super(props);
-    const { writeToConsole } = this.props;
+    const { intl, writeToConsole } = this.props;
 
     this.sensorStateCache = [];
     this.sensorStateCache.A_BUTTON = false;
@@ -191,12 +228,18 @@ class Workspace extends Component {
     this.runningEnabled = false;
     this.highlightPause = false;
     this.interpreter = null;
+    this.saveErrorMessage = intl.formatMessage({
+      id: 'app.workspace.save_error',
+      description: 'Indicates that saving the program has failed',
+      defaultMessage: 'Error saving program',
+    });
 
     this.api = new BlocklyApi(this.highlightBlock, this.beginSleep,
       this.sensorStateCache, writeToConsole, this.sendToRover);
 
     this.state = {
       workspace: null,
+      unsupportedProgram: false,
     };
   }
 
@@ -385,7 +428,7 @@ class Workspace extends Component {
     const xmlCode = this.updateXmlCode();
 
     if (!code.isReadOnly && code.id) {
-      saveProgram(code.id, xmlCode, code.name, code.lesson);
+      saveProgram(code.id, xmlCode, code.name, code.lesson, this.saveErrorMessage);
     }
   }
 
@@ -477,34 +520,62 @@ class Workspace extends Component {
     workspace.clear();
 
     const xmlDom = Blockly.Xml.textToDom(xmlCode);
-    Blockly.Xml.domToWorkspace(workspace, xmlDom);
-
-    this.updateCode();
+    try {
+      Blockly.Xml.domToWorkspace(xmlDom, workspace);
+      this.setState({
+        unsupportedProgram: false,
+      }, this.updateCode);
+    } catch (err) {
+      this.setState({
+        unsupportedProgram: true,
+      });
+    }
   }
-
 
   render() {
     const { children, code, rover } = this.props;
+    const { unsupportedProgram } = this.state;
 
     return (
       <Box>
         <Grid container direction="column" justify="center" alignItems="center">
-          <Grid item container direction="column" alignItems="stretch">
-            <Grid item style={{ minHeight: code.isReadOnly ? '76vh' : '80vh', maxHeight: '1080px' }}>
-              <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
-                <Box
-                  zIndex="modal"
-                  style={{ position: 'absolute', bottom: '15%', left: code.isReadOnly ? '5%' : '15%' }}
-                >
-                  {
-                    React.Children.map(children, (child) => React.cloneElement(child, {
-                      isConnected: !!rover.rover,
-                    }))
-                  }
-                </Box>
-              </div>
-            </Grid>
-          </Grid>
+          {
+            unsupportedProgram ? (
+              <Grid item>
+                <Alert variant="outlined" severity="error">
+                  <AlertTitle>
+                    <FormattedMessage
+                      id="app.workspace.program_error_title"
+                      description="Notifies the user of an error loading a program"
+                      defaultMessage="Error loading program"
+                    />
+                  </AlertTitle>
+                  <FormattedMessage
+                    id="app.workspace.program_error_description"
+                    description="Notifies the user of an error loading a program"
+                    defaultMessage="This program is no longer supported."
+                  />
+                </Alert>
+              </Grid>
+            ) : (
+              <Grid item container direction="column" alignItems="stretch">
+                <Grid item style={{ minHeight: code.isReadOnly ? '76vh' : '80vh', maxHeight: '1080px' }}>
+                  <div ref={(editorDiv) => { this.editorDiv = editorDiv; }} id="blocklyDiv">
+                    <Box
+                      zIndex="modal"
+                      style={{ position: 'absolute', bottom: '15%', left: code.isReadOnly ? '5%' : '15%' }}
+                    >
+                      {
+                        React.Children.map(children, (child) => React.cloneElement(child, {
+                          isConnected: !!rover.rover,
+                        }))
+                      }
+                    </Box>
+                  </div>
+                </Grid>
+              </Grid>
+            )
+          }
         </Grid>
       </Box>
     );
@@ -535,9 +606,16 @@ Workspace.propTypes = {
     rightLineSensorReading: PropTypes.number.isRequired,
   }).isRequired,
   rover: PropTypes.shape({
-    transmitChannel: PropTypes.object,
+    transmitChannel: PropTypes.shape({
+      writeValue: PropTypes.func,
+    }),
     isSending: PropTypes.bool,
-    rover: PropTypes.object,
+    rover: PropTypes.shape({
+      gatt: PropTypes.shape({
+        connect: PropTypes.func,
+        disconnect: PropTypes.func,
+      }),
+    }),
   }),
   updateJsCode: PropTypes.func.isRequired,
   updateXmlCode: PropTypes.func.isRequired,

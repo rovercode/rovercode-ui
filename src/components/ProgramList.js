@@ -42,11 +42,13 @@ class ProgramList extends Component {
     const {
       fetchPrograms,
       fetchTags,
+      fetchUserStats,
       owned,
       user,
     } = this.props;
 
     fetchTags();
+    fetchUserStats(user.user_id);
 
     return owned ? fetchPrograms({
       user: user.user_id,
@@ -87,6 +89,7 @@ class ProgramList extends Component {
 
   fetchUserPrograms = (params) => {
     const { fetchPrograms, user } = this.props;
+
     fetchPrograms({
       user: user.user_id,
       ...params,
@@ -221,6 +224,7 @@ ProgramList.propTypes = {
   removeProgram: PropTypes.func.isRequired,
   clearProgramList: PropTypes.func.isRequired,
   clearProgram: PropTypes.func.isRequired,
+  fetchUserStats: PropTypes.func.isRequired,
   owned: PropTypes.bool.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,

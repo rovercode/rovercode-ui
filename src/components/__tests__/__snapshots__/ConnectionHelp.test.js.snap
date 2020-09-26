@@ -144,7 +144,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                             }
                           >
                             <svg
-                              aria-hidden="true"
+                              aria-hidden={true}
                               className="MuiSvgIcon-root"
                               focusable="false"
                               viewBox="0 0 24 24"
@@ -601,7 +601,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   The Rover is your robot. Rovercode works with the Gigglebot, which is a robot chassis with a micro:bit computer.
                                 </p>
                                 <div
-                                  class="MuiBox-root MuiBox-root-196 Styled(MuiBox)-root-195"
+                                  class="MuiBox-root MuiBox-root-20 Styled(MuiBox)-root-19"
                                   classes="[object Object]"
                                 >
                                   <img
@@ -611,7 +611,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   />
                                 </div>
                                 <div
-                                  class="MuiBox-root MuiBox-root-197 Styled(MuiBox)-root-195"
+                                  class="MuiBox-root MuiBox-root-21 Styled(MuiBox)-root-19"
                                   classes="[object Object]"
                                 >
                                   <a
@@ -643,7 +643,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side).
                                 </p>
                                 <div
-                                  class="MuiBox-root MuiBox-root-198 Styled(MuiBox)-root-195"
+                                  class="MuiBox-root MuiBox-root-22 Styled(MuiBox)-root-19"
                                   classes="[object Object]"
                                 >
                                   <img
@@ -652,23 +652,23 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   />
                                 </div>
                                 <div
-                                  class="MuiBox-root MuiBox-root-199 Styled(MuiBox)-root-195"
+                                  class="MuiBox-root MuiBox-root-23 Styled(MuiBox)-root-19"
                                   classes="[object Object]"
                                 >
                                   <div
-                                    class="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                    class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                   >
                                     <div
                                       aria-controls="panel1a-content"
                                       aria-disabled="false"
                                       aria-expanded="false"
-                                      class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                      class="MuiButtonBase-root MuiAccordionSummary-root"
                                       id="panel1a-header"
                                       role="button"
                                       tabindex="0"
                                     >
                                       <div
-                                        class="MuiExpansionPanelSummary-content"
+                                        class="MuiAccordionSummary-content"
                                       >
                                         <p
                                           class="MuiTypography-root MuiTypography-body1"
@@ -679,7 +679,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                       <div
                                         aria-disabled="false"
                                         aria-hidden="true"
-                                        class="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                        class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                       >
                                         <span
                                           class="MuiIconButton-label"
@@ -713,7 +713,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             role="region"
                                           >
                                             <div
-                                              class="MuiExpansionPanelDetails-root"
+                                              class="MuiAccordionDetails-root"
                                             >
                                               <p
                                                 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
@@ -722,10 +722,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </p>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
+                                              class="MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24"
                                             >
                                               <div
-                                                class="MuiBox-root MuiBox-root-201 Styled(MuiBox)-root-195"
+                                                class="MuiBox-root MuiBox-root-25 Styled(MuiBox)-root-19"
                                                 classes="[object Object]"
                                               >
                                                 <img
@@ -736,7 +736,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </div>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root"
+                                              class="MuiAccordionDetails-root"
                                             >
                                               <p
                                                 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
@@ -745,10 +745,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </p>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
+                                              class="MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24"
                                             >
                                               <div
-                                                class="MuiBox-root MuiBox-root-202 Styled(MuiBox)-root-195"
+                                                class="MuiBox-root MuiBox-root-26 Styled(MuiBox)-root-19"
                                                 classes="[object Object]"
                                               >
                                                 <img
@@ -758,7 +758,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </div>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root"
+                                              class="MuiAccordionDetails-root"
                                             >
                                               <p
                                                 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
@@ -767,10 +767,10 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </p>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
+                                              class="MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24"
                                             >
                                               <div
-                                                class="MuiBox-root MuiBox-root-203 Styled(MuiBox)-root-195"
+                                                class="MuiBox-root MuiBox-root-27 Styled(MuiBox)-root-19"
                                                 classes="[object Object]"
                                               >
                                                 <a
@@ -788,7 +788,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </div>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root"
+                                              class="MuiAccordionDetails-root"
                                             >
                                               <p
                                                 class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
@@ -797,7 +797,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                               </p>
                                             </div>
                                             <div
-                                              class="MuiExpansionPanelDetails-root"
+                                              class="MuiAccordionDetails-root"
                                             >
                                               <a
                                                 class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body1 MuiTypography-colorPrimary"
@@ -828,11 +828,11 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   With your Rover powered on and displaying the R, push the connect button below.
                                 </p>
                                 <div
-                                  class="MuiBox-root MuiBox-root-204 Styled(MuiBox)-root-195"
+                                  class="MuiBox-root MuiBox-root-28 Styled(MuiBox)-root-19"
                                   classes="[object Object]"
                                 >
                                   <button
-                                    class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-205 MuiButton-outlined MuiButton-disableElevation"
+                                    class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-29 MuiButton-outlined MuiButton-disableElevation"
                                     tabindex="0"
                                     type="button"
                                   >
@@ -844,7 +844,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                       >
                                         <svg
                                           aria-hidden="true"
-                                          class="MuiSvgIcon-root LogoIcon-root-206"
+                                          class="MuiSvgIcon-root LogoIcon-root-30"
                                           focusable="false"
                                           style="font-size: 50px;"
                                           viewBox="0 0 24 24"
@@ -881,13 +881,13 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                       </span>
                                       <div>
                                         <h6
-                                          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-207 MuiTypography-h6"
+                                          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-31 MuiTypography-h6"
                                         >
                                           No Rover
                                           <br />
                                         </h6>
                                         <p
-                                          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-208 MuiTypography-body1 MuiTypography-colorPrimary"
+                                          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root-32 MuiTypography-body1 MuiTypography-colorPrimary"
                                         >
                                           Connect
                                         </p>
@@ -912,14 +912,14 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                   >
                                     <span
                                       aria-disabled="false"
-                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked MuiIconButton-colorSecondary"
+                                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-15 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-16 Mui-checked MuiIconButton-colorSecondary"
                                     >
                                       <span
                                         class="MuiIconButton-label"
                                       >
                                         <input
                                           checked=""
-                                          class="PrivateSwitchBase-input-194"
+                                          class="PrivateSwitchBase-input-18"
                                           data-indeterminate="false"
                                           type="checkbox"
                                           value=""
@@ -1044,7 +1044,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                           </ForwardRef(Fade)>
                         </ForwardRef(Backdrop)>
                       </WithStyles(ForwardRef(Backdrop))>
-                      <TrapFocus
+                      <Unstable_TrapFocus
                         disableAutoFocus={false}
                         disableEnforceFocus={false}
                         disableRestoreFocus={false}
@@ -1094,8 +1094,8 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                           >
                             <div
                               className="MuiDialog-container MuiDialog-scrollPaper"
-                              onClick={[Function]}
                               onMouseDown={[Function]}
+                              onMouseUp={[Function]}
                               role="none presentation"
                               style={
                                 Object {
@@ -1214,7 +1214,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                 <FormattedMessage
                                                   defaultMessage="Welcome! Let's get set up."
                                                   id="app.connection_help.welcome"
-                                                  values={Object {}}
                                                 >
                                                   Welcome! Let's get set up.
                                                 </FormattedMessage>
@@ -1269,7 +1268,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                 <FormattedMessage
                                                   defaultMessage="1. Get your Rover"
                                                   id="app.connection_help.gigglebot_title"
-                                                  values={Object {}}
                                                 >
                                                   1. Get your Rover
                                                 </FormattedMessage>
@@ -1322,7 +1320,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                 <FormattedMessage
                                                   defaultMessage="The Rover is your robot. Rovercode works with the Gigglebot, which is a robot chassis with a micro:bit computer."
                                                   id="app.connection_help.gigglebot_ordering"
-                                                  values={Object {}}
                                                 >
                                                   The Rover is your robot. Rovercode works with the Gigglebot, which is a robot chassis with a micro:bit computer.
                                                 </FormattedMessage>
@@ -1336,17 +1333,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-195",
+                                                  "root": "Styled(MuiBox)-root-19",
                                                 }
                                               }
                                               display="flex"
                                               justifyContent="center"
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-196 Styled(MuiBox)-root-195"
+                                                className="MuiBox-root MuiBox-root-20 Styled(MuiBox)-root-19"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-195",
+                                                    "root": "Styled(MuiBox)-root-19",
                                                   }
                                                 }
                                               >
@@ -1365,17 +1362,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-195",
+                                                  "root": "Styled(MuiBox)-root-19",
                                                 }
                                               }
                                               display="flex"
                                               justifyContent="center"
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-197 Styled(MuiBox)-root-195"
+                                                className="MuiBox-root MuiBox-root-21 Styled(MuiBox)-root-19"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-195",
+                                                    "root": "Styled(MuiBox)-root-19",
                                                   }
                                                 }
                                               >
@@ -1480,7 +1477,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                             <FormattedMessage
                                                               defaultMessage="If you don't already have a Gigglebot, click here to order one"
                                                               id="app.connection_help.gigglebot_link"
-                                                              values={Object {}}
                                                             >
                                                               If you don't already have a Gigglebot, click here to order one
                                                             </FormattedMessage>
@@ -1588,7 +1584,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                 <FormattedMessage
                                                   defaultMessage="2. Check the Rover firmware"
                                                   id="app.connection_help.firmware_title"
-                                                  values={Object {}}
                                                 >
                                                   2. Check the Rover firmware
                                                 </FormattedMessage>
@@ -1641,7 +1636,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                 <FormattedMessage
                                                   defaultMessage="Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side)."
                                                   id="app.connection_help.firmware_need"
-                                                  values={Object {}}
                                                 >
                                                   Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side).
                                                 </FormattedMessage>
@@ -1655,17 +1649,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-195",
+                                                  "root": "Styled(MuiBox)-root-19",
                                                 }
                                               }
                                               display="flex"
                                               justifyContent="center"
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-198 Styled(MuiBox)-root-195"
+                                                className="MuiBox-root MuiBox-root-22 Styled(MuiBox)-root-19"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-195",
+                                                    "root": "Styled(MuiBox)-root-19",
                                                   }
                                                 }
                                               >
@@ -1680,35 +1674,35 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-195",
+                                                  "root": "Styled(MuiBox)-root-19",
                                                 }
                                               }
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-199 Styled(MuiBox)-root-195"
+                                                className="MuiBox-root MuiBox-root-23 Styled(MuiBox)-root-19"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-195",
+                                                    "root": "Styled(MuiBox)-root-19",
                                                   }
                                                 }
                                               >
-                                                <WithStyles(ForwardRef(ExpansionPanel))>
-                                                  <ForwardRef(ExpansionPanel)
+                                                <WithStyles(ForwardRef(Accordion))>
+                                                  <ForwardRef(Accordion)
                                                     classes={
                                                       Object {
                                                         "disabled": "Mui-disabled",
                                                         "expanded": "Mui-expanded",
-                                                        "root": "MuiExpansionPanel-root",
-                                                        "rounded": "MuiExpansionPanel-rounded",
+                                                        "root": "MuiAccordion-root",
+                                                        "rounded": "MuiAccordion-rounded",
                                                       }
                                                     }
                                                   >
                                                     <WithStyles(ForwardRef(Paper))
-                                                      className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                                      className="MuiAccordion-root MuiAccordion-rounded"
                                                       square={false}
                                                     >
                                                       <ForwardRef(Paper)
-                                                        className="MuiExpansionPanel-root MuiExpansionPanel-rounded"
+                                                        className="MuiAccordion-root MuiAccordion-rounded"
                                                         classes={
                                                           Object {
                                                             "elevation0": "MuiPaper-elevation0",
@@ -1744,24 +1738,24 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                         square={false}
                                                       >
                                                         <div
-                                                          className="MuiPaper-root MuiExpansionPanel-root MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                                          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
                                                         >
-                                                          <WithStyles(ForwardRef(ExpansionPanelSummary))
+                                                          <WithStyles(ForwardRef(AccordionSummary))
                                                             aria-controls="panel1a-content"
                                                             expandIcon={<Memo(ExpandMoreIcon) />}
                                                             id="panel1a-header"
                                                             key=".0"
                                                           >
-                                                            <ForwardRef(ExpansionPanelSummary)
+                                                            <ForwardRef(AccordionSummary)
                                                               aria-controls="panel1a-content"
                                                               classes={
                                                                 Object {
-                                                                  "content": "MuiExpansionPanelSummary-content",
+                                                                  "content": "MuiAccordionSummary-content",
                                                                   "disabled": "Mui-disabled",
-                                                                  "expandIcon": "MuiExpansionPanelSummary-expandIcon",
+                                                                  "expandIcon": "MuiAccordionSummary-expandIcon",
                                                                   "expanded": "Mui-expanded",
                                                                   "focused": "Mui-focused",
-                                                                  "root": "MuiExpansionPanelSummary-root",
+                                                                  "root": "MuiAccordionSummary-root",
                                                                 }
                                                               }
                                                               expandIcon={<Memo(ExpandMoreIcon) />}
@@ -1770,7 +1764,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                               <WithStyles(ForwardRef(ButtonBase))
                                                                 aria-controls="panel1a-content"
                                                                 aria-expanded={false}
-                                                                className="MuiExpansionPanelSummary-root"
+                                                                className="MuiAccordionSummary-root"
                                                                 component="div"
                                                                 disableRipple={true}
                                                                 disabled={false}
@@ -1783,7 +1777,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                 <ForwardRef(ButtonBase)
                                                                   aria-controls="panel1a-content"
                                                                   aria-expanded={false}
-                                                                  className="MuiExpansionPanelSummary-root"
+                                                                  className="MuiAccordionSummary-root"
                                                                   classes={
                                                                     Object {
                                                                       "disabled": "Mui-disabled",
@@ -1804,7 +1798,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                     aria-controls="panel1a-content"
                                                                     aria-disabled={false}
                                                                     aria-expanded={false}
-                                                                    className="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                                                                    className="MuiButtonBase-root MuiAccordionSummary-root"
                                                                     id="panel1a-header"
                                                                     onBlur={[Function]}
                                                                     onClick={[Function]}
@@ -1822,7 +1816,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                     tabIndex={0}
                                                                   >
                                                                     <div
-                                                                      className="MuiExpansionPanelSummary-content"
+                                                                      className="MuiAccordionSummary-content"
                                                                     >
                                                                       <WithStyles(ForwardRef(Typography))>
                                                                         <ForwardRef(Typography)
@@ -1867,7 +1861,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                             <FormattedMessage
                                                                               defaultMessage="If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware. Click here to see how."
                                                                               id="app.connection_help.firmware_expansion_panel"
-                                                                              values={Object {}}
                                                                             >
                                                                               If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware. Click here to see how.
                                                                             </FormattedMessage>
@@ -1877,7 +1870,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                     </div>
                                                                     <WithStyles(ForwardRef(IconButton))
                                                                       aria-hidden={true}
-                                                                      className="MuiExpansionPanelSummary-expandIcon"
+                                                                      className="MuiAccordionSummary-expandIcon"
                                                                       component="div"
                                                                       edge="end"
                                                                       role={null}
@@ -1885,7 +1878,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                     >
                                                                       <ForwardRef(IconButton)
                                                                         aria-hidden={true}
-                                                                        className="MuiExpansionPanelSummary-expandIcon"
+                                                                        className="MuiAccordionSummary-expandIcon"
                                                                         classes={
                                                                           Object {
                                                                             "colorInherit": "MuiIconButton-colorInherit",
@@ -1907,7 +1900,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                         <WithStyles(ForwardRef(ButtonBase))
                                                                           aria-hidden={true}
                                                                           centerRipple={true}
-                                                                          className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                                          className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                                           component="div"
                                                                           disabled={false}
                                                                           focusRipple={true}
@@ -1917,7 +1910,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           <ForwardRef(ButtonBase)
                                                                             aria-hidden={true}
                                                                             centerRipple={true}
-                                                                            className="MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                                            className="MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                                             classes={
                                                                               Object {
                                                                                 "disabled": "Mui-disabled",
@@ -1934,7 +1927,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                             <div
                                                                               aria-disabled={false}
                                                                               aria-hidden={true}
-                                                                              className="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+                                                                              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
                                                                               onBlur={[Function]}
                                                                               onDragLeave={[Function]}
                                                                               onFocus={[Function]}
@@ -1970,7 +1963,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                       }
                                                                                     >
                                                                                       <svg
-                                                                                        aria-hidden="true"
+                                                                                        aria-hidden={true}
                                                                                         className="MuiSvgIcon-root"
                                                                                         focusable="false"
                                                                                         viewBox="0 0 24 24"
@@ -1991,8 +1984,8 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                   </div>
                                                                 </ForwardRef(ButtonBase)>
                                                               </WithStyles(ForwardRef(ButtonBase))>
-                                                            </ForwardRef(ExpansionPanelSummary)>
-                                                          </WithStyles(ForwardRef(ExpansionPanelSummary))>
+                                                            </ForwardRef(AccordionSummary)>
+                                                          </WithStyles(ForwardRef(AccordionSummary))>
                                                           <WithStyles(ForwardRef(Collapse))
                                                             in={false}
                                                             timeout="auto"
@@ -2045,18 +2038,18 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                         id="panel1a-content"
                                                                         role="region"
                                                                       >
-                                                                        <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                        <WithStyles(ForwardRef(AccordionDetails))
                                                                           key=".1"
                                                                         >
-                                                                          <ForwardRef(ExpansionPanelDetails)
+                                                                          <ForwardRef(AccordionDetails)
                                                                             classes={
                                                                               Object {
-                                                                                "root": "MuiExpansionPanelDetails-root",
+                                                                                "root": "MuiAccordionDetails-root",
                                                                               }
                                                                             }
                                                                           >
                                                                             <div
-                                                                              className="MuiExpansionPanelDetails-root"
+                                                                              className="MuiAccordionDetails-root"
                                                                             >
                                                                               <WithStyles(ForwardRef(Typography))
                                                                                 gutterBottom={true}
@@ -2104,7 +2097,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                     <FormattedMessage
                                                                                       defaultMessage="Use a USB cable to connect the micro:bit to your computer."
                                                                                       id="app.connection_help.connect_microbit"
-                                                                                      values={Object {}}
                                                                                     >
                                                                                       Use a USB cable to connect the micro:bit to your computer.
                                                                                     </FormattedMessage>
@@ -2112,41 +2104,41 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                 </ForwardRef(Typography)>
                                                                               </WithStyles(ForwardRef(Typography))>
                                                                             </div>
-                                                                          </ForwardRef(ExpansionPanelDetails)>
-                                                                        </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                                        <WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))
+                                                                          </ForwardRef(AccordionDetails)>
+                                                                        </WithStyles(ForwardRef(AccordionDetails))>
+                                                                        <WithStyles(WithStyles(ForwardRef(AccordionDetails)))
                                                                           key=".2"
                                                                         >
-                                                                          <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                          <WithStyles(ForwardRef(AccordionDetails))
                                                                             classes={
                                                                               Object {
-                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
+                                                                                "root": "WithStyles(ForwardRef(AccordionDetails))-root-24",
                                                                               }
                                                                             }
                                                                           >
-                                                                            <ForwardRef(ExpansionPanelDetails)
+                                                                            <ForwardRef(AccordionDetails)
                                                                               classes={
                                                                                 Object {
-                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
+                                                                                  "root": "MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24",
                                                                                 }
                                                                               }
                                                                             >
                                                                               <div
-                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
+                                                                                className="MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24"
                                                                               >
                                                                                 <WithStyles(Styled(MuiBox))>
                                                                                   <Styled(MuiBox)
                                                                                     classes={
                                                                                       Object {
-                                                                                        "root": "Styled(MuiBox)-root-195",
+                                                                                        "root": "Styled(MuiBox)-root-19",
                                                                                       }
                                                                                     }
                                                                                   >
                                                                                     <div
-                                                                                      className="MuiBox-root MuiBox-root-201 Styled(MuiBox)-root-195"
+                                                                                      className="MuiBox-root MuiBox-root-25 Styled(MuiBox)-root-19"
                                                                                       classes={
                                                                                         Object {
-                                                                                          "root": "Styled(MuiBox)-root-195",
+                                                                                          "root": "Styled(MuiBox)-root-19",
                                                                                         }
                                                                                       }
                                                                                     >
@@ -2159,21 +2151,21 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                   </Styled(MuiBox)>
                                                                                 </WithStyles(Styled(MuiBox))>
                                                                               </div>
-                                                                            </ForwardRef(ExpansionPanelDetails)>
-                                                                          </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                                        </WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))>
-                                                                        <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                            </ForwardRef(AccordionDetails)>
+                                                                          </WithStyles(ForwardRef(AccordionDetails))>
+                                                                        </WithStyles(WithStyles(ForwardRef(AccordionDetails)))>
+                                                                        <WithStyles(ForwardRef(AccordionDetails))
                                                                           key=".3"
                                                                         >
-                                                                          <ForwardRef(ExpansionPanelDetails)
+                                                                          <ForwardRef(AccordionDetails)
                                                                             classes={
                                                                               Object {
-                                                                                "root": "MuiExpansionPanelDetails-root",
+                                                                                "root": "MuiAccordionDetails-root",
                                                                               }
                                                                             }
                                                                           >
                                                                             <div
-                                                                              className="MuiExpansionPanelDetails-root"
+                                                                              className="MuiAccordionDetails-root"
                                                                             >
                                                                               <WithStyles(ForwardRef(Typography))
                                                                                 gutterBottom={true}
@@ -2221,7 +2213,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                     <FormattedMessage
                                                                                       defaultMessage="The micro:bit device should show up in your file browser."
                                                                                       id="app.connection_help.computer_device"
-                                                                                      values={Object {}}
                                                                                     >
                                                                                       The micro:bit device should show up in your file browser.
                                                                                     </FormattedMessage>
@@ -2229,41 +2220,41 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                 </ForwardRef(Typography)>
                                                                               </WithStyles(ForwardRef(Typography))>
                                                                             </div>
-                                                                          </ForwardRef(ExpansionPanelDetails)>
-                                                                        </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                                        <WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))
+                                                                          </ForwardRef(AccordionDetails)>
+                                                                        </WithStyles(ForwardRef(AccordionDetails))>
+                                                                        <WithStyles(WithStyles(ForwardRef(AccordionDetails)))
                                                                           key=".4"
                                                                         >
-                                                                          <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                          <WithStyles(ForwardRef(AccordionDetails))
                                                                             classes={
                                                                               Object {
-                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
+                                                                                "root": "WithStyles(ForwardRef(AccordionDetails))-root-24",
                                                                               }
                                                                             }
                                                                           >
-                                                                            <ForwardRef(ExpansionPanelDetails)
+                                                                            <ForwardRef(AccordionDetails)
                                                                               classes={
                                                                                 Object {
-                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
+                                                                                  "root": "MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24",
                                                                                 }
                                                                               }
                                                                             >
                                                                               <div
-                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
+                                                                                className="MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24"
                                                                               >
                                                                                 <WithStyles(Styled(MuiBox))>
                                                                                   <Styled(MuiBox)
                                                                                     classes={
                                                                                       Object {
-                                                                                        "root": "Styled(MuiBox)-root-195",
+                                                                                        "root": "Styled(MuiBox)-root-19",
                                                                                       }
                                                                                     }
                                                                                   >
                                                                                     <div
-                                                                                      className="MuiBox-root MuiBox-root-202 Styled(MuiBox)-root-195"
+                                                                                      className="MuiBox-root MuiBox-root-26 Styled(MuiBox)-root-19"
                                                                                       classes={
                                                                                         Object {
-                                                                                          "root": "Styled(MuiBox)-root-195",
+                                                                                          "root": "Styled(MuiBox)-root-19",
                                                                                         }
                                                                                       }
                                                                                     >
@@ -2275,21 +2266,21 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                   </Styled(MuiBox)>
                                                                                 </WithStyles(Styled(MuiBox))>
                                                                               </div>
-                                                                            </ForwardRef(ExpansionPanelDetails)>
-                                                                          </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                                        </WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))>
-                                                                        <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                            </ForwardRef(AccordionDetails)>
+                                                                          </WithStyles(ForwardRef(AccordionDetails))>
+                                                                        </WithStyles(WithStyles(ForwardRef(AccordionDetails)))>
+                                                                        <WithStyles(ForwardRef(AccordionDetails))
                                                                           key=".5"
                                                                         >
-                                                                          <ForwardRef(ExpansionPanelDetails)
+                                                                          <ForwardRef(AccordionDetails)
                                                                             classes={
                                                                               Object {
-                                                                                "root": "MuiExpansionPanelDetails-root",
+                                                                                "root": "MuiAccordionDetails-root",
                                                                               }
                                                                             }
                                                                           >
                                                                             <div
-                                                                              className="MuiExpansionPanelDetails-root"
+                                                                              className="MuiAccordionDetails-root"
                                                                             >
                                                                               <WithStyles(ForwardRef(Typography))
                                                                                 gutterBottom={true}
@@ -2337,7 +2328,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                     <FormattedMessage
                                                                                       defaultMessage="Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device."
                                                                                       id="app.connection_help.firmware_save"
-                                                                                      values={Object {}}
                                                                                     >
                                                                                       Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device.
                                                                                     </FormattedMessage>
@@ -2345,41 +2335,41 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                 </ForwardRef(Typography)>
                                                                               </WithStyles(ForwardRef(Typography))>
                                                                             </div>
-                                                                          </ForwardRef(ExpansionPanelDetails)>
-                                                                        </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                                        <WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))
+                                                                          </ForwardRef(AccordionDetails)>
+                                                                        </WithStyles(ForwardRef(AccordionDetails))>
+                                                                        <WithStyles(WithStyles(ForwardRef(AccordionDetails)))
                                                                           key=".6"
                                                                         >
-                                                                          <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                          <WithStyles(ForwardRef(AccordionDetails))
                                                                             classes={
                                                                               Object {
-                                                                                "root": "WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
+                                                                                "root": "WithStyles(ForwardRef(AccordionDetails))-root-24",
                                                                               }
                                                                             }
                                                                           >
-                                                                            <ForwardRef(ExpansionPanelDetails)
+                                                                            <ForwardRef(AccordionDetails)
                                                                               classes={
                                                                                 Object {
-                                                                                  "root": "MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200",
+                                                                                  "root": "MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24",
                                                                                 }
                                                                               }
                                                                             >
                                                                               <div
-                                                                                className="MuiExpansionPanelDetails-root WithStyles(ForwardRef(ExpansionPanelDetails))-root-200"
+                                                                                className="MuiAccordionDetails-root WithStyles(ForwardRef(AccordionDetails))-root-24"
                                                                               >
                                                                                 <WithStyles(Styled(MuiBox))>
                                                                                   <Styled(MuiBox)
                                                                                     classes={
                                                                                       Object {
-                                                                                        "root": "Styled(MuiBox)-root-195",
+                                                                                        "root": "Styled(MuiBox)-root-19",
                                                                                       }
                                                                                     }
                                                                                   >
                                                                                     <div
-                                                                                      className="MuiBox-root MuiBox-root-203 Styled(MuiBox)-root-195"
+                                                                                      className="MuiBox-root MuiBox-root-27 Styled(MuiBox)-root-19"
                                                                                       classes={
                                                                                         Object {
-                                                                                          "root": "Styled(MuiBox)-root-195",
+                                                                                          "root": "Styled(MuiBox)-root-19",
                                                                                         }
                                                                                       }
                                                                                     >
@@ -2474,7 +2464,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                                   <FormattedMessage
                                                                                                     defaultMessage="Click here to download the firmware hex file"
                                                                                                     id="app.connection_help.firmware_hex_button"
-                                                                                                    values={Object {}}
                                                                                                   >
                                                                                                     Click here to download the firmware hex file
                                                                                                   </FormattedMessage>
@@ -2488,21 +2477,21 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                   </Styled(MuiBox)>
                                                                                 </WithStyles(Styled(MuiBox))>
                                                                               </div>
-                                                                            </ForwardRef(ExpansionPanelDetails)>
-                                                                          </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                                        </WithStyles(WithStyles(ForwardRef(ExpansionPanelDetails)))>
-                                                                        <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                            </ForwardRef(AccordionDetails)>
+                                                                          </WithStyles(ForwardRef(AccordionDetails))>
+                                                                        </WithStyles(WithStyles(ForwardRef(AccordionDetails)))>
+                                                                        <WithStyles(ForwardRef(AccordionDetails))
                                                                           key=".7"
                                                                         >
-                                                                          <ForwardRef(ExpansionPanelDetails)
+                                                                          <ForwardRef(AccordionDetails)
                                                                             classes={
                                                                               Object {
-                                                                                "root": "MuiExpansionPanelDetails-root",
+                                                                                "root": "MuiAccordionDetails-root",
                                                                               }
                                                                             }
                                                                           >
                                                                             <div
-                                                                              className="MuiExpansionPanelDetails-root"
+                                                                              className="MuiAccordionDetails-root"
                                                                             >
                                                                               <WithStyles(ForwardRef(Typography))
                                                                                 gutterBottom={true}
@@ -2550,7 +2539,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                     <FormattedMessage
                                                                                       defaultMessage="After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display."
                                                                                       id="app.connection_help.firmware_complete"
-                                                                                      values={Object {}}
                                                                                     >
                                                                                       After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display.
                                                                                     </FormattedMessage>
@@ -2558,20 +2546,20 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                 </ForwardRef(Typography)>
                                                                               </WithStyles(ForwardRef(Typography))>
                                                                             </div>
-                                                                          </ForwardRef(ExpansionPanelDetails)>
-                                                                        </WithStyles(ForwardRef(ExpansionPanelDetails))>
-                                                                        <WithStyles(ForwardRef(ExpansionPanelDetails))
+                                                                          </ForwardRef(AccordionDetails)>
+                                                                        </WithStyles(ForwardRef(AccordionDetails))>
+                                                                        <WithStyles(ForwardRef(AccordionDetails))
                                                                           key=".8"
                                                                         >
-                                                                          <ForwardRef(ExpansionPanelDetails)
+                                                                          <ForwardRef(AccordionDetails)
                                                                             classes={
                                                                               Object {
-                                                                                "root": "MuiExpansionPanelDetails-root",
+                                                                                "root": "MuiAccordionDetails-root",
                                                                               }
                                                                             }
                                                                           >
                                                                             <div
-                                                                              className="MuiExpansionPanelDetails-root"
+                                                                              className="MuiAccordionDetails-root"
                                                                             >
                                                                               <WithStyles(ForwardRef(Link))
                                                                                 href="https://support.microbit.org/support/solutions/articles/19000013986-how-do-i-transfer-my-code-onto-the-micro-bit-via-usb"
@@ -2662,7 +2650,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                         <FormattedMessage
                                                                                           defaultMessage="More instructions can be found here."
                                                                                           id="app.connection_help.firmware_flash_link"
-                                                                                          values={Object {}}
                                                                                         >
                                                                                           More instructions can be found here.
                                                                                         </FormattedMessage>
@@ -2672,8 +2659,8 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                 </ForwardRef(Link)>
                                                                               </WithStyles(ForwardRef(Link))>
                                                                             </div>
-                                                                          </ForwardRef(ExpansionPanelDetails)>
-                                                                        </WithStyles(ForwardRef(ExpansionPanelDetails))>
+                                                                          </ForwardRef(AccordionDetails)>
+                                                                        </WithStyles(ForwardRef(AccordionDetails))>
                                                                       </div>
                                                                     </div>
                                                                   </div>
@@ -2684,8 +2671,8 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                         </div>
                                                       </ForwardRef(Paper)>
                                                     </WithStyles(ForwardRef(Paper))>
-                                                  </ForwardRef(ExpansionPanel)>
-                                                </WithStyles(ForwardRef(ExpansionPanel))>
+                                                  </ForwardRef(Accordion)>
+                                                </WithStyles(ForwardRef(Accordion))>
                                               </div>
                                             </Styled(MuiBox)>
                                           </WithStyles(Styled(MuiBox))>
@@ -2784,7 +2771,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                 <FormattedMessage
                                                   defaultMessage="3. Connect to your Rover"
                                                   id="app.connection_help.connecting_title"
-                                                  values={Object {}}
                                                 >
                                                   3. Connect to your Rover
                                                 </FormattedMessage>
@@ -2837,7 +2823,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                 <FormattedMessage
                                                   defaultMessage="With your Rover powered on and displaying the R, push the connect button below."
                                                   id="app.connection_help.connecting"
-                                                  values={Object {}}
                                                 >
                                                   With your Rover powered on and displaying the R, push the connect button below.
                                                 </FormattedMessage>
@@ -2851,17 +2836,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                             <Styled(MuiBox)
                                               classes={
                                                 Object {
-                                                  "root": "Styled(MuiBox)-root-195",
+                                                  "root": "Styled(MuiBox)-root-19",
                                                 }
                                               }
                                               display="flex"
                                               justifyContent="center"
                                             >
                                               <div
-                                                className="MuiBox-root MuiBox-root-204 Styled(MuiBox)-root-195"
+                                                className="MuiBox-root MuiBox-root-28 Styled(MuiBox)-root-19"
                                                 classes={
                                                   Object {
-                                                    "root": "Styled(MuiBox)-root-195",
+                                                    "root": "Styled(MuiBox)-root-19",
                                                   }
                                                 }
                                               >
@@ -2903,7 +2888,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                       <WithStyles(ForwardRef(Button))
                                                         classes={
                                                           Object {
-                                                            "root": "WithStyles(ForwardRef(Button))-root-205",
+                                                            "root": "WithStyles(ForwardRef(Button))-root-29",
                                                           }
                                                         }
                                                         disableElevation={true}
@@ -2943,7 +2928,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                               "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                               "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                               "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                              "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-205",
+                                                              "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-29",
                                                               "sizeLarge": "MuiButton-sizeLarge",
                                                               "sizeSmall": "MuiButton-sizeSmall",
                                                               "startIcon": "MuiButton-startIcon",
@@ -2969,7 +2954,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                           variant="outlined"
                                                         >
                                                           <WithStyles(ForwardRef(ButtonBase))
-                                                            className="MuiButton-root WithStyles(ForwardRef(Button))-root-205 MuiButton-outlined MuiButton-disableElevation"
+                                                            className="MuiButton-root WithStyles(ForwardRef(Button))-root-29 MuiButton-outlined MuiButton-disableElevation"
                                                             component="button"
                                                             disabled={false}
                                                             focusRipple={true}
@@ -2978,7 +2963,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                             type="button"
                                                           >
                                                             <ForwardRef(ButtonBase)
-                                                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-205 MuiButton-outlined MuiButton-disableElevation"
+                                                              className="MuiButton-root WithStyles(ForwardRef(Button))-root-29 MuiButton-outlined MuiButton-disableElevation"
                                                               classes={
                                                                 Object {
                                                                   "disabled": "Mui-disabled",
@@ -2994,7 +2979,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                               type="button"
                                                             >
                                                               <button
-                                                                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-205 MuiButton-outlined MuiButton-disableElevation"
+                                                                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-29 MuiButton-outlined MuiButton-disableElevation"
                                                                 disabled={false}
                                                                 onBlur={[Function]}
                                                                 onClick={[Function]}
@@ -3027,7 +3012,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                       <LogoIcon
                                                                         classes={
                                                                           Object {
-                                                                            "root": "LogoIcon-root-206",
+                                                                            "root": "LogoIcon-root-30",
                                                                           }
                                                                         }
                                                                         style={
@@ -3039,7 +3024,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                         <WithStyles(ForwardRef(SvgIcon))
                                                                           classes={
                                                                             Object {
-                                                                              "root": "LogoIcon-root-206",
+                                                                              "root": "LogoIcon-root-30",
                                                                             }
                                                                           }
                                                                           style={
@@ -3059,7 +3044,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                 "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
                                                                                 "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
                                                                                 "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                                                "root": "MuiSvgIcon-root LogoIcon-root-206",
+                                                                                "root": "MuiSvgIcon-root LogoIcon-root-30",
                                                                               }
                                                                             }
                                                                             style={
@@ -3069,8 +3054,8 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                             }
                                                                           >
                                                                             <svg
-                                                                              aria-hidden="true"
-                                                                              className="MuiSvgIcon-root LogoIcon-root-206"
+                                                                              aria-hidden={true}
+                                                                              className="MuiSvgIcon-root LogoIcon-root-30"
                                                                               focusable="false"
                                                                               style={
                                                                                 Object {
@@ -3120,7 +3105,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                       <WithStyles(ForwardRef(Typography))
                                                                         classes={
                                                                           Object {
-                                                                            "root": "WithStyles(ForwardRef(Typography))-root-207",
+                                                                            "root": "WithStyles(ForwardRef(Typography))-root-31",
                                                                           }
                                                                         }
                                                                         variant="h6"
@@ -3154,7 +3139,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                               "noWrap": "MuiTypography-noWrap",
                                                                               "overline": "MuiTypography-overline",
                                                                               "paragraph": "MuiTypography-paragraph",
-                                                                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-207",
+                                                                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-31",
                                                                               "srOnly": "MuiTypography-srOnly",
                                                                               "subtitle1": "MuiTypography-subtitle1",
                                                                               "subtitle2": "MuiTypography-subtitle2",
@@ -3163,12 +3148,11 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           variant="h6"
                                                                         >
                                                                           <h6
-                                                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-207 MuiTypography-h6"
+                                                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-31 MuiTypography-h6"
                                                                           >
                                                                             <FormattedMessage
                                                                               defaultMessage="No Rover"
                                                                               id="app.rover_connection.no_rover"
-                                                                              values={Object {}}
                                                                             >
                                                                               No Rover
                                                                             </FormattedMessage>
@@ -3183,7 +3167,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                       <WithStyles(ForwardRef(Typography))
                                                                         classes={
                                                                           Object {
-                                                                            "root": "WithStyles(ForwardRef(Typography))-root-208",
+                                                                            "root": "WithStyles(ForwardRef(Typography))-root-32",
                                                                           }
                                                                         }
                                                                         color="primary"
@@ -3217,7 +3201,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                               "noWrap": "MuiTypography-noWrap",
                                                                               "overline": "MuiTypography-overline",
                                                                               "paragraph": "MuiTypography-paragraph",
-                                                                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-208",
+                                                                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-32",
                                                                               "srOnly": "MuiTypography-srOnly",
                                                                               "subtitle1": "MuiTypography-subtitle1",
                                                                               "subtitle2": "MuiTypography-subtitle2",
@@ -3226,12 +3210,11 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                           color="primary"
                                                                         >
                                                                           <p
-                                                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-208 MuiTypography-body1 MuiTypography-colorPrimary"
+                                                                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-32 MuiTypography-body1 MuiTypography-colorPrimary"
                                                                           >
                                                                             <FormattedMessage
                                                                               defaultMessage="Connect"
                                                                               id="app.rover_connection.connect"
-                                                                              values={Object {}}
                                                                             >
                                                                               Connect
                                                                             </FormattedMessage>
@@ -3298,7 +3281,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                 <FormattedMessage
                                                   defaultMessage="Then, choose the BBC micro:bit device from the list and click Pair."
                                                   id="app.connection_help.done"
-                                                  values={Object {}}
                                                 >
                                                   Then, choose the BBC micro:bit device from the list and click Pair.
                                                 </FormattedMessage>
@@ -3346,7 +3328,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                     <FormattedMessage
                                                       defaultMessage="Show this guide each time I log in"
                                                       id="app.connection_help.show"
-                                                      values={Object {}}
                                                     />
                                                   }
                                                 >
@@ -3371,7 +3352,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                       <FormattedMessage
                                                         defaultMessage="Show this guide each time I log in"
                                                         id="app.connection_help.show"
-                                                        values={Object {}}
                                                       />
                                                     }
                                                   >
@@ -3398,11 +3378,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                         >
                                                           <WithStyles(ForwardRef(SwitchBase))
                                                             checked={true}
-                                                            checkedIcon={
-                                                              <Memo(CheckBoxIcon)
-                                                                fontSize="default"
-                                                              />
-                                                            }
+                                                            checkedIcon={<Memo />}
                                                             classes={
                                                               Object {
                                                                 "checked": "Mui-checked",
@@ -3411,11 +3387,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                               }
                                                             }
                                                             color="secondary"
-                                                            icon={
-                                                              <Memo(CheckBoxOutlineBlankIcon)
-                                                                fontSize="default"
-                                                              />
-                                                            }
+                                                            icon={<Memo />}
                                                             inputProps={
                                                               Object {
                                                                 "data-indeterminate": false,
@@ -3426,25 +3398,17 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                           >
                                                             <ForwardRef(SwitchBase)
                                                               checked={true}
-                                                              checkedIcon={
-                                                                <Memo(CheckBoxIcon)
-                                                                  fontSize="default"
-                                                                />
-                                                              }
+                                                              checkedIcon={<Memo />}
                                                               classes={
                                                                 Object {
-                                                                  "checked": "PrivateSwitchBase-checked-192 Mui-checked",
-                                                                  "disabled": "PrivateSwitchBase-disabled-193 Mui-disabled",
-                                                                  "input": "PrivateSwitchBase-input-194",
-                                                                  "root": "PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary",
+                                                                  "checked": "PrivateSwitchBase-checked-16 Mui-checked",
+                                                                  "disabled": "PrivateSwitchBase-disabled-17 Mui-disabled",
+                                                                  "input": "PrivateSwitchBase-input-18",
+                                                                  "root": "PrivateSwitchBase-root-15 MuiCheckbox-root MuiCheckbox-colorSecondary",
                                                                 }
                                                               }
                                                               color="secondary"
-                                                              icon={
-                                                                <Memo(CheckBoxOutlineBlankIcon)
-                                                                  fontSize="default"
-                                                                />
-                                                              }
+                                                              icon={<Memo />}
                                                               inputProps={
                                                                 Object {
                                                                   "data-indeterminate": false,
@@ -3454,7 +3418,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                               type="checkbox"
                                                             >
                                                               <WithStyles(ForwardRef(IconButton))
-                                                                className="PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked"
+                                                                className="PrivateSwitchBase-root-15 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-16 Mui-checked"
                                                                 color="secondary"
                                                                 component="span"
                                                                 onBlur={[Function]}
@@ -3462,7 +3426,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                 tabIndex={null}
                                                               >
                                                                 <ForwardRef(IconButton)
-                                                                  className="PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked"
+                                                                  className="PrivateSwitchBase-root-15 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-16 Mui-checked"
                                                                   classes={
                                                                     Object {
                                                                       "colorInherit": "MuiIconButton-colorInherit",
@@ -3484,7 +3448,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                 >
                                                                   <WithStyles(ForwardRef(ButtonBase))
                                                                     centerRipple={true}
-                                                                    className="MuiIconButton-root PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked MuiIconButton-colorSecondary"
+                                                                    className="MuiIconButton-root PrivateSwitchBase-root-15 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-16 Mui-checked MuiIconButton-colorSecondary"
                                                                     component="span"
                                                                     disabled={false}
                                                                     focusRipple={true}
@@ -3494,7 +3458,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                   >
                                                                     <ForwardRef(ButtonBase)
                                                                       centerRipple={true}
-                                                                      className="MuiIconButton-root PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked MuiIconButton-colorSecondary"
+                                                                      className="MuiIconButton-root PrivateSwitchBase-root-15 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-16 Mui-checked MuiIconButton-colorSecondary"
                                                                       classes={
                                                                         Object {
                                                                           "disabled": "Mui-disabled",
@@ -3511,7 +3475,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                     >
                                                                       <span
                                                                         aria-disabled={false}
-                                                                        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-191 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-192 Mui-checked MuiIconButton-colorSecondary"
+                                                                        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-15 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-16 Mui-checked MuiIconButton-colorSecondary"
                                                                         onBlur={[Function]}
                                                                         onDragLeave={[Function]}
                                                                         onFocus={[Function]}
@@ -3530,17 +3494,13 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                         >
                                                                           <input
                                                                             checked={true}
-                                                                            className="PrivateSwitchBase-input-194"
+                                                                            className="PrivateSwitchBase-input-18"
                                                                             data-indeterminate={false}
                                                                             onChange={[Function]}
                                                                             type="checkbox"
                                                                           />
-                                                                          <ForwardRef
-                                                                            fontSize="default"
-                                                                          >
-                                                                            <WithStyles(ForwardRef(SvgIcon))
-                                                                              fontSize="default"
-                                                                            >
+                                                                          <ForwardRef(CheckBoxIcon)>
+                                                                            <WithStyles(ForwardRef(SvgIcon))>
                                                                               <ForwardRef(SvgIcon)
                                                                                 classes={
                                                                                   Object {
@@ -3555,10 +3515,9 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                     "root": "MuiSvgIcon-root",
                                                                                   }
                                                                                 }
-                                                                                fontSize="default"
                                                                               >
                                                                                 <svg
-                                                                                  aria-hidden="true"
+                                                                                  aria-hidden={true}
                                                                                   className="MuiSvgIcon-root"
                                                                                   focusable="false"
                                                                                   viewBox="0 0 24 24"
@@ -3569,7 +3528,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                                 </svg>
                                                                               </ForwardRef(SvgIcon)>
                                                                             </WithStyles(ForwardRef(SvgIcon))>
-                                                                          </ForwardRef>
+                                                                          </ForwardRef(CheckBoxIcon)>
                                                                         </span>
                                                                         <WithStyles(memo)
                                                                           center={true}
@@ -3656,7 +3615,6 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                             <FormattedMessage
                                                               defaultMessage="Show this guide each time I log in"
                                                               id="app.connection_help.show"
-                                                              values={Object {}}
                                                             >
                                                               Show this guide each time I log in
                                                             </FormattedMessage>
@@ -3682,7 +3640,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                           data-test="sentinelEnd"
                           tabIndex={0}
                         />
-                      </TrapFocus>
+                      </Unstable_TrapFocus>
                     </div>
                   </Portal>
                 </ForwardRef(Portal)>

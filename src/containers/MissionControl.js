@@ -6,9 +6,9 @@ import {
   CircularProgress,
   Divider,
   Drawer,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Grid,
   IconButton,
   List,
@@ -132,6 +132,7 @@ class MissionControl extends Component {
       location,
       code,
       sensor,
+      user,
     } = this.props;
 
     const {
@@ -145,7 +146,6 @@ class MissionControl extends Component {
       description: 'Label for the lesson\'s goal',
       defaultMessage: 'Goal',
     });
-
 
     const readOnlyTitle = intl.formatMessage({
       id: 'app.mission_control.program_owner',
@@ -247,6 +247,13 @@ class MissionControl extends Component {
       },
     ];
 
+    let programCount = -2;
+    let programLimit = -1;
+    if (user.stats && user.stats.block_diagram) {
+      programCount = user.stats.block_diagram.count;
+      programLimit = user.stats.block_diagram.limit;
+    }
+
     return (
       <>
         <Drawer anchor="left" open={open} onClose={this.handleOnClose}>
@@ -328,7 +335,7 @@ class MissionControl extends Component {
                       <Alert
                         severity="info"
                         action={(
-                          <Button color="primary" variant="contained" size="huge" onClick={this.remix}>
+                          <Button color="primary" variant="contained" size="large" onClick={this.remix} disabled={user.tier === 1 && programCount >= programLimit}>
                             <FormattedMessage
                               id="app.mission_control.remix"
                               description="Button label to copy other user's program for this user to edit"
@@ -386,8 +393,8 @@ class MissionControl extends Component {
           </Grid>
           <Grid item container xs={2} direction="column" alignItems="stretch" spacing={2}>
             <Grid item>
-              <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+              <Accordion>
+                <AccordionSummary expandIcon={<ExpandMore />}>
                   <Typography>
                     <FormattedMessage
                       id="app.mission_control.sensors"
@@ -395,9 +402,9 @@ class MissionControl extends Component {
                       defaultMessage="Sensors"
                     />
                   </Typography>
-                </ExpansionPanelSummary>
+                </AccordionSummary>
                 <Divider />
-                <ExpansionPanelDetails>
+                <AccordionDetails>
                   <Typography>
                     <FormattedMessage
                       id="app.mission_control.buttons"
@@ -405,12 +412,12 @@ class MissionControl extends Component {
                       defaultMessage="Buttons"
                     />
                   </Typography>
-                </ExpansionPanelDetails>
-                <ExpansionPanelDetails>
+                </AccordionDetails>
+                <AccordionDetails>
                   <WideBox p={2} border={1} borderRadius="borderRadius" borderColor="grey.500">
                     <Indicator />
                   </WideBox>
-                </ExpansionPanelDetails>
+                </AccordionDetails>
                 <Divider />
                 <NumericSensorReadout
                   title={lightSensorsTitle}
@@ -429,11 +436,11 @@ class MissionControl extends Component {
                   readings={batteryVoltageReading}
                   unit={milliVoltsLabel}
                 />
-              </ExpansionPanel>
+              </Accordion>
             </Grid>
             <Grid item>
-              <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+              <Accordion>
+                <AccordionSummary expandIcon={<ExpandMore />}>
                   <Typography>
                     <FormattedMessage
                       id="app.mission_control.console"
@@ -441,11 +448,11 @@ class MissionControl extends Component {
                       defaultMessage="Debug Console"
                     />
                   </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                </AccordionSummary>
+                <AccordionDetails>
                   <Console />
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
+                </AccordionDetails>
+              </Accordion>
             </Grid>
             <Grid item>
               <CodeViewer>
@@ -505,6 +512,13 @@ MissionControl.propTypes = {
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
+    stats: PropTypes.shape({
+      block_diagram: PropTypes.shape({
+        count: PropTypes.number,
+        limit: PropTypes.number,
+      }),
+    }),
+    tier: PropTypes.number,
   }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({

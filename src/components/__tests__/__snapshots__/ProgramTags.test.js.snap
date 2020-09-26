@@ -111,7 +111,6 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -135,6 +134,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         store={
@@ -189,7 +189,6 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -213,6 +212,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           store={
@@ -520,7 +520,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                         <WithStyles(ForwardRef(Autocomplete))
                           classes={
                             Object {
-                              "root": "WithStyles(ForwardRef(Autocomplete))-root-212",
+                              "root": "WithStyles(ForwardRef(Autocomplete))-root-6",
                             }
                           }
                           disabled={false}
@@ -570,7 +570,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                 "popperDisablePortal": "MuiAutocomplete-popperDisablePortal",
                                 "popupIndicator": "MuiAutocomplete-popupIndicator",
                                 "popupIndicatorOpen": "MuiAutocomplete-popupIndicatorOpen",
-                                "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-212",
+                                "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-6",
                                 "tag": "MuiAutocomplete-tag",
                                 "tagSizeSmall": "MuiAutocomplete-tagSizeSmall",
                               }
@@ -601,7 +601,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                             <div
                               aria-expanded={false}
                               aria-owns={null}
-                              className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-212 MuiAutocomplete-hasClearIcon"
+                              className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-6 MuiAutocomplete-hasClearIcon"
                               onClick={[Function]}
                               onKeyDown={[Function]}
                               onMouseDown={[Function]}
@@ -627,7 +627,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                         tabIndex={-1}
                                         title="Clear"
                                       >
-                                        <Memo(CloseIcon)
+                                        <Memo
                                           fontSize="small"
                                         />
                                       </WithStyles(ForwardRef(IconButton))>
@@ -715,7 +715,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                           tabIndex={-1}
                                           title="Clear"
                                         >
-                                          <Memo(CloseIcon)
+                                          <Memo
                                             fontSize="small"
                                           />
                                         </WithStyles(ForwardRef(IconButton))>
@@ -902,7 +902,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                 tabIndex={-1}
                                                 title="Clear"
                                               >
-                                                <Memo(CloseIcon)
+                                                <Memo
                                                   fontSize="small"
                                                 />
                                               </WithStyles(ForwardRef(IconButton))>
@@ -1005,7 +1005,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                   tabIndex={-1}
                                                   title="Clear"
                                                 >
-                                                  <Memo(CloseIcon)
+                                                  <Memo
                                                     fontSize="small"
                                                   />
                                                 </WithStyles(ForwardRef(IconButton))>
@@ -1108,7 +1108,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                     tabIndex={-1}
                                                     title="Clear"
                                                   >
-                                                    <Memo(CloseIcon)
+                                                    <Memo
                                                       fontSize="small"
                                                     />
                                                   </WithStyles(ForwardRef(IconButton))>
@@ -1212,7 +1212,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                       tabIndex={-1}
                                                       title="Clear"
                                                     >
-                                                      <Memo(CloseIcon)
+                                                      <Memo
                                                         fontSize="small"
                                                       />
                                                     </WithStyles(ForwardRef(IconButton))>
@@ -1352,7 +1352,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                         >
                                                           tag1
                                                         </span>
-                                                        <ForwardRef
+                                                        <ForwardRef(CancelIcon)
                                                           className="MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                           onClick={[Function]}
                                                         >
@@ -1378,7 +1378,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                               onClick={[Function]}
                                                             >
                                                               <svg
-                                                                aria-hidden="true"
+                                                                aria-hidden={true}
                                                                 className="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                 focusable="false"
                                                                 onClick={[Function]}
@@ -1390,7 +1390,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                               </svg>
                                                             </ForwardRef(SvgIcon)>
                                                           </WithStyles(ForwardRef(SvgIcon))>
-                                                        </ForwardRef>
+                                                        </ForwardRef(CancelIcon)>
                                                       </div>
                                                     </ForwardRef(Chip)>
                                                   </WithStyles(ForwardRef(Chip))>
@@ -1462,7 +1462,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                         >
                                                           tag2
                                                         </span>
-                                                        <ForwardRef
+                                                        <ForwardRef(CancelIcon)
                                                           className="MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                           onClick={[Function]}
                                                         >
@@ -1488,7 +1488,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                               onClick={[Function]}
                                                             >
                                                               <svg
-                                                                aria-hidden="true"
+                                                                aria-hidden={true}
                                                                 className="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconColorSecondary MuiChip-deleteIconSmall"
                                                                 focusable="false"
                                                                 onClick={[Function]}
@@ -1500,7 +1500,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                               </svg>
                                                             </ForwardRef(SvgIcon)>
                                                           </WithStyles(ForwardRef(SvgIcon))>
-                                                        </ForwardRef>
+                                                        </ForwardRef(CancelIcon)>
                                                       </div>
                                                     </ForwardRef(Chip)>
                                                   </WithStyles(ForwardRef(Chip))>
@@ -1605,7 +1605,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                               <span
                                                                 className="MuiIconButton-label"
                                                               >
-                                                                <ForwardRef
+                                                                <ForwardRef(CloseIcon)
                                                                   fontSize="small"
                                                                 >
                                                                   <WithStyles(ForwardRef(SvgIcon))
@@ -1628,7 +1628,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                                       fontSize="small"
                                                                     >
                                                                       <svg
-                                                                        aria-hidden="true"
+                                                                        aria-hidden={true}
                                                                         className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
                                                                         focusable="false"
                                                                         viewBox="0 0 24 24"
@@ -1639,7 +1639,7 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                                       </svg>
                                                                     </ForwardRef(SvgIcon)>
                                                                   </WithStyles(ForwardRef(SvgIcon))>
-                                                                </ForwardRef>
+                                                                </ForwardRef(CloseIcon)>
                                                               </span>
                                                               <WithStyles(memo)
                                                                 center={true}
@@ -1689,10 +1689,10 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                       className="MuiOutlinedInput-notchedOutline"
                                                       classes={
                                                         Object {
-                                                          "legend": "PrivateNotchedOutline-legend-209",
-                                                          "legendLabelled": "PrivateNotchedOutline-legendLabelled-210",
-                                                          "legendNotched": "PrivateNotchedOutline-legendNotched-211",
-                                                          "root": "PrivateNotchedOutline-root-208",
+                                                          "legend": "PrivateNotchedOutline-legend-3",
+                                                          "legendLabelled": "PrivateNotchedOutline-legendLabelled-4",
+                                                          "legendNotched": "PrivateNotchedOutline-legendNotched-5",
+                                                          "root": "PrivateNotchedOutline-root-2",
                                                         }
                                                       }
                                                       label={
@@ -1705,10 +1705,10 @@ exports[`The ProgramTags component renders on the page with no errors 1`] = `
                                                     >
                                                       <fieldset
                                                         aria-hidden={true}
-                                                        className="PrivateNotchedOutline-root-208 MuiOutlinedInput-notchedOutline"
+                                                        className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
                                                       >
                                                         <legend
-                                                          className="PrivateNotchedOutline-legendLabelled-210 PrivateNotchedOutline-legendNotched-211"
+                                                          className="PrivateNotchedOutline-legendLabelled-4 PrivateNotchedOutline-legendNotched-5"
                                                         >
                                                           <span>
                                                             Add tags...

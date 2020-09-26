@@ -2,7 +2,6 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { clearPrograms, fetchPrograms, removeProgram } from '../program';
 
-
 describe('Program actions', () => {
   test('fetch all programs', (done) => {
     const mock = new MockAdapter(axios);

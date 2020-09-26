@@ -8,10 +8,12 @@ import ProgramList from '../ProgramList'; // eslint-disable-line import/order
 jest.mock('@/actions/code');
 jest.mock('@/actions/program');
 jest.mock('@/actions/tag');
+jest.mock('@/actions/user');
 
 import { changeReadOnly, clearProgram } from '@/actions/code'; // eslint-disable-line import/first, import/order
 import { clearPrograms, fetchPrograms, removeProgram } from '@/actions/program'; // eslint-disable-line import/first, import/order
 import { fetchTags } from '@/actions/tag'; // eslint-disable-line import/first, import/order
+import { fetchUserStats } from '@/actions/user'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -106,6 +108,18 @@ describe('The ProgramListContainer', () => {
     );
   });
 
+  test('dispatches an action to fetch user stats', () => {
+    wrapper.dive().props().fetchUserStats(1);
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      fetchUserStats(1, {
+        headers: {
+          Authorization: `JWT ${cookiesValues.auth_jwt}`,
+        },
+      }),
+    );
+  });
+
   test('handles authentication error fetching programs', (done) => {
     const localWrapper = shallow(
       <ProgramList store={authFailStore} />, { context },
@@ -163,6 +177,25 @@ describe('The ProgramListContainer', () => {
     });
   });
 
+  test('handles authentication error fetching user stats', (done) => {
+    const localWrapper = shallow(
+      <ProgramList store={authFailStore} />, { context },
+    ).dive().dive().dive();
+
+    localWrapper.dive().props().fetchUserStats(1).then(() => {
+      expect(authFailStore.dispatch.mock.calls.length).toBe(2);
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(
+        fetchUserStats(1, {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      expect(authFailStore.dispatch).toHaveBeenCalledWith(updateValidAuth(false));
+      done();
+    });
+  });
+
   test('handles other error fetching programs', (done) => {
     const localWrapper = shallow(
       <ProgramList store={otherFailStore} />, { context },
@@ -208,6 +241,24 @@ describe('The ProgramListContainer', () => {
       expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
       expect(otherFailStore.dispatch).toHaveBeenCalledWith(
         fetchTags({
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
+  });
+
+  test('handles other error fetching user stats', (done) => {
+    const localWrapper = shallow(
+      <ProgramList store={otherFailStore} />, { context },
+    ).dive().dive().dive();
+
+    localWrapper.dive().props().fetchUserStats(1).catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
+        fetchUserStats(1, {
           headers: {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },

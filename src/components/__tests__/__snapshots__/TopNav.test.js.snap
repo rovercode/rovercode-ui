@@ -63,7 +63,6 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
                   <FormattedMessage
                     defaultMessage="My Programs"
                     id="app.top_nav.my_programs"
-                    values={Object {}}
                   />
                 </WithStyles(ForwardRef(Typography))>
               </WithStyles(ForwardRef(Button))>
@@ -105,7 +104,6 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
                   <FormattedMessage
                     defaultMessage="Community Programs"
                     id="app.top_nav.community_programs"
-                    values={Object {}}
                   />
                 </WithStyles(ForwardRef(Typography))>
               </WithStyles(ForwardRef(Button))>
@@ -147,7 +145,6 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
                   <FormattedMessage
                     defaultMessage="Courses"
                     id="app.top_nav.courses"
-                    values={Object {}}
                   />
                 </WithStyles(ForwardRef(Typography))>
               </WithStyles(ForwardRef(Button))>
@@ -211,7 +208,6 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
             <FormattedMessage
               defaultMessage="Settings"
               id="app.top_nav.settings"
-              values={Object {}}
             />
           </WithStyles(ForwardRef(MenuItem))>
           <WithStyles(ForwardRef(MenuItem))
@@ -220,7 +216,6 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
             <FormattedMessage
               defaultMessage="Sign Out"
               id="app.top_nav.sign_out"
-              values={Object {}}
             />
           </WithStyles(ForwardRef(MenuItem))>
         </WithStyles(ForwardRef(Menu))>

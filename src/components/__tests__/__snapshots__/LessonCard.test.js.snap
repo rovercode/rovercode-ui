@@ -8,7 +8,7 @@ exports[`The LessonCard component renders on the page with no errors 1`] = `
     data-owned={false}
     disabled={false}
     id={1}
-    onClick={[MockFunction]}
+    onClick={[Function]}
   >
     <WithStyles(ForwardRef(CardHeader))
       action={<WithStyles(ForwardRef(SvgIcon)) />}

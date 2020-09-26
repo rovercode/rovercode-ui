@@ -1,6 +1,7 @@
 import React from 'react';
 import { MemoryRouter, Route, Switch } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
+import { Snackbar } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import configureStore from 'redux-mock-store';
 import moment from 'moment';
@@ -8,6 +9,7 @@ import MockDate from 'mockdate';
 import { Cookies } from 'react-cookie';
 
 import { logout } from '@/actions/auth';
+import { clearNotification } from '@/actions/notification';
 import { COVERED, NOT_COVERED } from '@/actions/sensor';
 import ProtectedRoute from '../ProtectedRoute';
 
@@ -38,6 +40,11 @@ describe('The ProtectedRoute component', () => {
         left: COVERED,
         right: NOT_COVERED,
       },
+      notification: {
+        message: undefined,
+        duration: undefined,
+        severity: undefined,
+      },
     });
     store.dispatch = jest.fn();
   });
@@ -60,8 +67,67 @@ describe('The ProtectedRoute component', () => {
     );
 
     expect(wrapper.find(TestComponent).exists()).toBe(true);
+    expect(wrapper.find(Snackbar).prop('open')).toBe(false);
     expect(wrapper.find(Route).exists()).toBe(true);
     expect(wrapper.find(Route).prop('path')).toBe('/');
+
+    MockDate.reset();
+  });
+
+  test('renders message and component when authenticated', () => {
+    store = mockStore({
+      user: {
+        user_id: 1,
+        username: 'testuser',
+        email: 'testuser@example.com',
+        exp: 1540341529,
+        showGuide: true,
+      },
+      auth: {
+        isValidAuth: true,
+      },
+      rover: {
+        rover: null,
+      },
+      sensor: {
+        left: COVERED,
+        right: NOT_COVERED,
+      },
+      notification: {
+        message: 'test message',
+        duration: 1000,
+        severity: 'info',
+      },
+    });
+    store.dispatch = jest.fn();
+    MockDate.set(moment.unix(1540341528));
+
+    const wrapper = mountWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter initialEntries={['/']} initialIndex={0}>
+          <Switch>
+            <Route exact path="/accounts/login" />
+            <ProtectedRoute exact path="/" component={TestComponent} />
+          </Switch>
+        </MemoryRouter>
+      </ReduxProvider>, {
+        context: { cookies },
+        childContextTypes: { cookies: PropTypes.instanceOf(Cookies) },
+      },
+    );
+
+    expect(wrapper.find(TestComponent).exists()).toBe(true);
+    expect(wrapper.find(Snackbar).prop('open')).toBe(true);
+    expect(wrapper.find(Route).exists()).toBe(true);
+    expect(wrapper.find(Route).prop('path')).toBe('/');
+
+    wrapper.find(Snackbar).prop('onClose')(null, 'clickaway');
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(clearNotification());
+
+    wrapper.find(Snackbar).prop('onClose')();
+
+    expect(store.dispatch).toHaveBeenCalledWith(clearNotification());
 
     MockDate.reset();
   });
@@ -104,6 +170,11 @@ describe('The ProtectedRoute component', () => {
         left: COVERED,
         right: NOT_COVERED,
       },
+      notification: {
+        message: undefined,
+        duration: undefined,
+        severity: undefined,
+      },
     });
     const wrapper = mountWithIntl(
       <ReduxProvider store={store}>
@@ -142,6 +213,11 @@ describe('The ProtectedRoute component', () => {
       sensor: {
         left: COVERED,
         right: NOT_COVERED,
+      },
+      notification: {
+        message: undefined,
+        duration: undefined,
+        severity: undefined,
       },
     });
     store.dispatch = jest.fn();

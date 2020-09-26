@@ -70,7 +70,7 @@ class Console extends Component {
 
 Console.propTypes = {
   console: PropTypes.shape({
-    messages: PropTypes.array.isRequired,
+    messages: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   clear: PropTypes.func.isRequired,
 };

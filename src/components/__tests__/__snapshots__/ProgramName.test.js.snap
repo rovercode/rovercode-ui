@@ -75,7 +75,6 @@ exports[`The ProgramName component renders on the page with no errors 1`] = `
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -99,6 +98,7 @@ exports[`The ProgramName component renders on the page with no errors 1`] = `
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         store={
@@ -137,7 +137,6 @@ exports[`The ProgramName component renders on the page with no errors 1`] = `
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -161,6 +160,7 @@ exports[`The ProgramName component renders on the page with no errors 1`] = `
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           store={

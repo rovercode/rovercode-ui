@@ -210,7 +210,6 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             "formatDate": [Function],
             "formatDateToParts": [Function],
             "formatDisplayName": [Function],
-            "formatHTMLMessage": [Function],
             "formatList": [Function],
             "formatMessage": [Function],
             "formatNumber": [Function],
@@ -234,6 +233,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
             "onError": [Function],
             "textComponent": Symbol(react.fragment),
             "timeZone": undefined,
+            "wrapRichTextChunksInFragment": undefined,
           }
         }
         store={
@@ -321,7 +321,6 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               "formatDate": [Function],
               "formatDateToParts": [Function],
               "formatDisplayName": [Function],
-              "formatHTMLMessage": [Function],
               "formatList": [Function],
               "formatMessage": [Function],
               "formatNumber": [Function],
@@ -345,6 +344,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
               "onError": [Function],
               "textComponent": Symbol(react.fragment),
               "timeZone": undefined,
+              "wrapRichTextChunksInFragment": undefined,
             }
           }
           rover={
@@ -430,7 +430,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
         >
           <Styled(MuiBox)>
             <div
-              className="MuiBox-root MuiBox-root-2"
+              className="MuiBox-root MuiBox-root-1"
             >
               <WithStyles(ForwardRef(Grid))
                 alignItems="center"
@@ -824,7 +824,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
                                     zIndex="modal"
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-106"
+                                      className="MuiBox-root MuiBox-root-2"
                                       style={
                                         Object {
                                           "bottom": "15%",

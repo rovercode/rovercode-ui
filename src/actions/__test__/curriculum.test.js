@@ -2,7 +2,6 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { fetchCourses } from '../curriculum';
 
-
 describe('Curriculum actions', () => {
   test('fetch all courses', (done) => {
     const mock = new MockAdapter(axios);

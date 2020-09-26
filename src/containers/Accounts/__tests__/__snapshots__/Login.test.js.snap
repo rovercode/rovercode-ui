@@ -116,7 +116,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                 "formatDate": [Function],
                 "formatDateToParts": [Function],
                 "formatDisplayName": [Function],
-                "formatHTMLMessage": [Function],
                 "formatList": [Function],
                 "formatMessage": [Function],
                 "formatNumber": [Function],
@@ -140,6 +139,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                 "onError": [Function],
                 "textComponent": Symbol(react.fragment),
                 "timeZone": undefined,
+                "wrapRichTextChunksInFragment": undefined,
               }
             }
             location={
@@ -177,7 +177,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                   "formatDate": [Function],
                   "formatDateToParts": [Function],
                   "formatDisplayName": [Function],
-                  "formatHTMLMessage": [Function],
                   "formatList": [Function],
                   "formatMessage": [Function],
                   "formatNumber": [Function],
@@ -201,6 +200,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                   "onError": [Function],
                   "textComponent": Symbol(react.fragment),
                   "timeZone": undefined,
+                  "wrapRichTextChunksInFragment": undefined,
                 }
               }
               location={
@@ -507,7 +507,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                                 <FormattedMessage
                                   defaultMessage="Welcome! To use Rovercode, you need an account for saving and sharing your work."
                                   id="app.login.login"
-                                  values={Object {}}
                                 >
                                   Welcome! To use Rovercode, you need an account for saving and sharing your work.
                                 </FormattedMessage>
@@ -800,7 +799,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                   <WithStyles(ForwardRef(Button))
                                     classes={
                                       Object {
-                                        "root": "WithStyles(ForwardRef(Button))-root-134",
+                                        "root": "WithStyles(ForwardRef(Button))-root-1",
                                       }
                                     }
                                     id="google"
@@ -863,7 +862,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                           "outlinedSecondary": "MuiButton-outlinedSecondary",
                                           "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                           "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                          "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-134",
+                                          "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-1",
                                           "sizeLarge": "MuiButton-sizeLarge",
                                           "sizeSmall": "MuiButton-sizeSmall",
                                           "startIcon": "MuiButton-startIcon",
@@ -912,7 +911,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                       variant="contained"
                                     >
                                       <WithStyles(ForwardRef(ButtonBase))
-                                        className="MuiButton-root WithStyles(ForwardRef(Button))-root-134 MuiButton-contained"
+                                        className="MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained"
                                         component="button"
                                         disabled={false}
                                         focusRipple={true}
@@ -922,7 +921,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                         type="button"
                                       >
                                         <ForwardRef(ButtonBase)
-                                          className="MuiButton-root WithStyles(ForwardRef(Button))-root-134 MuiButton-contained"
+                                          className="MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained"
                                           classes={
                                             Object {
                                               "disabled": "Mui-disabled",
@@ -939,7 +938,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                           type="button"
                                         >
                                           <button
-                                            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-134 MuiButton-contained"
+                                            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-1 MuiButton-contained"
                                             disabled={false}
                                             id="google"
                                             onBlur={[Function]}
@@ -1016,7 +1015,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                                               <FormattedMessage
                                                 defaultMessage="Sign up or sign in with Google"
                                                 id="app.login.button_google"
-                                                values={Object {}}
                                               >
                                                 Sign up or sign in with Google
                                               </FormattedMessage>
@@ -1183,7 +1181,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                   <WithStyles(ForwardRef(Button))
                                     classes={
                                       Object {
-                                        "root": "WithStyles(ForwardRef(Button))-root-167",
+                                        "root": "WithStyles(ForwardRef(Button))-root-2",
                                       }
                                     }
                                     id="github"
@@ -1214,7 +1212,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                           "outlinedSecondary": "MuiButton-outlinedSecondary",
                                           "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                           "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                          "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-167",
+                                          "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-2",
                                           "sizeLarge": "MuiButton-sizeLarge",
                                           "sizeSmall": "MuiButton-sizeSmall",
                                           "startIcon": "MuiButton-startIcon",
@@ -1231,7 +1229,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                       variant="contained"
                                     >
                                       <WithStyles(ForwardRef(ButtonBase))
-                                        className="MuiButton-root WithStyles(ForwardRef(Button))-root-167 MuiButton-contained"
+                                        className="MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained"
                                         component="button"
                                         disabled={false}
                                         focusRipple={true}
@@ -1241,7 +1239,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                         type="button"
                                       >
                                         <ForwardRef(ButtonBase)
-                                          className="MuiButton-root WithStyles(ForwardRef(Button))-root-167 MuiButton-contained"
+                                          className="MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained"
                                           classes={
                                             Object {
                                               "disabled": "Mui-disabled",
@@ -1258,7 +1256,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                           type="button"
                                         >
                                           <button
-                                            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-167 MuiButton-contained"
+                                            className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-2 MuiButton-contained"
                                             disabled={false}
                                             id="github"
                                             onBlur={[Function]}
@@ -1300,7 +1298,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                       }
                                                     >
                                                       <svg
-                                                        aria-hidden="true"
+                                                        aria-hidden={true}
                                                         className="MuiSvgIcon-root"
                                                         focusable="false"
                                                         viewBox="0 0 24 24"
@@ -1316,7 +1314,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                                               <FormattedMessage
                                                 defaultMessage="Sign up or sign in with GitHub"
                                                 id="app.login.button_github"
-                                                values={Object {}}
                                               >
                                                 Sign up or sign in with GitHub
                                               </FormattedMessage>
@@ -1520,7 +1517,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                                 <FormattedMessage
                                   defaultMessage="Don't have any of those accounts?"
                                   id="app.login.social_question"
-                                  values={Object {}}
                                 >
                                   Don't have any of those accounts?
                                 </FormattedMessage>
@@ -1834,7 +1830,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                                           <FormattedMessage
                                             defaultMessage="Create a Rovercode account"
                                             id="app.login.create"
-                                            values={Object {}}
                                           >
                                             Create a Rovercode account
                                           </FormattedMessage>
@@ -2036,7 +2031,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                                 <FormattedMessage
                                   defaultMessage="Already have a Rovercode account? Sign in here:"
                                   id="app.login.account_question"
-                                  values={Object {}}
                                 >
                                   Already have a Rovercode account? Sign in here:
                                 </FormattedMessage>
@@ -2417,7 +2411,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -2454,10 +2448,10 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                           className="MuiOutlinedInput-notchedOutline"
                                                           classes={
                                                             Object {
-                                                              "legend": "PrivateNotchedOutline-legend-231",
-                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-232",
-                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-233",
-                                                              "root": "PrivateNotchedOutline-root-230",
+                                                              "legend": "PrivateNotchedOutline-legend-4",
+                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-5",
+                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-6",
+                                                              "root": "PrivateNotchedOutline-root-3",
                                                             }
                                                           }
                                                           labelWidth={0}
@@ -2465,7 +2459,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                         >
                                                           <fieldset
                                                             aria-hidden={true}
-                                                            className="PrivateNotchedOutline-root-230 MuiOutlinedInput-notchedOutline"
+                                                            className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
                                                             style={
                                                               Object {
                                                                 "paddingLeft": 8,
@@ -2473,7 +2467,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                             }
                                                           >
                                                             <legend
-                                                              className="PrivateNotchedOutline-legend-231"
+                                                              className="PrivateNotchedOutline-legend-4"
                                                               style={
                                                                 Object {
                                                                   "width": 0.01,
@@ -2858,7 +2852,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                                   }
                                                                 >
                                                                   <svg
-                                                                    aria-hidden="true"
+                                                                    aria-hidden={true}
                                                                     className="MuiSvgIcon-root"
                                                                     focusable="false"
                                                                     viewBox="0 0 24 24"
@@ -2895,10 +2889,10 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                           className="MuiOutlinedInput-notchedOutline"
                                                           classes={
                                                             Object {
-                                                              "legend": "PrivateNotchedOutline-legend-231",
-                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-232",
-                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-233",
-                                                              "root": "PrivateNotchedOutline-root-230",
+                                                              "legend": "PrivateNotchedOutline-legend-4",
+                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-5",
+                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-6",
+                                                              "root": "PrivateNotchedOutline-root-3",
                                                             }
                                                           }
                                                           labelWidth={0}
@@ -2906,7 +2900,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                         >
                                                           <fieldset
                                                             aria-hidden={true}
-                                                            className="PrivateNotchedOutline-root-230 MuiOutlinedInput-notchedOutline"
+                                                            className="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
                                                             style={
                                                               Object {
                                                                 "paddingLeft": 8,
@@ -2914,7 +2908,7 @@ exports[`Login mounts on the page with no errors 1`] = `
                                                             }
                                                           >
                                                             <legend
-                                                              className="PrivateNotchedOutline-legend-231"
+                                                              className="PrivateNotchedOutline-legend-4"
                                                               style={
                                                                 Object {
                                                                   "width": 0.01,
@@ -3150,7 +3144,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                                               <FormattedMessage
                                                 defaultMessage="Sign In"
                                                 id="app.login.sign_in"
-                                                values={Object {}}
                                               >
                                                 Sign In
                                               </FormattedMessage>
@@ -3496,7 +3489,6 @@ exports[`Login mounts on the page with no errors 1`] = `
                                               <FormattedMessage
                                                 defaultMessage="Forgot Password?"
                                                 id="app.login.forgot"
-                                                values={Object {}}
                                               >
                                                 Forgot Password?
                                               </FormattedMessage>
@@ -3543,7 +3535,6 @@ exports[`Login renders on the page with no errors 1`] = `
         <FormattedMessage
           defaultMessage="Welcome! To use Rovercode, you need an account for saving and sharing your work."
           id="app.login.login"
-          values={Object {}}
         />
       </WithStyles(ForwardRef(Typography))>
     </WithStyles(ForwardRef(Grid))>
@@ -3599,7 +3590,6 @@ exports[`Login renders on the page with no errors 1`] = `
           <FormattedMessage
             defaultMessage="Sign up or sign in with Google"
             id="app.login.button_google"
-            values={Object {}}
           />
         </WithStyles(WithStyles(ForwardRef(Button)))>
       </WithStyles(ForwardRef(Grid))>
@@ -3615,7 +3605,6 @@ exports[`Login renders on the page with no errors 1`] = `
           <FormattedMessage
             defaultMessage="Sign up or sign in with GitHub"
             id="app.login.button_github"
-            values={Object {}}
           />
         </WithStyles(WithStyles(ForwardRef(Button)))>
       </WithStyles(ForwardRef(Grid))>
@@ -3627,7 +3616,6 @@ exports[`Login renders on the page with no errors 1`] = `
         <FormattedMessage
           defaultMessage="Don't have any of those accounts?"
           id="app.login.social_question"
-          values={Object {}}
         />
       </WithStyles(ForwardRef(Typography))>
     </WithStyles(ForwardRef(Grid))>
@@ -3658,7 +3646,6 @@ exports[`Login renders on the page with no errors 1`] = `
         <FormattedMessage
           defaultMessage="Create a Rovercode account"
           id="app.login.create"
-          values={Object {}}
         />
       </WithStyles(ForwardRef(Button))>
     </WithStyles(ForwardRef(Grid))>
@@ -3669,7 +3656,6 @@ exports[`Login renders on the page with no errors 1`] = `
         <FormattedMessage
           defaultMessage="Already have a Rovercode account? Sign in here:"
           id="app.login.account_question"
-          values={Object {}}
         />
       </WithStyles(ForwardRef(Typography))>
     </WithStyles(ForwardRef(Grid))>
@@ -3731,7 +3717,6 @@ exports[`Login renders on the page with no errors 1`] = `
             <FormattedMessage
               defaultMessage="Sign In"
               id="app.login.sign_in"
-              values={Object {}}
             />
           </WithStyles(ForwardRef(Button))>
         </WithStyles(ForwardRef(Grid))>
@@ -3761,7 +3746,6 @@ exports[`Login renders on the page with no errors 1`] = `
           <FormattedMessage
             defaultMessage="Forgot Password?"
             id="app.login.forgot"
-            values={Object {}}
           />
         </WithStyles(ForwardRef(Typography))>
       </WithStyles(ForwardRef(Link))>

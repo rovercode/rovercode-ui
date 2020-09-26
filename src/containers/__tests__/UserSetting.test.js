@@ -7,7 +7,8 @@ import UserSetting from '../UserSetting'; // eslint-disable-line import/order
 
 jest.mock('@/actions/user');
 
-import { editUserUsername, editUserPassword } from '@/actions/user'; // eslint-disable-line import/first, import/order
+import { editUserUsername, editUserPassword, refreshSession } from '@/actions/user'; // eslint-disable-line import/first, import/order
+import { fetchSubscription, upgradeSubscription } from '@/actions/subscription'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -151,6 +152,94 @@ describe('The UserSettingContainer', () => {
             Authorization: `JWT ${cookiesValues.auth_jwt}`,
           },
         }),
+      );
+      done();
+    });
+  });
+
+  test('dispatches an action to fetch subscription', () => {
+    const userId = 1;
+    wrapper.dive().props().fetchSubscription(userId);
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      fetchSubscription(userId, {
+        headers: {
+          Authorization: `JWT ${cookiesValues.auth_jwt}`,
+        },
+      }),
+    );
+  });
+
+  test('dispatches an action to upgrade subscription', () => {
+    const userId = 1;
+    const accessCode = 'abcdefgh';
+    wrapper.dive().props().upgradeSubscription(userId, accessCode);
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      upgradeSubscription(userId, accessCode, {
+        headers: {
+          Authorization: `JWT ${cookiesValues.auth_jwt}`,
+        },
+      }),
+    );
+  });
+
+  test('dispatches an action to upgrade subscription', () => {
+    wrapper.dive().props().refreshSession(cookiesValues);
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      refreshSession(cookiesValues.auth_jwt),
+    );
+  });
+
+  test('handles error fetching subscription', (done) => {
+    const userId = 1;
+    const localWrapper = shallow(
+      <UserSetting store={otherFailStore} />, { context },
+    ).dive().dive().dive();
+
+    localWrapper.dive().props().fetchSubscription(userId).catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
+        fetchSubscription(userId, {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
+  });
+
+  test('handles error upgrading subscription', (done) => {
+    const userId = 1;
+    const accessCode = 'abcdefgh';
+    const localWrapper = shallow(
+      <UserSetting store={otherFailStore} />, { context },
+    ).dive().dive().dive();
+
+    localWrapper.dive().props().upgradeSubscription(userId, accessCode).catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
+        upgradeSubscription(userId, accessCode, {
+          headers: {
+            Authorization: `JWT ${cookiesValues.auth_jwt}`,
+          },
+        }),
+      );
+      done();
+    });
+  });
+
+  test('handles error refreshing session', (done) => {
+    const localWrapper = shallow(
+      <UserSetting store={otherFailStore} />, { context },
+    ).dive().dive().dive();
+
+    localWrapper.dive().props().refreshSession(cookiesValues).catch(() => {
+      expect(otherFailStore.dispatch.mock.calls.length).toBe(1);
+      expect(otherFailStore.dispatch).toHaveBeenCalledWith(
+        refreshSession(cookiesValues.auth_jwt),
       );
       done();
     });
