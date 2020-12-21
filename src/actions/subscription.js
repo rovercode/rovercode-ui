@@ -11,6 +11,10 @@ export const UPGRADE_SUBSCRIPTION = 'UPGRADE_SUBSCRIPTION';
 export const UPGRADE_SUBSCRIPTION_PENDING = `${UPGRADE_SUBSCRIPTION}_PENDING`;
 export const UPGRADE_SUBSCRIPTION_FULFILLED = `${UPGRADE_SUBSCRIPTION}_FULFILLED`;
 export const UPGRADE_SUBSCRIPTION_REJECTED = `${UPGRADE_SUBSCRIPTION}_REJECTED`;
+export const CREATE_CHECKOUT_SESSION = 'CREATE_CHECKOUT_SESSION';
+export const CREATE_CHECKOUT_SESSION_PENDING = `${CREATE_CHECKOUT_SESSION}_PENDING`;
+export const CREATE_CHECKOUT_SESSION_FULFILLED = `${CREATE_CHECKOUT_SESSION}_FULFILLED`;
+export const CREATE_CHECKOUT_SESSION_REJECTED = `${CREATE_CHECKOUT_SESSION}_REJECTED`;
 
 // action creators
 export const fetchSubscription = (id, xhrOptions) => ({
@@ -25,6 +29,19 @@ export const upgradeSubscription = (id, accessCode, xhrOptions) => ({
   type: UPGRADE_SUBSCRIPTION,
   payload: axios.put(`${SUBSCRIPTION_SERVICE}/api/v1/customer/${id}/`, { // eslint-disable-line no-undef
     accessCode,
+  }, xhrOptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const createCheckoutSession = (id, lineItems, successURL, cancelURL, xhrOptions) => ({
+  type: CREATE_CHECKOUT_SESSION,
+  payload: axios.put(`${SUBSCRIPTION_SERVICE}/api/v1/checkout/start/`, { // eslint-disable-line no-undef
+    id,
+    lineItems,
+    successURL,
+    cancelURL,
   }, xhrOptions)
     .then(({ data }) => (
       data

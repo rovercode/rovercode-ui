@@ -64,7 +64,7 @@ module.exports = {
       SAVE_DEBOUNCE_TIME: JSON.stringify(process.env.SAVE_DEBOUNCE_TIME),
       SEARCH_DEBOUNCE_TIME: JSON.stringify(process.env.SEARCH_DEBOUNCE_TIME),
       SUBSCRIPTION_SERVICE: JSON.stringify(process.env.SUBSCRIPTION_SERVICE
-        || 'http://localhost:3000'),
+        || 'https://alpha-payment.rovercode.com'),
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
