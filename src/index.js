@@ -23,6 +23,7 @@ import CourseList from './containers/CourseList';
 import Accounts from './containers/Accounts/Base';
 import MissionControl from './containers/MissionControl';
 import UserSetting from './containers/UserSetting';
+import Purchase from './containers/Purchase';
 import ProtectedRoute from './components/ProtectedRoute';
 import { light } from './themes';
 
@@ -97,6 +98,7 @@ render(
               <ProtectedRoute exact path="/mission-control/" component={MissionControl} />
               <ProtectedRoute exact path="/mission-control/:id" component={MissionControl} />
               <ProtectedRoute exact path="/user/settings" component={UserSetting} />
+              <ProtectedRoute exact path="/purchase" component={Purchase} />
               <Route component={NotFound} />
             </Switch>
           </ThemeProvider>
