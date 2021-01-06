@@ -62,7 +62,7 @@ class Purchase extends Component {
     const { fetchSubscription, createCheckoutSession, user } = this.props;
 
     fetchSubscription(user.user_id);
-    createCheckoutSession(user.user_id.toString(), [{name: "Individual Plan", quantity: 1}], "https://example.com/success", "https://example.com/cancel");
+    createCheckoutSession(user.user_id.toString(), [{name: "Individual Plan", quantity: 1}], "https://example.com/success", "https://example.com/cancel", true);
   }
 
   handleCheckoutClick = () => {

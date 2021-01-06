@@ -10,12 +10,19 @@ describe('Checkout actions', () => {
     };
 
     const userId = '42';
-    const lineItems = ["price_asdf"];
-    const successURL = "example.com/success";
-    const cancelURL = "example.com/cancel";
+    const lineItems = ['price_asdf'];
+    const successURL = 'example.com/success';
+    const cancelURL = 'example.com/cancel';
+    const collectShippingAddress = true;
 
-    mock.onPost(`${SUBSCRIPTION_SERVICE}/api/v1/checkout/start/`, 
-        { 'id': userId, 'line_items': lineItems, 'success_url': successURL, 'cancel_url': cancelURL })
+    mock.onPost(`${SUBSCRIPTION_SERVICE}/api/v1/checkout/start/`, // eslint-disable-line no-undef
+      {
+        id: userId,
+        line_items: lineItems,
+        success_url: successURL,
+        cancel_url: cancelURL,
+        collect_shipping_address: collectShippingAddress,
+      })
       .reply(200, checkoutSession); // eslint-disable-line no-undef
 
     const action = createCheckoutSession(userId, lineItems, successURL, cancelURL);
