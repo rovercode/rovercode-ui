@@ -25,7 +25,9 @@ describe('Checkout actions', () => {
       })
       .reply(200, checkoutSession); // eslint-disable-line no-undef
 
-    const action = createCheckoutSession(userId, lineItems, successURL, cancelURL);
+    const action = createCheckoutSession(
+      userId, lineItems, successURL, cancelURL, collectShippingAddress,
+    );
     const { type } = action;
     expect(type).toEqual('CREATE_CHECKOUT_SESSION');
     action.payload.then((result) => {

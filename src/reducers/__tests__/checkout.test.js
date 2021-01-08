@@ -18,7 +18,7 @@ describe('The checkout reducer', () => {
     });
 
     const payload = {
-        id: 'cs_test_asdf',
+      id: 'cs_test_asdf',
     };
     expect(
       reducer({}, {
@@ -27,7 +27,7 @@ describe('The checkout reducer', () => {
       }),
     ).toEqual({
       isCreating: false,
-      checkoutSessionId: 42,
+      checkoutSessionId: 'cs_test_asdf',
       creationError: null,
     });
 

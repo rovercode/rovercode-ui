@@ -12,6 +12,8 @@ global.LOGGER_ENDPOINT = 'https://some-sumo-url/rovercode';
 
 global.SUBSCRIPTION_SERVICE = 'https://some-subscription-url';
 
+global.STRIPE_SHARABLE_KEY = 'pk_test_abcd';
+
 const mockDevice = { name: 'Sparky' };
 const mockBluetooth = {
   requestDevice: jest.fn(() => mockDevice),
