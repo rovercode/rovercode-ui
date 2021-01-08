@@ -142,7 +142,10 @@ class Login extends Component {
       <>
         {
           basicSuccess ? (
-            <Redirect to="/" />
+            <Redirect to={{
+              pathname: location && location.state && location.state.next ? location.state.next : '/',
+            }}
+            />
           ) : (null)
         }
         <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
@@ -353,6 +356,7 @@ Login.defaultProps = {
   location: {
     state: {
       callbackError: null,
+      next: null,
     },
   },
 };
@@ -367,6 +371,7 @@ Login.propTypes = {
   location: PropTypes.shape({
     state: PropTypes.shape({
       callbackError: PropTypes.arrayOf(PropTypes.string),
+      next: PropTypes.string,
     }),
   }),
 };
