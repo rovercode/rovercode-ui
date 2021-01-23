@@ -34,16 +34,3 @@ export const upgradeSubscription = (id, accessCode, xhrOptions) => ({
       data
     )),
 });
-
-export const createCheckoutSession = (id, lineItems, successURL, cancelURL, xhrOptions) => ({
-  type: CREATE_CHECKOUT_SESSION,
-  payload: axios.put(`${SUBSCRIPTION_SERVICE}/api/v1/checkout/start/`, { // eslint-disable-line no-undef
-    id,
-    lineItems,
-    successURL,
-    cancelURL,
-  }, xhrOptions)
-    .then(({ data }) => (
-      data
-    )),
-});

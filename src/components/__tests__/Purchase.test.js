@@ -43,6 +43,41 @@ describe('The Purchase component', () => {
     expect(wrapper.find('WithStyles(ForwardRef(Alert))').exists()).toBe(true);
   });
 
+  test('shows circular progress while fetching subscription', () => {
+    const user = {
+      user_id: 1,
+    };
+    const wrapper = shallowWithIntl(
+      <Purchase
+        user={user}
+        fetchSubscription={fetchSubscription}
+        createCheckoutSession={createCheckoutSession}
+        isFetching
+      />,
+    ).dive().dive().dive();
+    expect(wrapper.find('WithStyles(ForwardRef(CircularProgress))').exists()).toBe(true);
+  });
+
+  test('shows already purchased message when already purchased', () => {
+    const user = {
+      user_id: 1,
+    };
+    const subscription = {
+      plan: '3',
+    };
+    const wrapper = shallowWithIntl(
+      <Purchase
+        user={user}
+        fetchSubscription={fetchSubscription}
+        createCheckoutSession={createCheckoutSession}
+        subscription={subscription}
+      />,
+    ).dive().dive().dive();
+    expect(wrapper.find('FormattedMessage').at(0)
+      .prop('defaultMessage'))
+      .toEqual(expect.stringContaining('You have already purchased'));
+  });
+
   test('redirects to Stripe once the checkout session is created', () => {
     const mockStripe = jest.fn();
     const redirectToCheckout = jest.fn();
