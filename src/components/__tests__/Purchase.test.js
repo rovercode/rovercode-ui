@@ -94,11 +94,9 @@ describe('The Purchase component', () => {
     expect(createCheckoutSession).toHaveBeenCalled();
   });
 
-  test('redirects to Stripe once the checkout session is created', () => {
-    const mockStripe = jest.fn();
+  test('redirects to Stripe once the checkout session is created', (done) => {
     const redirectToCheckout = jest.fn();
-    mockStripe.redirectToCheckout = redirectToCheckout;
-    loadStripe.mockImplementation(() => Promise.resolve(mockStripe));
+    loadStripe.mockResolvedValue({ redirectToCheckout });
     const user = {
       user_id: 1,
     };
@@ -115,7 +113,9 @@ describe('The Purchase component', () => {
     const prevProps = {
       isCreating: true,
     };
-    wrapper.dive().instance().componentDidUpdate(prevProps);
-    expect(redirectToCheckout).toHaveBeenCalled();
+    wrapper.dive().instance().componentDidUpdate(prevProps).then(() => {
+      expect(redirectToCheckout).toHaveBeenCalled();
+      done();
+    });
   });
 });

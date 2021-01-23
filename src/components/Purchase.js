@@ -50,13 +50,14 @@ class Purchase extends Component {
     const { isCreating: wasCreatingCheckout } = prevProps;
     const { isCreating: isCreatingCheckout } = this.props;
     if (wasCreatingCheckout && !isCreatingCheckout) {
-      this.redirectToStripe();
+      return this.redirectToStripe();
     }
+    return null;
   }
 
   redirectToStripe = () => {
     const { checkoutSessionId } = this.props;
-    loadStripe(STRIPE_SHARABLE_KEY) // eslint-disable-line no-undef
+    return loadStripe(STRIPE_SHARABLE_KEY) // eslint-disable-line no-undef
       .then((stripe) => {
         stripe
           .redirectToCheckout({
