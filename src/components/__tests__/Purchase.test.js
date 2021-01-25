@@ -118,4 +118,27 @@ describe('The Purchase component', () => {
       done();
     });
   });
+
+  test('does not redirect to Stripe on other updates', () => {
+    const redirectToCheckout = jest.fn();
+    loadStripe.mockResolvedValue({ redirectToCheckout });
+    const user = {
+      user_id: 1,
+    };
+    const wrapper = shallowWithIntl(
+      <Purchase
+        user={user}
+        fetchSubscription={fetchSubscription}
+        createCheckoutSession={createCheckoutSession}
+      />,
+    ).dive().dive();
+    wrapper.setProps({
+      isCreating: false,
+    });
+    const prevProps = {
+      isCreating: false,
+    };
+    expect(wrapper.dive().instance().componentDidUpdate(prevProps)).toBeNull();
+    expect(redirectToCheckout).not.toHaveBeenCalled();
+  });
 });
