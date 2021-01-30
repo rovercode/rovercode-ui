@@ -24,6 +24,8 @@ describe('The Purchase component', () => {
         user={user}
         fetchSubscription={fetchSubscription}
         createCheckoutSession={createCheckoutSession}
+        isFetching={false}
+        isCreating={false}
       />,
     ).dive().dive().dive();
     expect(wrapper).toMatchSnapshot();
@@ -39,6 +41,8 @@ describe('The Purchase component', () => {
         fetchSubscription={fetchSubscription}
         createCheckoutSession={createCheckoutSession}
         creationError="Everything went super wrong."
+        isFetching={false}
+        isCreating={false}
       />,
     ).dive().dive().dive();
     expect(wrapper.find('WithStyles(ForwardRef(Alert))').exists()).toBe(true);
@@ -54,6 +58,7 @@ describe('The Purchase component', () => {
         fetchSubscription={fetchSubscription}
         createCheckoutSession={createCheckoutSession}
         isFetching
+        isCreating={false}
       />,
     ).dive().dive().dive();
     expect(wrapper.find('WithStyles(ForwardRef(CircularProgress))').exists()).toBe(true);
@@ -72,6 +77,8 @@ describe('The Purchase component', () => {
         fetchSubscription={fetchSubscription}
         createCheckoutSession={createCheckoutSession}
         subscription={subscription}
+        isFetching={false}
+        isCreating={false}
       />,
     ).dive().dive().dive();
     expect(wrapper.find('FormattedMessage').at(0)
@@ -88,6 +95,8 @@ describe('The Purchase component', () => {
         user={user}
         fetchSubscription={fetchSubscription}
         createCheckoutSession={createCheckoutSession}
+        isFetching={false}
+        isCreating={false}
       />,
     ).dive().dive().dive();
     wrapper.find(Button).simulate('click');
@@ -105,11 +114,10 @@ describe('The Purchase component', () => {
         user={user}
         fetchSubscription={fetchSubscription}
         createCheckoutSession={createCheckoutSession}
+        isCreating={false}
+        isFetching={false}
       />,
     ).dive().dive();
-    wrapper.setProps({
-      isCreating: false,
-    });
     const prevProps = {
       isCreating: true,
     };
@@ -130,11 +138,10 @@ describe('The Purchase component', () => {
         user={user}
         fetchSubscription={fetchSubscription}
         createCheckoutSession={createCheckoutSession}
+        isCreating={false}
+        isFetching={false}
       />,
     ).dive().dive();
-    wrapper.setProps({
-      isCreating: false,
-    });
     const prevProps = {
       isCreating: false,
     };
