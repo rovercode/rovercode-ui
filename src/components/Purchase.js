@@ -112,7 +112,6 @@ class Purchase extends Component {
       description: 'Individual plan product title',
       defaultMessage: 'Individual Subscription with Rover',
     });
-    
 
     const checkoutSessionErrorMessage = () => (
       <Grid item>
