@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Chip,
   CircularProgress,
   Container,
   Grid,
@@ -13,7 +19,13 @@ import { loadStripe } from '@stripe/stripe-js';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
+import gigglebotImage from '@/assets/images/connection-help/gigglebot.png';
+
 const styles = (theme) => ({
+  media: {
+    height: 0,
+    paddingTop: '70%',
+  },
   mainContainer: {
     marginBottom: theme.spacing(8),
     [theme.breakpoints.up('xs')]: {
@@ -28,6 +40,9 @@ const styles = (theme) => ({
     [theme.breakpoints.up('lg')]: {
       minWidth: theme.breakpoints.values.lg,
     },
+  },
+  card: {
+    marginTop: theme.spacing(4),
   },
   settingsSection: {
     marginBottom: theme.spacing(4),
@@ -71,7 +86,7 @@ class Purchase extends Component {
     createCheckoutSession(
       user.user_id.toString(),
       [{ name: 'Individual Plan', quantity: 1 }], // In the future, this is user selectable
-      `${window.location.origin}/courses`, // Success
+      `${window.location.origin}/user/settings`, // Success
       `${window.location.origin}/purchase`, // Failure
       true,
     );
@@ -83,7 +98,21 @@ class Purchase extends Component {
       isFetching,
       subscription,
       creationError,
+      intl,
     } = this.props;
+
+    const costText = intl.formatMessage({
+      id: 'app.friends_family.cost',
+      description: 'Price label',
+      defaultMessage: '$150.00 billed annually',
+    });
+
+    const productTitle = intl.formatMessage({
+      id: 'app.friends_family.product_title',
+      description: 'Individual plan product title',
+      defaultMessage: 'Individual Subscription with Rover',
+    });
+    
 
     const checkoutSessionErrorMessage = () => (
       <Grid item>
@@ -91,7 +120,7 @@ class Purchase extends Component {
           <FormattedMessage
             id="app.friends_family.error_message"
             description="Message for an error creating a checkout session"
-            defaultMessage="There was an error. Please contact admin@rovercode.com to complete your purchase."
+            defaultMessage="There was an error. Please contact support@rovercode.com to complete your purchase."
           />
         </Alert>
       </Grid>
@@ -137,26 +166,49 @@ class Purchase extends Component {
       return (
         <>
           <Grid item xs={12} lg={12}>
-            <Typography>
+            <Typography variant="subtitle1">
               <FormattedMessage
                 id="app.friends_family.instructions"
                 description="Paragraph explaining the friends-and-family purchase page"
-                defaultMessage="TODO"
+                defaultMessage="We're excited to offer you early access to Rovercode!
+                Shop below, and please email support@rovercode.com with any questions or issues."
               />
             </Typography>
           </Grid>
           <Grid item xs={12} lg={4}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleCheckoutClick}
-            >
-              <FormattedMessage
-                id="app.purchase.checkout"
-                description="Button label to checkout purchase"
-                defaultMessage="Checkout"
+            <Card className={classes.card}>
+              <CardHeader title={productTitle} />
+              <CardMedia
+                className={classes.media}
+                image={gigglebotImage}
+                title="Gigglebot Rover"
               />
-            </Button>
+              <CardContent>
+                <Typography variant="body2">
+                  <FormattedMessage
+                    id="app.friends_family.item_description"
+                    description="Description of the individual plan"
+                    defaultMessage="One year of unlimited access to the Rovercode platform and curriculum.
+                    Your first year includes a Gigglebot Rover. If you have a coupon code, you can enter it on the next screen.
+                    Your subscription will automatically renew in one year."
+                  />
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleCheckoutClick}
+                >
+                  <FormattedMessage
+                    id="app.purchase.checkout"
+                    description="Button label to checkout purchase"
+                    defaultMessage="Check Out"
+                  />
+                </Button>
+                <Chip label={costText} />
+              </CardActions>
+            </Card>
           </Grid>
         </>
       );
@@ -195,7 +247,9 @@ Purchase.defaultProps = {
 Purchase.propTypes = {
   checkoutSessionId: PropTypes.string,
   classes: PropTypes.shape({
+    card: PropTypes.string.isRequired,
     mainContainer: PropTypes.string.isRequired,
+    media: PropTypes.string.isRequired,
     settingsSection: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     titleArea: PropTypes.string.isRequired,

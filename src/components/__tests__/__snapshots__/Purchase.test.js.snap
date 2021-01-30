@@ -2,15 +2,15 @@
 
 exports[`The Purchase component renders on the page with no errors 1`] = `
 <WithStyles(ForwardRef(Container))
-  className="Purchase-mainContainer-1"
+  className="Purchase-mainContainer-2"
 >
   <WithStyles(ForwardRef(Grid))
-    className="Purchase-settingsSection-2"
+    className="Purchase-settingsSection-4"
     container={true}
     spacing={2}
   >
     <WithStyles(ForwardRef(Grid))
-      className="Purchase-titleArea-4"
+      className="Purchase-titleArea-6"
       container={true}
       direction="row"
       item={true}
@@ -20,7 +20,7 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
         item={true}
       >
         <WithStyles(ForwardRef(Typography))
-          className="Purchase-title-3"
+          className="Purchase-title-5"
           variant="h4"
         >
           Friends and Family Early Access
@@ -29,7 +29,7 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
     </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(Grid))>
   <WithStyles(ForwardRef(Grid))
-    className="Purchase-settingsSection-2"
+    className="Purchase-settingsSection-4"
     container={true}
     spacing={2}
   >
@@ -45,9 +45,11 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
         lg={12}
         xs={12}
       >
-        <WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          variant="subtitle1"
+        >
           <FormattedMessage
-            defaultMessage="TODO"
+            defaultMessage="We're excited to offer you early access to Rovercode! Shop below, and please email support@rovercode.com with any questions or issues."
             id="app.friends_family.instructions"
           />
         </WithStyles(ForwardRef(Typography))>
@@ -57,16 +59,43 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
         lg={4}
         xs={12}
       >
-        <WithStyles(ForwardRef(Button))
-          color="primary"
-          onClick={[Function]}
-          variant="contained"
+        <WithStyles(ForwardRef(Card))
+          className="Purchase-card-3"
         >
-          <FormattedMessage
-            defaultMessage="Checkout"
-            id="app.purchase.checkout"
+          <WithStyles(ForwardRef(CardHeader))
+            title="Individual Subscription with Rover"
           />
-        </WithStyles(ForwardRef(Button))>
+          <WithStyles(ForwardRef(CardMedia))
+            className="Purchase-media-1"
+            image={Object {}}
+            title="Gigglebot Rover"
+          />
+          <WithStyles(ForwardRef(CardContent))>
+            <WithStyles(ForwardRef(Typography))
+              variant="body2"
+            >
+              <FormattedMessage
+                defaultMessage="One year of unlimited access to the Rovercode platform and curriculum. Your first year includes a Gigglebot Rover. If you have a coupon code, you can enter it on the next screen. Your subscription will automatically renew in one year."
+                id="app.friends_family.item_description"
+              />
+            </WithStyles(ForwardRef(Typography))>
+          </WithStyles(ForwardRef(CardContent))>
+          <WithStyles(ForwardRef(CardActions))>
+            <WithStyles(ForwardRef(Button))
+              color="primary"
+              onClick={[Function]}
+              variant="contained"
+            >
+              <FormattedMessage
+                defaultMessage="Check Out"
+                id="app.purchase.checkout"
+              />
+            </WithStyles(ForwardRef(Button))>
+            <WithStyles(ForwardRef(Chip))
+              label="$150.00 billed annually"
+            />
+          </WithStyles(ForwardRef(CardActions))>
+        </WithStyles(ForwardRef(Card))>
       </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(Grid))>
