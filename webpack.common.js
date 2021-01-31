@@ -64,7 +64,7 @@ module.exports = {
       SAVE_DEBOUNCE_TIME: JSON.stringify(process.env.SAVE_DEBOUNCE_TIME),
       SEARCH_DEBOUNCE_TIME: JSON.stringify(process.env.SEARCH_DEBOUNCE_TIME),
       SUBSCRIPTION_SERVICE: JSON.stringify(process.env.SUBSCRIPTION_SERVICE
-        || 'https://alpha-payment.rovercode.com'),
+        || 'http://localhost:3000'),
       STRIPE_SHARABLE_KEY: JSON.stringify(process.env.STRIPE_SHARABLE_KEY
         || 'pk_test_51HFVMDDAGjnnjW0cTIvpN2q1eigGLhpgdu3hI5qwWqfd5LPgDpuvyTCFOIiyV1ink662rRNAIPkvjD1FAf5SJFY400rlIgsZ4P'),
     }),

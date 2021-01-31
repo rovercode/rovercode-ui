@@ -226,7 +226,7 @@ class Purchase extends Component {
         </Grid>
         <Grid className={classes.settingsSection} container spacing={2}>
           <Grid item container direction="row" alignItems="flex-start" spacing={1}>
-            {creationError ? checkoutSessionErrorMessage() : <></> }
+            {creationError ? checkoutSessionErrorMessage() : (null) }
             {pageContent()}
           </Grid>
         </Grid>
