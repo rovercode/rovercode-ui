@@ -48,10 +48,12 @@ class ProtectedRoute extends Component {
   render() {
     const {
       component: Component,
+      location,
       notification,
       user,
       ...rest
     } = this.props;
+
     return (
       <>
         <TopNav userName={user.username} />
@@ -61,7 +63,11 @@ class ProtectedRoute extends Component {
             this.isAuthenticated() ? (
               <Component {...props} />
             ) : (
-              <Redirect to="/accounts/login" />
+              <Redirect to={{
+                pathname: '/accounts/login',
+                state: { next: location.pathname },
+              }}
+              />
             )
           )}
         />
@@ -83,6 +89,9 @@ class ProtectedRoute extends Component {
 ProtectedRoute.propTypes = {
   auth: PropTypes.shape({
     isValidAuth: PropTypes.bool,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
   }).isRequired,
   notification: PropTypes.shape({
     message: PropTypes.string,
