@@ -117,9 +117,19 @@ class Purchase extends Component {
       <Grid item>
         <Alert variant="outlined" severity="error">
           <FormattedMessage
-            id="app.friends_family.error_message"
-            description="Message for an error creating a checkout session"
-            defaultMessage="There was an error. Please contact support@rovercode.com to complete your purchase."
+            id="app.friends_family.error_message_1"
+            description="First part of purchase error message"
+            defaultMessage="There was an error. Please contact"
+          />
+          {' '}
+          <Link href="mailto:support@rovercode.com">
+            support@rovercode.com
+          </Link>
+          {' '}
+          <FormattedMessage
+            id="app.friends_family.error_message_2"
+            description="Second part of purchase error message"
+            defaultMessage="to complete your purchase."
           />
         </Alert>
       </Grid>
@@ -167,10 +177,20 @@ class Purchase extends Component {
           <Grid item xs={12} lg={12}>
             <Typography variant="subtitle1">
               <FormattedMessage
-                id="app.friends_family.instructions"
-                description="Paragraph explaining the friends-and-family purchase page"
+                id="app.friends_family.instructions_1"
+                description="First part of instructions for contacting support"
                 defaultMessage="We're excited to offer you early access to Rovercode!
-                Shop below, and please email support@rovercode.com with any questions or issues."
+                Shop below, and please email"
+              />
+              {' '}
+              <Link href="mailto:support@rovercode.com">
+                support@rovercode.com
+              </Link>
+              {' '}
+              <FormattedMessage
+                id="app.friends_family.instructions_2"
+                description="First part of paragraph explaining the friends-and-family purchase page"
+                defaultMessage="with any questions or issues."
               />
             </Typography>
           </Grid>

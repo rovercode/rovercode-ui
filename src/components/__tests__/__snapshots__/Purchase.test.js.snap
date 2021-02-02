@@ -49,8 +49,19 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
           variant="subtitle1"
         >
           <FormattedMessage
-            defaultMessage="We're excited to offer you early access to Rovercode! Shop below, and please email support@rovercode.com with any questions or issues."
-            id="app.friends_family.instructions"
+            defaultMessage="We're excited to offer you early access to Rovercode! Shop below, and please email"
+            id="app.friends_family.instructions_1"
+          />
+           
+          <Link
+            href="mailto:support@rovercode.com"
+          >
+            support@rovercode.com
+          </Link>
+           
+          <FormattedMessage
+            defaultMessage="with any questions or issues."
+            id="app.friends_family.instructions_2"
           />
         </WithStyles(ForwardRef(Typography))>
       </WithStyles(ForwardRef(Grid))>
