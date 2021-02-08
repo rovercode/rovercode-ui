@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
+import checkout from './checkout';
 import code from './code';
 import console from './console';
 import curriculum from './curriculum';
@@ -13,6 +14,7 @@ import user from './user';
 
 export default combineReducers({
   auth,
+  checkout,
   code,
   console,
   curriculum,
