@@ -93,7 +93,7 @@ test('LoginCallback redirects to root after success', (done) => {
   const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
   mock.reset();
   mock.onPost('/jwt/auth/social/google/login/').reply(200, {
-    token,
+    access_token: token,
   });
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
