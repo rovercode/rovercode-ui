@@ -53,11 +53,11 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
             id="app.friends_family.instructions_1"
           />
            
-          <Link
+          <WithStyles(ForwardRef(Link))
             href="mailto:support@rovercode.com"
           >
             support@rovercode.com
-          </Link>
+          </WithStyles(ForwardRef(Link))>
            
           <FormattedMessage
             defaultMessage="with any questions or issues."

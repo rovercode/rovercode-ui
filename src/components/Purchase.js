@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -11,6 +11,7 @@ import {
   CircularProgress,
   Container,
   Grid,
+  Link,
   Typography,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
@@ -158,7 +159,7 @@ class Purchase extends Component {
             <Button
               variant="contained"
               color="primary"
-              component={Link}
+              component={RouterLink}
               to="/courses"
             >
               <Typography>
