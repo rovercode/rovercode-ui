@@ -64,6 +64,23 @@ describe('The Purchase component', () => {
     expect(wrapper.find('WithStyles(ForwardRef(CircularProgress))').exists()).toBe(true);
   });
 
+  test('shows circular progress while creating session', () => {
+    const user = {
+      user_id: 1,
+    };
+    const wrapper = shallowWithIntl(
+      <Purchase
+        user={user}
+        fetchSubscription={fetchSubscription}
+        createCheckoutSession={createCheckoutSession}
+        isFetching={false}
+        isCreating
+      />,
+    ).dive().dive().dive();
+    const button = wrapper.find(Button);
+    expect(button.find('WithStyles(ForwardRef(CircularProgress))').exists()).toBe(true);
+  });
+
   test('shows already purchased message when already purchased', () => {
     const user = {
       user_id: 1,

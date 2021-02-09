@@ -97,6 +97,7 @@ class Purchase extends Component {
     const {
       classes,
       isFetching,
+      isCreating,
       subscription,
       creationError,
       intl,
@@ -220,11 +221,17 @@ class Purchase extends Component {
                   color="primary"
                   onClick={this.handleCheckoutClick}
                 >
-                  <FormattedMessage
-                    id="app.purchase.checkout"
-                    description="Button label to checkout purchase"
-                    defaultMessage="Check Out"
-                  />
+                  {
+                    isCreating ? (
+                      <CircularProgress />
+                    ) : (
+                      <FormattedMessage
+                        id="app.purchase.checkout"
+                        description="Button label to checkout purchase"
+                        defaultMessage="Check Out"
+                      />
+                    )
+                  }
                 </Button>
                 <Chip label={costText} />
               </CardActions>
