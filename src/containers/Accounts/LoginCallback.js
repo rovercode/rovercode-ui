@@ -44,7 +44,7 @@ class LoginCallback extends Component {
         updateValidAuth(true);
         this.setState({
           loading: false,
-          loginSuccess: true,
+          loginSuccess: response.data.next_url ? response.data.next_url : '/',
         });
       })
       .catch((error) => {
@@ -81,7 +81,7 @@ class LoginCallback extends Component {
     }
 
     if (loginSuccess) {
-      return <Redirect to="/" />;
+      return <Redirect to={loginSuccess} />;
     }
 
     return (
