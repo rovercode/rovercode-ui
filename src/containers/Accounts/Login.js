@@ -84,8 +84,11 @@ class Login extends Component {
   }
 
   redirectToSocial = (element) => {
+    const { location } = this.props;
+
+    const next = location && location.state && location.state.next ? location.state.next : null;
     const service = element.target.parentNode.id || element.target.id;
-    return axios.post(`/jwt/auth/social/${service}/auth-server/`)
+    return axios.post(`/jwt/auth/social/${service}/auth-server/`, null, { params: { ...(next && { next }) } })
       .then((response) => {
         const url = URL(response.data.url);
         const parsed = queryString.parse(url.query);

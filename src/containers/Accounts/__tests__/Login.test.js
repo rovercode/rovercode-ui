@@ -54,6 +54,12 @@ test('Login mounts on the page with no errors', () => {
 
 test('Login redirects to social api on button click', (done) => {
   const url = 'https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fsocial%2Fgoogle%2Fcallback';
+  const localLocation = {
+    pathname: location.pathname,
+    state: {
+      next: '/courses',
+    },
+  };
   mock.reset();
   mock.onPost('/jwt/auth/social/google/auth-server/').reply(200, { url });
   Object.defineProperty(window, 'location', {
@@ -72,7 +78,7 @@ test('Login redirects to social api on button click', (done) => {
     },
   };
 
-  const cookiesWrapper = shallowWithIntl(<Login location={location} store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<Login location={localLocation} store={store} />, {
     context: { cookies },
   });
 
