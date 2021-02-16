@@ -92,7 +92,7 @@ class TopNav extends Component {
                     justifyContent="left"
                   >
                     <RoverConnection />
-                    <ConnectionHelp />
+                    <ConnectionHelp suppressGuide={window.location.pathname === '/purchase'} />
                   </Box>
                 </Grid>
                 <Grid item xs={2} xl={2}>
