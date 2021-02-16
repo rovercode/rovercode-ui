@@ -46,8 +46,10 @@ class ConnectionHelp extends Component {
   constructor(props) {
     super(props);
 
+    const userShowGuide = props.user.showGuide === undefined ? false : props.user.showGuide;
+
     this.state = {
-      open: props.user.showGuide === undefined ? false : props.user.showGuide,
+      open: userShowGuide && !props.suppressGuide,
       done: false,
     };
   }
@@ -339,6 +341,7 @@ ConnectionHelp.defaultProps = {
     user_id: undefined,
     showGuide: true,
   },
+  suppressGuide: false,
 };
 
 ConnectionHelp.propTypes = {
@@ -350,6 +353,7 @@ ConnectionHelp.propTypes = {
     name: PropTypes.string.isRequired,
   }),
   editUserShowGuide: PropTypes.func.isRequired,
+  suppressGuide: PropTypes.bool,
 };
 
 export default hot(module)(withCookies(
