@@ -39,12 +39,12 @@ class LoginCallback extends Component {
       state: queryParams.state,
     })
       .then((response) => {
-        updateUser(jwtDecode(response.data.token));
-        cookies.set('auth_jwt', response.data.token, { path: '/' });
+        updateUser(jwtDecode(response.data.access_token));
+        cookies.set('auth_jwt', response.data.access_token, { path: '/' });
         updateValidAuth(true);
         this.setState({
           loading: false,
-          loginSuccess: true,
+          loginSuccess: response.data.next_url ? response.data.next_url : '/',
         });
       })
       .catch((error) => {
@@ -81,7 +81,7 @@ class LoginCallback extends Component {
     }
 
     if (loginSuccess) {
-      return <Redirect to="/" />;
+      return <Redirect to={loginSuccess} />;
     }
 
     return (

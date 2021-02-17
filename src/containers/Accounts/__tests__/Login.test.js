@@ -54,6 +54,12 @@ test('Login mounts on the page with no errors', () => {
 
 test('Login redirects to social api on button click', (done) => {
   const url = 'https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fsocial%2Fgoogle%2Fcallback';
+  const localLocation = {
+    pathname: location.pathname,
+    state: {
+      next: '/courses',
+    },
+  };
   mock.reset();
   mock.onPost('/jwt/auth/social/google/auth-server/').reply(200, { url });
   Object.defineProperty(window, 'location', {
@@ -72,7 +78,7 @@ test('Login redirects to social api on button click', (done) => {
     },
   };
 
-  const cookiesWrapper = shallowWithIntl(<Login location={location} store={store} />, {
+  const cookiesWrapper = shallowWithIntl(<Login location={localLocation} store={store} />, {
     context: { cookies },
   });
 
@@ -150,7 +156,7 @@ test('Login shows error message on callback error', () => {
 });
 
 test('Login redirects to root after basic login success', (done) => {
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
+  const access = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
   const username = 'admin';
   const password = 'password';
 
@@ -159,7 +165,7 @@ test('Login redirects to root after basic login success', (done) => {
     username,
     password,
   }).reply(200, {
-    token,
+    access,
   });
 
   const cookiesWrapper = shallowWithIntl(<Login location={location} store={store} />, {
@@ -184,10 +190,69 @@ test('Login redirects to root after basic login success', (done) => {
   wrapper.instance().basicLogin({ preventDefault: jest.fn() }).then(() => {
     wrapper.update();
 
-    expect(cookies.get('auth_jwt')).toBe(token);
+    expect(cookies.get('auth_jwt')).toBe(access);
     expect(wrapper.find(Redirect).exists()).toBe(true);
+    expect(wrapper.find(Redirect).prop('to')).toEqual({
+      pathname: '/',
+    });
     expect(store.dispatch).toHaveBeenCalledWith(
-      updateUser({ ...jwtDecode(token), isSocial: false }),
+      updateUser({ ...jwtDecode(access), isSocial: false }),
+    );
+    expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
+
+    cookies.remove('auth_jwt');
+    done();
+  });
+});
+
+test('Login redirects to requested route after basic login success', (done) => {
+  const access = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
+  const username = 'admin';
+  const password = 'password';
+  const localLocation = {
+    pathname: location.pathname,
+    state: {
+      next: '/courses',
+    },
+  };
+
+  mock.reset();
+  mock.onPost('/api/api-token-auth/', {
+    username,
+    password,
+  }).reply(200, {
+    access,
+  });
+
+  const cookiesWrapper = shallowWithIntl(<Login location={localLocation} store={store} />, {
+    context: { cookies },
+  });
+
+  const wrapper = cookiesWrapper.dive().dive().dive().dive()
+    .dive()
+    .dive();
+
+  wrapper.find(TextField).first().simulate('change', {
+    target: {
+      value: username,
+    },
+  });
+  wrapper.find(TextField).last().simulate('change', {
+    target: {
+      value: password,
+    },
+  });
+
+  wrapper.instance().basicLogin({ preventDefault: jest.fn() }).then(() => {
+    wrapper.update();
+
+    expect(cookies.get('auth_jwt')).toBe(access);
+    expect(wrapper.find(Redirect).exists()).toBe(true);
+    expect(wrapper.find(Redirect).prop('to')).toEqual({
+      pathname: '/courses',
+    });
+    expect(store.dispatch).toHaveBeenCalledWith(
+      updateUser({ ...jwtDecode(access), isSocial: false }),
     );
     expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
 

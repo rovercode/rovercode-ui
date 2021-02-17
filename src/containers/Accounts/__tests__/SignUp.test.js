@@ -86,7 +86,7 @@ test('SignUp redirects to root after success', (done) => {
     password1,
     password2,
   }).reply(200, {
-    token,
+    access_token: token,
   });
   const cookiesWrapper = shallowWithIntl(<SignUp store={store} />, {
     context: { cookies },
