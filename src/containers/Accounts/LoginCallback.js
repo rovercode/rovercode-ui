@@ -41,6 +41,7 @@ class LoginCallback extends Component {
       .then((response) => {
         updateUser(jwtDecode(response.data.access_token));
         cookies.set('auth_jwt', response.data.access_token, { path: '/' });
+        cookies.set('refresh_jwt', response.data.refresh_token, { path: '/' });
         updateValidAuth(true);
         this.setState({
           loading: false,

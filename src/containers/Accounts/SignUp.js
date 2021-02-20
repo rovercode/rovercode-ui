@@ -140,6 +140,7 @@ class SignUp extends Component {
       .then((response) => {
         updateUser(jwtDecode(response.data.access_token));
         cookies.set('auth_jwt', response.data.access_token, { path: '/' });
+        cookies.set('refresh_jwt', response.data.refresh_token, { path: '/' });
         this.setState({
           success: true,
         });

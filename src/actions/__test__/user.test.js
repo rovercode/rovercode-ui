@@ -107,7 +107,7 @@ describe('User actions', () => {
       exp: 1629483380,
     };
     const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1OTc5NDczODAsImV4cCI6MTYyOTQ4MzM4MCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJ0aWVyIjoiMiJ9.w2oj_k6rD0VnsKgzOEHxKEPOkA137xkA4mRBaIjesCs';
-    mock.onPost('/api/api-token-refresh/', { token: 'eyey0' }).reply(200, { token });
+    mock.onPost('/api/api-token-refresh/', { refresh: 'eyey0' }).reply(200, { access: token });
     const action = refreshSession(mockCookies);
     const { type } = action;
 

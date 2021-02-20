@@ -59,6 +59,7 @@ class Login extends Component {
       .then((response) => {
         updateUser(jwtDecode(response.data.access));
         cookies.set('auth_jwt', response.data.access, { path: '/' });
+        cookies.set('refresh_jwt', response.data.refresh, { path: '/' });
         updateValidAuth(true);
         this.setState({
           basicSuccess: true,

@@ -34,10 +34,10 @@ export const updateUser = (data) => ({
 export const refreshSession = (cookies) => ({
   type: REFRESH_SESSION,
   payload: axios.post('/api/api-token-refresh/', {
-    token: cookies.get('auth_jwt'),
+    refresh: cookies.get('refresh_jwt'),
   })
     .then(({ data }) => (
-      jwtDecode(data.token)
+      jwtDecode(data.access)
     )),
 });
 
