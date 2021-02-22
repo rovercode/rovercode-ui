@@ -5,6 +5,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import { checkAuthError, authHeader } from '@/actions/auth';
 import { fetchSubscription } from '@/actions/subscription';
 import { createCheckoutSession } from '@/actions/checkout';
+import { refreshSession } from '@/actions/user';
 import Purchase from '@/components/Purchase';
 
 const mapStateToProps = ({ checkout, user, subscription }) => (
@@ -17,6 +18,7 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     userId, lineItems, successURL, cancelURL, collectShippingAddress, authHeader(cookies),
   )).catch(checkAuthError(dispatch)),
   fetchSubscription: (id) => dispatch(fetchSubscription(id, authHeader(cookies))),
+  refreshSession: () => dispatch(refreshSession(cookies)).catch(checkAuthError(dispatch)),
 });
 
 const PurchaseContainer = connect(
