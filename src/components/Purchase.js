@@ -155,7 +155,7 @@ class Purchase extends Component {
                   description="Messages explaining that the user already purchased the Individual Plan"
                   defaultMessage="You have successfully purchased the Individual Plan for this account!
                                   Your Rover should arrive in 5-10 business days. While you wait, feel
-                                  to browse the lessons."
+                                  free to browse the lessons."
                 />
               </Typography>
             </Grid>
