@@ -1660,7 +1660,14 @@ exports[`Login mounts on the page with no errors 1`] = `
                             }
                             disableElevation={true}
                             size="large"
-                            to="/accounts/signup"
+                            to={
+                              Object {
+                                "pathname": "/accounts/signup",
+                                "state": Object {
+                                  "next": "/",
+                                },
+                              }
+                            }
                             variant="contained"
                           >
                             <ForwardRef(Button)
@@ -1714,7 +1721,14 @@ exports[`Login mounts on the page with no errors 1`] = `
                               }
                               disableElevation={true}
                               size="large"
-                              to="/accounts/signup"
+                              to={
+                                Object {
+                                  "pathname": "/accounts/signup",
+                                  "state": Object {
+                                    "next": "/",
+                                  },
+                                }
+                              }
                               variant="contained"
                             >
                               <WithStyles(ForwardRef(ButtonBase))
@@ -1736,7 +1750,14 @@ exports[`Login mounts on the page with no errors 1`] = `
                                 disabled={false}
                                 focusRipple={true}
                                 focusVisibleClassName="Mui-focusVisible"
-                                to="/accounts/signup"
+                                to={
+                                  Object {
+                                    "pathname": "/accounts/signup",
+                                    "state": Object {
+                                      "next": "/",
+                                    },
+                                  }
+                                }
                                 type="button"
                               >
                                 <ForwardRef(ButtonBase)
@@ -1765,7 +1786,14 @@ exports[`Login mounts on the page with no errors 1`] = `
                                   disabled={false}
                                   focusRipple={true}
                                   focusVisibleClassName="Mui-focusVisible"
-                                  to="/accounts/signup"
+                                  to={
+                                    Object {
+                                      "pathname": "/accounts/signup",
+                                      "state": Object {
+                                        "next": "/",
+                                      },
+                                    }
+                                  }
                                   type="button"
                                 >
                                   <Link
@@ -1784,7 +1812,14 @@ exports[`Login mounts on the page with no errors 1`] = `
                                     onTouchStart={[Function]}
                                     role="button"
                                     tabIndex={0}
-                                    to="/accounts/signup"
+                                    to={
+                                      Object {
+                                        "pathname": "/accounts/signup",
+                                        "state": Object {
+                                          "next": "/",
+                                        },
+                                      }
+                                    }
                                   >
                                     <LinkAnchor
                                       aria-disabled={false}
@@ -3640,7 +3675,14 @@ exports[`Login renders on the page with no errors 1`] = `
         }
         disableElevation={true}
         size="large"
-        to="/accounts/signup"
+        to={
+          Object {
+            "pathname": "/accounts/signup",
+            "state": Object {
+              "next": "/",
+            },
+          }
+        }
         variant="contained"
       >
         <FormattedMessage
