@@ -58,8 +58,9 @@ const styles = (theme) => ({
 
 class Purchase extends Component {
   componentDidMount() {
-    const { fetchSubscription, user } = this.props;
+    const { fetchSubscription, user, refreshSession } = this.props;
     fetchSubscription(user.user_id);
+    refreshSession();
   }
 
   componentDidUpdate(prevProps) {
@@ -87,7 +88,7 @@ class Purchase extends Component {
     createCheckoutSession(
       user.user_id.toString(),
       [{ name: 'Individual Plan', quantity: 1 }], // In the future, this is user selectable
-      `${window.location.origin}/user/settings`, // Success
+      `${window.location.origin}/purchase`, // Success
       `${window.location.origin}/purchase`, // Failure
       true,
     );
@@ -152,7 +153,9 @@ class Purchase extends Component {
                 <FormattedMessage
                   id="app.friends_family.already_purchased"
                   description="Messages explaining that the user already purchased the Individual Plan"
-                  defaultMessage="You have already purchased the Individual Plan for this account"
+                  defaultMessage="You have successfully purchased the Individual Plan for this account!
+                                  Your Rover should arrive in 5-10 business days. While you wait, feel
+                                  free to browse the lessons."
                 />
               </Typography>
             </Grid>
@@ -166,7 +169,7 @@ class Purchase extends Component {
                 <FormattedMessage
                   id="app.friends_family.already_purchased_action"
                   description="Button giving an action for those who have already purchased"
-                  defaultMessage="Start your first lesson!"
+                  defaultMessage="Check out the first lesson!"
                 />
               </Typography>
             </Button>
@@ -276,6 +279,7 @@ Purchase.propTypes = {
   }).isRequired,
   createCheckoutSession: PropTypes.func.isRequired,
   fetchSubscription: PropTypes.func.isRequired,
+  refreshSession: PropTypes.func.isRequired,
   user: PropTypes.shape({
     user_id: PropTypes.number.isRequired,
   }).isRequired,

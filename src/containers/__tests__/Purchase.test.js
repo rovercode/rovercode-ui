@@ -6,9 +6,11 @@ import { updateValidAuth } from '@/actions/auth';
 import Purchase from '../Purchase'; // eslint-disable-line import/order
 
 jest.mock('@/actions/checkout');
+jest.mock('@/actions/user');
 
 import { createCheckoutSession } from '@/actions/checkout'; // eslint-disable-line import/first, import/order
 import { fetchSubscription } from '@/actions/subscription'; // eslint-disable-line import/first, import/order
+import { refreshSession } from '@/actions/user'; // eslint-disable-line import/first, import/order
 
 const cookiesValues = { auth_jwt: '1234' };
 const cookies = new Cookies(cookiesValues);
@@ -139,6 +141,14 @@ describe('The PurchaseContainer', () => {
           Authorization: `JWT ${cookiesValues.auth_jwt}`,
         },
       }),
+    );
+  });
+
+  test('dispatches an action to refresh a session', () => {
+    wrapper.dive().props().refreshSession(cookiesValues);
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      refreshSession(cookiesValues.auth_jwt),
     );
   });
 

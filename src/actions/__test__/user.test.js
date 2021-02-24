@@ -98,16 +98,19 @@ describe('User actions', () => {
   });
   test('refreshSession', (done) => {
     const mock = new MockAdapter(axios);
+    const mockCookieSet = jest.fn();
     const mockCookies = {
       get: jest.fn(() => 'eyey0'),
+      set: mockCookieSet,
     };
     const user = {
       username: 'testuser',
       email: 'testuser@example.com',
       exp: 1629483380,
     };
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1OTc5NDczODAsImV4cCI6MTYyOTQ4MzM4MCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJ0aWVyIjoiMiJ9.w2oj_k6rD0VnsKgzOEHxKEPOkA137xkA4mRBaIjesCs';
-    mock.onPost('/api/api-token-refresh/', { token: 'eyey0' }).reply(200, { token });
+    const accessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1OTc5NDczODAsImV4cCI6MTYyOTQ4MzM4MCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJ0aWVyIjoiMiJ9.w2oj_k6rD0VnsKgzOEHxKEPOkA137xkA4mRBaIjesCs';
+    const refreshToken = 'fyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1OTc5NDczODAsImV4cCI6MTYyOTQ4MzM4MCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsInVzZXJfaWQiOiIxIiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImVtYWlsIjoidGVzdHVzZXJAZXhhbXBsZS5jb20iLCJ0aWVyIjoiMiJ9.w2oj_k6rD0VnsKgzOEHxKEPOkA137xkA4mRBaIjesC1';
+    mock.onPost('/api/api-token-refresh/', { refresh: 'eyey0' }).reply(200, { access: accessToken, refresh: refreshToken });
     const action = refreshSession(mockCookies);
     const { type } = action;
 
@@ -116,6 +119,10 @@ describe('User actions', () => {
       expect(result.username).toEqual(user.username);
       expect(result.email).toEqual(user.email);
       expect(result.exp).toEqual(user.exp);
+      expect(mockCookieSet.mock.calls[0][0]).toBe('auth_jwt');
+      expect(mockCookieSet.mock.calls[0][1]).toBe(accessToken);
+      expect(mockCookieSet.mock.calls[1][0]).toBe('refresh_jwt');
+      expect(mockCookieSet.mock.calls[1][1]).toBe(refreshToken);
       done();
     });
   });

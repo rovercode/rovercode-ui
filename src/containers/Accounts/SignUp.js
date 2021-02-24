@@ -140,6 +140,7 @@ class SignUp extends Component {
       .then((response) => {
         updateUser(jwtDecode(response.data.access_token));
         cookies.set('auth_jwt', response.data.access_token, { path: '/' });
+        cookies.set('refresh_jwt', response.data.refresh_token, { path: '/' });
         this.setState({
           success: true,
         });
@@ -156,7 +157,7 @@ class SignUp extends Component {
   }
 
   render() {
-    const { intl } = this.props;
+    const { intl, location } = this.props;
     const {
       success,
       usernameError,
@@ -187,7 +188,10 @@ class SignUp extends Component {
       <>
         {
           success ? (
-            <Redirect to="/" />
+            <Redirect to={{
+              pathname: location && location.state && location.state.next ? location.state.next : '/',
+            }}
+            />
           ) : (null)
         }
         <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
@@ -311,12 +315,25 @@ class SignUp extends Component {
   }
 }
 
+SignUp.defaultProps = {
+  location: {
+    state: {
+      next: null,
+    },
+  },
+};
+
 SignUp.propTypes = {
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   updateUser: PropTypes.func.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      next: PropTypes.string,
+    }),
+  }),
 };
 
 export default withCookies(injectIntl(connect(null, mapDispatchToProps)(SignUp)));

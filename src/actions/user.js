@@ -34,11 +34,13 @@ export const updateUser = (data) => ({
 export const refreshSession = (cookies) => ({
   type: REFRESH_SESSION,
   payload: axios.post('/api/api-token-refresh/', {
-    token: cookies.get('auth_jwt'),
+    refresh: cookies.get('refresh_jwt'),
   })
-    .then(({ data }) => (
-      jwtDecode(data.token)
-    )),
+    .then(({ data }) => {
+      cookies.set('auth_jwt', data.access, { path: '/' });
+      cookies.set('refresh_jwt', data.refresh, { path: '/' });
+      return jwtDecode(data.access);
+    }),
 });
 
 export const editUserUsername = (username, xhrOptions) => ({

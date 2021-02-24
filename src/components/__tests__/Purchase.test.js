@@ -6,12 +6,14 @@ import Purchase from '../Purchase';
 jest.mock('@stripe/stripe-js');
 
 let fetchSubscription;
+let refreshSession;
 let createCheckoutSession;
 
 describe('The Purchase component', () => {
   beforeEach(() => {
     loadStripe.mockClear();
     fetchSubscription = jest.fn().mockResolvedValue();
+    refreshSession = jest.fn().mockResolvedValue();
     createCheckoutSession = jest.fn().mockResolvedValue();
   });
 
@@ -23,6 +25,7 @@ describe('The Purchase component', () => {
       <Purchase
         user={user}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         createCheckoutSession={createCheckoutSession}
         isFetching={false}
         isCreating={false}
@@ -39,6 +42,7 @@ describe('The Purchase component', () => {
       <Purchase
         user={user}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         createCheckoutSession={createCheckoutSession}
         creationError="Everything went super wrong."
         isFetching={false}
@@ -56,6 +60,7 @@ describe('The Purchase component', () => {
       <Purchase
         user={user}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         createCheckoutSession={createCheckoutSession}
         isFetching
         isCreating={false}
@@ -75,6 +80,7 @@ describe('The Purchase component', () => {
       <Purchase
         user={user}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         createCheckoutSession={createCheckoutSession}
         subscription={subscription}
         isFetching={false}
@@ -83,7 +89,7 @@ describe('The Purchase component', () => {
     ).dive().dive().dive();
     expect(wrapper.find('FormattedMessage').at(0)
       .prop('defaultMessage'))
-      .toEqual(expect.stringContaining('You have already purchased'));
+      .toEqual(expect.stringContaining('You have successfully purchased'));
   });
 
   test('creates a checkout session on button click', () => {
@@ -94,6 +100,7 @@ describe('The Purchase component', () => {
       <Purchase
         user={user}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         createCheckoutSession={createCheckoutSession}
         isFetching={false}
         isCreating={false}
@@ -113,6 +120,7 @@ describe('The Purchase component', () => {
       <Purchase
         user={user}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         createCheckoutSession={createCheckoutSession}
         isCreating={false}
         isFetching={false}
@@ -137,6 +145,7 @@ describe('The Purchase component', () => {
       <Purchase
         user={user}
         fetchSubscription={fetchSubscription}
+        refreshSession={refreshSession}
         createCheckoutSession={createCheckoutSession}
         isCreating={false}
         isFetching={false}

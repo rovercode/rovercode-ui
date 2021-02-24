@@ -59,6 +59,7 @@ class Login extends Component {
       .then((response) => {
         updateUser(jwtDecode(response.data.access));
         cookies.set('auth_jwt', response.data.access, { path: '/' });
+        cookies.set('refresh_jwt', response.data.refresh, { path: '/' });
         updateValidAuth(true);
         this.setState({
           basicSuccess: true,
@@ -109,6 +110,8 @@ class Login extends Component {
     const { intl, location } = this.props;
     const { basicError, basicSuccess, socialError } = this.state;
 
+    const next = location && location.state && location.state.next ? location.state.next : null;
+
     const usernamePlaceholder = intl.formatMessage({
       id: 'app.login.username',
       description: 'Placeholder for username entry',
@@ -146,7 +149,7 @@ class Login extends Component {
         {
           basicSuccess ? (
             <Redirect to={{
-              pathname: location && location.state && location.state.next ? location.state.next : '/',
+              pathname: next || '/',
             }}
             />
           ) : (null)
@@ -257,7 +260,11 @@ class Login extends Component {
               disableElevation
               color="primary"
               component={RouterLink}
-              to="/accounts/signup"
+              to={{
+                pathname: '/accounts/signup',
+                state: { next: next || '/' },
+              }}
+
             >
               <FormattedMessage
                 id="app.login.create"
