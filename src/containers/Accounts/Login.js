@@ -57,8 +57,9 @@ class Login extends Component {
       password,
     })
       .then((response) => {
-        updateUser(jwtDecode(response.data.token));
-        cookies.set('auth_jwt', response.data.token, { path: '/' });
+        updateUser(jwtDecode(response.data.access));
+        cookies.set('auth_jwt', response.data.access, { path: '/' });
+        cookies.set('refresh_jwt', response.data.refresh, { path: '/' });
         updateValidAuth(true);
         this.setState({
           basicSuccess: true,
@@ -84,8 +85,11 @@ class Login extends Component {
   }
 
   redirectToSocial = (element) => {
+    const { location } = this.props;
+
+    const next = location && location.state && location.state.next ? location.state.next : null;
     const service = element.target.parentNode.id || element.target.id;
-    return axios.post(`/jwt/auth/social/${service}/auth-server/`)
+    return axios.post(`/jwt/auth/social/${service}/auth-server/`, null, { params: { ...(next && { next }) } })
       .then((response) => {
         const url = URL(response.data.url);
         const parsed = queryString.parse(url.query);
@@ -105,6 +109,8 @@ class Login extends Component {
   render() {
     const { intl, location } = this.props;
     const { basicError, basicSuccess, socialError } = this.state;
+
+    const next = location && location.state && location.state.next ? location.state.next : null;
 
     const usernamePlaceholder = intl.formatMessage({
       id: 'app.login.username',
@@ -142,7 +148,10 @@ class Login extends Component {
       <>
         {
           basicSuccess ? (
-            <Redirect to="/" />
+            <Redirect to={{
+              pathname: next || '/',
+            }}
+            />
           ) : (null)
         }
         <Grid container direction="column" justify="center" alignItems="center" spacing={4}>
@@ -251,7 +260,11 @@ class Login extends Component {
               disableElevation
               color="primary"
               component={RouterLink}
-              to="/accounts/signup"
+              to={{
+                pathname: '/accounts/signup',
+                state: { next: next || '/' },
+              }}
+
             >
               <FormattedMessage
                 id="app.login.create"
@@ -353,6 +366,7 @@ Login.defaultProps = {
   location: {
     state: {
       callbackError: null,
+      next: null,
     },
   },
 };
@@ -367,6 +381,7 @@ Login.propTypes = {
   location: PropTypes.shape({
     state: PropTypes.shape({
       callbackError: PropTypes.arrayOf(PropTypes.string),
+      next: PropTypes.string,
     }),
   }),
 };

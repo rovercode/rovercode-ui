@@ -93,7 +93,7 @@ test('LoginCallback redirects to root after success', (done) => {
   const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
   mock.reset();
   mock.onPost('/jwt/auth/social/google/login/').reply(200, {
-    token,
+    access_token: token,
   });
   const cookiesValues = { };
   const cookies = new Cookies(cookiesValues);
@@ -111,6 +111,39 @@ test('LoginCallback redirects to root after success', (done) => {
     const redirect = wrapper.find(Redirect);
     expect(redirect.exists()).toBe(true);
     expect(redirect.prop('to')).toBe('/');
+    expect(wrapper.find(CircularProgress).exists()).toBe(false);
+    expect(cookies.get('auth_jwt')).toBe(token);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      updateUser({ ...jwtDecode(token), isSocial: true }),
+    );
+    expect(store.dispatch).toHaveBeenCalledWith(updateValidAuth(true));
+    done();
+  });
+});
+
+test('LoginCallback redirects to next URL after success', (done) => {
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTQwMzQzMjIxLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwib3JpZ19pYXQiOjE1NDAzMzk2MjF9.tumcSSAbKeWXc2QDd7KFR9IGh3PCsyHnCe6JLSszWpc';
+  mock.reset();
+  mock.onPost('/jwt/auth/social/google/login/').reply(200, {
+    access_token: token,
+    next_url: '/test/url',
+  });
+  const cookiesValues = { };
+  const cookies = new Cookies(cookiesValues);
+  const cookiesWrapper = shallowWithIntl(
+    <LoginCallback location={location} match={match} store={store} />, {
+      context: { cookies },
+    },
+  );
+
+  const wrapper = cookiesWrapper.dive().dive().dive().dive();
+
+  wrapper.instance().componentDidMount().then(() => {
+    wrapper.update();
+
+    const redirect = wrapper.find(Redirect);
+    expect(redirect.exists()).toBe(true);
+    expect(redirect.prop('to')).toBe('/test/url');
     expect(wrapper.find(CircularProgress).exists()).toBe(false);
     expect(cookies.get('auth_jwt')).toBe(token);
     expect(store.dispatch).toHaveBeenCalledWith(
