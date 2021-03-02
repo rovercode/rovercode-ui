@@ -106,7 +106,7 @@ class Purchase extends Component {
     const costText = intl.formatMessage({
       id: 'app.friends_family.cost',
       description: 'Price label',
-      defaultMessage: '$150.00 billed annually',
+      defaultMessage: '$160.00 billed annually',
     });
 
     const productTitle = intl.formatMessage({
