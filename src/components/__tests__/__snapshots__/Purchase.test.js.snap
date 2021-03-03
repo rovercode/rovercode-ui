@@ -103,7 +103,7 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
               />
             </WithStyles(ForwardRef(Button))>
             <WithStyles(ForwardRef(Chip))
-              label="$160.00 billed annually"
+              label="$160 billed annually"
             />
           </WithStyles(ForwardRef(CardActions))>
         </WithStyles(ForwardRef(Card))>
