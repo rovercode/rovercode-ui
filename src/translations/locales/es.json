@@ -28,7 +28,7 @@
   "app.course_list.title": "Courses",
   "app.friends_family.already_purchased": "You have successfully purchased the Individual Plan for this account!\n                                  Your Rover should arrive in 5-10 business days. While you wait, feel\n                                  free to browse the lessons.",
   "app.friends_family.already_purchased_action": "Check out the first lesson!",
-  "app.friends_family.cost": "$160.00 billed annually",
+  "app.friends_family.cost": "billed annually",
   "app.friends_family.error_message_1": "There was an error. Please contact",
   "app.friends_family.error_message_2": "to complete your purchase.",
   "app.friends_family.instructions_1": "We're excited to offer you early access to Rovercode!\n                Shop below, and please email",
