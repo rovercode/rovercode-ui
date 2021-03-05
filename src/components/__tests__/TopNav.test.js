@@ -17,6 +17,7 @@ store.dispatch = jest.fn();
 describe('The TopNav component', () => {
   beforeEach(() => {
     cookies.set('auth_jwt', '1234', { path: '/' });
+    cookies.set('refresh_jwt', '5678', { path: '/' });
   });
 
   test('should render on the page with no errors', () => {
@@ -36,6 +37,7 @@ describe('The TopNav component', () => {
 
     expect(wrapper.find(Redirect).exists()).toBe(false);
     expect(cookies.get('auth_jwt', { path: '/' })).toBe('1234');
+    expect(cookies.get('refresh_jwt', { path: '/' })).toBe('5678');
 
     wrapper.instance().signout();
     wrapper.update();
