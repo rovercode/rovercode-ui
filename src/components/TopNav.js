@@ -41,6 +41,7 @@ class TopNav extends Component {
     const { cookies, logout } = this.props;
 
     cookies.remove('auth_jwt', { path: '/' });
+    cookies.remove('refresh_jwt', { path: '/' });
     logout();
 
     this.setState({ redirectToLogin: true });

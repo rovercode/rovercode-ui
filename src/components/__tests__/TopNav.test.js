@@ -43,6 +43,7 @@ describe('The TopNav component', () => {
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).prop('to')).toBe('/accounts/login');
     expect(cookies.get('auth_jwt', { path: '/' })).toBeUndefined();
+    expect(cookies.get('refresh_jwt', { path: '/' })).toBeUndefined();
     expect(store.dispatch).toHaveBeenCalledWith(logout());
   });
 
