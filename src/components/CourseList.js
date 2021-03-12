@@ -12,6 +12,7 @@ import {
 	InputAdornment,
 	Menu,
 	MenuItem,
+	ListItemIcon,
 } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,7 +20,7 @@ import { ArrowDownward, ArrowUpward, Search } from '@material-ui/icons';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import SortIcon from '@material-ui/icons/Sort';
 import Course from './Course';
 import Footer from './Footer';
 
@@ -209,15 +210,14 @@ class CourseList extends Component {
 							<Grid container justify='flex-end' spacing={2}>
 								<Grid item>
 									<Button
-										variant='outlined'
+										variant='standard'
 										style={{
-											height: '100%',
-											color: 'rgba(0, 0, 0, 0.87)',
-											fontSize: '16px',
+											color: '#7F7272',
 											fontWeight: '400',
 										}}
 										aria-controls='sort-menu'
 										aria-haspopup='true'
+										endIcon={<SortIcon />}
 										onClick={this.handleSortClick}
 									>
 										<FormattedMessage
@@ -243,20 +243,22 @@ class CourseList extends Component {
 										}}
 									>
 										<MenuItem onClick={this.handleOrderingChange} id='name'>
+											<ListItemIcon>
+												{ordering === 'name' ? (
+													<>
+														<ArrowDownward fontSize='small' />
+													</>
+												) : (
+													<>
+														<ArrowUpward fontSize='small' />
+													</>
+												)}
+											</ListItemIcon>
 											<FormattedMessage
 												id='app.program_collection.name'
 												description='Button label to sort by name'
 												defaultMessage='Name'
 											/>
-											{ordering === 'name' ? (
-												<>
-													<ArrowDownward />
-												</>
-											) : (
-												<>
-													<ArrowUpward />
-												</>
-											)}
 										</MenuItem>
 									</Menu>
 								</Grid>

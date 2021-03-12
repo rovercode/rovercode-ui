@@ -18,6 +18,7 @@ import {
 	CardContent,
 	CardActionArea,
 	CardActions,
+	ListItemIcon,
 	Link as MuiLink,
 } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
@@ -56,6 +57,36 @@ const styles = (theme) => ({
 		justifyContent: 'center',
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(3),
+	},
+	flexitem1: {
+		order: 2,
+		[theme.breakpoints.up('md')]: {
+			order: 1,
+		},
+	},
+	flexitem2: {
+		order: 1,
+		[theme.breakpoints.up('md')]: {
+			order: 2,
+		},
+	},
+	flexitem3: {
+		justifyContent: 'flex-beginning',
+		[theme.breakpoints.up('md')]: {
+			justifyContent: 'flex-end',
+		},
+	},
+	flexitem4: {
+		order: 2,
+		[theme.breakpoints.up('md')]: {
+			order: 1,
+		},
+	},
+	flexitem5: {
+		order: 1,
+		[theme.breakpoints.up('md')]: {
+			order: 2,
+		},
 	},
 });
 
@@ -220,7 +251,14 @@ class ProgramCollection extends Component {
 					</Grid>
 				</TitleArea>
 				<Grid container spacing={2} style={{ marginBottom: '16px' }}>
-					<Grid container item xs={12} md={8} spacing={2}>
+					<Grid
+						container
+						item
+						xs={12}
+						md={8}
+						spacing={2}
+						className={classes.flexitem1}
+					>
 						<Grid item xs={12} md={6}>
 							<TextField
 								fullWidth
@@ -241,13 +279,11 @@ class ProgramCollection extends Component {
 							/>
 						</Grid>
 
-						<Box marginRight={2}>
+						<Box marginRight={2} display='flex' alignItems='center'>
 							<Button
 								variant='standard'
 								style={{
-									height: '100%',
-									color: 'rgba(0, 0, 0, 0.87)',
-									fontSize: '16px',
+									color: '#7F7272',
 									fontWeight: '400',
 								}}
 								aria-controls='sort-menu'
@@ -278,20 +314,22 @@ class ProgramCollection extends Component {
 								}}
 							>
 								<MenuItem onClick={this.handleOrderingChange} id='name'>
+									<ListItemIcon>
+										{ordering === 'name' ? (
+											<>
+												<ArrowDownward fontSize='small' />
+											</>
+										) : (
+											<>
+												<ArrowUpward fontSize='small' />
+											</>
+										)}
+									</ListItemIcon>
 									<FormattedMessage
 										id='app.program_collection.name'
 										description='Button label to sort by name'
 										defaultMessage='Name'
 									/>
-									{ordering === 'name' ? (
-										<>
-											<ArrowDownward />
-										</>
-									) : (
-										<>
-											<ArrowUpward />
-										</>
-									)}
 								</MenuItem>
 							</Menu>
 						</Box>
@@ -326,11 +364,20 @@ class ProgramCollection extends Component {
 							/>
 						</Box>
 					</Grid>
-					<Grid container item xs md spacing={2}>
+					<Grid container item xs md spacing={2} className={classes.flexitem2}>
 						<Grid item xs>
-							<Box display='flex' alignItems='center' justifyContent='flex-end'>
+							<Box
+								display='flex'
+								alignItems='center'
+								className={classes.flexitem3}
+							>
 								{user.tier === 1 && programCount >= 0 ? (
-									<Box marginRight={2} style={{ width: '160px' }}>
+									<Box
+										marginRight={2}
+										marginLeft={2}
+										style={{ width: '160px' }}
+										className={classes.flexitem4}
+									>
 										<Typography variant='subtitle2' display='inline'>
 											<FormattedMessage
 												id='app.program_collection.slots'
@@ -370,7 +417,7 @@ class ProgramCollection extends Component {
 										) : null}
 									</Box>
 								) : null}
-								<Box>
+								<Box className={classes.flexitem5}>
 									<Button
 										variant='contained'
 										color='primary'

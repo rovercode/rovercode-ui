@@ -12,6 +12,9 @@ export default createMuiTheme({
 				fontSize: 13,
 			},
 		},
+		MuiListItemIcon: {
+			root: { minWidth: '32px' },
+		},
 	},
 	palette: {
 		primary: {
