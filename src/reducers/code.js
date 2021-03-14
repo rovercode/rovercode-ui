@@ -130,6 +130,7 @@ export default function code(
         tags: action.payload.owner_tags,
         ownerName: action.payload.user.username,
         lessonId: action.payload.lesson,
+        blog_questions: action.payload.blog_questions,
       };
     case FETCH_PROGRAM_REJECTED:
       return {
