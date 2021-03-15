@@ -263,6 +263,7 @@ class ProgramCollection extends Component {
                 keepMounted
                 open={Boolean(sortMenuAnchorElement)}
                 onClose={this.handleSortClose}
+                onClick={this.handleSortClose}
                 getContentAnchorEl={null}
                 anchorOrigin={{
                   vertical: 'bottom',

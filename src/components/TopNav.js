@@ -195,6 +195,7 @@ class TopNav extends Component {
                 keepMounted
                 open={Boolean(userMenuAnchorElement)}
                 onClose={this.handleMenuClose}
+                onClick={this.handleMenuClose}
                 getContentAnchorEl={null}
                 anchorOrigin={{
                   vertical: 'bottom',
@@ -250,6 +251,7 @@ class TopNav extends Component {
                   keepMounted
                   open={Boolean(mobileMenuAnchorElement)}
                   onClose={this.handleClose}
+                  onClick={this.handleClose}
                   getContentAnchorEl={null}
                 >
                   <MenuItem component={Link} to="/user/settings">
