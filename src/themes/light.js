@@ -1,6 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import Blockly from 'blockly';
 
+const defaultTheme = createMuiTheme();
 export default createMuiTheme({
   overrides: {
     MuiCardHeader: {
@@ -16,6 +17,7 @@ export default createMuiTheme({
       root: { minWidth: '32px' },
     },
   },
+
   palette: {
     primary: {
       main: '#114BFD' /* blue */,
@@ -45,46 +47,71 @@ export default createMuiTheme({
     fontSize: 14,
     fontFamily: ['Lato', 'sans-serif'].join(','),
     h1: {
-      fontSize: 28,
-      fontWeight: 'bold',
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '28px !important',
+        fontWeight: 'bold',
+      },
     },
     h2: {
-      fontSize: 24,
-      fontWeight: 'bold',
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '24px !important',
+        fontWeight: 'bold',
+      },
     },
     h3: {
-      fontSize: 18,
-      fontWeight: 'bold',
+      // fontSize: '18px !important',
+      // fontWeight: 'bold',
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '18px !important',
+        fontWeight: 'bold !important',
+      },
     },
     h4: {
-      fontSize: 15,
-      fontWeight: 'bold',
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '15px !important',
+        fontWeight: 'bold',
+      },
     },
     h5: {
-      fontSize: 14,
-      fontWeight: 'bold',
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '14px !important',
+        fontWeight: 'bold',
+      },
     },
     subtitle1: {
-      fontSize: 16,
-      fontWeight: 'bold',
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '16px !important',
+        fontWeight: 'bold',
+      },
     },
     body1: {
-      fontSize: 16,
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '16px !important',
+      },
     },
     subtitle2: {
-      fontSize: 14,
-      fontWeight: 'bold',
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '14px !important',
+        fontWeight: 'bold',
+      },
     },
     body2: {
-      fontSize: 14,
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '14px !important',
+      },
     },
     caption: {
-      fontSize: 13,
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '13px !important',
+      },
     },
 
     button: {
-      fontWeight: 'bold',
-      textTransform: 'none',
+      [defaultTheme.breakpoints.up('xs')]: {
+        fontSize: '14px !important',
+        fontWeight: 'bold',
+        textTransform: 'none',
+      },
     },
   },
 });

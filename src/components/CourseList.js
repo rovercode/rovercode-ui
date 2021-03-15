@@ -5,7 +5,6 @@ import {
   Button,
   CircularProgress,
   Container,
-  Divider,
   Grid,
   Typography,
   TextField,
@@ -25,21 +24,6 @@ import Course from './Course';
 import Footer from './Footer';
 
 const styles = (theme) => ({
-  mainContainer: {
-    marginBottom: theme.spacing(8),
-    [theme.breakpoints.up('xs')]: {
-      minWidth: theme.breakpoints.values.xs,
-    },
-    [theme.breakpoints.up('sm')]: {
-      minWidth: theme.breakpoints.values.sm,
-    },
-    [theme.breakpoints.up('md')]: {
-      minWidth: theme.breakpoints.values.md,
-    },
-    [theme.breakpoints.up('lg')]: {
-      minWidth: theme.breakpoints.values.lg,
-    },
-  },
   listContainer: {
     marginTop: theme.spacing(2),
   },
@@ -175,14 +159,14 @@ class CourseList extends Component {
 
     return (
       <>
-        <Container className={classes.mainContainer}>
+        <Container>
           <TitleArea item container direction="row" justify="space-between">
             <Grid item>
               <Title variant="h1">{title}</Title>
             </Grid>
           </TitleArea>
           <Grid container spacing={2}>
-            <Grid item xs={4}>
+            <Grid item xs={8} md={4}>
               <TextField
                 fullWidth
                 variant="outlined"
@@ -201,65 +185,62 @@ class CourseList extends Component {
                 }}
               />
             </Grid>
-            <Grid item xs={8}>
-              <Grid container justify="flex-end" spacing={2}>
-                <Grid item>
-                  <Button
-                    variant="standard"
-                    style={{
-                      color: '#7F7272',
-                      fontWeight: '400',
-                    }}
-                    aria-controls="sort-menu"
-                    aria-haspopup="true"
-                    endIcon={<SortIcon />}
-                    onClick={this.handleSortClick}
-                  >
-                    <FormattedMessage
-                      id="app.program_collection.sort"
-                      description="Button label for sort options"
-                      defaultMessage="Sort"
-                    />
-                  </Button>
-                  <Menu
-                    id="sort-menu"
-                    anchorEl={sortMenuAnchorElement}
-                    keepMounted
-                    open={Boolean(sortMenuAnchorElement)}
-                    onClose={this.handleSortClose}
-                    getContentAnchorEl={null}
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'center',
-                    }}
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'center',
-                    }}
-                  >
-                    <MenuItem onClick={this.handleOrderingChange} id="name">
-                      <ListItemIcon>
-                        {ordering === 'name' ? (
-                          <>
-                            <ArrowDownward fontSize="small" />
-                          </>
-                        ) : (
-                          <>
-                            <ArrowUpward fontSize="small" />
-                          </>
-                        )}
-                      </ListItemIcon>
-                      <FormattedMessage
-                        id="app.program_collection.name"
-                        description="Button label to sort by name"
-                        defaultMessage="Name"
-                      />
-                    </MenuItem>
-                  </Menu>
-                </Grid>
-              </Grid>
+            <Grid item xs md>
+              <Button
+                variant="standard"
+                style={{
+                  color: '#7F7272',
+                  fontWeight: '400',
+                }}
+                aria-controls="sort-menu"
+                aria-haspopup="true"
+                endIcon={<SortIcon />}
+                onClick={this.handleSortClick}
+              >
+                <FormattedMessage
+                  id="app.program_collection.sort"
+                  description="Button label for sort options"
+                  defaultMessage="Sort"
+                />
+              </Button>
+              <Menu
+                id="sort-menu"
+                anchorEl={sortMenuAnchorElement}
+                keepMounted
+                open={Boolean(sortMenuAnchorElement)}
+                onClose={this.handleSortClose}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+              >
+                <MenuItem onClick={this.handleOrderingChange} id="name">
+                  <ListItemIcon>
+                    {ordering === 'name' ? (
+                      <>
+                        <ArrowDownward fontSize="small" />
+                      </>
+                    ) : (
+                      <>
+                        <ArrowUpward fontSize="small" />
+                      </>
+                    )}
+                  </ListItemIcon>
+                  <FormattedMessage
+                    id="app.program_collection.name"
+                    description="Button label to sort by name"
+                    defaultMessage="Name"
+                  />
+                </MenuItem>
+              </Menu>
             </Grid>
           </Grid>
+
           <Grid container direction="column" justify="center" alignItems="stretch">
             {courses === null ? (
               <Grid item container direction="row" justify="center">
@@ -306,7 +287,7 @@ class CourseList extends Component {
             </Box>
           ) : null}
         </Container>
-        <Divider />
+
         <Footer />
         {programSelected ? (
           <Redirect
@@ -331,7 +312,6 @@ CourseList.defaultProps = {
 
 CourseList.propTypes = {
   classes: PropTypes.shape({
-    mainContainer: PropTypes.string.isRequired,
     listContainer: PropTypes.string.isRequired,
     paginationPaddedBox: PropTypes.string.isRequired,
   }).isRequired,

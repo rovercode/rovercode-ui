@@ -268,7 +268,7 @@ class RoverConnection extends Component {
           justifyContent: 'flex-start',
           minWidth: '200px',
           height: '48px',
-          padding: '8px',
+          padding: '0px 8px',
           border: 'none',
         }}
         onClick={this.connect}

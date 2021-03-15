@@ -33,21 +33,6 @@ import { debounce } from 'throttle-debounce';
 import flavourImage from '@/assets/images/flavour.png';
 
 const styles = (theme) => ({
-  mainContainer: {
-    marginBottom: theme.spacing(8),
-    [theme.breakpoints.up('xs')]: {
-      minWidth: theme.breakpoints.values.xs,
-    },
-    [theme.breakpoints.up('sm')]: {
-      minWidth: theme.breakpoints.values.sm,
-    },
-    [theme.breakpoints.up('md')]: {
-      minWidth: theme.breakpoints.values.md,
-    },
-    [theme.breakpoints.up('lg')]: {
-      minWidth: theme.breakpoints.values.lg,
-    },
-  },
   paginationPaddedBox: {
     display: 'flex',
     justifyContent: 'center',
@@ -226,7 +211,7 @@ class ProgramCollection extends Component {
     }
 
     return (
-      <Container className={classes.mainContainer}>
+      <Container>
         <TitleArea item container direction="row" justify="space-between">
           <Grid item>
             <Title variant="h1">{label}</Title>
@@ -344,7 +329,7 @@ class ProgramCollection extends Component {
                   <Box
                     marginRight={2}
                     marginLeft={2}
-                    style={{ width: '160px' }}
+                    style={{ width: '130px' }}
                     className={classes.flexitem4}
                   >
                     <Typography variant="subtitle2" display="inline">
@@ -501,7 +486,6 @@ ProgramCollection.defaultProps = {
 
 ProgramCollection.propTypes = {
   classes: PropTypes.shape({
-    mainContainer: PropTypes.string.isRequired,
     paginationPaddedBox: PropTypes.string.isRequired,
     flexitem1: PropTypes.string.isRequired,
     flexitem2: PropTypes.string.isRequired,

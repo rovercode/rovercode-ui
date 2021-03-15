@@ -27,21 +27,6 @@ import ConnectionHelp from '@/components/ConnectionHelp';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = (theme) => ({
-  mainContainer: {
-    marginBottom: theme.spacing(8),
-    [theme.breakpoints.up('xs')]: {
-      minWidth: theme.breakpoints.values.xs,
-    },
-    [theme.breakpoints.up('sm')]: {
-      minWidth: theme.breakpoints.values.sm,
-    },
-    [theme.breakpoints.up('md')]: {
-      minWidth: theme.breakpoints.values.md,
-    },
-    [theme.breakpoints.up('lg')]: {
-      minWidth: theme.breakpoints.values.lg,
-    },
-  },
   hiddenOnMobile: {
     [theme.breakpoints.down('sm')]: {
       display: 'none',
@@ -122,7 +107,7 @@ class TopNav extends Component {
       <>
         {redirectToLogin ? <Redirect to="/accounts/login" /> : null}
 
-        <div className={classes.mainContainer}>
+        <div>
           <AppBar position="static" color="secondary">
             <Toolbar className={classes.hiddenOnMobile}>
               <Box display="flex" justifyContent="left" marginRight={2}>
@@ -321,7 +306,6 @@ TopNav.defaultProps = {
 
 TopNav.propTypes = {
   classes: PropTypes.shape({
-    mainContainer: PropTypes.string.isRequired,
     hiddenOnMobile: PropTypes.string.isRequired,
     hiddenOnWeb: PropTypes.string.isRequired,
   }).isRequired,

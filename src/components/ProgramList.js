@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Box, CircularProgress, Grid, Divider,
-} from '@material-ui/core';
+import { Box, CircularProgress, Grid } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -155,14 +153,14 @@ class ProgramList extends Component {
             }}
           />
         ) : null}
-        <Grid container direction="column" justify="center" alignItems="center">
+        <Grid container direction="column">
           {programs === null ? (
             <Grid item>
               <CircularProgress />
             </Grid>
           ) : (
             <Grid item>
-              <Box m={2}>
+              <Box>
                 <ProgramCollection
                   programs={programs}
                   user={user}
@@ -186,7 +184,6 @@ class ProgramList extends Component {
         >
           {dialogContent}
         </ConfirmDialog>
-        <Divider />
         <Footer />
       </>
     );
