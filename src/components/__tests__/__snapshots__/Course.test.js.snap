@@ -3,15 +3,59 @@
 exports[`The Course component renders on the page with no errors 1`] = `
 <WithStyles(ForwardRef(Accordion))
   defaultExpanded={true}
+  elevation={0}
+  onChange={[Function]}
+  square={true}
+  style={
+    Object {
+      "backgroundColor": "transparent",
+    }
+  }
 >
   <WithStyles(ForwardRef(AccordionSummary))
-    expandIcon={<Memo(ExpandMoreIcon) />}
+    style={
+      Object {
+        "padding": "0",
+      }
+    }
   >
-    <WithStyles(ForwardRef(Typography))>
-      Test
-    </WithStyles(ForwardRef(Typography))>
+    <Styled(MuiBox)
+      display="flex"
+      justifyContent="space-between"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <Styled(MuiBox)>
+        <WithStyles(ForwardRef(Typography))
+          variant="h3"
+        >
+          Test
+        </WithStyles(ForwardRef(Typography))>
+      </Styled(MuiBox)>
+      <Styled(MuiBox)>
+        <WithStyles(ForwardRef(Typography))
+          style={
+            Object {
+              "color": "#7F7272",
+            }
+          }
+          variant="h5"
+        >
+          Hide Course
+        </WithStyles(ForwardRef(Typography))>
+      </Styled(MuiBox)>
+    </Styled(MuiBox)>
   </WithStyles(ForwardRef(AccordionSummary))>
-  <WithStyles(ForwardRef(AccordionDetails))>
+  <WithStyles(ForwardRef(AccordionDetails))
+    style={
+      Object {
+        "padding": "0",
+      }
+    }
+  >
     <WithStyles(ForwardRef(Grid))
       container={true}
       direction="row"

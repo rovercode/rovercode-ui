@@ -1,229 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The TopNav component should render on the page with no errors 1`] = `
-<Fragment>
-  <div>
-    <WithStyles(ForwardRef(AppBar))
-      color="secondary"
-      position="static"
-    >
-      <WithStyles(ForwardRef(Toolbar))>
-        <WithStyles(ForwardRef(Grid))
-          container={true}
-          direction="row"
-          item={true}
-          spacing={4}
-        >
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            xl={2}
-            xs={3}
-          >
-            <Styled(MuiBox)
-              display="flex"
-              justifyContent="left"
-            >
-              <Connect(RoverConnection) />
-              <withCookies(Connect(ConnectionHelp))
-                suppressGuide={false}
-              />
-            </Styled(MuiBox)>
-          </WithStyles(ForwardRef(Grid))>
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            xl={2}
-            xs={2}
-          >
-            <WithStyles(Styled(MuiBox))
-              display="flex"
-              justifyContent="center"
-            >
-              <WithStyles(ForwardRef(Button))
-                color="secondary"
-                component={
-                  Object {
-                    "$$typeof": Symbol(react.forward_ref),
-                    "displayName": "Link",
-                    "propTypes": Object {
-                      "innerRef": [Function],
-                      "onClick": [Function],
-                      "replace": [Function],
-                      "target": [Function],
-                      "to": [Function],
-                    },
-                    "render": [Function],
-                  }
-                }
-                disableElevation={true}
-                size="large"
-                to="/programs/mine"
-                variant="contained"
-              >
-                <WithStyles(ForwardRef(Typography))
-                  variant="h6"
-                >
-                  <FormattedMessage
-                    defaultMessage="My Programs"
-                    id="app.top_nav.my_programs"
-                  />
-                </WithStyles(ForwardRef(Typography))>
-              </WithStyles(ForwardRef(Button))>
-            </WithStyles(Styled(MuiBox))>
-          </WithStyles(ForwardRef(Grid))>
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            xl={2}
-            xs={3}
-          >
-            <WithStyles(Styled(MuiBox))
-              display="flex"
-              justifyContent="center"
-            >
-              <WithStyles(ForwardRef(Button))
-                color="secondary"
-                component={
-                  Object {
-                    "$$typeof": Symbol(react.forward_ref),
-                    "displayName": "Link",
-                    "propTypes": Object {
-                      "innerRef": [Function],
-                      "onClick": [Function],
-                      "replace": [Function],
-                      "target": [Function],
-                      "to": [Function],
-                    },
-                    "render": [Function],
-                  }
-                }
-                disableElevation={true}
-                size="large"
-                to="/programs/community"
-                variant="contained"
-              >
-                <WithStyles(ForwardRef(Typography))
-                  variant="h6"
-                >
-                  <FormattedMessage
-                    defaultMessage="Community Programs"
-                    id="app.top_nav.community_programs"
-                  />
-                </WithStyles(ForwardRef(Typography))>
-              </WithStyles(ForwardRef(Button))>
-            </WithStyles(Styled(MuiBox))>
-          </WithStyles(ForwardRef(Grid))>
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            xl={2}
-            xs={2}
-          >
-            <WithStyles(Styled(MuiBox))
-              display="flex"
-              justifyContent="center"
-            >
-              <WithStyles(ForwardRef(Button))
-                color="secondary"
-                component={
-                  Object {
-                    "$$typeof": Symbol(react.forward_ref),
-                    "displayName": "Link",
-                    "propTypes": Object {
-                      "innerRef": [Function],
-                      "onClick": [Function],
-                      "replace": [Function],
-                      "target": [Function],
-                      "to": [Function],
-                    },
-                    "render": [Function],
-                  }
-                }
-                disableElevation={true}
-                size="large"
-                to="/courses"
-                variant="contained"
-              >
-                <WithStyles(ForwardRef(Typography))
-                  variant="h6"
-                >
-                  <FormattedMessage
-                    defaultMessage="Courses"
-                    id="app.top_nav.courses"
-                  />
-                </WithStyles(ForwardRef(Typography))>
-              </WithStyles(ForwardRef(Button))>
-            </WithStyles(Styled(MuiBox))>
-          </WithStyles(ForwardRef(Grid))>
-        </WithStyles(ForwardRef(Grid))>
-        <WithStyles(ForwardRef(Button))
-          aria-controls="user-menu"
-          aria-haspopup="true"
-          aria-label="account of current user"
-          color="secondary"
-          disableElevation={true}
-          endIcon={<Memo(ArrowDropDownIcon) />}
-          onClick={[Function]}
-          size="large"
-          variant="contained"
-        >
-          <WithStyles(ForwardRef(Typography))
-            variant="h6"
-          >
-            Dale Gribble
-          </WithStyles(ForwardRef(Typography))>
-        </WithStyles(ForwardRef(Button))>
-        <WithStyles(ForwardRef(Menu))
-          anchorEl={null}
-          anchorOrigin={
-            Object {
-              "horizontal": "center",
-              "vertical": "bottom",
-            }
-          }
-          getContentAnchorEl={null}
-          id="user-menu"
-          keepMounted={true}
-          onClose={[Function]}
-          open={false}
-          transformOrigin={
-            Object {
-              "horizontal": "center",
-              "vertical": "top",
-            }
-          }
-        >
-          <WithStyles(ForwardRef(MenuItem))
-            component={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "displayName": "Link",
-                "propTypes": Object {
-                  "innerRef": [Function],
-                  "onClick": [Function],
-                  "replace": [Function],
-                  "target": [Function],
-                  "to": [Function],
-                },
-                "render": [Function],
-              }
-            }
-            to="/user/settings"
-          >
-            <FormattedMessage
-              defaultMessage="Settings"
-              id="app.top_nav.settings"
-            />
-          </WithStyles(ForwardRef(MenuItem))>
-          <WithStyles(ForwardRef(MenuItem))
-            onClick={[Function]}
-          >
-            <FormattedMessage
-              defaultMessage="Sign Out"
-              id="app.top_nav.sign_out"
-            />
-          </WithStyles(ForwardRef(MenuItem))>
-        </WithStyles(ForwardRef(Menu))>
-      </WithStyles(ForwardRef(Toolbar))>
-    </WithStyles(ForwardRef(AppBar))>
-    <WithStyles(Styled(MuiBox)) />
-  </div>
-</Fragment>
+<TopNav
+  allCookies={
+    Object {
+      "auth_jwt": "1234",
+      "refresh_jwt": "5678",
+    }
+  }
+  classes={
+    Object {
+      "hiddenOnMobile": "TopNav-hiddenOnMobile-2",
+      "hiddenOnWeb": "TopNav-hiddenOnWeb-3",
+      "mainContainer": "TopNav-mainContainer-1",
+    }
+  }
+  cookies={
+    Cookies {
+      "HAS_DOCUMENT_COOKIE": true,
+      "changeListeners": Array [
+        [Function],
+      ],
+      "cookies": Object {
+        "auth_jwt": "1234",
+        "refresh_jwt": "5678",
+      },
+    }
+  }
+  logout={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [MockFunction],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  userName="Dale Gribble"
+/>
 `;
