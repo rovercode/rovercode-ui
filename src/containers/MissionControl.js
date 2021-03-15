@@ -25,6 +25,7 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
+import Blog from '@/components/Blog';
 import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
@@ -455,6 +456,22 @@ class MissionControl extends Component {
               </Accordion>
             </Grid>
             <Grid item>
+              <Accordion>
+                <AccordionSummary expandIcon={<ExpandMore />}>
+                  <Typography>
+                    <FormattedMessage
+                      id="app.mission_control.blog"
+                      description="Header for blog"
+                      defaultMessage="Blog Post"
+                    />
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Blog questions={code.blog_questions} />
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+            <Grid item>
               <CodeViewer>
                 <FormattedMessage
                   id="app.mission_control.show_code"
@@ -509,6 +526,13 @@ MissionControl.propTypes = {
     lessonId: PropTypes.number,
     lessonTutorialLink: PropTypes.string,
     lessonGoals: PropTypes.string,
+    blog_questions: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      question: PropTypes.string,
+      answer: PropTypes.string,
+      sequence_number: PropTypes.number,
+      required: PropTypes.bool,
+    })),
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
