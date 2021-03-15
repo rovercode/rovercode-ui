@@ -2,9 +2,7 @@
 
 exports[`The CourseList component renders on the page with no errors 1`] = `
 <Fragment>
-  <WithStyles(ForwardRef(Container))
-    className="CourseList-mainContainer-1"
-  >
+  <WithStyles(ForwardRef(Container))>
     <WithStyles(WithStyles(ForwardRef(Grid)))
       container={true}
       direction="row"
@@ -27,7 +25,8 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
     >
       <WithStyles(ForwardRef(Grid))
         item={true}
-        xs={4}
+        md={4}
+        xs={8}
       >
         <WithStyles(ForwardRef(TextField))
           InputProps={
@@ -58,71 +57,63 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
       </WithStyles(ForwardRef(Grid))>
       <WithStyles(ForwardRef(Grid))
         item={true}
-        xs={8}
+        md={true}
+        xs={true}
       >
-        <WithStyles(ForwardRef(Grid))
-          container={true}
-          justify="flex-end"
-          spacing={2}
+        <WithStyles(ForwardRef(Button))
+          aria-controls="sort-menu"
+          aria-haspopup="true"
+          endIcon={<Memo(SortIcon) />}
+          onClick={[Function]}
+          style={
+            Object {
+              "color": "#7F7272",
+              "fontWeight": "400",
+            }
+          }
+          variant="standard"
         >
-          <WithStyles(ForwardRef(Grid))
-            item={true}
+          <FormattedMessage
+            defaultMessage="Sort"
+            id="app.program_collection.sort"
+          />
+        </WithStyles(ForwardRef(Button))>
+        <WithStyles(ForwardRef(Menu))
+          anchorEl={null}
+          anchorOrigin={
+            Object {
+              "horizontal": "center",
+              "vertical": "bottom",
+            }
+          }
+          getContentAnchorEl={null}
+          id="sort-menu"
+          keepMounted={true}
+          onClick={[Function]}
+          onClose={[Function]}
+          open={false}
+          transformOrigin={
+            Object {
+              "horizontal": "center",
+              "vertical": "top",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(MenuItem))
+            id="name"
+            onClick={[Function]}
           >
-            <WithStyles(ForwardRef(Button))
-              aria-controls="sort-menu"
-              aria-haspopup="true"
-              endIcon={<Memo(SortIcon) />}
-              onClick={[Function]}
-              style={
-                Object {
-                  "color": "#7F7272",
-                  "fontWeight": "400",
-                }
-              }
-              variant="standard"
-            >
-              <FormattedMessage
-                defaultMessage="Sort"
-                id="app.program_collection.sort"
+            <WithStyles(ForwardRef(ListItemIcon))>
+              <ArrowDownwardIcon
+                fontSize="small"
               />
-            </WithStyles(ForwardRef(Button))>
-            <WithStyles(ForwardRef(Menu))
-              anchorEl={null}
-              anchorOrigin={
-                Object {
-                  "horizontal": "center",
-                  "vertical": "bottom",
-                }
-              }
-              getContentAnchorEl={null}
-              id="sort-menu"
-              keepMounted={true}
-              onClose={[Function]}
-              open={false}
-              transformOrigin={
-                Object {
-                  "horizontal": "center",
-                  "vertical": "top",
-                }
-              }
-            >
-              <WithStyles(ForwardRef(MenuItem))
-                id="name"
-                onClick={[Function]}
-              >
-                <WithStyles(ForwardRef(ListItemIcon))>
-                  <ArrowDownwardIcon
-                    fontSize="small"
-                  />
-                </WithStyles(ForwardRef(ListItemIcon))>
-                <FormattedMessage
-                  defaultMessage="Name"
-                  id="app.program_collection.name"
-                />
-              </WithStyles(ForwardRef(MenuItem))>
-            </WithStyles(ForwardRef(Menu))>
-          </WithStyles(ForwardRef(Grid))>
-        </WithStyles(ForwardRef(Grid))>
+            </WithStyles(ForwardRef(ListItemIcon))>
+            <FormattedMessage
+              defaultMessage="Name"
+              id="app.program_collection.name"
+            />
+          </WithStyles(ForwardRef(MenuItem))>
+        </WithStyles(ForwardRef(Menu))>
       </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
@@ -135,7 +126,7 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
         item={true}
       >
         <Styled(MuiBox)
-          className="CourseList-listContainer-2"
+          className="CourseList-listContainer-1"
         >
           <Course
             course={
@@ -177,7 +168,7 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
       </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>
     <Styled(MuiBox)
-      className="CourseList-paginationPaddedBox-3"
+      className="CourseList-paginationPaddedBox-2"
     >
       <WithStyles(ForwardRef(Pagination))
         color="secondary"
@@ -189,7 +180,6 @@ exports[`The CourseList component renders on the page with no errors 1`] = `
       />
     </Styled(MuiBox)>
   </WithStyles(ForwardRef(Container))>
-  <WithStyles(ForwardRef(Divider)) />
   <Footer />
 </Fragment>
 `;

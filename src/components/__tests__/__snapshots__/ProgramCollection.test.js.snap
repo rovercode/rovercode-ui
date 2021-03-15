@@ -148,13 +148,12 @@ exports[`The ProgramCollection component renders on the page with no errors as f
         <ProgramCollection
           classes={
             Object {
-              "flexitem1": "ProgramCollection-flexitem1-3",
-              "flexitem2": "ProgramCollection-flexitem2-4",
-              "flexitem3": "ProgramCollection-flexitem3-5",
-              "flexitem4": "ProgramCollection-flexitem4-6",
-              "flexitem5": "ProgramCollection-flexitem5-7",
-              "mainContainer": "ProgramCollection-mainContainer-1",
-              "paginationPaddedBox": "ProgramCollection-paginationPaddedBox-2",
+              "flexitem1": "ProgramCollection-flexitem1-2",
+              "flexitem2": "ProgramCollection-flexitem2-3",
+              "flexitem3": "ProgramCollection-flexitem3-4",
+              "flexitem4": "ProgramCollection-flexitem4-5",
+              "flexitem5": "ProgramCollection-flexitem5-6",
+              "paginationPaddedBox": "ProgramCollection-paginationPaddedBox-1",
             }
           }
           intl={
@@ -238,11 +237,8 @@ exports[`The ProgramCollection component renders on the page with no errors as f
             }
           }
         >
-          <WithStyles(ForwardRef(Container))
-            className="ProgramCollection-mainContainer-1"
-          >
+          <WithStyles(ForwardRef(Container))>
             <ForwardRef(Container)
-              className="ProgramCollection-mainContainer-1"
               classes={
                 Object {
                   "disableGutters": "MuiContainer-disableGutters",
@@ -257,7 +253,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
               }
             >
               <div
-                className="MuiContainer-root ProgramCollection-mainContainer-1 MuiContainer-maxWidthLg"
+                className="MuiContainer-root MuiContainer-maxWidthLg"
               >
                 <WithStyles(WithStyles(ForwardRef(Grid)))
                   container={true}
@@ -268,7 +264,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                   <WithStyles(ForwardRef(Grid))
                     classes={
                       Object {
-                        "root": "WithStyles(ForwardRef(Grid))-root-22",
+                        "root": "WithStyles(ForwardRef(Grid))-root-21",
                       }
                     }
                     container={true}
@@ -368,7 +364,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                           "justify-xs-space-around": "MuiGrid-justify-xs-space-around",
                           "justify-xs-space-between": "MuiGrid-justify-xs-space-between",
                           "justify-xs-space-evenly": "MuiGrid-justify-xs-space-evenly",
-                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-22",
+                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-21",
                           "spacing-xs-1": "MuiGrid-spacing-xs-1",
                           "spacing-xs-10": "MuiGrid-spacing-xs-10",
                           "spacing-xs-2": "MuiGrid-spacing-xs-2",
@@ -390,7 +386,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                       justify="space-between"
                     >
                       <div
-                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-22 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
+                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-21 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
                       >
                         <WithStyles(ForwardRef(Grid))
                           item={true}
@@ -514,7 +510,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                 <WithStyles(ForwardRef(Typography))
                                   classes={
                                     Object {
-                                      "root": "WithStyles(ForwardRef(Typography))-root-23",
+                                      "root": "WithStyles(ForwardRef(Typography))-root-22",
                                     }
                                   }
                                   variant="h1"
@@ -548,7 +544,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         "noWrap": "MuiTypography-noWrap",
                                         "overline": "MuiTypography-overline",
                                         "paragraph": "MuiTypography-paragraph",
-                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-23",
+                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-22",
                                         "srOnly": "MuiTypography-srOnly",
                                         "subtitle1": "MuiTypography-subtitle1",
                                         "subtitle2": "MuiTypography-subtitle2",
@@ -557,7 +553,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                     variant="h1"
                                   >
                                     <h1
-                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-23 MuiTypography-h1"
+                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-22 MuiTypography-h1"
                                     >
                                       My Programs
                                     </h1>
@@ -705,7 +701,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                       }
                     >
                       <WithStyles(ForwardRef(Grid))
-                        className="ProgramCollection-flexitem1-3"
+                        className="ProgramCollection-flexitem1-2"
                         container={true}
                         item={true}
                         md={8}
@@ -713,7 +709,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                         xs={12}
                       >
                         <ForwardRef(Grid)
-                          className="ProgramCollection-flexitem1-3"
+                          className="ProgramCollection-flexitem1-2"
                           classes={
                             Object {
                               "align-content-xs-center": "MuiGrid-align-content-xs-center",
@@ -828,7 +824,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                           xs={12}
                         >
                           <div
-                            className="MuiGrid-root ProgramCollection-flexitem1-3 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8"
+                            className="MuiGrid-root ProgramCollection-flexitem1-2 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8"
                           >
                             <WithStyles(ForwardRef(Grid))
                               item={true}
@@ -1273,10 +1269,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                           className="MuiOutlinedInput-notchedOutline"
                                                           classes={
                                                             Object {
-                                                              "legend": "PrivateNotchedOutline-legend-11",
-                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-12",
-                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-13",
-                                                              "root": "PrivateNotchedOutline-root-10",
+                                                              "legend": "PrivateNotchedOutline-legend-10",
+                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-11",
+                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-12",
+                                                              "root": "PrivateNotchedOutline-root-9",
                                                             }
                                                           }
                                                           labelWidth={0}
@@ -1284,7 +1280,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                         >
                                                           <fieldset
                                                             aria-hidden={true}
-                                                            className="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                                                            className="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
                                                             style={
                                                               Object {
                                                                 "paddingLeft": 8,
@@ -1292,7 +1288,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                             }
                                                           >
                                                             <legend
-                                                              className="PrivateNotchedOutline-legend-11"
+                                                              className="PrivateNotchedOutline-legend-10"
                                                               style={
                                                                 Object {
                                                                   "width": 0.01,
@@ -1329,7 +1325,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                               marginRight={2}
                             >
                               <div
-                                className="MuiBox-root MuiBox-root-14"
+                                className="MuiBox-root MuiBox-root-13"
                               >
                                 <WithStyles(ForwardRef(Button))
                                   aria-controls="sort-menu"
@@ -1545,6 +1541,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                   getContentAnchorEl={null}
                                   id="sort-menu"
                                   keepMounted={true}
+                                  onClick={[Function]}
                                   onClose={[Function]}
                                   open={false}
                                   transformOrigin={
@@ -1571,6 +1568,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                     getContentAnchorEl={null}
                                     id="sort-menu"
                                     keepMounted={true}
+                                    onClick={[Function]}
                                     onClose={[Function]}
                                     open={false}
                                     transformOrigin={
@@ -1598,6 +1596,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                       getContentAnchorEl={null}
                                       id="sort-menu"
                                       keepMounted={true}
+                                      onClick={[Function]}
                                       onClose={[Function]}
                                       onEntering={[Function]}
                                       open={false}
@@ -1633,6 +1632,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         getContentAnchorEl={null}
                                         id="sort-menu"
                                         keepMounted={true}
+                                        onClick={[Function]}
                                         onClose={[Function]}
                                         onEntering={[Function]}
                                         open={false}
@@ -1653,6 +1653,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                           className="MuiPopover-root"
                                           id="sort-menu"
                                           keepMounted={true}
+                                          onClick={[Function]}
                                           onClose={[Function]}
                                           open={false}
                                         >
@@ -1722,6 +1723,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <div
                                                 className="MuiPopover-root"
                                                 id="sort-menu"
+                                                onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 role="presentation"
                                                 style={
@@ -2116,7 +2118,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                             </Styled(MuiBox)>
                             <Styled(MuiBox)>
                               <div
-                                className="MuiBox-root MuiBox-root-15"
+                                className="MuiBox-root MuiBox-root-14"
                               >
                                 <WithStyles(WithStyles(ForwardRef(Autocomplete)))
                                   filterSelectedOptions={true}
@@ -2138,7 +2140,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                   <WithStyles(ForwardRef(Autocomplete))
                                     classes={
                                       Object {
-                                        "root": "WithStyles(ForwardRef(Autocomplete))-root-24",
+                                        "root": "WithStyles(ForwardRef(Autocomplete))-root-23",
                                       }
                                     }
                                     filterSelectedOptions={true}
@@ -2181,7 +2183,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                           "popperDisablePortal": "MuiAutocomplete-popperDisablePortal",
                                           "popupIndicator": "MuiAutocomplete-popupIndicator",
                                           "popupIndicatorOpen": "MuiAutocomplete-popupIndicatorOpen",
-                                          "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-24",
+                                          "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-23",
                                           "tag": "MuiAutocomplete-tag",
                                           "tagSizeSmall": "MuiAutocomplete-tagSizeSmall",
                                         }
@@ -2205,7 +2207,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                       <div
                                         aria-expanded={false}
                                         aria-owns={null}
-                                        className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-24 MuiAutocomplete-hasClearIcon"
+                                        className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-23 MuiAutocomplete-hasClearIcon"
                                         onClick={[Function]}
                                         onKeyDown={[Function]}
                                         onMouseDown={[Function]}
@@ -3310,7 +3312,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>
                       <WithStyles(ForwardRef(Grid))
-                        className="ProgramCollection-flexitem2-4"
+                        className="ProgramCollection-flexitem2-3"
                         container={true}
                         item={true}
                         md={true}
@@ -3318,7 +3320,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                         xs={true}
                       >
                         <ForwardRef(Grid)
-                          className="ProgramCollection-flexitem2-4"
+                          className="ProgramCollection-flexitem2-3"
                           classes={
                             Object {
                               "align-content-xs-center": "MuiGrid-align-content-xs-center",
@@ -3433,7 +3435,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                           xs={true}
                         >
                           <div
-                            className="MuiGrid-root ProgramCollection-flexitem2-4 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-true MuiGrid-grid-md-true"
+                            className="MuiGrid-root ProgramCollection-flexitem2-3 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-true MuiGrid-grid-md-true"
                           >
                             <WithStyles(ForwardRef(Grid))
                               item={true}
@@ -3555,27 +3557,27 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                 >
                                   <Styled(MuiBox)
                                     alignItems="center"
-                                    className="ProgramCollection-flexitem3-5"
+                                    className="ProgramCollection-flexitem3-4"
                                     display="flex"
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-17 ProgramCollection-flexitem3-5"
+                                      className="MuiBox-root MuiBox-root-16 ProgramCollection-flexitem3-4"
                                     >
                                       <Styled(MuiBox)
-                                        className="ProgramCollection-flexitem4-6"
+                                        className="ProgramCollection-flexitem4-5"
                                         marginLeft={2}
                                         marginRight={2}
                                         style={
                                           Object {
-                                            "width": "160px",
+                                            "width": "130px",
                                           }
                                         }
                                       >
                                         <div
-                                          className="MuiBox-root MuiBox-root-18 ProgramCollection-flexitem4-6"
+                                          className="MuiBox-root MuiBox-root-17 ProgramCollection-flexitem4-5"
                                           style={
                                             Object {
-                                              "width": "160px",
+                                              "width": "130px",
                                             }
                                           }
                                         >
@@ -3833,10 +3835,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         </div>
                                       </Styled(MuiBox)>
                                       <Styled(MuiBox)
-                                        className="ProgramCollection-flexitem5-7"
+                                        className="ProgramCollection-flexitem5-6"
                                       >
                                         <div
-                                          className="MuiBox-root MuiBox-root-19 ProgramCollection-flexitem5-7"
+                                          className="MuiBox-root MuiBox-root-18 ProgramCollection-flexitem5-6"
                                         >
                                           <WithStyles(ForwardRef(Button))
                                             color="primary"
@@ -5001,7 +5003,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <WithStyles(ForwardRef(Button))
                                                 classes={
                                                   Object {
-                                                    "root": "WithStyles(ForwardRef(Button))-root-25",
+                                                    "root": "WithStyles(ForwardRef(Button))-root-24",
                                                   }
                                                 }
                                                 id={5}
@@ -5033,7 +5035,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                       "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                       "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-25",
+                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-24",
                                                       "sizeLarge": "MuiButton-sizeLarge",
                                                       "sizeSmall": "MuiButton-sizeSmall",
                                                       "startIcon": "MuiButton-startIcon",
@@ -5051,7 +5053,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   startIcon={<Memo(DeleteIcon) />}
                                                 >
                                                   <WithStyles(ForwardRef(ButtonBase))
-                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-25 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-24 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                     component="button"
                                                     disabled={false}
                                                     focusRipple={true}
@@ -5062,7 +5064,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     type="button"
                                                   >
                                                     <ForwardRef(ButtonBase)
-                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-25 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-24 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                       classes={
                                                         Object {
                                                           "disabled": "Mui-disabled",
@@ -5080,7 +5082,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       type="button"
                                                     >
                                                       <button
-                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-25 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-24 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                         disabled={false}
                                                         id={5}
                                                         name="Unnamed_Design_2"
@@ -5192,10 +5194,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                   </ForwardRef(Grid)>
                 </WithStyles(ForwardRef(Grid))>
                 <Styled(MuiBox)
-                  className="ProgramCollection-paginationPaddedBox-2"
+                  className="ProgramCollection-paginationPaddedBox-1"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-21 ProgramCollection-paginationPaddedBox-2"
+                    className="MuiBox-root MuiBox-root-20 ProgramCollection-paginationPaddedBox-1"
                   >
                     <WithStyles(ForwardRef(Pagination))
                       color="secondary"
@@ -6201,13 +6203,12 @@ exports[`The ProgramCollection component renders on the page with no errors as f
         <ProgramCollection
           classes={
             Object {
-              "flexitem1": "ProgramCollection-flexitem1-3",
-              "flexitem2": "ProgramCollection-flexitem2-4",
-              "flexitem3": "ProgramCollection-flexitem3-5",
-              "flexitem4": "ProgramCollection-flexitem4-6",
-              "flexitem5": "ProgramCollection-flexitem5-7",
-              "mainContainer": "ProgramCollection-mainContainer-1",
-              "paginationPaddedBox": "ProgramCollection-paginationPaddedBox-2",
+              "flexitem1": "ProgramCollection-flexitem1-2",
+              "flexitem2": "ProgramCollection-flexitem2-3",
+              "flexitem3": "ProgramCollection-flexitem3-4",
+              "flexitem4": "ProgramCollection-flexitem4-5",
+              "flexitem5": "ProgramCollection-flexitem5-6",
+              "paginationPaddedBox": "ProgramCollection-paginationPaddedBox-1",
             }
           }
           intl={
@@ -6291,11 +6292,8 @@ exports[`The ProgramCollection component renders on the page with no errors as f
             }
           }
         >
-          <WithStyles(ForwardRef(Container))
-            className="ProgramCollection-mainContainer-1"
-          >
+          <WithStyles(ForwardRef(Container))>
             <ForwardRef(Container)
-              className="ProgramCollection-mainContainer-1"
               classes={
                 Object {
                   "disableGutters": "MuiContainer-disableGutters",
@@ -6310,7 +6308,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
               }
             >
               <div
-                className="MuiContainer-root ProgramCollection-mainContainer-1 MuiContainer-maxWidthLg"
+                className="MuiContainer-root MuiContainer-maxWidthLg"
               >
                 <WithStyles(WithStyles(ForwardRef(Grid)))
                   container={true}
@@ -6321,7 +6319,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                   <WithStyles(ForwardRef(Grid))
                     classes={
                       Object {
-                        "root": "WithStyles(ForwardRef(Grid))-root-36",
+                        "root": "WithStyles(ForwardRef(Grid))-root-35",
                       }
                     }
                     container={true}
@@ -6421,7 +6419,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                           "justify-xs-space-around": "MuiGrid-justify-xs-space-around",
                           "justify-xs-space-between": "MuiGrid-justify-xs-space-between",
                           "justify-xs-space-evenly": "MuiGrid-justify-xs-space-evenly",
-                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-36",
+                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-35",
                           "spacing-xs-1": "MuiGrid-spacing-xs-1",
                           "spacing-xs-10": "MuiGrid-spacing-xs-10",
                           "spacing-xs-2": "MuiGrid-spacing-xs-2",
@@ -6443,7 +6441,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                       justify="space-between"
                     >
                       <div
-                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-36 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
+                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-35 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
                       >
                         <WithStyles(ForwardRef(Grid))
                           item={true}
@@ -6567,7 +6565,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                 <WithStyles(ForwardRef(Typography))
                                   classes={
                                     Object {
-                                      "root": "WithStyles(ForwardRef(Typography))-root-37",
+                                      "root": "WithStyles(ForwardRef(Typography))-root-36",
                                     }
                                   }
                                   variant="h1"
@@ -6601,7 +6599,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         "noWrap": "MuiTypography-noWrap",
                                         "overline": "MuiTypography-overline",
                                         "paragraph": "MuiTypography-paragraph",
-                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-37",
+                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-36",
                                         "srOnly": "MuiTypography-srOnly",
                                         "subtitle1": "MuiTypography-subtitle1",
                                         "subtitle2": "MuiTypography-subtitle2",
@@ -6610,7 +6608,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                     variant="h1"
                                   >
                                     <h1
-                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-37 MuiTypography-h1"
+                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-36 MuiTypography-h1"
                                     >
                                       My Programs
                                     </h1>
@@ -6758,7 +6756,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                       }
                     >
                       <WithStyles(ForwardRef(Grid))
-                        className="ProgramCollection-flexitem1-3"
+                        className="ProgramCollection-flexitem1-2"
                         container={true}
                         item={true}
                         md={8}
@@ -6766,7 +6764,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                         xs={12}
                       >
                         <ForwardRef(Grid)
-                          className="ProgramCollection-flexitem1-3"
+                          className="ProgramCollection-flexitem1-2"
                           classes={
                             Object {
                               "align-content-xs-center": "MuiGrid-align-content-xs-center",
@@ -6881,7 +6879,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                           xs={12}
                         >
                           <div
-                            className="MuiGrid-root ProgramCollection-flexitem1-3 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8"
+                            className="MuiGrid-root ProgramCollection-flexitem1-2 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8"
                           >
                             <WithStyles(ForwardRef(Grid))
                               item={true}
@@ -7326,10 +7324,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                           className="MuiOutlinedInput-notchedOutline"
                                                           classes={
                                                             Object {
-                                                              "legend": "PrivateNotchedOutline-legend-11",
-                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-12",
-                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-13",
-                                                              "root": "PrivateNotchedOutline-root-10",
+                                                              "legend": "PrivateNotchedOutline-legend-10",
+                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-11",
+                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-12",
+                                                              "root": "PrivateNotchedOutline-root-9",
                                                             }
                                                           }
                                                           labelWidth={0}
@@ -7337,7 +7335,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                         >
                                                           <fieldset
                                                             aria-hidden={true}
-                                                            className="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                                                            className="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
                                                             style={
                                                               Object {
                                                                 "paddingLeft": 8,
@@ -7345,7 +7343,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                             }
                                                           >
                                                             <legend
-                                                              className="PrivateNotchedOutline-legend-11"
+                                                              className="PrivateNotchedOutline-legend-10"
                                                               style={
                                                                 Object {
                                                                   "width": 0.01,
@@ -7382,7 +7380,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                               marginRight={2}
                             >
                               <div
-                                className="MuiBox-root MuiBox-root-28"
+                                className="MuiBox-root MuiBox-root-27"
                               >
                                 <WithStyles(ForwardRef(Button))
                                   aria-controls="sort-menu"
@@ -7598,6 +7596,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                   getContentAnchorEl={null}
                                   id="sort-menu"
                                   keepMounted={true}
+                                  onClick={[Function]}
                                   onClose={[Function]}
                                   open={false}
                                   transformOrigin={
@@ -7624,6 +7623,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                     getContentAnchorEl={null}
                                     id="sort-menu"
                                     keepMounted={true}
+                                    onClick={[Function]}
                                     onClose={[Function]}
                                     open={false}
                                     transformOrigin={
@@ -7651,6 +7651,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                       getContentAnchorEl={null}
                                       id="sort-menu"
                                       keepMounted={true}
+                                      onClick={[Function]}
                                       onClose={[Function]}
                                       onEntering={[Function]}
                                       open={false}
@@ -7686,6 +7687,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         getContentAnchorEl={null}
                                         id="sort-menu"
                                         keepMounted={true}
+                                        onClick={[Function]}
                                         onClose={[Function]}
                                         onEntering={[Function]}
                                         open={false}
@@ -7706,6 +7708,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                           className="MuiPopover-root"
                                           id="sort-menu"
                                           keepMounted={true}
+                                          onClick={[Function]}
                                           onClose={[Function]}
                                           open={false}
                                         >
@@ -7829,6 +7832,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <div
                                                 className="MuiPopover-root"
                                                 id="sort-menu"
+                                                onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 role="presentation"
                                                 style={
@@ -8223,7 +8227,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                             </Styled(MuiBox)>
                             <Styled(MuiBox)>
                               <div
-                                className="MuiBox-root MuiBox-root-29"
+                                className="MuiBox-root MuiBox-root-28"
                               >
                                 <WithStyles(WithStyles(ForwardRef(Autocomplete)))
                                   filterSelectedOptions={true}
@@ -8245,7 +8249,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                   <WithStyles(ForwardRef(Autocomplete))
                                     classes={
                                       Object {
-                                        "root": "WithStyles(ForwardRef(Autocomplete))-root-38",
+                                        "root": "WithStyles(ForwardRef(Autocomplete))-root-37",
                                       }
                                     }
                                     filterSelectedOptions={true}
@@ -8288,7 +8292,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                           "popperDisablePortal": "MuiAutocomplete-popperDisablePortal",
                                           "popupIndicator": "MuiAutocomplete-popupIndicator",
                                           "popupIndicatorOpen": "MuiAutocomplete-popupIndicatorOpen",
-                                          "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-38",
+                                          "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-37",
                                           "tag": "MuiAutocomplete-tag",
                                           "tagSizeSmall": "MuiAutocomplete-tagSizeSmall",
                                         }
@@ -8312,7 +8316,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                       <div
                                         aria-expanded={false}
                                         aria-owns={null}
-                                        className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-38 MuiAutocomplete-hasClearIcon"
+                                        className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-37 MuiAutocomplete-hasClearIcon"
                                         onClick={[Function]}
                                         onKeyDown={[Function]}
                                         onMouseDown={[Function]}
@@ -9417,7 +9421,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>
                       <WithStyles(ForwardRef(Grid))
-                        className="ProgramCollection-flexitem2-4"
+                        className="ProgramCollection-flexitem2-3"
                         container={true}
                         item={true}
                         md={true}
@@ -9425,7 +9429,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                         xs={true}
                       >
                         <ForwardRef(Grid)
-                          className="ProgramCollection-flexitem2-4"
+                          className="ProgramCollection-flexitem2-3"
                           classes={
                             Object {
                               "align-content-xs-center": "MuiGrid-align-content-xs-center",
@@ -9540,7 +9544,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                           xs={true}
                         >
                           <div
-                            className="MuiGrid-root ProgramCollection-flexitem2-4 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-true MuiGrid-grid-md-true"
+                            className="MuiGrid-root ProgramCollection-flexitem2-3 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-true MuiGrid-grid-md-true"
                           >
                             <WithStyles(ForwardRef(Grid))
                               item={true}
@@ -9662,27 +9666,27 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                 >
                                   <Styled(MuiBox)
                                     alignItems="center"
-                                    className="ProgramCollection-flexitem3-5"
+                                    className="ProgramCollection-flexitem3-4"
                                     display="flex"
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-31 ProgramCollection-flexitem3-5"
+                                      className="MuiBox-root MuiBox-root-30 ProgramCollection-flexitem3-4"
                                     >
                                       <Styled(MuiBox)
-                                        className="ProgramCollection-flexitem4-6"
+                                        className="ProgramCollection-flexitem4-5"
                                         marginLeft={2}
                                         marginRight={2}
                                         style={
                                           Object {
-                                            "width": "160px",
+                                            "width": "130px",
                                           }
                                         }
                                       >
                                         <div
-                                          className="MuiBox-root MuiBox-root-32 ProgramCollection-flexitem4-6"
+                                          className="MuiBox-root MuiBox-root-31 ProgramCollection-flexitem4-5"
                                           style={
                                             Object {
-                                              "width": "160px",
+                                              "width": "130px",
                                             }
                                           }
                                         >
@@ -9795,10 +9799,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         </div>
                                       </Styled(MuiBox)>
                                       <Styled(MuiBox)
-                                        className="ProgramCollection-flexitem5-7"
+                                        className="ProgramCollection-flexitem5-6"
                                       >
                                         <div
-                                          className="MuiBox-root MuiBox-root-33 ProgramCollection-flexitem5-7"
+                                          className="MuiBox-root MuiBox-root-32 ProgramCollection-flexitem5-6"
                                         >
                                           <WithStyles(ForwardRef(Button))
                                             color="primary"
@@ -10991,7 +10995,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               <WithStyles(ForwardRef(Button))
                                                 classes={
                                                   Object {
-                                                    "root": "WithStyles(ForwardRef(Button))-root-39",
+                                                    "root": "WithStyles(ForwardRef(Button))-root-38",
                                                   }
                                                 }
                                                 id={5}
@@ -11023,7 +11027,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                       "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                       "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-39",
+                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-38",
                                                       "sizeLarge": "MuiButton-sizeLarge",
                                                       "sizeSmall": "MuiButton-sizeSmall",
                                                       "startIcon": "MuiButton-startIcon",
@@ -11041,7 +11045,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   startIcon={<Memo(DeleteIcon) />}
                                                 >
                                                   <WithStyles(ForwardRef(ButtonBase))
-                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-39 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-38 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                     component="button"
                                                     disabled={false}
                                                     focusRipple={true}
@@ -11052,7 +11056,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     type="button"
                                                   >
                                                     <ForwardRef(ButtonBase)
-                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-39 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-38 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                       classes={
                                                         Object {
                                                           "disabled": "Mui-disabled",
@@ -11070,7 +11074,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       type="button"
                                                     >
                                                       <button
-                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-39 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-38 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                         disabled={false}
                                                         id={5}
                                                         name="Unnamed_Design_2"
@@ -11182,10 +11186,10 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                   </ForwardRef(Grid)>
                 </WithStyles(ForwardRef(Grid))>
                 <Styled(MuiBox)
-                  className="ProgramCollection-paginationPaddedBox-2"
+                  className="ProgramCollection-paginationPaddedBox-1"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-35 ProgramCollection-paginationPaddedBox-2"
+                    className="MuiBox-root MuiBox-root-34 ProgramCollection-paginationPaddedBox-1"
                   >
                     <WithStyles(ForwardRef(Pagination))
                       color="secondary"
@@ -12191,13 +12195,12 @@ exports[`The ProgramCollection component renders on the page with no errors as p
         <ProgramCollection
           classes={
             Object {
-              "flexitem1": "ProgramCollection-flexitem1-3",
-              "flexitem2": "ProgramCollection-flexitem2-4",
-              "flexitem3": "ProgramCollection-flexitem3-5",
-              "flexitem4": "ProgramCollection-flexitem4-6",
-              "flexitem5": "ProgramCollection-flexitem5-7",
-              "mainContainer": "ProgramCollection-mainContainer-1",
-              "paginationPaddedBox": "ProgramCollection-paginationPaddedBox-2",
+              "flexitem1": "ProgramCollection-flexitem1-2",
+              "flexitem2": "ProgramCollection-flexitem2-3",
+              "flexitem3": "ProgramCollection-flexitem3-4",
+              "flexitem4": "ProgramCollection-flexitem4-5",
+              "flexitem5": "ProgramCollection-flexitem5-6",
+              "paginationPaddedBox": "ProgramCollection-paginationPaddedBox-1",
             }
           }
           intl={
@@ -12281,11 +12284,8 @@ exports[`The ProgramCollection component renders on the page with no errors as p
             }
           }
         >
-          <WithStyles(ForwardRef(Container))
-            className="ProgramCollection-mainContainer-1"
-          >
+          <WithStyles(ForwardRef(Container))>
             <ForwardRef(Container)
-              className="ProgramCollection-mainContainer-1"
               classes={
                 Object {
                   "disableGutters": "MuiContainer-disableGutters",
@@ -12300,7 +12300,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
               }
             >
               <div
-                className="MuiContainer-root ProgramCollection-mainContainer-1 MuiContainer-maxWidthLg"
+                className="MuiContainer-root MuiContainer-maxWidthLg"
               >
                 <WithStyles(WithStyles(ForwardRef(Grid)))
                   container={true}
@@ -12311,7 +12311,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                   <WithStyles(ForwardRef(Grid))
                     classes={
                       Object {
-                        "root": "WithStyles(ForwardRef(Grid))-root-49",
+                        "root": "WithStyles(ForwardRef(Grid))-root-48",
                       }
                     }
                     container={true}
@@ -12411,7 +12411,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                           "justify-xs-space-around": "MuiGrid-justify-xs-space-around",
                           "justify-xs-space-between": "MuiGrid-justify-xs-space-between",
                           "justify-xs-space-evenly": "MuiGrid-justify-xs-space-evenly",
-                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-49",
+                          "root": "MuiGrid-root WithStyles(ForwardRef(Grid))-root-48",
                           "spacing-xs-1": "MuiGrid-spacing-xs-1",
                           "spacing-xs-10": "MuiGrid-spacing-xs-10",
                           "spacing-xs-2": "MuiGrid-spacing-xs-2",
@@ -12433,7 +12433,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                       justify="space-between"
                     >
                       <div
-                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-49 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
+                        className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-48 MuiGrid-container MuiGrid-item MuiGrid-justify-xs-space-between"
                       >
                         <WithStyles(ForwardRef(Grid))
                           item={true}
@@ -12557,7 +12557,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                 <WithStyles(ForwardRef(Typography))
                                   classes={
                                     Object {
-                                      "root": "WithStyles(ForwardRef(Typography))-root-50",
+                                      "root": "WithStyles(ForwardRef(Typography))-root-49",
                                     }
                                   }
                                   variant="h1"
@@ -12591,7 +12591,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                         "noWrap": "MuiTypography-noWrap",
                                         "overline": "MuiTypography-overline",
                                         "paragraph": "MuiTypography-paragraph",
-                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-50",
+                                        "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-49",
                                         "srOnly": "MuiTypography-srOnly",
                                         "subtitle1": "MuiTypography-subtitle1",
                                         "subtitle2": "MuiTypography-subtitle2",
@@ -12600,7 +12600,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                     variant="h1"
                                   >
                                     <h1
-                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-50 MuiTypography-h1"
+                                      className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-49 MuiTypography-h1"
                                     >
                                       My Programs
                                     </h1>
@@ -12748,7 +12748,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                       }
                     >
                       <WithStyles(ForwardRef(Grid))
-                        className="ProgramCollection-flexitem1-3"
+                        className="ProgramCollection-flexitem1-2"
                         container={true}
                         item={true}
                         md={8}
@@ -12756,7 +12756,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                         xs={12}
                       >
                         <ForwardRef(Grid)
-                          className="ProgramCollection-flexitem1-3"
+                          className="ProgramCollection-flexitem1-2"
                           classes={
                             Object {
                               "align-content-xs-center": "MuiGrid-align-content-xs-center",
@@ -12871,7 +12871,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                           xs={12}
                         >
                           <div
-                            className="MuiGrid-root ProgramCollection-flexitem1-3 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8"
+                            className="MuiGrid-root ProgramCollection-flexitem1-2 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-8"
                           >
                             <WithStyles(ForwardRef(Grid))
                               item={true}
@@ -13316,10 +13316,10 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                           className="MuiOutlinedInput-notchedOutline"
                                                           classes={
                                                             Object {
-                                                              "legend": "PrivateNotchedOutline-legend-11",
-                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-12",
-                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-13",
-                                                              "root": "PrivateNotchedOutline-root-10",
+                                                              "legend": "PrivateNotchedOutline-legend-10",
+                                                              "legendLabelled": "PrivateNotchedOutline-legendLabelled-11",
+                                                              "legendNotched": "PrivateNotchedOutline-legendNotched-12",
+                                                              "root": "PrivateNotchedOutline-root-9",
                                                             }
                                                           }
                                                           labelWidth={0}
@@ -13327,7 +13327,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                         >
                                                           <fieldset
                                                             aria-hidden={true}
-                                                            className="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                                                            className="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
                                                             style={
                                                               Object {
                                                                 "paddingLeft": 8,
@@ -13335,7 +13335,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                             }
                                                           >
                                                             <legend
-                                                              className="PrivateNotchedOutline-legend-11"
+                                                              className="PrivateNotchedOutline-legend-10"
                                                               style={
                                                                 Object {
                                                                   "width": 0.01,
@@ -13372,7 +13372,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                               marginRight={2}
                             >
                               <div
-                                className="MuiBox-root MuiBox-root-42"
+                                className="MuiBox-root MuiBox-root-41"
                               >
                                 <WithStyles(ForwardRef(Button))
                                   aria-controls="sort-menu"
@@ -13588,6 +13588,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                   getContentAnchorEl={null}
                                   id="sort-menu"
                                   keepMounted={true}
+                                  onClick={[Function]}
                                   onClose={[Function]}
                                   open={false}
                                   transformOrigin={
@@ -13614,6 +13615,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                     getContentAnchorEl={null}
                                     id="sort-menu"
                                     keepMounted={true}
+                                    onClick={[Function]}
                                     onClose={[Function]}
                                     open={false}
                                     transformOrigin={
@@ -13641,6 +13643,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                       getContentAnchorEl={null}
                                       id="sort-menu"
                                       keepMounted={true}
+                                      onClick={[Function]}
                                       onClose={[Function]}
                                       onEntering={[Function]}
                                       open={false}
@@ -13676,6 +13679,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                         getContentAnchorEl={null}
                                         id="sort-menu"
                                         keepMounted={true}
+                                        onClick={[Function]}
                                         onClose={[Function]}
                                         onEntering={[Function]}
                                         open={false}
@@ -13696,6 +13700,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                           className="MuiPopover-root"
                                           id="sort-menu"
                                           keepMounted={true}
+                                          onClick={[Function]}
                                           onClose={[Function]}
                                           open={false}
                                         >
@@ -13873,6 +13878,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               <div
                                                 className="MuiPopover-root"
                                                 id="sort-menu"
+                                                onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 role="presentation"
                                                 style={
@@ -14267,7 +14273,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                             </Styled(MuiBox)>
                             <Styled(MuiBox)>
                               <div
-                                className="MuiBox-root MuiBox-root-43"
+                                className="MuiBox-root MuiBox-root-42"
                               >
                                 <WithStyles(WithStyles(ForwardRef(Autocomplete)))
                                   filterSelectedOptions={true}
@@ -14289,7 +14295,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                   <WithStyles(ForwardRef(Autocomplete))
                                     classes={
                                       Object {
-                                        "root": "WithStyles(ForwardRef(Autocomplete))-root-51",
+                                        "root": "WithStyles(ForwardRef(Autocomplete))-root-50",
                                       }
                                     }
                                     filterSelectedOptions={true}
@@ -14332,7 +14338,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                           "popperDisablePortal": "MuiAutocomplete-popperDisablePortal",
                                           "popupIndicator": "MuiAutocomplete-popupIndicator",
                                           "popupIndicatorOpen": "MuiAutocomplete-popupIndicatorOpen",
-                                          "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-51",
+                                          "root": "MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-50",
                                           "tag": "MuiAutocomplete-tag",
                                           "tagSizeSmall": "MuiAutocomplete-tagSizeSmall",
                                         }
@@ -14356,7 +14362,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                       <div
                                         aria-expanded={false}
                                         aria-owns={null}
-                                        className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-51 MuiAutocomplete-hasClearIcon"
+                                        className="MuiAutocomplete-root WithStyles(ForwardRef(Autocomplete))-root-50 MuiAutocomplete-hasClearIcon"
                                         onClick={[Function]}
                                         onKeyDown={[Function]}
                                         onMouseDown={[Function]}
@@ -15461,7 +15467,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                         </ForwardRef(Grid)>
                       </WithStyles(ForwardRef(Grid))>
                       <WithStyles(ForwardRef(Grid))
-                        className="ProgramCollection-flexitem2-4"
+                        className="ProgramCollection-flexitem2-3"
                         container={true}
                         item={true}
                         md={true}
@@ -15469,7 +15475,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                         xs={true}
                       >
                         <ForwardRef(Grid)
-                          className="ProgramCollection-flexitem2-4"
+                          className="ProgramCollection-flexitem2-3"
                           classes={
                             Object {
                               "align-content-xs-center": "MuiGrid-align-content-xs-center",
@@ -15584,7 +15590,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                           xs={true}
                         >
                           <div
-                            className="MuiGrid-root ProgramCollection-flexitem2-4 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-true MuiGrid-grid-md-true"
+                            className="MuiGrid-root ProgramCollection-flexitem2-3 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-item MuiGrid-grid-xs-true MuiGrid-grid-md-true"
                           >
                             <WithStyles(ForwardRef(Grid))
                               item={true}
@@ -15706,17 +15712,17 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                 >
                                   <Styled(MuiBox)
                                     alignItems="center"
-                                    className="ProgramCollection-flexitem3-5"
+                                    className="ProgramCollection-flexitem3-4"
                                     display="flex"
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-45 ProgramCollection-flexitem3-5"
+                                      className="MuiBox-root MuiBox-root-44 ProgramCollection-flexitem3-4"
                                     >
                                       <Styled(MuiBox)
-                                        className="ProgramCollection-flexitem5-7"
+                                        className="ProgramCollection-flexitem5-6"
                                       >
                                         <div
-                                          className="MuiBox-root MuiBox-root-46 ProgramCollection-flexitem5-7"
+                                          className="MuiBox-root MuiBox-root-45 ProgramCollection-flexitem5-6"
                                         >
                                           <WithStyles(ForwardRef(Button))
                                             color="primary"
@@ -16510,7 +16516,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               <WithStyles(ForwardRef(Button))
                                                 classes={
                                                   Object {
-                                                    "root": "WithStyles(ForwardRef(Button))-root-52",
+                                                    "root": "WithStyles(ForwardRef(Button))-root-51",
                                                   }
                                                 }
                                                 id={33}
@@ -16542,7 +16548,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                       "outlinedSecondary": "MuiButton-outlinedSecondary",
                                                       "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
                                                       "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-52",
+                                                      "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-51",
                                                       "sizeLarge": "MuiButton-sizeLarge",
                                                       "sizeSmall": "MuiButton-sizeSmall",
                                                       "startIcon": "MuiButton-startIcon",
@@ -16560,7 +16566,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                   startIcon={<Memo(DeleteIcon) />}
                                                 >
                                                   <WithStyles(ForwardRef(ButtonBase))
-                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-52 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                    className="MuiButton-root WithStyles(ForwardRef(Button))-root-51 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                     component="button"
                                                     disabled={false}
                                                     focusRipple={true}
@@ -16571,7 +16577,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                     type="button"
                                                   >
                                                     <ForwardRef(ButtonBase)
-                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-52 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                      className="MuiButton-root WithStyles(ForwardRef(Button))-root-51 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                       classes={
                                                         Object {
                                                           "disabled": "Mui-disabled",
@@ -16589,7 +16595,7 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                       type="button"
                                                     >
                                                       <button
-                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-52 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+                                                        className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-51 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
                                                         disabled={false}
                                                         id={33}
                                                         name="Unnamed_Design_3"
@@ -17100,10 +17106,10 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                   </ForwardRef(Grid)>
                 </WithStyles(ForwardRef(Grid))>
                 <Styled(MuiBox)
-                  className="ProgramCollection-paginationPaddedBox-2"
+                  className="ProgramCollection-paginationPaddedBox-1"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-48 ProgramCollection-paginationPaddedBox-2"
+                    className="MuiBox-root MuiBox-root-47 ProgramCollection-paginationPaddedBox-1"
                   >
                     <WithStyles(ForwardRef(Pagination))
                       color="secondary"

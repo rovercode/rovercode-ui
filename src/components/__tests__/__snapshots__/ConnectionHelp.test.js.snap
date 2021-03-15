@@ -840,7 +840,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                 >
                                   <button
                                     class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-30 MuiButton-outlined MuiButton-disableElevation"
-                                    style="justify-content: flex-start; min-width: 200px; height: 48px; padding: 8px;"
+                                    style="justify-content: flex-start; min-width: 200px; height: 48px; padding: 0px 8px;"
                                     tabindex="0"
                                     type="button"
                                   >
@@ -2912,7 +2912,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                           "height": "48px",
                                                           "justifyContent": "flex-start",
                                                           "minWidth": "200px",
-                                                          "padding": "8px",
+                                                          "padding": "0px 8px",
                                                         }
                                                       }
                                                       variant="outlined"
@@ -2941,7 +2941,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                             "height": "48px",
                                                             "justifyContent": "flex-start",
                                                             "minWidth": "200px",
-                                                            "padding": "8px",
+                                                            "padding": "0px 8px",
                                                           }
                                                         }
                                                         variant="outlined"
@@ -2998,7 +2998,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                               "height": "48px",
                                                               "justifyContent": "flex-start",
                                                               "minWidth": "200px",
-                                                              "padding": "8px",
+                                                              "padding": "0px 8px",
                                                             }
                                                           }
                                                           variant="outlined"
@@ -3016,7 +3016,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                 "height": "48px",
                                                                 "justifyContent": "flex-start",
                                                                 "minWidth": "200px",
-                                                                "padding": "8px",
+                                                                "padding": "0px 8px",
                                                               }
                                                             }
                                                             type="button"
@@ -3041,7 +3041,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                   "height": "48px",
                                                                   "justifyContent": "flex-start",
                                                                   "minWidth": "200px",
-                                                                  "padding": "8px",
+                                                                  "padding": "0px 8px",
                                                                 }
                                                               }
                                                               type="button"
@@ -3067,7 +3067,7 @@ exports[`The ConnectionHelp component renders on the page with no errors 1`] = `
                                                                     "height": "48px",
                                                                     "justifyContent": "flex-start",
                                                                     "minWidth": "200px",
-                                                                    "padding": "8px",
+                                                                    "padding": "0px 8px",
                                                                   }
                                                                 }
                                                                 tabIndex={0}

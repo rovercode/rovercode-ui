@@ -10,9 +10,8 @@ exports[`The TopNav component should render on the page with no errors 1`] = `
   }
   classes={
     Object {
-      "hiddenOnMobile": "TopNav-hiddenOnMobile-2",
-      "hiddenOnWeb": "TopNav-hiddenOnWeb-3",
-      "mainContainer": "TopNav-mainContainer-1",
+      "hiddenOnMobile": "TopNav-hiddenOnMobile-1",
+      "hiddenOnWeb": "TopNav-hiddenOnWeb-2",
     }
   }
   cookies={
