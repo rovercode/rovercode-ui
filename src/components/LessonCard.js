@@ -36,39 +36,40 @@ const LessonCard = ({ lesson, userTier, onClick }) => {
   const progressIcon = () => {
     switch (progress) {
       case 'IN_PROGRESS':
-        return <Lens className={classes.inProgress} />;
+        return (<Lens className={classes.inProgress} />);
 
       case 'COMPLETE':
-        return <CheckCircle className={classes.complete} />;
+        return (<CheckCircle className={classes.complete} />);
 
       default:
-        return null;
+        return (null);
     }
   };
 
-  const subheader = () => (userTier >= lesson.tier ? (
-    lesson.description
-  ) : (
-    <Box flexDirection="row" display="flex" marginTop={1} alignItems="center">
-      <Box paddingRight={1}>
-        <Lock />
-      </Box>
-      <Typography variant="caption">
-        <Link href="/user/settings" color="textSecondary" underline="always">
+  const subheader = () => (
+    userTier >= lesson.tier ? (
+      lesson.description
+    ) : (
+      <Box flexDirection="row" display="flex" marginTop={1} alignItems="center">
+        <Box paddingRight={1}>
+          <Lock />
+        </Box>
+        <Typography variant="caption">
+          <Link href="/user/settings" color="textSecondary" underline="always">
+            <FormattedMessage
+              id="app.lesson_card.blocked1"
+              description="Informs the user that upgrade is required to access"
+              defaultMessage="Upgrade"
+            />
+          </Link>
           <FormattedMessage
-            id="app.lesson_card.blocked1"
+            id="app.lesson_card.blocked2"
             description="Informs the user that upgrade is required to access"
-            defaultMessage="Upgrade"
+            defaultMessage=" your account to access this lesson."
           />
-        </Link>
-        <FormattedMessage
-          id="app.lesson_card.blocked2"
-          description="Informs the user that upgrade is required to access"
-          defaultMessage=" your account to access this lesson."
-        />
-      </Typography>
-    </Box>
-  ));
+        </Typography>
+      </Box>
+    ));
 
   const handleOnClick = (e) => {
     if (userTier >= lesson.tier) {

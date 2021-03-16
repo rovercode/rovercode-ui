@@ -68,7 +68,7 @@ class CourseList extends Component {
     }
 
     fetchCourses(params);
-  };
+  }
 
   selectProgram = (e) => {
     let program = e.target.parentNode;
@@ -81,7 +81,7 @@ class CourseList extends Component {
     this.setState({
       programSelected: program.id,
     });
-  };
+  }
 
   toggleOrdering = (name) => {
     const { ordering } = this.state;
@@ -95,43 +95,41 @@ class CourseList extends Component {
     }
 
     return name;
-  };
+  }
 
   handleSortClick = (event) => this.setState({
     sortMenuAnchorElement: event.currentTarget,
-  });
+  })
 
   handleSortClose = () => this.setState({
     sortMenuAnchorElement: null,
-  });
+  })
 
-  handlePageChange = (e, page) => this.setState(
-    {
-      page,
-    },
-    () => this.update(),
-  );
+  handlePageChange = (e, page) => this.setState({
+    page,
+  }, () => this.update())
 
-  handleSearchChange = (event) => this.setState(
-    {
-      searchQuery: event.target.value,
-      page: 1,
-    },
-    () => this.update(),
-  );
+  handleSearchChange = (event) => this.setState({
+    searchQuery: event.target.value,
+    page: 1,
+  }, () => this.update())
 
-  handleOrderingChange = (e) => this.setState(
-    {
-      ordering: this.toggleOrdering(e.target.id),
-    },
-    () => this.update(),
-  );
+  handleOrderingChange = (e) => this.setState({
+    ordering: this.toggleOrdering(e.target.id),
+  }, () => this.update())
 
   render() {
     const {
-      classes, intl, courses, user,
+      classes,
+      intl,
+      courses,
+      user,
     } = this.props;
-    const { ordering, programSelected, sortMenuAnchorElement } = this.state;
+    const {
+      ordering,
+      programSelected,
+      sortMenuAnchorElement,
+    } = this.state;
 
     const searchPlaceholder = intl.formatMessage({
       id: 'app.course_list.search',
@@ -275,8 +273,11 @@ class CourseList extends Component {
               </Grid>
             )}
           </Grid>
-          {courses && courses.total_pages > 1 ? (
-            <Box className={classes.paginationPaddedBox}>
+          {
+          courses && courses.total_pages > 1 ? (
+            <Box
+              className={classes.paginationPaddedBox}
+            >
               <Pagination
                 defaultPage={1}
                 count={courses.total_pages}
@@ -286,17 +287,19 @@ class CourseList extends Component {
                 onChange={this.handlePageChange}
               />
             </Box>
-          ) : null}
+          ) : (null)
+        }
         </Container>
 
         <Footer />
-        {programSelected ? (
-          <Redirect
-            to={{
+        {
+          programSelected ? (
+            <Redirect to={{
               pathname: `/mission-control/${programSelected}`,
             }}
-          />
-        ) : null}
+            />
+          ) : null
+        }
       </>
     );
   }
@@ -326,13 +329,11 @@ CourseList.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        lessons: PropTypes.arrayOf(
-          PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            reference: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-          }),
-        ).isRequired,
+        lessons: PropTypes.arrayOf(PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          reference: PropTypes.string.isRequired,
+          description: PropTypes.string.isRequired,
+        })).isRequired,
       }),
     ),
   }),

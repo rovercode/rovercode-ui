@@ -1,43 +1,51 @@
 {
-  "plugins": ["react", "formatjs"],
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true,
-      "experimentalObjectRestSpread": true,
-      "experimentalDecorators": true
+    "plugins": [
+        "react",
+        "formatjs"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true,
+            "experimentalObjectRestSpread": true,
+            "experimentalDecorators": true
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
+    "globals": {
+        "shallowWithIntl": "readonly",
+        "mountWithIntl": "readonly"
+    },
+    "parser": "babel-eslint",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "airbnb",
+        "airbnb/hooks"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": 0,
+        "no-shadow": ["error", { "allow": ["Component"] }],
+        "linebreak-style": 0,
+        "no-plusplus": ["error", {"allowForLoopAfterthoughts": true}],
+        "import/no-named-default": 0,
+        "no-param-reassign": "off",
+        "react/jsx-props-no-spreading": "off",
+        "formatjs/enforce-description": "error",
+        "formatjs/enforce-default-message": "error"
+    },
+    "settings": {
+        "import/resolver": {
+            "webpack":{
+                "config": "webpack.common.js"
+            }
+        }
     }
-  },
-  "env": {
-    "es6": true,
-    "browser": true,
-    "node": true,
-    "jest": true
-  },
-  "globals": {
-    "shallowWithIntl": "readonly",
-    "mountWithIntl": "readonly"
-  },
-  "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "airbnb/hooks"],
-  "rules": {
-    "react/jsx-filename-extension": 0,
-    "no-shadow": ["error", { "allow": ["Component"] }],
-    "linebreak-style": 0,
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "import/no-named-default": 0,
-    "no-param-reassign": "off",
-    "react/jsx-props-no-spreading": "off",
-    "formatjs/enforce-description": "error",
-    "formatjs/enforce-default-message": "error"
-  },
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "webpack.common.js"
-      }
-    }
-  }
 }
