@@ -76,8 +76,8 @@ class ProgramCollection extends Component {
     super(props);
 
     this.searchDebounce = debounce(
-      parseInt(SEARCH_DEBOUNCE_TIME, 10) || 1000,
-      this.update, // eslint-disable-line no-undef
+      parseInt(SEARCH_DEBOUNCE_TIME, 10) || 1000, // eslint-disable-line no-undef
+      this.update,
     );
 
     this.state = {
