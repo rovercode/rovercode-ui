@@ -62,13 +62,6 @@ describe('The MissionControl container', () => {
         lessonId: 42,
         lessonGoals: 'To code stuff',
         lessonTutorialLink: 'youtu.be/foobar',
-        blog_questions: [{
-          id: 1,
-          question: 'Question1',
-          answer: 'Answer1',
-          required: true,
-          sequence_number: 1,
-        }],
       },
       sensor: {
         leftLightSensorReading: -1,
