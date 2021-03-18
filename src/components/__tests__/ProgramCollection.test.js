@@ -310,7 +310,7 @@ describe('The ProgramCollection component', () => {
     expect(wrapper.find('WithStyles(ForwardRef(Card))').length).toBe(2);
     expect(wrapper.find('WithStyles(ForwardRef(Card))').first()
       .find('WithStyles(ForwardRef(Typography))').at(1)
-      .text()).toBe('testuser');
+      .text()).toBe('By testuser');
   });
 
   test('callback when program click', () => {
