@@ -69,13 +69,11 @@ Course.propTypes = {
   course: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    lessons: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        reference: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
+    lessons: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      reference: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })).isRequired,
   }).isRequired,
   userTier: PropTypes.number,
   onLessonClick: PropTypes.func.isRequired,

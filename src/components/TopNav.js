@@ -72,31 +72,31 @@ class TopNav extends Component {
     logout();
 
     this.setState({ redirectToLogin: true });
-  };
+  }
 
   handleMenuOpen = (event) => {
     this.setState({
       userMenuAnchorElement: event.target,
     });
-  };
+  }
 
   handleMenuClose = () => {
     this.setState({
       userMenuAnchorElement: null,
     });
-  };
+  }
 
   handleClick = (event) => {
     this.setState({
       mobileMenuAnchorElement: event.target,
     });
-  };
+  }
 
   handleClose = () => {
     this.setState({
       mobileMenuAnchorElement: null,
     });
-  };
+  }
 
   render() {
     const { userName, classes } = this.props;

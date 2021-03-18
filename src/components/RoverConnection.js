@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {
-  Button, Typography, Popover, Box,
+  Button,
+  Typography,
+  Popover,
+  Box,
 } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
@@ -57,7 +60,7 @@ class RoverConnection extends Component {
     const leftReading = parseInt(left, 10);
     const rightReading = parseInt(right, 10);
     changeLightSensorReadings(leftReading, rightReading);
-  };
+  }
 
   handleLineSensor = (params) => {
     const { changeLineSensorReadings } = this.props;
@@ -66,25 +69,25 @@ class RoverConnection extends Component {
     const leftReading = parseInt(left, 10);
     const rightReading = parseInt(right, 10);
     changeLineSensorReadings(leftReading, rightReading);
-  };
+  }
 
   handleDistanceSensor = (params) => {
     const { write } = this.props;
 
     write(`Distance Sensor - ${params} mm`);
-  };
+  }
 
   handleUBitTempSensor = (params) => {
     const { write } = this.props;
 
     write(`uBit Temperature Sensor - ${params} C`);
-  };
+  }
 
   handleUBitLightSensor = (params) => {
     const { write } = this.props;
 
     write(`uBit Light Sensor - ${params}`);
-  };
+  }
 
   handleAccelerationSensor = (params) => {
     const { write } = this.props;
@@ -92,7 +95,7 @@ class RoverConnection extends Component {
     const [x, y, z] = params.split(',');
 
     write(`Acceleration Sensor - X:${x} mG Y:${y} mG Z:${z} mG`);
-  };
+  }
 
   handleGyroscopeSensor = (params) => {
     const { write } = this.props;
@@ -100,32 +103,32 @@ class RoverConnection extends Component {
     const [pitch, roll] = params.split(',');
 
     write(`Gryoscope Sensor - Pitch:${pitch} degrees Roll:${roll} degrees`);
-  };
+  }
 
   handleCompassSensor = (params) => {
     const { write } = this.props;
 
     write(`Compass Sensor - ${params} degrees`);
-  };
+  }
 
   handleMagneticForceSensor = (params) => {
     const { write } = this.props;
     const [x, y, z] = params.split(',');
 
     write(`Magnetic Force Sensor - X:${x} uT Y:${y} uT Z:${z} uT`);
-  };
+  }
 
   handleBatterySensor = (params) => {
     const { changeBatteryVoltageReading } = this.props;
 
     changeBatteryVoltageReading(parseInt(params, 10));
-  };
+  }
 
   handleDewPointSensor = (params) => {
     const { write } = this.props;
 
     write(`Dew Point Sensor - ${params} C`);
-  };
+  }
 
   handleButton = (params) => {
     const { changeLeftSensorState, changeRightSensorState, sensor } = this.props;
@@ -135,7 +138,7 @@ class RoverConnection extends Component {
     } else if (params === 'b') {
       changeRightSensorState(sensor.right === COVERED ? NOT_COVERED : COVERED);
     }
-  };
+  }
 
   connect = () => {
     const { scanForRover, connectToRover } = this.props;
@@ -144,7 +147,7 @@ class RoverConnection extends Component {
       rover.value.addEventListener('gattserverdisconnected', this.onDisconnected);
       return connectToRover(rover.value, this.onMessage);
     });
-  };
+  }
 
   onMessage = (event) => {
     const { write } = this.props;
@@ -162,14 +165,14 @@ class RoverConnection extends Component {
     } catch (e) {
       write('Unknown rover message received.');
     }
-  };
+  }
 
   onDisconnected = () => {
     const { changeExecutionState, disconnectFromRover, rover } = this.props;
 
     changeExecutionState(EXECUTION_STOP);
     disconnectFromRover(rover);
-  };
+  }
 
   render() {
     const { rover } = this.props;
@@ -295,9 +298,7 @@ class RoverConnection extends Component {
       </ConnectionButton>
     );
 
-    return supportedPlatform ? (
-      button
-    ) : (
+    return supportedPlatform ? (button) : (
       <>
         <span
           aria-owns={popoverOpen ? 'mouse-over-popover' : undefined}

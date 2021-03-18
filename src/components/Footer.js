@@ -2,7 +2,11 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Grid, Link, Typography, Container, Divider,
+  Grid,
+  Link,
+  Typography,
+  Container,
+  Divider,
 } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
 

@@ -5,7 +5,6 @@ yarn-error.log
 *.swp
 
 .idea/
-.vscode/
 
 src/translations/extracted/
 src/translations/locales/defaultMessages.json
