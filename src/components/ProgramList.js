@@ -164,7 +164,7 @@ class ProgramList extends Component {
         <Grid container direction="column">
           {
           programs === null ? (
-            <Grid item>
+            <Grid item container direction="row" justify="center">
               <CircularProgress />
             </Grid>
           ) : (

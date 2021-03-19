@@ -50,38 +50,43 @@ export default createMuiTheme({
       [defaultTheme.breakpoints.up('xs')]: {
         fontSize: '28px !important',
         fontWeight: 'bold',
+        letterSpacing: '.03em',
       },
     },
     h2: {
       [defaultTheme.breakpoints.up('xs')]: {
         fontSize: '24px !important',
         fontWeight: 'bold',
+        letterSpacing: '.03em',
       },
     },
     h3: {
-      // fontSize: '18px !important',
-      // fontWeight: 'bold',
       [defaultTheme.breakpoints.up('xs')]: {
         fontSize: '18px !important',
         fontWeight: 'bold !important',
+        letterSpacing: '.03em',
       },
     },
     h4: {
       [defaultTheme.breakpoints.up('xs')]: {
         fontSize: '15px !important',
         fontWeight: 'bold',
+        letterSpacing: '.03em',
       },
     },
     h5: {
       [defaultTheme.breakpoints.up('xs')]: {
         fontSize: '14px !important',
         fontWeight: 'bold',
+        letterSpacing: '.03em',
       },
     },
     subtitle1: {
       [defaultTheme.breakpoints.up('xs')]: {
         fontSize: '16px !important',
         fontWeight: 'bold',
+        letterSpacing: '.03em',
+
       },
     },
     body1: {
@@ -93,6 +98,7 @@ export default createMuiTheme({
       [defaultTheme.breakpoints.up('xs')]: {
         fontSize: '14px !important',
         fontWeight: 'bold',
+        letterSpacing: '.03em',
       },
     },
     body2: {
@@ -111,6 +117,7 @@ export default createMuiTheme({
         fontSize: '14px !important',
         fontWeight: 'bold',
         textTransform: 'none',
+        letterSpacing: '.03em',
       },
     },
   },

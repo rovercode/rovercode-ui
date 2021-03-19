@@ -274,6 +274,30 @@ describe('The ProgramCollection component', () => {
       .prop('defaultMessage')).toBe('Delete');
   });
 
+  test('shows popover on hover', () => {
+    const programs = {
+      count: 5,
+      next: null,
+      previous: null,
+      total_pages: 1,
+      results: [],
+    };
+    const wrapper = shallowWithIntl(
+      <ProgramCollection
+        programs={programs}
+        label="My Programs"
+        user={testUser}
+        onProgramClick={onProgramClick}
+        onRemoveClick={onRemoveClick}
+        onUpdate={onUpdate}
+      />,
+    ).dive().dive().dive();
+
+    expect(wrapper.find('Styled(MuiBox)').at(2).prop('aria-owns')).toBe(undefined);
+    wrapper.find('Styled(MuiBox)').at(2).simulate('mouseenter', { target: { class: 'classes.flexitem3' } });
+    expect(wrapper.find('Styled(MuiBox)').at(2).prop('aria-owns')).toBe('mouse-over-popover');
+  });
+
   test('shows the correct number of programs for other users', () => {
     const programs = {
       count: 2,

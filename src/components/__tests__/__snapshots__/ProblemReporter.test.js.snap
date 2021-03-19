@@ -98,7 +98,10 @@ exports[`The ProblemReporter component renders on the page with no errors 1`] = 
         variant="subtitle2"
       >
         <FormattedMessage
-          defaultMessage="Thank you so much for reporting this issue. We will contact you via the email address on your Rovercode account with our resolution. In the meantime, it's possible that you can find how others have worked around this issue on the Community Program page."
+          defaultMessage="Thank you so much for reporting this issue.
+ We will contact you via the email address on your Rovercode account with our resolution.
+ In the meantime, it's possible that you can find how others have worked around this issue
+ on the Community Program page."
           id="app.problem_reporter.thank_you"
         />
       </WithStyles(ForwardRef(Typography))>

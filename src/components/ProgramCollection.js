@@ -254,7 +254,6 @@ render() {
 
           <Box marginRight={2} display="flex" alignItems="center">
             <Button
-              variant="standard"
               style={{
                 color: '#7F7272',
                 fontWeight: '400',
@@ -338,7 +337,15 @@ render() {
         </Grid>
         <Grid container item xs md spacing={2} className={classes.flexitem2}>
           <Grid item xs>
-            <Box display="flex" alignItems="center" className={classes.flexitem3}>
+            <Box
+              display="flex"
+              alignItems="center"
+              className={classes.flexitem3}
+              aria-owns={open ? 'mouse-over-popover' : undefined}
+              aria-haspopup="true"
+              onMouseEnter={this.handlePopoverOpen}
+              onMouseLeave={this.handlePopoverClose}
+            >
               {user.tier === 1 && programCount >= 0 ? (
                 <Box
                   marginRight={2}
@@ -346,6 +353,30 @@ render() {
                   style={{ minWidth: '150px' }}
                   className={classes.flexitem4}
                 >
+                  {programCount >= programLimit ? (
+                    <Popover
+                      id="mouse-over-popover"
+                      style={{ pointerEvents: 'none' }}
+                      open={open}
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                      }}
+                      onClose={this.handlePopoverClose}
+                      disableRestoreFocus
+                    >
+                      <Box style={{ padding: '16px', width: '300px' }}>
+                        <Typography>
+                          Delete a program or upgrade your account to create a new program.
+                        </Typography>
+                      </Box>
+                    </Popover>
+                  ) : null }
                   <Typography variant="subtitle2" display="inline">
                     <FormattedMessage
                       id="app.program_collection.slots"
@@ -358,68 +389,6 @@ render() {
                     {`${programCount}/${programLimit}`}
                   </Typography>
 
-                  {programCount >= programLimit ? (
-                    <Typography
-                      variant="subtitle1"
-                      aria-owns={open ? 'mouse-over-popover' : undefined}
-                      aria-haspopup="true"
-                      onMouseEnter={this.handlePopoverOpen}
-
-                    >
-                      <Popover
-                        id="mouse-over-popover"
-                        style={{ pointerEvents: 'none' }}
-                        open={open}
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'left',
-                        }}
-                        transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'left',
-                        }}
-                        onClose={this.handlePopoverClose}
-                        disableRestoreFocus
-                        disableBackdropClick="false"
-                        hideBackdrop="false"
-                      >
-                        <Box style={{ padding: '16px', width: '300px' }} onMouseLeave={this.handlePopoverClose}>
-                          <FormattedMessage
-                            id="app.program_collection.over1"
-                            description="Notifies the user of no remaining free slots"
-                            defaultMessage="You have used all your free program slots. You can delete an existing program to free up a program slot, or you can"
-                          />
-                          {' '}
-                          <MuiLink href="/user/settings">
-                            <FormattedMessage
-                              id="app.program_collection.over2"
-                              description="Notifies the user of no remaining free slots"
-                              defaultMessage="upgrade your account"
-                            />
-                          </MuiLink>
-                          {' '}
-                          <FormattedMessage
-                            id="app.program_collection.over3"
-                            description="Notifies the user of no remaining free slots"
-                            defaultMessage="for unlimited programs."
-                          />
-                        </Box>
-                      </Popover>
-                      <Typography variant="subtitle2" display="inline">
-                        <FormattedMessage
-                          id="app.program_collection.slots"
-                          description="Lists the number of free slots"
-                          defaultMessage="Free Programs Used"
-                        />
-                        {': '}
-                      </Typography>
-                      <Typography variant="subtitle2" color="secondary" display="inline">
-                        {`${programCount}/${programLimit}`}
-                      </Typography>
-
-                    </Typography>
-                  ) : null}
                 </Box>
               ) : null}
               <Box className={classes.flexitem5}>
@@ -445,6 +414,38 @@ render() {
         </Grid>
         {' '}
       </Grid>
+      {programCount >= programLimit ? (
+        <Paper
+          style={{
+            backgroundColor: 'rgba(254,173,17,.25)', borderColor: 'rgba(254,173,17,1)', padding: '16px', marginBottom: '16px',
+          }}
+          variant="outlined"
+          padding={2}
+        >
+          <Typography variant="body1">
+            <FormattedMessage
+              id="app.program_collection.over1"
+              description="Notifies the user of no remaining free slots"
+              defaultMessage="You have used all your free program slots. You can delete an existing program to free up a program slot, or you can"
+            />
+            {' '}
+            <MuiLink href="/user/settings">
+              <FormattedMessage
+                id="app.program_collection.over2"
+                description="Notifies the user of no remaining free slots"
+                defaultMessage="upgrade your account"
+              />
+            </MuiLink>
+            {' '}
+            <FormattedMessage
+              id="app.program_collection.over3"
+              description="Notifies the user of no remaining free slots"
+              defaultMessage="for unlimited programs."
+            />
+
+          </Typography>
+        </Paper>
+      ) : null}
       <Grid container spacing={2}>
         {programs.count === 0 && !searchQuery && tagFilters.length === 0 ? (
           <Grid item container direction="column" alignItems="center" justify="center">
