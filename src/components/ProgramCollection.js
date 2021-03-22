@@ -348,51 +348,55 @@ class ProgramCollection extends Component {
                 onMouseEnter={this.handlePopoverOpen}
                 onMouseLeave={this.handlePopoverClose}
               >
-                {user.tier === 1 && programCount >= 0 ? (
-                  <Box
-                    marginRight={2}
-                    marginLeft={2}
-                    style={{ whiteSpace: 'nowrap' }}
-                    className={classes.flexitem4}
-                  >
-                    {programCount >= programLimit ? (
-                      <Popover
-                        id="mouse-over-popover"
-                        style={{ pointerEvents: 'none' }}
-                        open={open}
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'center',
-                        }}
-                        transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'center',
-                        }}
-                        onClose={this.handlePopoverClose}
-                        disableRestoreFocus
-                      >
-                        <Box style={{ padding: '16px', width: '300px' }}>
-                          <Typography>
-                            Delete a program or upgrade your account to create a new program.
-                          </Typography>
-                        </Box>
-                      </Popover>
-                    ) : null }
-                    <Typography variant="subtitle2" display="inline">
-                      <FormattedMessage
-                        id="app.program_collection.slots"
-                        description="Lists the number of free slots"
-                        defaultMessage="Free Programs Used"
-                      />
-                      {': '}
-                    </Typography>
-                    <Typography variant="subtitle2" color="secondary" display="inline">
-                      {`${programCount}/${programLimit}`}
-                    </Typography>
+                {
+                  user.tier === 1 && programCount >= 0 ? (
+                    <Box
+                      marginRight={2}
+                      marginLeft={2}
+                      style={{ whiteSpace: 'nowrap' }}
+                      className={classes.flexitem4}
+                    >
+                      {
+                        programCount >= programLimit ? (
+                          <Popover
+                            id="mouse-over-popover"
+                            style={{ pointerEvents: 'none' }}
+                            open={open}
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                              vertical: 'bottom',
+                              horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                              vertical: 'top',
+                              horizontal: 'center',
+                            }}
+                            onClose={this.handlePopoverClose}
+                            disableRestoreFocus
+                          >
+                            <Box style={{ padding: '16px', width: '300px' }}>
+                              <Typography>
+                                Delete a program or upgrade your account to create a new program.
+                              </Typography>
+                            </Box>
+                          </Popover>
+                        ) : null
+                      }
+                      <Typography variant="subtitle2" display="inline">
+                        <FormattedMessage
+                          id="app.program_collection.slots"
+                          description="Lists the number of free slots"
+                          defaultMessage="Free Programs Used"
+                        />
+                        {': '}
+                      </Typography>
+                      <Typography variant="subtitle2" color="secondary" display="inline">
+                        {`${programCount}/${programLimit}`}
+                      </Typography>
 
-                  </Box>
-                ) : null}
+                    </Box>
+                  ) : null
+                }
                 <Box className={classes.flexitem5}>
                   <Button
                     variant="contained"
@@ -468,18 +472,18 @@ class ProgramCollection extends Component {
               </Grid>
             ) : (null)
           }
-          {programs.count === 0 && (searchQuery || tagFilters.length !== 0) ? (
-            <Grid item container direction="row" alignItems="center" justify="center">
-              <Typography variant="h4">
-                <FormattedMessage
-                  id="app.program_collection.nothing"
-                  description="Informs the user that no programs match the filters"
-                  defaultMessage="Sorry, no programs match your filters."
-                />
-              </Typography>
-            </Grid>
-          ) : (
-            programs.results.map((program) => (
+          {
+            programs.count === 0 && (searchQuery || tagFilters.length !== 0) ? (
+              <Grid item container direction="row" alignItems="center" justify="center">
+                <Typography variant="h4">
+                  <FormattedMessage
+                    id="app.program_collection.nothing"
+                    description="Informs the user that no programs match the filters"
+                    defaultMessage="Sorry, no programs match your filters."
+                  />
+                </Typography>
+              </Grid>
+            ) : programs.results.map((program) => (
               <Grid item xs={12} md={6} lg={3} key={program.id}>
                 <Card item variant="outlined" key={program.id}>
                   <CardActionArea
@@ -522,20 +526,22 @@ class ProgramCollection extends Component {
                 </Card>
               </Grid>
             ))
-          )}
+          }
         </Grid>
-        {programs.total_pages > 1 ? (
-          <Box className={classes.paginationPaddedBox}>
-            <Pagination
-              defaultPage={1}
-              count={programs.total_pages}
-              showFirstButton
-              showLastButton
-              color="secondary"
-              onChange={this.handlePageChange}
-            />
-          </Box>
-        ) : null}
+        {
+          programs.total_pages > 1 ? (
+            <Box className={classes.paginationPaddedBox}>
+              <Pagination
+                defaultPage={1}
+                count={programs.total_pages}
+                showFirstButton
+                showLastButton
+                color="secondary"
+                onChange={this.handlePageChange}
+              />
+            </Box>
+          ) : null
+        }
       </Container>
     );
   }
