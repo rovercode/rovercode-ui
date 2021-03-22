@@ -274,15 +274,14 @@ class CourseList extends Component {
                     className={classes.listContainer}
                   >
                     {
-                      courses
-                        ? courses.results.map((course) => (
-                          <Course
-                            key={course.id}
-                            course={course}
-                            onLessonClick={this.selectProgram}
-                            userTier={user.tier}
-                          />
-                        ))
+                      courses ? courses.results.map((course) => (
+                        <Course
+                          key={course.id}
+                          course={course}
+                          onLessonClick={this.selectProgram}
+                          userTier={user.tier}
+                        />
+                      ))
                         : (null)
                       }
                   </Box>
