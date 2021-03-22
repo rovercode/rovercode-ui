@@ -35,15 +35,17 @@ const Course = ({ course, userTier, onLessonClick }) => {
             <Typography variant="h3">{course.name}</Typography>
           </Box>
           <Box>
-            {accordionExpanded ? (
-              <Typography variant="h5" style={{ color: '#7F7272' }}>
-                Hide Course
-              </Typography>
-            ) : (
-              <Typography variant="h5" style={{ color: '#7F7272' }}>
-                Show Course
-              </Typography>
-            )}
+            {
+              accordionExpanded ? (
+                <Typography variant="h5" style={{ color: '#7F7272' }}>
+                  Hide Course
+                </Typography>
+              ) : (
+                <Typography variant="h5" style={{ color: '#7F7272' }}>
+                  Show Course
+                </Typography>
+              )
+            }
           </Box>
         </Box>
       </AccordionSummary>

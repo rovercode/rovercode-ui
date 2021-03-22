@@ -288,15 +288,17 @@ class ProgramCollection extends Component {
               >
                 <MenuItem onClick={this.handleOrderingChange} id="name">
                   <ListItemIcon>
-                    {ordering === 'name' ? (
-                      <>
-                        <ArrowDownward fontSize="small" />
-                      </>
-                    ) : (
-                      <>
-                        <ArrowUpward fontSize="small" />
-                      </>
-                    )}
+                    {
+                      ordering === 'name' ? (
+                        <>
+                          <ArrowDownward fontSize="small" />
+                        </>
+                      ) : (
+                        <>
+                          <ArrowUpward fontSize="small" />
+                        </>
+                      )
+                    }
                   </ListItemIcon>
                   <FormattedMessage
                     id="app.program_collection.name"
@@ -413,55 +415,59 @@ class ProgramCollection extends Component {
           </Grid>
           {' '}
         </Grid>
-        {programCount >= programLimit ? (
-          <Paper
-            style={{
-              backgroundColor: 'rgba(254,173,17,.25)', borderColor: 'rgba(254,173,17,1)', padding: '16px', marginBottom: '16px',
-            }}
-            variant="outlined"
-            padding={2}
-          >
-            <Typography variant="body1">
-              <FormattedMessage
-                id="app.program_collection.over1"
-                description="Notifies the user of no remaining free slots"
-                defaultMessage="You have used all your free program slots. You can delete an existing program to free up a program slot, or you can"
-              />
-              {' '}
-              <MuiLink href="/user/settings">
+        {
+          programCount >= programLimit ? (
+            <Paper
+              style={{
+                backgroundColor: 'rgba(254,173,17,.25)', borderColor: 'rgba(254,173,17,1)', padding: '16px', marginBottom: '16px',
+              }}
+              variant="outlined"
+              padding={2}
+            >
+              <Typography variant="body1">
                 <FormattedMessage
-                  id="app.program_collection.over2"
+                  id="app.program_collection.over1"
                   description="Notifies the user of no remaining free slots"
-                  defaultMessage="upgrade your account"
+                  defaultMessage="You have used all your free program slots. You can delete an existing program to free up a program slot, or you can"
                 />
-              </MuiLink>
-              {' '}
-              <FormattedMessage
-                id="app.program_collection.over3"
-                description="Notifies the user of no remaining free slots"
-                defaultMessage="for unlimited programs."
-              />
-
-            </Typography>
-          </Paper>
-        ) : null}
-        <Grid container spacing={2}>
-          {programs.count === 0 && !searchQuery && tagFilters.length === 0 ? (
-            <Grid item container direction="column" alignItems="center" justify="center">
-              <Grid item>
-                <img alt="Kids" width="300px" src={flavourImage} />
-              </Grid>
-              <Grid item>
-                <Typography variant="h4">
+                {' '}
+                <MuiLink href="/user/settings">
                   <FormattedMessage
-                    id="app.program_collection.no_programs"
-                    description="Notifies new users he or she has no programs"
-                    defaultMessage="You don't have any programs yet!"
+                    id="app.program_collection.over2"
+                    description="Notifies the user of no remaining free slots"
+                    defaultMessage="upgrade your account"
                   />
-                </Typography>
+                </MuiLink>
+                {' '}
+                <FormattedMessage
+                  id="app.program_collection.over3"
+                  description="Notifies the user of no remaining free slots"
+                  defaultMessage="for unlimited programs."
+                />
+
+              </Typography>
+            </Paper>
+          ) : (null)
+        }
+        <Grid container spacing={2}>
+          {
+            programs.count === 0 && !searchQuery && tagFilters.length === 0 ? (
+              <Grid item container direction="column" alignItems="center" justify="center">
+                <Grid item>
+                  <img alt="Kids" width="300px" src={flavourImage} />
+                </Grid>
+                <Grid item>
+                  <Typography variant="h4">
+                    <FormattedMessage
+                      id="app.program_collection.no_programs"
+                      description="Notifies new users he or she has no programs"
+                      defaultMessage="You don't have any programs yet!"
+                    />
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
-          ) : null}
+            ) : (null)
+          }
           {programs.count === 0 && (searchQuery || tagFilters.length !== 0) ? (
             <Grid item container direction="row" alignItems="center" justify="center">
               <Typography variant="h4">
@@ -483,32 +489,36 @@ class ProgramCollection extends Component {
                   >
                     <CardContent>
                       <Typography variant="h3">{program.name}</Typography>
-                      {user.username === program.user.username ? null : (
-                        <Typography variant="caption" color="textSecondary">
-                          By
-                          {' '}
-                          {program.user.username}
-                        </Typography>
-                      )}
+                      {
+                        user.username === program.user.username ? null : (
+                          <Typography variant="caption" color="textSecondary">
+                            By
+                            {' '}
+                            {program.user.username}
+                          </Typography>
+                        )
+                      }
                     </CardContent>
                   </CardActionArea>
-                  {user.username === program.user.username ? (
-                    <CardActions>
-                      <DeleteButton
-                        id={program.id}
-                        name={program.name}
-                        onClick={onRemoveClick}
-                        size="small"
-                        startIcon={<Delete />}
-                      >
-                        <FormattedMessage
-                          id="app.program_collection.remove"
-                          description="Button label to remove a program"
-                          defaultMessage="Delete"
-                        />
-                      </DeleteButton>
-                    </CardActions>
-                  ) : null}
+                  {
+                    user.username === program.user.username ? (
+                      <CardActions>
+                        <DeleteButton
+                          id={program.id}
+                          name={program.name}
+                          onClick={onRemoveClick}
+                          size="small"
+                          startIcon={<Delete />}
+                        >
+                          <FormattedMessage
+                            id="app.program_collection.remove"
+                            description="Button label to remove a program"
+                            defaultMessage="Delete"
+                          />
+                        </DeleteButton>
+                      </CardActions>
+                    ) : (null)
+                  }
                 </Card>
               </Grid>
             ))

@@ -229,15 +229,17 @@ class CourseList extends Component {
               >
                 <MenuItem onClick={this.handleOrderingChange} id="name">
                   <ListItemIcon>
-                    {ordering === 'name' ? (
-                      <>
-                        <ArrowDownward fontSize="small" />
-                      </>
-                    ) : (
-                      <>
-                        <ArrowUpward fontSize="small" />
-                      </>
-                    )}
+                    {
+                      ordering === 'name' ? (
+                        <>
+                          <ArrowDownward fontSize="small" />
+                        </>
+                      ) : (
+                        <>
+                          <ArrowUpward fontSize="small" />
+                        </>
+                      )
+                    }
                   </ListItemIcon>
                   <FormattedMessage
                     id="app.program_collection.name"
