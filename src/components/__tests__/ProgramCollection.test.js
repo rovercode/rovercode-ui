@@ -296,6 +296,8 @@ describe('The ProgramCollection component', () => {
     expect(wrapper.find('Styled(MuiBox)').at(2).prop('aria-owns')).toBe(undefined);
     wrapper.find('Styled(MuiBox)').at(2).simulate('mouseenter', { target: { class: 'classes.flexitem3' } });
     expect(wrapper.find('Styled(MuiBox)').at(2).prop('aria-owns')).toBe('mouse-over-popover');
+    wrapper.find('Styled(MuiBox)').at(2).simulate('mouseleave', { target: { class: 'classes.flexitem3' } });
+    expect(wrapper.find('Styled(MuiBox)').at(2).prop('aria-owns')).toBe(undefined);
   });
 
   test('shows the correct number of programs for other users', () => {
