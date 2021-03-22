@@ -291,23 +291,22 @@ class CourseList extends Component {
             }
           </Grid>
           {
-            courses && courses.total_pages > 1 ? (
-              <Box
-                className={classes.paginationPaddedBox}
-              >
-                <Pagination
-                  defaultPage={1}
-                  count={courses.total_pages}
-                  showFirstButton
-                  showLastButton
-                  color="secondary"
-                  onChange={this.handlePageChange}
-                />
-              </Box>
-            ) : (null)
+          courses && courses.total_pages > 1 ? (
+            <Box
+              className={classes.paginationPaddedBox}
+            >
+              <Pagination
+                defaultPage={1}
+                count={courses.total_pages}
+                showFirstButton
+                showLastButton
+                color="secondary"
+                onChange={this.handlePageChange}
+              />
+            </Box>
+          ) : (null)
           }
         </Container>
-
         <Footer />
         {
           programSelected ? (
