@@ -294,8 +294,8 @@ class ProgramCollection extends Component {
                       </>
                     ) : (
                       <>
-                      <ArrowUpward fontSize="small" />
-                    </>
+                        <ArrowUpward fontSize="small" />
+                      </>
                     )}
                   </ListItemIcon>
                   <FormattedMessage
@@ -360,21 +360,21 @@ class ProgramCollection extends Component {
                         open={open}
                         anchorEl={anchorEl}
                         anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center',
-                      }}
+                          vertical: 'bottom',
+                          horizontal: 'center',
+                        }}
                         transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center',
-                      }}
+                          vertical: 'top',
+                          horizontal: 'center',
+                        }}
                         onClose={this.handlePopoverClose}
                         disableRestoreFocus
                       >
                         <Box style={{ padding: '16px', width: '300px' }}>
-                        <Typography>
-                          Delete a program or upgrade your account to create a new program.
-                        </Typography>
-                      </Box>
+                          <Typography>
+                            Delete a program or upgrade your account to create a new program.
+                          </Typography>
+                        </Box>
                       </Popover>
                     ) : null }
                     <Typography variant="subtitle2" display="inline">
@@ -486,10 +486,10 @@ class ProgramCollection extends Component {
                       <Typography variant="h3">{program.name}</Typography>
                       {user.username === program.user.username ? null : (
                         <Typography variant="caption" color="textSecondary">
-                        By
-                        {' '}
-                        {program.user.username}
-                      </Typography>
+                          By
+                          {' '}
+                          {program.user.username}
+                        </Typography>
                       )}
                     </CardContent>
                   </CardActionArea>
@@ -503,10 +503,10 @@ class ProgramCollection extends Component {
                         startIcon={<Delete />}
                       >
                         <FormattedMessage
-                        id="app.program_collection.remove"
-                        description="Button label to remove a program"
-                        defaultMessage="Delete"
-                      />
+                          id="app.program_collection.remove"
+                          description="Button label to remove a program"
+                          defaultMessage="Delete"
+                        />
                       </DeleteButton>
                     </CardActions>
                   ) : null}
