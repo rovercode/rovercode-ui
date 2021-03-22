@@ -16,6 +16,9 @@ import {
   SAVE_PROGRAM_PENDING,
   SAVE_PROGRAM_FULFILLED,
   SAVE_PROGRAM_REJECTED,
+  SAVE_BLOG_ANSWERS_PENDING,
+  SAVE_BLOG_ANSWERS_FULFILLED,
+  SAVE_BLOG_ANSWERS_REJECTED,
   CREATE_PROGRAM_PENDING,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
@@ -41,6 +44,7 @@ const defaultState = {
   tags: [],
   isFetching: false,
   isSaving: false,
+  isSavingBlogAnswers: false,
   isCreating: false,
   isChangingName: false,
   isChangingProgramTags: false,
@@ -160,6 +164,23 @@ export default function code(
       return {
         ...state,
         isSaving: false,
+        error: action.payload,
+      };
+    case SAVE_BLOG_ANSWERS_PENDING:
+      return {
+        ...state,
+        isSavingBlogAnswers: true,
+      };
+    case SAVE_BLOG_ANSWERS_FULFILLED:
+      return {
+        ...state,
+        isSavingBlogAnswers: false,
+        blog_questions: action.payload.blog_questions,
+      };
+    case SAVE_BLOG_ANSWERS_REJECTED:
+      return {
+        ...state,
+        isSavingBlogAnswers: false,
         error: action.payload,
       };
     case CREATE_PROGRAM_PENDING:

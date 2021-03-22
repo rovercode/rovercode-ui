@@ -18,6 +18,9 @@ import {
   SAVE_PROGRAM_PENDING,
   SAVE_PROGRAM_FULFILLED,
   SAVE_PROGRAM_REJECTED,
+  SAVE_BLOG_ANSWERS_PENDING,
+  SAVE_BLOG_ANSWERS_FULFILLED,
+  SAVE_BLOG_ANSWERS_REJECTED,
   CREATE_PROGRAM_PENDING,
   CREATE_PROGRAM_FULFILLED,
   CREATE_PROGRAM_REJECTED,
@@ -313,6 +316,66 @@ describe('The code reducer', () => {
     });
   });
 
+  test('should handle SAVE_BLOG_QUESTIONS_PENDING', () => {
+    expect(
+      reducer({}, {
+        type: SAVE_BLOG_ANSWERS_PENDING,
+      }),
+    ).toEqual({
+      isSavingBlogAnswers: true,
+    });
+  });
+
+  test('should handle SAVE_BLOG_ANSWERS_FULFILLED', () => {
+    const questions = [{
+      id: 1,
+      question: 'Question1',
+      answer: null,
+      sequence_number: 2,
+      required: true,
+    }, {
+      id: 2,
+      question: 'Question2',
+      answer: null,
+      sequence_number: 1,
+      required: false,
+    }, {
+      id: 3,
+      question: 'Question3',
+      answer: 'Answer1',
+      sequence_number: 3,
+      required: false,
+    }];
+
+    expect(
+      reducer({}, {
+        type: SAVE_BLOG_ANSWERS_FULFILLED,
+        payload: {
+          blog_questions: questions,
+        },
+      }),
+    ).toEqual({
+      isSavingBlogAnswers: false,
+      blog_questions: questions,
+    });
+  });
+
+  test('should handle SAVE_BLOG_ANSWERS_REJECTED', () => {
+    const detail = 'Authentication credentials were not provided.';
+
+    expect(
+      reducer({}, {
+        type: SAVE_BLOG_ANSWERS_REJECTED,
+        payload: {
+          detail,
+        },
+      }),
+    ).toEqual({
+      isSavingBlogAnswers: false,
+      error: { detail },
+    });
+  });
+
   test('should handle CREATE_PROGRAM_PENDING', () => {
     expect(
       reducer({}, {
@@ -532,6 +595,7 @@ describe('The code reducer', () => {
       tags: [],
       isFetching: false,
       isSaving: false,
+      isSavingBlogAnswers: false,
       isCreating: false,
       isChangingName: false,
       isChangingProgramTags: false,
