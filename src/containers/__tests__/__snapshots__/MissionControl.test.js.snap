@@ -266,6 +266,7 @@ exports[`The MissionControl container renders on the page with no errors over li
             }
           }
           remixProgram={[Function]}
+          saveBlogAnswers={[Function]}
           sensor={
             Object {
               "leftLightSensorReading": -1,
@@ -4103,6 +4104,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         >
                                                           <Blog
                                                             questions={Array []}
+                                                            saveBlogAnswers={[Function]}
                                                           >
                                                             <WithStyles(ForwardRef(Grid))
                                                               container={true}
@@ -4770,6 +4772,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
             }
           }
           remixProgram={[Function]}
+          saveBlogAnswers={[Function]}
           sensor={
             Object {
               "leftLightSensorReading": -1,
@@ -8635,6 +8638,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         >
                                                           <Blog
                                                             questions={Array []}
+                                                            saveBlogAnswers={[Function]}
                                                           >
                                                             <WithStyles(ForwardRef(Grid))
                                                               container={true}
@@ -9302,6 +9306,7 @@ exports[`The MissionControl container renders on the page with no errors under l
             }
           }
           remixProgram={[Function]}
+          saveBlogAnswers={[Function]}
           sensor={
             Object {
               "leftLightSensorReading": -1,
@@ -13170,6 +13175,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                 },
                                                               ]
                                                             }
+                                                            saveBlogAnswers={[Function]}
                                                           >
                                                             <WithStyles(ForwardRef(Grid))
                                                               container={true}

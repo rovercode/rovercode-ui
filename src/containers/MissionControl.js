@@ -43,6 +43,7 @@ import {
   createProgram as actionCreateProgram,
   fetchProgram as actionFetchProgram,
   remixProgram as actionRemixProgram,
+  saveBlogAnswers as actionSaveBlogAnswers,
 } from '@/actions/code';
 
 const mapStateToProps = ({ code, sensor, user }) => ({ code, sensor, user });
@@ -56,6 +57,8 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
   fetchProgram: (id) => dispatch(actionFetchProgram(id, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
   createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
+    .catch(checkAuthError(dispatch)),
+  saveBlogAnswers: (answers) => dispatch(actionSaveBlogAnswers(answers, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
 });
 
@@ -134,6 +137,7 @@ class MissionControl extends Component {
       code,
       sensor,
       user,
+      saveBlogAnswers,
     } = this.props;
 
     const {
@@ -467,7 +471,7 @@ class MissionControl extends Component {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Blog questions={code.blog_questions} />
+                  <Blog questions={code.blog_questions} saveBlogAnswers={saveBlogAnswers} />
                 </AccordionDetails>
               </Accordion>
             </Grid>
@@ -562,6 +566,7 @@ MissionControl.propTypes = {
   createProgram: PropTypes.func.isRequired,
   fetchProgram: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,
+  saveBlogAnswers: PropTypes.func.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,
