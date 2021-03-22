@@ -184,10 +184,7 @@ class ProblemReporter extends Component {
               <FormattedMessage
                 id="app.problem_reporter.thank_you"
                 description="Thanks the user for providing the information"
-                defaultMessage="Thank you so much for reporting this issue.
-                We will contact you via the email address on your Rovercode account with our resolution.
-                In the meantime, it's possible that you can find how others have worked around this issue
-                on the Community Program page."
+                defaultMessage="Thank you so much for reporting this issue. We will contact you via the email address on your Rovercode account with our resolution. In the meantime, it's possible that you can find how others have worked around this issue on the Community Program page."
               />
             </Typography>
             <Button color="primary" variant="contained" onClick={this.handleSubmit} disabled={submitDisabled}>

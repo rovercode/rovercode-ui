@@ -323,10 +323,7 @@ class RoverConnection extends Component {
             <FormattedMessage
               id="app.rover_connection.unsupported_platform"
               description="Popup text for unsupported platform"
-              defaultMessage="This browser or device is not supported.
-                  'Try using Google Chrome or Microsoft Edge '
-                  'on a PC, Macbook, or Android tablet. Also, '
-                  'make sure Bluetooth is enabled."
+              defaultMessage="This browser or device is not supported. Try using Google Chrome or Microsoft Edge on a PC, Macbook, or Android tablet. Also, make sure Bluetooth is enabled."
             />
           </PopoverMessageText>
         </PopoverMessage>
