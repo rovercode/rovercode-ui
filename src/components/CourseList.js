@@ -15,11 +15,16 @@ import {
 } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import { withStyles } from '@material-ui/core/styles';
-import { ArrowDownward, ArrowUpward, Search } from '@material-ui/icons';
+import {
+  ArrowDownward,
+  ArrowUpward,
+  Search,
+} from '@material-ui/icons';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SortIcon from '@material-ui/icons/Sort';
+
 import Course from './Course';
 import Footer from './Footer';
 
@@ -56,7 +61,11 @@ class CourseList extends Component {
 
   update = () => {
     const { fetchCourses } = this.props;
-    const { page, ordering, searchQuery } = this.state;
+    const {
+      page,
+      ordering,
+      searchQuery,
+    } = this.state;
 
     const params = {
       page,
@@ -241,54 +250,62 @@ class CourseList extends Component {
           </Grid>
 
           <Grid container direction="column" justify="center" alignItems="stretch">
-            {courses === null ? (
-              <Grid item container direction="row" justify="center">
-                <CircularProgress />
-              </Grid>
-            ) : null}
-            {courses && courses.count === 0 ? (
-              <Grid item container direction="row" alignItems="center" justify="center">
-                <Typography variant="h4">
-                  <FormattedMessage
-                    id="app.course_list.nothing"
-                    description="Informs the user that no courses match the filters"
-                    defaultMessage="Sorry, no courses match your filters."
-                  />
-                </Typography>
-              </Grid>
-            ) : (
-              <Grid item>
-                <Box className={classes.listContainer}>
-                  {courses
-                    ? courses.results.map((course) => (
-                      <Course
-                        key={course.id}
-                        course={course}
-                        onLessonClick={this.selectProgram}
-                        userTier={user.tier}
-                      />
-                    ))
-                    : null}
-                </Box>
-              </Grid>
-            )}
+            {
+              courses === null ? (
+                <Grid item container direction="row" justify="center">
+                  <CircularProgress />
+                </Grid>
+              ) : (null)
+            }
+            {
+              courses && courses.count === 0 ? (
+                <Grid item container direction="row" alignItems="center" justify="center">
+                  <Typography variant="h4">
+                    <FormattedMessage
+                      id="app.course_list.nothing"
+                      description="Informs the user that no courses match the filters"
+                      defaultMessage="Sorry, no courses match your filters."
+                    />
+                  </Typography>
+                </Grid>
+              ) : (
+                <Grid item>
+                  <Box
+                    className={classes.listContainer}
+                  >
+                    {
+                      courses
+                        ? courses.results.map((course) => (
+                          <Course
+                            key={course.id}
+                            course={course}
+                            onLessonClick={this.selectProgram}
+                            userTier={user.tier}
+                          />
+                        ))
+                        : (null)
+                      }
+                  </Box>
+                </Grid>
+              )
+            }
           </Grid>
           {
-          courses && courses.total_pages > 1 ? (
-            <Box
-              className={classes.paginationPaddedBox}
-            >
-              <Pagination
-                defaultPage={1}
-                count={courses.total_pages}
-                showFirstButton
-                showLastButton
-                color="secondary"
-                onChange={this.handlePageChange}
-              />
-            </Box>
-          ) : (null)
-        }
+            courses && courses.total_pages > 1 ? (
+              <Box
+                className={classes.paginationPaddedBox}
+              >
+                <Pagination
+                  defaultPage={1}
+                  count={courses.total_pages}
+                  showFirstButton
+                  showLastButton
+                  color="secondary"
+                  onChange={this.handlePageChange}
+                />
+              </Box>
+            ) : (null)
+          }
         </Container>
 
         <Footer />

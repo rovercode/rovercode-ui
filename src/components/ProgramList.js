@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Box, CircularProgress, Grid } from '@material-ui/core';
+import {
+  Box,
+  CircularProgress,
+  Grid,
+} from '@material-ui/core';
 import { injectIntl } from 'react-intl';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -60,7 +64,7 @@ class ProgramList extends Component {
     },
   })
 
-  cancelRemove = () => this.setState(defaultState);
+  cancelRemove = () => this.setState(defaultState)
 
   removeProgram = () => {
     const { removeProgram } = this.props;
@@ -228,13 +232,15 @@ ProgramList.propTypes = {
     next: PropTypes.string,
     previous: PropTypes.string,
     total_pages: PropTypes.number,
-    results: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      user: PropTypes.shape({
-        username: PropTypes.string.isRequired,
-      }).isRequired,
-    })),
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        user: PropTypes.shape({
+          username: PropTypes.string.isRequired,
+        }).isRequired,
+      }),
+    ),
   }),
   tag: PropTypes.shape({
     tags: PropTypes.arrayOf(

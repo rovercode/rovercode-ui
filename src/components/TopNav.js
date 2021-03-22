@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  withStyles,
+} from '@material-ui/core/styles';
 import {
   Box,
   Grid,
@@ -105,18 +107,29 @@ class TopNav extends Component {
 
     return (
       <>
-        {redirectToLogin ? <Redirect to="/accounts/login" /> : null}
+        {
+          redirectToLogin ? (
+            <Redirect to="/accounts/login" />
+          ) : (null)
+        }
 
         <div>
           <AppBar position="static" color="secondary">
             <Toolbar className={classes.hiddenOnMobile}>
-              <Box display="flex" justifyContent="left" marginRight={2}>
+              <Box
+                display="flex"
+                justifyContent="left"
+                marginRight={2}
+              >
                 <RoverConnection />
                 <ConnectionHelp suppressGuide={window.location.pathname === '/purchase'} />
               </Box>
               <Grid container direction="row" spacing={2}>
                 <Grid item>
-                  <NavButtonBox display="flex" justifyContent="center">
+                  <NavButtonBox
+                    display="flex"
+                    justifyContent="center"
+                  >
                     <Button
                       size="large"
                       variant="contained"
@@ -187,7 +200,9 @@ class TopNav extends Component {
                 aria-haspopup="true"
                 onClick={this.handleMenuOpen}
               >
-                <Typography variant="h3">{userName}</Typography>
+                <Typography variant="h3">
+                  {userName}
+                </Typography>
               </Button>
               <Menu
                 id="user-menu"

@@ -224,12 +224,8 @@ class RoverConnection extends Component {
 
     const NavBarLogo = withStyles((theme) => {
       let color = grey[800];
-      if (!supportedPlatform) {
-        color = theme.palette.warning.dark;
-      }
-      if (rover) {
-        color = theme.palette.primary.main;
-      }
+      if (!supportedPlatform) { color = theme.palette.warning.dark; }
+      if (rover) { color = theme.palette.primary.main; }
       return {
         root: { color },
       };
@@ -241,7 +237,7 @@ class RoverConnection extends Component {
           size="large"
           variant="outlined"
           disableElevation
-          startIcon={<NavBarLogo style={{ fontSize: 50 }} />}
+          startIcon={(<NavBarLogo style={{ fontSize: 50 }} />)}
           onClick={this.onDisconnected}
         >
           <div>
@@ -298,7 +294,7 @@ class RoverConnection extends Component {
       </ConnectionButton>
     );
 
-    return supportedPlatform ? (button) : (
+    return supportedPlatform ? button : (
       <>
         <span
           aria-owns={popoverOpen ? 'mouse-over-popover' : undefined}
