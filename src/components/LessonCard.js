@@ -88,7 +88,9 @@ const LessonCard = ({ lesson, userTier, onClick }) => {
         <CardHeader
           title={lesson.reference}
           subheader={subheader()}
-          action={<SvgIcon>{progressIcon()}</SvgIcon>}
+          action={(
+            <SvgIcon>{progressIcon()}</SvgIcon>
+          )}
         />
       </CardActionArea>
     </Card>

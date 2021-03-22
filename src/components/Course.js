@@ -9,6 +9,7 @@ import {
   Box,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
+
 import LessonCard from './LessonCard';
 
 const Course = ({ course, userTier, onLessonClick }) => {
@@ -48,13 +49,14 @@ const Course = ({ course, userTier, onLessonClick }) => {
       </AccordionSummary>
       <AccordionDetails style={{ padding: '0' }}>
         <Grid container direction="row" spacing={2}>
-          {course.lessons
-            .sort((l1, l2) => l1.sequence_number - l2.sequence_number)
-            .map((lesson) => (
-              <Grid item xs={12} md={6} lg={3} key={lesson.id}>
-                <LessonCard lesson={lesson} userTier={userTier} onClick={onLessonClick} />
-              </Grid>
-            ))}
+          {
+            course.lessons.sort((l1, l2) => l1.sequence_number - l2.sequence_number)
+              .map((lesson) => (
+                <Grid item xs={12} md={6} lg={3} key={lesson.id}>
+                  <LessonCard lesson={lesson} userTier={userTier} onClick={onLessonClick} />
+                </Grid>
+              ))
+          }
         </Grid>
       </AccordionDetails>
     </Accordion>

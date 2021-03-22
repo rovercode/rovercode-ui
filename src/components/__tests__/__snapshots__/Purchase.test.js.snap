@@ -49,8 +49,7 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
           variant="subtitle1"
         >
           <FormattedMessage
-            defaultMessage="We're excited to offer you early access to Rovercode!
- Shop below, and please email"
+            defaultMessage="We're excited to offer you early access to Rovercode! Shop below, and please email"
             id="app.friends_family.instructions_1"
           />
            
@@ -87,9 +86,7 @@ exports[`The Purchase component renders on the page with no errors 1`] = `
               variant="body2"
             >
               <FormattedMessage
-                defaultMessage="One year of unlimited access to the Rovercode platform and curriculum.
- Your first year includes a Gigglebot Rover. If you have a coupon code, you can enter it on the next screen.
- Your subscription will automatically renew in one year."
+                defaultMessage="One year of unlimited access to the Rovercode platform and curriculum. Your first year includes a Gigglebot Rover. If you have a coupon code, you can enter it on the next screen. Your subscription will automatically renew in one year."
                 id="app.friends_family.item_description"
               />
             </WithStyles(ForwardRef(Typography))>
