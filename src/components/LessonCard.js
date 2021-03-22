@@ -4,10 +4,10 @@ import {
   Card,
   CardHeader,
   CardActionArea,
-  Grid,
   Link,
   SvgIcon,
   Typography,
+  Box,
 } from '@material-ui/core';
 import { CheckCircle, Lens, Lock } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -50,30 +50,26 @@ const LessonCard = ({ lesson, userTier, onClick }) => {
     userTier >= lesson.tier ? (
       lesson.description
     ) : (
-      <Grid container direction="row">
-        <Grid item xs={2}>
-          <Lock fontSize="large" />
-        </Grid>
-        <Grid item xs={10}>
-          <Typography variant="subtitle1">
-            <Link href="/user/settings" color="textSecondary" underline="always">
-              <FormattedMessage
-                id="app.lesson_card.blocked1"
-                description="Informs the user that upgrade is required to access"
-                defaultMessage="Upgrade"
-              />
-            </Link>
-            {' '}
+      <Box flexDirection="row" display="flex" marginTop={1} alignItems="center">
+        <Box paddingRight={1}>
+          <Lock />
+        </Box>
+        <Typography variant="caption">
+          <Link href="/user/settings" color="textSecondary" underline="always">
             <FormattedMessage
-              id="app.lesson_card.blocked2"
+              id="app.lesson_card.blocked1"
               description="Informs the user that upgrade is required to access"
-              defaultMessage="your account to access this lesson."
+              defaultMessage="Upgrade"
             />
-          </Typography>
-        </Grid>
-      </Grid>
-    )
-  );
+          </Link>
+          <FormattedMessage
+            id="app.lesson_card.blocked2"
+            description="Informs the user that upgrade is required to access"
+            defaultMessage=" your account to access this lesson."
+          />
+        </Typography>
+      </Box>
+    ));
 
   const handleOnClick = (e) => {
     if (userTier >= lesson.tier) {
@@ -82,7 +78,7 @@ const LessonCard = ({ lesson, userTier, onClick }) => {
   };
 
   return (
-    <Card className={unavailable ? classes.unavailable : ''}>
+    <Card variant="outlined" className={unavailable ? classes.unavailable : ''} elevation={2}>
       <CardActionArea
         id={lesson.active_bd}
         data-owned={lesson.active_bd_owned}
@@ -93,9 +89,7 @@ const LessonCard = ({ lesson, userTier, onClick }) => {
           title={lesson.reference}
           subheader={subheader()}
           action={(
-            <SvgIcon>
-              {progressIcon()}
-            </SvgIcon>
+            <SvgIcon>{progressIcon()}</SvgIcon>
           )}
         />
       </CardActionArea>

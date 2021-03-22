@@ -3,7 +3,6 @@ import {
   Box,
   CircularProgress,
   Grid,
-  Divider,
 } from '@material-ui/core';
 import { injectIntl } from 'react-intl';
 import { Redirect } from 'react-router-dom';
@@ -166,15 +165,15 @@ class ProgramList extends Component {
             />
           ) : (null)
         }
-        <Grid container direction="column" justify="center" alignItems="center">
+        <Grid container direction="column">
           {
           programs === null ? (
-            <Grid item>
+            <Grid item container direction="row" justify="center">
               <CircularProgress />
             </Grid>
           ) : (
             <Grid item>
-              <Box m={2}>
+              <Box>
                 <ProgramCollection
                   programs={programs}
                   user={user}
@@ -199,7 +198,6 @@ class ProgramList extends Component {
         >
           {dialogContent}
         </ConfirmDialog>
-        <Divider />
         <Footer />
       </>
     );
@@ -245,9 +243,11 @@ ProgramList.propTypes = {
     ),
   }),
   tag: PropTypes.shape({
-    tags: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string,
-    })),
+    tags: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    ),
   }),
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,

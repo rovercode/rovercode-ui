@@ -6,6 +6,7 @@ import {
   Link,
   Typography,
   Container,
+  Divider,
 } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
 
@@ -20,6 +21,7 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <Container maxWidth="lg" className={classes.root}>
+      <Divider style={{ margin: '16px 0px' }} />
       <Grid container direction="column" justify="center" alignItems="center">
         <Grid item>
           <Typography variant="body2">

@@ -43,4 +43,12 @@ describe('The Course component', () => {
     expect(wrapper.find('LessonCard').first().prop('lesson').id).toBe(2);
     expect(wrapper.find('LessonCard').last().prop('lesson').id).toBe(1);
   });
+
+  test('handles accordion expansion', () => {
+    const wrapper = shallow(<Course course={course} onLessonClick={onLessonClick} />);
+
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(1).text()).toBe('Hide Course');
+    wrapper.find('WithStyles(ForwardRef(Accordion))').props().onChange();
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(1).text()).toBe('Show Course');
+  });
 });

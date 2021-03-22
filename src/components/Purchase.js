@@ -153,9 +153,7 @@ class Purchase extends Component {
                 <FormattedMessage
                   id="app.friends_family.already_purchased"
                   description="Messages explaining that the user already purchased the Individual Plan"
-                  defaultMessage="You have successfully purchased the Individual Plan for this account!
-                                  Your Rover should arrive in 5-10 business days. While you wait, feel
-                                  free to browse the lessons."
+                  defaultMessage="You have successfully purchased the Individual Plan for this account! Your Rover should arrive in 5-10 business days. While you wait, feel free to browse the lessons."
                 />
               </Typography>
             </Grid>
@@ -183,8 +181,7 @@ class Purchase extends Component {
               <FormattedMessage
                 id="app.friends_family.instructions_1"
                 description="First part of instructions for contacting support"
-                defaultMessage="We're excited to offer you early access to Rovercode!
-                Shop below, and please email"
+                defaultMessage="We're excited to offer you early access to Rovercode! Shop below, and please email"
               />
               {' '}
               <Link href="mailto:support@rovercode.com">
@@ -211,9 +208,7 @@ class Purchase extends Component {
                   <FormattedMessage
                     id="app.friends_family.item_description"
                     description="Description of the individual plan"
-                    defaultMessage="One year of unlimited access to the Rovercode platform and curriculum.
-                    Your first year includes a Gigglebot Rover. If you have a coupon code, you can enter it on the next screen.
-                    Your subscription will automatically renew in one year."
+                    defaultMessage="One year of unlimited access to the Rovercode platform and curriculum. Your first year includes a Gigglebot Rover. If you have a coupon code, you can enter it on the next screen. Your subscription will automatically renew in one year."
                   />
                 </Typography>
               </CardContent>

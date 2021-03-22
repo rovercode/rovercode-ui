@@ -33,6 +33,15 @@ exports[`The RoverConnection component renders connect button when not connected
         }
       />
     }
+    style={
+      Object {
+        "border": "none",
+        "height": "48px",
+        "justifyContent": "flex-start",
+        "minWidth": "200px",
+        "padding": "0px 8px",
+      }
+    }
     variant="outlined"
   >
     <WithStyles(ForwardRef(Button))
@@ -52,6 +61,15 @@ exports[`The RoverConnection component renders connect button when not connected
             }
           }
         />
+      }
+      style={
+        Object {
+          "border": "none",
+          "height": "48px",
+          "justifyContent": "flex-start",
+          "minWidth": "200px",
+          "padding": "0px 8px",
+        }
       }
       variant="outlined"
     >
@@ -101,6 +119,15 @@ exports[`The RoverConnection component renders connect button when not connected
             }
           />
         }
+        style={
+          Object {
+            "border": "none",
+            "height": "48px",
+            "justifyContent": "flex-start",
+            "minWidth": "200px",
+            "padding": "0px 8px",
+          }
+        }
         variant="outlined"
       >
         <WithStyles(ForwardRef(ButtonBase))
@@ -110,6 +137,15 @@ exports[`The RoverConnection component renders connect button when not connected
           focusRipple={true}
           focusVisibleClassName="Mui-focusVisible"
           onClick={[Function]}
+          style={
+            Object {
+              "border": "none",
+              "height": "48px",
+              "justifyContent": "flex-start",
+              "minWidth": "200px",
+              "padding": "0px 8px",
+            }
+          }
           type="button"
         >
           <ForwardRef(ButtonBase)
@@ -126,6 +162,15 @@ exports[`The RoverConnection component renders connect button when not connected
             focusRipple={true}
             focusVisibleClassName="Mui-focusVisible"
             onClick={[Function]}
+            style={
+              Object {
+                "border": "none",
+                "height": "48px",
+                "justifyContent": "flex-start",
+                "minWidth": "200px",
+                "padding": "0px 8px",
+              }
+            }
             type="button"
           >
             <button
@@ -143,6 +188,15 @@ exports[`The RoverConnection component renders connect button when not connected
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
+              style={
+                Object {
+                  "border": "none",
+                  "height": "48px",
+                  "justifyContent": "flex-start",
+                  "minWidth": "200px",
+                  "padding": "0px 8px",
+                }
+              }
               tabIndex={0}
               type="button"
             >
@@ -248,131 +302,162 @@ exports[`The RoverConnection component renders connect button when not connected
                     </LogoIcon>
                   </WithStyles(LogoIcon)>
                 </span>
-                <div>
-                  <WithStyles(WithStyles(ForwardRef(Typography)))
-                    variant="h6"
+                <Styled(MuiBox)
+                  alignItems="baseline"
+                  display="flex"
+                  flexDirection="column"
+                >
+                  <div
+                    className="MuiBox-root MuiBox-root-6"
                   >
-                    <WithStyles(ForwardRef(Typography))
-                      classes={
+                    <WithStyles(WithStyles(ForwardRef(Typography)))
+                      style={
                         Object {
-                          "root": "WithStyles(ForwardRef(Typography))-root-6",
+                          "lineHeight": "1",
                         }
                       }
-                      variant="h6"
+                      variant="body1"
                     >
-                      <ForwardRef(Typography)
+                      <WithStyles(ForwardRef(Typography))
                         classes={
                           Object {
-                            "alignCenter": "MuiTypography-alignCenter",
-                            "alignJustify": "MuiTypography-alignJustify",
-                            "alignLeft": "MuiTypography-alignLeft",
-                            "alignRight": "MuiTypography-alignRight",
-                            "body1": "MuiTypography-body1",
-                            "body2": "MuiTypography-body2",
-                            "button": "MuiTypography-button",
-                            "caption": "MuiTypography-caption",
-                            "colorError": "MuiTypography-colorError",
-                            "colorInherit": "MuiTypography-colorInherit",
-                            "colorPrimary": "MuiTypography-colorPrimary",
-                            "colorSecondary": "MuiTypography-colorSecondary",
-                            "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                            "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                            "displayBlock": "MuiTypography-displayBlock",
-                            "displayInline": "MuiTypography-displayInline",
-                            "gutterBottom": "MuiTypography-gutterBottom",
-                            "h1": "MuiTypography-h1",
-                            "h2": "MuiTypography-h2",
-                            "h3": "MuiTypography-h3",
-                            "h4": "MuiTypography-h4",
-                            "h5": "MuiTypography-h5",
-                            "h6": "MuiTypography-h6",
-                            "noWrap": "MuiTypography-noWrap",
-                            "overline": "MuiTypography-overline",
-                            "paragraph": "MuiTypography-paragraph",
-                            "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-6",
-                            "srOnly": "MuiTypography-srOnly",
-                            "subtitle1": "MuiTypography-subtitle1",
-                            "subtitle2": "MuiTypography-subtitle2",
+                            "root": "WithStyles(ForwardRef(Typography))-root-7",
                           }
                         }
-                        variant="h6"
-                      >
-                        <h6
-                          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-6 MuiTypography-h6"
-                        >
-                          <FormattedMessage
-                            defaultMessage="No Rover"
-                            id="app.rover_connection.no_rover"
-                          >
-                            No Rover
-                          </FormattedMessage>
-                          <br />
-                        </h6>
-                      </ForwardRef(Typography)>
-                    </WithStyles(ForwardRef(Typography))>
-                  </WithStyles(WithStyles(ForwardRef(Typography)))>
-                  <WithStyles(WithStyles(ForwardRef(Typography)))
-                    color="primary"
-                  >
-                    <WithStyles(ForwardRef(Typography))
-                      classes={
-                        Object {
-                          "root": "WithStyles(ForwardRef(Typography))-root-7",
+                        style={
+                          Object {
+                            "lineHeight": "1",
+                          }
                         }
-                      }
+                        variant="body1"
+                      >
+                        <ForwardRef(Typography)
+                          classes={
+                            Object {
+                              "alignCenter": "MuiTypography-alignCenter",
+                              "alignJustify": "MuiTypography-alignJustify",
+                              "alignLeft": "MuiTypography-alignLeft",
+                              "alignRight": "MuiTypography-alignRight",
+                              "body1": "MuiTypography-body1",
+                              "body2": "MuiTypography-body2",
+                              "button": "MuiTypography-button",
+                              "caption": "MuiTypography-caption",
+                              "colorError": "MuiTypography-colorError",
+                              "colorInherit": "MuiTypography-colorInherit",
+                              "colorPrimary": "MuiTypography-colorPrimary",
+                              "colorSecondary": "MuiTypography-colorSecondary",
+                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                              "displayBlock": "MuiTypography-displayBlock",
+                              "displayInline": "MuiTypography-displayInline",
+                              "gutterBottom": "MuiTypography-gutterBottom",
+                              "h1": "MuiTypography-h1",
+                              "h2": "MuiTypography-h2",
+                              "h3": "MuiTypography-h3",
+                              "h4": "MuiTypography-h4",
+                              "h5": "MuiTypography-h5",
+                              "h6": "MuiTypography-h6",
+                              "noWrap": "MuiTypography-noWrap",
+                              "overline": "MuiTypography-overline",
+                              "paragraph": "MuiTypography-paragraph",
+                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-7",
+                              "srOnly": "MuiTypography-srOnly",
+                              "subtitle1": "MuiTypography-subtitle1",
+                              "subtitle2": "MuiTypography-subtitle2",
+                            }
+                          }
+                          style={
+                            Object {
+                              "lineHeight": "1",
+                            }
+                          }
+                          variant="body1"
+                        >
+                          <p
+                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-7 MuiTypography-body1"
+                            style={
+                              Object {
+                                "lineHeight": "1",
+                              }
+                            }
+                          >
+                            <FormattedMessage
+                              defaultMessage="No Rover"
+                              id="app.rover_connection.no_rover"
+                            >
+                              No Rover
+                            </FormattedMessage>
+                            <br />
+                          </p>
+                        </ForwardRef(Typography)>
+                      </WithStyles(ForwardRef(Typography))>
+                    </WithStyles(WithStyles(ForwardRef(Typography)))>
+                    <WithStyles(WithStyles(ForwardRef(Typography)))
                       color="primary"
+                      variant="subtitle2"
                     >
-                      <ForwardRef(Typography)
+                      <WithStyles(ForwardRef(Typography))
                         classes={
                           Object {
-                            "alignCenter": "MuiTypography-alignCenter",
-                            "alignJustify": "MuiTypography-alignJustify",
-                            "alignLeft": "MuiTypography-alignLeft",
-                            "alignRight": "MuiTypography-alignRight",
-                            "body1": "MuiTypography-body1",
-                            "body2": "MuiTypography-body2",
-                            "button": "MuiTypography-button",
-                            "caption": "MuiTypography-caption",
-                            "colorError": "MuiTypography-colorError",
-                            "colorInherit": "MuiTypography-colorInherit",
-                            "colorPrimary": "MuiTypography-colorPrimary",
-                            "colorSecondary": "MuiTypography-colorSecondary",
-                            "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                            "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                            "displayBlock": "MuiTypography-displayBlock",
-                            "displayInline": "MuiTypography-displayInline",
-                            "gutterBottom": "MuiTypography-gutterBottom",
-                            "h1": "MuiTypography-h1",
-                            "h2": "MuiTypography-h2",
-                            "h3": "MuiTypography-h3",
-                            "h4": "MuiTypography-h4",
-                            "h5": "MuiTypography-h5",
-                            "h6": "MuiTypography-h6",
-                            "noWrap": "MuiTypography-noWrap",
-                            "overline": "MuiTypography-overline",
-                            "paragraph": "MuiTypography-paragraph",
-                            "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-7",
-                            "srOnly": "MuiTypography-srOnly",
-                            "subtitle1": "MuiTypography-subtitle1",
-                            "subtitle2": "MuiTypography-subtitle2",
+                            "root": "WithStyles(ForwardRef(Typography))-root-8",
                           }
                         }
                         color="primary"
+                        variant="subtitle2"
                       >
-                        <p
-                          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-7 MuiTypography-body1 MuiTypography-colorPrimary"
+                        <ForwardRef(Typography)
+                          classes={
+                            Object {
+                              "alignCenter": "MuiTypography-alignCenter",
+                              "alignJustify": "MuiTypography-alignJustify",
+                              "alignLeft": "MuiTypography-alignLeft",
+                              "alignRight": "MuiTypography-alignRight",
+                              "body1": "MuiTypography-body1",
+                              "body2": "MuiTypography-body2",
+                              "button": "MuiTypography-button",
+                              "caption": "MuiTypography-caption",
+                              "colorError": "MuiTypography-colorError",
+                              "colorInherit": "MuiTypography-colorInherit",
+                              "colorPrimary": "MuiTypography-colorPrimary",
+                              "colorSecondary": "MuiTypography-colorSecondary",
+                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                              "displayBlock": "MuiTypography-displayBlock",
+                              "displayInline": "MuiTypography-displayInline",
+                              "gutterBottom": "MuiTypography-gutterBottom",
+                              "h1": "MuiTypography-h1",
+                              "h2": "MuiTypography-h2",
+                              "h3": "MuiTypography-h3",
+                              "h4": "MuiTypography-h4",
+                              "h5": "MuiTypography-h5",
+                              "h6": "MuiTypography-h6",
+                              "noWrap": "MuiTypography-noWrap",
+                              "overline": "MuiTypography-overline",
+                              "paragraph": "MuiTypography-paragraph",
+                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-8",
+                              "srOnly": "MuiTypography-srOnly",
+                              "subtitle1": "MuiTypography-subtitle1",
+                              "subtitle2": "MuiTypography-subtitle2",
+                            }
+                          }
+                          color="primary"
+                          variant="subtitle2"
                         >
-                          <FormattedMessage
-                            defaultMessage="Connect"
-                            id="app.rover_connection.connect"
+                          <h6
+                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-8 MuiTypography-subtitle2 MuiTypography-colorPrimary"
                           >
-                            Connect
-                          </FormattedMessage>
-                        </p>
-                      </ForwardRef(Typography)>
-                    </WithStyles(ForwardRef(Typography))>
-                  </WithStyles(WithStyles(ForwardRef(Typography)))>
-                </div>
+                            <FormattedMessage
+                              defaultMessage="Connect"
+                              id="app.rover_connection.connect"
+                            >
+                              Connect
+                            </FormattedMessage>
+                          </h6>
+                        </ForwardRef(Typography)>
+                      </WithStyles(ForwardRef(Typography))>
+                    </WithStyles(WithStyles(ForwardRef(Typography)))>
+                  </div>
+                </Styled(MuiBox)>
               </span>
               <WithStyles(memo)
                 center={false}
@@ -449,12 +534,21 @@ exports[`The RoverConnection component renders disabled connect button when on u
           }
         />
       }
+      style={
+        Object {
+          "border": "none",
+          "height": "48px",
+          "justifyContent": "flex-start",
+          "minWidth": "200px",
+          "padding": "0px 8px",
+        }
+      }
       variant="outlined"
     >
       <WithStyles(ForwardRef(Button))
         classes={
           Object {
-            "root": "WithStyles(ForwardRef(Button))-root-12",
+            "root": "WithStyles(ForwardRef(Button))-root-14",
           }
         }
         disableElevation={true}
@@ -468,6 +562,15 @@ exports[`The RoverConnection component renders disabled connect button when on u
               }
             }
           />
+        }
+        style={
+          Object {
+            "border": "none",
+            "height": "48px",
+            "justifyContent": "flex-start",
+            "minWidth": "200px",
+            "padding": "0px 8px",
+          }
         }
         variant="outlined"
       >
@@ -494,7 +597,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
               "outlinedSecondary": "MuiButton-outlinedSecondary",
               "outlinedSizeLarge": "MuiButton-outlinedSizeLarge",
               "outlinedSizeSmall": "MuiButton-outlinedSizeSmall",
-              "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-12",
+              "root": "MuiButton-root WithStyles(ForwardRef(Button))-root-14",
               "sizeLarge": "MuiButton-sizeLarge",
               "sizeSmall": "MuiButton-sizeSmall",
               "startIcon": "MuiButton-startIcon",
@@ -517,19 +620,37 @@ exports[`The RoverConnection component renders disabled connect button when on u
               }
             />
           }
+          style={
+            Object {
+              "border": "none",
+              "height": "48px",
+              "justifyContent": "flex-start",
+              "minWidth": "200px",
+              "padding": "0px 8px",
+            }
+          }
           variant="outlined"
         >
           <WithStyles(ForwardRef(ButtonBase))
-            className="MuiButton-root WithStyles(ForwardRef(Button))-root-12 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
+            className="MuiButton-root WithStyles(ForwardRef(Button))-root-14 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
             component="button"
             disabled={true}
             focusRipple={true}
             focusVisibleClassName="Mui-focusVisible"
             onClick={[Function]}
+            style={
+              Object {
+                "border": "none",
+                "height": "48px",
+                "justifyContent": "flex-start",
+                "minWidth": "200px",
+                "padding": "0px 8px",
+              }
+            }
             type="button"
           >
             <ForwardRef(ButtonBase)
-              className="MuiButton-root WithStyles(ForwardRef(Button))-root-12 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
+              className="MuiButton-root WithStyles(ForwardRef(Button))-root-14 MuiButton-outlined MuiButton-disableElevation Mui-disabled"
               classes={
                 Object {
                   "disabled": "Mui-disabled",
@@ -542,10 +663,19 @@ exports[`The RoverConnection component renders disabled connect button when on u
               focusRipple={true}
               focusVisibleClassName="Mui-focusVisible"
               onClick={[Function]}
+              style={
+                Object {
+                  "border": "none",
+                  "height": "48px",
+                  "justifyContent": "flex-start",
+                  "minWidth": "200px",
+                  "padding": "0px 8px",
+                }
+              }
               type="button"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-12 MuiButton-outlined MuiButton-disableElevation Mui-disabled Mui-disabled"
+                className="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-14 MuiButton-outlined MuiButton-disableElevation Mui-disabled Mui-disabled"
                 disabled={true}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -559,6 +689,15 @@ exports[`The RoverConnection component renders disabled connect button when on u
                 onTouchEnd={[Function]}
                 onTouchMove={[Function]}
                 onTouchStart={[Function]}
+                style={
+                  Object {
+                    "border": "none",
+                    "height": "48px",
+                    "justifyContent": "flex-start",
+                    "minWidth": "200px",
+                    "padding": "0px 8px",
+                  }
+                }
                 tabIndex={-1}
                 type="button"
               >
@@ -578,7 +717,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                       <LogoIcon
                         classes={
                           Object {
-                            "root": "LogoIcon-root-13",
+                            "root": "LogoIcon-root-15",
                           }
                         }
                         style={
@@ -590,7 +729,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                         <WithStyles(ForwardRef(SvgIcon))
                           classes={
                             Object {
-                              "root": "LogoIcon-root-13",
+                              "root": "LogoIcon-root-15",
                             }
                           }
                           style={
@@ -610,7 +749,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                                 "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
                                 "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
                                 "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                "root": "MuiSvgIcon-root LogoIcon-root-13",
+                                "root": "MuiSvgIcon-root LogoIcon-root-15",
                               }
                             }
                             style={
@@ -621,7 +760,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
                           >
                             <svg
                               aria-hidden={true}
-                              className="MuiSvgIcon-root LogoIcon-root-13"
+                              className="MuiSvgIcon-root LogoIcon-root-15"
                               focusable="false"
                               style={
                                 Object {
@@ -664,131 +803,162 @@ exports[`The RoverConnection component renders disabled connect button when on u
                       </LogoIcon>
                     </WithStyles(LogoIcon)>
                   </span>
-                  <div>
-                    <WithStyles(WithStyles(ForwardRef(Typography)))
-                      variant="h6"
+                  <Styled(MuiBox)
+                    alignItems="baseline"
+                    display="flex"
+                    flexDirection="column"
+                  >
+                    <div
+                      className="MuiBox-root MuiBox-root-16"
                     >
-                      <WithStyles(ForwardRef(Typography))
-                        classes={
+                      <WithStyles(WithStyles(ForwardRef(Typography)))
+                        style={
                           Object {
-                            "root": "WithStyles(ForwardRef(Typography))-root-14",
+                            "lineHeight": "1",
                           }
                         }
-                        variant="h6"
+                        variant="body1"
                       >
-                        <ForwardRef(Typography)
+                        <WithStyles(ForwardRef(Typography))
                           classes={
                             Object {
-                              "alignCenter": "MuiTypography-alignCenter",
-                              "alignJustify": "MuiTypography-alignJustify",
-                              "alignLeft": "MuiTypography-alignLeft",
-                              "alignRight": "MuiTypography-alignRight",
-                              "body1": "MuiTypography-body1",
-                              "body2": "MuiTypography-body2",
-                              "button": "MuiTypography-button",
-                              "caption": "MuiTypography-caption",
-                              "colorError": "MuiTypography-colorError",
-                              "colorInherit": "MuiTypography-colorInherit",
-                              "colorPrimary": "MuiTypography-colorPrimary",
-                              "colorSecondary": "MuiTypography-colorSecondary",
-                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                              "displayBlock": "MuiTypography-displayBlock",
-                              "displayInline": "MuiTypography-displayInline",
-                              "gutterBottom": "MuiTypography-gutterBottom",
-                              "h1": "MuiTypography-h1",
-                              "h2": "MuiTypography-h2",
-                              "h3": "MuiTypography-h3",
-                              "h4": "MuiTypography-h4",
-                              "h5": "MuiTypography-h5",
-                              "h6": "MuiTypography-h6",
-                              "noWrap": "MuiTypography-noWrap",
-                              "overline": "MuiTypography-overline",
-                              "paragraph": "MuiTypography-paragraph",
-                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-14",
-                              "srOnly": "MuiTypography-srOnly",
-                              "subtitle1": "MuiTypography-subtitle1",
-                              "subtitle2": "MuiTypography-subtitle2",
+                              "root": "WithStyles(ForwardRef(Typography))-root-17",
                             }
                           }
-                          variant="h6"
-                        >
-                          <h6
-                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-14 MuiTypography-h6"
-                          >
-                            <FormattedMessage
-                              defaultMessage="No Rover"
-                              id="app.rover_connection.no_rover"
-                            >
-                              No Rover
-                            </FormattedMessage>
-                            <br />
-                          </h6>
-                        </ForwardRef(Typography)>
-                      </WithStyles(ForwardRef(Typography))>
-                    </WithStyles(WithStyles(ForwardRef(Typography)))>
-                    <WithStyles(WithStyles(ForwardRef(Typography)))
-                      color="initial"
-                    >
-                      <WithStyles(ForwardRef(Typography))
-                        classes={
-                          Object {
-                            "root": "WithStyles(ForwardRef(Typography))-root-15",
+                          style={
+                            Object {
+                              "lineHeight": "1",
+                            }
                           }
-                        }
+                          variant="body1"
+                        >
+                          <ForwardRef(Typography)
+                            classes={
+                              Object {
+                                "alignCenter": "MuiTypography-alignCenter",
+                                "alignJustify": "MuiTypography-alignJustify",
+                                "alignLeft": "MuiTypography-alignLeft",
+                                "alignRight": "MuiTypography-alignRight",
+                                "body1": "MuiTypography-body1",
+                                "body2": "MuiTypography-body2",
+                                "button": "MuiTypography-button",
+                                "caption": "MuiTypography-caption",
+                                "colorError": "MuiTypography-colorError",
+                                "colorInherit": "MuiTypography-colorInherit",
+                                "colorPrimary": "MuiTypography-colorPrimary",
+                                "colorSecondary": "MuiTypography-colorSecondary",
+                                "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                "displayBlock": "MuiTypography-displayBlock",
+                                "displayInline": "MuiTypography-displayInline",
+                                "gutterBottom": "MuiTypography-gutterBottom",
+                                "h1": "MuiTypography-h1",
+                                "h2": "MuiTypography-h2",
+                                "h3": "MuiTypography-h3",
+                                "h4": "MuiTypography-h4",
+                                "h5": "MuiTypography-h5",
+                                "h6": "MuiTypography-h6",
+                                "noWrap": "MuiTypography-noWrap",
+                                "overline": "MuiTypography-overline",
+                                "paragraph": "MuiTypography-paragraph",
+                                "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-17",
+                                "srOnly": "MuiTypography-srOnly",
+                                "subtitle1": "MuiTypography-subtitle1",
+                                "subtitle2": "MuiTypography-subtitle2",
+                              }
+                            }
+                            style={
+                              Object {
+                                "lineHeight": "1",
+                              }
+                            }
+                            variant="body1"
+                          >
+                            <p
+                              className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-17 MuiTypography-body1"
+                              style={
+                                Object {
+                                  "lineHeight": "1",
+                                }
+                              }
+                            >
+                              <FormattedMessage
+                                defaultMessage="No Rover"
+                                id="app.rover_connection.no_rover"
+                              >
+                                No Rover
+                              </FormattedMessage>
+                              <br />
+                            </p>
+                          </ForwardRef(Typography)>
+                        </WithStyles(ForwardRef(Typography))>
+                      </WithStyles(WithStyles(ForwardRef(Typography)))>
+                      <WithStyles(WithStyles(ForwardRef(Typography)))
                         color="initial"
+                        variant="subtitle2"
                       >
-                        <ForwardRef(Typography)
+                        <WithStyles(ForwardRef(Typography))
                           classes={
                             Object {
-                              "alignCenter": "MuiTypography-alignCenter",
-                              "alignJustify": "MuiTypography-alignJustify",
-                              "alignLeft": "MuiTypography-alignLeft",
-                              "alignRight": "MuiTypography-alignRight",
-                              "body1": "MuiTypography-body1",
-                              "body2": "MuiTypography-body2",
-                              "button": "MuiTypography-button",
-                              "caption": "MuiTypography-caption",
-                              "colorError": "MuiTypography-colorError",
-                              "colorInherit": "MuiTypography-colorInherit",
-                              "colorPrimary": "MuiTypography-colorPrimary",
-                              "colorSecondary": "MuiTypography-colorSecondary",
-                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                              "displayBlock": "MuiTypography-displayBlock",
-                              "displayInline": "MuiTypography-displayInline",
-                              "gutterBottom": "MuiTypography-gutterBottom",
-                              "h1": "MuiTypography-h1",
-                              "h2": "MuiTypography-h2",
-                              "h3": "MuiTypography-h3",
-                              "h4": "MuiTypography-h4",
-                              "h5": "MuiTypography-h5",
-                              "h6": "MuiTypography-h6",
-                              "noWrap": "MuiTypography-noWrap",
-                              "overline": "MuiTypography-overline",
-                              "paragraph": "MuiTypography-paragraph",
-                              "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-15",
-                              "srOnly": "MuiTypography-srOnly",
-                              "subtitle1": "MuiTypography-subtitle1",
-                              "subtitle2": "MuiTypography-subtitle2",
+                              "root": "WithStyles(ForwardRef(Typography))-root-18",
                             }
                           }
                           color="initial"
+                          variant="subtitle2"
                         >
-                          <p
-                            className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-15 MuiTypography-body1"
+                          <ForwardRef(Typography)
+                            classes={
+                              Object {
+                                "alignCenter": "MuiTypography-alignCenter",
+                                "alignJustify": "MuiTypography-alignJustify",
+                                "alignLeft": "MuiTypography-alignLeft",
+                                "alignRight": "MuiTypography-alignRight",
+                                "body1": "MuiTypography-body1",
+                                "body2": "MuiTypography-body2",
+                                "button": "MuiTypography-button",
+                                "caption": "MuiTypography-caption",
+                                "colorError": "MuiTypography-colorError",
+                                "colorInherit": "MuiTypography-colorInherit",
+                                "colorPrimary": "MuiTypography-colorPrimary",
+                                "colorSecondary": "MuiTypography-colorSecondary",
+                                "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                "displayBlock": "MuiTypography-displayBlock",
+                                "displayInline": "MuiTypography-displayInline",
+                                "gutterBottom": "MuiTypography-gutterBottom",
+                                "h1": "MuiTypography-h1",
+                                "h2": "MuiTypography-h2",
+                                "h3": "MuiTypography-h3",
+                                "h4": "MuiTypography-h4",
+                                "h5": "MuiTypography-h5",
+                                "h6": "MuiTypography-h6",
+                                "noWrap": "MuiTypography-noWrap",
+                                "overline": "MuiTypography-overline",
+                                "paragraph": "MuiTypography-paragraph",
+                                "root": "MuiTypography-root WithStyles(ForwardRef(Typography))-root-18",
+                                "srOnly": "MuiTypography-srOnly",
+                                "subtitle1": "MuiTypography-subtitle1",
+                                "subtitle2": "MuiTypography-subtitle2",
+                              }
+                            }
+                            color="initial"
+                            variant="subtitle2"
                           >
-                            <FormattedMessage
-                              defaultMessage="Connect"
-                              id="app.rover_connection.connect"
+                            <h6
+                              className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-18 MuiTypography-subtitle2"
                             >
-                              Connect
-                            </FormattedMessage>
-                          </p>
-                        </ForwardRef(Typography)>
-                      </WithStyles(ForwardRef(Typography))>
-                    </WithStyles(WithStyles(ForwardRef(Typography)))>
-                  </div>
+                              <FormattedMessage
+                                defaultMessage="Connect"
+                                id="app.rover_connection.connect"
+                              >
+                                Connect
+                              </FormattedMessage>
+                            </h6>
+                          </ForwardRef(Typography)>
+                        </WithStyles(ForwardRef(Typography))>
+                      </WithStyles(WithStyles(ForwardRef(Typography)))>
+                    </div>
+                  </Styled(MuiBox)>
                 </span>
               </button>
             </ForwardRef(ButtonBase)>
@@ -826,7 +996,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
       }
       classes={
         Object {
-          "root": "WithStyles(ForwardRef(Popover))-root-16",
+          "root": "WithStyles(ForwardRef(Popover))-root-19",
         }
       }
       disableRestoreFocus={true}
@@ -851,7 +1021,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
         classes={
           Object {
             "paper": "MuiPopover-paper",
-            "root": "MuiPopover-root WithStyles(ForwardRef(Popover))-root-16",
+            "root": "MuiPopover-root WithStyles(ForwardRef(Popover))-root-19",
           }
         }
         disableRestoreFocus={true}
@@ -871,7 +1041,7 @@ exports[`The RoverConnection component renders disabled connect button when on u
               "invisible": true,
             }
           }
-          className="MuiPopover-root WithStyles(ForwardRef(Popover))-root-16"
+          className="MuiPopover-root WithStyles(ForwardRef(Popover))-root-19"
           disableRestoreFocus={true}
           id="mouse-over-popover"
           onClose={[Function]}

@@ -33,7 +33,8 @@ describe('The TopNav component', () => {
     const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
       context: { cookies },
     });
-    const wrapper = topNav.dive().dive().dive().dive();
+    const wrapper = topNav.dive().dive().dive().dive()
+      .dive();
 
     expect(wrapper.find(Redirect).exists()).toBe(false);
     expect(cookies.get('auth_jwt', { path: '/' })).toBe('1234');
@@ -53,12 +54,27 @@ describe('The TopNav component', () => {
     const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
       context: { cookies },
     });
-    const wrapper = topNav.dive().dive().dive().dive();
+    const wrapper = topNav.dive().dive().dive().dive()
+      .dive();
 
     expect(wrapper.instance().state.userMenuAnchorElement).toBe(null);
     wrapper.instance().handleMenuOpen({ target: 'element' });
     expect(wrapper.instance().state.userMenuAnchorElement).toBe('element');
     wrapper.instance().handleMenuClose();
     expect(wrapper.instance().state.userMenuAnchorElement).toBe(null);
+  });
+
+  test('should set and clear menu anchor element when menu is opening and closing', () => {
+    const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
+      context: { cookies },
+    });
+    const wrapper = topNav.dive().dive().dive().dive()
+      .dive();
+
+    expect(wrapper.instance().state.mobileMenuAnchorElement).toBe(null);
+    wrapper.instance().handleClick({ target: 'element' });
+    expect(wrapper.instance().state.mobileMenuAnchorElement).toBe('element');
+    wrapper.instance().handleClose();
+    expect(wrapper.instance().state.mobileMenuAnchorElement).toBe(null);
   });
 });
