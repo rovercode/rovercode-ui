@@ -16,6 +16,11 @@ export default createMuiTheme({
     MuiListItemIcon: {
       root: { minWidth: '32px' },
     },
+    MuiButton: {
+      label: {
+        whiteSpace: 'nowrap',
+      },
+    },
   },
 
   palette: {

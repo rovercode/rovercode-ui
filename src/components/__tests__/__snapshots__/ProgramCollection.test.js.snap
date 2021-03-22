@@ -3573,7 +3573,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         marginRight={2}
                                         style={
                                           Object {
-                                            "minWidth": "150px",
+                                            "whiteSpace": "nowrap",
                                           }
                                         }
                                       >
@@ -3581,7 +3581,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                           className="MuiBox-root MuiBox-root-17 ProgramCollection-flexitem4-5"
                                           style={
                                             Object {
-                                              "minWidth": "150px",
+                                              "whiteSpace": "nowrap",
                                             }
                                           }
                                         >
@@ -3789,11 +3789,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                             disabled={true}
                                             size="large"
                                             startIcon={<Memo(AddIcon) />}
-                                            style={
-                                              Object {
-                                                "width": "162px",
-                                              }
-                                            }
                                             to="/mission-control"
                                             variant="contained"
                                           >
@@ -3849,11 +3844,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               disabled={true}
                                               size="large"
                                               startIcon={<Memo(AddIcon) />}
-                                              style={
-                                                Object {
-                                                  "width": "162px",
-                                                }
-                                              }
                                               to="/mission-control"
                                               variant="contained"
                                             >
@@ -3876,11 +3866,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                 disabled={true}
                                                 focusRipple={true}
                                                 focusVisibleClassName="Mui-focusVisible"
-                                                style={
-                                                  Object {
-                                                    "width": "162px",
-                                                  }
-                                                }
                                                 to="/mission-control"
                                                 type="button"
                                               >
@@ -3910,11 +3895,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   disabled={true}
                                                   focusRipple={true}
                                                   focusVisibleClassName="Mui-focusVisible"
-                                                  style={
-                                                    Object {
-                                                      "width": "162px",
-                                                    }
-                                                  }
                                                   to="/mission-control"
                                                   type="button"
                                                 >
@@ -3933,11 +3913,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     onTouchMove={[Function]}
                                                     onTouchStart={[Function]}
                                                     role="button"
-                                                    style={
-                                                      Object {
-                                                        "width": "162px",
-                                                      }
-                                                    }
                                                     tabIndex={-1}
                                                     to="/mission-control"
                                                   >
@@ -3958,11 +3933,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       onTouchMove={[Function]}
                                                       onTouchStart={[Function]}
                                                       role="button"
-                                                      style={
-                                                        Object {
-                                                          "width": "162px",
-                                                        }
-                                                      }
                                                       tabIndex={-1}
                                                     >
                                                       <a
@@ -3982,11 +3952,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                         onTouchMove={[Function]}
                                                         onTouchStart={[Function]}
                                                         role="button"
-                                                        style={
-                                                          Object {
-                                                            "width": "162px",
-                                                          }
-                                                        }
                                                         tabIndex={-1}
                                                       >
                                                         <span
@@ -9828,7 +9793,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                         marginRight={2}
                                         style={
                                           Object {
-                                            "minWidth": "150px",
+                                            "whiteSpace": "nowrap",
                                           }
                                         }
                                       >
@@ -9836,7 +9801,7 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                           className="MuiBox-root MuiBox-root-31 ProgramCollection-flexitem4-5"
                                           style={
                                             Object {
-                                              "minWidth": "150px",
+                                              "whiteSpace": "nowrap",
                                             }
                                           }
                                         >
@@ -9973,11 +9938,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                             disabled={false}
                                             size="large"
                                             startIcon={<Memo(AddIcon) />}
-                                            style={
-                                              Object {
-                                                "width": "162px",
-                                              }
-                                            }
                                             to="/mission-control"
                                             variant="contained"
                                           >
@@ -10033,11 +9993,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                               disabled={false}
                                               size="large"
                                               startIcon={<Memo(AddIcon) />}
-                                              style={
-                                                Object {
-                                                  "width": "162px",
-                                                }
-                                              }
                                               to="/mission-control"
                                               variant="contained"
                                             >
@@ -10060,11 +10015,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                 disabled={false}
                                                 focusRipple={true}
                                                 focusVisibleClassName="Mui-focusVisible"
-                                                style={
-                                                  Object {
-                                                    "width": "162px",
-                                                  }
-                                                }
                                                 to="/mission-control"
                                                 type="button"
                                               >
@@ -10094,11 +10044,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                   disabled={false}
                                                   focusRipple={true}
                                                   focusVisibleClassName="Mui-focusVisible"
-                                                  style={
-                                                    Object {
-                                                      "width": "162px",
-                                                    }
-                                                  }
                                                   to="/mission-control"
                                                   type="button"
                                                 >
@@ -10117,11 +10062,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                     onTouchMove={[Function]}
                                                     onTouchStart={[Function]}
                                                     role="button"
-                                                    style={
-                                                      Object {
-                                                        "width": "162px",
-                                                      }
-                                                    }
                                                     tabIndex={0}
                                                     to="/mission-control"
                                                   >
@@ -10142,11 +10082,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                       onTouchMove={[Function]}
                                                       onTouchStart={[Function]}
                                                       role="button"
-                                                      style={
-                                                        Object {
-                                                          "width": "162px",
-                                                        }
-                                                      }
                                                       tabIndex={0}
                                                     >
                                                       <a
@@ -10166,11 +10101,6 @@ exports[`The ProgramCollection component renders on the page with no errors as f
                                                         onTouchMove={[Function]}
                                                         onTouchStart={[Function]}
                                                         role="button"
-                                                        style={
-                                                          Object {
-                                                            "width": "162px",
-                                                          }
-                                                        }
                                                         tabIndex={0}
                                                       >
                                                         <span
@@ -15897,11 +15827,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                             disabled={false}
                                             size="large"
                                             startIcon={<Memo(AddIcon) />}
-                                            style={
-                                              Object {
-                                                "width": "162px",
-                                              }
-                                            }
                                             to="/mission-control"
                                             variant="contained"
                                           >
@@ -15957,11 +15882,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                               disabled={false}
                                               size="large"
                                               startIcon={<Memo(AddIcon) />}
-                                              style={
-                                                Object {
-                                                  "width": "162px",
-                                                }
-                                              }
                                               to="/mission-control"
                                               variant="contained"
                                             >
@@ -15984,11 +15904,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                 disabled={false}
                                                 focusRipple={true}
                                                 focusVisibleClassName="Mui-focusVisible"
-                                                style={
-                                                  Object {
-                                                    "width": "162px",
-                                                  }
-                                                }
                                                 to="/mission-control"
                                                 type="button"
                                               >
@@ -16018,11 +15933,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                   disabled={false}
                                                   focusRipple={true}
                                                   focusVisibleClassName="Mui-focusVisible"
-                                                  style={
-                                                    Object {
-                                                      "width": "162px",
-                                                    }
-                                                  }
                                                   to="/mission-control"
                                                   type="button"
                                                 >
@@ -16041,11 +15951,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                     onTouchMove={[Function]}
                                                     onTouchStart={[Function]}
                                                     role="button"
-                                                    style={
-                                                      Object {
-                                                        "width": "162px",
-                                                      }
-                                                    }
                                                     tabIndex={0}
                                                     to="/mission-control"
                                                   >
@@ -16066,11 +15971,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                       onTouchMove={[Function]}
                                                       onTouchStart={[Function]}
                                                       role="button"
-                                                      style={
-                                                        Object {
-                                                          "width": "162px",
-                                                        }
-                                                      }
                                                       tabIndex={0}
                                                     >
                                                       <a
@@ -16090,11 +15990,6 @@ exports[`The ProgramCollection component renders on the page with no errors as p
                                                         onTouchMove={[Function]}
                                                         onTouchStart={[Function]}
                                                         role="button"
-                                                        style={
-                                                          Object {
-                                                            "width": "162px",
-                                                          }
-                                                        }
                                                         tabIndex={0}
                                                       >
                                                         <span

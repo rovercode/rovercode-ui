@@ -350,7 +350,7 @@ render() {
                 <Box
                   marginRight={2}
                   marginLeft={2}
-                  style={{ minWidth: '150px' }}
+                  style={{ whiteSpace: 'nowrap' }}
                   className={classes.flexitem4}
                 >
                   {programCount >= programLimit ? (
@@ -398,7 +398,6 @@ render() {
                   size="large"
                   startIcon={<Add />}
                   component={Link}
-                  style={{ width: '162px' }}
                   to="/mission-control"
                   disabled={user.tier === 1 && programCount >= programLimit}
                 >
