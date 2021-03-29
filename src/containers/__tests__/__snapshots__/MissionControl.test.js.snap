@@ -1158,7 +1158,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-10"
+                                      className="MuiBox-root MuiBox-root-19"
                                     >
                                       <WithStyles(ForwardRef(Typography))
                                         variant="h6"
@@ -1332,7 +1332,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                     m={0}
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-11"
+                                      className="MuiBox-root MuiBox-root-20"
                                     >
                                       <WithStyles(ForwardRef(Alert))
                                         action={
@@ -2929,16 +2929,16 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                               borderRadius="borderRadius"
                                                               classes={
                                                                 Object {
-                                                                  "root": "Styled(MuiBox)-root-12",
+                                                                  "root": "Styled(MuiBox)-root-21",
                                                                 }
                                                               }
                                                               p={2}
                                                             >
                                                               <div
-                                                                className="MuiBox-root MuiBox-root-13 Styled(MuiBox)-root-12"
+                                                                className="MuiBox-root MuiBox-root-22 Styled(MuiBox)-root-21"
                                                                 classes={
                                                                   Object {
-                                                                    "root": "Styled(MuiBox)-root-12",
+                                                                    "root": "Styled(MuiBox)-root-21",
                                                                   }
                                                                 }
                                                               >
@@ -4103,6 +4103,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                           className="MuiAccordionDetails-root"
                                                         >
                                                           <Blog
+                                                            isReadOnly={true}
                                                             questions={Array []}
                                                             saveBlogAnswers={[Function]}
                                                           >
@@ -4223,7 +4224,73 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                               >
                                                                 <div
                                                                   className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
-                                                                />
+                                                                >
+                                                                  <WithStyles(ForwardRef(Typography))
+                                                                    style={
+                                                                      Object {
+                                                                        "color": "grey",
+                                                                        "fontStyle": "italic",
+                                                                      }
+                                                                    }
+                                                                    variant="caption"
+                                                                  >
+                                                                    <ForwardRef(Typography)
+                                                                      classes={
+                                                                        Object {
+                                                                          "alignCenter": "MuiTypography-alignCenter",
+                                                                          "alignJustify": "MuiTypography-alignJustify",
+                                                                          "alignLeft": "MuiTypography-alignLeft",
+                                                                          "alignRight": "MuiTypography-alignRight",
+                                                                          "body1": "MuiTypography-body1",
+                                                                          "body2": "MuiTypography-body2",
+                                                                          "button": "MuiTypography-button",
+                                                                          "caption": "MuiTypography-caption",
+                                                                          "colorError": "MuiTypography-colorError",
+                                                                          "colorInherit": "MuiTypography-colorInherit",
+                                                                          "colorPrimary": "MuiTypography-colorPrimary",
+                                                                          "colorSecondary": "MuiTypography-colorSecondary",
+                                                                          "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                          "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                          "displayBlock": "MuiTypography-displayBlock",
+                                                                          "displayInline": "MuiTypography-displayInline",
+                                                                          "gutterBottom": "MuiTypography-gutterBottom",
+                                                                          "h1": "MuiTypography-h1",
+                                                                          "h2": "MuiTypography-h2",
+                                                                          "h3": "MuiTypography-h3",
+                                                                          "h4": "MuiTypography-h4",
+                                                                          "h5": "MuiTypography-h5",
+                                                                          "h6": "MuiTypography-h6",
+                                                                          "noWrap": "MuiTypography-noWrap",
+                                                                          "overline": "MuiTypography-overline",
+                                                                          "paragraph": "MuiTypography-paragraph",
+                                                                          "root": "MuiTypography-root",
+                                                                          "srOnly": "MuiTypography-srOnly",
+                                                                          "subtitle1": "MuiTypography-subtitle1",
+                                                                          "subtitle2": "MuiTypography-subtitle2",
+                                                                        }
+                                                                      }
+                                                                      style={
+                                                                        Object {
+                                                                          "color": "grey",
+                                                                          "fontStyle": "italic",
+                                                                        }
+                                                                      }
+                                                                      variant="caption"
+                                                                    >
+                                                                      <span
+                                                                        className="MuiTypography-root MuiTypography-caption"
+                                                                        style={
+                                                                          Object {
+                                                                            "color": "grey",
+                                                                            "fontStyle": "italic",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        No Blog Post Available
+                                                                      </span>
+                                                                    </ForwardRef(Typography)>
+                                                                  </WithStyles(ForwardRef(Typography))>
+                                                                </div>
                                                               </ForwardRef(Grid)>
                                                             </WithStyles(ForwardRef(Grid))>
                                                           </Blog>
@@ -5664,7 +5731,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-16"
+                                      className="MuiBox-root MuiBox-root-25"
                                     >
                                       <WithStyles(ForwardRef(Typography))
                                         variant="h6"
@@ -5838,7 +5905,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                     m={0}
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-17"
+                                      className="MuiBox-root MuiBox-root-26"
                                     >
                                       <WithStyles(ForwardRef(Alert))
                                         action={
@@ -7463,16 +7530,16 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                               borderRadius="borderRadius"
                                                               classes={
                                                                 Object {
-                                                                  "root": "Styled(MuiBox)-root-18",
+                                                                  "root": "Styled(MuiBox)-root-27",
                                                                 }
                                                               }
                                                               p={2}
                                                             >
                                                               <div
-                                                                className="MuiBox-root MuiBox-root-19 Styled(MuiBox)-root-18"
+                                                                className="MuiBox-root MuiBox-root-28 Styled(MuiBox)-root-27"
                                                                 classes={
                                                                   Object {
-                                                                    "root": "Styled(MuiBox)-root-18",
+                                                                    "root": "Styled(MuiBox)-root-27",
                                                                   }
                                                                 }
                                                               >
@@ -8637,6 +8704,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                           className="MuiAccordionDetails-root"
                                                         >
                                                           <Blog
+                                                            isReadOnly={true}
                                                             questions={Array []}
                                                             saveBlogAnswers={[Function]}
                                                           >
@@ -8757,7 +8825,73 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                               >
                                                                 <div
                                                                   className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
-                                                                />
+                                                                >
+                                                                  <WithStyles(ForwardRef(Typography))
+                                                                    style={
+                                                                      Object {
+                                                                        "color": "grey",
+                                                                        "fontStyle": "italic",
+                                                                      }
+                                                                    }
+                                                                    variant="caption"
+                                                                  >
+                                                                    <ForwardRef(Typography)
+                                                                      classes={
+                                                                        Object {
+                                                                          "alignCenter": "MuiTypography-alignCenter",
+                                                                          "alignJustify": "MuiTypography-alignJustify",
+                                                                          "alignLeft": "MuiTypography-alignLeft",
+                                                                          "alignRight": "MuiTypography-alignRight",
+                                                                          "body1": "MuiTypography-body1",
+                                                                          "body2": "MuiTypography-body2",
+                                                                          "button": "MuiTypography-button",
+                                                                          "caption": "MuiTypography-caption",
+                                                                          "colorError": "MuiTypography-colorError",
+                                                                          "colorInherit": "MuiTypography-colorInherit",
+                                                                          "colorPrimary": "MuiTypography-colorPrimary",
+                                                                          "colorSecondary": "MuiTypography-colorSecondary",
+                                                                          "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                          "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                          "displayBlock": "MuiTypography-displayBlock",
+                                                                          "displayInline": "MuiTypography-displayInline",
+                                                                          "gutterBottom": "MuiTypography-gutterBottom",
+                                                                          "h1": "MuiTypography-h1",
+                                                                          "h2": "MuiTypography-h2",
+                                                                          "h3": "MuiTypography-h3",
+                                                                          "h4": "MuiTypography-h4",
+                                                                          "h5": "MuiTypography-h5",
+                                                                          "h6": "MuiTypography-h6",
+                                                                          "noWrap": "MuiTypography-noWrap",
+                                                                          "overline": "MuiTypography-overline",
+                                                                          "paragraph": "MuiTypography-paragraph",
+                                                                          "root": "MuiTypography-root",
+                                                                          "srOnly": "MuiTypography-srOnly",
+                                                                          "subtitle1": "MuiTypography-subtitle1",
+                                                                          "subtitle2": "MuiTypography-subtitle2",
+                                                                        }
+                                                                      }
+                                                                      style={
+                                                                        Object {
+                                                                          "color": "grey",
+                                                                          "fontStyle": "italic",
+                                                                        }
+                                                                      }
+                                                                      variant="caption"
+                                                                    >
+                                                                      <span
+                                                                        className="MuiTypography-root MuiTypography-caption"
+                                                                        style={
+                                                                          Object {
+                                                                            "color": "grey",
+                                                                            "fontStyle": "italic",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        No Blog Post Available
+                                                                      </span>
+                                                                    </ForwardRef(Typography)>
+                                                                  </WithStyles(ForwardRef(Typography))>
+                                                                </div>
                                                               </ForwardRef(Grid)>
                                                             </WithStyles(ForwardRef(Grid))>
                                                           </Blog>
@@ -13164,6 +13298,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                           className="MuiAccordionDetails-root"
                                                         >
                                                           <Blog
+                                                            isReadOnly={false}
                                                             questions={
                                                               Array [
                                                                 Object {
@@ -13295,6 +13430,79 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                 <div
                                                                   className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
                                                                 >
+                                                                  <Styled(MuiBox)
+                                                                    mb={2}
+                                                                  >
+                                                                    <div
+                                                                      className="MuiBox-root MuiBox-root-12"
+                                                                    >
+                                                                      <WithStyles(ForwardRef(Typography))
+                                                                        style={
+                                                                          Object {
+                                                                            "color": "grey",
+                                                                            "fontStyle": "italic",
+                                                                          }
+                                                                        }
+                                                                        variant="caption"
+                                                                      >
+                                                                        <ForwardRef(Typography)
+                                                                          classes={
+                                                                            Object {
+                                                                              "alignCenter": "MuiTypography-alignCenter",
+                                                                              "alignJustify": "MuiTypography-alignJustify",
+                                                                              "alignLeft": "MuiTypography-alignLeft",
+                                                                              "alignRight": "MuiTypography-alignRight",
+                                                                              "body1": "MuiTypography-body1",
+                                                                              "body2": "MuiTypography-body2",
+                                                                              "button": "MuiTypography-button",
+                                                                              "caption": "MuiTypography-caption",
+                                                                              "colorError": "MuiTypography-colorError",
+                                                                              "colorInherit": "MuiTypography-colorInherit",
+                                                                              "colorPrimary": "MuiTypography-colorPrimary",
+                                                                              "colorSecondary": "MuiTypography-colorSecondary",
+                                                                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                              "displayBlock": "MuiTypography-displayBlock",
+                                                                              "displayInline": "MuiTypography-displayInline",
+                                                                              "gutterBottom": "MuiTypography-gutterBottom",
+                                                                              "h1": "MuiTypography-h1",
+                                                                              "h2": "MuiTypography-h2",
+                                                                              "h3": "MuiTypography-h3",
+                                                                              "h4": "MuiTypography-h4",
+                                                                              "h5": "MuiTypography-h5",
+                                                                              "h6": "MuiTypography-h6",
+                                                                              "noWrap": "MuiTypography-noWrap",
+                                                                              "overline": "MuiTypography-overline",
+                                                                              "paragraph": "MuiTypography-paragraph",
+                                                                              "root": "MuiTypography-root",
+                                                                              "srOnly": "MuiTypography-srOnly",
+                                                                              "subtitle1": "MuiTypography-subtitle1",
+                                                                              "subtitle2": "MuiTypography-subtitle2",
+                                                                            }
+                                                                          }
+                                                                          style={
+                                                                            Object {
+                                                                              "color": "grey",
+                                                                              "fontStyle": "italic",
+                                                                            }
+                                                                          }
+                                                                          variant="caption"
+                                                                        >
+                                                                          <span
+                                                                            className="MuiTypography-root MuiTypography-caption"
+                                                                            style={
+                                                                              Object {
+                                                                                "color": "grey",
+                                                                                "fontStyle": "italic",
+                                                                              }
+                                                                            }
+                                                                          >
+                                                                            *Required
+                                                                          </span>
+                                                                        </ForwardRef(Typography)>
+                                                                      </WithStyles(ForwardRef(Typography))>
+                                                                    </div>
+                                                                  </Styled(MuiBox)>
                                                                   <WithStyles(ForwardRef(Grid))
                                                                     item={true}
                                                                     key="1"
@@ -13412,10 +13620,618 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                       <div
                                                                         className="MuiGrid-root MuiGrid-item"
                                                                       >
-                                                                        Question1: Answer1
+                                                                        <Styled(MuiBox)
+                                                                          mb={0.5}
+                                                                        >
+                                                                          <div
+                                                                            className="MuiBox-root MuiBox-root-13"
+                                                                          >
+                                                                            <WithStyles(ForwardRef(Typography))
+                                                                              className={null}
+                                                                              variant="subtitle2"
+                                                                            >
+                                                                              <ForwardRef(Typography)
+                                                                                className={null}
+                                                                                classes={
+                                                                                  Object {
+                                                                                    "alignCenter": "MuiTypography-alignCenter",
+                                                                                    "alignJustify": "MuiTypography-alignJustify",
+                                                                                    "alignLeft": "MuiTypography-alignLeft",
+                                                                                    "alignRight": "MuiTypography-alignRight",
+                                                                                    "body1": "MuiTypography-body1",
+                                                                                    "body2": "MuiTypography-body2",
+                                                                                    "button": "MuiTypography-button",
+                                                                                    "caption": "MuiTypography-caption",
+                                                                                    "colorError": "MuiTypography-colorError",
+                                                                                    "colorInherit": "MuiTypography-colorInherit",
+                                                                                    "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                    "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                    "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                    "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                    "displayBlock": "MuiTypography-displayBlock",
+                                                                                    "displayInline": "MuiTypography-displayInline",
+                                                                                    "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                    "h1": "MuiTypography-h1",
+                                                                                    "h2": "MuiTypography-h2",
+                                                                                    "h3": "MuiTypography-h3",
+                                                                                    "h4": "MuiTypography-h4",
+                                                                                    "h5": "MuiTypography-h5",
+                                                                                    "h6": "MuiTypography-h6",
+                                                                                    "noWrap": "MuiTypography-noWrap",
+                                                                                    "overline": "MuiTypography-overline",
+                                                                                    "paragraph": "MuiTypography-paragraph",
+                                                                                    "root": "MuiTypography-root",
+                                                                                    "srOnly": "MuiTypography-srOnly",
+                                                                                    "subtitle1": "MuiTypography-subtitle1",
+                                                                                    "subtitle2": "MuiTypography-subtitle2",
+                                                                                  }
+                                                                                }
+                                                                                variant="subtitle2"
+                                                                              >
+                                                                                <h6
+                                                                                  className="MuiTypography-root MuiTypography-subtitle2"
+                                                                                >
+                                                                                  Question1*
+                                                                                </h6>
+                                                                              </ForwardRef(Typography)>
+                                                                            </WithStyles(ForwardRef(Typography))>
+                                                                          </div>
+                                                                        </Styled(MuiBox)>
+                                                                        <Styled(MuiBox)
+                                                                          mb={2}
+                                                                        >
+                                                                          <div
+                                                                            className="MuiBox-root MuiBox-root-14"
+                                                                          >
+                                                                            <WithStyles(ForwardRef(Card))
+                                                                              className="makeStyles-false-10 null cardroot"
+                                                                              variant="outlined"
+                                                                            >
+                                                                              <ForwardRef(Card)
+                                                                                className="makeStyles-false-10 null cardroot"
+                                                                                classes={
+                                                                                  Object {
+                                                                                    "root": "MuiCard-root",
+                                                                                  }
+                                                                                }
+                                                                                variant="outlined"
+                                                                              >
+                                                                                <WithStyles(ForwardRef(Paper))
+                                                                                  className="MuiCard-root makeStyles-false-10 null cardroot"
+                                                                                  elevation={1}
+                                                                                  variant="outlined"
+                                                                                >
+                                                                                  <ForwardRef(Paper)
+                                                                                    className="MuiCard-root makeStyles-false-10 null cardroot"
+                                                                                    classes={
+                                                                                      Object {
+                                                                                        "elevation0": "MuiPaper-elevation0",
+                                                                                        "elevation1": "MuiPaper-elevation1",
+                                                                                        "elevation10": "MuiPaper-elevation10",
+                                                                                        "elevation11": "MuiPaper-elevation11",
+                                                                                        "elevation12": "MuiPaper-elevation12",
+                                                                                        "elevation13": "MuiPaper-elevation13",
+                                                                                        "elevation14": "MuiPaper-elevation14",
+                                                                                        "elevation15": "MuiPaper-elevation15",
+                                                                                        "elevation16": "MuiPaper-elevation16",
+                                                                                        "elevation17": "MuiPaper-elevation17",
+                                                                                        "elevation18": "MuiPaper-elevation18",
+                                                                                        "elevation19": "MuiPaper-elevation19",
+                                                                                        "elevation2": "MuiPaper-elevation2",
+                                                                                        "elevation20": "MuiPaper-elevation20",
+                                                                                        "elevation21": "MuiPaper-elevation21",
+                                                                                        "elevation22": "MuiPaper-elevation22",
+                                                                                        "elevation23": "MuiPaper-elevation23",
+                                                                                        "elevation24": "MuiPaper-elevation24",
+                                                                                        "elevation3": "MuiPaper-elevation3",
+                                                                                        "elevation4": "MuiPaper-elevation4",
+                                                                                        "elevation5": "MuiPaper-elevation5",
+                                                                                        "elevation6": "MuiPaper-elevation6",
+                                                                                        "elevation7": "MuiPaper-elevation7",
+                                                                                        "elevation8": "MuiPaper-elevation8",
+                                                                                        "elevation9": "MuiPaper-elevation9",
+                                                                                        "outlined": "MuiPaper-outlined",
+                                                                                        "root": "MuiPaper-root",
+                                                                                        "rounded": "MuiPaper-rounded",
+                                                                                      }
+                                                                                    }
+                                                                                    elevation={1}
+                                                                                    variant="outlined"
+                                                                                  >
+                                                                                    <div
+                                                                                      className="MuiPaper-root MuiCard-root makeStyles-false-10 null cardroot MuiPaper-outlined MuiPaper-rounded"
+                                                                                    >
+                                                                                      <WithStyles(ForwardRef(CardContent))
+                                                                                        className="null makeStyles-cardcontent-7"
+                                                                                      >
+                                                                                        <ForwardRef(CardContent)
+                                                                                          className="null makeStyles-cardcontent-7"
+                                                                                          classes={
+                                                                                            Object {
+                                                                                              "root": "MuiCardContent-root",
+                                                                                            }
+                                                                                          }
+                                                                                        >
+                                                                                          <div
+                                                                                            className="MuiCardContent-root null makeStyles-cardcontent-7"
+                                                                                          >
+                                                                                            <ReactMarkdown
+                                                                                              className="makeStyles-markdown-8"
+                                                                                              transformLinkUri={[Function]}
+                                                                                            >
+                                                                                              <Root
+                                                                                                className="makeStyles-markdown-8"
+                                                                                                key="root-1-1-0"
+                                                                                                node={
+                                                                                                  Object {
+                                                                                                    "children": Array [
+                                                                                                      Object {
+                                                                                                        "children": Array [
+                                                                                                          Object {
+                                                                                                            "position": Object {
+                                                                                                              "end": Object {
+                                                                                                                "column": 8,
+                                                                                                                "line": 1,
+                                                                                                                "offset": 7,
+                                                                                                              },
+                                                                                                              "start": Object {
+                                                                                                                "column": 1,
+                                                                                                                "line": 1,
+                                                                                                                "offset": 0,
+                                                                                                              },
+                                                                                                            },
+                                                                                                            "type": "text",
+                                                                                                            "value": "Answer1",
+                                                                                                          },
+                                                                                                        ],
+                                                                                                        "position": Object {
+                                                                                                          "end": Object {
+                                                                                                            "column": 8,
+                                                                                                            "line": 1,
+                                                                                                            "offset": 7,
+                                                                                                          },
+                                                                                                          "start": Object {
+                                                                                                            "column": 1,
+                                                                                                            "line": 1,
+                                                                                                            "offset": 0,
+                                                                                                          },
+                                                                                                        },
+                                                                                                        "type": "paragraph",
+                                                                                                      },
+                                                                                                    ],
+                                                                                                    "position": Object {
+                                                                                                      "end": Object {
+                                                                                                        "column": 8,
+                                                                                                        "line": 1,
+                                                                                                        "offset": 7,
+                                                                                                      },
+                                                                                                      "start": Object {
+                                                                                                        "column": 1,
+                                                                                                        "line": 1,
+                                                                                                        "offset": 0,
+                                                                                                      },
+                                                                                                    },
+                                                                                                    "type": "root",
+                                                                                                  }
+                                                                                                }
+                                                                                              >
+                                                                                                <div
+                                                                                                  className="makeStyles-markdown-8"
+                                                                                                >
+                                                                                                  <p
+                                                                                                    key="paragraph-1-1-0"
+                                                                                                  >
+                                                                                                    <TextRenderer
+                                                                                                      key="text-1-1-0"
+                                                                                                      node={
+                                                                                                        Object {
+                                                                                                          "position": Object {
+                                                                                                            "end": Object {
+                                                                                                              "column": 8,
+                                                                                                              "line": 1,
+                                                                                                              "offset": 7,
+                                                                                                            },
+                                                                                                            "start": Object {
+                                                                                                              "column": 1,
+                                                                                                              "line": 1,
+                                                                                                              "offset": 0,
+                                                                                                            },
+                                                                                                          },
+                                                                                                          "type": "text",
+                                                                                                          "value": "Answer1",
+                                                                                                        }
+                                                                                                      }
+                                                                                                      nodeKey="text-1-1-0"
+                                                                                                      value="Answer1"
+                                                                                                    >
+                                                                                                      Answer1
+                                                                                                    </TextRenderer>
+                                                                                                  </p>
+                                                                                                </div>
+                                                                                              </Root>
+                                                                                            </ReactMarkdown>
+                                                                                          </div>
+                                                                                        </ForwardRef(CardContent)>
+                                                                                      </WithStyles(ForwardRef(CardContent))>
+                                                                                    </div>
+                                                                                  </ForwardRef(Paper)>
+                                                                                </WithStyles(ForwardRef(Paper))>
+                                                                              </ForwardRef(Card)>
+                                                                            </WithStyles(ForwardRef(Card))>
+                                                                          </div>
+                                                                        </Styled(MuiBox)>
                                                                       </div>
                                                                     </ForwardRef(Grid)>
                                                                   </WithStyles(ForwardRef(Grid))>
+                                                                  <Styled(MuiBox)
+                                                                    mb={2}
+                                                                  >
+                                                                    <div
+                                                                      className="MuiBox-root MuiBox-root-15"
+                                                                    >
+                                                                      <WithStyles(ForwardRef(Link))
+                                                                        href="https://commonmark.org/help/"
+                                                                        rel="noopener noreferrer"
+                                                                        style={
+                                                                          Object {
+                                                                            "color": "grey",
+                                                                            "textDecoration": "underline",
+                                                                          }
+                                                                        }
+                                                                        target="_blank"
+                                                                        variant="caption"
+                                                                      >
+                                                                        <ForwardRef(Link)
+                                                                          classes={
+                                                                            Object {
+                                                                              "button": "MuiLink-button",
+                                                                              "focusVisible": "Mui-focusVisible",
+                                                                              "root": "MuiLink-root",
+                                                                              "underlineAlways": "MuiLink-underlineAlways",
+                                                                              "underlineHover": "MuiLink-underlineHover",
+                                                                              "underlineNone": "MuiLink-underlineNone",
+                                                                            }
+                                                                          }
+                                                                          href="https://commonmark.org/help/"
+                                                                          rel="noopener noreferrer"
+                                                                          style={
+                                                                            Object {
+                                                                              "color": "grey",
+                                                                              "textDecoration": "underline",
+                                                                            }
+                                                                          }
+                                                                          target="_blank"
+                                                                          variant="caption"
+                                                                        >
+                                                                          <WithStyles(ForwardRef(Typography))
+                                                                            className="MuiLink-root MuiLink-underlineHover"
+                                                                            color="primary"
+                                                                            component="a"
+                                                                            href="https://commonmark.org/help/"
+                                                                            onBlur={[Function]}
+                                                                            onFocus={[Function]}
+                                                                            rel="noopener noreferrer"
+                                                                            style={
+                                                                              Object {
+                                                                                "color": "grey",
+                                                                                "textDecoration": "underline",
+                                                                              }
+                                                                            }
+                                                                            target="_blank"
+                                                                            variant="caption"
+                                                                          >
+                                                                            <ForwardRef(Typography)
+                                                                              className="MuiLink-root MuiLink-underlineHover"
+                                                                              classes={
+                                                                                Object {
+                                                                                  "alignCenter": "MuiTypography-alignCenter",
+                                                                                  "alignJustify": "MuiTypography-alignJustify",
+                                                                                  "alignLeft": "MuiTypography-alignLeft",
+                                                                                  "alignRight": "MuiTypography-alignRight",
+                                                                                  "body1": "MuiTypography-body1",
+                                                                                  "body2": "MuiTypography-body2",
+                                                                                  "button": "MuiTypography-button",
+                                                                                  "caption": "MuiTypography-caption",
+                                                                                  "colorError": "MuiTypography-colorError",
+                                                                                  "colorInherit": "MuiTypography-colorInherit",
+                                                                                  "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                  "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                  "displayBlock": "MuiTypography-displayBlock",
+                                                                                  "displayInline": "MuiTypography-displayInline",
+                                                                                  "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                  "h1": "MuiTypography-h1",
+                                                                                  "h2": "MuiTypography-h2",
+                                                                                  "h3": "MuiTypography-h3",
+                                                                                  "h4": "MuiTypography-h4",
+                                                                                  "h5": "MuiTypography-h5",
+                                                                                  "h6": "MuiTypography-h6",
+                                                                                  "noWrap": "MuiTypography-noWrap",
+                                                                                  "overline": "MuiTypography-overline",
+                                                                                  "paragraph": "MuiTypography-paragraph",
+                                                                                  "root": "MuiTypography-root",
+                                                                                  "srOnly": "MuiTypography-srOnly",
+                                                                                  "subtitle1": "MuiTypography-subtitle1",
+                                                                                  "subtitle2": "MuiTypography-subtitle2",
+                                                                                }
+                                                                              }
+                                                                              color="primary"
+                                                                              component="a"
+                                                                              href="https://commonmark.org/help/"
+                                                                              onBlur={[Function]}
+                                                                              onFocus={[Function]}
+                                                                              rel="noopener noreferrer"
+                                                                              style={
+                                                                                Object {
+                                                                                  "color": "grey",
+                                                                                  "textDecoration": "underline",
+                                                                                }
+                                                                              }
+                                                                              target="_blank"
+                                                                              variant="caption"
+                                                                            >
+                                                                              <a
+                                                                                className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-caption MuiTypography-colorPrimary"
+                                                                                href="https://commonmark.org/help/"
+                                                                                onBlur={[Function]}
+                                                                                onFocus={[Function]}
+                                                                                rel="noopener noreferrer"
+                                                                                style={
+                                                                                  Object {
+                                                                                    "color": "grey",
+                                                                                    "textDecoration": "underline",
+                                                                                  }
+                                                                                }
+                                                                                target="_blank"
+                                                                              >
+                                                                                Formatting Tips
+                                                                              </a>
+                                                                            </ForwardRef(Typography)>
+                                                                          </WithStyles(ForwardRef(Typography))>
+                                                                        </ForwardRef(Link)>
+                                                                      </WithStyles(ForwardRef(Link))>
+                                                                    </div>
+                                                                  </Styled(MuiBox)>
+                                                                  <WithStyles(ForwardRef(Paper))
+                                                                    padding={2}
+                                                                    style={
+                                                                      Object {
+                                                                        "backgroundColor": "rgba(254,173,17,.25)",
+                                                                        "borderColor": "rgba(254,173,17,1)",
+                                                                        "marginBottom": "16px",
+                                                                        "padding": "16px",
+                                                                      }
+                                                                    }
+                                                                    variant="outlined"
+                                                                  >
+                                                                    <ForwardRef(Paper)
+                                                                      classes={
+                                                                        Object {
+                                                                          "elevation0": "MuiPaper-elevation0",
+                                                                          "elevation1": "MuiPaper-elevation1",
+                                                                          "elevation10": "MuiPaper-elevation10",
+                                                                          "elevation11": "MuiPaper-elevation11",
+                                                                          "elevation12": "MuiPaper-elevation12",
+                                                                          "elevation13": "MuiPaper-elevation13",
+                                                                          "elevation14": "MuiPaper-elevation14",
+                                                                          "elevation15": "MuiPaper-elevation15",
+                                                                          "elevation16": "MuiPaper-elevation16",
+                                                                          "elevation17": "MuiPaper-elevation17",
+                                                                          "elevation18": "MuiPaper-elevation18",
+                                                                          "elevation19": "MuiPaper-elevation19",
+                                                                          "elevation2": "MuiPaper-elevation2",
+                                                                          "elevation20": "MuiPaper-elevation20",
+                                                                          "elevation21": "MuiPaper-elevation21",
+                                                                          "elevation22": "MuiPaper-elevation22",
+                                                                          "elevation23": "MuiPaper-elevation23",
+                                                                          "elevation24": "MuiPaper-elevation24",
+                                                                          "elevation3": "MuiPaper-elevation3",
+                                                                          "elevation4": "MuiPaper-elevation4",
+                                                                          "elevation5": "MuiPaper-elevation5",
+                                                                          "elevation6": "MuiPaper-elevation6",
+                                                                          "elevation7": "MuiPaper-elevation7",
+                                                                          "elevation8": "MuiPaper-elevation8",
+                                                                          "elevation9": "MuiPaper-elevation9",
+                                                                          "outlined": "MuiPaper-outlined",
+                                                                          "root": "MuiPaper-root",
+                                                                          "rounded": "MuiPaper-rounded",
+                                                                        }
+                                                                      }
+                                                                      padding={2}
+                                                                      style={
+                                                                        Object {
+                                                                          "backgroundColor": "rgba(254,173,17,.25)",
+                                                                          "borderColor": "rgba(254,173,17,1)",
+                                                                          "marginBottom": "16px",
+                                                                          "padding": "16px",
+                                                                        }
+                                                                      }
+                                                                      variant="outlined"
+                                                                    >
+                                                                      <div
+                                                                        className="MuiPaper-root MuiPaper-outlined MuiPaper-rounded"
+                                                                        padding={2}
+                                                                        style={
+                                                                          Object {
+                                                                            "backgroundColor": "rgba(254,173,17,.25)",
+                                                                            "borderColor": "rgba(254,173,17,1)",
+                                                                            "marginBottom": "16px",
+                                                                            "padding": "16px",
+                                                                          }
+                                                                        }
+                                                                      >
+                                                                        <WithStyles(ForwardRef(Typography))
+                                                                          variant="body1"
+                                                                        >
+                                                                          <ForwardRef(Typography)
+                                                                            classes={
+                                                                              Object {
+                                                                                "alignCenter": "MuiTypography-alignCenter",
+                                                                                "alignJustify": "MuiTypography-alignJustify",
+                                                                                "alignLeft": "MuiTypography-alignLeft",
+                                                                                "alignRight": "MuiTypography-alignRight",
+                                                                                "body1": "MuiTypography-body1",
+                                                                                "body2": "MuiTypography-body2",
+                                                                                "button": "MuiTypography-button",
+                                                                                "caption": "MuiTypography-caption",
+                                                                                "colorError": "MuiTypography-colorError",
+                                                                                "colorInherit": "MuiTypography-colorInherit",
+                                                                                "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                "displayBlock": "MuiTypography-displayBlock",
+                                                                                "displayInline": "MuiTypography-displayInline",
+                                                                                "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                "h1": "MuiTypography-h1",
+                                                                                "h2": "MuiTypography-h2",
+                                                                                "h3": "MuiTypography-h3",
+                                                                                "h4": "MuiTypography-h4",
+                                                                                "h5": "MuiTypography-h5",
+                                                                                "h6": "MuiTypography-h6",
+                                                                                "noWrap": "MuiTypography-noWrap",
+                                                                                "overline": "MuiTypography-overline",
+                                                                                "paragraph": "MuiTypography-paragraph",
+                                                                                "root": "MuiTypography-root",
+                                                                                "srOnly": "MuiTypography-srOnly",
+                                                                                "subtitle1": "MuiTypography-subtitle1",
+                                                                                "subtitle2": "MuiTypography-subtitle2",
+                                                                              }
+                                                                            }
+                                                                            variant="body1"
+                                                                          >
+                                                                            <p
+                                                                              className="MuiTypography-root MuiTypography-body1"
+                                                                            >
+                                                                              Blog Posts may be public, do not share personal information!
+                                                                               
+                                                                              <WithStyles(ForwardRef(Link))
+                                                                                href="https://docs.rovercode.com/privacy"
+                                                                                rel="noopener noreferrer"
+                                                                                style={
+                                                                                  Object {
+                                                                                    "color": "black",
+                                                                                    "textDecoration": "underline",
+                                                                                  }
+                                                                                }
+                                                                                target="_blank"
+                                                                              >
+                                                                                <ForwardRef(Link)
+                                                                                  classes={
+                                                                                    Object {
+                                                                                      "button": "MuiLink-button",
+                                                                                      "focusVisible": "Mui-focusVisible",
+                                                                                      "root": "MuiLink-root",
+                                                                                      "underlineAlways": "MuiLink-underlineAlways",
+                                                                                      "underlineHover": "MuiLink-underlineHover",
+                                                                                      "underlineNone": "MuiLink-underlineNone",
+                                                                                    }
+                                                                                  }
+                                                                                  href="https://docs.rovercode.com/privacy"
+                                                                                  rel="noopener noreferrer"
+                                                                                  style={
+                                                                                    Object {
+                                                                                      "color": "black",
+                                                                                      "textDecoration": "underline",
+                                                                                    }
+                                                                                  }
+                                                                                  target="_blank"
+                                                                                >
+                                                                                  <WithStyles(ForwardRef(Typography))
+                                                                                    className="MuiLink-root MuiLink-underlineHover"
+                                                                                    color="primary"
+                                                                                    component="a"
+                                                                                    href="https://docs.rovercode.com/privacy"
+                                                                                    onBlur={[Function]}
+                                                                                    onFocus={[Function]}
+                                                                                    rel="noopener noreferrer"
+                                                                                    style={
+                                                                                      Object {
+                                                                                        "color": "black",
+                                                                                        "textDecoration": "underline",
+                                                                                      }
+                                                                                    }
+                                                                                    target="_blank"
+                                                                                    variant="inherit"
+                                                                                  >
+                                                                                    <ForwardRef(Typography)
+                                                                                      className="MuiLink-root MuiLink-underlineHover"
+                                                                                      classes={
+                                                                                        Object {
+                                                                                          "alignCenter": "MuiTypography-alignCenter",
+                                                                                          "alignJustify": "MuiTypography-alignJustify",
+                                                                                          "alignLeft": "MuiTypography-alignLeft",
+                                                                                          "alignRight": "MuiTypography-alignRight",
+                                                                                          "body1": "MuiTypography-body1",
+                                                                                          "body2": "MuiTypography-body2",
+                                                                                          "button": "MuiTypography-button",
+                                                                                          "caption": "MuiTypography-caption",
+                                                                                          "colorError": "MuiTypography-colorError",
+                                                                                          "colorInherit": "MuiTypography-colorInherit",
+                                                                                          "colorPrimary": "MuiTypography-colorPrimary",
+                                                                                          "colorSecondary": "MuiTypography-colorSecondary",
+                                                                                          "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                                                                          "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                                                                          "displayBlock": "MuiTypography-displayBlock",
+                                                                                          "displayInline": "MuiTypography-displayInline",
+                                                                                          "gutterBottom": "MuiTypography-gutterBottom",
+                                                                                          "h1": "MuiTypography-h1",
+                                                                                          "h2": "MuiTypography-h2",
+                                                                                          "h3": "MuiTypography-h3",
+                                                                                          "h4": "MuiTypography-h4",
+                                                                                          "h5": "MuiTypography-h5",
+                                                                                          "h6": "MuiTypography-h6",
+                                                                                          "noWrap": "MuiTypography-noWrap",
+                                                                                          "overline": "MuiTypography-overline",
+                                                                                          "paragraph": "MuiTypography-paragraph",
+                                                                                          "root": "MuiTypography-root",
+                                                                                          "srOnly": "MuiTypography-srOnly",
+                                                                                          "subtitle1": "MuiTypography-subtitle1",
+                                                                                          "subtitle2": "MuiTypography-subtitle2",
+                                                                                        }
+                                                                                      }
+                                                                                      color="primary"
+                                                                                      component="a"
+                                                                                      href="https://docs.rovercode.com/privacy"
+                                                                                      onBlur={[Function]}
+                                                                                      onFocus={[Function]}
+                                                                                      rel="noopener noreferrer"
+                                                                                      style={
+                                                                                        Object {
+                                                                                          "color": "black",
+                                                                                          "textDecoration": "underline",
+                                                                                        }
+                                                                                      }
+                                                                                      target="_blank"
+                                                                                      variant="inherit"
+                                                                                    >
+                                                                                      <a
+                                                                                        className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                                                                                        href="https://docs.rovercode.com/privacy"
+                                                                                        onBlur={[Function]}
+                                                                                        onFocus={[Function]}
+                                                                                        rel="noopener noreferrer"
+                                                                                        style={
+                                                                                          Object {
+                                                                                            "color": "black",
+                                                                                            "textDecoration": "underline",
+                                                                                          }
+                                                                                        }
+                                                                                        target="_blank"
+                                                                                      >
+                                                                                        Learn more.
+                                                                                      </a>
+                                                                                    </ForwardRef(Typography)>
+                                                                                  </WithStyles(ForwardRef(Typography))>
+                                                                                </ForwardRef(Link)>
+                                                                              </WithStyles(ForwardRef(Link))>
+                                                                            </p>
+                                                                          </ForwardRef(Typography)>
+                                                                        </WithStyles(ForwardRef(Typography))>
+                                                                      </div>
+                                                                    </ForwardRef(Paper)>
+                                                                  </WithStyles(ForwardRef(Paper))>
                                                                 </div>
                                                               </ForwardRef(Grid)>
                                                             </WithStyles(ForwardRef(Grid))>

@@ -54,88 +54,95 @@ const Blog = ({ questions, saveBlogAnswers, isReadOnly }) => {
   };
 
   const getRequiredClass = (required, answer) => {
-    if (required && !answer && isReadOnly) { // switch isreadyonly before push
+    if (required && !answer && !isReadOnly) {
       return classes.unfinishedRequired;
     } return null;
   };
-  console.log({ questions });
+
   return (
+
     <Grid container direction="column">
-      { isReadOnly ? (
-        <Box mb={2}>
-          <Typography variant="caption" style={{ color: 'grey', fontStyle: 'italic' }}>*Required</Typography>
-        </Box>
-      ) : null }
+      {
+        questions.length === 0 ? <Typography variant="caption" style={{ color: 'grey', fontStyle: 'italic' }}>No Blog Post Available</Typography> : (
+          <>
 
-      {questions.sort((a, b) => a.sequence_number - b.sequence_number)
-        .map((item) => (
-          <Grid item key={item.id}>
-            <Box mb={0.5}>
+            { !isReadOnly ? (
+              <Box mb={2}>
+                <Typography variant="caption" style={{ color: 'grey', fontStyle: 'italic' }}>*Required</Typography>
+              </Box>
+            ) : null }
 
-              <Typography variant="subtitle2" className={getRequiredClass(item.required, item.answer)}>
-                { item.required ? `${item.question}*` : item.question }
-              </Typography>
+            {questions.sort((a, b) => a.sequence_number - b.sequence_number)
+              .map((item) => (
+                <Grid item key={item.id}>
+                  <Box mb={0.5}>
 
-            </Box>
-            <Box mb={2}>
-              <Card variant="outlined" className={`${getClass()} ${getRequiredClass(item.required, item.answer)} cardroot`}>
+                    <Typography variant="subtitle2" className={getRequiredClass(item.required, item.answer)}>
+                      { item.required ? `${item.question}*` : item.question }
+                    </Typography>
 
-                <CardContent className={`${getRequiredClass(item.required, item.answer)} ${classes.cardcontent}`}>
-                  {
+                  </Box>
+                  <Box mb={2}>
+                    <Card variant="outlined" className={`${getClass()} ${getRequiredClass(item.required, item.answer)} cardroot`}>
+
+                      <CardContent className={`${getRequiredClass(item.required, item.answer)} ${classes.cardcontent}`}>
+                        {
                     item.answer ? (
                       <ReactMarkdown className={classes.markdown}>{item.answer}</ReactMarkdown>
                     ) : (
                       <Typography className={`${getClass()} noAnswer`}> No Response</Typography>
                     )
                   }
-                </CardContent>
+                      </CardContent>
 
-              </Card>
-            </Box>
-          </Grid>
-        ))}
-      { isReadOnly ? ( // switch
-        <>
-          <Box mb={2}>
-            <Link
-              variant="caption"
-              style={{ color: 'grey', textDecoration: 'underline' }}
-              rel="noopener noreferrer"
-              href="https://www.instagram.com/_vhub/"
-              target="_blank"
-            >
-              Formatting Tips
-            </Link>
+                    </Card>
+                  </Box>
+                </Grid>
+              ))}
+            { !isReadOnly ? (
+              <>
+                <Box mb={2}>
+                  <Link
+                    variant="caption"
+                    style={{ color: 'grey', textDecoration: 'underline' }}
+                    rel="noopener noreferrer"
+                    href="https://commonmark.org/help/"
+                    target="_blank"
+                  >
+                    Formatting Tips
+                  </Link>
 
-          </Box>
-          <Paper
-            style={{
-              backgroundColor: 'rgba(254,173,17,.25)', borderColor: 'rgba(254,173,17,1)', padding: '16px', marginBottom: '16px',
-            }}
-            variant="outlined"
-            padding={2}
-          >
-            <Typography variant="body1">
-              Blog Posts may be public, do not share personal information!
-              {' '}
+                </Box>
+                <Paper
+                  style={{
+                    backgroundColor: 'rgba(254,173,17,.25)', borderColor: 'rgba(254,173,17,1)', padding: '16px', marginBottom: '16px',
+                  }}
+                  variant="outlined"
+                  padding={2}
+                >
+                  <Typography variant="body1">
+                    Blog Posts may be public, do not share personal information!
+                    {' '}
 
-              <Link
-                style={{ color: 'black', textDecoration: 'underline' }}
-                rel="noopener noreferrer"
-                href="https://www.instagram.com/_vhub/"
-                target="_blank"
-              >
+                    <Link
+                      style={{ color: 'black', textDecoration: 'underline' }}
+                      rel="noopener noreferrer"
+                      href="https://docs.rovercode.com/privacy"
+                      target="_blank"
+                    >
 
-                Learn more.
+                      Learn more.
 
-              </Link>
+                    </Link>
 
-            </Typography>
-          </Paper>
+                  </Typography>
+                </Paper>
 
-        </>
-      ) : null }
-
+              </>
+            ) : null }
+          </>
+        )
+}
     </Grid>
   );
 };
