@@ -471,7 +471,11 @@ class MissionControl extends Component {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Blog questions={code.blog_questions} isReadOnly={code.isReadOnly} saveBlogAnswers={saveBlogAnswers} />
+                  <Blog
+                    questions={code.blog_questions}
+                    isReadOnly={code.isReadOnly}
+                    saveBlogAnswers={saveBlogAnswers}
+                  />
                 </AccordionDetails>
               </Accordion>
             </Grid>

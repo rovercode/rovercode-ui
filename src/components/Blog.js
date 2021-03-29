@@ -44,7 +44,7 @@ const useStyles = makeStyles({
 
 });
 
-const Blog = ({ questions, saveBlogAnswers, isReadOnly }) => {
+const Blog = ({ questions, isReadOnly }) => {
   const classes = useStyles();
   const getClass = () => {
     if (isReadOnly) {
@@ -161,8 +161,8 @@ Blog.propTypes = {
       required: PropTypes.bool,
     }),
   ),
-  saveBlogAnswers: PropTypes.func.isRequired,
-  isReadOnly: PropTypes.bool,
+  // saveBlogAnswers: PropTypes.func.isRequired,
+  isReadOnly: PropTypes.bool.isRequired,
 };
 
 export default hot(module)(Blog);
