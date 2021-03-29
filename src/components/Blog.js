@@ -90,7 +90,10 @@ const Blog = ({ questions, isReadOnly }) => {
                     item.answer ? (
                       <ReactMarkdown className={classes.markdown}>{item.answer}</ReactMarkdown>
                     ) : (
-                      <Typography className={`${getClass()} noAnswer`}> No Response</Typography>
+                      <>
+                        {' '}
+                        <Typography className={`${getClass()} noAnswer`}>No Response</Typography>
+                      </>
                     )
                   }
                       </CardContent>
@@ -149,6 +152,7 @@ const Blog = ({ questions, isReadOnly }) => {
 
 Blog.defaultProps = {
   questions: [],
+  isReadOnly: false,
 };
 
 Blog.propTypes = {
@@ -162,7 +166,7 @@ Blog.propTypes = {
     }),
   ),
   // saveBlogAnswers: PropTypes.func.isRequired,
-  isReadOnly: PropTypes.bool.isRequired,
+  isReadOnly: PropTypes.bool,
 };
 
 export default hot(module)(Blog);
