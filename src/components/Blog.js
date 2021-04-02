@@ -8,7 +8,9 @@ import {
   CardContent,
   Box,
   Link,
-  Paper, Button, TextField,
+  Paper,
+  Button,
+  TextField,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactMarkdown from 'react-markdown';
@@ -20,16 +22,16 @@ const useStyles = makeStyles({
   markdown: {
     '& p': { marginBottom: 0, marginTop: 0 },
   },
-  true: {
+  white: {
     '&.cardroot': {
-      backgroundColor: '#F9F9F9',
+      backgroundColor: 'white',
     },
     '&.noAnswer': {
       opacity: '70%',
       fontStyle: 'italic',
     },
   },
-  false: {
+  gray: {
     '&.cardroot': {
       backgroundColor: '#F9F9F9',
     },
@@ -52,7 +54,7 @@ const Blog = ({
   const classes = useStyles();
   const [editMode, setEditMode] = useState(true);
 
-  const toggleEditMode = (questionID) => {
+  const toggleEditMode = () => {
     if (editMode) {
       const answersArr = [];
       const tempArr = [];
@@ -60,23 +62,28 @@ const Blog = ({
         tempArr.push(item.id);
       });
       tempArr.forEach((item) => {
-        answersArr.push({ id: item, answer: (document.getElementById(item.toString()).value) ? (document.getElementById(item.toString()).value) : '' });
+        answersArr.push({
+          id: item,
+          answer: document.getElementById(item.toString()).value
+            ? document.getElementById(item.toString()).value
+            : '',
+        });
       });
+
       saveBlogAnswers(programID, answersArr);
     }
-
     setEditMode(!editMode);
-    if (editMode) {
-      document.getElementById(questionID).focus();
-    }
-    console.log(editMode);
+  };
+
+  const toggleEditModeFocus = () => {
+    setEditMode(!editMode);
   };
 
   const getClass = () => {
-    if (isReadOnly) {
-      return classes.true;
+    if (!isReadOnly && editMode) {
+      return classes.gray;
     }
-    return classes.false;
+    return classes.white;
   };
 
   const getRequiredClass = (required, answer) => {
@@ -90,33 +97,27 @@ const Blog = ({
     if (!isReadOnly && editMode) {
       return (
         <TextField
-          key={questionID}
+          key={questionID.toString()}
           multiline
           rowsmax={4}
-          id={questionID}
+          id={questionID.toString()}
           variant="outlined"
           fullWidth
           required={required}
           defaultValue={answer}
-          ref={(ref) => ref && ref.focus()}
-          onFocus={(e) => e.currentTarget.setSelectionRange(e.currentTarget.value.length, e.currentTarget.value.length)}
-
         />
       );
     }
     return (
       <CardContent
-        onClick={!isReadOnly ? toggleEditMode(questionID) : null}
+        onClick={!isReadOnly ? toggleEditModeFocus : null}
         style={!isReadOnly ? { cursor: 'pointer' } : null}
-        className={`${getRequiredClass(
-          required,
-          answer,
-        )} ${classes.cardcontent}`}
+        className={`${getRequiredClass(required, answer)} ${
+          classes.cardcontent
+        }`}
       >
         {answer ? (
-          <ReactMarkdown className={classes.markdown}>
-            {answer}
-          </ReactMarkdown>
+          <ReactMarkdown className={classes.markdown}>{answer}</ReactMarkdown>
         ) : (
           <Typography className={`${getClass()} noAnswer`}>
             No Response
@@ -174,14 +175,20 @@ const Blog = ({
                       required={item.required}
                       questionID={item.id}
                     />
-
                   </Card>
                 </Box>
               </Grid>
             ))}
           {!isReadOnly ? (
             <>
-              <Box mb={2} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Box
+                mb={2}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
                 <Link
                   variant="caption"
                   style={{ color: 'grey', textDecoration: 'underline' }}
@@ -191,7 +198,9 @@ const Blog = ({
                 >
                   Formatting Tips
                 </Link>
-                <Button color="primary" onClick={toggleEditMode}>{editMode ? 'Save' : 'Edit'}</Button>
+                <Button color="primary" onClick={toggleEditMode}>
+                  {editMode ? 'Save' : 'Edit'}
+                </Button>
               </Box>
               <Paper
                 style={{
@@ -244,10 +253,10 @@ Blog.propTypes = {
   programID: PropTypes.number.isRequired,
 };
 
-QuestionRender.propTypes = {
-  questionID: PropTypes.number.isRequired,
-  answer: PropTypes.string.isRequired,
-  required: PropTypes.bool.isRequired,
+// QuestionRender.propTypes = {
+//   questionID: PropTypes.number.isRequired,
+//   answer: PropTypes.string.isRequired,
+//   required: PropTypes.bool.isRequired,
 
-};
+// };
 export default hot(module)(Blog);
