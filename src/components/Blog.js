@@ -253,10 +253,4 @@ Blog.propTypes = {
   programID: PropTypes.number.isRequired,
 };
 
-// QuestionRender.propTypes = {
-//   questionID: PropTypes.number.isRequired,
-//   answer: PropTypes.string.isRequired,
-//   required: PropTypes.bool.isRequired,
-
-// };
 export default hot(module)(Blog);

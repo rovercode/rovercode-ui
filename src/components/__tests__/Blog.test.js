@@ -29,33 +29,41 @@ describe('The Blog component', () => {
   test('renders on the page with no errors', () => {
     const wrapper = shallow(<Blog />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Typography).at(0).text()).toBe('No Blog Post Available');
+    expect(wrapper.find(Typography).at(0).text()).toBe('*Required');
   });
 
   test('displays questions and answers', () => {
     const wrapper = shallow(<Blog questions={questions} />).dive().dive();
 
-    expect(wrapper.find(Typography).length).toBe(7);
-    expect(wrapper.find(Typography).at(0).text()).toBe('*Required');
-    expect(wrapper.find(Typography).at(1).text()).toBe('Question2*');
-    expect(wrapper.find(Typography).at(2).text()).toBe('No Response');
-    expect(wrapper.find(Typography).at(3).text()).toBe('Question1*');
-    expect(wrapper.find(Typography).at(4).text()).toBe('No Response');
-    expect(wrapper.find(Typography).at(5).text()).toBe('Question3');
-    expect(wrapper.find(ReactMarkdown).length).toBe(1);
-    expect(wrapper.find(ReactMarkdown).at(0).children().text()).toBe('Answer1');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(0).text()).toBe('*Required');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(1).text()).toBe('Question2*');
+    expect(wrapper.find('QuestionRender').at(0).dive().find('WithStyles(ForwardRef(Typography))')
+      .text()).toBe('No Response');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(2).text()).toBe('Question1*');
+    expect(wrapper.find('QuestionRender').at(1).dive().find('WithStyles(ForwardRef(Typography))')
+      .text()).toBe('No Response');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(3).text()).toBe('Question3');
+    expect(wrapper.find('QuestionRender').at(2).dive().find('ReactMarkdown').length).toBe(1);
+    expect(wrapper.find('QuestionRender').at(2).dive().find('ReactMarkdown')
+      .at(0)
+      .children()
+      .text()).toBe('Answer1');
   });
 
   test('displays questions and answers in read-only mode', () => {
     const wrapper = shallow(<Blog questions={questions} isReadOnly />).dive().dive();
 
-    expect(wrapper.find(Typography).length).toBe(5);
-    expect(wrapper.find(Typography).at(0).text()).toBe('Question2*');
-    expect(wrapper.find(Typography).at(1).text()).toBe('No Response');
-    expect(wrapper.find(Typography).at(2).text()).toBe('Question1*');
-    expect(wrapper.find(Typography).at(3).text()).toBe('No Response');
-    expect(wrapper.find(Typography).at(4).text()).toBe('Question3');
-    expect(wrapper.find(ReactMarkdown).length).toBe(1);
-    expect(wrapper.find(ReactMarkdown).at(0).children().text()).toBe('Answer1');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(0).text()).toBe('Question2*');
+    expect(wrapper.find('QuestionRender').at(0).dive().find('WithStyles(ForwardRef(Typography))')
+      .text()).toBe('No Response');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(1).text()).toBe('Question1*');
+    expect(wrapper.find('QuestionRender').at(1).dive().find('WithStyles(ForwardRef(Typography))')
+      .text()).toBe('No Response');
+    expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(2).text()).toBe('Question3');
+    expect(wrapper.find('QuestionRender').at(2).dive().find('ReactMarkdown').length).toBe(1);
+    expect(wrapper.find('QuestionRender').at(2).dive().find('ReactMarkdown')
+      .at(0)
+      .children()
+      .text()).toBe('Answer1');
   });
 });
