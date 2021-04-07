@@ -28,6 +28,7 @@ import { // eslint-disable-line import/first, import/order
   clearLesson,
   fetchProgram,
   remixProgram,
+  saveBlogAnswers,
 } from '@/actions/code';
 
 const cookiesValues = { auth_jwt: '1234' };
@@ -220,10 +221,20 @@ describe('The MissionControl container', () => {
     const remixPromise = wrapper.instance().props.remixProgram(1);
     const fetchLessonPromise = wrapper.instance().props.fetchLesson(2);
     const changeReadOnlyPromise = wrapper.instance().props.changeReadOnly(true);
-    Promise.all([remixPromise, fetchLessonPromise, changeReadOnlyPromise]).then(() => {
+    const saveBlogAnswersPromise = wrapper.instance().props.saveBlogAnswers(1, [{
+      id: 1,
+      answer: 'Answer1',
+    }]);
+    Promise.all([
+      remixPromise, fetchLessonPromise, changeReadOnlyPromise, saveBlogAnswersPromise,
+    ]).then(() => {
       expect(store.dispatch).toHaveBeenCalledWith(remixProgram(1));
       expect(store.dispatch).toHaveBeenCalledWith(fetchLesson(2));
       expect(store.dispatch).toHaveBeenCalledWith(changeReadOnly(true));
+      expect(store.dispatch).toHaveBeenCalledWith(saveBlogAnswers(1, [{
+        id: 1,
+        answer: 'Answer1',
+      }]));
       done();
     });
   });
