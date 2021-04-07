@@ -198,6 +198,7 @@ exports[`The MissionControl container renders on the page with no errors over li
           code={
             Object {
               "execution": null,
+              "id": 123,
               "isReadOnly": true,
               "jsCode": "",
               "lessonId": null,
@@ -4104,6 +4105,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                         >
                                                           <Blog
                                                             isReadOnly={true}
+                                                            programID={123}
                                                             questions={Array []}
                                                             saveBlogAnswers={[Function]}
                                                           >
@@ -4770,6 +4772,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
           code={
             Object {
               "execution": null,
+              "id": 123,
               "isReadOnly": true,
               "jsCode": "",
               "lessonId": null,
@@ -8705,6 +8708,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                         >
                                                           <Blog
                                                             isReadOnly={true}
+                                                            programID={123}
                                                             questions={Array []}
                                                             saveBlogAnswers={[Function]}
                                                           >

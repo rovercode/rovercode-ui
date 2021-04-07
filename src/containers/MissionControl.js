@@ -58,8 +58,9 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     .catch(checkAuthError(dispatch)),
   createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
-  saveBlogAnswers: (id, answers) => dispatch(actionSaveBlogAnswers(id, answers, authHeader(cookies)))
-    .catch(checkAuthError(dispatch)),
+  saveBlogAnswers: (id, answers) => dispatch(
+    actionSaveBlogAnswers(id, answers, authHeader(cookies)),
+  ).catch(checkAuthError(dispatch)),
 });
 
 class MissionControl extends Component {

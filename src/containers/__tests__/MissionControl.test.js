@@ -121,6 +121,7 @@ describe('The MissionControl container', () => {
   test('renders on the page with no errors over limit', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -164,6 +165,7 @@ describe('The MissionControl container', () => {
   test('renders on the page with no errors paid tier', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -313,6 +315,7 @@ describe('The MissionControl container', () => {
   test('clears lesson when not present on fetched program', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -358,6 +361,7 @@ describe('The MissionControl container', () => {
   test('fetches lesson when present on fetched program', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -410,6 +414,7 @@ describe('The MissionControl container', () => {
   test('hides alert when not read only', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -454,6 +459,7 @@ describe('The MissionControl container', () => {
   test('shows alert when read only', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -533,6 +539,7 @@ describe('The MissionControl container', () => {
   test('shows tutorial link when available', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -580,6 +587,7 @@ describe('The MissionControl container', () => {
   test('hides tutorial link when not available', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -626,6 +634,7 @@ describe('The MissionControl container', () => {
   test('shows goal when available', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -671,6 +680,7 @@ describe('The MissionControl container', () => {
   test('hides goals when not available', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',

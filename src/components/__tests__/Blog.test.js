@@ -24,14 +24,22 @@ const questions = [{
 }];
 
 describe('The Blog component', () => {
+  let mockSaveBlogAnswers = null;
+
+  beforeEach(() => {
+    mockSaveBlogAnswers = jest.fn();
+  });
+
   test('renders on the page with no errors', () => {
-    const wrapper = shallow(<Blog />);
+    const wrapper = shallow(<Blog saveBlogAnswers={mockSaveBlogAnswers} programID={1} />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Typography).at(0).text()).toBe('*Required');
   });
 
   test('displays questions and answers', () => {
-    const wrapper = shallow(<Blog questions={questions} />).dive().dive();
+    const wrapper = shallow(
+      <Blog questions={questions} saveBlogAnswers={mockSaveBlogAnswers} programID={1} />,
+    ).dive().dive();
 
     expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(0).text()).toBe('*Required');
     expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(1).text()).toBe('Question2*');
@@ -49,7 +57,9 @@ describe('The Blog component', () => {
   });
 
   test('toggles edit mode when clicking the edit button', () => {
-    const wrapper = shallow(<Blog questions={questions} />);
+    const wrapper = shallow(
+      <Blog questions={questions} saveBlogAnswers={mockSaveBlogAnswers} programID={1} />,
+    );
     expect(wrapper.find('Styled(MuiBox)').at(7).dive().find('WithStyles(ForwardRef(Button))')
       .text()).toBe('Edit');
     wrapper.find('Styled(MuiBox)').at(7).dive().find('WithStyles(ForwardRef(Button))')
@@ -62,10 +72,13 @@ describe('The Blog component', () => {
       .props()
       .onClick();
     wrapper.update();
+    expect(mockSaveBlogAnswers).toHaveBeenCalled();
   });
 
   test('displays questions and answers in read-only mode', () => {
-    const wrapper = shallow(<Blog questions={questions} isReadOnly />).dive().dive();
+    const wrapper = shallow(
+      <Blog questions={questions} saveBlogAnswers={mockSaveBlogAnswers} programID={1} isReadOnly />,
+    ).dive().dive();
 
     expect(wrapper.find('WithStyles(ForwardRef(Typography))').at(0).text()).toBe('Question2*');
     expect(wrapper.find('QuestionRender').at(0).dive().find('WithStyles(ForwardRef(Typography))')
@@ -82,7 +95,9 @@ describe('The Blog component', () => {
   });
 
   test('displays textfields in edit mode', () => {
-    const wrapper = shallow(<Blog questions={questions} />);
+    const wrapper = shallow(
+      <Blog questions={questions} saveBlogAnswers={mockSaveBlogAnswers} programID={1} />,
+    );
     wrapper.find('Styled(MuiBox)').at(7).dive().find('WithStyles(ForwardRef(Button))')
       .props()
       .onClick();
@@ -95,9 +110,9 @@ describe('The Blog component', () => {
   });
 
   test('triggers onChange event when input changes', () => { // should cover lines 65-68 once working
-    const wrapper = shallow(<Blog questions={questions} />);
-    const onChangeHandler = jest.fn();
-    onChangeHandler.mockReturnValue(true);
+    const wrapper = shallow(
+      <Blog questions={questions} saveBlogAnswers={mockSaveBlogAnswers} programID={1} />,
+    );
     wrapper
       .find('Styled(MuiBox)')
       .at(7)
@@ -112,11 +127,12 @@ describe('The Blog component', () => {
       .dive()
       .find('WithStyles(ForwardRef(TextField))')
       .simulate('change', { target: { value: 'Hello' } });
-    expect(onChangeHandler).toHaveBeenCalled();
   });
 
   test('triggers edit mode when clicking on a displayed answer', () => {
-    const wrapper = shallow(<Blog questions={questions} />);
+    const wrapper = shallow(
+      <Blog questions={questions} saveBlogAnswers={mockSaveBlogAnswers} programID={1} />,
+    );
     wrapper.find('QuestionRender').at(0).dive().find('WithStyles(ForwardRef(CardContent))')
       .props()
       .onClick();

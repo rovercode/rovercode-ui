@@ -52,14 +52,14 @@ const Blog = ({
   questions, saveBlogAnswers, isReadOnly, programID,
 }) => {
   const [editMode, setEditMode] = useState(false);
-  const [blogQuestions, setBlogQuestions] = useState([]);
+  const [blogQuestions, setBlogQuestions] = useState(questions);
   const classes = useStyles();
 
   useEffect(() => {
     setBlogQuestions(questions);
   }, [questions]);
 
-  function onChangeHandler(e) {
+  const onChangeHandler = (e) => {
     const answersArr = blogQuestions;
     answersArr.map((item) => {
       if (item.id === parseInt(e.target.id, 10)) {
@@ -68,7 +68,7 @@ const Blog = ({
       return answersArr;
     });
     setBlogQuestions(answersArr);
-  }
+  };
 
   const toggleEditMode = () => {
     if (editMode) {
@@ -91,7 +91,7 @@ const Blog = ({
     return null;
   };
 
-  function QuestionRender({ answer, required, questionID }) {
+  const QuestionRender = ({ answer, required, questionID }) => {
     if (!isReadOnly && editMode) {
       return (
         <TextField
@@ -123,7 +123,7 @@ const Blog = ({
         )}
       </CardContent>
     );
-  }
+  };
 
   return (
     <Grid container direction="column">
