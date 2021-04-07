@@ -109,7 +109,7 @@ describe('The Blog component', () => {
     expect(wrapper.find('QuestionRender').at(2).dive().find('WithStyles(ForwardRef(TextField))').length).toBe(1);
   });
 
-  test('triggers onChange event when input changes', () => { // should cover lines 65-68 once working
+  test('triggers onChange event when input changes', () => {
     const wrapper = shallow(
       <Blog questions={questions} saveBlogAnswers={mockSaveBlogAnswers} programID={1} />,
     );
@@ -126,7 +126,7 @@ describe('The Blog component', () => {
       .at(0)
       .dive()
       .find('WithStyles(ForwardRef(TextField))')
-      .simulate('change', { target: { value: 'Hello' } });
+      .simulate('change', { target: { id: 1, value: 'Hello' } });
   });
 
   test('triggers edit mode when clicking on a displayed answer', () => {
