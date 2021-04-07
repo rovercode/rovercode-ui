@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 import {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     '&:last-child': { paddingBottom: 16 },
   },
   markdown: {
-    '& p': { marginBottom: 0, marginTop: 0 },
+    '& p': { marginBottom: 0, marginTop: 0, overflowWrap: 'anywhere' },
   },
   white: {
     '&.cardroot': {
@@ -51,31 +51,29 @@ const useStyles = makeStyles({
 const Blog = ({
   questions, saveBlogAnswers, isReadOnly, programID,
 }) => {
+  const [editMode, setEditMode] = useState(false);
+  const [blogQuestions, setBlogQuestions] = useState([]);
   const classes = useStyles();
-  const [editMode, setEditMode] = useState(true);
+
+  useEffect(() => {
+    setBlogQuestions(questions);
+  }, [questions]);
+
+  function onChangeHandler(e) {
+    const answersArr = blogQuestions;
+    answersArr.map((item) => {
+      if (item.id === parseInt(e.target.id, 10)) {
+        item.answer = e.target.value;
+      }
+      return answersArr;
+    });
+    setBlogQuestions(answersArr);
+  }
 
   const toggleEditMode = () => {
     if (editMode) {
-      const answersArr = [];
-      const tempArr = [];
-      questions.forEach((item) => {
-        tempArr.push(item.id);
-      });
-      tempArr.forEach((item) => {
-        answersArr.push({
-          id: item,
-          answer: document.getElementById(item.toString()).value
-            ? document.getElementById(item.toString()).value
-            : '',
-        });
-      });
-
-      saveBlogAnswers(programID, answersArr);
+      saveBlogAnswers(programID, blogQuestions);
     }
-    setEditMode(!editMode);
-  };
-
-  const toggleEditModeFocus = () => {
     setEditMode(!editMode);
   };
 
@@ -97,7 +95,6 @@ const Blog = ({
     if (!isReadOnly && editMode) {
       return (
         <TextField
-          key={questionID.toString()}
           multiline
           rowsmax={4}
           id={questionID.toString()}
@@ -105,12 +102,13 @@ const Blog = ({
           fullWidth
           required={required}
           defaultValue={answer}
+          onChange={onChangeHandler}
         />
       );
     }
     return (
       <CardContent
-        onClick={!isReadOnly ? toggleEditModeFocus : null}
+        onClick={!isReadOnly ? toggleEditMode : null}
         style={!isReadOnly ? { cursor: 'pointer' } : null}
         className={`${getRequiredClass(required, answer)} ${
           classes.cardcontent

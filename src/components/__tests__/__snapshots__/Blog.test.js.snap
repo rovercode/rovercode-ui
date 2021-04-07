@@ -48,7 +48,7 @@ exports[`The Blog component renders on the page with no errors 1`] = `
       color="primary"
       onClick={[Function]}
     >
-      Save
+      Edit
     </WithStyles(ForwardRef(Button))>
   </Styled(MuiBox)>
   <WithStyles(ForwardRef(Paper))
