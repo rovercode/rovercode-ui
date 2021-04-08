@@ -5,15 +5,13 @@ import {
   Grid,
   Typography,
   Card,
-  CardContent,
   Box,
   Link,
   Paper,
   Button,
-  TextField,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import ReactMarkdown from 'react-markdown';
+import QuestionRender from './QuestionRender';
 
 const useStyles = makeStyles({
   cardcontent: {
@@ -52,23 +50,12 @@ const Blog = ({
   questions, saveBlogAnswers, isReadOnly, programID,
 }) => {
   const [editMode, setEditMode] = useState(false);
-  const [blogQuestions, setBlogQuestions] = useState(questions);
+  const [blogQuestions, setBlogQuestions] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
     setBlogQuestions(questions);
   }, [questions]);
-
-  const onChangeHandler = (e) => {
-    const answersArr = blogQuestions;
-    answersArr.map((item) => {
-      if (item.id === parseInt(e.target.id, 10)) {
-        item.answer = e.target.value;
-      }
-      return answersArr;
-    });
-    setBlogQuestions(answersArr);
-  };
 
   const toggleEditMode = () => {
     if (editMode) {
@@ -89,40 +76,6 @@ const Blog = ({
       return classes.unfinishedRequired;
     }
     return null;
-  };
-
-  const QuestionRender = ({ answer, required, questionID }) => {
-    if (!isReadOnly && editMode) {
-      return (
-        <TextField
-          multiline
-          rowsmax={4}
-          id={questionID.toString()}
-          variant="outlined"
-          fullWidth
-          required={required}
-          defaultValue={answer}
-          onChange={onChangeHandler}
-        />
-      );
-    }
-    return (
-      <CardContent
-        onClick={!isReadOnly ? toggleEditMode : null}
-        style={!isReadOnly ? { cursor: 'pointer' } : null}
-        className={`${getRequiredClass(required, answer)} ${
-          classes.cardcontent
-        }`}
-      >
-        {answer ? (
-          <ReactMarkdown className={classes.markdown}>{answer}</ReactMarkdown>
-        ) : (
-          <Typography className={`${getClass()} noAnswer`}>
-            No Response
-          </Typography>
-        )}
-      </CardContent>
-    );
   };
 
   return (
@@ -168,10 +121,15 @@ const Blog = ({
                     )} cardroot`}
                   >
                     <QuestionRender
-                      programID={programID}
                       answer={item.answer}
                       required={item.required}
                       questionID={item.id}
+                      isReadOnly={isReadOnly}
+                      editMode={editMode}
+                      toggleEditMode={toggleEditMode}
+                      blogQuestions={blogQuestions}
+                      getRequiredClass={getRequiredClass}
+                      getClass={getClass}
                     />
                   </Card>
                 </Box>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Typography } from '@material-ui/core';
 import Blog from '../Blog';
 
@@ -109,24 +109,32 @@ describe('The Blog component', () => {
     expect(wrapper.find('QuestionRender').at(2).dive().find('WithStyles(ForwardRef(TextField))').length).toBe(1);
   });
 
-  test('triggers onChange event when input changes', () => {
-    const wrapper = shallow(
+  test('onChange and save to update question value', () => {
+    const wrapper = mount(
       <Blog questions={questions} saveBlogAnswers={mockSaveBlogAnswers} programID={1} />,
     );
+
     wrapper
       .find('Styled(MuiBox)')
       .at(7)
-      .dive()
       .find('WithStyles(ForwardRef(Button))')
       .props()
       .onClick();
     wrapper.update();
     wrapper
       .find('QuestionRender')
+      .at(2)
+      .find('WithStyles(ForwardRef(TextField))').find('WithStyles(ForwardRef(InputBase))')
+      .props()
+      .onChange({ target: { id: '3', value: 'Hello' } });
+    wrapper.find('Styled(MuiBox)').at(7).find('WithStyles(ForwardRef(Button))')
+      .props()
+      .onClick();
+    wrapper.update();
+    expect(wrapper.find('QuestionRender').at(2).find('ReactMarkdown')
       .at(0)
-      .dive()
-      .find('WithStyles(ForwardRef(TextField))')
-      .simulate('change', { target: { id: 1, value: 'Hello' } });
+      .children()
+      .text()).toBe('Hello');
   });
 
   test('triggers edit mode when clicking on a displayed answer', () => {

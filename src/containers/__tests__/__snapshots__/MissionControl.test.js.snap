@@ -1159,7 +1159,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-19"
+                                      className="MuiBox-root MuiBox-root-24"
                                     >
                                       <WithStyles(ForwardRef(Typography))
                                         variant="h6"
@@ -1333,7 +1333,7 @@ exports[`The MissionControl container renders on the page with no errors over li
                                     m={0}
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-20"
+                                      className="MuiBox-root MuiBox-root-25"
                                     >
                                       <WithStyles(ForwardRef(Alert))
                                         action={
@@ -2930,16 +2930,16 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                               borderRadius="borderRadius"
                                                               classes={
                                                                 Object {
-                                                                  "root": "Styled(MuiBox)-root-21",
+                                                                  "root": "Styled(MuiBox)-root-26",
                                                                 }
                                                               }
                                                               p={2}
                                                             >
                                                               <div
-                                                                className="MuiBox-root MuiBox-root-22 Styled(MuiBox)-root-21"
+                                                                className="MuiBox-root MuiBox-root-27 Styled(MuiBox)-root-26"
                                                                 classes={
                                                                   Object {
-                                                                    "root": "Styled(MuiBox)-root-21",
+                                                                    "root": "Styled(MuiBox)-root-26",
                                                                   }
                                                                 }
                                                               >
@@ -5734,7 +5734,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                 >
                                   <Styled(MuiBox)>
                                     <div
-                                      className="MuiBox-root MuiBox-root-25"
+                                      className="MuiBox-root MuiBox-root-30"
                                     >
                                       <WithStyles(ForwardRef(Typography))
                                         variant="h6"
@@ -5908,7 +5908,7 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                     m={0}
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-26"
+                                      className="MuiBox-root MuiBox-root-31"
                                     >
                                       <WithStyles(ForwardRef(Alert))
                                         action={
@@ -7533,16 +7533,16 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                               borderRadius="borderRadius"
                                                               classes={
                                                                 Object {
-                                                                  "root": "Styled(MuiBox)-root-27",
+                                                                  "root": "Styled(MuiBox)-root-32",
                                                                 }
                                                               }
                                                               p={2}
                                                             >
                                                               <div
-                                                                className="MuiBox-root MuiBox-root-28 Styled(MuiBox)-root-27"
+                                                                className="MuiBox-root MuiBox-root-33 Styled(MuiBox)-root-32"
                                                                 classes={
                                                                   Object {
-                                                                    "root": "Styled(MuiBox)-root-27",
+                                                                    "root": "Styled(MuiBox)-root-32",
                                                                   }
                                                                 }
                                                               >
@@ -13748,12 +13748,27 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                                     >
                                                                                       <QuestionRender
                                                                                         answer="Answer1"
-                                                                                        programID={123}
+                                                                                        blogQuestions={
+                                                                                          Array [
+                                                                                            Object {
+                                                                                              "answer": "Answer1",
+                                                                                              "id": 1,
+                                                                                              "question": "Question1",
+                                                                                              "required": true,
+                                                                                              "sequence_number": 1,
+                                                                                            },
+                                                                                          ]
+                                                                                        }
+                                                                                        editMode={false}
+                                                                                        getClass={[Function]}
+                                                                                        getRequiredClass={[Function]}
+                                                                                        isReadOnly={false}
                                                                                         questionID={1}
                                                                                         required={true}
+                                                                                        toggleEditMode={[Function]}
                                                                                       >
                                                                                         <WithStyles(ForwardRef(CardContent))
-                                                                                          className="null makeStyles-cardcontent-7"
+                                                                                          className="null makeStyles-cardcontent-15"
                                                                                           onClick={[Function]}
                                                                                           style={
                                                                                             Object {
@@ -13762,7 +13777,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                                           }
                                                                                         >
                                                                                           <ForwardRef(CardContent)
-                                                                                            className="null makeStyles-cardcontent-7"
+                                                                                            className="null makeStyles-cardcontent-15"
                                                                                             classes={
                                                                                               Object {
                                                                                                 "root": "MuiCardContent-root",
@@ -13776,7 +13791,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                                             }
                                                                                           >
                                                                                             <div
-                                                                                              className="MuiCardContent-root null makeStyles-cardcontent-7"
+                                                                                              className="MuiCardContent-root null makeStyles-cardcontent-15"
                                                                                               onClick={[Function]}
                                                                                               style={
                                                                                                 Object {
@@ -13785,11 +13800,11 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                                               }
                                                                                             >
                                                                                               <ReactMarkdown
-                                                                                                className="makeStyles-markdown-8"
+                                                                                                className="makeStyles-markdown-16"
                                                                                                 transformLinkUri={[Function]}
                                                                                               >
                                                                                                 <Root
-                                                                                                  className="makeStyles-markdown-8"
+                                                                                                  className="makeStyles-markdown-16"
                                                                                                   key="root-1-1-0"
                                                                                                   node={
                                                                                                     Object {
@@ -13845,7 +13860,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                                                   }
                                                                                                 >
                                                                                                   <div
-                                                                                                    className="makeStyles-markdown-8"
+                                                                                                    className="makeStyles-markdown-16"
                                                                                                   >
                                                                                                     <p
                                                                                                       key="paragraph-1-1-0"
@@ -13904,7 +13919,7 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                                     }
                                                                   >
                                                                     <div
-                                                                      className="MuiBox-root MuiBox-root-15"
+                                                                      className="MuiBox-root MuiBox-root-20"
                                                                       style={
                                                                         Object {
                                                                           "alignItems": "center",
