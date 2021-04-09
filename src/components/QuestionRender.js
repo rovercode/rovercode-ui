@@ -49,13 +49,13 @@ function QuestionRender({
 }) {
   const classes = useStyles();
 
-  function onChangeHandler(e) {
+  const onChangeHandler = (e) => {
     blogQuestions.forEach((item) => {
       if (item.id === parseInt(e.target.id, 10)) {
         item.answer = e.target.value;
       }
     });
-  }
+  };
 
   if (!isReadOnly && editMode) {
     return (
@@ -80,13 +80,15 @@ function QuestionRender({
         classes.cardcontent
       }`}
     >
-      {answer ? (
-        <ReactMarkdown className={classes.markdown}>{answer}</ReactMarkdown>
-      ) : (
-        <Typography className={`${getClass()} noAnswer`}>
-          No Response
-        </Typography>
-      )}
+      {
+        answer ? (
+          <ReactMarkdown className={classes.markdown}>{answer}</ReactMarkdown>
+        ) : (
+          <Typography className={`${getClass()} noAnswer`}>
+            No Response
+          </Typography>
+        )
+      }
     </CardContent>
   );
 }
