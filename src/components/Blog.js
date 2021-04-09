@@ -91,106 +91,105 @@ const Blog = ({
         ) : (
           <>
             {
-                !isReadOnly ? (
-                  <Box mb={2}>
-                    <Typography
-                      variant="caption"
-                      style={{ color: 'grey', fontStyle: 'italic' }}
-                    >
-                      *Required
-                    </Typography>
-                  </Box>
-                ) : null
-              }
-
-            {
-                questions.sort((a, b) => a.sequence_number - b.sequence_number).map((item) => (
-                  <Grid item key={item.id}>
-                    <Box mb={0.5}>
-                      <Typography
-                        variant="subtitle2"
-                        className={getRequiredClass(item.required, item.answer)}
-                      >
-                        {
-                      item.required ? `${item.question}*` : item.question
-                    }
-                      </Typography>
-                    </Box>
-                    <Box mb={2}>
-                      <Card
-                        variant="outlined"
-                        className={`${getClass()} ${getRequiredClass(
-                          item.required,
-                          item.answer,
-                        )} cardroot`}
-                      >
-                        <QuestionRender
-                          answer={item.answer}
-                          required={item.required}
-                          questionID={item.id}
-                          isReadOnly={isReadOnly}
-                          editMode={editMode}
-                          toggleEditMode={toggleEditMode}
-                          blogQuestions={blogQuestions}
-                          getRequiredClass={getRequiredClass}
-                          getClass={getClass}
-                        />
-                      </Card>
-                    </Box>
-                  </Grid>
-                ))
+              !isReadOnly ? (
+                <Box mb={2}>
+                  <Typography
+                    variant="caption"
+                    style={{ color: 'grey', fontStyle: 'italic' }}
+                  >
+                    *Required
+                  </Typography>
+                </Box>
+              ) : null
             }
             {
-                !isReadOnly ? (
-                  <>
-                    <Box
-                      mb={2}
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                      }}
+              questions.sort((a, b) => a.sequence_number - b.sequence_number).map((item) => (
+                <Grid item key={item.id}>
+                  <Box mb={0.5}>
+                    <Typography
+                      variant="subtitle2"
+                      className={getRequiredClass(item.required, item.answer)}
                     >
-                      <Link
-                        variant="caption"
-                        style={{ color: 'grey', textDecoration: 'underline' }}
-                        rel="noopener noreferrer"
-                        href="https://commonmark.org/help/"
-                        target="_blank"
-                      >
-                        Formatting Tips
-                      </Link>
-                      <Button color="primary" onClick={toggleEditMode}>
-                        {
+                      {
+                        item.required ? `${item.question}*` : item.question
+                      }
+                    </Typography>
+                  </Box>
+                  <Box mb={2}>
+                    <Card
+                      variant="outlined"
+                      className={`${getClass()} ${getRequiredClass(
+                        item.required,
+                        item.answer,
+                      )} cardroot`}
+                    >
+                      <QuestionRender
+                        answer={item.answer}
+                        required={item.required}
+                        questionID={item.id}
+                        isReadOnly={isReadOnly}
+                        editMode={editMode}
+                        toggleEditMode={toggleEditMode}
+                        blogQuestions={blogQuestions}
+                        getRequiredClass={getRequiredClass}
+                        getClass={getClass}
+                      />
+                    </Card>
+                  </Box>
+                </Grid>
+              ))
+            }
+            {
+              !isReadOnly ? (
+                <>
+                  <Box
+                    mb={2}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Link
+                      variant="caption"
+                      style={{ color: 'grey', textDecoration: 'underline' }}
+                      rel="noopener noreferrer"
+                      href="https://commonmark.org/help/"
+                      target="_blank"
+                    >
+                      Formatting Tips
+                    </Link>
+                    <Button color="primary" onClick={toggleEditMode}>
+                      {
                           editMode ? 'Save' : 'Edit'
                         }
-                      </Button>
-                    </Box>
-                    <Paper
-                      style={{
-                        backgroundColor: 'rgba(254,173,17,.25)',
-                        borderColor: 'rgba(254,173,17,1)',
-                        padding: '16px',
-                        marginBottom: '16px',
-                      }}
-                      variant="outlined"
-                      padding={2}
-                    >
-                      <Typography variant="body1">
-                        Blog Posts may be public, do not share personal information!
-                        {' '}
-                        <Link
-                          style={{ color: 'black', textDecoration: 'underline' }}
-                          rel="noopener noreferrer"
-                          href="https://docs.rovercode.com/privacy"
-                          target="_blank"
-                        >
-                          Learn more.
-                        </Link>
-                      </Typography>
-                    </Paper>
-                  </>
-                ) : null
+                    </Button>
+                  </Box>
+                  <Paper
+                    style={{
+                      backgroundColor: 'rgba(254,173,17,.25)',
+                      borderColor: 'rgba(254,173,17,1)',
+                      padding: '16px',
+                      marginBottom: '16px',
+                    }}
+                    variant="outlined"
+                    padding={2}
+                  >
+                    <Typography variant="body1">
+                      Blog Posts may be public, do not share personal information!
+                      {' '}
+                      <Link
+                        style={{ color: 'black', textDecoration: 'underline' }}
+                        rel="noopener noreferrer"
+                        href="https://docs.rovercode.com/privacy"
+                        target="_blank"
+                      >
+                        Learn more.
+                      </Link>
+                    </Typography>
+                  </Paper>
+                </>
+              ) : null
             }
           </>
         )
