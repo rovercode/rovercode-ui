@@ -28,6 +28,7 @@ import { // eslint-disable-line import/first, import/order
   clearLesson,
   fetchProgram,
   remixProgram,
+  saveBlogAnswers,
 } from '@/actions/code';
 
 const cookiesValues = { auth_jwt: '1234' };
@@ -62,6 +63,13 @@ describe('The MissionControl container', () => {
         lessonId: 42,
         lessonGoals: 'To code stuff',
         lessonTutorialLink: 'youtu.be/foobar',
+        blog_questions: [{
+          id: 1,
+          question: 'Question1',
+          answer: 'Answer1',
+          required: true,
+          sequence_number: 1,
+        }],
       },
       sensor: {
         leftLightSensorReading: -1,
@@ -114,6 +122,7 @@ describe('The MissionControl container', () => {
   test('renders on the page with no errors over limit', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -157,6 +166,7 @@ describe('The MissionControl container', () => {
   test('renders on the page with no errors paid tier', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -211,10 +221,20 @@ describe('The MissionControl container', () => {
     const remixPromise = wrapper.instance().props.remixProgram(1);
     const fetchLessonPromise = wrapper.instance().props.fetchLesson(2);
     const changeReadOnlyPromise = wrapper.instance().props.changeReadOnly(true);
-    Promise.all([remixPromise, fetchLessonPromise, changeReadOnlyPromise]).then(() => {
+    const saveBlogAnswersPromise = wrapper.instance().props.saveBlogAnswers(1, [{
+      id: 1,
+      answer: 'Answer1',
+    }]);
+    Promise.all([
+      remixPromise, fetchLessonPromise, changeReadOnlyPromise, saveBlogAnswersPromise,
+    ]).then(() => {
       expect(store.dispatch).toHaveBeenCalledWith(remixProgram(1));
       expect(store.dispatch).toHaveBeenCalledWith(fetchLesson(2));
       expect(store.dispatch).toHaveBeenCalledWith(changeReadOnly(true));
+      expect(store.dispatch).toHaveBeenCalledWith(saveBlogAnswers(1, [{
+        id: 1,
+        answer: 'Answer1',
+      }]));
       done();
     });
   });
@@ -306,6 +326,7 @@ describe('The MissionControl container', () => {
   test('clears lesson when not present on fetched program', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -351,6 +372,7 @@ describe('The MissionControl container', () => {
   test('fetches lesson when present on fetched program', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -403,6 +425,7 @@ describe('The MissionControl container', () => {
   test('hides alert when not read only', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -447,6 +470,7 @@ describe('The MissionControl container', () => {
   test('shows alert when read only', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -526,6 +550,7 @@ describe('The MissionControl container', () => {
   test('shows tutorial link when available', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -573,6 +598,7 @@ describe('The MissionControl container', () => {
   test('hides tutorial link when not available', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -619,6 +645,7 @@ describe('The MissionControl container', () => {
   test('shows goal when available', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',
@@ -664,6 +691,7 @@ describe('The MissionControl container', () => {
   test('hides goals when not available', () => {
     const localStore = mockStore({
       code: {
+        id: 123,
         jsCode: '',
         execution: null,
         name: 'test program',

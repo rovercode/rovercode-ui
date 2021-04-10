@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Blog component renders on the page with no errors 1`] = `
+<WithStyles(ForwardRef(Grid))
+  container={true}
+  direction="column"
+>
+  <Styled(MuiBox)
+    mb={2}
+  >
+    <WithStyles(ForwardRef(Typography))
+      style={
+        Object {
+          "color": "grey",
+          "fontStyle": "italic",
+        }
+      }
+      variant="caption"
+    >
+      *Required
+    </WithStyles(ForwardRef(Typography))>
+  </Styled(MuiBox)>
+  <Styled(MuiBox)
+    mb={2}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <WithStyles(ForwardRef(Link))
+      href="https://commonmark.org/help/"
+      rel="noopener noreferrer"
+      style={
+        Object {
+          "color": "grey",
+          "textDecoration": "underline",
+        }
+      }
+      target="_blank"
+      variant="caption"
+    >
+      Formatting Tips
+    </WithStyles(ForwardRef(Link))>
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      onClick={[Function]}
+    >
+      Edit
+    </WithStyles(ForwardRef(Button))>
+  </Styled(MuiBox)>
+  <WithStyles(ForwardRef(Paper))
+    padding={2}
+    style={
+      Object {
+        "backgroundColor": "rgba(254,173,17,.25)",
+        "borderColor": "rgba(254,173,17,1)",
+        "marginBottom": "16px",
+        "padding": "16px",
+      }
+    }
+    variant="outlined"
+  >
+    <WithStyles(ForwardRef(Typography))
+      variant="body1"
+    >
+      Blog Posts may be public, do not share personal information!
+       
+      <WithStyles(ForwardRef(Link))
+        href="https://docs.rovercode.com/privacy"
+        rel="noopener noreferrer"
+        style={
+          Object {
+            "color": "black",
+            "textDecoration": "underline",
+          }
+        }
+        target="_blank"
+      >
+        Learn more.
+      </WithStyles(ForwardRef(Link))>
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Paper))>
+</WithStyles(ForwardRef(Grid))>
+`;

@@ -25,6 +25,7 @@ import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 
+import Blog from '@/components/Blog';
 import CodeViewer from '@/components/CodeViewer';
 import Console from '@/components/Console';
 import Control from '@/components/Control';
@@ -42,6 +43,7 @@ import {
   createProgram as actionCreateProgram,
   fetchProgram as actionFetchProgram,
   remixProgram as actionRemixProgram,
+  saveBlogAnswers as actionSaveBlogAnswers,
 } from '@/actions/code';
 
 const mapStateToProps = ({ code, sensor, user }) => ({ code, sensor, user });
@@ -56,6 +58,9 @@ const mapDispatchToProps = (dispatch, { cookies }) => ({
     .catch(checkAuthError(dispatch)),
   createProgram: (name) => dispatch(actionCreateProgram(name, authHeader(cookies)))
     .catch(checkAuthError(dispatch)),
+  saveBlogAnswers: (id, answers) => dispatch(
+    actionSaveBlogAnswers(id, answers, authHeader(cookies)),
+  ).catch(checkAuthError(dispatch)),
 });
 
 class MissionControl extends Component {
@@ -133,6 +138,7 @@ class MissionControl extends Component {
       code,
       sensor,
       user,
+      saveBlogAnswers,
     } = this.props;
 
     const {
@@ -455,6 +461,27 @@ class MissionControl extends Component {
               </Accordion>
             </Grid>
             <Grid item>
+              <Accordion>
+                <AccordionSummary expandIcon={<ExpandMore />}>
+                  <Typography>
+                    <FormattedMessage
+                      id="app.mission_control.blog"
+                      description="Header for blog"
+                      defaultMessage="Blog Post"
+                    />
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Blog
+                    questions={code.blog_questions}
+                    isReadOnly={code.isReadOnly}
+                    saveBlogAnswers={saveBlogAnswers}
+                    programID={code.id}
+                  />
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+            <Grid item>
               <CodeViewer>
                 <FormattedMessage
                   id="app.mission_control.show_code"
@@ -509,6 +536,13 @@ MissionControl.propTypes = {
     lessonId: PropTypes.number,
     lessonTutorialLink: PropTypes.string,
     lessonGoals: PropTypes.string,
+    blog_questions: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      question: PropTypes.string,
+      answer: PropTypes.string,
+      sequence_number: PropTypes.number,
+      required: PropTypes.bool,
+    })),
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
@@ -538,6 +572,7 @@ MissionControl.propTypes = {
   createProgram: PropTypes.func.isRequired,
   fetchProgram: PropTypes.func.isRequired,
   remixProgram: PropTypes.func.isRequired,
+  saveBlogAnswers: PropTypes.func.isRequired,
   intl: PropTypes.shape({
     formatMessage: PropTypes.func.isRequired,
   }).isRequired,
