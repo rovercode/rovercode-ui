@@ -146,38 +146,43 @@ describe('Blockly API', () => {
     expect(writeToConsole).toHaveBeenCalledWith('Sleeping for 100ms.');
   });
 
-  test('handles setChainableRgbLed', () => {
-    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
+  test('handles setHeadlightRgbLed for left headlight', () => {
+    const setHeadlightRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
 
-    const result = setChainableRgbLedHandler({ data: 0 }, { data: '#ff0042' });
+    const result = setHeadlightRgbLedHandler({ data: 'LEFT' }, { data: '#ff0042' });
 
     expect(result).toBe(false);
     expect(sendToRover).toHaveBeenCalledTimes(1);
-    expect(sendToRover).toHaveBeenCalledWith(JSON.stringify({
-      type: 'chainable-rgb-led-command',
-      'led-id': 0,
-      'red-value': 255,
-      'green-value': 0,
-      'blue-value': 66, // 0x42 = 66
-    }));
+    expect(sendToRover).toHaveBeenCalledWith('left-hl:255:0:66\n');
   });
 
-  test('handles setChainableRgbLed missing LED id', () => {
-    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
+  test('handles setHeadlightRgbLed for right headlight', () => {
+    const setHeadlightRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
 
-    const result = setChainableRgbLedHandler({ data: null }, { data: '#ff0042' });
+    const result = setHeadlightRgbLedHandler({ data: 'RIGHT' }, { data: '#42ff00' });
 
     expect(result).toBe(false);
-    expect(sendToRover).toHaveBeenCalledTimes(0);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
+    expect(sendToRover).toHaveBeenCalledWith('right-hl:66:255:0\n');
   });
 
-  test('handles setChainableRgbLed missing color', () => {
-    const setChainableRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
+  test('handles setHeadlightRgbLed for both headlights', () => {
+    const setHeadlightRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
 
-    const result = setChainableRgbLedHandler({ data: 0 }, { data: null });
+    const result = setHeadlightRgbLedHandler({ data: 'BOTH' }, { data: '#0042ff' });
 
     expect(result).toBe(false);
-    expect(sendToRover).toHaveBeenCalledTimes(0);
+    expect(sendToRover).toHaveBeenCalledTimes(1);
+    expect(sendToRover).toHaveBeenCalledWith('both-hl:0:66:255\n');
+  });
+
+  test('handles setHeadlightRgbLed with missing id', () => {
+    const setHeadlightRgbLedHandler = interpreter.createNativeFunction.mock.calls[8][0];
+
+    const result = setHeadlightRgbLedHandler({ data: null }, { data: '#ff0042' });
+
+    expect(result).toBe(false);
+    expect(sendToRover).not.toHaveBeenCalled();
   });
 
   test('handles displayMessage', () => {

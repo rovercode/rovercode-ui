@@ -2,6 +2,10 @@ const display = {
   HUE: 230,
 };
 
+const headlights = {
+  HUE: 20,
+};
+
 const motors = {
   HUE: 42,
 };
@@ -16,6 +20,7 @@ const time = {
 
 export {
   display,
+  headlights,
   motors,
   sensors,
   time,
