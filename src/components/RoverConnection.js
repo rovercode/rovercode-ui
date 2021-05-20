@@ -72,9 +72,10 @@ class RoverConnection extends Component {
   }
 
   handleDistanceSensor = (params) => {
-    const { write } = this.props;
+    const { changeDistanceSensorReading } = this.props;
+    const reading = parseInt(params, 10);
 
-    write(`Distance Sensor - ${params} mm`);
+    changeDistanceSensorReading(reading);
   }
 
   handleUBitTempSensor = (params) => {
@@ -352,6 +353,7 @@ RoverConnection.propTypes = {
   changeRightSensorState: PropTypes.func.isRequired,
   changeLightSensorReadings: PropTypes.func.isRequired,
   changeLineSensorReadings: PropTypes.func.isRequired,
+  changeDistanceSensorReading: PropTypes.func.isRequired,
   changeBatteryVoltageReading: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
 };

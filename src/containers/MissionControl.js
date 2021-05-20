@@ -165,6 +165,12 @@ class MissionControl extends Component {
       defaultMessage: 'Battery',
     });
 
+    const distanceSensorTitle = intl.formatMessage({
+      id: 'app.mission_control.distance_sensor',
+      description: 'Describes the distance sensor section',
+      defaultMessage: 'Distance Sensor',
+    });
+
     const lightSensorsTitle = intl.formatMessage({
       id: 'app.mission_control.light_sensors',
       description: 'Describes the light sensors section',
@@ -189,6 +195,12 @@ class MissionControl extends Component {
       defaultMessage: 'milliVolts',
     });
 
+    const centimetersLabel = intl.formatMessage({
+      id: 'app.mission_control.centimeters',
+      description: 'The unit centimeters',
+      defaultMessage: 'cm',
+    });
+
     const leftLabel = intl.formatMessage({
       id: 'app.mission_control.left',
       description: 'Labels the left sensor reading',
@@ -205,6 +217,12 @@ class MissionControl extends Component {
       id: 'app.mission_control.voltage',
       description: 'Labels the voltage reading',
       defaultMessage: 'Voltage',
+    });
+
+    const distanceLabel = intl.formatMessage({
+      id: 'app.mission_control.distance',
+      description: 'Labels the distance reading',
+      defaultMessage: 'Distance',
     });
 
     const WideBox = withStyles(() => ({
@@ -242,6 +260,14 @@ class MissionControl extends Component {
         label: rightLabel,
         reading: sensor.rightLineSensorReading,
         maxReading: 1023,
+      },
+    ];
+
+    const distanceSensorReading = [
+      {
+        label: distanceLabel,
+        reading: sensor.distanceSensorReading,
+        maxReading: 500,
       },
     ];
 
@@ -438,6 +464,12 @@ class MissionControl extends Component {
                 />
                 <Divider />
                 <NumericSensorReadout
+                  title={distanceSensorTitle}
+                  readings={distanceSensorReading}
+                  unit={centimetersLabel}
+                />
+                <Divider />
+                <NumericSensorReadout
                   title={batteryTitle}
                   readings={batteryVoltageReading}
                   unit={milliVoltsLabel}
@@ -564,6 +596,7 @@ MissionControl.propTypes = {
     rightLightSensorReading: PropTypes.number,
     leftLineSensorReading: PropTypes.number,
     rightLineSensorReading: PropTypes.number,
+    distanceSensorReading: PropTypes.number,
     batteryVoltageReading: PropTypes.number,
   }).isRequired,
   changeReadOnly: PropTypes.func.isRequired,

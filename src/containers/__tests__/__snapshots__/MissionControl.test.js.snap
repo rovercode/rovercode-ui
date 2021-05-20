@@ -3062,6 +3062,43 @@ exports[`The MissionControl container renders on the page with no errors over li
                                                       readings={
                                                         Array [
                                                           Object {
+                                                            "label": "Distance",
+                                                            "maxReading": 500,
+                                                            "reading": undefined,
+                                                          },
+                                                        ]
+                                                      }
+                                                      title="Distance Sensor"
+                                                      unit="cm"
+                                                    >
+                                                      <div />
+                                                    </Component>
+                                                    <WithStyles(ForwardRef(Divider))
+                                                      key=".a"
+                                                    >
+                                                      <ForwardRef(Divider)
+                                                        classes={
+                                                          Object {
+                                                            "absolute": "MuiDivider-absolute",
+                                                            "flexItem": "MuiDivider-flexItem",
+                                                            "inset": "MuiDivider-inset",
+                                                            "light": "MuiDivider-light",
+                                                            "middle": "MuiDivider-middle",
+                                                            "root": "MuiDivider-root",
+                                                            "vertical": "MuiDivider-vertical",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root"
+                                                        />
+                                                      </ForwardRef(Divider)>
+                                                    </WithStyles(ForwardRef(Divider))>
+                                                    <Component
+                                                      key=".b"
+                                                      readings={
+                                                        Array [
+                                                          Object {
                                                             "label": "Voltage",
                                                             "maxReading": 4500,
                                                             "reading": undefined,
@@ -7665,6 +7702,43 @@ exports[`The MissionControl container renders on the page with no errors paid ti
                                                       readings={
                                                         Array [
                                                           Object {
+                                                            "label": "Distance",
+                                                            "maxReading": 500,
+                                                            "reading": undefined,
+                                                          },
+                                                        ]
+                                                      }
+                                                      title="Distance Sensor"
+                                                      unit="cm"
+                                                    >
+                                                      <div />
+                                                    </Component>
+                                                    <WithStyles(ForwardRef(Divider))
+                                                      key=".a"
+                                                    >
+                                                      <ForwardRef(Divider)
+                                                        classes={
+                                                          Object {
+                                                            "absolute": "MuiDivider-absolute",
+                                                            "flexItem": "MuiDivider-flexItem",
+                                                            "inset": "MuiDivider-inset",
+                                                            "light": "MuiDivider-light",
+                                                            "middle": "MuiDivider-middle",
+                                                            "root": "MuiDivider-root",
+                                                            "vertical": "MuiDivider-vertical",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root"
+                                                        />
+                                                      </ForwardRef(Divider)>
+                                                    </WithStyles(ForwardRef(Divider))>
+                                                    <Component
+                                                      key=".b"
+                                                      readings={
+                                                        Array [
+                                                          Object {
                                                             "label": "Voltage",
                                                             "maxReading": 4500,
                                                             "reading": undefined,
@@ -12257,6 +12331,43 @@ exports[`The MissionControl container renders on the page with no errors under l
                                                     </WithStyles(ForwardRef(Divider))>
                                                     <Component
                                                       key=".9"
+                                                      readings={
+                                                        Array [
+                                                          Object {
+                                                            "label": "Distance",
+                                                            "maxReading": 500,
+                                                            "reading": undefined,
+                                                          },
+                                                        ]
+                                                      }
+                                                      title="Distance Sensor"
+                                                      unit="cm"
+                                                    >
+                                                      <div />
+                                                    </Component>
+                                                    <WithStyles(ForwardRef(Divider))
+                                                      key=".a"
+                                                    >
+                                                      <ForwardRef(Divider)
+                                                        classes={
+                                                          Object {
+                                                            "absolute": "MuiDivider-absolute",
+                                                            "flexItem": "MuiDivider-flexItem",
+                                                            "inset": "MuiDivider-inset",
+                                                            "light": "MuiDivider-light",
+                                                            "middle": "MuiDivider-middle",
+                                                            "root": "MuiDivider-root",
+                                                            "vertical": "MuiDivider-vertical",
+                                                          }
+                                                        }
+                                                      >
+                                                        <hr
+                                                          className="MuiDivider-root"
+                                                        />
+                                                      </ForwardRef(Divider)>
+                                                    </WithStyles(ForwardRef(Divider))>
+                                                    <Component
+                                                      key=".b"
                                                       readings={
                                                         Array [
                                                           Object {
