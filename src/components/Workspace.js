@@ -31,6 +31,7 @@ import {
   DisplayMessage,
   LightSensorValue,
   LineSensorValue,
+  DistanceSensorValue,
   MotorsStart,
   MotorsStop,
   SensorsGetCovered,
@@ -69,6 +70,8 @@ Blockly.Blocks.light_sensor_value = LightSensorValue.definition;
 Blockly.JavaScript.light_sensor_value = LightSensorValue.generator;
 Blockly.Blocks.line_sensor_value = LineSensorValue.definition;
 Blockly.JavaScript.line_sensor_value = LineSensorValue.generator;
+Blockly.Blocks.distance_sensor_value = DistanceSensorValue.definition;
+Blockly.JavaScript.distance_sensor_value = DistanceSensorValue.generator;
 Blockly.Blocks.motors_start = MotorsStart.definition;
 Blockly.JavaScript.motors_start = MotorsStart.generator;
 Blockly.Blocks.motors_stop = MotorsStop.definition;
@@ -91,6 +94,7 @@ const toolbox = `
       <category name="sensors and buttons" colour="160">
         <block type="light_sensor_value"></block>
         <block type="line_sensor_value"></block>
+        <block type="distance_sensor_value"></block>
         <block type="button_press"></block>
       </category>
       <category name="display" colour="230">
@@ -224,6 +228,7 @@ class Workspace extends Component {
     this.sensorStateCache.RIGHT_LIGHT = -1;
     this.sensorStateCache.LEFT_LINE = -1;
     this.sensorStateCache.RIGHT_LINE = -1;
+    this.sensorStateCache.DISTANCE = -1;
     this.sleeping = false;
     this.runningEnabled = false;
     this.highlightPause = false;
@@ -317,6 +322,7 @@ class Workspace extends Component {
     rightLightSensorReading,
     leftLineSensorReading,
     rightLineSensorReading,
+    distanceSensorReading,
   ) => {
     this.sensorStateCache.A_BUTTON = leftState === COVERED;
     this.sensorStateCache.B_BUTTON = rightState === COVERED;
@@ -324,6 +330,7 @@ class Workspace extends Component {
     this.sensorStateCache.RIGHT_LIGHT = rightLightSensorReading;
     this.sensorStateCache.LEFT_LINE = leftLineSensorReading;
     this.sensorStateCache.RIGHT_LINE = rightLineSensorReading;
+    this.sensorStateCache.DISTANCE = distanceSensorReading;
   }
 
   onWorkspaceAvailable = (code) => {
@@ -382,7 +389,8 @@ class Workspace extends Component {
 
     this.updateSensorStateCache(sensor.left, sensor.right,
       sensor.leftLightSensorReading, sensor.rightLightSensorReading,
-      sensor.leftLineSensorReading, sensor.rightLineSensorReading);
+      sensor.leftLineSensorReading, sensor.rightLineSensorReading,
+      sensor.distanceSensorReading);
 
     this.setState({
       workspace,
@@ -604,6 +612,7 @@ Workspace.propTypes = {
     rightLightSensorReading: PropTypes.number.isRequired,
     leftLineSensorReading: PropTypes.number.isRequired,
     rightLineSensorReading: PropTypes.number.isRequired,
+    distanceSensorReading: PropTypes.number.isRequired,
   }).isRequired,
   rover: PropTypes.shape({
     transmitChannel: PropTypes.shape({

@@ -361,6 +361,7 @@ exports[`The Workspace component renders on the page with no errors 1`] = `
           sendToRover={[Function]}
           sensor={
             Object {
+              "distanceSensorReading": -1,
               "left": 2,
               "leftLightSensorReading": -1,
               "leftLineSensorReading": -1,

@@ -25,6 +25,7 @@ describe('Blockly API', () => {
     sensorStateCache.RIGHT_LIGHT = 2;
     sensorStateCache.LEFT_LINE = 3;
     sensorStateCache.RIGHT_LINE = 4;
+    sensorStateCache.DISTANCE = 5;
 
     api = new BlocklyApi(highlightBlock, beginSleep, sensorStateCache, writeToConsole, sendToRover);
     api.initApi(interpreter);
@@ -204,5 +205,14 @@ describe('Blockly API', () => {
     expect(beginSleep).toHaveBeenCalled();
     // 3 characters in ' h ' times 1500 ms each
     expect(beginSleep).toHaveBeenCalledWith(4500);
+  });
+
+  test('handles getDistanceSensorValue', () => {
+    const getDistanceSensorHandler = interpreter.createNativeFunction.mock.calls[10][0];
+
+    getDistanceSensorHandler();
+
+    expect(interpreter.createPrimitive).toHaveBeenCalled();
+    expect(interpreter.createPrimitive).toHaveBeenCalledWith(5);
   });
 });
