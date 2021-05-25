@@ -29,6 +29,7 @@ import {
   ButtonPress,
   Continue,
   DisplayMessage,
+  Headlight,
   LightSensorValue,
   LineSensorValue,
   DistanceSensorValue,
@@ -66,6 +67,8 @@ Blockly.Blocks.continue = Continue.definition;
 Blockly.JavaScript.continue = Continue.generator;
 Blockly.Blocks.display_message = DisplayMessage.definition;
 Blockly.JavaScript.display_message = DisplayMessage.generator;
+Blockly.Blocks.headlight = Headlight.definition;
+Blockly.JavaScript.headlight = Headlight.generator;
 Blockly.Blocks.light_sensor_value = LightSensorValue.definition;
 Blockly.JavaScript.light_sensor_value = LightSensorValue.generator;
 Blockly.Blocks.line_sensor_value = LineSensorValue.definition;
@@ -103,6 +106,24 @@ const toolbox = `
             <block type="text">
               <field name="TEXT">Hi!</field>
             </block>
+          </value>
+        </block>
+        <block type="headlight"></block>
+        <block type="colour_rgb">
+          <value name="RED">
+            <shadow type="math_number">
+              <field name="NUM">100</field>
+            </shadow>
+          </value>
+          <value name="GREEN">
+            <shadow type="math_number">
+              <field name="NUM">50</field>
+            </shadow>
+          </value>
+          <value name="BLUE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
           </value>
         </block>
         <block type="text_print">
