@@ -3,6 +3,7 @@ import {
   changeRightSensorState,
   changeLightSensorReadings,
   changeLineSensorReadings,
+  changeDistanceSensorReading,
   changeBatteryVoltageReading,
   COVERED,
   NOT_COVERED,
@@ -39,6 +40,14 @@ describe('Sensor actions', () => {
 
     expect(type).toEqual('CHANGE_LINE_SENSOR_READINGS');
     expect(payload).toEqual({ leftReading: 1, rightReading: 2 });
+  });
+
+  test('changeDistanceSensorReading', () => {
+    const action = changeDistanceSensorReading(42);
+    const { type, payload } = action;
+
+    expect(type).toEqual('CHANGE_DISTANCE_SENSOR_READING');
+    expect(payload).toEqual(42);
   });
 
   test('changeBatteryVoltageReading', () => {

@@ -4,6 +4,7 @@ import {
   CHANGE_RIGHT_SENSOR_STATE,
   CHANGE_LIGHT_SENSOR_READINGS,
   CHANGE_LINE_SENSOR_READINGS,
+  CHANGE_DISTANCE_SENSOR_READING,
   CHANGE_BATTERY_VOLTAGE_READING,
   COVERED,
   NOT_COVERED,
@@ -53,6 +54,17 @@ describe('The sensor reducer', () => {
     ).toEqual({
       leftLineSensorReading: 1,
       rightLineSensorReading: 2,
+    });
+  });
+
+  test('should handle CHANGE_DISTANCE_SENSOR_READING', () => {
+    expect(
+      reducer({}, {
+        type: CHANGE_DISTANCE_SENSOR_READING,
+        payload: 42,
+      }),
+    ).toEqual({
+      distanceSensorReading: 42,
     });
   });
 

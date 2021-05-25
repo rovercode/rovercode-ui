@@ -138,6 +138,14 @@ class BlocklyApi {
     };
     interpreter.setProperty(scope, 'displayMessage',
       interpreter.createNativeFunction(wrapper));
+
+    // Add get distance sensor API function
+    wrapper = () => {
+      const sensorReading = this.sensorStateCache.DISTANCE;
+      return interpreter.createPrimitive(sensorReading);
+    };
+    interpreter.setProperty(scope, 'getDistanceSensorValue',
+      interpreter.createNativeFunction(wrapper));
   }
 }
 

@@ -5,6 +5,7 @@ export const CHANGE_LEFT_SENSOR_STATE = 'CHANGE_LEFT_SENSOR_STATE';
 export const CHANGE_RIGHT_SENSOR_STATE = 'CHANGE_RIGHT_SENSOR_STATE';
 export const CHANGE_LIGHT_SENSOR_READINGS = 'CHANGE_LIGHT_SENSOR_READINGS';
 export const CHANGE_LINE_SENSOR_READINGS = 'CHANGE_LINE_SENSOR_READINGS';
+export const CHANGE_DISTANCE_SENSOR_READING = 'CHANGE_DISTANCE_SENSOR_READING';
 export const CHANGE_BATTERY_VOLTAGE_READING = 'CHANGE_BATTERY_VOLTAGE_READING';
 
 // Sensor States
@@ -30,6 +31,11 @@ export const changeLightSensorReadings = (leftReading, rightReading) => ({
 export const changeLineSensorReadings = (leftReading, rightReading) => ({
   type: CHANGE_LINE_SENSOR_READINGS,
   payload: { leftReading, rightReading },
+});
+
+export const changeDistanceSensorReading = (distanceReading) => ({
+  type: CHANGE_DISTANCE_SENSOR_READING,
+  payload: distanceReading,
 });
 
 export const changeBatteryVoltageReading = (voltageReading) => ({
