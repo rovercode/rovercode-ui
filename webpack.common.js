@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -27,10 +27,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader'],
-        }),
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -54,6 +51,12 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
     ],
   },
   plugins: [
@@ -73,7 +76,7 @@ module.exports = {
       filename: './index.html',
       title: 'Rovercode',
     }),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: 'app.css',
     }),
     new FaviconsWebpackPlugin({

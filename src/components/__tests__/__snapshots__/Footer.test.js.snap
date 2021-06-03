@@ -5,6 +5,13 @@ exports[`The Footer component renders on the page with no errors 1`] = `
   className="makeStyles-root-1"
   maxWidth="lg"
 >
+  <WithStyles(ForwardRef(Divider))
+    style={
+      Object {
+        "margin": "16px 0px",
+      }
+    }
+  />
   <WithStyles(ForwardRef(Grid))
     alignItems="center"
     container={true}

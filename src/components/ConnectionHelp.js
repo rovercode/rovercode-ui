@@ -121,8 +121,7 @@ class ConnectionHelp extends Component {
               <FormattedMessage
                 id="app.connection_help.gigglebot_ordering"
                 description="Tells the user they need a Gigglebot."
-                defaultMessage="The Rover is your robot. Rovercode works with the Gigglebot,
-                which is a robot chassis with a micro:bit computer."
+                defaultMessage="The Rover is your robot. Rovercode works with the Gigglebot, which is a robot chassis with a micro:bit computer."
               />
             </Typography>
             <PaddedBox display="flex" justifyContent="center">
@@ -155,8 +154,7 @@ class ConnectionHelp extends Component {
               <FormattedMessage
                 id="app.connection_help.firmware_need"
                 description="Tells the user to check their micro:bit firmware"
-                defaultMessage="Plug the micro:bit into Gigglebot, and turn on
-                the power switch (on the front passenger side)."
+                defaultMessage="Plug the micro:bit into Gigglebot, and turn on the power switch (on the front passenger side)."
               />
             </Typography>
             <PaddedBox display="flex" justifyContent="center">
@@ -173,8 +171,7 @@ class ConnectionHelp extends Component {
                     <FormattedMessage
                       id="app.connection_help.firmware_expansion_panel"
                       description="Tells the user to click if they don't see the R"
-                      defaultMessage="If your micro:bit doesn't display an R, you need to download
-                      and flash the Rovercode firmware. Click here to see how."
+                      defaultMessage="If your micro:bit doesn't display an R, you need to download and flash the Rovercode firmware. Click here to see how."
                     />
                   </Typography>
                 </AccordionSummary>
@@ -211,8 +208,7 @@ class ConnectionHelp extends Component {
                     <FormattedMessage
                       id="app.connection_help.firmware_save"
                       description="Tells the user how to save the firmware."
-                      defaultMessage="Click the button below to download the firmware hex file,
-                      and choose to save it directly to the micro:bit device."
+                      defaultMessage="Click the button below to download the firmware hex file, and choose to save it directly to the micro:bit device."
                     />
                   </Typography>
                 </AccordionDetails>
@@ -236,8 +232,7 @@ class ConnectionHelp extends Component {
                     <FormattedMessage
                       id="app.connection_help.firmware_complete"
                       description="Tells the user how to see if the flash was successful"
-                      defaultMessage="After a few seconds of a blinking light, you should see an R
-                  displayed on the micro:bit's display."
+                      defaultMessage="After a few seconds of a blinking light, you should see an R displayed on the micro:bit's display."
                     />
                   </Typography>
                 </AccordionDetails>
@@ -269,8 +264,7 @@ class ConnectionHelp extends Component {
               <FormattedMessage
                 id="app.connection_help.connecting"
                 description="Points the user to the connection button"
-                defaultMessage="With your Rover powered on and displaying the R, push the connect
-                button below."
+                defaultMessage="With your Rover powered on and displaying the R, push the connect button below."
               />
             </Typography>
             <PaddedBox display="flex" justifyContent="center">

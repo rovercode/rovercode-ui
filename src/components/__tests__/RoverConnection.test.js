@@ -8,6 +8,7 @@ let changeLeftSensorState;
 let changeRightSensorState;
 let changeLightSensorReadings;
 let changeLineSensorReadings;
+let changeDistanceSensorReading;
 let changeBatteryVoltageReading;
 let connectToRover;
 let disconnectFromRover;
@@ -43,6 +44,7 @@ describe('The RoverConnection component', () => {
     changeRightSensorState = jest.fn();
     changeLightSensorReadings = jest.fn();
     changeLineSensorReadings = jest.fn();
+    changeDistanceSensorReading = jest.fn();
     changeBatteryVoltageReading = jest.fn();
     connectToRover = jest.fn().mockResolvedValue();
     disconnectFromRover = jest.fn();
@@ -56,6 +58,7 @@ describe('The RoverConnection component', () => {
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
         changeLineSensorReadings={changeLineSensorReadings}
+        changeDistanceSensorReading={changeDistanceSensorReading}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -76,6 +79,7 @@ describe('The RoverConnection component', () => {
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
         changeLineSensorReadings={changeLineSensorReadings}
+        changeDistanceSensorReading={changeDistanceSensorReading}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -102,6 +106,7 @@ describe('The RoverConnection component', () => {
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
         changeLineSensorReadings={changeLineSensorReadings}
+        changeDistanceSensorReading={changeDistanceSensorReading}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -127,6 +132,7 @@ describe('The RoverConnection component', () => {
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
         changeLineSensorReadings={changeLineSensorReadings}
+        changeDistanceSensorReading={changeDistanceSensorReading}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -155,6 +161,7 @@ describe('The RoverConnection component', () => {
         changeRightSensorState={changeRightSensorState}
         changeLightSensorReadings={changeLightSensorReadings}
         changeLineSensorReadings={changeLineSensorReadings}
+        changeDistanceSensorReading={changeDistanceSensorReading}
         changeBatteryVoltageReading={changeBatteryVoltageReading}
         connectToRover={connectToRover}
         disconnectFromRover={disconnectFromRover}
@@ -242,6 +249,24 @@ describe('The RoverConnection component', () => {
     });
 
     expect(changeLineSensorReadings).toHaveBeenCalledWith(600, 100);
+  });
+
+  test('changes distance sensor state on message', () => {
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('dist-sens:600')),
+      },
+    });
+
+    expect(changeDistanceSensorReading).toHaveBeenCalledWith(600);
+
+    wrapper.instance().onMessage({
+      target: {
+        value: generateDataView(Buffer.from('dist-sens:100')),
+      },
+    });
+
+    expect(changeDistanceSensorReading).toHaveBeenCalledWith(100);
   });
 
   test('changes button state on message', () => {
@@ -347,16 +372,6 @@ describe('The RoverConnection component', () => {
     expect(changeRightSensorState).not.toHaveBeenCalled();
     expect(changeLeftSensorState).not.toHaveBeenCalled();
     expect(write).toHaveBeenCalledWith('Unknown rover message received.');
-  });
-
-  test('outputs distance sensor state on message', () => {
-    wrapper.instance().onMessage({
-      target: {
-        value: generateDataView(Buffer.from('dist-sens:123')),
-      },
-    });
-
-    expect(write).toHaveBeenCalledWith('Distance Sensor - 123 mm');
   });
 
   test('outputs uBit temperature sensor state on message', () => {

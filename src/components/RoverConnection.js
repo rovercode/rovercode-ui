@@ -3,6 +3,7 @@ import {
   Button,
   Typography,
   Popover,
+  Box,
 } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
@@ -71,9 +72,10 @@ class RoverConnection extends Component {
   }
 
   handleDistanceSensor = (params) => {
-    const { write } = this.props;
+    const { changeDistanceSensorReading } = this.props;
+    const reading = parseInt(params, 10);
 
-    write(`Distance Sensor - ${params} mm`);
+    changeDistanceSensorReading(reading);
   }
 
   handleUBitTempSensor = (params) => {
@@ -236,7 +238,7 @@ class RoverConnection extends Component {
           size="large"
           variant="outlined"
           disableElevation
-          startIcon={<NavBarLogo style={{ fontSize: 50 }} />}
+          startIcon={(<NavBarLogo style={{ fontSize: 50 }} />)}
           onClick={this.onDisconnected}
         >
           <div>
@@ -262,12 +264,19 @@ class RoverConnection extends Component {
       <ConnectionButton
         variant="outlined"
         disableElevation
+        style={{
+          justifyContent: 'flex-start',
+          minWidth: '200px',
+          height: '48px',
+          padding: '0px 8px',
+          border: 'none',
+        }}
         onClick={this.connect}
-        startIcon={(<NavBarLogo style={{ fontSize: 50 }} />)}
+        startIcon={<NavBarLogo style={{ fontSize: 50 }} />}
         disabled={!supportedPlatform}
       >
-        <div>
-          <NoRoverText variant="h6">
+        <Box display="flex" flexDirection="column" alignItems="baseline">
+          <NoRoverText variant="body1" style={{ lineHeight: '1' }}>
             <FormattedMessage
               id="app.rover_connection.no_rover"
               description="Label when no rover is connected"
@@ -275,14 +284,14 @@ class RoverConnection extends Component {
             />
             <br />
           </NoRoverText>
-          <ConnectText color={supportedPlatform ? 'primary' : 'initial'}>
+          <ConnectText variant="subtitle2" color={supportedPlatform ? 'primary' : 'initial'}>
             <FormattedMessage
               id="app.rover_connection.connect"
               description="Button label to connect to the rover"
               defaultMessage="Connect"
             />
           </ConnectText>
-        </div>
+        </Box>
       </ConnectionButton>
     );
 
@@ -315,10 +324,7 @@ class RoverConnection extends Component {
             <FormattedMessage
               id="app.rover_connection.unsupported_platform"
               description="Popup text for unsupported platform"
-              defaultMessage="This browser or device is not supported.
-                  'Try using Google Chrome or Microsoft Edge '
-                  'on a PC, Macbook, or Android tablet. Also, '
-                  'make sure Bluetooth is enabled."
+              defaultMessage="This browser or device is not supported. Try using Google Chrome or Microsoft Edge on a PC, Macbook, or Android tablet. Also, make sure Bluetooth is enabled."
             />
           </PopoverMessageText>
         </PopoverMessage>
@@ -347,6 +353,7 @@ RoverConnection.propTypes = {
   changeRightSensorState: PropTypes.func.isRequired,
   changeLightSensorReadings: PropTypes.func.isRequired,
   changeLineSensorReadings: PropTypes.func.isRequired,
+  changeDistanceSensorReading: PropTypes.func.isRequired,
   changeBatteryVoltageReading: PropTypes.func.isRequired,
   write: PropTypes.func.isRequired,
 };

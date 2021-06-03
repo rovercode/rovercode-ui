@@ -3,6 +3,8 @@
 exports[`The LessonCard component renders on the page with no errors 1`] = `
 <WithStyles(ForwardRef(Card))
   className=""
+  elevation={2}
+  variant="outlined"
 >
   <WithStyles(ForwardRef(CardActionArea))
     data-owned={false}

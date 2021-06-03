@@ -35,20 +35,25 @@ class BlocklyApi {
     this.beginSleep(message.length * 1500);
   }
 
-  setChainableRgbLed = (blocklyLedId, blocklyColorHexString) => {
-    if (blocklyLedId === null || blocklyColorHexString === null) {
+  setHeadlightRgbLed = (blocklyHeadlightId, blocklyColorHexString) => {
+    if (blocklyHeadlightId === null || blocklyColorHexString === null) {
       return;
+    }
+    let headlight;
+    switch (blocklyHeadlightId) {
+      case 'LEFT':
+        headlight = 'left-hl';
+        break;
+      case 'RIGHT':
+        headlight = 'right-hl';
+        break;
+      default:
+        headlight = 'both-hl';
     }
     const red = parseInt(blocklyColorHexString.substring(1, 3), 16);
     const green = parseInt(blocklyColorHexString.substring(3, 5), 16);
     const blue = parseInt(blocklyColorHexString.substring(5, 7), 16);
-    this.sendToRover(JSON.stringify({
-      type: 'chainable-rgb-led-command',
-      'led-id': blocklyLedId,
-      'red-value': red,
-      'green-value': green,
-      'blue-value': blue,
-    }));
+    this.sendToRover(`${headlight}:${red}:${green}:${blue}\n`);
   }
 
   initApi = (interpreter, scope) => {
@@ -118,12 +123,12 @@ class BlocklyApi {
     interpreter.setProperty(scope, 'sleep',
       interpreter.createNativeFunction(wrapper));
 
-    // Add set chainable RGB LED API function
-    wrapper = (ledId, colorHexString) => {
-      this.setChainableRgbLed(ledId.data, colorHexString.data);
+    // Add set headlight LED API function
+    wrapper = (headlightId, colorHexString) => {
+      this.setHeadlightRgbLed(headlightId.data, colorHexString.data);
       return false;
     };
-    interpreter.setProperty(scope, 'setChainableRgbLed',
+    interpreter.setProperty(scope, 'setHeadlightRgbLed',
       interpreter.createNativeFunction(wrapper));
 
     // Add display message API function
@@ -132,6 +137,14 @@ class BlocklyApi {
       return false;
     };
     interpreter.setProperty(scope, 'displayMessage',
+      interpreter.createNativeFunction(wrapper));
+
+    // Add get distance sensor API function
+    wrapper = () => {
+      const sensorReading = this.sensorStateCache.DISTANCE;
+      return interpreter.createPrimitive(sensorReading);
+    };
+    interpreter.setProperty(scope, 'getDistanceSensorValue',
       interpreter.createNativeFunction(wrapper));
   }
 }
