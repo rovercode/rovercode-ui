@@ -17,6 +17,7 @@ store.dispatch = jest.fn();
 describe('The TopNav component', () => {
   beforeEach(() => {
     cookies.set('auth_jwt', '1234', { path: '/' });
+    cookies.set('refresh_jwt', '5678', { path: '/' });
   });
 
   test('should render on the page with no errors', () => {
@@ -32,10 +33,12 @@ describe('The TopNav component', () => {
     const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
       context: { cookies },
     });
-    const wrapper = topNav.dive().dive().dive().dive();
+    const wrapper = topNav.dive().dive().dive().dive()
+      .dive();
 
     expect(wrapper.find(Redirect).exists()).toBe(false);
     expect(cookies.get('auth_jwt', { path: '/' })).toBe('1234');
+    expect(cookies.get('refresh_jwt', { path: '/' })).toBe('5678');
 
     wrapper.instance().signout();
     wrapper.update();
@@ -43,6 +46,7 @@ describe('The TopNav component', () => {
     expect(wrapper.find(Redirect).exists()).toBe(true);
     expect(wrapper.find(Redirect).prop('to')).toBe('/accounts/login');
     expect(cookies.get('auth_jwt', { path: '/' })).toBeUndefined();
+    expect(cookies.get('refresh_jwt', { path: '/' })).toBeUndefined();
     expect(store.dispatch).toHaveBeenCalledWith(logout());
   });
 
@@ -50,12 +54,27 @@ describe('The TopNav component', () => {
     const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
       context: { cookies },
     });
-    const wrapper = topNav.dive().dive().dive().dive();
+    const wrapper = topNav.dive().dive().dive().dive()
+      .dive();
 
     expect(wrapper.instance().state.userMenuAnchorElement).toBe(null);
     wrapper.instance().handleMenuOpen({ target: 'element' });
     expect(wrapper.instance().state.userMenuAnchorElement).toBe('element');
     wrapper.instance().handleMenuClose();
     expect(wrapper.instance().state.userMenuAnchorElement).toBe(null);
+  });
+
+  test('should set and clear menu anchor element when menu is opening and closing', () => {
+    const topNav = shallow(<TopNav userName="Dale Gribble" store={store} />, {
+      context: { cookies },
+    });
+    const wrapper = topNav.dive().dive().dive().dive()
+      .dive();
+
+    expect(wrapper.instance().state.mobileMenuAnchorElement).toBe(null);
+    wrapper.instance().handleClick({ target: 'element' });
+    expect(wrapper.instance().state.mobileMenuAnchorElement).toBe('element');
+    wrapper.instance().handleClose();
+    expect(wrapper.instance().state.mobileMenuAnchorElement).toBe(null);
   });
 });

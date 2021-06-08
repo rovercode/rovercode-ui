@@ -9,6 +9,7 @@ import {
   changeReadOnly,
   changeProgramTags,
   fetchProgram,
+  saveBlogAnswers,
   saveProgram,
   createProgram,
   clearProgram,
@@ -116,6 +117,44 @@ describe('Code actions', () => {
     const action = saveProgram(1, program.content, program.name, program.lessonId);
     const { type } = action;
     expect(type).toEqual('SAVE_PROGRAM');
+    action.payload.then((result) => {
+      expect(result).toEqual(program);
+      mock.restore();
+      done();
+    });
+  });
+
+  test('save blog answers', (done) => {
+    const mock = new MockAdapter(axios);
+    const program = {
+      id: 1,
+      name: 'mybd',
+      content: '<xml></xml>',
+      user: 1,
+      lessonId: 2,
+      blog_questions: [{
+        id: 1,
+        answer: 'Answer1',
+      }, {
+        id: 2,
+        answer: 'Answer2',
+      }],
+    };
+    const answers = [{
+      id: 1,
+      answer: 'Answer1',
+    }, {
+      id: 2,
+      answer: 'Answer2',
+    }];
+
+    mock.onPatch('/api/v1/block-diagrams/1/', {
+      blog_answers: answers,
+    }).reply(200, program);
+
+    const action = saveBlogAnswers(1, answers);
+    const { type } = action;
+    expect(type).toEqual('SAVE_BLOG_ANSWERS');
     action.payload.then((result) => {
       expect(result).toEqual(program);
       mock.restore();

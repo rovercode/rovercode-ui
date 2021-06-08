@@ -14,8 +14,11 @@ import {
   AppBar,
   Menu,
   MenuItem,
+  ListItemIcon,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import SettingsIcon from '@material-ui/icons/Settings';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { FormattedMessage } from 'react-intl';
 import { withCookies, Cookies } from 'react-cookie';
 import { logout as actionLogout } from '@/actions/auth';
@@ -23,9 +26,34 @@ import { logout as actionLogout } from '@/actions/auth';
 import RoverConnection from '@/containers/RoverConnection';
 import ConnectionHelp from '@/components/ConnectionHelp';
 
+import MenuIcon from '@material-ui/icons/Menu';
+
+const styles = (theme) => ({
+  hiddenOnMobile: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  hiddenOnWeb: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
+});
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(actionLogout()),
 });
+const NavBarSpacer = withStyles((theme) => ({
+  root: {
+    marginBottom: theme.spacing(4),
+  },
+}))(Box);
+
+const NavButtonBox = withStyles(() => ({
+  root: {
+    height: '100%',
+  },
+}))(Box);
 
 class TopNav extends Component {
   constructor(props) {
@@ -34,6 +62,7 @@ class TopNav extends Component {
     this.state = {
       redirectToLogin: false,
       userMenuAnchorElement: null,
+      mobileMenuAnchorElement: null,
     };
   }
 
@@ -41,6 +70,7 @@ class TopNav extends Component {
     const { cookies, logout } = this.props;
 
     cookies.remove('auth_jwt', { path: '/' });
+    cookies.remove('refresh_jwt', { path: '/' });
     logout();
 
     this.setState({ redirectToLogin: true });
@@ -50,29 +80,30 @@ class TopNav extends Component {
     this.setState({
       userMenuAnchorElement: event.target,
     });
-  };
+  }
 
   handleMenuClose = () => {
     this.setState({
       userMenuAnchorElement: null,
     });
-  };
+  }
+
+  handleClick = (event) => {
+    this.setState({
+      mobileMenuAnchorElement: event.target,
+    });
+  }
+
+  handleClose = () => {
+    this.setState({
+      mobileMenuAnchorElement: null,
+    });
+  }
 
   render() {
-    const { userName } = this.props;
+    const { userName, classes } = this.props;
     const { redirectToLogin, userMenuAnchorElement } = this.state;
-
-    const NavBarSpacer = withStyles((theme) => ({
-      root: {
-        marginBottom: theme.spacing(2),
-      },
-    }))(Box);
-
-    const NavButtonBox = withStyles(() => ({
-      root: {
-        height: '100%',
-      },
-    }))(Box);
+    const { mobileMenuAnchorElement } = this.state;
 
     return (
       <>
@@ -84,18 +115,17 @@ class TopNav extends Component {
 
         <div>
           <AppBar position="static" color="secondary">
-            <Toolbar>
-              <Grid item container direction="row" spacing={4}>
-                <Grid item xs={3} xl={2}>
-                  <Box
-                    display="flex"
-                    justifyContent="left"
-                  >
-                    <RoverConnection />
-                    <ConnectionHelp suppressGuide={window.location.pathname === '/purchase'} />
-                  </Box>
-                </Grid>
-                <Grid item xs={2} xl={2}>
+            <Toolbar className={classes.hiddenOnMobile}>
+              <Box
+                display="flex"
+                justifyContent="left"
+                marginRight={2}
+              >
+                <RoverConnection />
+                <ConnectionHelp suppressGuide={window.location.pathname === '/purchase'} />
+              </Box>
+              <Grid container direction="row" spacing={2}>
+                <Grid item>
                   <NavButtonBox
                     display="flex"
                     justifyContent="center"
@@ -108,7 +138,7 @@ class TopNav extends Component {
                       component={Link}
                       to="/programs/mine"
                     >
-                      <Typography variant="h6">
+                      <Typography variant="h3">
                         <FormattedMessage
                           id="app.top_nav.my_programs"
                           description="Button label to go to the user's own programs"
@@ -118,11 +148,8 @@ class TopNav extends Component {
                     </Button>
                   </NavButtonBox>
                 </Grid>
-                <Grid item xs={3} xl={2}>
-                  <NavButtonBox
-                    display="flex"
-                    justifyContent="center"
-                  >
+                <Grid item>
+                  <NavButtonBox display="flex" justifyContent="center">
                     <Button
                       size="large"
                       variant="contained"
@@ -131,7 +158,7 @@ class TopNav extends Component {
                       component={Link}
                       to="/programs/community"
                     >
-                      <Typography variant="h6">
+                      <Typography variant="h3">
                         <FormattedMessage
                           id="app.top_nav.community_programs"
                           description="Button label to go to the community programs"
@@ -141,11 +168,8 @@ class TopNav extends Component {
                     </Button>
                   </NavButtonBox>
                 </Grid>
-                <Grid item xs={2} xl={2}>
-                  <NavButtonBox
-                    display="flex"
-                    justifyContent="center"
-                  >
+                <Grid item>
+                  <NavButtonBox display="flex" justifyContent="center">
                     <Button
                       size="large"
                       variant="contained"
@@ -154,7 +178,7 @@ class TopNav extends Component {
                       component={Link}
                       to="/courses"
                     >
-                      <Typography variant="h6">
+                      <Typography variant="h3">
                         <FormattedMessage
                           id="app.top_nav.courses"
                           description="Button label to go to the courses"
@@ -176,7 +200,7 @@ class TopNav extends Component {
                 aria-haspopup="true"
                 onClick={this.handleMenuOpen}
               >
-                <Typography variant="h6">
+                <Typography variant="h3">
                   {userName}
                 </Typography>
               </Button>
@@ -186,6 +210,7 @@ class TopNav extends Component {
                 keepMounted
                 open={Boolean(userMenuAnchorElement)}
                 onClose={this.handleMenuClose}
+                onClick={this.handleMenuClose}
                 getContentAnchorEl={null}
                 anchorOrigin={{
                   vertical: 'bottom',
@@ -197,6 +222,9 @@ class TopNav extends Component {
                 }}
               >
                 <MenuItem component={Link} to="/user/settings">
+                  <ListItemIcon>
+                    <SettingsIcon fontSize="small" />
+                  </ListItemIcon>
                   <FormattedMessage
                     id="app.top_nav.settings"
                     description="Button label to go to settings"
@@ -204,6 +232,9 @@ class TopNav extends Component {
                   />
                 </MenuItem>
                 <MenuItem onClick={this.signout}>
+                  <ListItemIcon>
+                    <ExitToAppIcon fontSize="small" />
+                  </ListItemIcon>
                   <FormattedMessage
                     id="app.top_nav.sign_out"
                     description="Button label to sign out"
@@ -211,6 +242,72 @@ class TopNav extends Component {
                   />
                 </MenuItem>
               </Menu>
+            </Toolbar>
+            <Toolbar className={classes.hiddenOnWeb}>
+              <Box display="flex" justifyContent="space-between" style={{ width: '100%' }}>
+                <Box display="flex" justifyContent="left">
+                  <RoverConnection />
+                  <ConnectionHelp suppressGuide={window.location.pathname === '/purchase'} />
+                </Box>
+
+                <Button
+                  edge="end"
+                  color="inherit"
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={this.handleClick}
+                  startIcon={<MenuIcon />}
+                >
+                  <Typography variant="h3">Menu</Typography>
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={mobileMenuAnchorElement}
+                  keepMounted
+                  open={Boolean(mobileMenuAnchorElement)}
+                  onClose={this.handleClose}
+                  onClick={this.handleClose}
+                  getContentAnchorEl={null}
+                >
+                  <MenuItem component={Link} to="/user/settings">
+                    <ListItemIcon>
+                      <SettingsIcon fontSize="small" />
+                    </ListItemIcon>
+                    {userName}
+                  </MenuItem>
+                  <MenuItem onClick={this.signout} divider>
+                    <ListItemIcon>
+                      <ExitToAppIcon fontSize="small" />
+                    </ListItemIcon>
+                    <FormattedMessage
+                      id="app.top_nav.sign_out"
+                      description="Button label to sign out"
+                      defaultMessage="Sign Out"
+                    />
+                  </MenuItem>
+                  <MenuItem component={Link} to="/programs/mine">
+                    <FormattedMessage
+                      id="app.top_nav.my_programs"
+                      description="Button label to go to the user's own programs"
+                      defaultMessage="My Programs"
+                    />
+                  </MenuItem>
+                  <MenuItem component={Link} to="/programs/community">
+                    <FormattedMessage
+                      id="app.top_nav.community_programs"
+                      description="Button label to go to the community programs"
+                      defaultMessage="Community Programs"
+                    />
+                  </MenuItem>
+                  <MenuItem component={Link} to="/courses">
+                    <FormattedMessage
+                      id="app.top_nav.courses"
+                      description="Button label to go to the courses"
+                      defaultMessage="Courses"
+                    />
+                  </MenuItem>
+                </Menu>
+              </Box>
             </Toolbar>
           </AppBar>
           <NavBarSpacer />
@@ -225,9 +322,13 @@ TopNav.defaultProps = {
 };
 
 TopNav.propTypes = {
+  classes: PropTypes.shape({
+    hiddenOnMobile: PropTypes.string.isRequired,
+    hiddenOnWeb: PropTypes.string.isRequired,
+  }).isRequired,
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   userName: PropTypes.string,
   logout: PropTypes.func.isRequired,
 };
 
-export default withCookies(connect(null, mapDispatchToProps)(TopNav));
+export default withCookies(connect(null, mapDispatchToProps)(withStyles(styles)(TopNav)));

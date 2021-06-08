@@ -3,17 +3,13 @@
 exports[`The ProgramList component renders on the page with no errors 1`] = `
 <Fragment>
   <WithStyles(ForwardRef(Grid))
-    alignItems="center"
     container={true}
     direction="column"
-    justify="center"
   >
     <WithStyles(ForwardRef(Grid))
       item={true}
     >
-      <Styled(MuiBox)
-        m={2}
-      >
+      <Styled(MuiBox)>
         <injectIntl(WithStyles(ProgramCollection))
           label="My Programs"
           onProgramClick={[Function]}
@@ -53,7 +49,6 @@ exports[`The ProgramList component renders on the page with no errors 1`] = `
   >
     Are you sure you want to remove Test Program?
   </ConfirmDialog>
-  <WithStyles(ForwardRef(Divider)) />
   <Footer />
 </Fragment>
 `;

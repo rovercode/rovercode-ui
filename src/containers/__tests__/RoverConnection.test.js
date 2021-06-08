@@ -6,6 +6,7 @@ import {
   changeRightSensorState,
   changeLightSensorReadings,
   changeLineSensorReadings,
+  changeDistanceSensorReading,
   changeBatteryVoltageReading,
   COVERED,
   NOT_COVERED,
@@ -64,6 +65,12 @@ describe('The RoverConnectionContainer', () => {
     wrapper.props().changeLineSensorReadings(1, 2);
 
     expect(store.dispatch).toHaveBeenCalledWith(changeLineSensorReadings(1, 2));
+  });
+
+  test('dispatches an action to change the distance sensor reading', () => {
+    wrapper.props().changeDistanceSensorReading(1);
+
+    expect(store.dispatch).toHaveBeenCalledWith(changeDistanceSensorReading(1));
   });
 
   test('dispatches an action to change battery voltage reading', () => {

@@ -11,6 +11,10 @@ export const SAVE_PROGRAM = 'SAVE_PROGRAM';
 export const SAVE_PROGRAM_PENDING = `${SAVE_PROGRAM}_PENDING`;
 export const SAVE_PROGRAM_FULFILLED = `${SAVE_PROGRAM}_FULFILLED`;
 export const SAVE_PROGRAM_REJECTED = `${SAVE_PROGRAM}_REJECTED`;
+export const SAVE_BLOG_ANSWERS = 'SAVE_BLOG_ANSWERS';
+export const SAVE_BLOG_ANSWERS_PENDING = `${SAVE_BLOG_ANSWERS}_PENDING`;
+export const SAVE_BLOG_ANSWERS_FULFILLED = `${SAVE_BLOG_ANSWERS}_FULFILLED`;
+export const SAVE_BLOG_ANSWERS_REJECTED = `${SAVE_BLOG_ANSWERS}_REJECTED`;
 export const CREATE_PROGRAM = 'CREATE_PROGRAM';
 export const CREATE_PROGRAM_PENDING = `${CREATE_PROGRAM}_PENDING`;
 export const CREATE_PROGRAM_FULFILLED = `${CREATE_PROGRAM}_FULFILLED`;
@@ -95,6 +99,16 @@ export const saveProgram = (id, content, name, lessonId, xhroptions) => ({
     content,
     name,
     lesson: lessonId,
+  }, xhroptions)
+    .then(({ data }) => (
+      data
+    )),
+});
+
+export const saveBlogAnswers = (id, answers, xhroptions) => ({
+  type: SAVE_BLOG_ANSWERS,
+  payload: axios.patch(`/api/v1/block-diagrams/${id}/`, {
+    blog_answers: answers,
   }, xhroptions)
     .then(({ data }) => (
       data
