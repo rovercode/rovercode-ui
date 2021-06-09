@@ -156,6 +156,7 @@ export default function code(
           id: action.payload.id,
           name: action.payload.name,
           lessonId: action.payload.lesson,
+          blog_questions: action.payload.blog_questions,
         } : {
           ...state,
           isSaving: false,
@@ -240,6 +241,7 @@ export default function code(
         id: action.payload.id,
         name: action.payload.name,
         lessonId: action.payload.lesson,
+        blog_questions: action.payload.blog_questions,
       };
     case REMIX_PROGRAM_REJECTED:
       return {
