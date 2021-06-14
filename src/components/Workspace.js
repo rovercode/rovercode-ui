@@ -294,7 +294,8 @@ class Workspace extends Component {
 
     this.updateSensorStateCache(sensor.left, sensor.right,
       sensor.leftLightSensorReading, sensor.rightLightSensorReading,
-      sensor.leftLineSensorReading, sensor.rightLineSensorReading);
+      sensor.leftLineSensorReading, sensor.rightLineSensorReading,
+      sensor.distanceSensorReading);
 
     if (currentCode && currentCode.isReadOnly && nextCode && !nextCode.isReadOnly) {
       this.createWorkspace();
