@@ -834,31 +834,36 @@ describe('The Workspace component', () => {
 
     expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(false);
     expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(false);
+    expect(workspace.instance().sensorStateCache.LEFT_LIGHT).toBe(-1);
+    expect(workspace.instance().sensorStateCache.RIGHT_LIGHT).toBe(-1);
+    expect(workspace.instance().sensorStateCache.LEFT_LINE).toBe(-1);
+    expect(workspace.instance().sensorStateCache.RIGHT_LINE).toBe(-1);
+    expect(workspace.instance().sensorStateCache.DISTANCE).toBe(-1);
 
     workspace.setProps({
       sensor: {
         left: COVERED,
         right: NOT_COVERED,
-        leftLightSensorReading: -1,
-        rightLightSensorReading: -1,
-        leftLineSensorReading: -1,
-        rightLineSensorReading: -1,
-        distanceSensorReading: -1,
+        leftLightSensorReading: 1,
+        rightLightSensorReading: 2,
+        leftLineSensorReading: 3,
+        rightLineSensorReading: 4,
+        distanceSensorReading: 5,
       },
     });
 
     expect(workspace.instance().sensorStateCache.A_BUTTON).toBe(true);
     expect(workspace.instance().sensorStateCache.B_BUTTON).toBe(false);
+    expect(workspace.instance().sensorStateCache.LEFT_LIGHT).toBe(1);
+    expect(workspace.instance().sensorStateCache.RIGHT_LIGHT).toBe(2);
+    expect(workspace.instance().sensorStateCache.LEFT_LINE).toBe(3);
+    expect(workspace.instance().sensorStateCache.RIGHT_LINE).toBe(4);
+    expect(workspace.instance().sensorStateCache.DISTANCE).toBe(5);
 
     workspace.setProps({
       sensor: {
         left: COVERED,
         right: COVERED,
-        leftLightSensorReading: -1,
-        rightLightSensorReading: -1,
-        leftLineSensorReading: -1,
-        rightLineSensorReading: -1,
-        distanceSensorReading: -1,
       },
     });
 
@@ -869,11 +874,6 @@ describe('The Workspace component', () => {
       sensor: {
         left: NOT_COVERED,
         right: COVERED,
-        leftLightSensorReading: -1,
-        rightLightSensorReading: -1,
-        leftLineSensorReading: -1,
-        rightLineSensorReading: -1,
-        distanceSensorReading: -1,
       },
     });
 
