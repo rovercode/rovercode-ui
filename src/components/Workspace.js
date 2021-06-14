@@ -292,10 +292,7 @@ class Workspace extends Component {
     const { code: currentCode, rover: currentRover } = prevProps;
     const { code: nextCode, sensor, rover: nextRover } = this.props;
 
-    this.updateSensorStateCache(sensor.left, sensor.right,
-      sensor.leftLightSensorReading, sensor.rightLightSensorReading,
-      sensor.leftLineSensorReading, sensor.rightLineSensorReading,
-      sensor.distanceSensorReading);
+    this.updateSensorStateCache(sensor);
 
     if (currentCode && currentCode.isReadOnly && nextCode && !nextCode.isReadOnly) {
       this.createWorkspace();
@@ -337,15 +334,16 @@ class Workspace extends Component {
     }
   }
 
-  updateSensorStateCache = (
-    leftState,
-    rightState,
-    leftLightSensorReading,
-    rightLightSensorReading,
-    leftLineSensorReading,
-    rightLineSensorReading,
-    distanceSensorReading,
-  ) => {
+  updateSensorStateCache = (sensor) => {
+    const {
+      left: leftState,
+      right: rightState,
+      leftLightSensorReading,
+      rightLightSensorReading,
+      leftLineSensorReading,
+      rightLineSensorReading,
+      distanceSensorReading,
+    } = sensor;
     this.sensorStateCache.A_BUTTON = leftState === COVERED;
     this.sensorStateCache.B_BUTTON = rightState === COVERED;
     this.sensorStateCache.LEFT_LIGHT = leftLightSensorReading;
