@@ -258,6 +258,13 @@ describe('The code reducer', () => {
     const id = 1;
     const xmlCode = '<xml></xml>';
     const lessonId = 2;
+    const questions = [{
+      id: 1,
+      question: 'Question1',
+      answer: null,
+      sequence_number: 2,
+      required: true,
+    }];
 
     expect(
       reducer({ id: 1 }, {
@@ -267,6 +274,7 @@ describe('The code reducer', () => {
           id,
           content: xmlCode,
           lesson: lessonId,
+          blog_questions: questions,
         },
       }),
     ).toEqual({
@@ -275,6 +283,7 @@ describe('The code reducer', () => {
       id,
       xmlCode,
       lessonId,
+      blog_questions: questions,
     });
   });
 
@@ -496,6 +505,13 @@ describe('The code reducer', () => {
     const id = 1;
     const xmlCode = '<xml></xml>';
     const lessonId = 2;
+    const questions = [{
+      id: 1,
+      question: 'Question1',
+      answer: null,
+      sequence_number: 2,
+      required: true,
+    }];
 
     expect(
       reducer({}, {
@@ -505,6 +521,7 @@ describe('The code reducer', () => {
           id,
           content: xmlCode,
           lesson: lessonId,
+          blog_questions: questions,
         },
       }),
     ).toEqual({
@@ -513,6 +530,7 @@ describe('The code reducer', () => {
       id,
       xmlCode,
       lessonId,
+      blog_questions: questions,
     });
   });
 
