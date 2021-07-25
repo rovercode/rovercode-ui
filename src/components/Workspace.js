@@ -174,6 +174,8 @@ const toolbox = `
       </category>
       <category name="logic" colour="210">
         <block type="controls_if"></block>
+        <block type="controls_if"><mutation else="1"></mutation></block>
+        <block type="controls_if"><mutation elseif="1"></mutation></block>
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
