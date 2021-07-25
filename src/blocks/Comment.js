@@ -18,8 +18,7 @@ const Comment = {
   },
   generator: (block) => {
     const valueComment = block.getFieldValue('COMMENT');
-    const code = `/* ${valueComment} */\n`; // Injection risk, but more power to them
-    return code;
+    return `/* ${valueComment} */\n`; // Injection risk, but more power to them
   },
 };
 
