@@ -91,7 +91,7 @@ render(
             <CssBaseline />
             <Switch>
               <Route path="/accounts" component={Accounts} />
-              <ProtectedRoute exact path="/" component={ProgramList} />
+              <ProtectedRoute exact path="/" component={CourseList} />
               <ProtectedRoute exact path="/programs/community" component={ProgramList} />
               <ProtectedRoute exact path="/programs/mine" component={() => <ProgramList owned />} />
               <ProtectedRoute exact path="/courses" component={CourseList} />
