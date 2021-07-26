@@ -126,6 +126,26 @@ class TopNav extends Component {
               </Box>
               <Grid container direction="row" spacing={2}>
                 <Grid item>
+                  <NavButtonBox display="flex" justifyContent="center">
+                    <Button
+                      size="large"
+                      variant="contained"
+                      disableElevation
+                      color="secondary"
+                      component={Link}
+                      to="/courses"
+                    >
+                      <Typography variant="h3">
+                        <FormattedMessage
+                          id="app.top_nav.courses"
+                          description="Button label to go to the courses"
+                          defaultMessage="Courses"
+                        />
+                      </Typography>
+                    </Button>
+                  </NavButtonBox>
+                </Grid>
+                <Grid item>
                   <NavButtonBox
                     display="flex"
                     justifyContent="center"
@@ -163,26 +183,6 @@ class TopNav extends Component {
                           id="app.top_nav.community_programs"
                           description="Button label to go to the community programs"
                           defaultMessage="Community Programs"
-                        />
-                      </Typography>
-                    </Button>
-                  </NavButtonBox>
-                </Grid>
-                <Grid item>
-                  <NavButtonBox display="flex" justifyContent="center">
-                    <Button
-                      size="large"
-                      variant="contained"
-                      disableElevation
-                      color="secondary"
-                      component={Link}
-                      to="/courses"
-                    >
-                      <Typography variant="h3">
-                        <FormattedMessage
-                          id="app.top_nav.courses"
-                          description="Button label to go to the courses"
-                          defaultMessage="Courses"
                         />
                       </Typography>
                     </Button>

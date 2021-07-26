@@ -29,6 +29,7 @@ import {
   ButtonPress,
   Continue,
   DisplayMessage,
+  Comment,
   Headlight,
   LightSensorValue,
   LineSensorValue,
@@ -67,6 +68,8 @@ Blockly.Blocks.continue = Continue.definition;
 Blockly.JavaScript.continue = Continue.generator;
 Blockly.Blocks.display_message = DisplayMessage.definition;
 Blockly.JavaScript.display_message = DisplayMessage.generator;
+Blockly.Blocks.comment = Comment.definition;
+Blockly.JavaScript.comment = Comment.generator;
 Blockly.Blocks.headlight = Headlight.definition;
 Blockly.JavaScript.headlight = Headlight.generator;
 Blockly.Blocks.light_sensor_value = LightSensorValue.definition;
@@ -107,6 +110,8 @@ const toolbox = `
               <field name="TEXT">Hi!</field>
             </block>
           </value>
+        </block>
+        <block type="comment">
         </block>
         <block type="headlight"></block>
         <block type="colour_rgb">
@@ -169,6 +174,8 @@ const toolbox = `
       </category>
       <category name="logic" colour="210">
         <block type="controls_if"></block>
+        <block type="controls_if"><mutation else="1"></mutation></block>
+        <block type="controls_if"><mutation elseif="1"></mutation></block>
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
