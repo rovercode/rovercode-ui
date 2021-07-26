@@ -1,6 +1,7 @@
 import ButtonPress from './ButtonPress';
 import Continue from './Continue';
 import DisplayMessage from './DisplayMessage';
+import Comment from './Comment';
 import Headlight from './Headlight';
 import LightSensorValue from './LightSensorValue';
 import LineSensorValue from './LineSensorValue';
@@ -13,6 +14,7 @@ export {
   ButtonPress,
   Continue,
   DisplayMessage,
+  Comment,
   Headlight,
   LightSensorValue,
   LineSensorValue,
