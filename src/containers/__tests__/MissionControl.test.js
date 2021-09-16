@@ -757,6 +757,7 @@ describe('The MissionControl container', () => {
     localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     const mockChangeReadOnly = jest.fn();
     const mockFetchLesson = jest.fn();
+    const mockHistoryPush = jest.fn();
     const mockRemixProgram = jest.fn().mockResolvedValue({
       value: {
         id: 2,
@@ -787,6 +788,7 @@ describe('The MissionControl container', () => {
     missionControl.setProps({
       remixProgram: mockRemixProgram,
       changeReadOnly: mockChangeReadOnly,
+      history: {push: mockHistoryPush},
       fetchLesson: mockFetchLesson,
     });
 
@@ -794,6 +796,7 @@ describe('The MissionControl container', () => {
       expect(mockRemixProgram).toHaveBeenCalledWith(1);
       expect(mockChangeReadOnly).toHaveBeenCalledWith(false);
       expect(mockFetchLesson).toHaveBeenCalledWith(50);
+      expect(mockHistoryPush).toHaveBeenCalledWith('2');
       done();
     });
   });

@@ -119,6 +119,7 @@ class MissionControl extends Component {
       code,
       remixProgram,
       fetchLesson,
+      history,
     } = this.props;
 
     return remixProgram(code.id).then(() => {
@@ -127,6 +128,7 @@ class MissionControl extends Component {
       if (newCode.lessonId) {
         fetchLesson(newCode.lessonId);
       }
+      history.push(`${newCode.id}`);
       changeReadOnly(false);
     });
   }
@@ -555,6 +557,9 @@ MissionControl.defaultProps = {
 };
 
 MissionControl.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({
       readOnly: PropTypes.bool,
