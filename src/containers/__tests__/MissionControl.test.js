@@ -757,7 +757,6 @@ describe('The MissionControl container', () => {
     localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
     const mockChangeReadOnly = jest.fn();
     const mockFetchLesson = jest.fn();
-    const mockHistoryPush = jest.fn();
     const mockRemixProgram = jest.fn().mockResolvedValue({
       value: {
         id: 2,
@@ -788,7 +787,6 @@ describe('The MissionControl container', () => {
     missionControl.setProps({
       remixProgram: mockRemixProgram,
       changeReadOnly: mockChangeReadOnly,
-      history: {push: mockHistoryPush},
       fetchLesson: mockFetchLesson,
     });
 
@@ -796,7 +794,6 @@ describe('The MissionControl container', () => {
       expect(mockRemixProgram).toHaveBeenCalledWith(1);
       expect(mockChangeReadOnly).toHaveBeenCalledWith(false);
       expect(mockFetchLesson).toHaveBeenCalledWith(50);
-      expect(mockHistoryPush).toHaveBeenCalledWith('2');
       done();
     });
   });
@@ -863,5 +860,55 @@ describe('The MissionControl container', () => {
       expect(mockFetchLesson).not.toHaveBeenCalled();
       done();
     });
+  });
+
+  test('Pushes a remixed program to the url', (done) => {
+    const localStore = mockStore({
+      code: {
+        id: 2,
+        name: 'test program',
+        ownerName: 'phil',
+        xmlCode: '<xml></xml>',
+        isReadOnly: true,
+        lessonId: 50,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
+      },
+      user: {
+        username: 'testuser',
+      },
+    });
+    const historyMock = { push: jest.fn() };
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    const missionControl = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl history={historyMock} store={localStore} match={match}>
+            <div />
+          </MissionControl>
+        </MemoryRouter>
+      </ReduxProvider>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    const prevProps = {
+      code: { id: 1 },
+    };
+    missionControl.instance().componentDidUpdate(prevProps);
+    expect(historyMock.push.mock.calls[0]).toEqual(['2']);
+    done();
   });
 });

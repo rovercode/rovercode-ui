@@ -111,6 +111,15 @@ class MissionControl extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { code: oldCode } = prevProps;
+    const { code: newCode, history } = this.props;
+
+    if (oldCode.id !== newCode.id) {
+      history.push(`${newCode.id}`);
+    }
+  }
+
   handleOnClose = () => this.setState({ open: false });
 
   remix = () => {
@@ -119,7 +128,6 @@ class MissionControl extends Component {
       code,
       remixProgram,
       fetchLesson,
-      history,
     } = this.props;
 
     return remixProgram(code.id).then(() => {
@@ -128,7 +136,6 @@ class MissionControl extends Component {
       if (newCode.lessonId) {
         fetchLesson(newCode.lessonId);
       }
-      history.push(`${newCode.id}`);
       changeReadOnly(false);
     });
   }
