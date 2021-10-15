@@ -861,4 +861,54 @@ describe('The MissionControl container', () => {
       done();
     });
   });
+
+  test('Pushes a remixed program to the url', (done) => {
+    const localStore = mockStore({
+      code: {
+        id: 2,
+        name: 'test program',
+        ownerName: 'phil',
+        xmlCode: '<xml></xml>',
+        isReadOnly: true,
+        lessonId: 50,
+      },
+      sensor: {
+        leftLightSensorReading: -1,
+        rightLightSensorReading: -2,
+        leftLineSensorReading: -3,
+        rightLineSensorReading: -4,
+      },
+      user: {
+        username: 'testuser',
+      },
+    });
+    const historyMock = { push: jest.fn() };
+    localStore.dispatch = jest.fn().mockResolvedValue(fetchResult);
+    const missionControl = shallowWithIntl(
+      <ReduxProvider store={store}>
+        <MemoryRouter>
+          <MissionControl history={historyMock} store={localStore} match={match}>
+            <div />
+          </MissionControl>
+        </MemoryRouter>
+      </ReduxProvider>, { context },
+    ).dive().dive().dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive()
+      .dive();
+
+    const prevProps = {
+      code: { id: 1 },
+    };
+    missionControl.instance().componentDidUpdate(prevProps);
+    expect(historyMock.push.mock.calls[0]).toEqual(['2']);
+    done();
+  });
 });

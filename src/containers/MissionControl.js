@@ -111,6 +111,15 @@ class MissionControl extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { code: oldCode } = prevProps;
+    const { code: newCode, history } = this.props;
+
+    if (oldCode.id !== newCode.id) {
+      history.push(`${newCode.id}`);
+    }
+  }
+
   handleOnClose = () => this.setState({ open: false });
 
   remix = () => {
@@ -555,6 +564,9 @@ MissionControl.defaultProps = {
 };
 
 MissionControl.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({
       readOnly: PropTypes.bool,
