@@ -1,0 +1,46 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Setup dependencies
+      run: yarn install --pure-lockfile
+
+    - name: Setup coverage
+      run: yarn add --dev coveralls
+
+    - name: Run tests
+      run: yarn test
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Setup dependencies
+      run: yarn install --pure-lockfile
+
+    - name: Run linter
+      run: yarn lint
