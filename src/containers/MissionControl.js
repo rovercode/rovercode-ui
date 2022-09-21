@@ -111,15 +111,6 @@ class MissionControl extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    const { code: oldCode } = prevProps;
-    const { code: newCode, history } = this.props;
-
-    if (oldCode.id !== newCode.id) {
-      history.push(`${newCode.id}`);
-    }
-  }
-
   handleOnClose = () => this.setState({ open: false });
 
   remix = () => {
@@ -130,12 +121,15 @@ class MissionControl extends Component {
       fetchLesson,
     } = this.props;
 
-    return remixProgram(code.id).then(() => {
+    return remixProgram(code.id).then((result) => {
       const { code: newCode } = this.props;
 
       if (newCode.lessonId) {
         fetchLesson(newCode.lessonId);
       }
+      this.setState({
+        programCreated: result.value.id,
+      });
       changeReadOnly(false);
     });
   }
@@ -564,9 +558,6 @@ MissionControl.defaultProps = {
 };
 
 MissionControl.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({
       readOnly: PropTypes.bool,
